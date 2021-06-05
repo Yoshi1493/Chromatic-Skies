@@ -8,6 +8,8 @@ public class ShipObject : ScriptableObject
 
     [Header("Stats")]
     public IntObject maxHealth;
+    public IntObject power;
+    public IntObject defense;
     public FloatObject movementSpeed;
     public FloatObject shootingSpeed;
 }

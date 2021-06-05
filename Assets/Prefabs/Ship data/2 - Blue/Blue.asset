@@ -14,5 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shipName: {fileID: 11400000, guid: bc45a3978b8853e4a8122e45001fd4ed, type: 2}
   maxHealth: {fileID: 11400000, guid: 62bfe7bba6f3e4f46ba3c865a14a2c38, type: 2}
+  power: {fileID: 11400000, guid: 10d68685c57f50549a63258d82075c0c, type: 2}
+  defense: {fileID: 11400000, guid: c97853fdb758f744f838d4a823d0a8fa, type: 2}
   movementSpeed: {fileID: 11400000, guid: d41cb503efdf38d47bc44bb239192235, type: 2}
   shootingSpeed: {fileID: 11400000, guid: c2344765f51fb2c4a976145958f22145, type: 2}

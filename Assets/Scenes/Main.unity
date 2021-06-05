@@ -381,6 +381,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2114570087}
   - component: {fileID: 2114570086}
+  - component: {fileID: 2114570089}
   - component: {fileID: 2114570088}
   m_Layer: 0
   m_Name: player
@@ -466,4 +467,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a4d63c07c327634da71d58a8e22035c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shipData: {fileID: 11400000, guid: 299efc867c7beff47a36f00daf0c391b, type: 2}
+  shipData: {fileID: 11400000, guid: 0f5d3190f78784e4a9984f1ca73a418f, type: 2}
+--- !u!58 &2114570089
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2114570085}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.02
