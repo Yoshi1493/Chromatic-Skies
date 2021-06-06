@@ -4,7 +4,8 @@ using UnityEngine;
 public class ShipObject : ScriptableObject
 {
     [Header("General")]
-    public StringObject shipName;    
+    public Sprite sprite;
+    public string shipName;
 
     [Header("Stats")]
     public IntObject maxHealth;
@@ -12,4 +13,7 @@ public class ShipObject : ScriptableObject
     public IntObject defense;
     public FloatObject movementSpeed;
     public FloatObject shootingSpeed;
+
+    [Header("Bullets")]
+    public GameObject defaultBullet;
 }

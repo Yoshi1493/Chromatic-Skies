@@ -2,14 +2,15 @@ using UnityEngine;
 
 public abstract class Ship : MonoBehaviour
 {
-    [SerializeField] protected ShipObject shipData;
-    
     new protected Transform transform;
+
+    [SerializeField] protected ShipObject shipData;
+    [SerializeField] protected Transform bulletSpawnPos;
 
     protected void Awake()
     {
         transform = GetComponent<Transform>();
-        name = shipData.shipName.value;
+        name = shipData.shipName;
     }
 
     protected abstract void Update();
@@ -19,4 +20,6 @@ public abstract class Ship : MonoBehaviour
         deltaMovement.Normalize();
         transform.position += shipData.movementSpeed.value * Time.deltaTime * deltaMovement;
     }
+
+    protected abstract void Shoot(GameObject bullet);
 }

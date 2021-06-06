@@ -12,9 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa17cd8e958d5074ca8d56b20433675c, type: 3}
   m_Name: Yellow
   m_EditorClassIdentifier: 
-  shipName: {fileID: 11400000, guid: a1a8736001c50bb499bf10ea9431f479, type: 2}
+  sprite: {fileID: 21300000, guid: 1aa3e528edb03a147bde37cb52c198d6, type: 3}
+  shipName: Lyra
   maxHealth: {fileID: 11400000, guid: e5e11274d43d03d4fba2cb83bd65a10b, type: 2}
   power: {fileID: 11400000, guid: 5067c38418cc48a48916bb09ed78fd6a, type: 2}
   defense: {fileID: 11400000, guid: 70ab14196248a89439852825dfdd9931, type: 2}
   movementSpeed: {fileID: 11400000, guid: cb6726964f804be4bb4006d8405a853c, type: 2}
   shootingSpeed: {fileID: 11400000, guid: 689716c0b1df46f42896f1fc25b462bd, type: 2}
+  defaultBullet: {fileID: 6917292052819124163, guid: 3d84f4836dc1d5e4ba2123950d014abc, type: 3}
