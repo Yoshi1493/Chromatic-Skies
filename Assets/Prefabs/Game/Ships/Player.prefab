@@ -113,9 +113,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a4d63c07c327634da71d58a8e22035c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shipData: {fileID: 11400000, guid: 0f5d3190f78784e4a9984f1ca73a418f, type: 2}
+  shipData: {fileID: 0}
   bulletSpawnPos: {fileID: 3293840736017732842}
-  defaultBullet: {fileID: 6917292052819124163, guid: 3d84f4836dc1d5e4ba2123950d014abc, type: 3}
 --- !u!1 &7887617530008348640
 GameObject:
   m_ObjectHideFlags: 0

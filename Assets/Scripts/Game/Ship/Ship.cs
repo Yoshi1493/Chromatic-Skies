@@ -2,24 +2,48 @@ using UnityEngine;
 
 public abstract class Ship : MonoBehaviour
 {
+    [SerializeField] protected ShipObject shipData;    
     new protected Transform transform;
+    protected Vector2 velocity;
 
-    [SerializeField] protected ShipObject shipData;
-    [SerializeField] protected Transform bulletSpawnPos;
+    public event System.Action DeathAction;
 
-    protected void Awake()
+    protected virtual void Awake()
     {
         transform = GetComponent<Transform>();
-        name = shipData.shipName;
+        InitShipStats();
+
+        DeathAction += Die;
     }
 
-    protected abstract void Update();
-
-    protected void Move(Vector3 deltaMovement)
+    void InitShipStats()
     {
-        deltaMovement.Normalize();
-        transform.position += shipData.movementSpeed.value * Time.deltaTime * deltaMovement;
+        shipData.currentHealth.value = shipData.maxHealth;
+        shipData.currentPower.value = shipData.originalPower;
+        shipData.currentDefense.value = shipData.originalDefense;
+        shipData.currentMovementSpeed.value = shipData.originalMovementSpeed;
+        shipData.currentShootingSpeed.value = shipData.originalShootingSpeed;
+
+        name = shipData.shipName.value;     //debug
     }
 
-    protected abstract void Shoot(GameObject bullet);
+    protected void Move(Vector3 direction)
+    {
+        direction.Normalize();
+        transform.position += shipData.currentMovementSpeed.value * Time.deltaTime * direction;
+    }
+
+    protected abstract void SpawnBullet(GameObject bullet);
+
+    protected void TakeDamage(int amount)
+    {
+        shipData.currentHealth.value -= amount;
+
+        if (shipData.currentHealth.value <= 0)
+        {
+            DeathAction?.Invoke();
+        }
+    }
+
+    protected abstract void Die();
 }

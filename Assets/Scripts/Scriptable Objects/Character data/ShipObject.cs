@@ -5,14 +5,23 @@ public class ShipObject : ScriptableObject
 {
     [Header("General")]
     public Sprite sprite;
-    public string shipName;
+    public StringObject shipName;
 
     [Header("Stats")]
-    public IntObject maxHealth;
-    public IntObject power;
-    public IntObject defense;
-    public FloatObject movementSpeed;
-    public FloatObject shootingSpeed;
+    public int maxHealth;
+    public IntObject currentHealth;
+
+    public int originalPower;
+    public IntObject currentPower;
+
+    public int originalDefense;
+    public IntObject currentDefense;
+
+    public float originalMovementSpeed;
+    public FloatObject currentMovementSpeed;
+
+    public float originalShootingSpeed;
+    public FloatObject currentShootingSpeed;
 
     [Header("Bullets")]
     public GameObject defaultBullet;

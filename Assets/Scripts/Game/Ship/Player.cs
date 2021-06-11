@@ -1,10 +1,15 @@
+using System.Collections;
 using UnityEngine;
+using static CoroutineHelper;
 
 public class Player : Ship
 {
-    Vector2 velocity;
+    [SerializeField] protected Transform bulletSpawnPos;
 
-    protected override void Update()
+    bool canShoot = true;
+    float ShootCooldown => 1 / shipData.currentShootingSpeed.value;
+
+    void Update()
     {
         GetMovementInput();
         GetShootingInput();
@@ -20,14 +25,29 @@ public class Player : Ship
 
     void GetShootingInput()
     {
-        if (Input.GetButton("Shoot"))
+        if (Input.GetButton("Shoot") && canShoot)
         {
-            Shoot(shipData.defaultBullet);
+            Run.Coroutine(Shoot());
         }
     }
 
-    protected override void Shoot(GameObject bullet)
+    IEnumerator Shoot()
     {
-        GameObject newBullet = Instantiate(bullet, bulletSpawnPos.position, bulletSpawnPos.rotation);
+        SpawnBullet(shipData.defaultBullet);
+        canShoot = false;
+
+        yield return WaitForSeconds(ShootCooldown);
+
+        canShoot = true;
+    }
+
+    protected override void SpawnBullet(GameObject bullet)
+    {
+        Instantiate(bullet, bulletSpawnPos.position, bulletSpawnPos.rotation);
+    }
+
+    protected override void Die()
+    {
+
     }
 }
