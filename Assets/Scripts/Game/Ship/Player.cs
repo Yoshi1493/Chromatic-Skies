@@ -17,10 +17,10 @@ public class Player : Ship
 
     void GetMovementInput()
     {
-        velocity.x = Input.GetAxisRaw("Horizontal");
-        velocity.y = Input.GetAxisRaw("Vertical");
+        moveDirection.x = Input.GetAxisRaw("Horizontal");
+        moveDirection.y = Input.GetAxisRaw("Vertical");
 
-        Move(velocity);
+        Move(shipData.currentMovementSpeed.value);
     }
 
     void GetShootingInput()

@@ -21,7 +21,7 @@ MonoBehaviour:
   originalDefense: 600
   currentDefense: {fileID: 11400000, guid: 70ab14196248a89439852825dfdd9931, type: 2}
   originalMovementSpeed: 5
-  currentMovementSpeed: {fileID: 11400000, guid: cb6726964f804be4bb4006d8405a853c, type: 2}
+  currentMovementSpeed: {fileID: 11400000, guid: ae20cc890345c4743b1b82f513a33f2b, type: 2}
   originalShootingSpeed: 6
   currentShootingSpeed: {fileID: 11400000, guid: 689716c0b1df46f42896f1fc25b462bd, type: 2}
   defaultBullet: {fileID: 6917292052819124163, guid: 3d84f4836dc1d5e4ba2123950d014abc, type: 3}
