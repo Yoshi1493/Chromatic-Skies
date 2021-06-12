@@ -26,7 +26,8 @@ public abstract class Ship : Actor
         shipData.currentMovementSpeed.value = shipData.originalMovementSpeed;
         shipData.currentShootingSpeed.value = shipData.originalShootingSpeed;
 
-        name = shipData.shipName.value;     //debug
+        //debug
+        name = shipData.shipName.value;
     }
 
     protected abstract void SpawnBullet(GameObject bullet);

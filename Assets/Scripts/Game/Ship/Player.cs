@@ -43,11 +43,15 @@ public class Player : Ship
 
     protected override void SpawnBullet(GameObject bullet)
     {
-        Instantiate(bullet, bulletSpawnPos.position, bulletSpawnPos.rotation);
+        var newBullet = PlayerBulletPool.Instance.Get();
+
+        newBullet.transform.SetPositionAndRotation(bulletSpawnPos.position, bulletSpawnPos.rotation);
+        newBullet.gameObject.SetActive(true);
     }
 
     protected override void Die()
     {
-
+        spriteRenderer.enabled = false;
+        enabled = false;
     }
 }
