@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 public abstract class Shooter : MonoBehaviour
 {
-    protected virtual float ShootingSpeed => transform.parent.GetComponent<Ship>().shipData.currentShootingSpeed.value;
+    protected virtual float ShootingSpeed => transform.parent.GetComponent<Ship>().shipData.ShootingSpeed.CurrentValue;
     protected float ShootingCooldown => 1 / ShootingSpeed;
 
     protected abstract void Update();

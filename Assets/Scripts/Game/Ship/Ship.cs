@@ -1,17 +1,16 @@
-using UnityEngine;
-
 public abstract class Ship : Actor
 {
-    public ShipObject shipData;    
+    public ShipObject shipData;
 
-    public event System.Action DeathAction;
+    public delegate void DeathAction();
+    public DeathAction deathAction;
 
     protected override void Awake()
     {
         base.Awake();
 
         InitShip();
-        DeathAction += Die;
+        deathAction += Die;
     }
 
     void InitShip()
@@ -20,11 +19,11 @@ public abstract class Ship : Actor
         spriteRenderer.sprite = shipData.sprite;
 
         //stats
-        shipData.currentHealth.value = shipData.maxHealth;
-        shipData.currentPower.value = shipData.originalPower;
-        shipData.currentDefense.value = shipData.originalDefense;
-        shipData.currentMovementSpeed.value = shipData.originalMovementSpeed;
-        shipData.currentShootingSpeed.value = shipData.originalShootingSpeed;
+        shipData.Health.CurrentValue = shipData.Health.OriginalValue;
+        shipData.Power.CurrentValue = shipData.Power.OriginalValue;
+        shipData.Defense.CurrentValue = shipData.Defense.OriginalValue;
+        shipData.MovementSpeed.CurrentValue = shipData.MovementSpeed.OriginalValue;
+        shipData.ShootingSpeed.CurrentValue = shipData.ShootingSpeed.OriginalValue;
 
         //debug
         name = shipData.shipName.value;
@@ -32,11 +31,11 @@ public abstract class Ship : Actor
 
     protected void TakeDamage(int amount)
     {
-        shipData.currentHealth.value -= amount;
+        shipData.Health.CurrentValue -= amount;
 
-        if (shipData.currentHealth.value <= 0)
+        if (shipData.Health.CurrentValue <= 0)
         {
-            DeathAction?.Invoke();
+            deathAction?.Invoke();
         }
     }
 
