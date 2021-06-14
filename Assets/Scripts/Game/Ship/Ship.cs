@@ -29,7 +29,7 @@ public abstract class Ship : Actor
         name = shipData.shipName.value;
     }
 
-    protected void TakeDamage(int amount)
+    public void TakeDamage(int amount)
     {
         shipData.Health.CurrentValue -= amount;
 

@@ -4,6 +4,6 @@ public class Enemy : Ship
 {
     protected override void Die()
     {
-        throw new System.NotImplementedException();
+        gameObject.SetActive(false);
     }
 }

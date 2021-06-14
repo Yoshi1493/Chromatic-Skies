@@ -4,7 +4,7 @@ public abstract class Bullet : Actor
 {
     [SerializeField] protected float moveSpeed;
 
-    const float MaxLifetime = 3f;
+    protected virtual float MaxLifetime => 3f;
     float currentLifetime;
 
     protected override void Awake()
@@ -19,13 +19,15 @@ public abstract class Bullet : Actor
         currentLifetime = 0;
     }
 
-    void Update()
+    protected virtual void Update()
     {
         Move(moveSpeed);
 
         currentLifetime += Time.deltaTime;
-        if (currentLifetime > MaxLifetime) Destroy();        
+        if (currentLifetime > MaxLifetime) Destroy();
     }
+
+    protected abstract void CheckCollisionWith<T>() where T : Ship;
 
     protected abstract void Destroy();
 }

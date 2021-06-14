@@ -12,17 +12,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f18e856bc49a1e540b02b7b4d80de910, type: 3}
   m_Name: '[Ship] Aries'
   m_EditorClassIdentifier: 
-  sprite: {fileID: 0}
-  shipName: {fileID: 0}
-  maxHealth: 0
-  currentHealth: {fileID: 0}
-  originalPower: 0
-  currentPower: {fileID: 0}
-  originalDefense: 0
-  currentDefense: {fileID: 0}
-  originalMovementSpeed: 0
-  currentMovementSpeed: {fileID: 0}
-  originalShootingSpeed: 0
-  currentShootingSpeed: {fileID: 0}
+  sprite: {fileID: 21300000, guid: 1aa3e528edb03a147bde37cb52c198d6, type: 3}
+  shipName: {fileID: 11400000, guid: a00afa31632343b4a9af05c2a5a21a79, type: 2}
+  Health:
+    OriginalValue: 15000
+    currentValue: {fileID: 11400000, guid: 1441a4e2d5e287441bc0044748157691, type: 2}
+  Power:
+    OriginalValue: 500
+    currentValue: {fileID: 11400000, guid: 6059f9293aa347b44a73714bea5bfcd3, type: 2}
+  Defense:
+    OriginalValue: 500
+    currentValue: {fileID: 11400000, guid: 2a4a3c81f6987ba4194e27f71125e963, type: 2}
+  MovementSpeed:
+    OriginalValue: 8
+    currentValue: {fileID: 11400000, guid: 64edd72c65ca5b84082bb1b1bb4a13b8, type: 2}
+  ShootingSpeed:
+    OriginalValue: 10
+    currentValue: {fileID: 11400000, guid: a9486c0c650b1d84b81d322b4fdc8ea4, type: 2}
   bullets:
   - {fileID: 3140064405051798717, guid: 4e06125b108514547b6fc9b6887da3eb, type: 3}
