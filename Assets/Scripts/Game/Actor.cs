@@ -2,7 +2,7 @@ using UnityEngine;
 
 public abstract class Actor : MonoBehaviour
 {
-    new public Transform transform;
+    [HideInInspector] new public Transform transform;
     protected SpriteRenderer spriteRenderer;
 
     protected Vector2 moveDirection;

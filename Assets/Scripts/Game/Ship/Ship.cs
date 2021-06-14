@@ -2,7 +2,7 @@ using UnityEngine;
 
 public abstract class Ship : Actor
 {
-    [SerializeField] protected ShipObject shipData;    
+    public ShipObject shipData;    
 
     public event System.Action DeathAction;
 
@@ -29,8 +29,6 @@ public abstract class Ship : Actor
         //debug
         name = shipData.shipName.value;
     }
-
-    protected abstract void SpawnBullet(GameObject bullet);
 
     protected void TakeDamage(int amount)
     {
