@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class ShipObject : ScriptableObject
@@ -15,5 +16,5 @@ public abstract class ShipObject : ScriptableObject
     public FloatReference ShootingSpeed;
 
     [Header("Bullets")]
-    public GameObject[] bullets;
+    public List<GameObject> bullets = new List<GameObject>();
 }

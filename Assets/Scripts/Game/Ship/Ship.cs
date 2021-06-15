@@ -29,9 +29,11 @@ public abstract class Ship : Actor
         name = shipData.shipName.value;
     }
 
-    public void TakeDamage(int amount)
+    public void TakeDamage(int power, int defense)
     {
-        shipData.Health.CurrentValue -= amount;
+        shipData.Health.CurrentValue -= power;
+
+        print($"{name} took {power} damage.");
 
         if (shipData.Health.CurrentValue <= 0)
         {

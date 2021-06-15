@@ -2,10 +2,13 @@ using UnityEngine;
 
 public abstract class Bullet : Actor
 {
+    [SerializeField] protected ShipObject ownerShip;
     [SerializeField] protected float moveSpeed;
 
     protected virtual float MaxLifetime => 3f;
     float currentLifetime;
+
+    int bulletPower;
 
     protected override void Awake()
     {
@@ -17,6 +20,7 @@ public abstract class Bullet : Actor
     void OnEnable()
     {
         currentLifetime = 0;
+        bulletPower = ownerShip.Power.CurrentValue;
     }
 
     protected virtual void Update()
@@ -27,7 +31,18 @@ public abstract class Bullet : Actor
         if (currentLifetime > MaxLifetime) Destroy();
     }
 
-    protected abstract void CheckCollisionWith<T>() where T : Ship;
+    protected void CheckCollisionWith<T>() where T : Ship
+    {
+        Collider2D coll = Physics2D.OverlapCircle(transform.position, 0.16f);
+
+        if (coll && coll.TryGetComponent(out T ship))
+        {
+            int shipDefense = ship.shipData.Defense.CurrentValue;
+
+            coll.GetComponent<T>().TakeDamage(bulletPower, shipDefense);
+            Destroy();
+        }
+    }
 
     protected abstract void Destroy();
 }

@@ -1,5 +1,3 @@
-using UnityEngine;
-
 public class PlayerBullet : Bullet
 {
     protected override void Update()
@@ -8,19 +6,8 @@ public class PlayerBullet : Bullet
         CheckCollisionWith<Enemy>();
     }
 
-    protected override void CheckCollisionWith<T>()
-    {
-        Collider2D coll = Physics2D.OverlapCircle(transform.position, 0.32f);
-
-        if (coll)
-        {
-            coll.GetComponent<T>().TakeDamage(1000);
-            Destroy();
-        }
-    }
-
     protected override void Destroy()
     {
-        PlayerBulletPool.Instance.ReturnToPool(this);
+        PlayerBulletPool.Instance.ReturnToPool(0, this);
     }
 }

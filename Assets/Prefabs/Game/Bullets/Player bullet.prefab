@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   transform: {fileID: 0}
+  ownerShip: {fileID: 0}
   moveSpeed: 20
 --- !u!1001 &7233728185905104890
 PrefabInstance:

@@ -30,4 +30,4 @@ MonoBehaviour:
     OriginalValue: 7
     currentValue: {fileID: 11400000, guid: 8d68258977ea0664bac5db3857bff021, type: 2}
   bullets:
-  - {fileID: 4295436845269932089, guid: 06a49f4bf0c75b745956e119689efc37, type: 3}
+  - {fileID: 9020296585467705292, guid: ed232f7dba8d56945bbb59c548fa4982, type: 3}
