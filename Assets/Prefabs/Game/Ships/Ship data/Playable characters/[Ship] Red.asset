@@ -15,13 +15,13 @@ MonoBehaviour:
   sprite: {fileID: 21300000, guid: 1aa3e528edb03a147bde37cb52c198d6, type: 3}
   shipName: {fileID: 11400000, guid: 11f933d0bc0be4e479e717a3ab9cd50f, type: 2}
   Health:
-    OriginalValue: 5000
+    OriginalValue: 5860
     currentValue: {fileID: 11400000, guid: 16fb8465b51cd12478ab0b4df9d6d52f, type: 2}
   Power:
     OriginalValue: 700
     currentValue: {fileID: 11400000, guid: c7b35a64b6f09b34ea15c64dfe44c26f, type: 2}
   Defense:
-    OriginalValue: 500
+    OriginalValue: 540
     currentValue: {fileID: 11400000, guid: ea97d752dbdc4cd49b1def74df92d9e1, type: 2}
   MovementSpeed:
     OriginalValue: 5
