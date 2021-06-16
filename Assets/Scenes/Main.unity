@@ -442,7 +442,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dab4860462f6fb74eba9d4bf376e81bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyShipData: {fileID: 11400000, guid: c3f8016a8b24a984cb0d1bf54bf9c153, type: 2}
+  shipData: {fileID: 11400000, guid: c3f8016a8b24a984cb0d1bf54bf9c153, type: 2}
 --- !u!1001 &768030771
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -565,6 +565,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b706867529f6b64bbf2484052f095f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shipData: {fileID: 0}
 --- !u!4 &1124456525
 Transform:
   m_ObjectHideFlags: 0
