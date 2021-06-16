@@ -3,24 +3,21 @@ using UnityEngine;
 
 public abstract class GenericBulletPool<T> : MonoBehaviour where T : MonoBehaviour
 {
-    [SerializeField] List<T> objectPrefabs = new List<T>();
-    List<Queue<T>> objectQueue = new List<Queue<T>>();
-
     public static GenericBulletPool<T> Instance { get; private set; }
 
-    void Awake()
+    protected List<T> objectPrefabs = new List<T>();
+    List<Queue<T>> objectQueue = new List<Queue<T>>();
+
+    protected virtual void Awake()
     {
         Instance = this;
 
-        for (int i = 0; i < objectPrefabs.Count; i++)
-        {
-            objectQueue.Add(new Queue<T>());
-        }
+        objectPrefabs.ForEach(i => objectQueue.Add(new Queue<T>()));
     }
 
     public T Get(int index)
     {
-        if (objectQueue[index].Count == 0) AddObjects(index, 1);
+        if (objectQueue[index].Count == 0) ExpandPool(index);
         return objectQueue[index].Dequeue();
     }
 
@@ -30,14 +27,11 @@ public abstract class GenericBulletPool<T> : MonoBehaviour where T : MonoBehavio
         objectQueue[index].Enqueue(returningObject);
     }
 
-    void AddObjects(int index, int amount)
+    void ExpandPool(int index)
     {
         var newObject = Instantiate(objectPrefabs[index], transform);
         newObject.gameObject.SetActive(false);
 
-        for (int i = 0; i < amount; i++)
-        {
-            objectQueue[index].Enqueue(newObject);
-        }
+        objectQueue[index].Enqueue(newObject);
     }
 }

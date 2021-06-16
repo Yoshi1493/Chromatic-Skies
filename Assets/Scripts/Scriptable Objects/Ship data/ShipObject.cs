@@ -16,5 +16,5 @@ public abstract class ShipObject : ScriptableObject
     public FloatReference ShootingSpeed;
 
     [Header("Bullets")]
-    public List<GameObject> bullets = new List<GameObject>();
+    public List<Bullet> bullets = new List<Bullet>();
 }

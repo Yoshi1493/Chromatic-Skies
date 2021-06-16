@@ -181,7 +181,7 @@ PrefabInstance:
     - target: {fileID: 7467897710815529108, guid: c97d5c4695dca31449990c95a6810900, type: 3}
       propertyPath: shipData
       value: 
-      objectReference: {fileID: 11400000, guid: 299efc867c7beff47a36f00daf0c391b, type: 2}
+      objectReference: {fileID: 11400000, guid: 0f5d3190f78784e4a9984f1ca73a418f, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c97d5c4695dca31449990c95a6810900, type: 3}
 --- !u!1 &504620083
@@ -442,8 +442,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dab4860462f6fb74eba9d4bf376e81bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectPrefabs:
-  - {fileID: 7943771795135557499, guid: 4e06125b108514547b6fc9b6887da3eb, type: 3}
+  enemyShipData: {fileID: 11400000, guid: c3f8016a8b24a984cb0d1bf54bf9c153, type: 2}
 --- !u!1001 &768030771
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -566,11 +565,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b706867529f6b64bbf2484052f095f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectPrefabs:
-  - {fileID: 8117213998222733804, guid: ed232f7dba8d56945bbb59c548fa4982, type: 3}
-  - {fileID: 8117213998222733804, guid: b287777a00169da46b9784216d5e995f, type: 3}
-  - {fileID: 8117213998222733804, guid: a90397e781a882e4da0558156a40dc77, type: 3}
-  - {fileID: 8117213998222733804, guid: 4fe7c0e6155904149a898051575d09f7, type: 3}
 --- !u!4 &1124456525
 Transform:
   m_ObjectHideFlags: 0

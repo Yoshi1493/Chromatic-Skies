@@ -8,6 +8,7 @@ public abstract class Bullet : Actor
     protected virtual float MaxLifetime => 3f;
     float currentLifetime;
 
+    protected int bulletIndex;
     int bulletPower;
 
     protected override void Awake()
@@ -15,6 +16,15 @@ public abstract class Bullet : Actor
         base.Awake();
 
         moveDirection = transform.up;
+
+        for (int i = 0; i < ownerShip.bullets.Count; i++)
+        {
+            if (ownerShip.bullets[i] == this)
+            {
+                bulletIndex = i;
+                break;
+            }
+        }
     }
 
     void OnEnable()

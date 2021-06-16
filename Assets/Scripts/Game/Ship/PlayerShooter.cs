@@ -40,9 +40,9 @@ public class PlayerShooter : Shooter
         canShoot = true;
     }
 
-    protected override void SpawnBullet(int bulletIndex)
+    protected override void SpawnBullet(int index)
     {
-        var newBullet = PlayerBulletPool.Instance.Get(bulletIndex);
+        var newBullet = PlayerBulletPool.Instance.Get(index);
 
         newBullet.transform.SetPositionAndRotation(spawnPositions[0].position, spawnPositions[0].rotation);
         newBullet.gameObject.SetActive(true);
