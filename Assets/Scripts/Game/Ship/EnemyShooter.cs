@@ -1,18 +1,12 @@
 using System.Collections;
-using UnityEngine;
 
 public class EnemyShooter : Shooter
 {
-    [SerializeField] BulletSystem[] attackPhases;
-
-    IEnumerator Start()
-    {
-        yield return CoroutineHelper.WaitForSeconds(3);
-        SpawnBullet(0);
-    }
-
     protected override void SpawnBullet(int index)
     {
-        attackPhases[index].Play();
+        var newBullet = EnemyBulletPool.Instance.Get(index);
+
+        newBullet.transform.SetPositionAndRotation(spawnPositions[0].position, spawnPositions[0].rotation);
+        newBullet.gameObject.SetActive(true);
     }
 }

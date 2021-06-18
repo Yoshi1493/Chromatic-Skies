@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   transform: {fileID: 0}
   ownerShip: {fileID: 11400000, guid: c3f8016a8b24a984cb0d1bf54bf9c153, type: 2}
-  moveSpeed: 5
+  moveSpeed: 3
 --- !u!1001 &8389246818220731262
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22,6 +22,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 845275059315836675, guid: 3d84f4836dc1d5e4ba2123950d014abc, type: 3}
+      propertyPath: m_Size.x
+      value: 0.32
+      objectReference: {fileID: 0}
+    - target: {fileID: 845275059315836675, guid: 3d84f4836dc1d5e4ba2123950d014abc, type: 3}
+      propertyPath: m_Size.y
+      value: 0.32
+      objectReference: {fileID: 0}
     - target: {fileID: 6917292052819124163, guid: 3d84f4836dc1d5e4ba2123950d014abc, type: 3}
       propertyPath: m_Name
       value: Enemy bullet

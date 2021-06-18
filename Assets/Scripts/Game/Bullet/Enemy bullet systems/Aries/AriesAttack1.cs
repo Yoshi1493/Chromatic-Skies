@@ -1,17 +1,20 @@
 using System.Collections;
 using UnityEngine;
+using static CoroutineHelper;
 
-public class AriesAttack1 : BulletSystem
+public class AriesAttack1 : EnemyShooter
 {
-    EnemyBulletPool objectPool;
-
-    void Awake()
+    IEnumerator Start()
     {
-        objectPool = FindObjectOfType<EnemyBulletPool>();
-    }
+        yield return WaitForSeconds(3f);
+        float goldenRatio = (1 + Mathf.Sqrt(5)) * 180;
 
-    public override void Play()
-    {
-        throw new System.NotImplementedException();
+        for (int i = 0; i < 1000; i++)
+        {
+            spawnPositions[0].Rotate(goldenRatio * Vector3.forward);
+            SpawnBullet(0);
+
+            yield return WaitForSeconds(ShootingCooldown);
+        }
     }
 }

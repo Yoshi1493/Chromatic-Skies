@@ -1,11 +1,24 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class Shooter : MonoBehaviour
 {
-    protected ShipObject ShipData => transform.parent.GetComponent<Ship>().shipData;
+    protected ShipObject shipData;
 
-    protected virtual float ShootingSpeed => ShipData.ShootingSpeed.CurrentValue;
+    protected virtual float ShootingSpeed => shipData.ShootingSpeed.CurrentValue;
     protected float ShootingCooldown => ShootingSpeed == 0 ? 0 : 1 / ShootingSpeed;
 
     protected abstract void SpawnBullet(int index);
+
+    protected List<Transform> spawnPositions = new List<Transform>();
+
+    protected virtual void Awake()
+    {
+        shipData = transform.parent.GetComponent<Ship>().shipData;
+
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            spawnPositions.Add(transform.GetChild(i));
+        }
+    }
 }
