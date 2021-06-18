@@ -6,7 +6,7 @@ public abstract class Bullet : Actor
     [SerializeField] protected ShipObject ownerShip;
     [SerializeField] protected float moveSpeed;
 
-    protected const float MaxLifetime = 3f;
+    const float MaxLifetime = 3f;
     float currentLifetime;
 
     protected int bulletIndex;
@@ -60,7 +60,7 @@ public abstract class Bullet : Actor
     #region Movement methods
 
     #region Change speed
-    protected void ChangeSpeed(float endSpeed, float lerpTime = 0f)
+    public void ChangeSpeed(float endSpeed, float lerpTime = 0f)
     {
         if (lerpTime <= 0f)
         {
@@ -87,7 +87,7 @@ public abstract class Bullet : Actor
     #endregion
 
     #region Change direction
-    protected void ChangeDirection(Vector2 endDirection, float lerpTime = 0f)
+    public void ChangeDirection(Vector2 endDirection, float lerpTime = 0f)
     {
         if (lerpTime <= 0f)
         {
@@ -114,7 +114,7 @@ public abstract class Bullet : Actor
     #endregion
 
     #region Change rotation
-    protected void RotateBy(float rotateAmount, float lerpTime = 0f)
+    public void RotateBy(float rotateAmount, float lerpTime = 0f)
     {
         if (lerpTime <= 0)
         {
@@ -143,7 +143,7 @@ public abstract class Bullet : Actor
     #endregion
 
     #region FaceTowards
-    protected void FaceTowards(Transform target)
+    public void FaceTowards(Transform target)
     {
         if (target == null) return;
 

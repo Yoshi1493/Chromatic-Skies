@@ -1,6 +1,6 @@
 using System.Collections;
 
-public class EnemyShooter : Shooter
+public class EnemyBulletSystem : Shooter
 {
     protected override void SpawnBullet(int index)
     {
