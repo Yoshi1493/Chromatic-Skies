@@ -4,12 +4,6 @@ using UnityEngine;
 public abstract class Shooter : MonoBehaviour
 {
     protected ShipObject shipData;
-
-    protected virtual float ShootingSpeed => shipData.ShootingSpeed.CurrentValue;
-    protected float ShootingCooldown => ShootingSpeed == 0 ? 0 : 1 / ShootingSpeed;
-
-    protected abstract void SpawnBullet(int index);
-
     protected List<Transform> spawnPositions = new List<Transform>();
 
     protected virtual void Awake()
@@ -21,4 +15,9 @@ public abstract class Shooter : MonoBehaviour
             spawnPositions.Add(transform.GetChild(i));
         }
     }
+
+    protected virtual float ShootingSpeed => shipData.ShootingSpeed.CurrentValue;
+    protected float ShootingCooldown => ShootingSpeed == 0 ? 0 : 1 / ShootingSpeed;
+
+    protected abstract void SpawnBullet(int bulletIndex, int spawnPositionIndex);
 }

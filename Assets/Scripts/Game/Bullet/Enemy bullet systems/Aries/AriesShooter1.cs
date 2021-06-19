@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using static CoroutineHelper;
 
-public class AriesAttack1 : EnemyBulletSystem
+public class AriesShooter1 : EnemyShooter
 {
     IEnumerator Start()
     {
@@ -12,7 +12,7 @@ public class AriesAttack1 : EnemyBulletSystem
         for (int i = 0; i < 1000; i++)
         {
             spawnPositions[0].Rotate(goldenRatio * Vector3.forward);
-            SpawnBullet(0);
+            SpawnBullet(0, 0);
 
             yield return WaitForSeconds(ShootingCooldown);
         }

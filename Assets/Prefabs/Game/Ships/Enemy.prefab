@@ -1,5 +1,17 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &7131180790320846220
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 730809518176938424}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db2f6f3089841934e82902e61ef3e51c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &3922465162775491505
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14,25 +26,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   transform: {fileID: 0}
   shipData: {fileID: 0}
---- !u!114 &6200530871388918232
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 730809518176938424}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 44be3d63a68a7914b83d6cdb6cd8b843, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attackPhases:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
 --- !u!1001 &7445058458403180120
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -21,18 +21,20 @@ public class PlayerShooter : Shooter
 
     IEnumerator Shoot()
     {
-        SpawnBullet(0);
+        SpawnBullet(0, 0);
 
         canShoot = false;
         yield return WaitForSeconds(ShootingCooldown);
         canShoot = true;
     }
 
-    protected override void SpawnBullet(int index)
+    protected override void SpawnBullet(int bulletIndex, int spawnPositionIndex)
     {
-        var newBullet = PlayerBulletPool.Instance.Get(index);
+        if (spawnPositionIndex >= spawnPositions.Count) return;
 
-        newBullet.transform.SetPositionAndRotation(spawnPositions[0].position, spawnPositions[0].rotation);
+        var newBullet = PlayerBulletPool.Instance.Get(bulletIndex);
+
+        newBullet.transform.SetPositionAndRotation(spawnPositions[spawnPositionIndex].position, spawnPositions[spawnPositionIndex].rotation);
         newBullet.gameObject.SetActive(true);
     }
 }
