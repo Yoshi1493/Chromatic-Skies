@@ -9,25 +9,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa17cd8e958d5074ca8d56b20433675c, type: 3}
-  m_Name: '[Ship] Yellow'
+  m_Script: {fileID: 11500000, guid: 23c7e0f14dcbcc4439ef4a6f2ce42e45, type: 3}
+  m_Name: '[Ship 4] Green'
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: 1aa3e528edb03a147bde37cb52c198d6, type: 3}
-  shipName: {fileID: 11400000, guid: a1a8736001c50bb499bf10ea9431f479, type: 2}
+  shipName: {fileID: 11400000, guid: 3794480b64b37f44bb1b6b61023175f7, type: 2}
   Health:
     OriginalValue: 5930
-    currentValue: {fileID: 11400000, guid: e5e11274d43d03d4fba2cb83bd65a10b, type: 2}
+    currentValue: {fileID: 11400000, guid: 42574725a59215a44b813be20c26887e, type: 2}
   Power:
     OriginalValue: 620
-    currentValue: {fileID: 11400000, guid: 5067c38418cc48a48916bb09ed78fd6a, type: 2}
+    currentValue: {fileID: 11400000, guid: 4e48a385ca326ef4fb4351518e3fe31f, type: 2}
   Defense:
     OriginalValue: 490
-    currentValue: {fileID: 11400000, guid: 70ab14196248a89439852825dfdd9931, type: 2}
+    currentValue: {fileID: 11400000, guid: ff9e0a8b88565ad41ba72b5ecd361af2, type: 2}
   MovementSpeed:
     OriginalValue: 5
     currentValue: {fileID: 11400000, guid: ae20cc890345c4743b1b82f513a33f2b, type: 2}
   ShootingSpeed:
     OriginalValue: 8
-    currentValue: {fileID: 11400000, guid: 689716c0b1df46f42896f1fc25b462bd, type: 2}
-  bullets:
-  - {fileID: 8117213998222733804, guid: a90397e781a882e4da0558156a40dc77, type: 3}
+    currentValue: {fileID: 11400000, guid: b3f3eb2177105454f91d594030b80695, type: 2}

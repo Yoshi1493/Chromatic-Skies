@@ -8,6 +8,6 @@ public class PlayerBullet : Bullet
 
     protected override void Destroy()
     {
-        PlayerBulletPool.Instance.ReturnToPool(bulletIndex, this);
+        PlayerBulletPool.Instance.ReturnToPool(0, this);
     }
 }

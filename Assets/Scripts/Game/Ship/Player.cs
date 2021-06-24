@@ -2,8 +2,6 @@ using UnityEngine;
 
 public class Player : Ship
 {
-
-
     void Update()
     {
         GetMovementInput();

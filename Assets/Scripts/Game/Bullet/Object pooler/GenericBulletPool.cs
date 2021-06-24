@@ -1,43 +1,54 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class GenericBulletPool<T> : MonoBehaviour where T : Bullet
+public abstract class GenericBulletPool<TBullet> : MonoBehaviour where TBullet : Bullet
 {
-    public static GenericBulletPool<T> Instance { get; private set; }
+    public static GenericBulletPool<TBullet> Instance { get; private set; }
 
-    [SerializeField] protected ShipObject shipData;
+    List<(TBullet bullet, Queue<TBullet> queue)> bulletPool = new List<(TBullet bullet, Queue<TBullet> queue)>();
 
-    protected List<T> objectPrefabs = new List<T>();
-    List<Queue<T>> objectQueue = new List<Queue<T>>();
-
-    protected virtual void Awake()
+    void Awake()
     {
         Instance = this;
+    }
 
-        for (int i = 0; i < shipData.bullets.Count; i++)
+    public void UpdatePoolableBullets(List<TBullet> bullets)
+    {
+        bulletPool.Clear();
+
+        for (int i = 0; i < bullets.Count; i++)
         {
-            objectQueue.Add(new Queue<T>());
-            objectPrefabs.Add(shipData.bullets[i].GetComponent<T>());
+            bulletPool.Add((bullets[i], new Queue<TBullet>()));
         }
     }
 
-    public T Get(int index)
+    public TBullet Get(int index)
     {
-        if (objectQueue[index].Count == 0) ExpandPool(index);
-        return objectQueue[index].Dequeue();
+        if (bulletPool[index].queue.Count == 0) ExpandPool(index);
+        return bulletPool[index].queue.Dequeue();
+
+        //if (bulletQueue[index].Count == 0) ExpandPool(index);
+        //return bulletQueue[index].Dequeue();
     }
 
-    public void ReturnToPool(int index, T returningObject)
+    public void ReturnToPool(int index, TBullet returningBullet)
     {
-        returningObject.gameObject.SetActive(false);
-        objectQueue[index].Enqueue(returningObject);
+        returningBullet.gameObject.SetActive(false);
+        bulletPool[index].queue.Enqueue(returningBullet);
+
+        //bulletQueue[index].Enqueue(returningBullet);
     }
 
     void ExpandPool(int index)
     {
-        var newObject = Instantiate(objectPrefabs[index], transform);
-        newObject.gameObject.SetActive(false);
+        TBullet newBullet = Instantiate(bulletPool[index].bullet, transform);
+        newBullet.gameObject.SetActive(false);
 
-        objectQueue[index].Enqueue(newObject);
+        bulletPool[index].queue.Enqueue(newBullet);
+
+        //var newObject = Instantiate(bulletsToPool[index], transform);
+        //newObject.gameObject.SetActive(false);
+
+        //bulletQueue[index].Enqueue(newObject);
     }
 }

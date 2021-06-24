@@ -1,7 +1,10 @@
-using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
 public class EnemyBulletSystem : Shooter
 {
+    [SerializeField] protected List<EnemyBullet> enemyBullets = new List<EnemyBullet>();
+
     protected override void SpawnBullet(int index)
     {
         var newBullet = EnemyBulletPool.Instance.Get(index);

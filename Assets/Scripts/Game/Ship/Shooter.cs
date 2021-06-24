@@ -5,8 +5,8 @@ public abstract class Shooter : MonoBehaviour
 {
     protected ShipObject shipData;
 
-    protected virtual float ShootingSpeed => shipData.ShootingSpeed.CurrentValue;
-    protected float ShootingCooldown => ShootingSpeed == 0 ? 0 : 1 / ShootingSpeed;
+    protected float ShootingSpeed => shipData.ShootingSpeed.CurrentValue;
+    protected virtual float ShootingCooldown => ShootingSpeed == 0 ? 0 : 1 / ShootingSpeed;
 
     protected abstract void SpawnBullet(int index);
 
