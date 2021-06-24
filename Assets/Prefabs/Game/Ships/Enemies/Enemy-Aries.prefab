@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db2f6f3089841934e82902e61ef3e51c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shootingSpeed:
+    OriginalValue: 10
+    currentValue: {fileID: 11400000, guid: a9486c0c650b1d84b81d322b4fdc8ea4, type: 2}
   enemyBullets:
   - {fileID: 5797051581075502374, guid: 8b54e718cec9c244a9aec8fc1a672285, type: 3}
 --- !u!1001 &5337197869581096772

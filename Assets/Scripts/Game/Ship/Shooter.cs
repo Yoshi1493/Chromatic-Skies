@@ -3,22 +3,20 @@ using UnityEngine;
 
 public abstract class Shooter : MonoBehaviour
 {
-    protected ShipObject shipData;
+    [SerializeField] protected FloatReference shootingSpeed;
 
-    protected float ShootingSpeed => shipData.ShootingSpeed.CurrentValue;
+    protected float ShootingSpeed => shootingSpeed.CurrentValue;
     protected virtual float ShootingCooldown => ShootingSpeed == 0 ? 0 : 1 / ShootingSpeed;
-
-    protected abstract void SpawnBullet(int bulletIndex, int spawnPositionIndex);
 
     protected List<Transform> spawnPositions = new List<Transform>();
 
     protected virtual void Awake()
     {
-        shipData = transform.parent.GetComponent<Ship>().shipData;
-
         for (int i = 0; i < transform.childCount; i++)
         {
             spawnPositions.Add(transform.GetChild(i));
         }
     }
+
+    protected abstract void SpawnBullet(int bulletIndex, int spawnPositionIndex);
 }

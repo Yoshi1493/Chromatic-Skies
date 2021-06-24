@@ -84,8 +84,16 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7542983421616173970, guid: c97d5c4695dca31449990c95a6810900, type: 3}
+      propertyPath: shootingSpeed.currentValue
+      value: 
+      objectReference: {fileID: 11400000, guid: 8d68258977ea0664bac5db3857bff021, type: 2}
+    - target: {fileID: 7542983421616173970, guid: c97d5c4695dca31449990c95a6810900, type: 3}
       propertyPath: playerBullets.Array.data[0]
       value: 
       objectReference: {fileID: 8117213998222733804, guid: ed232f7dba8d56945bbb59c548fa4982, type: 3}
+    - target: {fileID: 7542983421616173970, guid: c97d5c4695dca31449990c95a6810900, type: 3}
+      propertyPath: shootingSpeed.OriginalValue
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c97d5c4695dca31449990c95a6810900, type: 3}

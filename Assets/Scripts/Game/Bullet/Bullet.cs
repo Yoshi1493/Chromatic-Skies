@@ -37,9 +37,7 @@ public abstract class Bullet : Actor
 
         if (coll && coll.TryGetComponent(out TShip ship))
         {
-            int shipDefense = ship.shipData.Defense.CurrentValue;
-
-            coll.GetComponent<TShip>().TakeDamage(bulletPower.value, shipDefense);
+            coll.GetComponent<TShip>().TakeDamage(bulletPower.value);
             Destroy();
         }
     }

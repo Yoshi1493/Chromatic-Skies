@@ -8,8 +8,7 @@ public class AriesBulletSystem1 : EnemyBulletSystem
     {
         EnemyBulletPool.Instance.UpdatePoolableBullets(enemyBullets);
 
-        yield return WaitForSeconds(3f);
-        float goldenRatio = (1 + Mathf.Sqrt(5)) * 180;
+        float goldenRatio = (1 + Mathf.Sqrt(5)) * 180;        
 
         for (int i = 0; i < 1000; i++)
         {
@@ -18,5 +17,7 @@ public class AriesBulletSystem1 : EnemyBulletSystem
 
             yield return WaitForSeconds(ShootingCooldown);
         }
+
+        yield return WaitForSeconds(3f);
     }
 }
