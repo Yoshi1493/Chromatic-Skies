@@ -8,6 +8,8 @@ public class ShipObject : ScriptableObject
     public StringObject shipName;
 
     [Header("Stats")]
+    public IntReference Lives;
+
     public IntReference Health;
     public IntReference Power;
     public IntReference Defense;
