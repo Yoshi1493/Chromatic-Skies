@@ -26,17 +26,12 @@ public abstract class GenericBulletPool<TBullet> : MonoBehaviour where TBullet :
     {
         if (bulletPool[index].queue.Count == 0) ExpandPool(index);
         return bulletPool[index].queue.Dequeue();
-
-        //if (bulletQueue[index].Count == 0) ExpandPool(index);
-        //return bulletQueue[index].Dequeue();
     }
 
     public void ReturnToPool(int index, TBullet returningBullet)
     {
         returningBullet.gameObject.SetActive(false);
         bulletPool[index].queue.Enqueue(returningBullet);
-
-        //bulletQueue[index].Enqueue(returningBullet);
     }
 
     void ExpandPool(int index)
@@ -45,10 +40,5 @@ public abstract class GenericBulletPool<TBullet> : MonoBehaviour where TBullet :
         newBullet.gameObject.SetActive(false);
 
         bulletPool[index].queue.Enqueue(newBullet);
-
-        //var newObject = Instantiate(bulletsToPool[index], transform);
-        //newObject.gameObject.SetActive(false);
-
-        //bulletQueue[index].Enqueue(newObject);
     }
 }

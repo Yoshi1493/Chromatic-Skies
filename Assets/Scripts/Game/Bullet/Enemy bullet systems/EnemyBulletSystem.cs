@@ -5,11 +5,11 @@ public class EnemyBulletSystem : Shooter
 {
     [SerializeField] protected List<EnemyBullet> enemyBullets = new List<EnemyBullet>();
 
-    protected override void SpawnBullet(int index)
+    protected override void SpawnBullet(int bulletIndex, int spawnPositionIndex)
     {
-        var newBullet = EnemyBulletPool.Instance.Get(index);
+        var newBullet = EnemyBulletPool.Instance.Get(bulletIndex);
 
-        newBullet.transform.SetPositionAndRotation(spawnPositions[0].position, spawnPositions[0].rotation);
+        newBullet.transform.SetPositionAndRotation(spawnPositions[spawnPositionIndex].position, spawnPositions[spawnPositionIndex].rotation);
         newBullet.gameObject.SetActive(true);
     }
 }

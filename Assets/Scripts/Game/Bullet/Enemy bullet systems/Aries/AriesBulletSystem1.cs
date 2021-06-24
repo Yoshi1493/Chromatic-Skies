@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using static CoroutineHelper;
 
-public class AriesShooter1 : EnemyShooter
+public class AriesBulletSystem1 : EnemyBulletSystem
 {
     IEnumerator Start()
     {
