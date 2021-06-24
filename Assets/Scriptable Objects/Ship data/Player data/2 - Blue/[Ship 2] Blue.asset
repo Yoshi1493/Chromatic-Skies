@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa17cd8e958d5074ca8d56b20433675c, type: 3}
-  m_Name: '[Ship] Blue'
+  m_Script: {fileID: 11500000, guid: 23c7e0f14dcbcc4439ef4a6f2ce42e45, type: 3}
+  m_Name: '[Ship 2] Blue'
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: 1aa3e528edb03a147bde37cb52c198d6, type: 3}
   shipName: {fileID: 11400000, guid: bc45a3978b8853e4a8122e45001fd4ed, type: 2}
@@ -29,5 +29,3 @@ MonoBehaviour:
   ShootingSpeed:
     OriginalValue: 6
     currentValue: {fileID: 11400000, guid: c2344765f51fb2c4a976145958f22145, type: 2}
-  bullets:
-  - {fileID: 8117213998222733804, guid: b287777a00169da46b9784216d5e995f, type: 3}

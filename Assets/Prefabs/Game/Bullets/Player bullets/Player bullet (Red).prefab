@@ -54,7 +54,11 @@ PrefabInstance:
     - target: {fileID: 3896970343590141465, guid: 06a49f4bf0c75b745956e119689efc37, type: 3}
       propertyPath: ownerShip
       value: 
-      objectReference: {fileID: 11400000, guid: 299efc867c7beff47a36f00daf0c391b, type: 2}
+      objectReference: {fileID: 11400000, guid: be28aa19c3c1bfc448da34d6633d1d7b, type: 2}
+    - target: {fileID: 3896970343590141465, guid: 06a49f4bf0c75b745956e119689efc37, type: 3}
+      propertyPath: bulletPower
+      value: 
+      objectReference: {fileID: 11400000, guid: c7b35a64b6f09b34ea15c64dfe44c26f, type: 2}
     - target: {fileID: 4295436845269932089, guid: 06a49f4bf0c75b745956e119689efc37, type: 3}
       propertyPath: m_Name
       value: Player bullet (Red)

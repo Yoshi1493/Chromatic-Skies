@@ -3,35 +3,24 @@ using UnityEngine;
 
 public abstract class Bullet : Actor
 {
-    [SerializeField] protected ShipObject ownerShip;
+    [SerializeField] IntObject bulletPower;
     [SerializeField] protected float moveSpeed;
 
     const float MaxLifetime = 3f;
     float currentLifetime;
 
     protected int bulletIndex;
-    int bulletPower;
 
     protected override void Awake()
     {
         base.Awake();
 
         moveDirection = transform.up;
-
-        for (int i = 0; i < ownerShip.bullets.Count; i++)
-        {
-            if (ownerShip.bullets[i] == this)
-            {
-                bulletIndex = i;
-                break;
-            }
-        }
     }
 
     void OnEnable()
     {
         currentLifetime = 0;
-        bulletPower = ownerShip.Power.CurrentValue;
     }
 
     protected virtual void Update()
@@ -42,15 +31,15 @@ public abstract class Bullet : Actor
         if (currentLifetime > MaxLifetime) Destroy();
     }
 
-    protected void CheckCollisionWith<T>() where T : Ship
+    protected void CheckCollisionWith<TShip>() where TShip : Ship
     {
         Collider2D coll = Physics2D.OverlapCircle(transform.position, 0.16f);
 
-        if (coll && coll.TryGetComponent(out T ship))
+        if (coll && coll.TryGetComponent(out TShip ship))
         {
             int shipDefense = ship.shipData.Defense.CurrentValue;
 
-            coll.GetComponent<T>().TakeDamage(bulletPower, shipDefense);
+            coll.GetComponent<TShip>().TakeDamage(bulletPower.value, shipDefense);
             Destroy();
         }
     }

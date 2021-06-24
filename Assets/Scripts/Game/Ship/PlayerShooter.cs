@@ -1,10 +1,19 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using static CoroutineHelper;
 
 public class PlayerShooter : Shooter
 {
+    [SerializeField] List<PlayerBullet> playerBullets = new List<PlayerBullet>();
     bool canShoot = true;
+
+    protected override void Awake()
+    {
+        base.Awake();
+
+        PlayerBulletPool.Instance.UpdatePoolableBullets(playerBullets);
+    }
 
     void Update()
     {

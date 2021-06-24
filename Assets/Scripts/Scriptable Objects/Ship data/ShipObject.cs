@@ -1,9 +1,9 @@
-using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class ShipObject : ScriptableObject
+[CreateAssetMenu(fileName = "New Ship", menuName = "Scriptable Object/Ship", order = 0)]
+public class ShipObject : ScriptableObject
 {
-    [Header("General")]
+    [Header("Appearance")]
     public Sprite sprite;
     public StringObject shipName;
 
@@ -14,7 +14,4 @@ public abstract class ShipObject : ScriptableObject
 
     public FloatReference MovementSpeed;
     public FloatReference ShootingSpeed;
-
-    [Header("Bullets")]
-    public List<Bullet> bullets = new List<Bullet>();
 }

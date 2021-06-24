@@ -6,6 +6,8 @@ public class AriesShooter1 : EnemyShooter
 {
     IEnumerator Start()
     {
+        EnemyBulletPool.Instance.UpdatePoolableBullets(enemyBullets);
+
         yield return WaitForSeconds(3f);
         float goldenRatio = (1 + Mathf.Sqrt(5)) * 180;
 
