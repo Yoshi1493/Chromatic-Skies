@@ -6,7 +6,7 @@ public class EnemyBullet : Bullet
         CheckCollisionWith<Player>();
     }
 
-    protected override void Destroy()
+    public override void Destroy()
     {
         EnemyBulletPool.Instance.ReturnToPool(bulletIndex, this);
     }

@@ -1,18 +1,21 @@
+using System;
 using UnityEngine;
 
 public abstract class Ship : Actor
 {
     [SerializeField] protected ShipObject shipData;
 
-    public delegate void DeathAction();
-    public DeathAction deathAction;
+    public event Action LoseLifeAction;
+    public event Action DeathAction;
 
     protected override void Awake()
     {
         base.Awake();
 
         InitShip();
-        deathAction += Die;
+
+        LoseLifeAction += LoseLife;
+        DeathAction += Die;
     }
 
     void InitShip()
@@ -43,7 +46,7 @@ public abstract class Ship : Actor
 
         if (shipData.Health.CurrentValue <= 0)
         {
-            LoseLife();
+            LoseLifeAction?.Invoke();
         }
     }
 
@@ -56,7 +59,7 @@ public abstract class Ship : Actor
 
         if (shipData.Lives.CurrentValue <= 0)
         {
-            deathAction?.Invoke();
+            DeathAction?.Invoke();
             print($"{name} died.");
         }
     }

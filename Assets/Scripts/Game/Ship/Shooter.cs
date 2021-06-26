@@ -19,4 +19,14 @@ public abstract class Shooter : MonoBehaviour
     }
 
     protected abstract void SpawnBullet(int bulletIndex, int spawnPositionIndex);
+
+    protected void DestroyAllBullets<T>() where T : Bullet
+    {
+        T[] bullets = FindObjectsOfType<T>();
+
+        for (int i = 0; i < bullets.Length; i++)
+        {
+            bullets[i].Destroy();
+        }
+    }
 }

@@ -42,7 +42,7 @@ public abstract class Bullet : Actor
         }
     }
 
-    protected abstract void Destroy();
+    public abstract void Destroy();
 
     #region Movement methods
 
