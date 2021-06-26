@@ -53,14 +53,15 @@ public abstract class Ship : Actor
     protected virtual void LoseLife()
     {
         shipData.Lives.CurrentValue--;
-        print($"{name} lost a life. currentLives: {shipData.Lives.CurrentValue}");
-
-        shipData.Health.CurrentValue = shipData.Health.OriginalValue;
 
         if (shipData.Lives.CurrentValue <= 0)
         {
             DeathAction?.Invoke();
             print($"{name} died.");
+        }
+        else
+        {
+            shipData.Health.CurrentValue = shipData.Health.OriginalValue;
         }
     }
 
