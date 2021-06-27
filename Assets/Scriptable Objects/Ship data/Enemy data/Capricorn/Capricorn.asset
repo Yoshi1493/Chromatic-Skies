@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23c7e0f14dcbcc4439ef4a6f2ce42e45, type: 3}
+  m_Name: Capricorn
+  m_EditorClassIdentifier: 
+  sprite: {fileID: 21300000, guid: 1aa3e528edb03a147bde37cb52c198d6, type: 3}
+  shipName: {fileID: 11400000, guid: d39f668b09f78e54583dbc7cda8fa2e5, type: 2}
+  Lives:
+    OriginalValue: 6
+    currentValue: {fileID: 11400000, guid: 82714e5c1f203c6419519b880c931a37, type: 2}
+  Health:
+    OriginalValue: 15000
+    currentValue: {fileID: 11400000, guid: 071e5e26a8e2fcf40b4660f43d5db2d6, type: 2}
+  Power:
+    OriginalValue: 500
+    currentValue: {fileID: 11400000, guid: bdaffaa97c2c2d94eb53da142a9c86c7, type: 2}
+  Defense:
+    OriginalValue: 500
+    currentValue: {fileID: 11400000, guid: 66d8a3c4a7ceb4544ad48cc6d544b5f8, type: 2}
+  MovementSpeed:
+    OriginalValue: 10
+    currentValue: {fileID: 11400000, guid: d5a675c218cdce648a9e0d68e568d92a, type: 2}
+  ShootingSpeed:
+    OriginalValue: 10
+    currentValue: {fileID: 11400000, guid: ccb27878fe9591d4c87e1f8da0d7d924, type: 2}

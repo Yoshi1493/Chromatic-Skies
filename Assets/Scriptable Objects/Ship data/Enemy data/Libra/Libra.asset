@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23c7e0f14dcbcc4439ef4a6f2ce42e45, type: 3}
+  m_Name: Libra
+  m_EditorClassIdentifier: 
+  sprite: {fileID: 21300000, guid: 1aa3e528edb03a147bde37cb52c198d6, type: 3}
+  shipName: {fileID: 11400000, guid: 42233f2482a43194ebe110c72ec8d445, type: 2}
+  Lives:
+    OriginalValue: 6
+    currentValue: {fileID: 11400000, guid: 3ab77c650ab13564f8f7516a8b194fef, type: 2}
+  Health:
+    OriginalValue: 15000
+    currentValue: {fileID: 11400000, guid: 60b261ad94cc2794d857d01ecf7060ed, type: 2}
+  Power:
+    OriginalValue: 500
+    currentValue: {fileID: 11400000, guid: 0c14504957821df41849a919e1aa2cdb, type: 2}
+  Defense:
+    OriginalValue: 500
+    currentValue: {fileID: 11400000, guid: 5fd64d96ccc3c1248aff96d09afd23cd, type: 2}
+  MovementSpeed:
+    OriginalValue: 10
+    currentValue: {fileID: 11400000, guid: e390da96890df614894e7d57b8197062, type: 2}
+  ShootingSpeed:
+    OriginalValue: 10
+    currentValue: {fileID: 11400000, guid: f9b4b6a4546c7384e83247ae8d9945d8, type: 2}
