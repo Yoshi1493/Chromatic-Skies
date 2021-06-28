@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ecb688e0027b084892a6738685db69c, type: 3}
-  m_Name: '[Aquarius] Name'
+  m_Script: {fileID: 11500000, guid: 50b985b2c2993d040b1a6922cbe91087, type: 3}
+  m_Name: '[Cancer] Health'
   m_EditorClassIdentifier: 
-  value: Aries
+  value: 15000

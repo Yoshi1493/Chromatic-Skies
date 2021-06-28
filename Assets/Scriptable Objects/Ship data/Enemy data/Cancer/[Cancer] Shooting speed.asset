@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 50b985b2c2993d040b1a6922cbe91087, type: 3}
-  m_Name: '[Aquarius] Health'
+  m_Script: {fileID: 11500000, guid: 5a7c3f1896c9b0a4c966cfa6d513243c, type: 3}
+  m_Name: '[Cancer] Shooting speed'
   m_EditorClassIdentifier: 
-  value: 15000
+  value: 10

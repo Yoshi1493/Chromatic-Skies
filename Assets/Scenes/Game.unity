@@ -521,10 +521,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 422821353119271399, guid: 3859bf0d081290b469f5428fac6cdfc1, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8519715891559930569, guid: 3859bf0d081290b469f5428fac6cdfc1, type: 3}
       propertyPath: m_Name
       value: Enemy-Aries

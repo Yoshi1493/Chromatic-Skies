@@ -10,25 +10,25 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 23c7e0f14dcbcc4439ef4a6f2ce42e45, type: 3}
-  m_Name: Aquarius
+  m_Name: Cancer
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: 1aa3e528edb03a147bde37cb52c198d6, type: 3}
-  shipName: {fileID: 11400000, guid: a00afa31632343b4a9af05c2a5a21a79, type: 2}
+  shipName: {fileID: 11400000, guid: 5852ac7f71c52374499bdc7ad73d967a, type: 2}
   Lives:
     OriginalValue: 6
-    currentValue: {fileID: 11400000, guid: 6b86e65bdacdeaa4283b2572437967e5, type: 2}
+    currentValue: {fileID: 11400000, guid: 13e2fa7b54ea32244b05f04c7b63b5b1, type: 2}
   Health:
     OriginalValue: 15000
-    currentValue: {fileID: 11400000, guid: 1441a4e2d5e287441bc0044748157691, type: 2}
+    currentValue: {fileID: 11400000, guid: 5224736c0567bde40afc3f1a97d7e9a2, type: 2}
   Power:
     OriginalValue: 500
-    currentValue: {fileID: 11400000, guid: 6059f9293aa347b44a73714bea5bfcd3, type: 2}
+    currentValue: {fileID: 11400000, guid: 74afa8ba1024c0d42a3334efc360cdcf, type: 2}
   Defense:
     OriginalValue: 500
-    currentValue: {fileID: 11400000, guid: 2a4a3c81f6987ba4194e27f71125e963, type: 2}
+    currentValue: {fileID: 11400000, guid: 19499dc1fad71a64fa265779da4c8bdc, type: 2}
   MovementSpeed:
     OriginalValue: 10
-    currentValue: {fileID: 11400000, guid: 64edd72c65ca5b84082bb1b1bb4a13b8, type: 2}
+    currentValue: {fileID: 11400000, guid: b9d6bdfbcf3316d4e9687d3ff9b7dd29, type: 2}
   ShootingSpeed:
     OriginalValue: 10
-    currentValue: {fileID: 11400000, guid: a9486c0c650b1d84b81d322b4fdc8ea4, type: 2}
+    currentValue: {fileID: 11400000, guid: 6ad9ad63bdf9a1e4981ca99adbf01f22, type: 2}
