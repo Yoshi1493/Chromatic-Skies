@@ -74,7 +74,7 @@ Preset:
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_text
-    value: New Text
+    value: Text
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_isRightToLeft
@@ -222,11 +222,11 @@ Preset:
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_fontSize
-    value: 72
+    value: 64
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_fontSizeBase
-    value: 72
+    value: 64
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_fontWeight
