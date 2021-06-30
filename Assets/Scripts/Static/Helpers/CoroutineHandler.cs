@@ -151,13 +151,9 @@ public class Run
     {
         _task.Finished = false;
 
-        while (true)
+        if (_coroutine != null && !_task.Aborted)
         {
-            if (_coroutine != null && !_task.Aborted)
-            {
-                yield return CoroutineHandler.Instance.StartCoroutine(_coroutine);
-            }
-            else break;
+            yield return CoroutineHandler.Instance.StartCoroutine(_coroutine);
         }
 
         _task.Finished = true;

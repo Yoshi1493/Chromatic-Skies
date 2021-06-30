@@ -3,19 +3,33 @@ using UnityEngine.EventSystems;
 
 public class PlayerSelectMenu : Menu
 {
-    StandaloneInputModule sim;
+    EventSystem currentEventSystem;
+    StandaloneInputModule inputModule;
+
+    [SerializeField] ShipObject[] players;
+
+    PlayerStatBar[] statBars;
 
     protected override void Awake()
     {
         base.Awake();
-        sim = FindObjectOfType<StandaloneInputModule>();
+
+        statBars = GetComponentsInChildren<PlayerStatBar>();
+
+        currentEventSystem = EventSystem.current;
+        inputModule = FindObjectOfType<StandaloneInputModule>();
     }
 
     void Update()
     {
-        if (Input.GetButtonDown(sim.horizontalAxis))
+        if (Input.GetButtonDown(inputModule.horizontalAxis))
         {
-            print("horizontal button pressed.");
+            int currentSelectedIndex = currentEventSystem.currentSelectedGameObject.transform.GetSiblingIndex();
+
+            foreach (var statBar in statBars)
+            {
+                statBar.LerpFillAmount(currentSelectedIndex);
+            }
         }
     }
 }

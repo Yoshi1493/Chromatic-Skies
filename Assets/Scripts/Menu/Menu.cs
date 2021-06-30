@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 [RequireComponent(typeof(Canvas))]
 public abstract class Menu : MonoBehaviour
@@ -10,10 +11,10 @@ public abstract class Menu : MonoBehaviour
         thisMenu = GetComponent<Canvas>();
     }
 
-    public void Open()
+    public void Open(GameObject newSelectedGameObject)
     {
         thisMenu.enabled = true;
-        if (thisMenu.TryGetComponent(out Menu m)) m.Enable();
+        if (thisMenu.TryGetComponent(out Menu m)) m.Enable(newSelectedGameObject);
     }
 
     public void Close()
@@ -22,7 +23,7 @@ public abstract class Menu : MonoBehaviour
         Disable();
     }
 
-    public void Enable()
+    public void Enable(GameObject newSelectedGameObject)
     {
         if (TryGetComponent(out CanvasGroup cg))
         {
@@ -31,6 +32,11 @@ public abstract class Menu : MonoBehaviour
         }
 
         enabled = true;
+
+        if (newSelectedGameObject != null)
+        {
+            EventSystem.current.SetSelectedGameObject(newSelectedGameObject);
+        }
     }
 
     public void Disable()
