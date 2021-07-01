@@ -10,10 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 23c7e0f14dcbcc4439ef4a6f2ce42e45, type: 3}
-  m_Name: Leo
+  m_Name: '[Ship] Leo'
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: 1aa3e528edb03a147bde37cb52c198d6, type: 3}
-  shipName: {fileID: 11400000, guid: cbe98b5f534e11c46a00d73c8921583b, type: 2}
+  Sprite: {fileID: 21300000, guid: 1aa3e528edb03a147bde37cb52c198d6, type: 3}
+  UIColour: {r: 0, g: 0, b: 0, a: 0}
+  ShipName: {fileID: 11400000, guid: cbe98b5f534e11c46a00d73c8921583b, type: 2}
   Lives:
     OriginalValue: 6
     currentValue: {fileID: 11400000, guid: bbb90069eb0a5fb4aad587d531e1a7bf, type: 2}

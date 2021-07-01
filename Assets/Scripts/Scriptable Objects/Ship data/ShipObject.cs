@@ -4,10 +4,11 @@ using UnityEngine;
 public class ShipObject : ScriptableObject
 {
     [Header("Appearance")]
-    public Sprite sprite;
-    public StringObject shipName;
+    public Sprite Sprite;
+    public Color UIColour;
 
     [Header("Stats")]
+    public StringObject ShipName;
     public IntReference Lives;
 
     public IntReference Health;

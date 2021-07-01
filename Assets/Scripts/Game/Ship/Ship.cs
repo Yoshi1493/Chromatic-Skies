@@ -21,7 +21,7 @@ public abstract class Ship : Actor
     void InitShip()
     {
         //appearance
-        spriteRenderer.sprite = shipData.sprite;
+        spriteRenderer.sprite = shipData.Sprite;
 
         //stats
         shipData.Lives.CurrentValue = shipData.Lives.OriginalValue;
@@ -34,7 +34,7 @@ public abstract class Ship : Actor
         shipData.ShootingSpeed.CurrentValue = shipData.ShootingSpeed.OriginalValue;
 
         //debug
-        name = shipData.shipName.value;
+        name = shipData.ShipName.value;
     }
 
     //to-do: take shipData.Defense into account for damage calculations

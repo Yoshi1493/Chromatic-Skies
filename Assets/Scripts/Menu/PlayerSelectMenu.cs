@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -6,15 +7,11 @@ public class PlayerSelectMenu : Menu
     EventSystem currentEventSystem;
     StandaloneInputModule inputModule;
 
-    [SerializeField] ShipObject[] players;
-
-    PlayerStatBar[] statBars;
+    public event Action<int> SelectedPlayerChangeAction;
 
     protected override void Awake()
     {
         base.Awake();
-
-        statBars = GetComponentsInChildren<PlayerStatBar>();
 
         currentEventSystem = EventSystem.current;
         inputModule = FindObjectOfType<StandaloneInputModule>();
@@ -25,11 +22,7 @@ public class PlayerSelectMenu : Menu
         if (Input.GetButtonDown(inputModule.horizontalAxis))
         {
             int currentSelectedIndex = currentEventSystem.currentSelectedGameObject.transform.GetSiblingIndex();
-
-            foreach (var statBar in statBars)
-            {
-                statBar.LerpFillAmount(currentSelectedIndex);
-            }
+            SelectedPlayerChangeAction?.Invoke(currentSelectedIndex);
         }
     }
 }
