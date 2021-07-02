@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Linq;
 using UnityEngine;
@@ -12,7 +11,7 @@ public class PlayerSelectMenu : Menu
 
     [SerializeField] ShipObject[] players;
     [SerializeField] Image[] statBarImages;
-    float[,] fillAmounts;
+    float[,] statBarFillAmounts;
 
     IEnumerator fillAnimation, colourAnimation;
     readonly AnimationCurve interpolationCurve = AnimationCurve.EaseInOut(0, 0, 1, 1);
@@ -28,8 +27,10 @@ public class PlayerSelectMenu : Menu
         AnimateStatBars(0);
     }
 
+    //initialize values in statBarFillAmounts
     void SetFillAmounts()
     {
+        //find max <stat> among all player ships
         float[] maxStatValues = new float[]
         {
             players.Select(i => i.Health.OriginalValue).Max(),
@@ -38,20 +39,22 @@ public class PlayerSelectMenu : Menu
             players.Select(i => i.ShootingSpeed.OriginalValue).Max()
         };
 
-        fillAmounts = new float[statBarImages.Length, players.Length];
-        for (int i = 0; i < fillAmounts.GetLength(0); i++)
+        //set statBarFillAmounts based on max stat values
+        statBarFillAmounts = new float[statBarImages.Length, players.Length];
+        for (int i = 0; i < statBarFillAmounts.GetLength(0); i++)
         {
-            fillAmounts[0, i] = ((players[i].Health.OriginalValue / maxStatValues[0]));
-            fillAmounts[1, i] = ((players[i].Power.OriginalValue / maxStatValues[1]));
-            fillAmounts[2, i] = ((players[i].Defense.OriginalValue / maxStatValues[2]));
-            fillAmounts[3, i] = ((players[i].ShootingSpeed.OriginalValue / maxStatValues[3]));
+            statBarFillAmounts[0, i] = players[i].Health.OriginalValue / maxStatValues[0];
+            statBarFillAmounts[1, i] = players[i].Power.OriginalValue / maxStatValues[1];
+            statBarFillAmounts[2, i] = players[i].Defense.OriginalValue / maxStatValues[2];
+            statBarFillAmounts[3, i] = players[i].ShootingSpeed.OriginalValue / maxStatValues[3];
         }
 
-        for (int i = 0; i < fillAmounts.GetLength(0); i++)
+        //adjust amounts to emphasize stat differences between each other
+        for (int i = 0; i < statBarFillAmounts.GetLength(0); i++)
         {
-            for (int j = 0; j < fillAmounts.GetLength(1); j++)
+            for (int j = 0; j < statBarFillAmounts.GetLength(1); j++)
             {
-                fillAmounts[i, j] = (fillAmounts[i, j] - 0.5f) * 2;
+                statBarFillAmounts[i, j] = (statBarFillAmounts[i, j] - 0.5f) * 2;
             }
         }
     }
@@ -69,7 +72,7 @@ public class PlayerSelectMenu : Menu
     {
         for (int i = 0; i < statBarImages.Length; i++)
         {
-            fillAnimation = LerpFillAmount(i, fillAmounts[i, selectedPlayerIndex]);
+            fillAnimation = LerpFillAmount(i, statBarFillAmounts[i, selectedPlayerIndex]);
             StartCoroutine(fillAnimation);
 
             colourAnimation = LerpColour(i, players[selectedPlayerIndex].UIColour);
