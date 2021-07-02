@@ -1212,6 +1212,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8b08ab57c94b734881f5c8b4f16cb48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  players:
+  - {fileID: 11400000, guid: be28aa19c3c1bfc448da34d6633d1d7b, type: 2}
+  - {fileID: 11400000, guid: b6ba5f2391bc609498ffb4b311043f19, type: 2}
+  - {fileID: 11400000, guid: f38ea00f8dc589b4d92154f38d3b8138, type: 2}
+  - {fileID: 11400000, guid: db3323bf61bf7c048965801703f5126b, type: 2}
+  statBarImages:
+  - {fileID: 7409101445276955597}
+  - {fileID: 361909508}
+  - {fileID: 2076395294}
+  - {fileID: 872973658}
 --- !u!1001 &1067447553
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1472,7 +1482,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1297935504}
-  - component: {fileID: 1297935505}
   m_Layer: 5
   m_Name: Stat bars
   m_TagString: Untagged
@@ -1503,28 +1512,6 @@ RectTransform:
   m_AnchoredPosition: {x: 400, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1297935505
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1297935503}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b94cc367f49258b43a479d122b7f5a7c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  players:
-  - {fileID: 11400000, guid: be28aa19c3c1bfc448da34d6633d1d7b, type: 2}
-  - {fileID: 11400000, guid: b6ba5f2391bc609498ffb4b311043f19, type: 2}
-  - {fileID: 11400000, guid: f38ea00f8dc589b4d92154f38d3b8138, type: 2}
-  - {fileID: 11400000, guid: db3323bf61bf7c048965801703f5126b, type: 2}
-  statBarImages:
-  - {fileID: 7409101445276955597}
-  - {fileID: 361909508}
-  - {fileID: 2076395294}
-  - {fileID: 872973658}
 --- !u!1 &1394001275
 GameObject:
   m_ObjectHideFlags: 0
