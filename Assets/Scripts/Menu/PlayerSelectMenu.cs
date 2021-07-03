@@ -6,6 +6,8 @@ using UnityEngine.EventSystems;
 
 public class PlayerSelectMenu : Menu
 {
+    [SerializeField] UserSettings userSettings;
+
     EventSystem currentEventSystem;
     StandaloneInputModule inputModule;
 
@@ -14,6 +16,7 @@ public class PlayerSelectMenu : Menu
     float[,] statBarFillAmounts;
 
     IEnumerator fillAnimation, colourAnimation;
+    const float AnimationAnimationLength = 0.25f;
     readonly AnimationCurve interpolationCurve = AnimationCurve.EaseInOut(0, 0, 1, 1);
 
     protected override void Awake()
@@ -83,11 +86,11 @@ public class PlayerSelectMenu : Menu
     IEnumerator LerpFillAmount(int barIndex, float endFill)
     {
         float startFill = statBarImages[barIndex].fillAmount;
-        float currentLerpTime = 0f, totalLerpTime = 0.2f;
+        float currentLerpTime = 0f;
 
         while (statBarImages[barIndex].fillAmount != endFill)
         {
-            float animationProgress = interpolationCurve.Evaluate(currentLerpTime / totalLerpTime);
+            float animationProgress = interpolationCurve.Evaluate(currentLerpTime / AnimationAnimationLength);
             statBarImages[barIndex].fillAmount = Mathf.Lerp(startFill, endFill, animationProgress);
 
             yield return CoroutineHelper.EndOfFrame;
@@ -100,11 +103,11 @@ public class PlayerSelectMenu : Menu
     IEnumerator LerpColour(int barIndex, Color endColour)
     {
         Color startColour = statBarImages[barIndex].color;
-        float currentLerpTime = 0f, totalLerpTime = 0.1f;
+        float currentLerpTime = 0f;
 
         while (statBarImages[barIndex].color != endColour)
         {
-            float animationProgress = interpolationCurve.Evaluate(currentLerpTime / totalLerpTime);
+            float animationProgress = interpolationCurve.Evaluate(currentLerpTime / AnimationAnimationLength);
             statBarImages[barIndex].color = Color.Lerp(startColour, endColour, animationProgress);
 
             yield return CoroutineHelper.EndOfFrame;
@@ -112,5 +115,11 @@ public class PlayerSelectMenu : Menu
         }
 
         colourAnimation = null;
+    }
+
+    public void SelectPlayer(int playerIndex)
+    {
+        userSettings.SelectedPlayer = playerIndex;
+        LoadScene(1);
     }
 }
