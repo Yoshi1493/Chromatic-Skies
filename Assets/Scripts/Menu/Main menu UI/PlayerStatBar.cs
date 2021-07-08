@@ -18,11 +18,13 @@ public class PlayerStatBar : MonoBehaviour
 
     public void AnimateStatBar(float endFillAmount, Color endColour)
     {
-        if (statBarAnimation == null)
+        if (statBarAnimation != null)
         {
-            statBarAnimation = _AnimateStatBar(endFillAmount, endColour);
-            StartCoroutine(statBarAnimation);
+            StopCoroutine(statBarAnimation);
         }
+
+        statBarAnimation = _AnimateStatBar(endFillAmount, endColour);
+        StartCoroutine(statBarAnimation);
     }
 
     IEnumerator _AnimateStatBar(float endFillAmount, Color endColour)
@@ -32,7 +34,7 @@ public class PlayerStatBar : MonoBehaviour
 
         float currentLerpTime = 0f;
 
-        while(currentLerpTime <= AnimationDuration)
+        while (currentLerpTime <= AnimationDuration)
         {
             float animationProgress = interpolationCurve.Evaluate(currentLerpTime / AnimationDuration);
 

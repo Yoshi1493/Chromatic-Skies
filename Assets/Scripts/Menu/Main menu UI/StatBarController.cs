@@ -5,16 +5,16 @@ using UnityEngine.EventSystems;
 public class StatBarController : MonoBehaviour
 {
     EventSystem currentEventSystem;
-    StandaloneInputModule inputModule;
 
     [SerializeField] ShipObject[] players;
     [SerializeField] PlayerStatBar[] statBars;
     float[,] fillAmounts;
 
+    int selectedPlayerIndex;
+
     void Awake()
     {
         currentEventSystem = EventSystem.current;
-        inputModule = FindObjectOfType<StandaloneInputModule>();
 
         SetFillAmounts();
         AnimateStatBars(0);
@@ -62,7 +62,10 @@ public class StatBarController : MonoBehaviour
 
     void Update()
     {
-        int currentSelectedIndex = currentEventSystem.currentSelectedGameObject.transform.GetSiblingIndex();
-        AnimateStatBars(currentSelectedIndex);
+        if (selectedPlayerIndex != currentEventSystem.currentSelectedGameObject.transform.GetSiblingIndex())
+        {
+            selectedPlayerIndex = currentEventSystem.currentSelectedGameObject.transform.GetSiblingIndex();
+            AnimateStatBars(selectedPlayerIndex);
+        }
     }
 }
