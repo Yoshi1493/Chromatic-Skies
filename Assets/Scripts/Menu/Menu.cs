@@ -23,7 +23,7 @@ public abstract class Menu : MonoBehaviour
         Disable();
     }
 
-    public void Enable(GameObject newSelectedGameObject)
+    public virtual void Enable(GameObject newSelectedGameObject)
     {
         if (TryGetComponent(out CanvasGroup cg))
         {
@@ -39,7 +39,7 @@ public abstract class Menu : MonoBehaviour
         }
     }
 
-    public void Disable()
+    public virtual void Disable()
     {
         if (TryGetComponent(out CanvasGroup cg))
         {

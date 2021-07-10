@@ -10,14 +10,14 @@ public class StatBarController : MonoBehaviour
     [SerializeField] PlayerStatBar[] statBars;
     float[,] fillAmounts;
 
-    int selectedPlayerIndex;
+    [SerializeField] IntObject selectedPlayerIndex;
 
     void Awake()
     {
         currentEventSystem = EventSystem.current;
 
         SetFillAmounts();
-        AnimateStatBars(0);
+        AnimateStatBars(selectedPlayerIndex.value);
     }
 
     //initialize values in statBarFillAmounts
@@ -62,10 +62,10 @@ public class StatBarController : MonoBehaviour
 
     void Update()
     {
-        if (selectedPlayerIndex != currentEventSystem.currentSelectedGameObject.transform.GetSiblingIndex())
+        if (selectedPlayerIndex.value != currentEventSystem.currentSelectedGameObject.transform.GetSiblingIndex())
         {
-            selectedPlayerIndex = currentEventSystem.currentSelectedGameObject.transform.GetSiblingIndex();
-            AnimateStatBars(selectedPlayerIndex);
+            selectedPlayerIndex.value = currentEventSystem.currentSelectedGameObject.transform.GetSiblingIndex();
+            AnimateStatBars(selectedPlayerIndex.value);
         }
     }
 }
