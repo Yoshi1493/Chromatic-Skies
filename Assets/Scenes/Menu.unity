@@ -732,6 +732,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 873959737}
     m_Modifications:
+    - target: {fileID: 4302550225675032551, guid: a23c09bf4dcd9d640b45a1eff6ea3b2a, type: 3}
+      propertyPath: shipName
+      value: 
+      objectReference: {fileID: 11400000, guid: 3794480b64b37f44bb1b6b61023175f7, type: 2}
     - target: {fileID: 4350518409587046104, guid: a23c09bf4dcd9d640b45a1eff6ea3b2a, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -857,8 +861,8 @@ PrefabInstance:
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 5213447798812337457, guid: a23c09bf4dcd9d640b45a1eff6ea3b2a, type: 3}
-      propertyPath: m_text
-      value: Green
+      propertyPath: m_hasFontAssetChanged
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5535762498524365301, guid: a23c09bf4dcd9d640b45a1eff6ea3b2a, type: 3}
       propertyPath: m_SizeDelta.x
@@ -884,6 +888,10 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 256
       objectReference: {fileID: 0}
+    - target: {fileID: 8213039898814022750, guid: a23c09bf4dcd9d640b45a1eff6ea3b2a, type: 3}
+      propertyPath: shipName
+      value: 
+      objectReference: {fileID: 11400000, guid: 3794480b64b37f44bb1b6b61023175f7, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a23c09bf4dcd9d640b45a1eff6ea3b2a, type: 3}
 --- !u!224 &1189252215 stripped
@@ -1143,6 +1151,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 873959737}
     m_Modifications:
+    - target: {fileID: 4302550225675032551, guid: a23c09bf4dcd9d640b45a1eff6ea3b2a, type: 3}
+      propertyPath: shipName
+      value: 
+      objectReference: {fileID: 11400000, guid: bc45a3978b8853e4a8122e45001fd4ed, type: 2}
     - target: {fileID: 4350518409587046104, guid: a23c09bf4dcd9d640b45a1eff6ea3b2a, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1268,8 +1280,8 @@ PrefabInstance:
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 5213447798812337457, guid: a23c09bf4dcd9d640b45a1eff6ea3b2a, type: 3}
-      propertyPath: m_text
-      value: Blue
+      propertyPath: m_hasFontAssetChanged
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5535762498524365301, guid: a23c09bf4dcd9d640b45a1eff6ea3b2a, type: 3}
       propertyPath: m_SizeDelta.x
@@ -1295,6 +1307,10 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 256
       objectReference: {fileID: 0}
+    - target: {fileID: 8213039898814022750, guid: a23c09bf4dcd9d640b45a1eff6ea3b2a, type: 3}
+      propertyPath: shipName
+      value: 
+      objectReference: {fileID: 11400000, guid: bc45a3978b8853e4a8122e45001fd4ed, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a23c09bf4dcd9d640b45a1eff6ea3b2a, type: 3}
 --- !u!224 &1408981524 stripped
@@ -1309,6 +1325,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 873959737}
     m_Modifications:
+    - target: {fileID: 4302550225675032551, guid: a23c09bf4dcd9d640b45a1eff6ea3b2a, type: 3}
+      propertyPath: shipName
+      value: 
+      objectReference: {fileID: 11400000, guid: 11f933d0bc0be4e479e717a3ab9cd50f, type: 2}
     - target: {fileID: 4350518409587046104, guid: a23c09bf4dcd9d640b45a1eff6ea3b2a, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1430,8 +1450,12 @@ PrefabInstance:
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 5213447798812337457, guid: a23c09bf4dcd9d640b45a1eff6ea3b2a, type: 3}
-      propertyPath: m_text
-      value: Red
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -8970292333524551672, guid: 7051234c87d09774ebde48a7f7fbba0b, type: 2}
+    - target: {fileID: 5213447798812337457, guid: a23c09bf4dcd9d640b45a1eff6ea3b2a, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5535762498524365301, guid: a23c09bf4dcd9d640b45a1eff6ea3b2a, type: 3}
       propertyPath: m_SizeDelta.x
@@ -1461,6 +1485,10 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 256
       objectReference: {fileID: 0}
+    - target: {fileID: 8213039898814022750, guid: a23c09bf4dcd9d640b45a1eff6ea3b2a, type: 3}
+      propertyPath: shipName
+      value: 
+      objectReference: {fileID: 11400000, guid: 11f933d0bc0be4e479e717a3ab9cd50f, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a23c09bf4dcd9d640b45a1eff6ea3b2a, type: 3}
 --- !u!224 &1806309881 stripped
@@ -1711,6 +1739,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 873959737}
     m_Modifications:
+    - target: {fileID: 4302550225675032551, guid: a23c09bf4dcd9d640b45a1eff6ea3b2a, type: 3}
+      propertyPath: shipName
+      value: 
+      objectReference: {fileID: 11400000, guid: a1a8736001c50bb499bf10ea9431f479, type: 2}
     - target: {fileID: 4350518409587046104, guid: a23c09bf4dcd9d640b45a1eff6ea3b2a, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1836,8 +1868,8 @@ PrefabInstance:
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 5213447798812337457, guid: a23c09bf4dcd9d640b45a1eff6ea3b2a, type: 3}
-      propertyPath: m_text
-      value: Yellow
+      propertyPath: m_hasFontAssetChanged
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5535762498524365301, guid: a23c09bf4dcd9d640b45a1eff6ea3b2a, type: 3}
       propertyPath: m_SizeDelta.x
@@ -1863,6 +1895,10 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 256
       objectReference: {fileID: 0}
+    - target: {fileID: 8213039898814022750, guid: a23c09bf4dcd9d640b45a1eff6ea3b2a, type: 3}
+      propertyPath: shipName
+      value: 
+      objectReference: {fileID: 11400000, guid: a1a8736001c50bb499bf10ea9431f479, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a23c09bf4dcd9d640b45a1eff6ea3b2a, type: 3}
 --- !u!224 &2044158634 stripped
@@ -2247,6 +2283,14 @@ PrefabInstance:
     - target: {fileID: 9113669927874555426, guid: 43808b15fa4047946ae6ee640412c78f, type: 3}
       propertyPath: m_text
       value: Play
+      objectReference: {fileID: 0}
+    - target: {fileID: 9113669927874555426, guid: 43808b15fa4047946ae6ee640412c78f, type: 3}
+      propertyPath: m_fontSize
+      value: 96
+      objectReference: {fileID: 0}
+    - target: {fileID: 9113669927874555426, guid: 43808b15fa4047946ae6ee640412c78f, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 96
       objectReference: {fileID: 0}
     - target: {fileID: 9113669927874555428, guid: 43808b15fa4047946ae6ee640412c78f, type: 3}
       propertyPath: m_Pivot.x
