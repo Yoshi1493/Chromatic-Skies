@@ -8,6 +8,8 @@ public class PlayerShooter : Shooter
     [SerializeField] List<PlayerBullet> playerBullets = new List<PlayerBullet>();
     bool canShoot = true;
 
+    IEnumerator shootCoroutine;
+
     protected override void Awake()
     {
         base.Awake();
@@ -24,7 +26,10 @@ public class PlayerShooter : Shooter
     {
         if (Input.GetButton("Shoot") && canShoot)
         {
-            Run.Coroutine(Shoot());
+            if (shootCoroutine != null) StopCoroutine(shootCoroutine);
+
+            shootCoroutine = Shoot();
+            StartCoroutine(shootCoroutine);
         }
     }
 

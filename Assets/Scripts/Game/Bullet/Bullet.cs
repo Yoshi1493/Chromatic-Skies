@@ -11,6 +11,8 @@ public abstract class Bullet : Actor
 
     protected int bulletIndex;
 
+    IEnumerator moveCoroutine;
+
     protected override void Awake()
     {
         base.Awake();
@@ -55,7 +57,10 @@ public abstract class Bullet : Actor
             return;
         }
 
-        Run.Coroutine(_ChangeSpeed(endSpeed, lerpTime));
+        if (moveCoroutine != null) StopCoroutine(moveCoroutine);
+
+        moveCoroutine = _ChangeSpeed(endSpeed, lerpTime);
+        StartCoroutine(moveCoroutine);
     }
 
     IEnumerator _ChangeSpeed(float endSpeed, float lerpTime)
@@ -82,7 +87,10 @@ public abstract class Bullet : Actor
             return;
         }
 
-        Run.Coroutine(_ChangeDirection(endDirection, lerpTime));
+        if (moveCoroutine != null) StopCoroutine(moveCoroutine);
+
+        moveCoroutine = _ChangeDirection(endDirection, lerpTime);
+        StartCoroutine(moveCoroutine);
     }
 
     IEnumerator _ChangeDirection(Vector2 endDirection, float lerpTime)
@@ -100,19 +108,22 @@ public abstract class Bullet : Actor
     }
     #endregion
 
-    #region Change rotation
+    #region Rotate by
     public void RotateBy(float rotateAmount, float lerpTime = 0f)
     {
-        if (lerpTime <= 0)
+        if (lerpTime <= 0f)
         {
             transform.Rotate(rotateAmount * Vector3.forward);
             return;
         }
 
-        Run.Coroutine(_Rotate(rotateAmount, lerpTime));
+        if (moveCoroutine != null) StopCoroutine(moveCoroutine);
+
+        moveCoroutine = _RotateBy(rotateAmount, lerpTime);
+        StartCoroutine(moveCoroutine);
     }
 
-    IEnumerator _Rotate(float rotateAmount, float lerpTime)
+    IEnumerator _RotateBy(float rotateAmount, float lerpTime)
     {
         float currentLerpTime = 0f;
         float startRotation = transform.eulerAngles.z;
@@ -129,15 +140,25 @@ public abstract class Bullet : Actor
     }
     #endregion
 
-    #region FaceTowards
-    public void FaceTowards(Transform target)
+    #region Turn towards
+    public void TurnTowards(Transform target, float lerpTime = 0f)
     {
         if (target == null) return;
 
         Vector2 distance = target.position - transform.position;
         float zRotation = Mathf.Atan2(-distance.x, distance.y) * Mathf.Rad2Deg;
 
-        transform.eulerAngles = zRotation * Vector3.forward;
+        if (lerpTime <= 0f)
+        {           
+            transform.eulerAngles = zRotation * Vector3.forward;
+            return;
+        }
+
+        if (moveCoroutine != null) StopCoroutine(moveCoroutine);
+
+        float rotateAmount = zRotation - transform.eulerAngles.z;
+        moveCoroutine = _RotateBy(rotateAmount, lerpTime);
+        StartCoroutine(moveCoroutine);
     }
     #endregion
 
