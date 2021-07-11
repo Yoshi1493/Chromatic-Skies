@@ -16,7 +16,7 @@ MonoBehaviour:
   UIColour: {r: 0, g: 0, b: 0, a: 0}
   ShipName: {fileID: 11400000, guid: a00afa31632343b4a9af05c2a5a21a79, type: 2}
   Lives:
-    OriginalValue: 1
+    OriginalValue: 6
     currentValue: {fileID: 11400000, guid: 6b86e65bdacdeaa4283b2572437967e5, type: 2}
   Health:
     OriginalValue: 15000
