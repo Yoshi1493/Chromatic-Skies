@@ -1,5 +1,6 @@
 using UnityEngine;
 
+[RequireComponent(typeof(SpriteRenderer))]
 public abstract class Actor : MonoBehaviour
 {
     [HideInInspector] new public Transform transform;

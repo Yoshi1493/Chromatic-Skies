@@ -1,4 +1,4 @@
-public class PlayerBulletPool : GenericBulletPool<PlayerBullet>
+public class PlayerBulletPool : GenericProjectilePool<PlayerBullet>
 {
 
 }

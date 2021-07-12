@@ -1,5 +1,3 @@
-using UnityEngine;
-
 public class Enemy : Ship
 {
     EnemyBulletSystem[] enemyBulletSystems;

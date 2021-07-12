@@ -52,6 +52,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3896970343590141465, guid: 06a49f4bf0c75b745956e119689efc37, type: 3}
+      propertyPath: power
+      value: 
+      objectReference: {fileID: 11400000, guid: 10d68685c57f50549a63258d82075c0c, type: 2}
+    - target: {fileID: 3896970343590141465, guid: 06a49f4bf0c75b745956e119689efc37, type: 3}
       propertyPath: ownerShip
       value: 
       objectReference: {fileID: 11400000, guid: b6ba5f2391bc609498ffb4b311043f19, type: 2}

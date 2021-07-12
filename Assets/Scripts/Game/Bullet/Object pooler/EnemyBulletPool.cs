@@ -1,12 +1,6 @@
 using UnityEngine;
 
-public class EnemyBulletPool : GenericBulletPool<EnemyBullet>
+public class EnemyBulletPool : GenericProjectilePool<EnemyBullet>
 {
     [SerializeField] EnemyBulletSystem[] bulletSystems;
-
-
-    public void UpdateObjectsToPool()
-    {
-
-    }
 }
