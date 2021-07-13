@@ -3,8 +3,10 @@ using UnityEngine;
 
 public abstract class Shooter : MonoBehaviour
 {
-    [SerializeField] protected FloatReference shootingSpeed;
+    protected Ship ownerShip;
+    protected Vector3 ShipPosition => ownerShip.transform.position;
 
+    [SerializeField] protected FloatReference shootingSpeed;
     protected float ShootingSpeed => shootingSpeed.CurrentValue;
     protected virtual float ShootingCooldown => ShootingSpeed == 0 ? 0 : 1 / ShootingSpeed;
 
@@ -12,6 +14,8 @@ public abstract class Shooter : MonoBehaviour
 
     protected virtual void Awake()
     {
+        ownerShip = GetComponentInParent<Ship>();
+
         for (int i = 0; i < transform.childCount; i++)
         {
             spawnPositions.Add(transform.GetChild(i));

@@ -6,9 +6,17 @@ public class VirgoBulletSystem1 : EnemyBulletSystem
 {
     IEnumerator Start()
     {
-		while (true)
-		{
-			yield return null;
-		}        
+        EnemyBulletPool.Instance.UpdatePoolableBullets(enemyBullets);
+        yield return WaitForSeconds(3f);
+
+        float goldenRatio = (1 + Mathf.Sqrt(5)) * 180;
+
+        while (enabled)
+        {
+            spawnPositions[0].Rotate(goldenRatio * Vector3.forward);
+            SpawnBullet(0, 0);
+
+            yield return WaitForSeconds(ShootingCooldown);
+        }
     }
 }

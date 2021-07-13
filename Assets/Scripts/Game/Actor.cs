@@ -14,7 +14,7 @@ public abstract class Actor : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
-    protected virtual void Move(float moveSpeed, Space space = Space.Self)
+    protected void Move(float moveSpeed, Space space = Space.Self)
     {
         Vector3 normalizedDirection = moveDirection.normalized;
         transform.Translate(Time.deltaTime * moveSpeed * normalizedDirection, space);

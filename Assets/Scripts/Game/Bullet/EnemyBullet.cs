@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public abstract class EnemyBullet : Bullet
@@ -13,5 +14,7 @@ public abstract class EnemyBullet : Bullet
     public override void Destroy()
     {
         EnemyBulletPool.Instance.ReturnToPool(bulletIndex, this);
-    }    
+    }
+
+    protected abstract IEnumerator Move();
 }

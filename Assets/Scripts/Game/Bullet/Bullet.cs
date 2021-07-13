@@ -1,9 +1,8 @@
-using System.Collections;
 using UnityEngine;
 
 public abstract class Bullet : Projectile
 {
-    const float MaxLifetime = 3f;
+    const float MaxLifetime = 10f;
     float currentLifetime;
 
     protected int bulletIndex;
@@ -22,7 +21,7 @@ public abstract class Bullet : Projectile
 
     protected virtual void Update()
     {
-        Move(moveSpeed);
+        Move(MoveSpeed);
 
         currentLifetime += Time.deltaTime;
         if (currentLifetime > MaxLifetime) Destroy();

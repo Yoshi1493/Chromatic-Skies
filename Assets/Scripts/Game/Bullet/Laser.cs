@@ -13,7 +13,7 @@ public class Laser : Projectile
         base.Awake();
 
         originalSize = spriteRenderer.size;
-        moveSpeed = 0;
+        MoveSpeed = 0;
     }
 
     void OnEnable()

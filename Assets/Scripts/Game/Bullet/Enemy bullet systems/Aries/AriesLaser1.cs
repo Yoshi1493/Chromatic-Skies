@@ -8,8 +8,8 @@ public class AriesLaser1 : Laser
         player = FindObjectOfType<Player>();
     }
 
-    protected override void Update()
+    void Start()
     {
-        base.Update();
+        this.TurnTowards(player, 1);
     }
 }

@@ -10,11 +10,13 @@ public class EnemyBulletSystem : Shooter
     {
         base.Awake();
 
-        GetComponentInParent<Enemy>().LoseLifeAction += DestroyAllBullets<EnemyBullet>;
+        ownerShip.LoseLifeAction += DestroyAllBullets<EnemyBullet>;
     }
 
     protected override void SpawnBullet(int bulletIndex, int spawnPositionIndex)
     {
+        if (!enabled) return;
+
         var newBullet = EnemyBulletPool.Instance.Get(bulletIndex);
 
         newBullet.transform.SetPositionAndRotation(spawnPositions[spawnPositionIndex].position, spawnPositions[spawnPositionIndex].rotation);
