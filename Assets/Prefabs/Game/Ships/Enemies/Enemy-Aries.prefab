@@ -269,10 +269,6 @@ PrefabInstance:
       propertyPath: enemyBullets.Array.data[0]
       value: 
       objectReference: {fileID: 5797051581075502374, guid: 8b54e718cec9c244a9aec8fc1a672285, type: 3}
-    - target: {fileID: 9136865687777282550, guid: d93cb44e21569f545b76560b29579f98, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 6200530871388918232, guid: d93cb44e21569f545b76560b29579f98, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d93cb44e21569f545b76560b29579f98, type: 3}

@@ -28,12 +28,15 @@ public class EnemyBulletSystem : Shooter
 
         var newBullet = EnemyBulletPool.Instance.Get(bulletIndex);
 
-        newBullet.transform.SetPositionAndRotation(spawnPositions[spawnPositionIndex].position, spawnPositions[spawnPositionIndex].rotation);
+        Vector3 posOffset = spawnPositions[spawnPositionIndex].transform.up;
+        newBullet.transform.SetPositionAndRotation(spawnPositions[spawnPositionIndex].position + posOffset, spawnPositions[spawnPositionIndex].rotation);
         newBullet.gameObject.SetActive(true);
     }
 
     protected void SpawnLaser()
     {
+        if (!enabled) return;
+
         var newLaser = EnemyLaserPool.Instance.Get(0);
 
         newLaser.transform.SetPositionAndRotation(spawnPositions[0].position, spawnPositions[0].rotation);

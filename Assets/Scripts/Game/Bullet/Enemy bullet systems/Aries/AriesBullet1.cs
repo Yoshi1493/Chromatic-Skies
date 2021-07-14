@@ -8,22 +8,12 @@ public class AriesBullet1 : EnemyBullet
     protected override IEnumerator Move()
     {
         StartCoroutine(this.ChangeSpeed(3, 1, 1));
+        //yield return this.RotateAround();
 
         while (true)
         {
-            StartCoroutine(this.RotateBy(60, 1, 0));
-            StartCoroutine(this.RotateBy(-60, 1, 1));
-            yield return CoroutineHelper.WaitForSeconds(1f);
+            yield return this.RotateBy(120, 1, 0);
+            yield return this.RotateBy(-120, 1, 0);
         }
-    }
-
-    protected override void OnEnable()
-    {
-        base.OnEnable();
-
-        if (movementBehaviour != null) StopCoroutine(movementBehaviour);
-
-        movementBehaviour = Move();
-        StartCoroutine(movementBehaviour);
     }
 }

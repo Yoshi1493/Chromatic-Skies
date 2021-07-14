@@ -5,6 +5,16 @@ public abstract class EnemyBullet : Bullet
 {
     protected abstract Collider2D collisionCondition { get; }
 
+    protected override void OnEnable()
+    {
+        base.OnEnable();
+
+        if (movementBehaviour != null) StopCoroutine(movementBehaviour);
+
+        movementBehaviour = Move();
+        StartCoroutine(movementBehaviour);
+    }
+
     protected override void Update()
     {
         base.Update();
