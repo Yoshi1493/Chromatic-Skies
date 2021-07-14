@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,6 +12,14 @@ public class EnemyBulletSystem : Shooter
         base.Awake();
 
         ownerShip.LoseLifeAction += DestroyAllBullets<EnemyBullet>;
+    }
+
+    protected virtual IEnumerator Start()
+    {
+        if (enemyBullets.Count > 0) EnemyBulletPool.Instance.UpdatePoolableBullets(enemyBullets);
+        if (enemyLasers.Count > 0) EnemyLaserPool.Instance.UpdatePoolableBullets(enemyLasers);
+
+        yield return CoroutineHelper.WaitForSeconds(1f);
     }
 
     protected override void SpawnBullet(int bulletIndex, int spawnPositionIndex)

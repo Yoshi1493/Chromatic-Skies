@@ -3,10 +3,9 @@ using static CoroutineHelper;
 
 public class AriesBulletSystem3 : EnemyBulletSystem
 {
-    IEnumerator Start()
+    protected override IEnumerator Start()
     {
-        EnemyLaserPool.Instance.UpdatePoolableBullets(enemyLasers);
-        yield return WaitForSeconds(3f);
+        yield return base.Start();
 
         while (true)
         {

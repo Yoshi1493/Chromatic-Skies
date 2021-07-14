@@ -4,7 +4,7 @@ using static CoroutineHelper;
 
 public class ScorpioBulletSystem3 : EnemyBulletSystem
 {
-    IEnumerator Start()
+    protected override IEnumerator Start()
     {
 		while (true)
 		{

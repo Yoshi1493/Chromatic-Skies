@@ -4,7 +4,7 @@ using static CoroutineHelper;
 
 public class LibraBulletSystem5 : EnemyBulletSystem
 {
-    IEnumerator Start()
+    protected override IEnumerator Start()
     {
 		while (true)
 		{

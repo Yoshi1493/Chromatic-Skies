@@ -4,10 +4,9 @@ using static CoroutineHelper;
 
 public class AriesBulletSystem2 : EnemyBulletSystem
 {
-    IEnumerator Start()
+    protected override IEnumerator Start()
     {
-        EnemyBulletPool.Instance.UpdatePoolableBullets(enemyBullets);
-        yield return WaitForSeconds(3f);
+        yield return base.Start();
 
         float rotateAmount = 12f;
 

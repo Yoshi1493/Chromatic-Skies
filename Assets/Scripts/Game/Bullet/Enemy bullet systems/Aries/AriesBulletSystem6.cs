@@ -4,8 +4,10 @@ using static CoroutineHelper;
 
 public class AriesBulletSystem6 : EnemyBulletSystem
 {
-    IEnumerator Start()
-    {
+    protected override IEnumerator Start()
+	{
+		yield return base.Start();
+
 		while (true)
 		{
 			yield return null;

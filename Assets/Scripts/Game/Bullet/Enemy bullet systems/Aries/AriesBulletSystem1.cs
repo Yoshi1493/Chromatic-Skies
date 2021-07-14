@@ -6,10 +6,9 @@ public class AriesBulletSystem1 : EnemyBulletSystem
 {
     Vector3 rotationAmount = 15 * Vector3.forward;
 
-    IEnumerator Start()
+    protected override IEnumerator Start()
     {
-        EnemyBulletPool.Instance.UpdatePoolableBullets(enemyBullets);
-        yield return WaitForSeconds(1f);
+        yield return base.Start();
 
         spawnPositions[1].Rotate(rotationAmount / 2);
 
