@@ -2,7 +2,7 @@ using UnityEngine;
 
 public abstract class Bullet : Projectile
 {
-    const float MaxLifetime = 10f;
+    protected const float MaxLifetime = 10f;
     float currentLifetime;
 
     protected int bulletIndex;

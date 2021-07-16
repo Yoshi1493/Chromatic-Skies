@@ -40,8 +40,8 @@ public class Laser : Projectile
 
             spriteRenderer.size = new Vector2(width, height);
 
-            yield return EndOfFrame;
             currentLerpTime += Time.deltaTime;
+            yield return EndOfFrame;
         }
     }
 

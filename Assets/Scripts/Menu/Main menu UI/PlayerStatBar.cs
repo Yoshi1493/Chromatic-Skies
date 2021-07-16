@@ -41,8 +41,8 @@ public class PlayerStatBar : MonoBehaviour
             statBarImage.fillAmount = Mathf.Lerp(startFillAmount, endFillAmount, animationProgress);
             statBarImage.color = Color.Lerp(startColour, endColour, animationProgress);
 
-            yield return CoroutineHelper.EndOfFrame;
             currentLerpTime += Time.deltaTime;
+            yield return CoroutineHelper.EndOfFrame;
         }
 
         statBarAnimation = null;

@@ -7,8 +7,8 @@ public class AriesBullet1 : EnemyBullet
 
     protected override IEnumerator Move()
     {
-        StartCoroutine(this.ChangeSpeed(3, 1, 1));
-        //yield return this.RotateAround();
+        StartCoroutine(this.ChangeSpeed(3, 1, 2));
+        StartCoroutine(this.RotateAround(FindObjectOfType<Enemy>(), MaxLifetime, MaxLifetime / 12));
 
         while (true)
         {
