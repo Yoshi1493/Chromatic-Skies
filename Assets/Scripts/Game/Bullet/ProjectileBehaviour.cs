@@ -56,14 +56,12 @@ public static class ProjectileBehaviour
 
         float currentTime = 0f;
 
-        Vector3 newPos = p.transform.position;
-        Vector3 difference = newPos - target.transform.position;
-
         while (currentTime < rotateDuration)
         {
-            difference.RotateByDegrees(rotateSpeed * Time.deltaTime);
-            p.transform.position = newPos + difference;
+            Vector3 targetPos = target.transform.position;
+            Vector3 difference = RotateByDegrees(p.transform.position - targetPos, rotateSpeed * Time.deltaTime);
 
+            p.transform.position = targetPos + difference;
             currentTime += Time.deltaTime;
             yield return EndOfFrame;
         }
@@ -110,6 +108,9 @@ public static class ProjectileBehaviour
 
     #region Helpers/Extensions
 
+    /// <summary>
+    /// returns the angle (in degrees) that the line created by <pos1> and <pos2> subtends from (0, 0)
+    /// </summary>
     static float GetRotationDifference(Vector2 pos1, Vector2 pos2)
     {
         Vector2 distance = pos2 - pos1;
@@ -118,14 +119,24 @@ public static class ProjectileBehaviour
         return difference;
     }
 
-    static void RotateByDegrees(this Vector3 v, float theta)
+    /// <summary>
+    /// rotates <v> anticlockwise by <theta> degrees along the xy plane
+    /// </summary>
+    static Vector3 RotateByDegrees(Vector3 v, float theta)
     {
-        Vector3 cached_v = v;
+        Vector3 _v = v;
         float theta_r = theta * Mathf.Deg2Rad;
 
-        v.x = (Mathf.Cos(theta_r) * cached_v.x) - (Mathf.Sin(theta_r) * cached_v.y);
-        v.y = (Mathf.Sin(theta_r) * cached_v.x) + (Mathf.Cos(theta_r) * cached_v.y);
+        v.x = (Mathf.Cos(theta_r) * _v.x) - (Mathf.Sin(theta_r) * _v.y);
+        v.y = (Mathf.Sin(theta_r) * _v.x) + (Mathf.Cos(theta_r) * _v.y);
+
+        return v;
     }
+
+    /// <summary>
+    /// Debug.Log shortcut. remove later...?
+    /// </summary>
+    static void print(object message) { Debug.Log(message); }
 
     #endregion
 }
