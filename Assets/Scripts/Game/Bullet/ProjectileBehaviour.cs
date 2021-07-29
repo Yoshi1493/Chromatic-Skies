@@ -4,10 +4,10 @@ using static CoroutineHelper;
 
 public static class ProjectileBehaviour
 {
-    #region Basic behaviour
+    #region Movement behaviour
 
     /// <summary>
-    /// interpolates <p.MoveSpeed> from <startSpeed> to <endSpeed>, in <lerpTime> seconds.
+    /// lerps <p.MoveSpeed> from <startSpeed> to <endSpeed>, in <lerpTime> seconds.
     /// </summary>
     public static IEnumerator ChangeSpeed(this Projectile p, float startSpeed, float endSpeed, float lerpTime, float delay = 0f)
     {
@@ -25,7 +25,7 @@ public static class ProjectileBehaviour
     }
 
     /// <summary>
-    /// interpolates <p.transformm.eulerAngles.z> from <p.transform.eulerAngles.z> to <p.transform.eulerAngles.z + rotateAmount>, in <lerpTime> seconds.
+    /// adds <rotateAmount> degrees to <p.eulerAngles.z>, over <lerpTime> seconds.
     /// </summary>
     public static IEnumerator RotateBy(this Projectile p, float rotateAmount, float lerpTime, float delay = 0f)
     {
@@ -33,13 +33,33 @@ public static class ProjectileBehaviour
         if (delay > 0f) yield return WaitForSeconds(delay);
 
         float currentLerpTime = 0f;
-        float startRotation = p.transform.eulerAngles.z;
-        float endRotation = startRotation + rotateAmount;
+        Quaternion startRot = p.transform.rotation;
+        Quaternion endRot = Quaternion.Euler((p.transform.eulerAngles.z + rotateAmount) * Vector3.forward);
 
-        while (currentLerpTime < lerpTime)
+        while (p.transform.rotation != endRot)
         {
-            float zRotation = Mathf.Lerp(startRotation, endRotation, currentLerpTime / lerpTime);
-            p.transform.eulerAngles = Vector3.forward * zRotation;
+            p.transform.rotation = Quaternion.Lerp(startRot, endRot, currentLerpTime / lerpTime);
+
+            currentLerpTime += Time.deltaTime;
+            yield return EndOfFrame;
+        }
+    }
+
+    /// <summary>
+    /// lerps <p.eulerAngles> to (0, 0, <endRotation>), over <lerpTime> seconds.
+    /// </summary>
+    public static IEnumerator RotateTo(this Projectile p, float endRotation, float lerpTime, float delay = 0f)
+    {
+        if (lerpTime <= 0f) yield break;
+        if (delay > 0f) yield return WaitForSeconds(delay);
+
+        float currentLerpTime = 0f;
+        Quaternion startRot = p.transform.rotation;
+        Quaternion endRot = Quaternion.Euler(endRotation * Vector3.forward);
+
+        while (p.transform.rotation != endRot)
+        {
+            p.transform.rotation = Quaternion.Lerp(startRot, endRot, currentLerpTime / lerpTime);
 
             currentLerpTime += Time.deltaTime;
             yield return EndOfFrame;
@@ -59,7 +79,7 @@ public static class ProjectileBehaviour
         while (currentTime < rotateDuration)
         {
             Vector3 targetPos = target.transform.position;
-            Vector3 difference = RotateByDegrees(p.transform.position - targetPos, rotateSpeed * Time.deltaTime);
+            Vector3 difference = RotateVectorBy(p.transform.position - targetPos, rotateSpeed * Time.deltaTime);
 
             p.transform.position = targetPos + difference;
             currentTime += Time.deltaTime;
@@ -67,21 +87,19 @@ public static class ProjectileBehaviour
         }
     }
 
-    #endregion
-
-    #region Combined/Complex behaviours
-
     /// <summary>
-    /// rotates <p> to face towards <target.transform.position> in <lerpTime> seconds.
+    /// sets <p.transform.eulerAngles.z> to face towards <target.transform.position>.
     /// i.e. rotates <p> in a way such that if <p> were to translate by <p.transform.up>, and
     /// <target.transform.position> remained the same, <p> will eventually collide with <target>
     /// </summary>
-    public static IEnumerator TurnTowards(this Projectile p, Actor target, float lerpTime, float delay = 0f)
+    public static IEnumerator TurnTowards(this Projectile p, Actor target, float delay = 0f)
     {
-        if (target == null || lerpTime <= 0f) yield break;
+        if (target == null) yield break;
+        if (delay > 0f) yield return WaitForSeconds(delay);
 
         float zRotation = GetRotationDifference(p.transform.position, target.transform.position);
-        yield return p.RotateBy(zRotation, lerpTime, delay);
+        //yield return p.RotateTo(zRotation, 0.5f);
+        p.transform.eulerAngles = zRotation * Vector3.forward;
     }
 
     /// <summary>
@@ -94,10 +112,9 @@ public static class ProjectileBehaviour
 
         float currentTime = 0f;
 
-        while (currentTime < homingDuration)
+        while (currentTime < homingDuration && target != null)
         {
-            float zRotation = GetRotationDifference(p.transform.position, target.transform.position);
-            p.transform.eulerAngles = Vector3.forward;          //to-do: fix
+            yield return p.TurnTowards(target);
 
             currentTime += Time.deltaTime;
             yield return EndOfFrame;
@@ -114,15 +131,13 @@ public static class ProjectileBehaviour
     static float GetRotationDifference(Vector2 pos1, Vector2 pos2)
     {
         Vector2 distance = pos2 - pos1;
-        float difference = Mathf.Atan2(-distance.x, distance.y) * Mathf.Rad2Deg;
-
-        return difference;
+        return Mathf.Atan2(-distance.x, distance.y) * Mathf.Rad2Deg;
     }
 
     /// <summary>
     /// rotates <v> anticlockwise by <theta> degrees along the xy plane
     /// </summary>
-    static Vector3 RotateByDegrees(Vector3 v, float theta)
+    static Vector3 RotateVectorBy(Vector3 v, float theta)
     {
         Vector3 _v = v;
         float theta_r = theta * Mathf.Deg2Rad;
