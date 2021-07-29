@@ -4,8 +4,9 @@ using static CoroutineHelper;
 
 public class Laser : Projectile
 {
-    [SerializeField] AnimationCurve widthInterpolation;
+    protected override Collider2D CollisionCondition => Physics2D.OverlapBox(transform.position + (transform.up * spriteRenderer.size.y / 2), spriteRenderer.size, transform.eulerAngles.z);
 
+    [SerializeField] AnimationCurve widthInterpolation;
     Vector2 originalSize;
 
     protected override void Awake()
@@ -47,10 +48,7 @@ public class Laser : Projectile
 
     protected virtual void Update()
     {
-        Vector2 boxOrigin = transform.position + (transform.up * spriteRenderer.size.y / 2);
-        Vector2 boxSize = spriteRenderer.size;
-
-        CheckCollisionWith<Player>(() => Physics2D.OverlapBox(boxOrigin, boxSize, transform.eulerAngles.z));
+        CheckCollisionWith<Player>(() => CollisionCondition);
     }
 
     public override void Destroy()

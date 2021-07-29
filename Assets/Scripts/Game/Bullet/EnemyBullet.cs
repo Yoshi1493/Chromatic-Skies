@@ -3,8 +3,6 @@ using UnityEngine;
 
 public abstract class EnemyBullet : Bullet
 {
-    protected abstract Collider2D collisionCondition { get; }
-
     protected override void OnEnable()
     {
         base.OnEnable();
@@ -18,7 +16,7 @@ public abstract class EnemyBullet : Bullet
     protected override void Update()
     {
         base.Update();
-        CheckCollisionWith<Player>(() => collisionCondition);
+        CheckCollisionWith<Player>(() => CollisionCondition);
     }
 
     public override void Destroy()

@@ -8,6 +8,8 @@ public abstract class Projectile : Actor
     [SerializeField] float moveSpeed;
     public float MoveSpeed { get => moveSpeed; set => moveSpeed = value; }
 
+    protected abstract Collider2D CollisionCondition { get; }
+
     protected IEnumerator movementBehaviour;
 
     protected virtual void CheckCollisionWith<TShip>(System.Func<Collider2D> Condition) where TShip : Ship

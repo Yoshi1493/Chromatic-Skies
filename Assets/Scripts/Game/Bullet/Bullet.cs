@@ -7,6 +7,8 @@ public abstract class Bullet : Projectile
 
     protected int bulletIndex;
 
+    protected override Collider2D CollisionCondition => Physics2D.OverlapCircle(transform.position, 0.16f);
+
     protected override void Awake()
     {
         base.Awake();
