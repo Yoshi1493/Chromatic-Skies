@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   transform: {fileID: 0}
-  power: {fileID: 11400000, guid: 6059f9293aa347b44a73714bea5bfcd3, type: 2}
-  moveSpeed: 0
+  projectileData: {fileID: 0}
   widthInterpolation:
     serializedVersion: 2
     m_Curve:
@@ -89,6 +88,14 @@ PrefabInstance:
     - target: {fileID: 3686835066270376109, guid: 39cb8f2312bc7ff4bbbe1e60f953f78c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3686835066270376110, guid: 39cb8f2312bc7ff4bbbe1e60f953f78c, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: a7931915fd0488a4a921fea55c5f6774, type: 3}
+    - target: {fileID: 3686835066270376110, guid: 39cb8f2312bc7ff4bbbe1e60f953f78c, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3686835066270376111, guid: 39cb8f2312bc7ff4bbbe1e60f953f78c, type: 3}
       propertyPath: m_Name

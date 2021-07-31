@@ -16,7 +16,7 @@ public abstract class Projectile : Actor
         projectileData.MoveSpeed.CurrentValue = projectileData.MoveSpeed.OriginalValue;
     }
 
-    protected virtual void CheckCollisionWith<TShip>() where TShip : Ship
+    protected void CheckCollisionWith<TShip>() where TShip : Ship
     {
         Collider2D coll = CollisionCondition;
 
