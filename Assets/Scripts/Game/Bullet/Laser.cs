@@ -47,7 +47,7 @@ public class Laser : Projectile
 
     protected virtual void Update()
     {
-        CheckCollisionWith<Player>(() => CollisionCondition);
+        CheckCollisionWith<Player>();
     }
 
     public override void Destroy()

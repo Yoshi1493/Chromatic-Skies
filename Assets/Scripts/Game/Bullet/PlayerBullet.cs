@@ -5,7 +5,7 @@ public class PlayerBullet : Bullet
     protected override void Update()
     {
         base.Update();
-        CheckCollisionWith<Enemy>(() => CollisionCondition);
+        CheckCollisionWith<Enemy>();
     }
 
     public override void Destroy()

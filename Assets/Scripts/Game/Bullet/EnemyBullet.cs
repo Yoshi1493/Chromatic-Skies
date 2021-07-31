@@ -16,7 +16,7 @@ public abstract class EnemyBullet : Bullet
     protected override void Update()
     {
         base.Update();
-        CheckCollisionWith<Player>(() => CollisionCondition);
+        CheckCollisionWith<Player>();
     }
 
     public override void Destroy()

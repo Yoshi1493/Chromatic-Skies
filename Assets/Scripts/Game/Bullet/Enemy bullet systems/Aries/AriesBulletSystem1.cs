@@ -12,10 +12,7 @@ public class AriesBulletSystem1 : EnemyBulletSystem
 
         while (enabled)
         {
-            for (int i = 0; i < spawnPositions.Count; i++)
-            {
-                SpawnBullet(0, i);
-            }
+            SpawnBullet(0, 0);
 
             transform.Rotate(rotationAmount);
             yield return WaitForSeconds(ShootingCooldown * 5);

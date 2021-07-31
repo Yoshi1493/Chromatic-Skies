@@ -41,7 +41,7 @@ public abstract class Ship : Actor
     public void TakeDamage(int power)
     {
         shipData.Health.CurrentValue -= power;
-
+        print($"{name} took {power} damage.");
         if (shipData.Health.CurrentValue <= 0)
         {
             LoseLifeAction?.Invoke();
