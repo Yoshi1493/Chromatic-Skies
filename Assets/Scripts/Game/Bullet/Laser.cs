@@ -12,13 +12,12 @@ public class Laser : Projectile
     protected override void Awake()
     {
         base.Awake();
-
         originalSize = spriteRenderer.size;
-        MoveSpeed = 0;
     }
 
-    void OnEnable()
+    protected override void OnEnable()
     {
+        base.OnEnable();
         StartCoroutine(Expand());
     }
 

@@ -16,14 +16,15 @@ public abstract class Bullet : Projectile
         moveDirection = transform.up;
     }
 
-    protected virtual void OnEnable()
+    protected override void OnEnable()
     {
+        base.OnEnable();
         currentLifetime = 0;
     }
 
     protected virtual void Update()
     {
-        Move(MoveSpeed);
+        Move(projectileData.MoveSpeed.CurrentValue);
 
         currentLifetime += Time.deltaTime;
         if (currentLifetime > MaxLifetime) Destroy();

@@ -63,9 +63,17 @@ PrefabInstance:
       propertyPath: bulletPower
       value: 
       objectReference: {fileID: 11400000, guid: 5067c38418cc48a48916bb09ed78fd6a, type: 2}
+    - target: {fileID: 3896970343590141465, guid: 06a49f4bf0c75b745956e119689efc37, type: 3}
+      propertyPath: projectileData
+      value: 
+      objectReference: {fileID: 11400000, guid: bf2147c786e2800428a726da6405dac9, type: 2}
     - target: {fileID: 4295436845269932089, guid: 06a49f4bf0c75b745956e119689efc37, type: 3}
       propertyPath: m_Name
       value: Player bullet (Yellow)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8059288589417988345, guid: 06a49f4bf0c75b745956e119689efc37, type: 3}
+      propertyPath: m_Sprite
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8059288589417988345, guid: 06a49f4bf0c75b745956e119689efc37, type: 3}
       propertyPath: m_Color.b
@@ -78,6 +86,10 @@ PrefabInstance:
     - target: {fileID: 8059288589417988345, guid: 06a49f4bf0c75b745956e119689efc37, type: 3}
       propertyPath: m_Color.r
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8059288589417988345, guid: 06a49f4bf0c75b745956e119689efc37, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 06a49f4bf0c75b745956e119689efc37, type: 3}

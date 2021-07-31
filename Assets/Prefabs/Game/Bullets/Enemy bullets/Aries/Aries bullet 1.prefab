@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   transform: {fileID: 0}
-  power: {fileID: 11400000, guid: 6059f9293aa347b44a73714bea5bfcd3, type: 2}
-  moveSpeed: 3
+  projectileData: {fileID: 11400000, guid: 6f5c74774b4e50d478566e36f1869683, type: 2}
 --- !u!1001 &4489721518377228893
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -82,6 +81,14 @@ PrefabInstance:
       propertyPath: bulletPower.currentValue
       value: 
       objectReference: {fileID: 11400000, guid: 6059f9293aa347b44a73714bea5bfcd3, type: 2}
+    - target: {fileID: 9211992883209170045, guid: 4e06125b108514547b6fc9b6887da3eb, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 9211992883209170045, guid: 4e06125b108514547b6fc9b6887da3eb, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 7943771795135557499, guid: 4e06125b108514547b6fc9b6887da3eb, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 4e06125b108514547b6fc9b6887da3eb, type: 3}

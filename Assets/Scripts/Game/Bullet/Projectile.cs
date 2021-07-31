@@ -3,14 +3,18 @@ using UnityEngine;
 
 public abstract class Projectile : Actor
 {
-    [SerializeField] protected IntObject power;
-
-    [SerializeField] float moveSpeed;
-    public float MoveSpeed { get => moveSpeed; set => moveSpeed = value; }
+    public ProjectileObject projectileData;
 
     protected abstract Collider2D CollisionCondition { get; }
 
     protected IEnumerator movementBehaviour;
+
+    protected virtual void OnEnable()
+    {
+        spriteRenderer.sprite = projectileData.sprite;
+
+        projectileData.MoveSpeed.CurrentValue = projectileData.MoveSpeed.OriginalValue;
+    }
 
     protected virtual void CheckCollisionWith<TShip>(System.Func<Collider2D> Condition) where TShip : Ship
     {
@@ -24,7 +28,7 @@ public abstract class Projectile : Actor
 
     protected virtual void HandleCollisionWithShip<TShip>(Collider2D coll) where TShip : Ship
     {
-        coll.GetComponent<TShip>().TakeDamage(power.value);
+        coll.GetComponent<TShip>().TakeDamage(projectileData.Power.value);
     }
 
     public abstract void Destroy();

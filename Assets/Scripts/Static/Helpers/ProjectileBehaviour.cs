@@ -17,7 +17,7 @@ public static class ProjectileBehaviour
 
         while (currentLerpTime < lerpTime)
         {
-            p.MoveSpeed = Mathf.Lerp(startSpeed, endSpeed, currentLerpTime / lerpTime);
+            p.projectileData.MoveSpeed.CurrentValue = Mathf.Lerp(startSpeed, endSpeed, currentLerpTime / lerpTime);
 
             currentLerpTime += Time.deltaTime;
             yield return EndOfFrame;
