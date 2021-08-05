@@ -2,12 +2,13 @@ using UnityEngine;
 
 public abstract class Bullet : Projectile
 {
+    protected int bulletIndex;
+
     protected const float MaxLifetime = 10f;
     float currentLifetime;
 
-    protected int bulletIndex;
-
-    protected override Collider2D CollisionCondition => Physics2D.OverlapCircle(transform.position, 0.16f);
+    float HitboxSize => spriteRenderer.size.x / 2;
+    protected override Collider2D CollisionCondition => Physics2D.OverlapCircle(transform.position, HitboxSize);
 
     protected virtual void OnEnable()
     {
