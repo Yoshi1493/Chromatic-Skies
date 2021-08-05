@@ -6,7 +6,7 @@ public abstract class Actor : MonoBehaviour
     [HideInInspector] new public Transform transform;
     protected SpriteRenderer spriteRenderer;
 
-    protected Vector2 moveDirection;
+    [HideInInspector] public Vector3 moveDirection;
 
     protected virtual void Awake()
     {
@@ -14,9 +14,11 @@ public abstract class Actor : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
-    protected void Move(float moveSpeed, Space space = Space.Self)
+    protected void Move(float moveSpeed)
     {
         Vector3 normalizedDirection = moveDirection.normalized;
-        transform.Translate(Time.deltaTime * moveSpeed * normalizedDirection, space);
+
+        transform.Translate(Time.deltaTime * moveSpeed * normalizedDirection, Space.World);
+        transform.eulerAngles = Mathf.Atan2(-normalizedDirection.x, normalizedDirection.y) * Mathf.Rad2Deg * Vector3.forward;
     }
 }

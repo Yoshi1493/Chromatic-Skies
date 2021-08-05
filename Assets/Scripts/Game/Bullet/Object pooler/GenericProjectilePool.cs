@@ -31,6 +31,7 @@ public abstract class GenericProjectilePool<TProjectile> : MonoBehaviour where T
     public void ReturnToPool(int index, TProjectile returningBullet)
     {
         returningBullet.gameObject.SetActive(false);
+        returningBullet.enabled = false;
         bulletPool[index].queue.Enqueue(returningBullet);
     }
 

@@ -17,7 +17,7 @@ public static class ProjectileBehaviour
 
         while (currentLerpTime < lerpTime)
         {
-            p.projectileData.MoveSpeed.CurrentValue = Mathf.Lerp(startSpeed, endSpeed, currentLerpTime / lerpTime);
+            p.MoveSpeed = Mathf.Lerp(startSpeed, endSpeed, currentLerpTime / lerpTime);
 
             currentLerpTime += Time.deltaTime;
             yield return EndOfFrame;
@@ -33,33 +33,12 @@ public static class ProjectileBehaviour
         if (delay > 0f) yield return WaitForSeconds(delay);
 
         float currentLerpTime = 0f;
-        Quaternion startRot = p.transform.rotation;
-        Quaternion endRot = Quaternion.Euler((p.transform.eulerAngles.z + rotateAmount) * Vector3.forward);
+        Vector3 startDir = p.moveDirection;
+        Vector3 endDir = RotateVectorBy(startDir, rotateAmount);
 
-        while (p.transform.rotation != endRot)
+        while (p.moveDirection != endDir)
         {
-            p.transform.rotation = Quaternion.Lerp(startRot, endRot, currentLerpTime / lerpTime);
-
-            currentLerpTime += Time.deltaTime;
-            yield return EndOfFrame;
-        }
-    }
-
-    /// <summary>
-    /// lerps <p.eulerAngles> to (0, 0, <endRotation>), over <lerpTime> seconds.
-    /// </summary>
-    public static IEnumerator RotateTo(this Projectile p, float endRotation, float lerpTime, float delay = 0f)
-    {
-        if (lerpTime <= 0f) yield break;
-        if (delay > 0f) yield return WaitForSeconds(delay);
-
-        float currentLerpTime = 0f;
-        Quaternion startRot = p.transform.rotation;
-        Quaternion endRot = Quaternion.Euler(endRotation * Vector3.forward);
-
-        while (p.transform.rotation != endRot)
-        {
-            p.transform.rotation = Quaternion.Lerp(startRot, endRot, currentLerpTime / lerpTime);
+            p.moveDirection = Vector3.Lerp(startDir, endDir, currentLerpTime / lerpTime);
 
             currentLerpTime += Time.deltaTime;
             yield return EndOfFrame;
@@ -88,22 +67,20 @@ public static class ProjectileBehaviour
     }
 
     /// <summary>
-    /// sets <p.transform.eulerAngles.z> to face towards <target.transform.position>.
-    /// i.e. rotates <p> in a way such that if <p> were to translate by <p.transform.up>, and
-    /// <target.transform.position> remained the same, <p> will eventually collide with <target>
+    /// sets <p.moveDirection> to face towards <target.transform.position>
+    /// i.e. sets <p.moveDirection> such that if <target.transform.position> doesn't change,
+    /// <p> will eventually collide with <target>.
     /// </summary>
-    public static IEnumerator TurnTowards(this Projectile p, Actor target, float delay = 0f)
+    public static IEnumerator LookAt(this Projectile p, Actor target, float delay = 0f)
     {
         if (target == null) yield break;
         if (delay > 0f) yield return WaitForSeconds(delay);
 
-        float zRotation = GetRotationDifference(p.transform.position, target.transform.position);
-        //yield return p.RotateTo(zRotation, 0.5f);
-        p.transform.eulerAngles = zRotation * Vector3.forward;
+        p.moveDirection = target.transform.position - p.transform.position;
     }
 
     /// <summary>
-    /// rotates <p> to continuously turn towards <target.transform.position> for <homingDuration> seconds
+    /// sets <p.moveDirection> to continuously face towards <target.transform.position>, for <homingDuration> seconds.
     /// </summary>
     public static IEnumerator HomeInOn(this Projectile p, Actor target, float homingDuration, float delay = 0f)
     {
@@ -111,10 +88,12 @@ public static class ProjectileBehaviour
         if (delay > 0f) yield return WaitForSeconds(delay);
 
         float currentTime = 0f;
+        Vector3 vel = p.moveDirection;
 
         while (currentTime < homingDuration && target != null)
         {
-            yield return p.TurnTowards(target);
+            Vector3 difference = target.transform.position - p.transform.position;
+            p.moveDirection = Vector3.SmoothDamp(p.moveDirection, difference, ref vel, 0.5f);
 
             currentTime += Time.deltaTime;
             yield return EndOfFrame;
@@ -126,7 +105,7 @@ public static class ProjectileBehaviour
     #region Helpers/Extensions
 
     /// <summary>
-    /// returns the angle (in degrees) that the line created by <pos1> and <pos2> subtends from (0, 0)
+    /// (unused) returns the angle (in degrees) that the line created by <pos1> and <pos2> subtends from (0, 0).
     /// </summary>
     static float GetRotationDifference(Vector2 pos1, Vector2 pos2)
     {
@@ -135,7 +114,7 @@ public static class ProjectileBehaviour
     }
 
     /// <summary>
-    /// rotates <v> anticlockwise by <theta> degrees along the xy plane
+    /// rotates <v> anticlockwise by <theta> degrees along the x-y plane.
     /// </summary>
     static Vector3 RotateVectorBy(Vector3 v, float theta)
     {
@@ -149,7 +128,7 @@ public static class ProjectileBehaviour
     }
 
     /// <summary>
-    /// Debug.Log shortcut. remove later...?
+    /// (remove later?) Debug.Log shortcut. 
     /// </summary>
     static void print(object message) { Debug.Log(message); }
 

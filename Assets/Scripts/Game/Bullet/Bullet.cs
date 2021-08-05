@@ -9,22 +9,14 @@ public abstract class Bullet : Projectile
 
     protected override Collider2D CollisionCondition => Physics2D.OverlapCircle(transform.position, 0.16f);
 
-    protected override void Awake()
+    protected virtual void OnEnable()
     {
-        base.Awake();
-
-        moveDirection = transform.up;
-    }
-
-    protected override void OnEnable()
-    {
-        base.OnEnable();
         currentLifetime = 0;
     }
 
     protected virtual void Update()
     {
-        Move(projectileData.MoveSpeed.CurrentValue);
+        Move(MoveSpeed);
 
         currentLifetime += Time.deltaTime;
         if (currentLifetime > MaxLifetime) Destroy();

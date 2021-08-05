@@ -5,15 +5,17 @@ public abstract class Projectile : Actor
 {
     public ProjectileObject projectileData;
 
+    [SerializeField] float moveSpeed;
+    public float MoveSpeed { get => moveSpeed; set => moveSpeed = value; }
+
     protected abstract Collider2D CollisionCondition { get; }
 
     protected IEnumerator movementBehaviour;
 
-    protected virtual void OnEnable()
+    protected override void Awake()
     {
+        base.Awake();
         spriteRenderer.sprite = projectileData.sprite;
-
-        projectileData.MoveSpeed.CurrentValue = projectileData.MoveSpeed.OriginalValue;
     }
 
     protected void CheckCollisionWith<TShip>() where TShip : Ship

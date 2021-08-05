@@ -15,9 +15,8 @@ public class Laser : Projectile
         originalSize = spriteRenderer.size;
     }
 
-    protected override void OnEnable()
+    protected void OnEnable()
     {
-        base.OnEnable();
         StartCoroutine(Expand());
     }
 

@@ -7,8 +7,13 @@ public abstract class EnemyBullet : Bullet
     {
         base.OnEnable();
 
-        if (movementBehaviour != null) StopCoroutine(movementBehaviour);
+        moveDirection = new Vector2
+            (
+                Mathf.Sin(transform.localEulerAngles.z * Mathf.Deg2Rad),
+                -Mathf.Cos(transform.localEulerAngles.z * Mathf.Deg2Rad)
+            );
 
+        if (movementBehaviour != null) StopCoroutine(movementBehaviour);
         movementBehaviour = Move();
         StartCoroutine(movementBehaviour);
     }

@@ -8,5 +8,4 @@ public class ProjectileObject : ScriptableObject
 
     [Header("Stats")]
     public IntObject Power;
-    public FloatReference MoveSpeed;
 }
