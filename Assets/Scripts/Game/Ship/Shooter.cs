@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,6 +13,8 @@ public abstract class Shooter : MonoBehaviour
 
     protected List<Transform> spawnPositions = new List<Transform>();
 
+    protected IEnumerator shootCoroutine;
+
     protected virtual void Awake()
     {
         ownerShip = GetComponentInParent<Ship>();
@@ -22,8 +25,9 @@ public abstract class Shooter : MonoBehaviour
         }
     }
 
-    protected abstract void SpawnBullet(int bulletIndex, int spawnPositionIndex);
+    protected abstract IEnumerator Shoot();
 
+    //to-do: optimize?
     protected void DestroyAllBullets<T>() where T : Bullet
     {
         T[] bullets = FindObjectsOfType<T>();

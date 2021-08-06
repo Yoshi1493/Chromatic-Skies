@@ -4,7 +4,7 @@ using static CoroutineHelper;
 
 public class VirgoBulletSystem1 : EnemyBulletSystem
 {
-    protected override IEnumerator Start()
+    protected override IEnumerator Shoot()
     {
         EnemyBulletPool.Instance.UpdatePoolableBullets(enemyBullets);
         yield return WaitForSeconds(3f);

@@ -6,9 +6,9 @@ public class AriesBulletSystem1 : EnemyBulletSystem
 {
     Vector3 rotationAmount = 48 * Vector3.forward;
 
-    protected override IEnumerator Start()
+    protected override IEnumerator Shoot()
     {
-        yield return base.Start();
+        yield return base.Shoot();
 
         while (enabled)
         {
@@ -18,7 +18,7 @@ public class AriesBulletSystem1 : EnemyBulletSystem
                 spawnPositions[i].Rotate(rotationAmount);
             }
 
-            yield return WaitForSeconds(ShootingCooldown * 5);
+            yield return WaitForSeconds(ShootingCooldown * 2);
         }
     }
 }

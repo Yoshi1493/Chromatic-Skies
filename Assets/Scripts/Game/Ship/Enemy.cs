@@ -1,14 +1,5 @@
 public class Enemy : Ship
 {
-    EnemyBulletSystem[] enemyBulletSystems;
-
-    protected override void Awake()
-    {
-        base.Awake();
-
-        enemyBulletSystems = GetComponentsInChildren<EnemyBulletSystem>(true);
-    }
-
     protected override void LoseLife()
     {
         int currentSystem = shipData.Lives.OriginalValue - shipData.Lives.CurrentValue;
@@ -17,8 +8,19 @@ public class Enemy : Ship
 
         if (shipData.Lives.CurrentValue > 0)
         {
-            enemyBulletSystems[currentSystem].enabled = false;
-            enemyBulletSystems[currentSystem + 1].enabled = true;
+            var currentEnemyShooters = transform.GetChild(currentSystem).GetComponents<EnemyShooter>();
+            var nextEnemyShooters = transform.GetChild(currentSystem + 1).GetComponents<EnemyShooter>();
+
+            for (int i = 0; i < currentEnemyShooters.Length; i++)
+            {
+                currentEnemyShooters[i].enabled = false;
+            }
+
+            for (int i = 0; i < nextEnemyShooters.Length; i++)
+            {
+                nextEnemyShooters[i].enabled = true;
+            }
+
         }
     }
 

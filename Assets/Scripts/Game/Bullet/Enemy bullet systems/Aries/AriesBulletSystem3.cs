@@ -3,13 +3,12 @@ using static CoroutineHelper;
 
 public class AriesBulletSystem3 : EnemyBulletSystem
 {
-    protected override IEnumerator Start()
+    protected override IEnumerator Shoot()
     {
-        yield return base.Start();
+        yield return base.Shoot();
 
         while (true)
         {
-            SpawnLaser();
             yield return null;
             break;
         }

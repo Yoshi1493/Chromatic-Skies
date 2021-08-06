@@ -4,7 +4,7 @@ using static CoroutineHelper;
 
 public class GeminiBulletSystem6 : EnemyBulletSystem
 {
-    protected override IEnumerator Start()
+    protected override IEnumerator Shoot()
     {
 		while (true)
 		{

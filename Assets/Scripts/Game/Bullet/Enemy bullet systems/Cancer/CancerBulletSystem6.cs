@@ -4,7 +4,7 @@ using static CoroutineHelper;
 
 public class CancerBulletSystem6 : EnemyBulletSystem
 {
-    protected override IEnumerator Start()
+    protected override IEnumerator Shoot()
     {
 		while (true)
 		{

@@ -6,15 +6,14 @@ using static CoroutineHelper;
 public class PlayerShooter : Shooter
 {
     [SerializeField] List<PlayerBullet> playerBullets = new List<PlayerBullet>();
-    bool canShoot = true;
-
-    IEnumerator shootCoroutine;
+    bool canShoot = true;    
 
     protected override void Awake()
     {
         base.Awake();
 
         PlayerBulletPool.Instance.UpdatePoolableBullets(playerBullets);
+        ownerShip.LoseLifeAction += DestroyAllBullets<PlayerBullet>;
     }
 
     void Update()
@@ -33,7 +32,7 @@ public class PlayerShooter : Shooter
         }
     }
 
-    IEnumerator Shoot()
+    protected override IEnumerator Shoot()
     {
         SpawnBullet(0, 0);
 
@@ -42,7 +41,7 @@ public class PlayerShooter : Shooter
         canShoot = true;
     }
 
-    protected override void SpawnBullet(int bulletIndex, int spawnPositionIndex)
+    void SpawnBullet(int bulletIndex, int spawnPositionIndex)
     {
         if (spawnPositionIndex >= spawnPositions.Count) return;
 
