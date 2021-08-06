@@ -50,5 +50,6 @@ public class PlayerShooter : Shooter
 
         newBullet.transform.SetPositionAndRotation(spawnPositions[spawnPositionIndex].position, spawnPositions[spawnPositionIndex].rotation);
         newBullet.gameObject.SetActive(true);
+        newBullet.enabled = true;
     }
 }
