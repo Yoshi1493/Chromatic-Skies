@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,10 +12,10 @@ public abstract class EnemyBulletSystem : EnemyShooter
         ownerShip.LoseLifeAction += DestroyAllBullets<EnemyBullet>;
     }
 
-    protected override void OnEnable()
+    protected override IEnumerator Shoot()
     {
+        yield return base.Shoot();
         if (enemyBullets.Count > 0) EnemyBulletPool.Instance.UpdatePoolableBullets(enemyBullets);
-        base.OnEnable();
     }
 
     protected virtual void SpawnBullet(int bulletIndex, float zRotation, Vector2 offset)

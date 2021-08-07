@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,10 +12,10 @@ public abstract class EnemyLaserSystem : EnemyShooter
         ownerShip.LoseLifeAction += DestroyAllLasers;
     }
 
-    protected override void OnEnable()
+    protected override IEnumerator Shoot()
     {
+        yield return base.Shoot();
         if (enemyLasers.Count > 0) EnemyLaserPool.Instance.UpdatePoolableBullets(enemyLasers);
-        base.OnEnable();
     }
 
     protected void SpawnLaser(float zRotation, Vector2 offset)

@@ -28,6 +28,8 @@ public class AriesBulletSystem1 : EnemyBulletSystem
             SpawnBullet(0, z, transform.up.RotateVectorBy(z));
         }
 
+        //to-do: move to random position
+
         enabled = false;
     }
 }

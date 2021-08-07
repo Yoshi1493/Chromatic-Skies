@@ -8,17 +8,20 @@ public class AriesBulletSystem2 : EnemyBulletSystem
     {
         yield return base.Shoot();
 
-        float rotateAmount = 12f;
+        float rotationAmount = 12f;
 
-        while(enabled)
+        for (int i = 0; i < 120; i++)
         {
-            //spawnPositions[0].RotateAround(transform.parent.position, Vector3.forward, rotateAmount);
-            //spawnPositions[1].RotateAround(transform.parent.position, Vector3.forward, rotateAmount);
-            //
-            //SpawnBullet(0, 0);
-            //SpawnBullet(0, 1);
+            float z = i * rotationAmount;
+            SpawnBullet(0, i * z, transform.up.RotateVectorBy(z));
+            //z += 180;
+            //SpawnBullet(0, i * z, transform.up.RotateVectorBy(z));
 
             yield return WaitForSeconds(ShootingCooldown);
         }
+
+        //to-do: move to random position
+
+        enabled = false;
     }
 }
