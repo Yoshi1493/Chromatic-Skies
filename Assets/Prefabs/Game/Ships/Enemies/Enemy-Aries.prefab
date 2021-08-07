@@ -28,38 +28,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 69157791175380470}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 240}
---- !u!1 &2777677772256771983
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 5225891552984013706}
-  m_Layer: 0
-  m_Name: Bullet spawn (1)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &5225891552984013706
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2777677772256771983}
-  m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
-  m_LocalPosition: {x: 0, y: -0.5, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 3969001044321706296}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 240}
 --- !u!114 &128075153667926313
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -77,7 +47,6 @@ MonoBehaviour:
     currentValue: {fileID: 11400000, guid: a9486c0c650b1d84b81d322b4fdc8ea4, type: 2}
   enemyBullets:
   - {fileID: 4306924079981974777, guid: 8b54e718cec9c244a9aec8fc1a672285, type: 3}
-  enemyLasers: []
 --- !u!114 &422821353119271399
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -95,7 +64,6 @@ MonoBehaviour:
     currentValue: {fileID: 11400000, guid: a9486c0c650b1d84b81d322b4fdc8ea4, type: 2}
   enemyBullets:
   - {fileID: 4306924079981974777, guid: 8b54e718cec9c244a9aec8fc1a672285, type: 3}
-  enemyLasers: []
 --- !u!114 &2183790766497786274
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -112,8 +80,6 @@ MonoBehaviour:
     OriginalValue: 12
     currentValue: {fileID: 11400000, guid: a9486c0c650b1d84b81d322b4fdc8ea4, type: 2}
   enemyBullets: []
-  enemyLasers:
-  - {fileID: 2562767536430038447, guid: 5d797c0017d837a4fa2500bffc74ccd1, type: 3}
 --- !u!114 &3423319589002309112
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -131,7 +97,6 @@ MonoBehaviour:
     currentValue: {fileID: 11400000, guid: a9486c0c650b1d84b81d322b4fdc8ea4, type: 2}
   enemyBullets:
   - {fileID: 0}
-  enemyLasers: []
 --- !u!114 &3502183521797634749
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -149,7 +114,6 @@ MonoBehaviour:
     currentValue: {fileID: 11400000, guid: a9486c0c650b1d84b81d322b4fdc8ea4, type: 2}
   enemyBullets:
   - {fileID: 0}
-  enemyLasers: []
 --- !u!114 &7400039832758560403
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -167,7 +131,6 @@ MonoBehaviour:
     currentValue: {fileID: 11400000, guid: a9486c0c650b1d84b81d322b4fdc8ea4, type: 2}
   enemyBullets:
   - {fileID: 0}
-  enemyLasers: []
 --- !u!1 &7901895281497869503
 GameObject:
   m_ObjectHideFlags: 0
@@ -196,7 +159,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 69157791175380470}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 120}
 --- !u!1001 &5337197869581096772
 PrefabInstance:
@@ -285,11 +248,6 @@ Transform:
 --- !u!1 &2571762796076018676 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7611423722439146672, guid: d93cb44e21569f545b76560b29579f98, type: 3}
-  m_PrefabInstance: {fileID: 5337197869581096772}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &3969001044321706296 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 9008659700516484732, guid: d93cb44e21569f545b76560b29579f98, type: 3}
   m_PrefabInstance: {fileID: 5337197869581096772}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &3773574035635707974 stripped
