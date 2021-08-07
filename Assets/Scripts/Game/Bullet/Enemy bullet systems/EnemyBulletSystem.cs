@@ -17,15 +17,13 @@ public abstract class EnemyBulletSystem : EnemyShooter
         base.OnEnable();
     }
 
-    protected virtual void SpawnBullet(int bulletIndex, int spawnPositionIndex)
+    protected virtual void SpawnBullet(int bulletIndex, float zRotation, Vector2 offset)
     {
         if (!enabled) return;
 
         var newBullet = EnemyBulletPool.Instance.Get(bulletIndex);
-        Transform spawnTransform = spawnPositions[spawnPositionIndex];
 
-        Vector3 posOffset = spawnTransform.up;
-        newBullet.transform.SetPositionAndRotation(spawnTransform.position + posOffset, spawnTransform.localRotation);
+        newBullet.transform.SetPositionAndRotation(ShipPosition + offset, Quaternion.Euler(0, 0, zRotation));
         newBullet.gameObject.SetActive(true);
         newBullet.enabled = true;
     }

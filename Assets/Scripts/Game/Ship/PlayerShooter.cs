@@ -34,20 +34,18 @@ public class PlayerShooter : Shooter
 
     protected override IEnumerator Shoot()
     {
-        SpawnBullet(0, 0);
+        SpawnBullet(transform.up);
 
         canShoot = false;
         yield return WaitForSeconds(ShootingCooldown);
         canShoot = true;
     }
 
-    void SpawnBullet(int bulletIndex, int spawnPositionIndex)
+    void SpawnBullet(Vector2 offset)
     {
-        if (spawnPositionIndex >= spawnPositions.Count) return;
+        var newBullet = PlayerBulletPool.Instance.Get(0);
 
-        var newBullet = PlayerBulletPool.Instance.Get(bulletIndex);
-
-        newBullet.transform.SetPositionAndRotation(spawnPositions[spawnPositionIndex].position, spawnPositions[spawnPositionIndex].rotation);
+        newBullet.transform.SetPositionAndRotation(ShipPosition + offset, Quaternion.identity);
         newBullet.gameObject.SetActive(true);
         newBullet.enabled = true;
     }

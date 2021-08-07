@@ -34,7 +34,7 @@ public static class ProjectileBehaviour
 
         float currentLerpTime = 0f;
         Vector3 startDir = p.moveDirection;
-        Vector3 endDir = RotateVectorBy(startDir, rotateAmount);
+        Vector3 endDir = startDir.RotateVectorBy(rotateAmount);
 
         while (p.moveDirection != endDir)
         {
@@ -58,7 +58,8 @@ public static class ProjectileBehaviour
         while (currentTime < rotateDuration)
         {
             Vector3 targetPos = target.transform.position;
-            Vector3 difference = RotateVectorBy(p.transform.position - targetPos, rotateSpeed * Time.deltaTime);
+            Vector3 distance = p.transform.position - targetPos;
+            Vector3 difference = distance.RotateVectorBy(rotateSpeed * Time.deltaTime);
 
             p.transform.position = targetPos + difference;
             currentTime += Time.deltaTime;
@@ -116,7 +117,7 @@ public static class ProjectileBehaviour
     /// <summary>
     /// rotates <v> anticlockwise by <theta> degrees along the x-y plane.
     /// </summary>
-    static Vector3 RotateVectorBy(Vector3 v, float theta)
+    public static Vector3 RotateVectorBy(this Vector3 v, float theta)
     {
         Vector3 _v = v;
         float theta_r = theta * Mathf.Deg2Rad;

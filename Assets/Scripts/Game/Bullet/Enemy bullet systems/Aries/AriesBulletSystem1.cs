@@ -4,21 +4,30 @@ using static CoroutineHelper;
 
 public class AriesBulletSystem1 : EnemyBulletSystem
 {
-    Vector3 rotationAmount = 48 * Vector3.forward;
+    float rotationAmount = 48;
+    float staggerAmount = 120;
 
     protected override IEnumerator Shoot()
     {
         yield return base.Shoot();
 
-        while (enabled)
+        for (int i = 0; i < 15; i++)
         {
-            for (int i = 0; i < spawnPositions.Count; i++)
+            for (int j = 0; j < 3; j++)
             {
-                SpawnBullet(0, i);
-                spawnPositions[i].Rotate(rotationAmount);
+                float z = (i * rotationAmount) + (j * staggerAmount);
+                SpawnBullet(0, z, transform.up.RotateVectorBy(z));
             }
 
             yield return WaitForSeconds(ShootingCooldown * 2);
         }
+
+        for (int i = 0; i < 15; i++)
+        {
+            float z = (i * 24) + 12;
+            SpawnBullet(0, z, transform.up.RotateVectorBy(z));
+        }
+
+        enabled = false;
     }
 }

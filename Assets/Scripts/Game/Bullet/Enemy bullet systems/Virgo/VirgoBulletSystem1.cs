@@ -11,12 +11,14 @@ public class VirgoBulletSystem1 : EnemyBulletSystem
 
         float goldenRatio = (1 + Mathf.Sqrt(5)) * 180;
 
+        int i = 0;
         while (enabled)
         {
-            spawnPositions[0].Rotate(goldenRatio * Vector3.forward);
-            SpawnBullet(0, 0);
+            float z = i * goldenRatio;
+            SpawnBullet(0, z, transform.up.RotateVectorBy(z));
 
             yield return WaitForSeconds(ShootingCooldown);
+            i++;
         }
     }
 }

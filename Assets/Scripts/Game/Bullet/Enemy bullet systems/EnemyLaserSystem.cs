@@ -17,14 +17,15 @@ public abstract class EnemyLaserSystem : EnemyShooter
         base.OnEnable();
     }
 
-    protected void SpawnLaser()
+    protected void SpawnLaser(float zRotation, Vector2 offset)
     {
         if (!enabled) return;
 
         var newLaser = EnemyLaserPool.Instance.Get(0);
 
-        newLaser.transform.SetPositionAndRotation(spawnPositions[0].position, spawnPositions[0].rotation);
+        newLaser.transform.SetPositionAndRotation(ShipPosition + offset, Quaternion.Euler(0, 0, zRotation));
         newLaser.gameObject.SetActive(true);
+        newLaser.enabled = true;
     }
 
     void DestroyAllLasers()
