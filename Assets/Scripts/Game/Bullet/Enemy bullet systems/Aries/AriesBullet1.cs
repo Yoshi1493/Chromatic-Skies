@@ -5,7 +5,7 @@ public class AriesBullet1 : EnemyBullet
 {
     protected override IEnumerator Move()
     {
-        StartCoroutine(this.ChangeSpeed(4, 1, 2));
+        StartCoroutine(this.ChangeSpeed(4, 2, 2));
 
         while (enabled)
         {

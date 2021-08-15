@@ -17,6 +17,7 @@ MonoBehaviour:
     currentValue: {fileID: 11400000, guid: a9486c0c650b1d84b81d322b4fdc8ea4, type: 2}
   enemyBullets:
   - {fileID: 4306924079981974777, guid: 8b54e718cec9c244a9aec8fc1a672285, type: 3}
+  - {fileID: 3252495310980902515, guid: fbdbe60d3ea841247910ba12fafc67a9, type: 3}
 --- !u!114 &422821353119271399
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33,7 +34,7 @@ MonoBehaviour:
     OriginalValue: 10
     currentValue: {fileID: 11400000, guid: a9486c0c650b1d84b81d322b4fdc8ea4, type: 2}
   enemyBullets:
-  - {fileID: 4306924079981974777, guid: 8b54e718cec9c244a9aec8fc1a672285, type: 3}
+  - {fileID: 3252495310980902515, guid: fbdbe60d3ea841247910ba12fafc67a9, type: 3}
 --- !u!114 &2183790766497786274
 MonoBehaviour:
   m_ObjectHideFlags: 0

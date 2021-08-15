@@ -13,9 +13,9 @@ public class AriesBulletSystem2 : EnemyBulletSystem
         for (int i = 0; i < 120; i++)
         {
             float z = i * rotationAmount;
-            SpawnBullet(0, i * z, transform.up.RotateVectorBy(z));
-            //z += 180;
-            //SpawnBullet(0, i * z, transform.up.RotateVectorBy(z));
+            SpawnBullet(0, z, transform.up.RotateVectorBy(z));
+            z += 186;
+            SpawnBullet(0, z, transform.up.RotateVectorBy(z));
 
             yield return WaitForSeconds(ShootingCooldown);
         }
