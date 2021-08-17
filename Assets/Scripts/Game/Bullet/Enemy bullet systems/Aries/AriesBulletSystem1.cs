@@ -22,8 +22,8 @@ public class AriesBulletSystem1 : EnemyBulletSystem
             yield return WaitForSeconds(ShootingCooldown * 2);
         }
 
-        //to-do: move to random position
+        yield return ownerShip.MoveToRandomPosition(1, 1);
 
-        enabled = false;
+        //enabled = false;
     }
 }
