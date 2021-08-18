@@ -20,7 +20,6 @@ public class Enemy : Ship
             {
                 nextEnemyShooters[i].enabled = true;
             }
-
         }
     }
 

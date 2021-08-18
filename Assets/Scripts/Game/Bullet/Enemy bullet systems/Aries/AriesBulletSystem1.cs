@@ -4,9 +4,6 @@ using static CoroutineHelper;
 
 public class AriesBulletSystem1 : EnemyBulletSystem
 {
-    const float RotationAmount = 45;
-    const float StaggerAmount = 120;
-
     protected override IEnumerator Shoot()
     {
         yield return base.Shoot();
