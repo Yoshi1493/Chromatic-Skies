@@ -12,7 +12,7 @@ public class PlayerShooter : Shooter
     {
         base.Awake();
 
-        PlayerBulletPool.Instance.UpdatePoolableBullets(playerBullets);
+        PlayerBulletPool.Instance.UpdatePoolableObjects(playerBullets);
         ownerShip.LoseLifeAction += DestroyAllBullets<PlayerBullet>;
     }
 

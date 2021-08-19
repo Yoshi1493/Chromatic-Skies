@@ -51,7 +51,7 @@ public class Laser : Projectile
 
     public override void Destroy()
     {
-        EnemyLaserPool.Instance.ReturnToPool(0, this);
+        EnemyLaserPool.Instance.ReturnToPool(this);
     }
 
     //void OnDrawGizmos()

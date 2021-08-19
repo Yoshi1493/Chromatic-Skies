@@ -15,7 +15,7 @@ public abstract class EnemyLaserSystem : EnemyShooter
     protected override IEnumerator Shoot()
     {
         yield return base.Shoot();
-        if (enemyLasers.Count > 0) EnemyLaserPool.Instance.UpdatePoolableBullets(enemyLasers);
+        if (enemyLasers.Count > 0) EnemyLaserPool.Instance.UpdatePoolableObjects(enemyLasers);
     }
 
     protected void SpawnLaser(float zRotation, Vector2 offset)

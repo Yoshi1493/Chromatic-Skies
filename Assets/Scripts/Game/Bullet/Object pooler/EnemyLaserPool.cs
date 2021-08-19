@@ -1,4 +1,4 @@
-public class EnemyLaserPool : GenericProjectilePool<Laser>
+public class EnemyLaserPool : GenericObjectPool<Laser>
 {
 
 }

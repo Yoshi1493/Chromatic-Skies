@@ -10,8 +10,7 @@ public abstract class EnemyBulletSystem : EnemyShooter
     {
         yield return base.Shoot();
 
-        for (int i = 0; i < enemyBullets.Count; i++) { enemyBullets[i].BulletIndex = i; }
-        if (enemyBullets.Count > 0) EnemyBulletPool.Instance.UpdatePoolableBullets(enemyBullets);
+        if (enemyBullets.Count > 0) EnemyBulletPool.Instance.UpdatePoolableObjects(enemyBullets);
 
         ownerShip.LoseLifeAction += OnLoseLife;
     }

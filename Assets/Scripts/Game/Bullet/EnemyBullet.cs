@@ -26,7 +26,7 @@ public abstract class EnemyBullet : Bullet
 
     public override void Destroy()
     {
-        EnemyBulletPool.Instance.ReturnToPool(BulletIndex, this);
+        EnemyBulletPool.Instance.ReturnToPool(this);
     }
 
     protected abstract IEnumerator Move();
