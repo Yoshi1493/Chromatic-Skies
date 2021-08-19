@@ -7,6 +7,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4768422070276441097, guid: c97d5c4695dca31449990c95a6810900, type: 3}
+      propertyPath: shootingSpeed
+      value: 
+      objectReference: {fileID: 11400000, guid: 8d68258977ea0664bac5db3857bff021, type: 2}
+    - target: {fileID: 4768422070276441097, guid: c97d5c4695dca31449990c95a6810900, type: 3}
+      propertyPath: playerBullets.Array.data[0]
+      value: 
+      objectReference: {fileID: 8117213998222733804, guid: ed232f7dba8d56945bbb59c548fa4982, type: 3}
     - target: {fileID: 5651153232659691468, guid: c97d5c4695dca31449990c95a6810900, type: 3}
       propertyPath: m_Color.b
       value: 0

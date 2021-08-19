@@ -6,8 +6,8 @@ public abstract class Shooter : MonoBehaviour
     protected Ship ownerShip;
     protected Vector2 ShipPosition => ownerShip.transform.position;
 
-    [SerializeField] protected FloatReference shootingSpeed;
-    protected float ShootingSpeed => shootingSpeed.CurrentValue;
+    [SerializeField] protected FloatObject shootingSpeed;
+    protected float ShootingSpeed => shootingSpeed.value;
     protected virtual float ShootingCooldown => ShootingSpeed == 0 ? 0 : 1 / ShootingSpeed;
 
     protected IEnumerator shootCoroutine;
