@@ -3,10 +3,8 @@ using UnityEngine;
 
 public abstract class EnemyBullet : Bullet
 {
-    protected override void OnEnable()
+    void OnEnable()
     {
-        base.OnEnable();
-
         moveDirection = new Vector2
             (
                 Mathf.Sin(transform.localEulerAngles.z * Mathf.Deg2Rad),

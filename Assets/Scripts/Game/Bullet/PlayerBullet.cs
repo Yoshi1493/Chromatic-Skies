@@ -2,9 +2,8 @@ using UnityEngine;
 
 public class PlayerBullet : Bullet
 {
-    protected override void OnEnable()
+    void OnEnable()
     {
-        base.OnEnable();
         moveDirection = transform.up;
     }
 
