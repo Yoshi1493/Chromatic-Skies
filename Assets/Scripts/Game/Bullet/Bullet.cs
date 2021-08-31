@@ -2,12 +2,26 @@ using UnityEngine;
 
 public abstract class Bullet : Projectile
 {
+    const float MaxLifeTime = 5f;
+    float currentLifetime;
+
     float HitboxSize => spriteRenderer.size.x / 2;
     protected override Collider2D CollisionCondition => Physics2D.OverlapCircle(transform.position, HitboxSize);
+
+    protected virtual void OnEnable()
+    {
+        currentLifetime = 0;
+    }
 
     protected virtual void Update()
     {
         Move(MoveSpeed);
+
+        currentLifetime += Time.deltaTime;
+        if (currentLifetime > MaxLifeTime)
+        {
+            Destroy();
+        }
     }
 
     protected override void HandleCollisionWithShip<TShip>(Collider2D coll)
@@ -20,11 +34,6 @@ public abstract class Bullet : Projectile
     {
         base.Move(moveSpeed);
         transform.eulerAngles = Mathf.Atan2(-moveDirection.x, moveDirection.y) * Mathf.Rad2Deg * Vector3.forward;
-    }
-
-    void OnBecameInvisible()
-    {
-        Destroy();
     }
 
     public abstract override void Destroy();

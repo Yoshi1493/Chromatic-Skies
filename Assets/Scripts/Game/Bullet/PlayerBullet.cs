@@ -2,8 +2,9 @@ using UnityEngine;
 
 public class PlayerBullet : Bullet
 {
-    void OnEnable()
+    protected override void OnEnable()
     {
+        base.OnEnable();
         moveDirection = transform.up;
     }
 
@@ -15,6 +16,7 @@ public class PlayerBullet : Bullet
 
     public override void Destroy()
     {
+        if (movementBehaviour != null) StopCoroutine(movementBehaviour);
         PlayerBulletPool.Instance.ReturnToPool(this);
     }
 }

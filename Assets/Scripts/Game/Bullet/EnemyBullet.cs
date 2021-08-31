@@ -3,8 +3,10 @@ using UnityEngine;
 
 public abstract class EnemyBullet : Bullet
 {
-    void OnEnable()
+    protected override void OnEnable()
     {
+        base.OnEnable();
+
         moveDirection = new Vector2
             (
                 Mathf.Sin(transform.localEulerAngles.z * Mathf.Deg2Rad),
@@ -16,6 +18,11 @@ public abstract class EnemyBullet : Bullet
         StartCoroutine(movementBehaviour);
     }
 
+    void Start()
+    {
+        transform.name += transform.GetSiblingIndex();
+    }
+
     protected override void Update()
     {
         base.Update();
@@ -24,6 +31,7 @@ public abstract class EnemyBullet : Bullet
 
     public override void Destroy()
     {
+        if (movementBehaviour != null) StopCoroutine(movementBehaviour);
         EnemyBulletPool.Instance.ReturnToPool(this);
     }
 

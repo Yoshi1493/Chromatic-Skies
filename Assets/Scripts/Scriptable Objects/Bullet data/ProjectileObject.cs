@@ -7,5 +7,6 @@ public class ProjectileObject : ScriptableObject
     public Sprite sprite;
 
     [Header("Stats")]
+    public int BulletID;
     public IntObject Power;
 }

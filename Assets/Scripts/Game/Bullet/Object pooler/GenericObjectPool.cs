@@ -5,6 +5,7 @@ public abstract class GenericObjectPool<TProjectile> : MonoBehaviour where TProj
 {
     public static GenericObjectPool<TProjectile> Instance { get; private set; }
 
+    const int PoolCap = 256;
     List<(TProjectile projectile, Queue<TProjectile> queue)> objectPool = new List<(TProjectile, Queue<TProjectile>)>();
 
     void Awake()
@@ -18,14 +19,21 @@ public abstract class GenericObjectPool<TProjectile> : MonoBehaviour where TProj
 
         for (int i = 0; i < projectiles.Count; i++)
         {
-            objectPool.Add((projectiles[i], new Queue<TProjectile>()));
+            objectPool.Add((projectiles[i], new Queue<TProjectile>(PoolCap)));
+
+            //for (int j = 0; j < PoolLimit; j++)
+            //{
+            //    ExpandPool(i);
+            //}
         }
     }
 
-    public TProjectile Get(int index)
+    public TProjectile Get(int ID)
     {
-        if (objectPool[index].queue.Count == 0) ExpandPool(index);
-        return objectPool[index].queue.Dequeue();
+        if (objectPool[ID].queue.Count == 0) CreateNew(ID);
+
+        var projectile = objectPool[ID].queue.Dequeue();
+        return projectile;
     }
 
     public void ReturnToPool(TProjectile returningObject)
@@ -33,20 +41,15 @@ public abstract class GenericObjectPool<TProjectile> : MonoBehaviour where TProj
         returningObject.gameObject.SetActive(false);
         returningObject.enabled = false;
 
-        for (int i = 0; i < objectPool.Count; i++)
-        {
-            if (objectPool[i].projectile.GetType() == returningObject.GetType())
-            {
-                objectPool[i].queue.Enqueue(returningObject);
-            }
-        }
+        objectPool[returningObject.projectileData.BulletID].queue.Enqueue(returningObject);
     }
 
-    void ExpandPool(int index)
+    void CreateNew(int ID)
     {
-        TProjectile newProjectile = Instantiate(objectPool[index].projectile, transform);
+        TProjectile newProjectile = Instantiate(objectPool[ID].projectile, transform);
         newProjectile.gameObject.SetActive(false);
+        newProjectile.enabled = false;
 
-        objectPool[index].queue.Enqueue(newProjectile);
+        objectPool[ID].queue.Enqueue(newProjectile);
     }
 }

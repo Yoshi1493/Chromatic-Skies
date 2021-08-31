@@ -13,8 +13,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shootingSpeed: {fileID: 11400000, guid: a9486c0c650b1d84b81d322b4fdc8ea4, type: 2}
-  enemyBullets:
-  - {fileID: 1763755258045238543, guid: 8e9ffeb01425de14283a7aa6979dd0b2, type: 3}
 --- !u!114 &3747407605611651555
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28,9 +26,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shootingSpeed: {fileID: 11400000, guid: a9486c0c650b1d84b81d322b4fdc8ea4, type: 2}
-  enemyBullets:
-  - {fileID: 4306924079981974777, guid: 8b54e718cec9c244a9aec8fc1a672285, type: 3}
-  - {fileID: 3252495310980902515, guid: fbdbe60d3ea841247910ba12fafc67a9, type: 3}
 --- !u!114 &2183790766497786274
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -44,8 +39,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shootingSpeed: {fileID: 11400000, guid: a9486c0c650b1d84b81d322b4fdc8ea4, type: 2}
-  enemyBullets:
-  - {fileID: 0}
 --- !u!114 &3423319589002309112
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -59,8 +52,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shootingSpeed: {fileID: 11400000, guid: a9486c0c650b1d84b81d322b4fdc8ea4, type: 2}
-  enemyBullets:
-  - {fileID: 0}
 --- !u!114 &3502183521797634749
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -74,8 +65,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shootingSpeed: {fileID: 11400000, guid: a9486c0c650b1d84b81d322b4fdc8ea4, type: 2}
-  enemyBullets:
-  - {fileID: 0}
 --- !u!114 &7400039832758560403
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -89,8 +78,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shootingSpeed: {fileID: 11400000, guid: a9486c0c650b1d84b81d322b4fdc8ea4, type: 2}
-  enemyBullets:
-  - {fileID: 0}
 --- !u!1001 &5337197869581096772
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -106,6 +93,22 @@ PrefabInstance:
       propertyPath: shipData
       value: 
       objectReference: {fileID: 11400000, guid: c3f8016a8b24a984cb0d1bf54bf9c153, type: 2}
+    - target: {fileID: 3922465162775491505, guid: d93cb44e21569f545b76560b29579f98, type: 3}
+      propertyPath: enemyBullets.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3922465162775491505, guid: d93cb44e21569f545b76560b29579f98, type: 3}
+      propertyPath: enemyBullets.Array.data[0]
+      value: 
+      objectReference: {fileID: 4306924079981974777, guid: 8b54e718cec9c244a9aec8fc1a672285, type: 3}
+    - target: {fileID: 3922465162775491505, guid: d93cb44e21569f545b76560b29579f98, type: 3}
+      propertyPath: enemyBullets.Array.data[1]
+      value: 
+      objectReference: {fileID: 3252495310980902515, guid: fbdbe60d3ea841247910ba12fafc67a9, type: 3}
+    - target: {fileID: 3922465162775491505, guid: d93cb44e21569f545b76560b29579f98, type: 3}
+      propertyPath: enemyBullets.Array.data[2]
+      value: 
+      objectReference: {fileID: 1763755258045238543, guid: 8e9ffeb01425de14283a7aa6979dd0b2, type: 3}
     - target: {fileID: 4336286228127436173, guid: d93cb44e21569f545b76560b29579f98, type: 3}
       propertyPath: m_Name
       value: Enemy-Aries
