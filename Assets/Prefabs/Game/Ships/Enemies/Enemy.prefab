@@ -135,6 +135,7 @@ MonoBehaviour:
   transform: {fileID: 0}
   moveDirection: {x: 0, y: 0, z: 0}
   shipData: {fileID: 0}
+  enemyBullets: []
 --- !u!1 &7611423722439146672
 GameObject:
   m_ObjectHideFlags: 0

@@ -6,34 +6,35 @@ public class AriesBulletSystem1 : EnemyBulletSystem
 {
     protected override IEnumerator Shoot()
     {
-        yield return base.Shoot();
-
-        for (int i = 0; i < 48; i++)
+        while (enabled)
         {
-            for (int j = 0; j < 3; j++)
+            yield return base.Shoot();
+
+            for (int i = 0; i < 48; i++)
             {
-                float z = (i * 45) + (j * 120);
-                SpawnBullet(0, z, transform.up.RotateVectorBy(z));
+                for (int j = 0; j < 3; j++)
+                {
+                    float z = (i * 45) + (j * 120);
+                    SpawnBullet(0, z, transform.up.RotateVectorBy(z));
+                }
+
+                yield return WaitForSeconds(ShootingCooldown);
             }
 
-            yield return WaitForSeconds(ShootingCooldown);
-        }
+            yield return WaitForSeconds(ShootingCooldown * 2);
 
-        yield return WaitForSeconds(ShootingCooldown * 2);
-
-        for (int i = 0; i < 3; i++)
-        {
-            for (int j = 0; j < 30; j++)
+            for (int i = 0; i < 3; i++)
             {
-                float z = j * 12 + (i * 6);
-                SpawnBullet(1, z, Vector2.zero);
+                for (int j = 0; j < 30; j++)
+                {
+                    float z = j * 12 + (i * 6);
+                    SpawnBullet(1, z, Vector2.zero);
+                }
+
+                yield return WaitForSeconds(ShootingCooldown * 5);
             }
 
-            yield return WaitForSeconds(ShootingCooldown * 5);
+            yield return ownerShip.MoveToRandomPosition(1, 1);
         }
-
-        yield return ownerShip.MoveToRandomPosition(1, 1);
-
-        OnEnable();
     }
 }

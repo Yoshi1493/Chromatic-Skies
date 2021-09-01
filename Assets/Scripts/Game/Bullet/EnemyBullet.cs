@@ -3,6 +3,9 @@ using UnityEngine;
 
 public abstract class EnemyBullet : Bullet
 {
+    protected Enemy ownerShip;
+    protected Player playerShip;
+
     protected override void OnEnable()
     {
         base.OnEnable();
@@ -20,7 +23,8 @@ public abstract class EnemyBullet : Bullet
 
     void Start()
     {
-        transform.name += transform.GetSiblingIndex();
+        ownerShip = FindObjectOfType<Enemy>();
+        playerShip = FindObjectOfType<Player>();
     }
 
     protected override void Update()

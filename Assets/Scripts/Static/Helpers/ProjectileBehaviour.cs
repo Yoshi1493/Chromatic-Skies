@@ -13,6 +13,13 @@ public static class ProjectileBehaviour
     {
         if (delay > 0f) yield return WaitForSeconds(delay);
 
+        // if lerpTime is not a viable value to lerp with, just set speed to endSpeed immediately
+        if (lerpTime <= 0f)
+        {
+            p.MoveSpeed = endSpeed;
+            yield break;
+        }
+
         float currentLerpTime = 0f;
 
         while (currentLerpTime < lerpTime)
@@ -46,20 +53,47 @@ public static class ProjectileBehaviour
     }
 
     /// <summary>
-    /// translates <p> such that it looks like it is orbiting around <target.transform.position>, at <rotateSpeed> degrees per second, for <rotateDuration> seconds.
+    /// rotates <p> around <target.transform.position> by <degreesPerSecond> degrees per second, for <rotateDuration> seconds
     /// </summary>
-    public static IEnumerator RotateAround(this Projectile p, Actor target, float rotateDuration, float rotateSpeed, float delay = 0f)
+    public static IEnumerator RotateAround(this Projectile p, Actor target, float rotateDuration, float degreesPerSecond, float delay = 0f)
     {
         if (target == null || rotateDuration <= 0f) yield break;
         if (delay > 0f) yield return WaitForSeconds(delay);
 
         float currentTime = 0f;
 
+        Vector3 difference = p.transform.position - target.transform.position;
+
         while (currentTime < rotateDuration)
         {
-            Vector3 targetPos = target.transform.position;
+            Vector3 newDirection = difference.RotateVectorBy(currentTime * degreesPerSecond);
+            p.moveDirection = newDirection;
+
+            //RotateVectorBy(ref difference, degreesPerSecond * Time.deltaTime);
+            currentTime += Time.deltaTime;
+            yield return EndOfFrame;
+        }
+
+        p.moveDirection = difference.RotateVectorBy(rotateDuration * degreesPerSecond);
+    }
+
+    /// <summary>
+    /// translates <p> such that it looks like it is orbiting <target.transform.position>, at <rotateSpeed> degrees per second, for <rotateDuration> seconds.
+    /// </summary>
+    public static IEnumerator TranslateAround(this Projectile p, Actor target, float rotateDuration, float degreesPerSecond, bool followTarget = false, float delay = 0f)
+    {
+        if (target == null || rotateDuration <= 0f) yield break;
+        if (delay > 0f) yield return WaitForSeconds(delay);
+
+        float currentTime = 0f;
+        Vector3 targetPos = target.transform.position;
+
+        while (currentTime < rotateDuration)
+        {
+            if (followTarget) targetPos = target.transform.position;
+
             Vector3 distance = p.transform.position - targetPos;
-            Vector3 difference = distance.RotateVectorBy(rotateSpeed * Time.deltaTime);
+            Vector3 difference = distance.RotateVectorBy(degreesPerSecond * Time.deltaTime);
 
             p.transform.position = targetPos + difference;
             currentTime += Time.deltaTime;
@@ -83,7 +117,7 @@ public static class ProjectileBehaviour
     /// <summary>
     /// sets <p.moveDirection> to continuously face towards <target.transform.position>, for <homingDuration> seconds.
     /// </summary>
-    public static IEnumerator HomeInOn(this Projectile p, Actor target, float homingDuration, float delay = 0f)
+    public static IEnumerator HomeInOn(this Projectile p, Actor target, float homingDuration, float smoothAmount = 0.5f, float delay = 0f)
     {
         if (target == null || homingDuration <= 0f) yield break;
         if (delay > 0f) yield return WaitForSeconds(delay);
@@ -94,7 +128,7 @@ public static class ProjectileBehaviour
         while (currentTime < homingDuration && target != null)
         {
             Vector3 difference = target.transform.position - p.transform.position;
-            p.moveDirection = Vector3.SmoothDamp(p.moveDirection, difference, ref vel, 0.5f);
+            p.moveDirection = Vector3.SmoothDamp(p.moveDirection, difference, ref vel, smoothAmount);
 
             currentTime += Time.deltaTime;
             yield return EndOfFrame;
@@ -108,7 +142,7 @@ public static class ProjectileBehaviour
     /// <summary>
     /// (unused) returns the angle (in degrees) that the line created by <pos1> and <pos2> subtends from (0, 0).
     /// </summary>
-    static float GetRotationDifference(Vector2 pos1, Vector2 pos2)
+    public static float GetRotationDifference(Vector2 pos1, Vector2 pos2)
     {
         Vector2 distance = pos2 - pos1;
         return Mathf.Atan2(-distance.x, distance.y) * Mathf.Rad2Deg;
@@ -126,6 +160,18 @@ public static class ProjectileBehaviour
         v.y = (Mathf.Sin(theta_r) * _v.x) + (Mathf.Cos(theta_r) * _v.y);
 
         return v;
+    }
+
+    /// <summary>
+    /// overload of RotateVectorBy() which allows <v> to be passed by reference instead
+    /// </summary>
+    public static void RotateVectorBy(ref Vector3 v, float theta)
+    {
+        Vector3 _v = v;
+        float theta_r = theta * Mathf.Deg2Rad;
+
+        v.x = (Mathf.Cos(theta_r) * _v.x) - (Mathf.Sin(theta_r) * _v.y);
+        v.y = (Mathf.Sin(theta_r) * _v.x) + (Mathf.Cos(theta_r) * _v.y);
     }
 
     /// <summary>

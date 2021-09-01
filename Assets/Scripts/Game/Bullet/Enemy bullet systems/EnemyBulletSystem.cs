@@ -13,8 +13,6 @@ public abstract class EnemyBulletSystem : EnemyShooter
         newBullet.transform.SetPositionAndRotation(ShipPosition + offset, Quaternion.Euler(0, 0, zRotation));
         newBullet.gameObject.SetActive(true);
         newBullet.enabled = true;
-
-        print($"[{Time.frameCount}] spawned bullet {newBullet.transform.GetSiblingIndex()} at {ShipPosition + offset:f5}");
     }
 
     void OnLoseLife()

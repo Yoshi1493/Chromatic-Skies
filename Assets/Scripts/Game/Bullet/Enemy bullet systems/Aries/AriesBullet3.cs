@@ -5,9 +5,9 @@ public class AriesBullet3 : EnemyBullet
 {
     protected override IEnumerator Move()
     {
-        MoveSpeed = 0;
+        yield return null;
 
-        float rand = Random.Range(1f, 3f);
-        yield return StartCoroutine(this.ChangeSpeed(0, 2, 2, 2));
+        StartCoroutine(this.ChangeSpeed(1f, 3f, 1f));
+        StartCoroutine(this.RotateAround(ownerShip, 2f, 180f, 0.5f));
     }
 }

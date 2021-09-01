@@ -10,23 +10,33 @@ public class AriesBulletSystem2 : EnemyBulletSystem
         {
             yield return base.Shoot();
 
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < 111; i++)
             {
-                for (int j = 0; j < 10; j++)
+                float rand = Random.value * 360;
+                for (int j = 0; j < 6; j++)
                 {
-                    float z = j * 18;
-                    SpawnBullet(2, z, (i + 1) * transform.up.RotateVectorBy(z));
-                    z *= -1;
-                    z -= 18;
-                    SpawnBullet(2, z, (i + 1) * transform.up.RotateVectorBy(z));
+                    float z = j * 60f + rand;
 
-                    yield return WaitForSeconds(ShootingCooldown / 4);
+                    SpawnBullet(2, z, Vector2.zero);
                 }
 
                 yield return WaitForSeconds(ShootingCooldown);
             }
 
-            yield return ownerShip.MoveToRandomPosition(1, 1);
+            yield return WaitForSeconds(3f);
+            StartCoroutine(ownerShip.MoveToRandomPosition(1f));
+
+            for (int i = 0; i < 4; i++)
+            {
+                for (int j = 0; j < 12; j++)
+                {
+                    float z = j * 30f;
+
+                    SpawnBullet(3, z, Vector2.zero);
+                }
+
+                yield return WaitForSeconds(ShootingCooldown * 2f);
+            }
         }
     }
 }
