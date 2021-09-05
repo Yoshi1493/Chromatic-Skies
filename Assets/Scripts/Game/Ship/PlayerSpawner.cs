@@ -5,7 +5,7 @@ public class PlayerSpawner : MonoBehaviour
     [SerializeField] UserSettings userSettings;
     [SerializeField] GameObject[] playerPrefabs;
 
-    void Start()
+    void OnEnable()
     {
         Instantiate(playerPrefabs[userSettings.SelectedPlayer], transform.position, transform.rotation);
     }

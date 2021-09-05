@@ -3,6 +3,14 @@ using UnityEngine;
 
 public abstract class EnemyShooter : Shooter
 {
+    Player playerShip;
+    protected Vector2 PlayerPosition => playerShip.transform.position;
+
+    protected virtual void Start()
+    {
+        playerShip = FindObjectOfType<Player>();
+    }    
+
     protected virtual void OnEnable()
     {
         if (shootCoroutine != null) StopCoroutine(shootCoroutine);

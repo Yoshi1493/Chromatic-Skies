@@ -2,7 +2,7 @@ using UnityEngine;
 
 public abstract class Bullet : Projectile
 {
-    const float MaxLifeTime = 10f;
+    protected const float MaxLifeTime = 10f;
     float currentLifetime;
 
     float HitboxSize => spriteRenderer.size.x / 2;

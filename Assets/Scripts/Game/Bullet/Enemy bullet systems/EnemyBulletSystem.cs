@@ -2,8 +2,9 @@ using UnityEngine;
 
 public abstract class EnemyBulletSystem : EnemyShooter
 {
-    void Start()
+    protected override void Start()
     {
+        base.Start();
         ownerShip.LoseLifeAction += OnLoseLife;
     }
 

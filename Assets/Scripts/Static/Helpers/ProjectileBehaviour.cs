@@ -53,7 +53,8 @@ public static class ProjectileBehaviour
     }
 
     /// <summary>
-    /// rotates <p> around <target.transform.position> by <degreesPerSecond> degrees per second, for <rotateDuration> seconds
+    /// rotates <p> around <target.transform.position> by setting <p.MoveSpeed> and <p.moveDirection>.
+    /// rotates by <degreesPerSecond> degrees per second, for <rotateDuration> seconds
     /// </summary>
     public static IEnumerator RotateAround(this Projectile p, Actor target, float rotateDuration, float degreesPerSecond, float delay = 0f)
     {
@@ -62,19 +63,19 @@ public static class ProjectileBehaviour
 
         float currentTime = 0f;
 
-        Vector3 difference = p.transform.position - target.transform.position;
+        Vector3 direction = p.transform.position - target.transform.position;
+        float distance = direction.magnitude;
 
         while (currentTime < rotateDuration)
         {
-            Vector3 newDirection = difference.RotateVectorBy(currentTime * degreesPerSecond);
-            p.moveDirection = newDirection;
+            RotateVectorBy(ref p.moveDirection, -degreesPerSecond * Time.deltaTime);
+            p.MoveSpeed = distance * (degreesPerSecond / Mathf.Rad2Deg);
 
-            //RotateVectorBy(ref difference, degreesPerSecond * Time.deltaTime);
             currentTime += Time.deltaTime;
             yield return EndOfFrame;
         }
 
-        p.moveDirection = difference.RotateVectorBy(rotateDuration * degreesPerSecond);
+        p.moveDirection = direction.RotateVectorBy(rotateDuration * degreesPerSecond);
     }
 
     /// <summary>
@@ -117,7 +118,7 @@ public static class ProjectileBehaviour
     /// <summary>
     /// sets <p.moveDirection> to continuously face towards <target.transform.position>, for <homingDuration> seconds.
     /// </summary>
-    public static IEnumerator HomeInOn(this Projectile p, Actor target, float homingDuration, float smoothAmount = 0.5f, float delay = 0f)
+    public static IEnumerator HomeInOn(this Projectile p, Actor target, float homingDuration, float smoothTime = 0.5f, float delay = 0f)
     {
         if (target == null || homingDuration <= 0f) yield break;
         if (delay > 0f) yield return WaitForSeconds(delay);
@@ -128,7 +129,7 @@ public static class ProjectileBehaviour
         while (currentTime < homingDuration && target != null)
         {
             Vector3 difference = target.transform.position - p.transform.position;
-            p.moveDirection = Vector3.SmoothDamp(p.moveDirection, difference, ref vel, smoothAmount);
+            p.moveDirection = Vector3.SmoothDamp(p.moveDirection, difference, ref vel, smoothTime);
 
             currentTime += Time.deltaTime;
             yield return EndOfFrame;
