@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b79cd0b20b26ac4090b241d65679e69, type: 3}
   m_Name: '[Aries] Bullet 6'
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: b99510b934b0b0940a6de46eb972c2b9, type: 3}
+  sprite: {fileID: 21300000, guid: f04b8c4400ce9d746a64ac967fc3c24a, type: 3}
   BulletID: 5
   Power: {fileID: 11400000, guid: 6059f9293aa347b44a73714bea5bfcd3, type: 2}

@@ -56,7 +56,7 @@ public static class ProjectileBehaviour
     /// rotates <p> around <target.transform.position> by setting <p.MoveSpeed> and <p.moveDirection>.
     /// rotates by <degreesPerSecond> degrees per second, for <rotateDuration> seconds
     /// </summary>
-    public static IEnumerator RotateAround(this Projectile p, Actor target, float rotateDuration, float degreesPerSecond, float delay = 0f)
+    public static IEnumerator RotateAround(this Projectile p, Actor target, float rotateDuration, float degreesPerSecond, bool clockwise = true, float delay = 0f)
     {
         if (target == null || rotateDuration <= 0f) yield break;
         if (delay > 0f) yield return WaitForSeconds(delay);
@@ -68,7 +68,7 @@ public static class ProjectileBehaviour
 
         while (currentTime < rotateDuration)
         {
-            RotateVectorBy(ref p.moveDirection, -degreesPerSecond * Time.deltaTime);
+            RotateVectorBy(ref p.moveDirection, degreesPerSecond * (clockwise ? -1 : 1) * Time.deltaTime);
             p.MoveSpeed = distance * (degreesPerSecond / Mathf.Rad2Deg);
 
             currentTime += Time.deltaTime;

@@ -8,6 +8,6 @@ public class AriesBullet3 : EnemyBullet
         yield return null;
 
         StartCoroutine(this.ChangeSpeed(1f, 3f, 1f));
-        StartCoroutine(this.RotateAround(ownerShip, 2f, 180f, 0.5f));
+        StartCoroutine(this.RotateAround(ownerShip, 2f, 180f, delay: 0.5f));
     }
 }

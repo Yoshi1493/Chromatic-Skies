@@ -18,8 +18,8 @@ public class Enemy : Ship
 
         if (shipData.Lives.CurrentValue > 0)
         {
-            var currentEnemyShooters = transform.GetChild(currentSystem).GetComponents<EnemyShooter>();
-            var nextEnemyShooters = transform.GetChild(currentSystem + 1).GetComponents<EnemyShooter>();
+            var currentEnemyShooters = transform.GetChild(currentSystem).GetComponentsInChildren<EnemyShooter>();
+            var nextEnemyShooters = transform.GetChild(currentSystem + 1).GetComponentsInChildren<EnemyShooter>();
 
             for (int i = 0; i < currentEnemyShooters.Length; i++)
             {

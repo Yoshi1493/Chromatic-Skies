@@ -8,9 +8,7 @@ public class AriesBullet5 : EnemyBullet
     {
         MoveSpeed = 0f;
 
-        yield return WaitUntil(() => FindObjectsOfType<AriesBullet5>().Length == 48);
-        yield return WaitForSeconds(0.5f);
-
-        StartCoroutine(this.RotateAround(playerShip, 10f, 60f));
+        yield return WaitUntil(() => FindObjectsOfType<AriesBullet6>().Length == 16);
+        StartCoroutine(this.RotateAround(playerShip, 10f, 60f, clockwise: true, delay: 1f));
     }
 }
