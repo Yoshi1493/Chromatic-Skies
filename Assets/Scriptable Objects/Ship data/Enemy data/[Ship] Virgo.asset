@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: '[Ship] Virgo'
   m_EditorClassIdentifier: 
   Sprite: {fileID: 21300000, guid: 1aa3e528edb03a147bde37cb52c198d6, type: 3}
-  UIColour: {r: 0, g: 0, b: 0, a: 0}
+  UIColour: {fileID: 11400000, guid: f328e92387526ae42a09b0eadc6fc2f2, type: 2}
   ShipName: {fileID: 11400000, guid: 7e1080e308aadde44b76d2eaa9d0c9ee, type: 2}
   Lives:
     OriginalValue: 6

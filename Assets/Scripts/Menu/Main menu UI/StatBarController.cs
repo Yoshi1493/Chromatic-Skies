@@ -56,7 +56,7 @@ public class StatBarController : MonoBehaviour
     {
         for (int i = 0; i < statBars.Length; i++)
         {
-            statBars[i].AnimateStatBar(fillAmounts[i, selectedPlayerIndex], players[selectedPlayerIndex].UIColour);
+            statBars[i].AnimateStatBar(fillAmounts[i, selectedPlayerIndex], players[selectedPlayerIndex].UIColour.value);
         }
     }
 

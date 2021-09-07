@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: '[Ship] Sagittarius'
   m_EditorClassIdentifier: 
   Sprite: {fileID: 21300000, guid: 1aa3e528edb03a147bde37cb52c198d6, type: 3}
-  UIColour: {r: 0, g: 0, b: 0, a: 0}
+  UIColour: {fileID: 11400000, guid: 407e5e1be3bba0540bc87e6d8d38170e, type: 2}
   ShipName: {fileID: 11400000, guid: 15b8385d57436a441ab5328e71dafe43, type: 2}
   Lives:
     OriginalValue: 6

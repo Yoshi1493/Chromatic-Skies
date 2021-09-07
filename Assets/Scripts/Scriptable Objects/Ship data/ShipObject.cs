@@ -5,7 +5,7 @@ public class ShipObject : ScriptableObject
 {
     [Header("Appearance")]
     public Sprite Sprite;
-    public Color UIColour;
+    public ColourObject UIColour;
 
     [Header("Stats")]
     public StringObject ShipName;

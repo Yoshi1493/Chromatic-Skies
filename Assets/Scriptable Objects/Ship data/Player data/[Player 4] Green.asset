@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: '[Player 4] Green'
   m_EditorClassIdentifier: 
   Sprite: {fileID: 21300000, guid: 1aa3e528edb03a147bde37cb52c198d6, type: 3}
-  UIColour: {r: 0.07499993, g: 0.9, b: 0, a: 1}
+  UIColour: {fileID: 11400000, guid: 6a2312bd1133a4a4c8ddf4a7248bcfa1, type: 2}
   ShipName: {fileID: 11400000, guid: 3794480b64b37f44bb1b6b61023175f7, type: 2}
   Lives:
     OriginalValue: 1
