@@ -79,6 +79,31 @@ public static class ProjectileBehaviour
     }
 
     /// <summary>
+    /// overload of RotateAround() that takes in a Vector3 to rotate around, instead of an Actor.
+    /// </summary>
+    public static IEnumerator RotateAround(this Projectile p, Vector3 targetPosition, float rotateDuration, float degreesPerSecond, bool clockwise = true, float delay = 0f)
+    {
+        if (rotateDuration <= 0f) yield break;
+        if (delay > 0f) yield return WaitForSeconds(delay);
+
+        float currentTime = 0f;
+
+        Vector3 direction = p.transform.position - targetPosition;
+        float distance = direction.magnitude;
+
+        while (currentTime < rotateDuration)
+        {
+            RotateVectorBy(ref p.moveDirection, degreesPerSecond * (clockwise ? -1 : 1) * Time.deltaTime);
+            p.MoveSpeed = distance * (degreesPerSecond / Mathf.Rad2Deg);
+
+            currentTime += Time.deltaTime;
+            yield return EndOfFrame;
+        }
+
+        p.moveDirection = direction.RotateVectorBy(rotateDuration * degreesPerSecond);
+    }
+
+    /// <summary>
     /// translates <p> such that it looks like it is orbiting <target.transform.position>, at <rotateSpeed> degrees per second, for <rotateDuration> seconds.
     /// </summary>
     public static IEnumerator TranslateAround(this Projectile p, Actor target, float rotateDuration, float degreesPerSecond, bool followTarget = false, float delay = 0f)

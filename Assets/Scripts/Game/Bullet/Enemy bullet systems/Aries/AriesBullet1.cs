@@ -7,9 +7,7 @@ public class AriesBullet1 : EnemyBullet
     {
         yield return StartCoroutine(this.ChangeSpeed(2f, -1f, 1f));
 
-        yield return StartCoroutine(this.ChangeSpeed(-2f, 0f, 0.5f));
-
-        StartCoroutine(this.ChangeSpeed(0f, 2f, 1f));
+        StartCoroutine(this.ChangeSpeed(-1f, 2f, 1f));
 
         while (enabled)
         {

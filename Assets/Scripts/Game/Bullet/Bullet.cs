@@ -2,7 +2,7 @@ using UnityEngine;
 
 public abstract class Bullet : Projectile
 {
-    protected const float MaxLifeTime = 10f;
+    protected virtual float MaxLifetime => 10f;
     float currentLifetime;
 
     float HitboxSize => spriteRenderer.size.x / 2;
@@ -18,7 +18,7 @@ public abstract class Bullet : Projectile
         Move(MoveSpeed);
 
         currentLifetime += Time.deltaTime;
-        if (currentLifetime > MaxLifeTime)
+        if (currentLifetime > MaxLifetime)
         {
             Destroy();
         }

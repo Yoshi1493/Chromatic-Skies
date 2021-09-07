@@ -21,7 +21,7 @@ public class AriesBulletSystem1 : EnemyBulletSystem
                 yield return WaitForSeconds(ShootingCooldown);
             }
 
-            yield return WaitForSeconds(ShootingCooldown * 2f);
+            yield return WaitForSeconds(ShootingCooldown * 5f);
 
             for (int i = 0; i < 3; i++)
             {
