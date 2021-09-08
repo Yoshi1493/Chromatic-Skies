@@ -12,11 +12,11 @@ public class Enemy : Ship
 
     protected override void LoseLife()
     {
-        int currentSystem = shipData.Lives.OriginalValue - shipData.Lives.CurrentValue;
+        int currentSystem = shipData.MaxLives.Value - shipData.CurrentLives.Value;
 
         base.LoseLife();
 
-        if (shipData.Lives.CurrentValue > 0)
+        if (shipData.CurrentLives.Value > 0)
         {
             var currentEnemyShooters = transform.GetChild(currentSystem).GetComponentsInChildren<EnemyShooter>();
             var nextEnemyShooters = transform.GetChild(currentSystem + 1).GetComponentsInChildren<EnemyShooter>();

@@ -15,21 +15,35 @@ MonoBehaviour:
   Sprite: {fileID: 21300000, guid: 1aa3e528edb03a147bde37cb52c198d6, type: 3}
   UIColour: {fileID: 11400000, guid: 416c91e1c5b91f94493b3a4cb5c4b34c, type: 2}
   ShipName: {fileID: 11400000, guid: 6bdd47ae288b317498bab999f804e696, type: 2}
-  Lives:
-    OriginalValue: 6
-    currentValue: {fileID: 11400000, guid: e73a79e70c501dc438731e44df9e4d34, type: 2}
-  Health:
-    OriginalValue: 15000
-    currentValue: {fileID: 11400000, guid: b1c60b0d994897045b1df3dda6bd35b1, type: 2}
+  MaxLives:
+    useConstant: 1
+    ConstantValue: 6
+    Variable: {fileID: 0}
+  CurrentLives:
+    useConstant: 0
+    ConstantValue: 0
+    Variable: {fileID: 11400000, guid: e73a79e70c501dc438731e44df9e4d34, type: 2}
+  MaxHealth:
+    useConstant: 1
+    ConstantValue: 100000
+    Variable: {fileID: 11400000, guid: 0f4336b9377353c499ee6e6a36259832, type: 2}
+  CurrentHealth:
+    useConstant: 0
+    ConstantValue: 0
+    Variable: {fileID: 11400000, guid: b1c60b0d994897045b1df3dda6bd35b1, type: 2}
   Power:
-    OriginalValue: 500
-    currentValue: {fileID: 11400000, guid: b28a3fb0ebc1b8448b015a5377419a04, type: 2}
+    useConstant: 0
+    ConstantValue: 0
+    Variable: {fileID: 11400000, guid: b28a3fb0ebc1b8448b015a5377419a04, type: 2}
   Defense:
-    OriginalValue: 500
-    currentValue: {fileID: 11400000, guid: 05ac7740de7a2af46b1c8390e1d84ad9, type: 2}
+    useConstant: 0
+    ConstantValue: 0
+    Variable: {fileID: 11400000, guid: 05ac7740de7a2af46b1c8390e1d84ad9, type: 2}
   MovementSpeed:
-    OriginalValue: 10
-    currentValue: {fileID: 11400000, guid: a4cfd5b6e524dff448f6fdaa255a42cb, type: 2}
+    useConstant: 0
+    ConstantValue: 0
+    Variable: {fileID: 11400000, guid: a4cfd5b6e524dff448f6fdaa255a42cb, type: 2}
   ShootingSpeed:
-    OriginalValue: 10
-    currentValue: {fileID: 11400000, guid: 676864c64b8e1c340bb5a8679b18bbc7, type: 2}
+    useConstant: 0
+    ConstantValue: 0
+    Variable: {fileID: 11400000, guid: 676864c64b8e1c340bb5a8679b18bbc7, type: 2}

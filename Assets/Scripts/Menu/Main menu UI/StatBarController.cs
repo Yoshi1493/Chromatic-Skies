@@ -26,20 +26,20 @@ public class StatBarController : MonoBehaviour
         //find max <stat> among all player ships
         float[] maxStatValues = new float[]
         {
-            players.Select(i => i.Health.OriginalValue).Max(),
-            players.Select(i => i.Power.OriginalValue).Max(),
-            players.Select(i => i.Defense.OriginalValue).Max(),
-            players.Select(i => i.ShootingSpeed.OriginalValue).Max()
+            players.Select(i => i.MaxHealth.Value).Max(),
+            players.Select(i => i.Power.Value).Max(),
+            players.Select(i => i.Defense.Value).Max(),
+            players.Select(i => i.ShootingSpeed.Value).Max()
         };
 
         //set statBarFillAmounts based on max stat values
         fillAmounts = new float[statBars.Length, players.Length];
         for (int i = 0; i < fillAmounts.GetLength(0); i++)
         {
-            fillAmounts[0, i] = players[i].Health.OriginalValue / maxStatValues[0];
-            fillAmounts[1, i] = players[i].Power.OriginalValue / maxStatValues[1];
-            fillAmounts[2, i] = players[i].Defense.OriginalValue / maxStatValues[2];
-            fillAmounts[3, i] = players[i].ShootingSpeed.OriginalValue / maxStatValues[3];
+            fillAmounts[0, i] = players[i].MaxHealth.Value / maxStatValues[0];
+            fillAmounts[1, i] = players[i].Power.Value / maxStatValues[1];
+            fillAmounts[2, i] = players[i].Defense.Value / maxStatValues[2];
+            fillAmounts[3, i] = players[i].ShootingSpeed.Value / maxStatValues[3];
         }
 
         //adjust amounts to emphasize stat differences between each other

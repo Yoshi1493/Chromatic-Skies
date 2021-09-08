@@ -9,9 +9,13 @@ public class ShipObject : ScriptableObject
 
     [Header("Stats")]
     public StringObject ShipName;
-    public IntReference Lives;
 
-    public IntReference Health;
+    public IntReference MaxLives;
+    public IntReference CurrentLives;
+
+    public IntReference MaxHealth;
+    public IntReference CurrentHealth;
+
     public IntReference Power;
     public IntReference Defense;
 

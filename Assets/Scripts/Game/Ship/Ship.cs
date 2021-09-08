@@ -3,7 +3,7 @@ using UnityEngine;
 
 public abstract class Ship : Actor
 {
-    [SerializeField] protected ShipObject shipData;
+    public ShipObject shipData;
 
     public event Action LoseLifeAction;
     public event Action DeathAction;
@@ -24,14 +24,14 @@ public abstract class Ship : Actor
         spriteRenderer.sprite = shipData.Sprite;
 
         //stats
-        shipData.Lives.CurrentValue = shipData.Lives.OriginalValue;
+        shipData.CurrentLives.Value = shipData.MaxLives.Value;
 
-        shipData.Health.CurrentValue = shipData.Health.OriginalValue;
-        shipData.Power.CurrentValue = shipData.Power.OriginalValue;
-        shipData.Defense.CurrentValue = shipData.Defense.OriginalValue;
+        shipData.CurrentHealth.Value= shipData.MaxHealth.Value;
+        shipData.Power.Value = shipData.Power.Value;
+        shipData.Defense.Value = shipData.Defense.Value;
 
-        shipData.MovementSpeed.CurrentValue = shipData.MovementSpeed.OriginalValue;
-        shipData.ShootingSpeed.CurrentValue = shipData.ShootingSpeed.OriginalValue;
+        shipData.MovementSpeed.Value = shipData.MovementSpeed.Value;
+        shipData.ShootingSpeed.Value = shipData.ShootingSpeed.Value;
 
         //debug
         name = shipData.ShipName.value;
@@ -40,9 +40,9 @@ public abstract class Ship : Actor
     //to-do: take shipData.Defense into account for damage calculations
     public void TakeDamage(int power)
     {
-        shipData.Health.CurrentValue -= power;
+        shipData.CurrentHealth.Value -= power;
         //print($"{name} took {power} damage.");
-        if (shipData.Health.CurrentValue <= 0)
+        if (shipData.CurrentHealth.Value <= 0)
         {
             LoseLifeAction?.Invoke();
         }
@@ -50,16 +50,16 @@ public abstract class Ship : Actor
 
     protected virtual void LoseLife()
     {
-        shipData.Lives.CurrentValue--;
+        shipData.CurrentLives.Value--;
 
-        if (shipData.Lives.CurrentValue <= 0)
+        if (shipData.CurrentLives.Value <= 0)
         {
             DeathAction?.Invoke();
             print($"{name} died.");
         }
         else
         {
-            shipData.Health.CurrentValue = shipData.Health.OriginalValue;
+            shipData.CurrentHealth.Value = shipData.MaxHealth.Value;
         }
     }
 

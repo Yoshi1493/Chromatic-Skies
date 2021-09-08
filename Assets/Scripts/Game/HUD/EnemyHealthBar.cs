@@ -3,21 +3,18 @@ using UnityEngine.UI;
 
 public class EnemyHealthBar : MonoBehaviour
 {
+    [SerializeField] Enemy enemyShip;
+
     Image healthBarImage;
-
-    [SerializeField] ColourObject healthBarColour;
-
-    [SerializeField] IntObject currentHealth;
-    [SerializeField] IntObject maxHealth;
 
     void Awake()
     {
         healthBarImage = GetComponent<Image>();
-        healthBarImage.color = healthBarColour.value;
+        healthBarImage.color = enemyShip.shipData.UIColour.value;
     }
 
     void Update()
     {
-        healthBarImage.fillAmount = (float)currentHealth.value / maxHealth.value;
+        healthBarImage.fillAmount = (float)enemyShip.shipData.CurrentHealth.Value / enemyShip.shipData.MaxHealth.Value;
     }
 }

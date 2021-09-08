@@ -10,6 +10,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 50b985b2c2993d040b1a6922cbe91087, type: 3}
-  m_Name: '[Aries] Health_max'
+  m_Name: '[Capricorn] Health_current'
   m_EditorClassIdentifier: 
-  value: 100000
+  value: 15000

@@ -2,10 +2,16 @@ using System;
 using UnityEngine;
 
 [Serializable]
-public class FloatReference 
+public class FloatReference
 {
-    public float OriginalValue;
+    [SerializeField] bool useConstant;
 
-    [SerializeField] FloatObject currentValue;
-    public float CurrentValue { get => currentValue.value; set { currentValue.value = value; } }
+    [SerializeField] int ConstantValue;
+    [SerializeField] FloatObject Variable;
+
+    public float Value
+    {
+        get => useConstant ? ConstantValue : Variable.value;
+        set { Variable.value = value; }
+    }
 }

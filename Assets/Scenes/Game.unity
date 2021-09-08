@@ -179,7 +179,7 @@ GameObject:
   - component: {fileID: 504620085}
   - component: {fileID: 504620084}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: HUD (Canvas)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -520,7 +520,7 @@ GameObject:
   - component: {fileID: 1056242734}
   - component: {fileID: 1056242736}
   m_Layer: 5
-  m_Name: Health bar
+  m_Name: Health bar (Image)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -595,9 +595,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f69ae070a5202914eb06b3bc9c036f2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthBarColour: {fileID: 11400000, guid: 654186e6c231c70459321a4e63c741b2, type: 2}
-  currentHealth: {fileID: 11400000, guid: 1441a4e2d5e287441bc0044748157691, type: 2}
-  maxHealth: {fileID: 11400000, guid: 7f9a1d80f8cf45e4cbbb8acb037274b8, type: 2}
+  enemyShip: {fileID: 1371852588}
+--- !u!114 &1371852588 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8970867438237885685, guid: 3859bf0d081290b469f5428fac6cdfc1, type: 3}
+  m_PrefabInstance: {fileID: 1666751296}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46c2d4c9c899ac74ea5c36c8336cd14d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1572440324
 GameObject:
   m_ObjectHideFlags: 0

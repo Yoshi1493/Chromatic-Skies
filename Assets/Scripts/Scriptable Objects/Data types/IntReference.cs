@@ -4,8 +4,14 @@ using UnityEngine;
 [Serializable]
 public class IntReference
 {
-    public int OriginalValue;
+    [SerializeField] bool useConstant;
 
-    [SerializeField] IntObject currentValue;
-    public int CurrentValue { get => currentValue.value; set { currentValue.value = value; } }
+    [SerializeField] int ConstantValue;
+    [SerializeField] IntObject Variable;
+
+    public int Value
+    {
+        get => useConstant ? ConstantValue : Variable.value;
+        set { Variable.value = value; }
+    }
 }

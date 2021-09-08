@@ -12,7 +12,7 @@ public class Player : Ship
         moveDirection.x = Input.GetAxisRaw("Horizontal");
         moveDirection.y = Input.GetAxisRaw("Vertical");
 
-        Move(shipData.MovementSpeed.CurrentValue);
+        Move(shipData.MovementSpeed.Value);
     }
 
     protected override void Die()
