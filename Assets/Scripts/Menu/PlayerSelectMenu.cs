@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.EventSystems;
 
 public class PlayerSelectMenu : Menu
 {
@@ -9,7 +8,6 @@ public class PlayerSelectMenu : Menu
     [Space]
 
     [SerializeField] Button backButton;
-    PointerEventData eventData = new PointerEventData(EventSystem.current);
     
     [Space]
 
