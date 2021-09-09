@@ -1,17 +1,17 @@
 using UnityEngine;
-using UnityEngine.UI;
 
 public class PauseMenu : Menu
 {
     [SerializeField] UserSettings userSettings;
 
-    [SerializeField] Button backButton;
+    [SerializeField] GameObject resumeButton;
 
     PauseHandler pauseHandler;
 
     protected override void Awake()
     {
         base.Awake();
+
         pauseHandler = GetComponent<PauseHandler>();
         pauseHandler.GamePauseAction += OnGamePaused;
     }
@@ -19,7 +19,7 @@ public class PauseMenu : Menu
     void OnGamePaused(bool state)
     {
         if (state)
-            Open(backButton.gameObject);
+            Open(resumeButton);
 
         else
             Close();
