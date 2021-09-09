@@ -8,7 +8,7 @@ public class PlayerSelectMenu : Menu
     [Space]
 
     [SerializeField] Button backButton;
-    
+
     [Space]
 
     [SerializeField] Transform shipButtonParent;
@@ -23,9 +23,7 @@ public class PlayerSelectMenu : Menu
     void Update()
     {
         if (Input.GetButtonDown("Cancel"))
-        {
             backButton.OnPointerClick(eventData);
-        }
     }
 
     public override void Enable(GameObject newSelectedGameObject)

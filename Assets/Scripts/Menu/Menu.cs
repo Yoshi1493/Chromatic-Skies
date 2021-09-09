@@ -15,7 +15,9 @@ public abstract class Menu : MonoBehaviour
     public void Open(GameObject newSelectedGameObject)
     {
         thisMenu.enabled = true;
-        if (thisMenu.TryGetComponent(out Menu m)) m.Enable(newSelectedGameObject);
+
+        if (thisMenu.TryGetComponent(out Menu m))
+            m.Enable(newSelectedGameObject);
     }
 
     public void Close()
@@ -35,9 +37,7 @@ public abstract class Menu : MonoBehaviour
         enabled = true;
 
         if (newSelectedGameObject != null)
-        {
             EventSystem.current.SetSelectedGameObject(newSelectedGameObject);
-        }
     }
 
     public virtual void Disable()

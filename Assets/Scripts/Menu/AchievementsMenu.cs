@@ -10,8 +10,6 @@ public class AchievementsMenu : Menu
     void Update()
     {
         if (Input.GetButtonDown("Cancel"))
-        {
             backButton.OnPointerClick(eventData);
-        }
     }
 }
