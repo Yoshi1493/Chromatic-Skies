@@ -14,6 +14,8 @@ public class PlayerShooter : Shooter
 
         PlayerBulletPool.Instance.UpdatePoolableObjects(playerBullets);
         ownerShip.LoseLifeAction += DestroyAllBullets<PlayerBullet>;
+
+        FindObjectOfType<PauseHandler>().GamePauseAction += OnGamePaused;
     }
 
     void Update()
@@ -48,5 +50,10 @@ public class PlayerShooter : Shooter
         newBullet.transform.SetPositionAndRotation(ShipPosition + offset, Quaternion.identity);
         newBullet.gameObject.SetActive(true);
         newBullet.enabled = true;
+    }
+
+    void OnGamePaused(bool state)
+    {
+        enabled = !state;
     }
 }
