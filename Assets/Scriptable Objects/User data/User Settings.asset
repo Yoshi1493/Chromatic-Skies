@@ -12,3 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69481b5daebaf194a96d69d4b2f3589c, type: 3}
   m_Name: User Settings
   m_EditorClassIdentifier: 
+  selectedPlayer: {fileID: 11400000, guid: dd5a45833c5fb2f41a90cdc643cd1f40, type: 2}
+  musicVolume: {fileID: 11400000, guid: b26389f5598729448a596f72a7e25cea, type: 2}
+  soundVolume: {fileID: 11400000, guid: 5a3ead073a27d8841abda3d2c8a0d169, type: 2}
