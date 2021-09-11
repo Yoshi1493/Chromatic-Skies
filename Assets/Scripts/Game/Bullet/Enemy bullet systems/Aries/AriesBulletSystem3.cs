@@ -8,7 +8,11 @@ public class AriesBulletSystem3 : EnemyBulletSystem
     {
         yield return base.Shoot();
 
-        yield return WaitForSeconds(1.5f);
+        yield return ownerShip.MoveTo(3 * Vector3.up, 1f);
+
+        EnableSubsystem(1);
+
+        yield return WaitForSeconds(1f);
 
         while (enabled)
         {

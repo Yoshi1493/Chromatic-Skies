@@ -9,7 +9,7 @@ public abstract class EnemyShooter : Shooter
     protected virtual void Start()
     {
         playerShip = FindObjectOfType<Player>();
-    }    
+    }
 
     protected virtual void OnEnable()
     {
@@ -21,5 +21,11 @@ public abstract class EnemyShooter : Shooter
     protected override IEnumerator Shoot()
     {
         yield return CoroutineHelper.WaitForSeconds(1f);
+    }
+
+    protected void EnableSubsystem(int childIndex)
+    {
+        if (transform.GetChild(childIndex - 1).TryGetComponent(out EnemyShooter enemyShooter))
+            enemyShooter.enabled = true;
     }
 }

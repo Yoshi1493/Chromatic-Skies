@@ -2,12 +2,10 @@ using System.Collections;
 using UnityEngine;
 using static CoroutineHelper;
 
-public class AriesBulletSystem31 : EnemyBulletSystem
+public class AriesBulletSystem31 : EnemyBulletSubsystem
 {
     protected override IEnumerator Shoot()
     {
-        yield return base.Shoot();
-
         transform.position = 2f * Vector3.down;
 
         for (int i = 0; i < 12; i++)
