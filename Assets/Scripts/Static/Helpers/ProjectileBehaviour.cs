@@ -9,7 +9,7 @@ public static class ProjectileBehaviour
     /// <summary>
     /// lerps <p.MoveSpeed> from <startSpeed> to <endSpeed>, in <lerpTime> seconds.
     /// </summary>
-    public static IEnumerator ChangeSpeed(this Projectile p, float startSpeed, float endSpeed, float lerpTime, float delay = 0f)
+    public static IEnumerator LerpSpeed(this Projectile p, float startSpeed, float endSpeed, float lerpTime, float delay = 0f)
     {
         if (delay > 0f) yield return WaitForSeconds(delay);
 
@@ -27,6 +27,29 @@ public static class ProjectileBehaviour
             p.MoveSpeed = Mathf.Lerp(startSpeed, endSpeed, currentLerpTime / lerpTime);
 
             currentLerpTime += Time.deltaTime;
+            yield return EndOfFrame;
+        }
+    }
+
+    public static IEnumerator LerpDirection(this Projectile p, Vector3 endDirection, float lerpTime, float delay = 0f)
+    {
+        if (delay > 0f) yield return WaitForSeconds(delay);
+
+        // if lerpTime is not a viable value to lerp with, just set direction to endDirection immediately
+        if (lerpTime <= 0f)
+        {
+            p.moveDirection = endDirection;
+            yield break;
+        }
+
+        Vector3 vel = p.moveDirection;
+        //float currentLerpTime = 0f;
+
+        while (p.moveDirection != endDirection)
+        {
+            p.moveDirection = Vector3.SmoothDamp(p.moveDirection, endDirection, ref vel, lerpTime);
+
+            //currentLerpTime += Time.deltaTime;
             yield return EndOfFrame;
         }
     }
@@ -161,6 +184,23 @@ public static class ProjectileBehaviour
         }
     }
 
+    /// <summary>
+    /// modified version of LookAt() that gradually rotates <p> over 
+    /// </summary>
+    public static IEnumerator TurnTowards(this Projectile p, Vector3 target, float turnTime, float delay = 0f)
+    {
+        if (delay > 0f) yield return WaitForSeconds(delay);
+
+        Vector3 endDirection = target - p.transform.position;
+        Vector3 vel = p.moveDirection;
+
+        while (p.moveDirection != endDirection)
+        {
+            p.moveDirection = Vector3.SmoothDamp(p.moveDirection, endDirection, ref vel, turnTime);
+            yield return EndOfFrame;
+        }
+    }
+
     #endregion
 
     #region Helpers/Extensions
@@ -168,9 +208,9 @@ public static class ProjectileBehaviour
     /// <summary>
     /// (unused) returns the angle (in degrees) that the line created by <pos1> and <pos2> subtends from (0, 0).
     /// </summary>
-    public static float GetRotationDifference(Vector2 pos1, Vector2 pos2)
+    public static float GetRotationDifference(this Vector3 pos1, Vector3 pos2)
     {
-        Vector2 distance = pos2 - pos1;
+        Vector3 distance = pos2 - pos1;
         return Mathf.Atan2(-distance.x, distance.y) * Mathf.Rad2Deg;
     }
 
