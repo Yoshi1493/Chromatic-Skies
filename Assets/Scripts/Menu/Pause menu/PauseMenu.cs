@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class PauseMenu : Menu
 {
@@ -22,12 +23,18 @@ public class PauseMenu : Menu
             Open(resumeButton);
 
         else
+        {
             Close();
+            EventSystem.current.SetSelectedGameObject(resumeButton);
+        }
     }
 
     void Update()
     {
         if (Input.GetButtonDown("Cancel"))
+        {
             pauseHandler.OnGamePaused(false);
+            Close();
+        }
     }
 }

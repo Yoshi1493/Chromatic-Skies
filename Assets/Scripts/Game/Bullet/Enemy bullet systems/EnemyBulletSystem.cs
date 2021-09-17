@@ -16,7 +16,7 @@ public abstract class EnemyBulletSystem : EnemyShooter
         newBullet.enabled = true;
     }
 
-    void OnLoseLife()
+    protected virtual void OnLoseLife()
     {
         StopCoroutine(shootCoroutine);
         DestroyAllBullets<EnemyBullet>();

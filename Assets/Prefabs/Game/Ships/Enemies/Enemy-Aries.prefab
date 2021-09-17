@@ -1,5 +1,49 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2589376011441138682
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3483935164042757042}
+  - component: {fileID: 602825048793883693}
+  m_Layer: 0
+  m_Name: Bullet Subsystem 1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3483935164042757042
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2589376011441138682}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3927816813634689536}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &602825048793883693
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2589376011441138682}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 606c5a1527522b84eb117139c6bc847b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shootingSpeed: {fileID: 11400000, guid: 64edd72c65ca5b84082bb1b1bb4a13b8, type: 2}
 --- !u!1 &5038592034943205865
 GameObject:
   m_ObjectHideFlags: 0
@@ -139,7 +183,7 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: c3f8016a8b24a984cb0d1bf54bf9c153, type: 2}
     - target: {fileID: 3922465162775491505, guid: d93cb44e21569f545b76560b29579f98, type: 3}
       propertyPath: enemyBullets.Array.size
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 3922465162775491505, guid: d93cb44e21569f545b76560b29579f98, type: 3}
       propertyPath: enemyBullets.Array.data[0]
@@ -165,6 +209,10 @@ PrefabInstance:
       propertyPath: enemyBullets.Array.data[5]
       value: 
       objectReference: {fileID: 3927147534441140193, guid: 7aa1b454387e61f448f4e7c7b71725d0, type: 3}
+    - target: {fileID: 3922465162775491505, guid: d93cb44e21569f545b76560b29579f98, type: 3}
+      propertyPath: enemyBullets.Array.data[6]
+      value: 
+      objectReference: {fileID: -1737238716479238645, guid: b61f7fc888def7f45a7d53a9c6ff2605, type: 3}
     - target: {fileID: 4336286228127436173, guid: d93cb44e21569f545b76560b29579f98, type: 3}
       propertyPath: m_Name
       value: Enemy-Aries
@@ -247,6 +295,11 @@ Transform:
 --- !u!1 &5229022407275218308 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 180338613893518016, guid: d93cb44e21569f545b76560b29579f98, type: 3}
+  m_PrefabInstance: {fileID: 5337197869581096772}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &3927816813634689536 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8976766678102363460, guid: d93cb44e21569f545b76560b29579f98, type: 3}
   m_PrefabInstance: {fileID: 5337197869581096772}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &2174238781623900671 stripped

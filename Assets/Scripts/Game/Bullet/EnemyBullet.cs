@@ -10,6 +10,8 @@ public abstract class EnemyBullet : Bullet
     {
         base.OnEnable();
 
+        spriteRenderer.color = projectileData.colour.Evaluate(Random.value);
+
         moveDirection = new Vector2
             (
                 Mathf.Sin(transform.localEulerAngles.z * Mathf.Deg2Rad),
