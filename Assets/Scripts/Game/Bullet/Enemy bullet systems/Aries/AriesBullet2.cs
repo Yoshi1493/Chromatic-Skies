@@ -5,7 +5,7 @@ public class AriesBullet2 : EnemyBullet
 {
     protected override IEnumerator Move()
     {
-        //yield return StartCoroutine(this.LerpSpeed(3f, 0f, 0.5f));
-        yield return StartCoroutine(this.LerpSpeed(0f, 2f, 2f));
+        yield return StartCoroutine(this.LerpSpeed(3f, 1f, 0.5f));
+        yield return StartCoroutine(this.LerpSpeed(1f, 2.5f, 1f));
     }
 }
