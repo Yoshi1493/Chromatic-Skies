@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -5,6 +6,8 @@ public abstract class EnemyShooter : Shooter
 {
     Player playerShip;
     protected Vector2 PlayerPosition => playerShip.transform.position;
+
+    public event Action AttackStartAction;
 
     protected virtual void Start()
     {
@@ -21,6 +24,7 @@ public abstract class EnemyShooter : Shooter
     protected override IEnumerator Shoot()
     {
         yield return CoroutineHelper.WaitForSeconds(1f);
+        AttackStartAction?.Invoke();
     }
 
     protected void EnableSubsystem(int childIndex)
