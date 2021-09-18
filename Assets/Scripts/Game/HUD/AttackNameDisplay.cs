@@ -1,5 +1,8 @@
+using System.Collections;
+using System.Linq;
 using UnityEngine;
 using TMPro;
+using static CoroutineHelper;
 
 public class AttackNameDisplay : MonoBehaviour
 {
@@ -11,14 +14,16 @@ public class AttackNameDisplay : MonoBehaviour
 
     Enemy enemy;
 
+    IEnumerator displayNameCoroutine;
+
     void Awake()
     {
         anim = GetComponent<Animator>();
         nameText = GetComponent<TextMeshProUGUI>();
 
         enemy = FindObjectOfType<Enemy>();
-        EnemyShooter[] shooters = enemy.GetComponentsInChildren<EnemyShooter>();
-        print(shooters.Length);
+        var shooters = enemy.GetComponentsInChildren<EnemyBulletSystem>().Where(i => !(i is EnemyBulletSubsystem));
+
         foreach (EnemyShooter es in shooters)
             es.AttackStartAction += OnEnemyAttackStart;
     }
@@ -29,5 +34,36 @@ public class AttackNameDisplay : MonoBehaviour
 
         nameText.text = $"{moduleNames[currentAttackIndex].value} Module | {attackNames[currentAttackIndex].value}";
         //anim.SetTrigger("Show");
+
+        if (displayNameCoroutine != null)
+            StopCoroutine(displayNameCoroutine);
+
+        displayNameCoroutine = DisplayName();
+        StartCoroutine(displayNameCoroutine);
+    }
+
+    IEnumerator DisplayName()
+    {
+        Color c = nameText.color;
+
+        while (c.a <= 1f)
+        {
+            c.a += Time.deltaTime;
+            nameText.color = c;
+
+            yield return EndOfFrame;
+        }
+
+        yield return WaitForSeconds(5f);
+
+        while (c.a >= 0f)
+        {
+            c.a -= Time.deltaTime;
+            nameText.color = c;
+
+            yield return EndOfFrame;
+        }
+
+        displayNameCoroutine = null;
     }
 }
