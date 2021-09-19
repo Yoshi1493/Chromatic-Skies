@@ -1,20 +1,16 @@
-using System.Collections;
 using System.Linq;
 using UnityEngine;
 using TMPro;
-using static CoroutineHelper;
 
 public class AttackNameDisplay : MonoBehaviour
 {
+    Enemy enemy;
+
     Animator anim;
     TextMeshProUGUI nameText;
 
     [SerializeField] StringObject[] moduleNames;
     [SerializeField] StringObject[] attackNames;
-
-    Enemy enemy;
-
-    IEnumerator displayNameCoroutine;
 
     void Awake()
     {
@@ -22,6 +18,8 @@ public class AttackNameDisplay : MonoBehaviour
         nameText = GetComponent<TextMeshProUGUI>();
 
         enemy = FindObjectOfType<Enemy>();
+        enemy.LoseLifeAction += OnEnemyLoseLife;
+
         var shooters = enemy.GetComponentsInChildren<EnemyBulletSystem>().Where(i => !(i is EnemyBulletSubsystem));
 
         foreach (EnemyShooter es in shooters)
@@ -31,39 +29,13 @@ public class AttackNameDisplay : MonoBehaviour
     void OnEnemyAttackStart()
     {
         int currentAttackIndex = enemy.shipData.MaxLives.Value - enemy.shipData.CurrentLives.Value;
-
         nameText.text = $"{moduleNames[currentAttackIndex].value} Module | {attackNames[currentAttackIndex].value}";
-        //anim.SetTrigger("Show");
 
-        if (displayNameCoroutine != null)
-            StopCoroutine(displayNameCoroutine);
-
-        displayNameCoroutine = DisplayName();
-        StartCoroutine(displayNameCoroutine);
+        anim.SetBool("show_name", true);
     }
 
-    IEnumerator DisplayName()
+    void OnEnemyLoseLife()
     {
-        Color c = nameText.color;
-
-        while (c.a <= 1f)
-        {
-            c.a += Time.deltaTime;
-            nameText.color = c;
-
-            yield return EndOfFrame;
-        }
-
-        yield return WaitForSeconds(5f);
-
-        while (c.a >= 0f)
-        {
-            c.a -= Time.deltaTime;
-            nameText.color = c;
-
-            yield return EndOfFrame;
-        }
-
-        displayNameCoroutine = null;
+        anim.SetBool("show_name", false);
     }
 }
