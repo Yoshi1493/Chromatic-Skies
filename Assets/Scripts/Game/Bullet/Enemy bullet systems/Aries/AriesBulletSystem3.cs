@@ -6,9 +6,9 @@ public class AriesBulletSystem3 : EnemyBulletSystem
 {
     protected override IEnumerator Shoot()
     {
-        yield return base.Shoot();
-
         yield return ownerShip.MoveTo(3 * Vector3.up, 1f);
+
+        yield return base.Shoot();
 
         EnableSubsystem(1);
 
