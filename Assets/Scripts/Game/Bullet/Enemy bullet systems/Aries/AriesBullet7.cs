@@ -6,12 +6,6 @@ public class AriesBullet7 : EnemyBullet
 {
     protected override IEnumerator Move()
     {
-        StartCoroutine(this.LerpSpeed(5f, 3f, 2f));
-
-        while (enabled)
-        {
-            spriteRenderer.transform.Rotate(Vector3.forward);
-            yield return EndOfFrame;
-        }
+        yield return null;
     }
 }

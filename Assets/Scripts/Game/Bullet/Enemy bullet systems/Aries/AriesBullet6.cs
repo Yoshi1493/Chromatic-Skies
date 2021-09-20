@@ -6,15 +6,12 @@ public class AriesBullet6 : EnemyBullet
 {
     protected override IEnumerator Move()
     {
-        MoveSpeed = 0f;
+        StartCoroutine(this.LerpSpeed(5f, 3f, 2f));
 
-        yield return WaitUntil(() => FindObjectsOfType<AriesBullet6>().Length == 16);
-        StartCoroutine(this.RotateAround(FindObjectOfType<AriesBulletSystem31>().transform.position, Mathf.Infinity, 30f, clockwise: false, delay: 0.5f));
-    }
-
-    protected override void Update()
-    {
-        CheckCollisionWith<Player>();
-        Move(MoveSpeed);
+        while (enabled)
+        {
+            spriteRenderer.transform.Rotate(Vector3.forward);
+            yield return EndOfFrame;
+        }
     }
 }

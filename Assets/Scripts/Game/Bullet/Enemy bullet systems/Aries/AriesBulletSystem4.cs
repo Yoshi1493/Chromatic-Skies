@@ -24,7 +24,7 @@ public class AriesBulletSystem4 : EnemyBulletSystem
                 {
                     float z = (j * 72f) + n + randStartAngle;
 
-                    SpawnBullet(1, z, Vector2.zero);
+                    SpawnBullet(0, z, Vector2.zero);
 
                 }
 

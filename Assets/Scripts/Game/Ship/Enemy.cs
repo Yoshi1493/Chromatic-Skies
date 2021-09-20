@@ -33,6 +33,14 @@ public class Enemy : Ship
         }
     }
 
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            TakeDamage(99999);
+        }
+    }
+
     protected override void Die()
     {
         gameObject.SetActive(false);
