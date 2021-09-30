@@ -32,10 +32,4 @@ public abstract class EnemyShooter : Shooter
         if (transform.GetChild(childIndex - 1).TryGetComponent(out EnemyShooter enemyShooter))
             enemyShooter.enabled = true;
     }
-
-    protected void EnableSubsystem(int childIndex)
-    {
-        if (transform.GetChild(childIndex - 1).TryGetComponent(out EnemyShooter enemyShooter))
-            enemyShooter.enabled = true;
-    }
 }
