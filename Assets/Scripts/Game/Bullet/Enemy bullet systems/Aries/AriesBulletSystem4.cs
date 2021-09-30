@@ -9,22 +9,30 @@ public class AriesBulletSystem4 : EnemyBulletSystem
         yield return base.Shoot();
 
         EnableSubsystem(1);
-        
-        yield return WaitForSeconds(2f);
 
-        for (int i = 0; i < 5; i++)
+        while (enabled)
         {
-            float z = i * 144f;
-            Vector3 currOffset = transform.up.RotateVectorBy(z);
-            Vector3 nextOffset = transform.up.RotateVectorBy(z + 144f);
+            yield return WaitForSeconds(2f);
 
-            for (int j = 0; j < 10; j++)
+            float n = 0f;
+            float randSpinDirection = Random.value - 0.5f;
+            float randStartAngle = Random.Range(0f, 90f);
+
+            for (int i = 0; i < 360; i += 4)
             {
-                Vector3 lerpOffset = Vector3.Lerp(currOffset, nextOffset, j / 10f);
-                SpawnBullet(1, (transform.position + lerpOffset).GetRotationDifference(transform.position), lerpOffset);
+                for (int j = 0; j < 5; j++)
+                {
+                    float z = (j * 72f) + n + randStartAngle;
 
-                yield return WaitForSeconds(ShootingCooldown / 10f);
+                    SpawnBullet(0, z, Vector2.zero);
+
+                }
+
+                n += i * Mathf.Sign(randSpinDirection);
+                yield return WaitForSeconds(ShootingCooldown);
             }
+
+            yield return ownerShip.MoveToRandomPosition(1f, 1f);
         }
     }
 }

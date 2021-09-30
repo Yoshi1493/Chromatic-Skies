@@ -1,6 +1,5 @@
 using UnityEngine;
 
-[RequireComponent(typeof(SpriteRenderer))]
 public abstract class Actor : MonoBehaviour
 {
     [HideInInspector] new public Transform transform;
@@ -11,7 +10,7 @@ public abstract class Actor : MonoBehaviour
     protected virtual void Awake()
     {
         transform = GetComponent<Transform>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
     }
 
     protected virtual void Move(float moveSpeed)

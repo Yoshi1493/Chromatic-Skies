@@ -4,22 +4,23 @@ using static CoroutineHelper;
 
 public class AriesBulletSystem41 : EnemyBulletSubsystem
 {
+    Vector2 RandomSpawnPos => new Vector2(Random.Range(-8f, 8f), 6f);
+
     protected override IEnumerator Shoot()
     {
-        yield return null;
-
         while (enabled)
         {
-            for (int i = 0; i < 2; i++)
+            for (int i = -45; i < 45; i++)
             {
-                float z = Random.Range(-7, 7);
-
-                while (z == 0)
-                    z = Random.Range(-7, 7);
-
-                SpawnBullet(6, -45f * Mathf.Sign(z), z * Vector2.right);
+                SpawnBullet(6, i, RandomSpawnPos, false);
+                yield return WaitForSeconds(ShootingCooldown);
             }
-            yield return WaitForSeconds(ShootingCooldown * 5f);
+
+            for (int i = 45; i > -45; i--)
+            {
+                SpawnBullet(6, i, RandomSpawnPos, false);
+                yield return WaitForSeconds(ShootingCooldown);
+            }
         }
     }
 }

@@ -8,8 +8,8 @@ public class AriesBullet5 : EnemyBullet
     {
         MoveSpeed = 0f;
 
-        yield return WaitUntil(() => FindObjectsOfType<AriesBullet6>().Length == 16);
-        StartCoroutine(this.RotateAround(FindObjectOfType<AriesBulletSystem31>().transform.position, Mathf.Infinity, 45f, clockwise: true, delay: 0.5f));
+        yield return WaitUntil(() => FindObjectsOfType<AriesBullet5>().Length == 16);
+        StartCoroutine(this.RotateAround(FindObjectOfType<AriesBulletSystem31>().transform.position, Mathf.Infinity, 30f, clockwise: false, delay: 0.5f));
     }
 
     protected override void Update()

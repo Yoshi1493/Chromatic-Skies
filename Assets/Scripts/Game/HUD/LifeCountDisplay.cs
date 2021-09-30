@@ -24,6 +24,6 @@ public class LifeCountDisplay : MonoBehaviour
 
     void OnEnemyLoseLife()
     {
-        lifeIcons[enemyShip.shipData.CurrentLives.Value - 1].enabled = false;
+        lifeIcons[enemyShip.shipData.CurrentLives.Value].enabled = false;
     }
 }

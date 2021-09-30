@@ -14,8 +14,8 @@ public class AriesBulletSystem1 : EnemyBulletSystem
             {
                 for (int j = 0; j < 3; j++)
                 {
-                    int z = (i * 45) + (j * 120);
-                    SpawnBullet(0, z, Vector2.zero);
+                    float z = (i * 45f) + (j * 120f);
+                    SpawnBullet(1, z, Vector2.zero);
                 }
 
                 yield return WaitForSeconds(ShootingCooldown);
@@ -27,8 +27,8 @@ public class AriesBulletSystem1 : EnemyBulletSystem
             {
                 for (int j = 0; j < 30; j++)
                 {
-                    int z = j * 12 + (i * 6);
-                    SpawnBullet(1, z, Vector2.zero);
+                    float z = j * 12f + (i * 6f);
+                    SpawnBullet(0, z, Vector2.zero);
                 }
 
                 yield return WaitForSeconds(ShootingCooldown * 5f);
