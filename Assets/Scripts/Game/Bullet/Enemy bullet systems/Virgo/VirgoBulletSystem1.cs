@@ -12,12 +12,12 @@ public class VirgoBulletSystem1 : EnemyBulletSystem
         {
             yield return base.Shoot();
 
-            for (int i = 0; i < 144; i++)
+            for (int i = 0; i < 9999; i++)
             {
                 float z = i * goldenRatio;
-                SpawnBullet(0, z, transform.up.RotateVectorBy(z)).Fire();
+                SpawnBullet(1, z, Vector2.zero).Fire();
 
-                yield return WaitForSeconds(ShootingCooldown);
+                yield return WaitForSeconds(ShootingCooldown / 8f);
             }
         }
     }

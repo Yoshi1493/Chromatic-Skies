@@ -33,6 +33,7 @@ public abstract class GenericObjectPool<TProjectile> : MonoBehaviour where TProj
         if (objectPool[ID].queue.Count == 0) CreateNew(ID);
 
         var projectile = objectPool[ID].queue.Dequeue();
+        print($"[{Time.frameCount}] Get called: {objectPool[ID].queue.Count} remaining in queue.");
         return projectile;
     }
 
@@ -42,6 +43,7 @@ public abstract class GenericObjectPool<TProjectile> : MonoBehaviour where TProj
         returningObject.enabled = false;
 
         objectPool[returningObject.projectileData.BulletID].queue.Enqueue(returningObject);
+        print($"[{Time.frameCount}] ReturnToPool called: {objectPool[returningObject.projectileData.BulletID].queue.Count} in queue");
     }
 
     void CreateNew(int ID)
