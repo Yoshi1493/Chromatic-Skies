@@ -15,6 +15,14 @@ PrefabInstance:
       propertyPath: m_Size.y
       value: 0.32
       objectReference: {fileID: 0}
+    - target: {fileID: 845275059315836675, guid: 3d84f4836dc1d5e4ba2123950d014abc, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 845275059315836675, guid: 3d84f4836dc1d5e4ba2123950d014abc, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6917292052819124163, guid: 3d84f4836dc1d5e4ba2123950d014abc, type: 3}
       propertyPath: m_Name
       value: Enemy bullet

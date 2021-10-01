@@ -6,17 +6,19 @@ public class VirgoBulletSystem1 : EnemyBulletSystem
 {
     protected override IEnumerator Shoot()
     {
-        yield return null;
-        //float goldenRatio = (1 + Mathf.Sqrt(5)) * 180;
+        float goldenRatio = (1 + Mathf.Sqrt(5)) * 180;
 
-        //int i = 0;
-        //while (enabled)
-        //{
-        //    float z = i * goldenRatio;
-        //    SpawnBullet(0, z, transform.up.RotateVectorBy(z));
+        while (enabled)
+        {
+            yield return base.Shoot();
 
-        //    yield return WaitForSeconds(ShootingCooldown);
-        //    i++;
-        //}
+            for (int i = 0; i < 144; i++)
+            {
+                float z = i * goldenRatio;
+                SpawnBullet(0, z, transform.up.RotateVectorBy(z)).Fire();
+
+                yield return WaitForSeconds(ShootingCooldown);
+            }
+        }
     }
 }

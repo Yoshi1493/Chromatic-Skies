@@ -1,22 +1,18 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &3247140721040281552
+--- !u!114 &1412982307716941297
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6334669179249256380}
+  m_GameObject: {fileID: 4079918356797303241}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ea8819fb0f8483841a472af6abf3c77d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shootingSpeed:
-    OriginalValue: 12
-    currentValue: {fileID: 11400000, guid: e04dabb841369cb40a380b2ddc81b811, type: 2}
-  enemyBullets:
-  - {fileID: 0}
+  shootingSpeed: {fileID: 11400000, guid: e04dabb841369cb40a380b2ddc81b811, type: 2}
 --- !u!114 &1018686569976100319
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29,11 +25,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fb9fcc319fd9f0489ce833b7c149882, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shootingSpeed:
-    OriginalValue: 12
-    currentValue: {fileID: 11400000, guid: e04dabb841369cb40a380b2ddc81b811, type: 2}
-  enemyBullets:
-  - {fileID: 0}
+  shootingSpeed: {fileID: 11400000, guid: e04dabb841369cb40a380b2ddc81b811, type: 2}
 --- !u!114 &6985495736917895054
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -46,11 +38,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b526a2b719d1144da1ab26decc8eb49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shootingSpeed:
-    OriginalValue: 12
-    currentValue: {fileID: 11400000, guid: e04dabb841369cb40a380b2ddc81b811, type: 2}
-  enemyBullets:
-  - {fileID: 0}
+  shootingSpeed: {fileID: 11400000, guid: e04dabb841369cb40a380b2ddc81b811, type: 2}
 --- !u!114 &9001360753622328893
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -63,11 +51,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62931c7670d6c534197aa93dd6587dce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shootingSpeed:
-    OriginalValue: 12
-    currentValue: {fileID: 11400000, guid: e04dabb841369cb40a380b2ddc81b811, type: 2}
-  enemyBullets:
-  - {fileID: 0}
+  shootingSpeed: {fileID: 11400000, guid: e04dabb841369cb40a380b2ddc81b811, type: 2}
 --- !u!114 &3500902708205237341
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -80,11 +64,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fea2bda1a73e3b42a1bcb07b87d89ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shootingSpeed:
-    OriginalValue: 12
-    currentValue: {fileID: 11400000, guid: e04dabb841369cb40a380b2ddc81b811, type: 2}
-  enemyBullets:
-  - {fileID: 0}
+  shootingSpeed: {fileID: 11400000, guid: e04dabb841369cb40a380b2ddc81b811, type: 2}
 --- !u!114 &4899544320780654050
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -97,11 +77,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bc6b6f431c6c5044a7b0a73f633670b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shootingSpeed:
-    OriginalValue: 12
-    currentValue: {fileID: 11400000, guid: e04dabb841369cb40a380b2ddc81b811, type: 2}
-  enemyBullets:
-  - {fileID: 0}
+  shootingSpeed: {fileID: 11400000, guid: e04dabb841369cb40a380b2ddc81b811, type: 2}
 --- !u!1001 &6759093168088370692
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -109,6 +85,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3922465162775491505, guid: d93cb44e21569f545b76560b29579f98, type: 3}
+      propertyPath: shipData
+      value: 
+      objectReference: {fileID: 11400000, guid: e9385e40c7c00b845918f858c3286d55, type: 2}
+    - target: {fileID: 3922465162775491505, guid: d93cb44e21569f545b76560b29579f98, type: 3}
+      propertyPath: enemyBullets.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3922465162775491505, guid: d93cb44e21569f545b76560b29579f98, type: 3}
+      propertyPath: enemyBullets.Array.data[0]
+      value: 
+      objectReference: {fileID: 2227729060904225359, guid: 223a015311380684989d865eee3037af, type: 3}
+    - target: {fileID: 3922465162775491505, guid: d93cb44e21569f545b76560b29579f98, type: 3}
+      propertyPath: enemyBullets.Array.data[1]
+      value: 
+      objectReference: {fileID: -6821035276269721638, guid: 6187b47b88e4b1241b9fb3f444625cea, type: 3}
     - target: {fileID: 4336286228127436173, guid: d93cb44e21569f545b76560b29579f98, type: 3}
       propertyPath: m_Name
       value: Enemy-Virgo
@@ -159,9 +151,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d93cb44e21569f545b76560b29579f98, type: 3}
---- !u!1 &6334669179249256380 stripped
+--- !u!1 &4079918356797303241 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 730809518176938424, guid: d93cb44e21569f545b76560b29579f98, type: 3}
+  m_CorrespondingSourceObject: {fileID: 7301416149945870285, guid: d93cb44e21569f545b76560b29579f98, type: 3}
   m_PrefabInstance: {fileID: 6759093168088370692}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &3777441332194849460 stripped
