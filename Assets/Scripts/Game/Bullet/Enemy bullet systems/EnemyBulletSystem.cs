@@ -17,6 +17,8 @@ public abstract class EnemyBulletSystem : EnemyShooter
         newBullet.gameObject.SetActive(true);
         newBullet.enabled = true;
 
+        //newBullet.name += $"{newBullet.transform.GetSiblingIndex()}";
+
         return newBullet;
     }
 

@@ -17,9 +17,6 @@ public abstract class EnemyBullet : Bullet
                 Mathf.Sin(transform.localEulerAngles.z * Mathf.Deg2Rad),
                 -Mathf.Cos(transform.localEulerAngles.z * Mathf.Deg2Rad)
             );
-
-        if (movementBehaviour != null) StopCoroutine(movementBehaviour);
-
     }
 
     void Start()
@@ -42,11 +39,11 @@ public abstract class EnemyBullet : Bullet
 
     public void Fire()
     {
-        if (movementBehaviour == null)
-        {
-            movementBehaviour = Move();
-            StartCoroutine(movementBehaviour);
-        }
+        if (movementBehaviour != null)
+            StopCoroutine(movementBehaviour);
+
+        movementBehaviour = Move();
+        StartCoroutine(movementBehaviour);
     }
 
     protected abstract IEnumerator Move();
