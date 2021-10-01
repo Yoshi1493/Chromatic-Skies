@@ -16,7 +16,7 @@ public class AriesBulletSystem2 : EnemyBulletSystem
                 for (int j = 0; j < 6; j++)
                 {
                     float z = j * 60f + rand;
-                    SpawnBullet(2, z, Vector2.zero);
+                    SpawnBullet(2, z, Vector2.zero).Fire();
                 }
 
                 yield return WaitForSeconds(ShootingCooldown);
@@ -31,7 +31,7 @@ public class AriesBulletSystem2 : EnemyBulletSystem
                 {
                     float z = j * 30f;
 
-                    SpawnBullet(3, z, Vector2.zero);
+                    SpawnBullet(3, z, Vector2.zero).Fire();
                 }
 
                 yield return WaitForSeconds(ShootingCooldown * 2f);

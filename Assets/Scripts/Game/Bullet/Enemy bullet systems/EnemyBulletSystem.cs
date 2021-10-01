@@ -8,14 +8,16 @@ public abstract class EnemyBulletSystem : EnemyShooter
         ownerShip.LoseLifeAction += OnLoseLife;
     }
 
-    protected virtual void SpawnBullet(int bulletIndex, float zRotation, Vector3 position, bool asLocalPosition = true)
+    protected virtual EnemyBullet SpawnBullet(int bulletIndex, float zRotation, Vector3 position, bool asLocalPosition = true)
     {
-        var newBullet = EnemyBulletPool.Instance.Get(bulletIndex);
+        EnemyBullet newBullet = EnemyBulletPool.Instance.Get(bulletIndex);
 
         newBullet.transform.SetPositionAndRotation(position + (asLocalPosition ? transform.position : Vector3.zero), Quaternion.Euler(0, 0, zRotation));
 
         newBullet.gameObject.SetActive(true);
         newBullet.enabled = true;
+
+        return newBullet;
     }
 
     protected virtual void OnLoseLife()

@@ -19,8 +19,7 @@ public abstract class EnemyBullet : Bullet
             );
 
         if (movementBehaviour != null) StopCoroutine(movementBehaviour);
-        movementBehaviour = Move();
-        StartCoroutine(movementBehaviour);
+
     }
 
     void Start()
@@ -39,6 +38,15 @@ public abstract class EnemyBullet : Bullet
     {
         if (movementBehaviour != null) StopCoroutine(movementBehaviour);
         EnemyBulletPool.Instance.ReturnToPool(this);
+    }
+
+    public void Fire()
+    {
+        if (movementBehaviour == null)
+        {
+            movementBehaviour = Move();
+            StartCoroutine(movementBehaviour);
+        }
     }
 
     protected abstract IEnumerator Move();
