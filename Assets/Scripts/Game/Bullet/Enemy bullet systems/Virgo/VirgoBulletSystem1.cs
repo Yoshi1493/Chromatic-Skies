@@ -12,7 +12,8 @@ public class VirgoBulletSystem1 : EnemyBulletSystem
         {
             yield return base.Shoot();
 
-            for (int i = 0; i < 9999; i++)
+            //987 is the 16th number in the fibonacci sequence
+            for (int i = 0; i < 987; i++)
             {
                 float z = i * goldenRatio;
                 SpawnBullet(1, z, Vector2.zero).Fire();
