@@ -12,14 +12,20 @@ public class VirgoBulletSystem1 : EnemyBulletSystem
         {
             yield return base.Shoot();
 
-            //987 is the 16th number in the fibonacci sequence
-            for (int i = 0; i < 987; i++)
+            SetSubsystemEnabled(1, true);
+
+            //377 is the 14th number in the fibonacci sequence
+            for (int i = 0; i < 377; i++)
             {
                 float z = i * goldenRatio;
                 SpawnBullet(1, z, Vector2.zero).Fire();
 
                 yield return WaitForSeconds(ShootingCooldown / 8f);
             }
+
+            SetSubsystemEnabled(1, false);
+
+            yield return ownerShip.MoveToRandomPosition(1f, 1f);
         }
     }
 }

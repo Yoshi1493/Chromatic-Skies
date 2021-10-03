@@ -1229,6 +1229,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 180
       objectReference: {fileID: 0}
+    - target: {fileID: 8525239592997743356, guid: b15e8fd8b3e6ebc43841eb5ef4d7990d, type: 3}
+      propertyPath: shootingSpeed
+      value: 
+      objectReference: {fileID: 11400000, guid: e04dabb841369cb40a380b2ddc81b811, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b15e8fd8b3e6ebc43841eb5ef4d7990d, type: 3}
 --- !u!114 &858878409 stripped
@@ -2349,19 +2353,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moduleNames:
-  - {fileID: 11400000, guid: 31e11e2181789a94982fecb97be9fc28, type: 2}
-  - {fileID: 11400000, guid: 23b36bab9132fe1439aa5c01331f44bb, type: 2}
-  - {fileID: 11400000, guid: 14f18a63291b6784c87b214f4a0c1b52, type: 2}
-  - {fileID: 11400000, guid: 248d4dc2fba0ca8419aa25ff3aea8b80, type: 2}
-  - {fileID: 11400000, guid: 4e24541afbe931145a3b4d4c4339a7c7, type: 2}
-  - {fileID: 11400000, guid: 9b2f7dca9b3975144bb0122f3cf15975, type: 2}
+  - {fileID: 11400000, guid: a9aef694dce0db340a79b67b5307b7d8, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   attackNames:
-  - {fileID: 11400000, guid: e3634c15e9df1ca4ab1fbe584954a463, type: 2}
-  - {fileID: 11400000, guid: 027f18f643b79064db8ad873fd331818, type: 2}
-  - {fileID: 11400000, guid: 0e3ad96293ab63141968bfb412ec5370, type: 2}
-  - {fileID: 11400000, guid: 380795e5a56e9c548a1e2d32874d29a9, type: 2}
-  - {fileID: 11400000, guid: 7b99fede207de2a43b6ec450b294c31f, type: 2}
-  - {fileID: 11400000, guid: f8dcc90ba24faff4fbd61afc7ab5f349, type: 2}
+  - {fileID: 11400000, guid: 6606bcd5b1bb22e46843359f5c367395, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &1660768948
 GameObject:
   m_ObjectHideFlags: 0
