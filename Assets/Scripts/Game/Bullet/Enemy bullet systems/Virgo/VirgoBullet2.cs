@@ -1,14 +1,11 @@
+using System.Collections;
 using UnityEngine;
 
-public class VirgoBullet2 : MonoBehaviour
+public class VirgoBullet2 : EnemyBullet
 {
-    void Start()
+    protected override IEnumerator Move()
     {
-        
-    }
-
-    void Update()
-    {
-        
+        yield return StartCoroutine(this.LerpSpeed(3f, 1f, 0.5f));
+        yield return StartCoroutine(this.LerpSpeed(1f, 3f, 1f));
     }
 }
