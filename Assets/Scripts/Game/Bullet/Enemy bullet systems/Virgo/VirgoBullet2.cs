@@ -3,9 +3,11 @@ using UnityEngine;
 
 public class VirgoBullet2 : EnemyBullet
 {
+    [SerializeField] bool rotatesClockwise;
+
     protected override IEnumerator Move()
     {
-        yield return StartCoroutine(this.LerpSpeed(3f, 1f, 0.5f));
-        yield return StartCoroutine(this.LerpSpeed(1f, 3f, 1f));
+        StartCoroutine(this.LerpSpeed(3f, 2f, 1f));
+        yield return this.RotateBy(135f, MaxLifetime - 1f, rotatesClockwise);
     }
 }

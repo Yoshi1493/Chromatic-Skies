@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6b79cd0b20b26ac4090b241d65679e69, type: 3}
-  m_Name: '[Virgo] Bullet 3'
+  m_Name: '[Virgo] Bullet 4'
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: baa0acec5cc11d04e9029cbbda9961ea, type: 3}
   colour:
     serializedVersion: 2
-    key0: {r: 1, g: 0.5, b: 0.75, a: 1}
-    key1: {r: 1, g: 0.5, b: 0.75, a: 1}
+    key0: {r: 1, g: 0.75, b: 1, a: 1}
+    key1: {r: 1, g: 0.75, b: 1, a: 1}
     key2: {r: 1, g: 0.69803923, b: 0.9245098, a: 0}
     key3: {r: 0, g: 0, b: 0, a: 0}
     key4: {r: 0, g: 0, b: 0, a: 0}
@@ -42,5 +42,5 @@ MonoBehaviour:
     m_Mode: 0
     m_NumColorKeys: 2
     m_NumAlphaKeys: 2
-  BulletID: 3
+  BulletID: 4
   Power: {fileID: 11400000, guid: c9057bec88714fb4b9df3546afd3e41d, type: 2}

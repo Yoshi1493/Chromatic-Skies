@@ -8,13 +8,13 @@ public class VirgoBulletSystem11 : EnemyBulletSubsystem
     {
         yield return WaitForSeconds(3f);
 
-        float rand = Random.Range(0f, 60f);
+        transform.Rotate(Random.Range(0f, 60f) * Vector3.forward);
 
         for (int i = 0; i < 18; i++)
         {
             for (int j = 0; j < 6; j++)
             {
-                float z = (i * 10f) + (j * 60f) + rand;
+                float z = (i * 10f) + (j * 60f);
                 SpawnBullet(2, z, transform.up.RotateVectorBy(z) / 2f).Fire();
             }
 
