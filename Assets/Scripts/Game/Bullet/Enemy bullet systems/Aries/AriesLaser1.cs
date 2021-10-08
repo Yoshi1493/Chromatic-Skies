@@ -10,6 +10,6 @@ public class AriesLaser1 : Laser
 
     void Start()
     {
-        this.LookAt(player, 1);
+        this.LookAt(player);
     }
 }

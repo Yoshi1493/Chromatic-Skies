@@ -7,7 +7,7 @@ public class AriesBullet3 : EnemyBullet
     {
         yield return StartCoroutine(this.LerpSpeed(3f, 0f, 1));
 
-        StartCoroutine(this.LookAt(playerShip, 0.5f));
+        this.LookAt(playerShip);
         StartCoroutine(this.LerpSpeed(0f, 5f, 0f, 0.5f));
     }
 }

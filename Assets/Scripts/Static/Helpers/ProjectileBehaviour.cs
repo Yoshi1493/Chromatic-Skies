@@ -154,12 +154,21 @@ public static class ProjectileBehaviour
     /// i.e. sets <p.moveDirection> such that if <target.transform.position> doesn't change,
     /// <p> will eventually collide with <target>.
     /// </summary>
-    public static IEnumerator LookAt(this Projectile p, Actor target, float delay = 0f)
+    public static Vector3 LookAt(this Projectile p, Actor target)
     {
-        if (target == null) yield break;
-        if (delay > 0f) yield return WaitForSeconds(delay);
+        if (target != null)
+            p.moveDirection = target.transform.position - p.transform.position;
 
-        p.moveDirection = target.transform.position - p.transform.position;
+        return p.moveDirection;
+    }
+
+    /// <summary>
+    /// overload of LookAt() that makes <p> face towards a given Vector3.
+    /// </summary>
+    public static Vector3 LookAt(this Projectile p, Vector3 targetPos)
+    {
+        p.moveDirection = targetPos - p.transform.position;
+        return p.moveDirection;
     }
 
     /// <summary>
