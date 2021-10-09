@@ -179,7 +179,7 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: e9385e40c7c00b845918f858c3286d55, type: 2}
     - target: {fileID: 3922465162775491505, guid: d93cb44e21569f545b76560b29579f98, type: 3}
       propertyPath: enemyBullets.Array.size
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3922465162775491505, guid: d93cb44e21569f545b76560b29579f98, type: 3}
       propertyPath: enemyBullets.Array.data[0]
@@ -201,6 +201,10 @@ PrefabInstance:
       propertyPath: enemyBullets.Array.data[4]
       value: 
       objectReference: {fileID: 9105720830852273017, guid: b4bcc058cd1a6464fa56e205ea036fe5, type: 3}
+    - target: {fileID: 3922465162775491505, guid: d93cb44e21569f545b76560b29579f98, type: 3}
+      propertyPath: enemyBullets.Array.data[5]
+      value: 
+      objectReference: {fileID: 4891527653683152033, guid: 1d046a2bc203ae549b9907080a112d75, type: 3}
     - target: {fileID: 4336286228127436173, guid: d93cb44e21569f545b76560b29579f98, type: 3}
       propertyPath: m_Name
       value: Enemy-Virgo
