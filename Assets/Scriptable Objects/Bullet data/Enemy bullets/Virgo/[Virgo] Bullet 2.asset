@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: '[Virgo] Bullet 2'
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: aff5ff3003a41f24d892e26e534d2c72, type: 3}
-  colour:
+  useSolidColour: 0
+  colour: {r: 0, g: 0, b: 0, a: 0}
+  gradient:
     serializedVersion: 2
     key0: {r: 1, g: 0.9183059, b: 0.504, a: 1}
     key1: {r: 1, g: 0.91733336, b: 0.752, a: 1}

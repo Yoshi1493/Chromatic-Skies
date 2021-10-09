@@ -26,6 +26,7 @@ public class VirgoBulletSystem21 : EnemyBulletSubsystem
             for (int j = 0; j < 360; j += 90)
             {
                 var bulletR = SpawnBullet(5, zRot + j, 2 * new Vector3(xPos, yPos, 0f).RotateVectorBy(j));
+                //bulletR.projectileData
                 bullets.Push(bulletR);
 
                 var bulletL = SpawnBullet(5, -zRot + j, 2 * new Vector3(-xPos, yPos, 0f).RotateVectorBy(j));

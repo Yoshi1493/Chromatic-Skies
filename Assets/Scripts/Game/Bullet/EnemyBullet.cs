@@ -10,7 +10,7 @@ public abstract class EnemyBullet : Bullet
     {
         base.OnEnable();
 
-        spriteRenderer.color = projectileData.colour.Evaluate(Random.value);
+        spriteRenderer.color = projectileData.useSolidColour ? projectileData.colour : projectileData.gradient.Evaluate(Random.value);
 
         moveDirection = new Vector2
             (
