@@ -5,7 +5,9 @@ using static CoroutineHelper;
 
 public class VirgoBulletSystem21 : EnemyBulletSubsystem
 {
-    Stack<EnemyBullet> bullets = new Stack<EnemyBullet>(80);
+    [SerializeField] ProjectileObject bulletData;
+
+    Stack<EnemyBullet> bullets = new Stack<EnemyBullet>(84);
 
     readonly float a = 0.7f;
     readonly float b = 0.3f;
@@ -25,29 +27,31 @@ public class VirgoBulletSystem21 : EnemyBulletSubsystem
 
             for (int j = 0; j < 360; j += 90)
             {
-                var bulletR = SpawnBullet(5, zRot + j, 2 * new Vector3(xPos, yPos, 0f).RotateVectorBy(j));
-                //bulletR.projectileData
-                bullets.Push(bulletR);
+                bulletData.colour = bulletData.gradient.Evaluate(-yPos);
 
-                var bulletL = SpawnBullet(5, -zRot + j, 2 * new Vector3(-xPos, yPos, 0f).RotateVectorBy(j));
-                bullets.Push(bulletL);
+                bullets.Push(SpawnBullet(5, zRot + j, 2 * new Vector3(xPos, yPos, 0f).RotateVectorBy(j)));
+                bullets.Push(SpawnBullet(5, -zRot + j, 2 * new Vector3(-xPos, yPos, 0f).RotateVectorBy(j)));
             }
 
-            yield return WaitForSeconds(ShootingCooldown / 4f);
+            yield return WaitForSeconds(ShootingCooldown / 2f);
         }
 
-        yield return WaitForSeconds(1f);
-
-        int bulletCount = bullets.Count / 8;
-
-        for (int i = 0; i < bulletCount; i++)
+        for (int i = 0; i < 360; i += 90)
         {
-            for (int j = 0; j < 8; j++)
+            bulletData.colour = bulletData.gradient.Evaluate(1.0f);
+            bullets.Push(SpawnBullet(5, i, 2 * transform.up.RotateVectorBy(i)));
+        }
+
+        int bulletCount = bullets.Count;
+
+        for (int i = 0; i < bulletCount; i += 4)
+        {
+            for (int j = 0; j < 4; j++)
             {
                 bullets.Pop().Fire();
             }
 
-            yield return WaitForSeconds(ShootingCooldown);
+            yield return WaitForSeconds(ShootingCooldown / 2f);
         }
 
         enabled = false;

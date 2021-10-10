@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shootingSpeed: {fileID: 11400000, guid: e04dabb841369cb40a380b2ddc81b811, type: 2}
+  bulletData: {fileID: 11400000, guid: 408f21ca3797a5746b0e7188c8671a2e, type: 2}
 --- !u!1 &5930862760732087315
 GameObject:
   m_ObjectHideFlags: 0
