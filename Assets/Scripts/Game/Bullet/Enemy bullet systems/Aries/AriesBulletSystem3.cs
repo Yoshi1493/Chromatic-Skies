@@ -10,7 +10,7 @@ public class AriesBulletSystem3 : EnemyBulletSystem
 
         yield return base.Shoot();
 
-        SetSubsystemEnabled(1, true);
+        SetSubsystemEnabled(1);
 
         yield return WaitForSeconds(1f);
 

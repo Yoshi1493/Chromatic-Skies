@@ -27,9 +27,9 @@ public abstract class EnemyShooter : Shooter
         AttackStartAction?.Invoke();
     }
 
-    protected void SetSubsystemEnabled(int subsystemIndex, bool enabled)
+    protected void SetSubsystemEnabled(int subsystemIndex)
     {
         if (transform.GetChild(subsystemIndex - 1).TryGetComponent(out EnemyShooter enemyShooter))
-            enemyShooter.enabled = enabled;
+            enemyShooter.enabled = true;
     }
 }

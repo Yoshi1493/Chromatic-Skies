@@ -20,5 +20,7 @@ public class VirgoBulletSystem11 : EnemyBulletSubsystem
 
             yield return WaitForSeconds(ShootingCooldown * 2f);
         }
+
+        enabled = false;
     }
 }

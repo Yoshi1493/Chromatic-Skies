@@ -8,7 +8,7 @@ public class AriesBulletSystem4 : EnemyBulletSystem
     {
         yield return base.Shoot();
 
-        SetSubsystemEnabled(1, true);
+        SetSubsystemEnabled(1);
 
         while (enabled)
         {

@@ -2353,15 +2353,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moduleNames:
-  - {fileID: 11400000, guid: 2701901a4acf01048a864e43d0ff5703, type: 2}
   - {fileID: 11400000, guid: a9aef694dce0db340a79b67b5307b7d8, type: 2}
+  - {fileID: 11400000, guid: 2701901a4acf01048a864e43d0ff5703, type: 2}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   attackNames:
-  - {fileID: 11400000, guid: 1cf2b3417ac1cdd4dac67554fcf113ec, type: 2}
   - {fileID: 11400000, guid: 6606bcd5b1bb22e46843359f5c367395, type: 2}
+  - {fileID: 11400000, guid: 1cf2b3417ac1cdd4dac67554fcf113ec, type: 2}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}

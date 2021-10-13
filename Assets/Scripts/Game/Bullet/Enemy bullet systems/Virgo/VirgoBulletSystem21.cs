@@ -14,9 +14,11 @@ public class VirgoBulletSystem21 : EnemyBulletSubsystem
 
     protected override IEnumerator Shoot()
     {
-        for (int h = 0; h < 3; h++)
+        transform.Rotate(0f, 0f, Random.Range(-90f, 90f));
+
+        for (int h = 0; h < 4; h++)
         {
-            transform.localEulerAngles = new Vector3(0, 0, h * 30f);
+            transform.Rotate(0f, 0f, 45f);
 
             for (int i = 0; i <= 10; i++)
             {
@@ -27,7 +29,7 @@ public class VirgoBulletSystem21 : EnemyBulletSubsystem
                 float xPos = (3 * Mathf.Pow((1 - (i * 0.1f)) / a, 2) - 2 * Mathf.Pow((1 - (i * 0.1f)) / a, 3)) * b;
                 float yPos = i / -10f;
 
-                float zRot = (10 - i) * 5f;
+                float zRot = (10 - i) * 10f;
 
                 for (int j = 0; j < 360; j += 90)
                 {
@@ -39,20 +41,14 @@ public class VirgoBulletSystem21 : EnemyBulletSubsystem
 
                 yield return WaitForSeconds(ShootingCooldown / 2f);
             }
-        }
 
-        int bulletCount = bullets.Count;
+            int bulletCount = bullets.Count;
 
-        for (int i = 0; i < bulletCount; i += 4)
-        {
-            for (int j = 0; j < 4; j++)
+            for (int i = 0; i < bulletCount; i++)
             {
                 bullets.Pop().Fire();
             }
-
-            yield return WaitForSeconds(ShootingCooldown / 2f);
         }
-
         enabled = false;
     }
 }
