@@ -5,7 +5,11 @@ public class ProjectileObject : ScriptableObject
 {
     [Header("Appearance")]
     public Sprite sprite;
-    public Gradient colour;
+
+    public bool useSolidColour;
+
+    public Color colour;
+    public Gradient gradient;
 
     [Header("Stats")]
     public int BulletID;

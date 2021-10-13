@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: '[Aries] Bullet 5'
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: 0e485a734d809274db7ba7ca7995028c, type: 3}
-  colour:
+  useSolidColour: 0
+  colour: {r: 0, g: 0, b: 0, a: 0}
+  gradient:
     serializedVersion: 2
     key0: {r: 1, g: 0.5, b: 0.5, a: 1}
     key1: {r: 1, g: 0.7496063, b: 0.39999998, a: 1}
@@ -21,16 +23,16 @@ MonoBehaviour:
     key3: {r: 0.4966962, g: 0.9019608, b: 0.3607843, a: 0}
     key4: {r: 0.39999998, g: 0.7, b: 1, a: 0}
     key5: {r: 1, g: 0.5, b: 1, a: 0}
-    key6: {r: 1, g: 0, b: 0.75, a: 0}
-    key7: {r: 1, g: 0, b: 0.75, a: 0}
+    key6: {r: 0, g: 0, b: 0, a: 0}
+    key7: {r: 0, g: 0, b: 0, a: 0}
     ctime0: 10879
     ctime1: 21823
     ctime2: 32768
     ctime3: 43646
     ctime4: 54591
     ctime5: 65535
-    ctime6: 65535
-    ctime7: 65535
+    ctime6: 0
+    ctime7: 0
     atime0: 0
     atime1: 65535
     atime2: 0

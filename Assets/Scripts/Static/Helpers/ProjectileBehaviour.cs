@@ -13,66 +13,65 @@ public static class ProjectileBehaviour
     {
         if (delay > 0f) yield return WaitForSeconds(delay);
 
-        // if lerpTime is not a viable value to lerp with, just set speed to endSpeed immediately
-        if (lerpTime <= 0f)
+        if (lerpTime > 0f)
         {
-            p.MoveSpeed = endSpeed;
-            yield break;
+            float currentLerpTime = 0f;
+
+            while (currentLerpTime < lerpTime)
+            {
+                p.MoveSpeed = Mathf.Lerp(startSpeed, endSpeed, currentLerpTime / lerpTime);
+
+                currentLerpTime += Time.deltaTime;
+                yield return EndOfFrame;
+            }
         }
 
-        float currentLerpTime = 0f;
-
-        while (currentLerpTime < lerpTime)
-        {
-            p.MoveSpeed = Mathf.Lerp(startSpeed, endSpeed, currentLerpTime / lerpTime);
-
-            currentLerpTime += Time.deltaTime;
-            yield return EndOfFrame;
-        }
+        p.MoveSpeed = endSpeed;
     }
 
+    /// <summary>
+    /// (unused) uses Vector3.SmoothDamp to lerp <p.moveDirection> from <p.moveDirection> to <endDirection>, in <lerpTime> seconds.
+    /// </summary>
     public static IEnumerator LerpDirection(this Projectile p, Vector3 endDirection, float lerpTime, float delay = 0f)
     {
         if (delay > 0f) yield return WaitForSeconds(delay);
 
-        // if lerpTime is not a viable value to lerp with, just set direction to endDirection immediately
-        if (lerpTime <= 0f)
+        if (lerpTime > 0f)
         {
-            p.moveDirection = endDirection;
-            yield break;
+            Vector3 vel = p.moveDirection;
+
+            while (p.moveDirection != endDirection)
+            {
+                p.moveDirection = Vector3.SmoothDamp(p.moveDirection, endDirection, ref vel, lerpTime);
+                yield return EndOfFrame;
+            }
         }
 
-        Vector3 vel = p.moveDirection;
-        //float currentLerpTime = 0f;
-
-        while (p.moveDirection != endDirection)
-        {
-            p.moveDirection = Vector3.SmoothDamp(p.moveDirection, endDirection, ref vel, lerpTime);
-
-            //currentLerpTime += Time.deltaTime;
-            yield return EndOfFrame;
-        }
+        p.moveDirection = endDirection;
     }
 
     /// <summary>
-    /// adds <rotateAmount> degrees to <p.eulerAngles.z>, over <lerpTime> seconds.
+    /// rotates <p.moveDirection> upon the x-y plane by <degrees> degrees, over <rotateDuration> seconds.
     /// </summary>
-    public static IEnumerator RotateBy(this Projectile p, float rotateAmount, float lerpTime, float delay = 0f)
+    public static IEnumerator RotateBy(this Projectile p, float degrees, float rotateDuration, bool clockwise = true, float delay = 0f)
     {
-        if (lerpTime <= 0f) yield break;
+        if (rotateDuration <= 0f) yield break;
         if (delay > 0f) yield return WaitForSeconds(delay);
 
-        float currentLerpTime = 0f;
+        float currentTime = 0f;
+
         Vector3 startDir = p.moveDirection;
-        Vector3 endDir = startDir.RotateVectorBy(rotateAmount);
 
-        while (p.moveDirection != endDir)
+        while (currentTime < rotateDuration)
         {
-            p.moveDirection = Vector3.Lerp(startDir, endDir, currentLerpTime / lerpTime);
+            float degreesPerFrame = (degrees * (clockwise ? -1 : 1)) / rotateDuration * Time.deltaTime;
+            RotateVectorBy(ref p.moveDirection, degreesPerFrame);
 
-            currentLerpTime += Time.deltaTime;
+            currentTime += Time.deltaTime;
             yield return EndOfFrame;
         }
+
+        p.moveDirection = startDir.RotateVectorBy(degrees);
     }
 
     /// <summary>
@@ -155,12 +154,21 @@ public static class ProjectileBehaviour
     /// i.e. sets <p.moveDirection> such that if <target.transform.position> doesn't change,
     /// <p> will eventually collide with <target>.
     /// </summary>
-    public static IEnumerator LookAt(this Projectile p, Actor target, float delay = 0f)
+    public static Vector3 LookAt(this Projectile p, Actor target)
     {
-        if (target == null) yield break;
-        if (delay > 0f) yield return WaitForSeconds(delay);
+        if (target != null)
+            p.moveDirection = target.transform.position - p.transform.position;
 
-        p.moveDirection = target.transform.position - p.transform.position;
+        return p.moveDirection;
+    }
+
+    /// <summary>
+    /// overload of LookAt() that makes <p> face towards a given Vector3.
+    /// </summary>
+    public static Vector3 LookAt(this Projectile p, Vector3 targetPos)
+    {
+        p.moveDirection = targetPos - p.transform.position;
+        return p.moveDirection;
     }
 
     /// <summary>

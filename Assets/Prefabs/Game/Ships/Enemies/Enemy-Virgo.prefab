@@ -1,5 +1,94 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5765870547259354690
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3497665189440714775}
+  - component: {fileID: 2573399990516043235}
+  m_Layer: 7
+  m_Name: Bullet Subsystem 1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3497665189440714775
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5765870547259354690}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2362189854743476344}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2573399990516043235
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5765870547259354690}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed3de518894d37f4592cb0d93120c9c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shootingSpeed: {fileID: 11400000, guid: e04dabb841369cb40a380b2ddc81b811, type: 2}
+  bulletData: {fileID: 11400000, guid: 408f21ca3797a5746b0e7188c8671a2e, type: 2}
+--- !u!1 &5930862760732087315
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 703766255699774660}
+  - component: {fileID: 8525239592997743356}
+  m_Layer: 7
+  m_Name: Bullet Subsystem 1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &703766255699774660
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5930862760732087315}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6341278059232048145}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8525239592997743356
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5930862760732087315}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dad3536f0ab64cd4cb192f57e01c2444, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shootingSpeed: {fileID: 11400000, guid: e04dabb841369cb40a380b2ddc81b811, type: 2}
 --- !u!114 &1412982307716941297
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -91,7 +180,7 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: e9385e40c7c00b845918f858c3286d55, type: 2}
     - target: {fileID: 3922465162775491505, guid: d93cb44e21569f545b76560b29579f98, type: 3}
       propertyPath: enemyBullets.Array.size
-      value: 2
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3922465162775491505, guid: d93cb44e21569f545b76560b29579f98, type: 3}
       propertyPath: enemyBullets.Array.data[0]
@@ -101,6 +190,22 @@ PrefabInstance:
       propertyPath: enemyBullets.Array.data[1]
       value: 
       objectReference: {fileID: -6821035276269721638, guid: 6187b47b88e4b1241b9fb3f444625cea, type: 3}
+    - target: {fileID: 3922465162775491505, guid: d93cb44e21569f545b76560b29579f98, type: 3}
+      propertyPath: enemyBullets.Array.data[2]
+      value: 
+      objectReference: {fileID: -1251108898324356556, guid: ec4b3555822af0846ac6421ae7b0db3f, type: 3}
+    - target: {fileID: 3922465162775491505, guid: d93cb44e21569f545b76560b29579f98, type: 3}
+      propertyPath: enemyBullets.Array.data[3]
+      value: 
+      objectReference: {fileID: -3968087173148166216, guid: 450f26312e4a278489168266a92a3ed6, type: 3}
+    - target: {fileID: 3922465162775491505, guid: d93cb44e21569f545b76560b29579f98, type: 3}
+      propertyPath: enemyBullets.Array.data[4]
+      value: 
+      objectReference: {fileID: 9105720830852273017, guid: b4bcc058cd1a6464fa56e205ea036fe5, type: 3}
+    - target: {fileID: 3922465162775491505, guid: d93cb44e21569f545b76560b29579f98, type: 3}
+      propertyPath: enemyBullets.Array.data[5]
+      value: 
+      objectReference: {fileID: 4891527653683152033, guid: 1d046a2bc203ae549b9907080a112d75, type: 3}
     - target: {fileID: 4336286228127436173, guid: d93cb44e21569f545b76560b29579f98, type: 3}
       propertyPath: m_Name
       value: Enemy-Virgo
@@ -156,9 +261,19 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7301416149945870285, guid: d93cb44e21569f545b76560b29579f98, type: 3}
   m_PrefabInstance: {fileID: 6759093168088370692}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &6341278059232048145 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 418168052357298709, guid: d93cb44e21569f545b76560b29579f98, type: 3}
+  m_PrefabInstance: {fileID: 6759093168088370692}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &3777441332194849460 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7611423722439146672, guid: d93cb44e21569f545b76560b29579f98, type: 3}
+  m_PrefabInstance: {fileID: 6759093168088370692}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &2362189854743476344 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 9008659700516484732, guid: d93cb44e21569f545b76560b29579f98, type: 3}
   m_PrefabInstance: {fileID: 6759093168088370692}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &2558884426390124806 stripped
