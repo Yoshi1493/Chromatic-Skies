@@ -25,6 +25,6 @@ public abstract class EnemyBulletSystem : EnemyShooter
     protected virtual void OnLoseLife()
     {
         StopCoroutine(shootCoroutine);
-        DestroyAllBullets<EnemyBullet>();
+        DestroyAllProjectiles<EnemyBullet>();
     }
 }

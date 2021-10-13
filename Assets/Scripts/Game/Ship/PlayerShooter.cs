@@ -13,7 +13,7 @@ public class PlayerShooter : Shooter
         base.Awake();
 
         PlayerBulletPool.Instance.UpdatePoolableObjects(playerBullets);
-        ownerShip.LoseLifeAction += DestroyAllBullets<PlayerBullet>;
+        ownerShip.LoseLifeAction += DestroyAllProjectiles<PlayerBullet>;
 
         FindObjectOfType<PauseHandler>().GamePauseAction += OnGamePaused;
     }

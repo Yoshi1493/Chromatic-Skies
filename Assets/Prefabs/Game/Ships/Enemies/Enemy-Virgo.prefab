@@ -179,9 +179,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: e9385e40c7c00b845918f858c3286d55, type: 2}
     - target: {fileID: 3922465162775491505, guid: d93cb44e21569f545b76560b29579f98, type: 3}
+      propertyPath: enemyLasers.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3922465162775491505, guid: d93cb44e21569f545b76560b29579f98, type: 3}
       propertyPath: enemyBullets.Array.size
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 3922465162775491505, guid: d93cb44e21569f545b76560b29579f98, type: 3}
+      propertyPath: enemyLasers.Array.data[0]
+      value: 
+      objectReference: {fileID: 7592583357486941426, guid: 3bae34aabe0e01a49b22867102cb4021, type: 3}
     - target: {fileID: 3922465162775491505, guid: d93cb44e21569f545b76560b29579f98, type: 3}
       propertyPath: enemyBullets.Array.data[0]
       value: 
