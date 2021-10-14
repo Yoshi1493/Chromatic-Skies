@@ -2355,17 +2355,17 @@ MonoBehaviour:
   moduleNames:
   - {fileID: 11400000, guid: a9aef694dce0db340a79b67b5307b7d8, type: 2}
   - {fileID: 11400000, guid: 2701901a4acf01048a864e43d0ff5703, type: 2}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: 9df3cb35ed3200345915a6bb95c14d25, type: 2}
+  - {fileID: 11400000, guid: 748f772b753b15a45a8730626a0a81e2, type: 2}
+  - {fileID: 11400000, guid: f31004245b0b5de49b664c1fdc02e321, type: 2}
+  - {fileID: 11400000, guid: 31d353aea6d721d4aabff9c30739c1cb, type: 2}
   attackNames:
   - {fileID: 11400000, guid: 6606bcd5b1bb22e46843359f5c367395, type: 2}
   - {fileID: 11400000, guid: 1cf2b3417ac1cdd4dac67554fcf113ec, type: 2}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: 4080540834125334c9e91596d1df87ee, type: 2}
+  - {fileID: 11400000, guid: 51158c2f7e1c39649846234699873333, type: 2}
+  - {fileID: 11400000, guid: 7ef7e803f8984224c8eadab514b1ef30, type: 2}
+  - {fileID: 11400000, guid: d3cc8086d5ee06c49b1a096bd95f82db, type: 2}
 --- !u!1 &1660768948
 GameObject:
   m_ObjectHideFlags: 0

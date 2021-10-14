@@ -1,41 +1,28 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class EnemyLaserSystem : EnemyShooter
 {
-    [SerializeField] protected List<Laser> enemyLasers = new List<Laser>();
-
-    protected override void Awake()
+    protected override void Start()
     {
         base.Awake();
-        ownerShip.LoseLifeAction += DestroyAllLasers;
+        ownerShip.LoseLifeAction += OnLoseLife;
     }
 
-    protected override IEnumerator Shoot()
+    protected Laser SpawnLaser(int laserIndex, float zRotation, Vector3 offset)
     {
-        yield return base.Shoot();
-        if (enemyLasers.Count > 0) EnemyLaserPool.Instance.UpdatePoolableObjects(enemyLasers);
-    }
-
-    protected void SpawnLaser(float zRotation, Vector2 offset)
-    {
-        if (!enabled) return;
-
-        var newLaser = EnemyLaserPool.Instance.Get(0);
+        Laser newLaser = EnemyLaserPool.Instance.Get(laserIndex);
 
         newLaser.transform.SetPositionAndRotation(ShipPosition + offset, Quaternion.Euler(0, 0, zRotation));
+
         newLaser.gameObject.SetActive(true);
         newLaser.enabled = true;
+
+        return newLaser;
     }
 
-    void DestroyAllLasers()
+    void OnLoseLife()
     {
-        Laser[] lasers = FindObjectsOfType<Laser>();
-
-        for (int i = 0; i < lasers.Length; i++)
-        {
-            lasers[i].Destroy();
-        }
+        StopCoroutine(shootCoroutine);
+        DestroyAllProjectiles<Laser>();
     }
 }

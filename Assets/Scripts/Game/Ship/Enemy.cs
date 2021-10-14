@@ -4,10 +4,12 @@ using UnityEngine;
 public class Enemy : Ship
 {
     [SerializeField] List<EnemyBullet> enemyBullets = new List<EnemyBullet>();
+    [SerializeField] List<Laser> enemyLasers = new List<Laser>();
 
     void Start()
     {
         EnemyBulletPool.Instance.UpdatePoolableObjects(enemyBullets);
+        EnemyLaserPool.Instance.UpdatePoolableObjects(enemyLasers);
     }
 
     protected override void LoseLife()
@@ -37,7 +39,7 @@ public class Enemy : Ship
     {
         if (Input.GetKeyDown(KeyCode.K))
         {
-            TakeDamage(99999);
+            TakeDamage(shipData.CurrentHealth.Value);
         }
     }
 

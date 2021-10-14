@@ -4,7 +4,7 @@ using UnityEngine;
 public abstract class Shooter : MonoBehaviour
 {
     protected Ship ownerShip;
-    protected Vector2 ShipPosition => ownerShip.transform.position;
+    protected Vector3 ShipPosition => ownerShip.transform.position;
 
     [SerializeField] protected FloatObject shootingSpeed;
     protected float ShootingSpeed => shootingSpeed.value;
@@ -20,13 +20,13 @@ public abstract class Shooter : MonoBehaviour
     protected abstract IEnumerator Shoot();
 
     //to-do: optimize?
-    protected void DestroyAllBullets<T>() where T : Bullet
+    protected void DestroyAllProjectiles<T>() where T : Projectile
     {
-        T[] bullets = FindObjectsOfType<T>();
+        T[] projectiles = FindObjectsOfType<T>();
 
-        for (int i = 0; i < bullets.Length; i++)
+        for (int i = 0; i < projectiles.Length; i++)
         {
-            bullets[i].Destroy();
+            projectiles[i].Destroy();
         }
     }
 }
