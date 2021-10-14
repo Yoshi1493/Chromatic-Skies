@@ -6,19 +6,6 @@ public abstract class EnemyBullet : Bullet
     protected Enemy ownerShip;
     protected Player playerShip;
 
-    protected override void OnEnable()
-    {
-        base.OnEnable();
-
-        spriteRenderer.color = projectileData.useSolidColour ? projectileData.colour : projectileData.gradient.Evaluate(Random.value);
-
-        moveDirection = new Vector2
-            (
-                Mathf.Sin(transform.localEulerAngles.z * Mathf.Deg2Rad),
-                -Mathf.Cos(transform.localEulerAngles.z * Mathf.Deg2Rad)
-            );
-    }
-
     void Start()
     {
         ownerShip = FindObjectOfType<Enemy>();
