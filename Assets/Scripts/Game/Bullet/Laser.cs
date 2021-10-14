@@ -16,6 +16,11 @@ public abstract class Laser : Projectile
         originalSize = spriteRenderer.size;
     }
 
+    protected void OnEnable()
+    {
+        spriteRenderer.color = projectileData.useSolidColour ? projectileData.colour : projectileData.gradient.Evaluate(Random.value);
+    }
+
     IEnumerator LerpSize(Vector2 startSize, Vector2 endSize, float lerpDuration = 0.1f)
     {
         float currentLerpTime = 0f;

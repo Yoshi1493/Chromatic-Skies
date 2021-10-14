@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class VirgoLaser1 : Laser
 {
-    void Start()
+    protected override void Update()
     {
-        MoveSpeed = 3f;
+        base.Update();
+        Move(MoveSpeed);
     }
 }

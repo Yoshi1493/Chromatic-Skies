@@ -4,7 +4,7 @@ using UnityEngine;
 public abstract class Shooter : MonoBehaviour
 {
     protected Ship ownerShip;
-    protected Vector2 ShipPosition => ownerShip.transform.position;
+    protected Vector3 ShipPosition => ownerShip.transform.position;
 
     [SerializeField] protected FloatObject shootingSpeed;
     protected float ShootingSpeed => shootingSpeed.value;

@@ -8,7 +8,7 @@ public abstract class EnemyLaserSystem : EnemyShooter
         ownerShip.LoseLifeAction += OnLoseLife;
     }
 
-    protected Laser SpawnLaser(int laserIndex, float zRotation, Vector2 offset)
+    protected Laser SpawnLaser(int laserIndex, float zRotation, Vector3 offset)
     {
         Laser newLaser = EnemyLaserPool.Instance.Get(laserIndex);
 

@@ -8,7 +8,7 @@ public abstract class EnemyBulletSystem : EnemyShooter
         ownerShip.LoseLifeAction += OnLoseLife;
     }
 
-    protected virtual EnemyBullet SpawnBullet(int bulletIndex, float zRotation, Vector3 position, bool asLocalPosition = true)
+    protected EnemyBullet SpawnBullet(int bulletIndex, float zRotation, Vector3 position, bool asLocalPosition = true)
     {
         EnemyBullet newBullet = EnemyBulletPool.Instance.Get(bulletIndex);
 

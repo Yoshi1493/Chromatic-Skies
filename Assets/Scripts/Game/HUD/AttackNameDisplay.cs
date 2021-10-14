@@ -20,7 +20,7 @@ public class AttackNameDisplay : MonoBehaviour
         enemy = FindObjectOfType<Enemy>();
         enemy.LoseLifeAction += OnEnemyLoseLife;
 
-        var shooters = enemy.GetComponentsInChildren<EnemyBulletSystem>().Where(i => !(i is EnemyBulletSubsystem));
+        var shooters = enemy.GetComponentsInChildren<EnemyShooter>().Where(i => !(i is EnemyBulletSubsystem));
 
         foreach (EnemyShooter es in shooters)
             es.AttackStartAction += OnEnemyAttackStart;

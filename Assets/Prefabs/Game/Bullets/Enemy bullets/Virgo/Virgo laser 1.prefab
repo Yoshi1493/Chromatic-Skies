@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   transform: {fileID: 0}
   moveDirection: {x: 0, y: 0, z: 0}
-  projectileData: {fileID: 0}
-  moveSpeed: 0
+  projectileData: {fileID: 11400000, guid: 16b6d601b1b16994e9f5d4affa29e0ec, type: 2}
+  moveSpeed: 3
   widthInterpolation:
     serializedVersion: 2
     m_Curve:
