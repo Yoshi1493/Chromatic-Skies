@@ -8,7 +8,7 @@ public class VirgoBulletSystem3 : EnemyLaserSystem
     {
         yield return base.Shoot();
 
-        for (int i = 0; i < 33; i++)
+        for (int i = 0; i < 32; i++)
         {
             float z = Mathf.PingPong(i, 8) * 10f - 40f + (i / 8 * 5 - 7.5f);
             SpawnLaser(0, z, Vector3.zero).Fire();
