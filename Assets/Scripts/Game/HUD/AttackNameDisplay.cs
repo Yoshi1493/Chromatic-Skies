@@ -1,4 +1,3 @@
-using System.Linq;
 using UnityEngine;
 using TMPro;
 
@@ -20,10 +19,10 @@ public class AttackNameDisplay : MonoBehaviour
         enemy = FindObjectOfType<Enemy>();
         enemy.LoseLifeAction += OnEnemyLoseLife;
 
-        var shooters = enemy.GetComponentsInChildren<EnemyShooter>().Where(i => !(i is EnemyBulletSubsystem));
-
-        foreach (EnemyShooter es in shooters)
-            es.AttackStartAction += OnEnemyAttackStart;
+        for (int i = 0; i < enemy.transform.childCount; i++)
+        {
+            enemy.transform.GetChild(i).GetComponent<Shooter>().AttackStartAction += OnEnemyAttackStart;
+        }
     }
 
     void OnEnemyAttackStart()

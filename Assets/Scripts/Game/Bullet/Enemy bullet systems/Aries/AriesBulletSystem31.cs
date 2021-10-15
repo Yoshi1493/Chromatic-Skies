@@ -14,7 +14,7 @@ public class AriesBulletSystem31 : EnemyBulletSubsystem
         for (int i = 0; i < 12; i++)
         {
             float z = i * -30f + 90f;
-            bullets.Add(SpawnBullet(4, z, transform.up.RotateVectorBy(z + 90f) * 2f));
+            bullets.Add(SpawnProjectile(4, z, transform.up.RotateVectorBy(z + 90f) * 2f));
 
             yield return WaitForSeconds(ShootingCooldown / 4f);
         }
@@ -24,7 +24,7 @@ public class AriesBulletSystem31 : EnemyBulletSubsystem
         for (int i = 0; i < 16; i++)
         {
             float z = i * 22.5f - 90f;
-            bullets.Add(SpawnBullet(5, z, transform.up.RotateVectorBy(z - 90f) * 2.5f));
+            bullets.Add(SpawnProjectile(5, z, transform.up.RotateVectorBy(z - 90f) * 2.5f));
 
             yield return WaitForSeconds(ShootingCooldown / 4f);
         }

@@ -21,7 +21,7 @@ public class AriesBulletSystem3 : EnemyBulletSystem
             for (int j = 0; j <= 6; j++)
             {
                 float z = rand + (j * 30f) - 120f;
-                SpawnBullet(0, z, transform.up.RotateVectorBy(rand)).Fire();
+                SpawnProjectile(0, z, transform.up.RotateVectorBy(rand)).Fire();
             }
 
             yield return WaitForSeconds(ShootingCooldown * 3f);

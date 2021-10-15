@@ -1,28 +1,28 @@
 using UnityEngine;
 
-public abstract class EnemyLaserSystem : EnemyShooter
+public abstract class EnemyLaserSystem : EnemyShooter<Laser>
 {
-    protected override void Start()
-    {
-        base.Awake();
-        ownerShip.LoseLifeAction += OnLoseLife;
-    }
+    //protected override void Start()
+    //{
+    //    base.Awake();
+    //    ownerShip.LoseLifeAction += OnLoseLife;
+    //}
 
-    protected Laser SpawnLaser(int laserIndex, float zRotation, Vector3 offset)
-    {
-        Laser newLaser = EnemyLaserPool.Instance.Get(laserIndex);
+    //protected Laser SpawnLaser(int laserIndex, float zRotation, Vector3 offset)
+    //{
+    //    Laser newLaser = EnemyLaserPool.Instance.Get(laserIndex);
 
-        newLaser.transform.SetPositionAndRotation(ShipPosition + offset, Quaternion.Euler(0, 0, zRotation));
+    //    newLaser.transform.SetPositionAndRotation(ShipPosition + offset, Quaternion.Euler(0, 0, zRotation));
 
-        newLaser.gameObject.SetActive(true);
-        newLaser.enabled = true;
+    //    newLaser.gameObject.SetActive(true);
+    //    newLaser.enabled = true;
 
-        return newLaser;
-    }
+    //    return newLaser;
+    //}
 
-    void OnLoseLife()
-    {
-        StopCoroutine(shootCoroutine);
-        DestroyAllProjectiles<Laser>();
-    }
+    //void OnLoseLife()
+    //{
+    //    StopCoroutine(shootCoroutine);
+    //    DestroyAllProjectiles<Laser>();
+    //}
 }

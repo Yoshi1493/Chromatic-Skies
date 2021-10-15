@@ -10,6 +10,7 @@ public abstract class Bullet : Projectile
 
     protected override void OnEnable()
     {
+        base.OnEnable();
         currentLifetime = 0;
     }
 

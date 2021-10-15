@@ -18,7 +18,7 @@ public class VirgoBulletSystem1 : EnemyBulletSystem
             for (int i = 0; i < 377; i++)
             {
                 float z = i * goldenRatio;
-                SpawnBullet(1, z, Vector2.zero).Fire();
+                SpawnProjectile(1, z, Vector2.zero).Fire();
 
                 yield return WaitForSeconds(ShootingCooldown / 8f);
             }
