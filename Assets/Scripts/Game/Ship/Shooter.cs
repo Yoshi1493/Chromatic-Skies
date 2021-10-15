@@ -10,9 +10,6 @@ public abstract class Shooter : MonoBehaviour
     protected float ShootingSpeed => shootingSpeed.value;
     protected virtual float ShootingCooldown => ShootingSpeed == 0 ? 0 : 1 / ShootingSpeed;
 
-    public delegate void AttackStart();
-    public AttackStart AttackStartAction;
-
     protected IEnumerator shootCoroutine;
 
     protected virtual void Awake()

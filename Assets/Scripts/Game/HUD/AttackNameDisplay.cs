@@ -21,7 +21,7 @@ public class AttackNameDisplay : MonoBehaviour
 
         for (int i = 0; i < enemy.transform.childCount; i++)
         {
-            enemy.transform.GetChild(i).GetComponent<Shooter>().AttackStartAction += OnEnemyAttackStart;
+            enemy.transform.GetChild(i).GetComponent<INamedAttack>().AttackStartAction += OnEnemyAttackStart;
         }
     }
 

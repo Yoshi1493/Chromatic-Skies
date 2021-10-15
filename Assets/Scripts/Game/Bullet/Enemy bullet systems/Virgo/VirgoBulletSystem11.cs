@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using static CoroutineHelper;
 
-public class VirgoBulletSystem11 : EnemyBulletSubsystem
+public class VirgoBulletSystem11 : EnemyBulletSubsystem<EnemyBullet>
 {
     protected override IEnumerator Shoot()
     {

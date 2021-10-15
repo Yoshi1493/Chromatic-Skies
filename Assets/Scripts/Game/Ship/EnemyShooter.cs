@@ -1,11 +1,19 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
-public abstract class EnemyShooter<TProjectile> : Shooter
+public interface INamedAttack
+{
+    Action AttackStartAction { get; set; }
+}
+
+public abstract class EnemyShooter<TProjectile> : Shooter, INamedAttack
     where TProjectile : Projectile
 {
     Player playerShip;
     protected Vector2 PlayerPosition => playerShip.transform.position;
+
+    public Action AttackStartAction { get; set; }
 
     protected virtual void Start()
     {

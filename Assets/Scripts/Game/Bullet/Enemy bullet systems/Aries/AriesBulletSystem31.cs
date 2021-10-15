@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using static CoroutineHelper;
 
-public class AriesBulletSystem31 : EnemyBulletSubsystem
+public class AriesBulletSystem31 : EnemyBulletSubsystem<EnemyBullet>
 {
     List<EnemyBullet> bullets = new List<EnemyBullet>(28);
 

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using static CoroutineHelper;
 
-public class VirgoBulletSystem21 : EnemyBulletSubsystem
+public class VirgoBulletSystem21 : EnemyBulletSubsystem<EnemyBullet>
 {
     [SerializeField] ProjectileObject bulletData;
 
