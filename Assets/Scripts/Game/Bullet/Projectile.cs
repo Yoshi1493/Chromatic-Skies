@@ -36,7 +36,6 @@ public abstract class Projectile : Actor
         if (coll && coll.TryGetComponent(out TShip _))
         {
             HandleCollisionWithShip<Ship>(coll);
-            print("collided with player");
         }
     }
 
