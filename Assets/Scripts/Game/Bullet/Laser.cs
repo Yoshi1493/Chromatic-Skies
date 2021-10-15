@@ -16,11 +16,6 @@ public abstract class Laser : Projectile
         originalSize = spriteRenderer.size;
     }
 
-    protected void OnEnable()
-    {
-        spriteRenderer.color = projectileData.useSolidColour ? projectileData.colour : projectileData.gradient.Evaluate(Random.value);
-    }
-
     IEnumerator LerpSize(Vector2 startSize, Vector2 endSize, float lerpDuration = 0.1f)
     {
         float currentLerpTime = 0f;
@@ -60,10 +55,4 @@ public abstract class Laser : Projectile
         EnemyLaserPool.Instance.ReturnToPool(this);
     }
 
-    //void OnDrawGizmos()
-    //{
-    //    Transform t = GetComponent<Transform>();
-    //    SpriteRenderer sr = GetComponent<SpriteRenderer>();
-    //    Gizmos.DrawCube(t.position + (Vector3.up * sr.size.y / 2), sr.size);
-    //}
 }

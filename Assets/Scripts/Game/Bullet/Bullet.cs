@@ -8,7 +8,7 @@ public abstract class Bullet : Projectile
     float HitboxSize => spriteRenderer.size.x / 2;
     protected override Collider2D CollisionCondition => Physics2D.OverlapCircle(transform.position, HitboxSize);
 
-    protected virtual void OnEnable()
+    protected override void OnEnable()
     {
         currentLifetime = 0;
     }

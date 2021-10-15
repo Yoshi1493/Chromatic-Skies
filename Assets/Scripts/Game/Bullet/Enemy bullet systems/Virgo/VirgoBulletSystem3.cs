@@ -7,6 +7,13 @@ public class VirgoBulletSystem3 : EnemyLaserSystem
     protected override IEnumerator Shoot()
     {
         yield return base.Shoot();
-        SpawnLaser(0, 180f, Vector3.zero).Fire();
+
+        for (int i = 0; i < 32; i++)
+        {
+            float z = Mathf.PingPong(i, 8) * 10f - 40f + (i / 8 * 5 - 7.5f);
+            SpawnLaser(0, z, Vector3.zero).Fire();
+
+            yield return WaitForSeconds(ShootingCooldown);
+        }
     }
 }

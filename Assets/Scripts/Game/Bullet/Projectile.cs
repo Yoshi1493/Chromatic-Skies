@@ -18,6 +18,17 @@ public abstract class Projectile : Actor
         spriteRenderer.sprite = projectileData.sprite;
     }
 
+    protected virtual void OnEnable()
+    {
+        spriteRenderer.color = projectileData.useSolidColour ? projectileData.colour : projectileData.gradient.Evaluate(Random.value);
+
+        moveDirection = new Vector2
+        (
+            Mathf.Sin(transform.localEulerAngles.z * Mathf.Deg2Rad),
+            -Mathf.Cos(transform.localEulerAngles.z * Mathf.Deg2Rad)
+        );
+    }
+
     protected void CheckCollisionWith<TShip>() where TShip : Ship
     {
         Collider2D coll = CollisionCondition;
