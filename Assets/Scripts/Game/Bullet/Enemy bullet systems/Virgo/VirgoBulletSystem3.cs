@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using static CoroutineHelper;
 
-public class VirgoBulletSystem3 : EnemyLaserSystem
+public class VirgoBulletSystem3 : EnemyShooter<Laser>
 {
     protected override IEnumerator Shoot()
     {
@@ -11,7 +11,7 @@ public class VirgoBulletSystem3 : EnemyLaserSystem
         for (int i = 0; i < 32; i++)
         {
             float z = Mathf.PingPong(i, 8) * 10f - 40f + (i / 8 * 5 - 7.5f);
-            SpawnLaser(0, z, Vector3.zero).Fire();
+            SpawnProjectile(0, z, Vector3.zero).Fire();
 
             yield return WaitForSeconds(ShootingCooldown);
         }

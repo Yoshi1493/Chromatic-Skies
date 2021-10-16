@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using static CoroutineHelper;
 
-public class VirgoBulletSystem11 : EnemyBulletSubsystem
+public class VirgoBulletSystem11 : EnemyBulletSubsystem<EnemyBullet>
 {
     protected override IEnumerator Shoot()
     {
@@ -15,7 +15,7 @@ public class VirgoBulletSystem11 : EnemyBulletSubsystem
             for (int j = 0; j < 6; j++)
             {
                 float z = (i * 10f) + (j * 60f);
-                SpawnBullet(2, z, transform.up.RotateVectorBy(z) / 2f).Fire();
+                SpawnProjectile(2, z, transform.up.RotateVectorBy(z) / 2f).Fire();
             }
 
             yield return WaitForSeconds(ShootingCooldown * 2f);

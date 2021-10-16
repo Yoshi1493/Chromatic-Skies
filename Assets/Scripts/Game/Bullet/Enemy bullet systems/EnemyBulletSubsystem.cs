@@ -1,6 +1,7 @@
 using UnityEngine;
 
-public abstract class EnemyBulletSubsystem : EnemyBulletSystem
+public abstract class EnemyBulletSubsystem<TProjectile> : EnemyShooter<TProjectile>
+    where TProjectile : Projectile
 {
     protected override void OnLoseLife()
     {

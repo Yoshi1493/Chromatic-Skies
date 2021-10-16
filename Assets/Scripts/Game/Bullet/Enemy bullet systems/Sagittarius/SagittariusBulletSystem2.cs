@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using static CoroutineHelper;
 
-public class SagittariusBulletSystem2 : EnemyBulletSystem
+public class SagittariusBulletSystem2 : EnemyShooter<EnemyBullet>
 {
     protected override IEnumerator Shoot()
     {

@@ -1,4 +1,3 @@
-using System.Linq;
 using UnityEngine;
 using TMPro;
 
@@ -20,16 +19,15 @@ public class AttackNameDisplay : MonoBehaviour
         enemy = FindObjectOfType<Enemy>();
         enemy.LoseLifeAction += OnEnemyLoseLife;
 
-        var shooters = enemy.GetComponentsInChildren<EnemyShooter>().Where(i => !(i is EnemyBulletSubsystem));
-
-        foreach (EnemyShooter es in shooters)
-            es.AttackStartAction += OnEnemyAttackStart;
+        for (int i = 0; i < enemy.transform.childCount; i++)
+        {
+            enemy.transform.GetChild(i).GetComponent<INamedAttack>().AttackStartAction += OnEnemyAttackStart;
+        }
     }
 
-    void OnEnemyAttackStart()
+    void OnEnemyAttackStart(StringObject moduleName, StringObject attackName)
     {
-        int currentAttackIndex = enemy.shipData.MaxLives.Value - enemy.shipData.CurrentLives.Value;
-        nameText.text = $"{moduleNames[currentAttackIndex].value} Module | {attackNames[currentAttackIndex].value}";
+        nameText.text = $"{moduleName.value} Module | {attackName.value}";
 
         anim.SetBool("show_name", true);
     }

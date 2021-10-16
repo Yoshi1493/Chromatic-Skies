@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using static CoroutineHelper;
 
-public class AriesBulletSystem3 : EnemyBulletSystem
+public class AriesBulletSystem3 : EnemyShooter<EnemyBullet>
 {
     protected override IEnumerator Shoot()
     {
@@ -21,7 +21,7 @@ public class AriesBulletSystem3 : EnemyBulletSystem
             for (int j = 0; j <= 6; j++)
             {
                 float z = rand + (j * 30f) - 120f;
-                SpawnBullet(0, z, transform.up.RotateVectorBy(rand)).Fire();
+                SpawnProjectile(0, z, transform.up.RotateVectorBy(rand)).Fire();
             }
 
             yield return WaitForSeconds(ShootingCooldown * 3f);

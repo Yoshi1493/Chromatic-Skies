@@ -14,27 +14,28 @@ public class Enemy : Ship
 
     protected override void LoseLife()
     {
-        int currentSystem = shipData.MaxLives.Value - shipData.CurrentLives.Value;
+        int currentProjectileSystem = shipData.MaxLives.Value - shipData.CurrentLives.Value;
 
         base.LoseLife();
 
         if (shipData.CurrentLives.Value > 0)
         {
-            var currentEnemyShooters = transform.GetChild(currentSystem).GetComponentsInChildren<EnemyShooter>();
-            var nextEnemyShooters = transform.GetChild(currentSystem + 1).GetComponents<EnemyShooter>();
+            var currentEnemyShooters = transform.GetChild(currentProjectileSystem).GetComponentsInChildren<INamedAttack>();
+            var nextEnemyShooters = transform.GetChild(currentProjectileSystem + 1).GetComponents<INamedAttack>();
 
             for (int i = 0; i < currentEnemyShooters.Length; i++)
             {
-                currentEnemyShooters[i].enabled = false;
+                currentEnemyShooters[i].SetEnabled(false);
             }
 
             for (int i = 0; i < nextEnemyShooters.Length; i++)
             {
-                nextEnemyShooters[i].enabled = true;
+                nextEnemyShooters[i].SetEnabled(true);
             }
         }
     }
 
+    #region DEBUG
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.K))
@@ -42,6 +43,7 @@ public class Enemy : Ship
             TakeDamage(shipData.CurrentHealth.Value);
         }
     }
+    #endregion
 
     protected override void Die()
     {

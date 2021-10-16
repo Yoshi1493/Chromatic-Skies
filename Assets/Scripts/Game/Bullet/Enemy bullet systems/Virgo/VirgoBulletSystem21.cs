@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using static CoroutineHelper;
 
-public class VirgoBulletSystem21 : EnemyBulletSubsystem
+public class VirgoBulletSystem21 : EnemyBulletSubsystem<EnemyBullet>
 {
     [SerializeField] ProjectileObject bulletData;
 
@@ -35,8 +35,8 @@ public class VirgoBulletSystem21 : EnemyBulletSubsystem
                 {
                     bulletData.colour = bulletData.gradient.Evaluate(-yPos);
 
-                    bullets.Push(SpawnBullet(5, zRot + j - transform.eulerAngles.z, 2 * transform.InverseTransformVector(xPos, yPos, 0f).RotateVectorBy(j)));
-                    bullets.Push(SpawnBullet(5, -zRot + j - transform.eulerAngles.z, 2 * transform.InverseTransformVector(-xPos, yPos, 0f).RotateVectorBy(j)));
+                    bullets.Push(SpawnProjectile(5, zRot + j - transform.eulerAngles.z, 2 * transform.InverseTransformVector(xPos, yPos, 0f).RotateVectorBy(j)));
+                    bullets.Push(SpawnProjectile(5, -zRot + j - transform.eulerAngles.z, 2 * transform.InverseTransformVector(-xPos, yPos, 0f).RotateVectorBy(j)));
                 }
 
                 yield return WaitForSeconds(ShootingCooldown / 2f);

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using static CoroutineHelper;
 
-public class PlayerShooter : Shooter
+public class PlayerShooter : Shooter<PlayerBullet>
 {
     [SerializeField] List<PlayerBullet> playerBullets = new List<PlayerBullet>();
     bool canShoot = true;    
@@ -13,7 +13,7 @@ public class PlayerShooter : Shooter
         base.Awake();
 
         PlayerBulletPool.Instance.UpdatePoolableObjects(playerBullets);
-        ownerShip.LoseLifeAction += DestroyAllProjectiles<PlayerBullet>;
+        ownerShip.LoseLifeAction += DestroyAllProjectiles;
 
         FindObjectOfType<PauseHandler>().GamePauseAction += OnGamePaused;
     }
@@ -36,20 +36,11 @@ public class PlayerShooter : Shooter
 
     protected override IEnumerator Shoot()
     {
-        SpawnBullet(transform.up);
+        SpawnProjectile(0, 0f, transform.position, false);
 
         canShoot = false;
         yield return WaitForSeconds(ShootingCooldown);
         canShoot = true;
-    }
-
-    void SpawnBullet(Vector3 offset)
-    {
-        var newBullet = PlayerBulletPool.Instance.Get(0);
-
-        newBullet.transform.SetPositionAndRotation(ShipPosition + offset, Quaternion.identity);
-        newBullet.gameObject.SetActive(true);
-        newBullet.enabled = true;
     }
 
     void OnGamePaused(bool state)
