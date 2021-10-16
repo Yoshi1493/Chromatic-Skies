@@ -8,7 +8,7 @@ public class VirgoBulletSystem2 : EnemyShooter<EnemyBullet>
     {
         while (enabled)
         {
-            yield return base.Shoot();            
+            yield return base.Shoot();
 
             for (int i = 0; i < 3; i++)
             {

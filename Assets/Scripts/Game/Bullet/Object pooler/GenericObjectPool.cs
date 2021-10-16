@@ -30,10 +30,18 @@ public abstract class GenericObjectPool<TProjectile> : MonoBehaviour where TProj
 
     public TProjectile Get(int ID)
     {
-        if (objectPool[ID].queue.Count == 0) CreateNew(ID);
+        if (objectPool[ID].queue.Count > 0)
+        {
+            return objectPool[ID].queue.Dequeue();
+        }
+        else
+        {
+            TProjectile newProjectile = Instantiate(objectPool[ID].projectile, transform);
+            newProjectile.gameObject.SetActive(false);
+            newProjectile.enabled = false;
 
-        var projectile = objectPool[ID].queue.Dequeue();
-        return projectile;
+            return newProjectile;
+        }
     }
 
     public void ReturnToPool(TProjectile returningObject)
@@ -42,14 +50,5 @@ public abstract class GenericObjectPool<TProjectile> : MonoBehaviour where TProj
         returningObject.enabled = false;
 
         objectPool[returningObject.projectileData.BulletID].queue.Enqueue(returningObject);
-    }
-
-    void CreateNew(int ID)
-    {
-        TProjectile newProjectile = Instantiate(objectPool[ID].projectile, transform);
-        newProjectile.gameObject.SetActive(false);
-        newProjectile.enabled = false;
-
-        objectPool[ID].queue.Enqueue(newProjectile);
     }
 }

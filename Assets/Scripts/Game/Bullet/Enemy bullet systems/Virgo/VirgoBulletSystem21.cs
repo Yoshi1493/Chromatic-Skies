@@ -49,6 +49,7 @@ public class VirgoBulletSystem21 : EnemyBulletSubsystem<EnemyBullet>
                 bullets.Pop().Fire();
             }
         }
+
         enabled = false;
     }
 }

@@ -20,7 +20,11 @@ public abstract class EnemyBullet : Bullet
 
     public override void Destroy()
     {
-        if (movementBehaviour != null) StopCoroutine(movementBehaviour);
+        if (movementBehaviour != null)
+        {
+            StopCoroutine(movementBehaviour);
+            MoveSpeed = 0f;
+        }
         EnemyBulletPool.Instance.ReturnToPool(this);
     }
 

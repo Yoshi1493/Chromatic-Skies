@@ -30,6 +30,8 @@ public abstract class Shooter<TProjectile> : MonoBehaviour
         newProjectile.gameObject.SetActive(true);
         newProjectile.enabled = true;
 
+        //newProjectile.name += $" {newProjectile.transform.GetSiblingIndex()}";        //debug
+
         return newProjectile;
     }
 
