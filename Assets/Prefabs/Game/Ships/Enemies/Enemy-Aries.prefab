@@ -44,6 +44,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shootingSpeed: {fileID: 11400000, guid: 64edd72c65ca5b84082bb1b1bb4a13b8, type: 2}
+  <ModuleName>k__BackingField: {fileID: 0}
+  <AttackName>k__BackingField: {fileID: 0}
 --- !u!1 &5038592034943205865
 GameObject:
   m_ObjectHideFlags: 0
@@ -88,6 +90,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shootingSpeed: {fileID: 11400000, guid: a9486c0c650b1d84b81d322b4fdc8ea4, type: 2}
+  <ModuleName>k__BackingField: {fileID: 0}
+  <AttackName>k__BackingField: {fileID: 0}
 --- !u!114 &3747407605611651555
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -101,6 +105,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shootingSpeed: {fileID: 11400000, guid: a9486c0c650b1d84b81d322b4fdc8ea4, type: 2}
+  <ModuleName>k__BackingField: {fileID: 11400000, guid: 31e11e2181789a94982fecb97be9fc28, type: 2}
+  <AttackName>k__BackingField: {fileID: 11400000, guid: e3634c15e9df1ca4ab1fbe584954a463, type: 2}
 --- !u!114 &422821353119271399
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -114,6 +120,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shootingSpeed: {fileID: 11400000, guid: a9486c0c650b1d84b81d322b4fdc8ea4, type: 2}
+  <ModuleName>k__BackingField: {fileID: 11400000, guid: 23b36bab9132fe1439aa5c01331f44bb, type: 2}
+  <AttackName>k__BackingField: {fileID: 11400000, guid: 027f18f643b79064db8ad873fd331818, type: 2}
 --- !u!114 &2183790766497786274
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -127,6 +135,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shootingSpeed: {fileID: 11400000, guid: a9486c0c650b1d84b81d322b4fdc8ea4, type: 2}
+  <ModuleName>k__BackingField: {fileID: 11400000, guid: 14f18a63291b6784c87b214f4a0c1b52, type: 2}
+  <AttackName>k__BackingField: {fileID: 11400000, guid: 0e3ad96293ab63141968bfb412ec5370, type: 2}
 --- !u!114 &3423319589002309112
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -140,6 +150,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shootingSpeed: {fileID: 11400000, guid: a9486c0c650b1d84b81d322b4fdc8ea4, type: 2}
+  <ModuleName>k__BackingField: {fileID: 11400000, guid: 248d4dc2fba0ca8419aa25ff3aea8b80, type: 2}
+  <AttackName>k__BackingField: {fileID: 11400000, guid: 380795e5a56e9c548a1e2d32874d29a9, type: 2}
 --- !u!114 &3502183521797634749
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -153,6 +165,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shootingSpeed: {fileID: 11400000, guid: a9486c0c650b1d84b81d322b4fdc8ea4, type: 2}
+  <ModuleName>k__BackingField: {fileID: 11400000, guid: 4e24541afbe931145a3b4d4c4339a7c7, type: 2}
+  <AttackName>k__BackingField: {fileID: 11400000, guid: 7b99fede207de2a43b6ec450b294c31f, type: 2}
 --- !u!114 &7400039832758560403
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -166,6 +180,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shootingSpeed: {fileID: 11400000, guid: a9486c0c650b1d84b81d322b4fdc8ea4, type: 2}
+  <ModuleName>k__BackingField: {fileID: 11400000, guid: 9b2f7dca9b3975144bb0122f3cf15975, type: 2}
+  <AttackName>k__BackingField: {fileID: 11400000, guid: f8dcc90ba24faff4fbd61afc7ab5f349, type: 2}
 --- !u!1001 &5337197869581096772
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -20,17 +20,17 @@ public class Enemy : Ship
 
         if (shipData.CurrentLives.Value > 0)
         {
-            var currentEnemyShooters = transform.GetChild(currentProjectileSystem).GetComponentsInChildren<Shooter>();
-            var nextEnemyShooters = transform.GetChild(currentProjectileSystem + 1).GetComponents<Shooter>();
+            var currentEnemyShooters = transform.GetChild(currentProjectileSystem).GetComponentsInChildren<INamedAttack>();
+            var nextEnemyShooters = transform.GetChild(currentProjectileSystem + 1).GetComponents<INamedAttack>();
 
             for (int i = 0; i < currentEnemyShooters.Length; i++)
             {
-                currentEnemyShooters[i].enabled = false;
+                currentEnemyShooters[i].SetEnabled(false);
             }
 
             for (int i = 0; i < nextEnemyShooters.Length; i++)
             {
-                nextEnemyShooters[i].enabled = true;
+                nextEnemyShooters[i].SetEnabled(true);
             }
         }
     }

@@ -4,16 +4,28 @@ using UnityEngine;
 
 public interface INamedAttack
 {
-    Action AttackStartAction { get; set; }
+    Action<StringObject, StringObject> AttackStartAction { get; set; }
+
+    StringObject ModuleName { get; set; }
+    StringObject AttackName { get; set; }
+
+    void SetEnabled(bool state);
 }
 
-public abstract class EnemyShooter<TProjectile> : Shooter, INamedAttack
+public abstract class EnemyShooter<TProjectile> : Shooter<TProjectile>, INamedAttack
     where TProjectile : Projectile
 {
     Player playerShip;
     protected Vector2 PlayerPosition => playerShip.transform.position;
 
-    public Action AttackStartAction { get; set; }
+    [field: SerializeField] public StringObject ModuleName { get; set; }
+    [field: SerializeField] public StringObject AttackName { get; set; }
+    public Action<StringObject, StringObject> AttackStartAction { get; set; }
+
+    void INamedAttack.SetEnabled(bool state)
+    {
+        enabled = state;
+    }
 
     protected virtual void Start()
     {
@@ -31,30 +43,18 @@ public abstract class EnemyShooter<TProjectile> : Shooter, INamedAttack
     protected override IEnumerator Shoot()
     {
         yield return CoroutineHelper.WaitForSeconds(1f);
-        AttackStartAction?.Invoke();
+        AttackStartAction?.Invoke(ModuleName, AttackName);
     }
 
     protected void SetSubsystemEnabled(int subsystemIndex)
     {
-        if (transform.GetChild(subsystemIndex - 1).TryGetComponent(out EnemyShooter<TProjectile> enemyShooter))
-            enemyShooter.enabled = true;
-    }
-
-    protected TProjectile SpawnProjectile(int projectileIndex, float spawnRotZ, Vector3 spawnPos, bool asLocalPosition = true)
-    {
-        TProjectile newProjectile = GenericObjectPool<TProjectile>.Instance.Get(projectileIndex);
-
-        newProjectile.transform.SetPositionAndRotation(spawnPos + (asLocalPosition ? transform.position : Vector3.zero), Quaternion.Euler(0f, 0f, spawnRotZ));
-
-        newProjectile.gameObject.SetActive(true);
-        newProjectile.enabled = true;
-
-        return newProjectile;
+        if (transform.GetChild(subsystemIndex - 1).TryGetComponent(out EnemyShooter<TProjectile> subsystem))
+            subsystem.enabled = true;
     }
 
     protected virtual void OnLoseLife()
     {
         StopCoroutine(shootCoroutine);
-        DestroyAllProjectiles<TProjectile>();
+        DestroyAllProjectiles();
     }
 }

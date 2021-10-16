@@ -25,10 +25,9 @@ public class AttackNameDisplay : MonoBehaviour
         }
     }
 
-    void OnEnemyAttackStart()
+    void OnEnemyAttackStart(StringObject moduleName, StringObject attackName)
     {
-        int currentAttackIndex = enemy.shipData.MaxLives.Value - enemy.shipData.CurrentLives.Value;
-        nameText.text = $"{moduleNames[currentAttackIndex].value} Module | {attackNames[currentAttackIndex].value}";
+        nameText.text = $"{moduleName.value} Module | {attackName.value}";
 
         anim.SetBool("show_name", true);
     }
