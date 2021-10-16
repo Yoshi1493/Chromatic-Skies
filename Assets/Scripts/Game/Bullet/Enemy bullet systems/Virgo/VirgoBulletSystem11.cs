@@ -8,7 +8,7 @@ public class VirgoBulletSystem11 : EnemyBulletSubsystem<EnemyBullet>
     {
         yield return WaitForSeconds(3f);
 
-        transform.Rotate(Random.Range(0f, 60f) * Vector3.forward);
+        transform.localEulerAngles = new Vector3(0f, 0f, Random.Range(0f, 60f));
 
         for (int i = 0; i < 18; i++)
         {
