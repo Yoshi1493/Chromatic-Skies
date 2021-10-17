@@ -2,18 +2,19 @@ using System.Collections;
 using UnityEngine;
 using static CoroutineHelper;
 
-public class VirgoBulletSystem3 : EnemyShooter<Laser>
+public class VirgoBulletSystem3 : EnemyShooter<EnemyBullet>
 {
     protected override IEnumerator Shoot()
     {
         yield return base.Shoot();
 
-        for (int i = 0; i < 32; i++)
+        while (enabled)
         {
-            float z = Mathf.PingPong(i, 8) * 10f - 40f + (i / 8 * 5 - 7.5f);
-            SpawnProjectile(0, z, Vector3.zero);
+            SetSubsystemEnabled(1);
 
-            yield return WaitForSeconds(ShootingCooldown);
+            yield return WaitForSeconds(10f);
+
+            yield return ownerShip.MoveToRandomPosition(1f, 1f);
         }
     }
 }

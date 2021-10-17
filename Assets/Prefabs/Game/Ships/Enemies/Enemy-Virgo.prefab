@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 475160615865877246}
+  - component: {fileID: 5594359727931184530}
   m_Layer: 7
   m_Name: Bullet Subsystem 1
   m_TagString: Untagged
@@ -30,6 +31,21 @@ Transform:
   m_Father: {fileID: 345956944879005479}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5594359727931184530
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3494376601297789545}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa4b7e6be4c028d44b099026f1bd6dd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shootingSpeed: {fileID: 11400000, guid: 25bbef15a55ebf840b87fa9e415ba8b3, type: 2}
+  <ModuleName>k__BackingField: {fileID: 0}
+  <AttackName>k__BackingField: {fileID: 0}
 --- !u!1 &5765870547259354690
 GameObject:
   m_ObjectHideFlags: 0
@@ -230,7 +246,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3922465162775491505, guid: d93cb44e21569f545b76560b29579f98, type: 3}
       propertyPath: enemyBullets.Array.size
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 3922465162775491505, guid: d93cb44e21569f545b76560b29579f98, type: 3}
       propertyPath: enemyLasers.Array.data[0]
@@ -260,6 +276,10 @@ PrefabInstance:
       propertyPath: enemyBullets.Array.data[5]
       value: 
       objectReference: {fileID: 4891527653683152033, guid: 1d046a2bc203ae549b9907080a112d75, type: 3}
+    - target: {fileID: 3922465162775491505, guid: d93cb44e21569f545b76560b29579f98, type: 3}
+      propertyPath: enemyBullets.Array.data[6]
+      value: 
+      objectReference: {fileID: -42041562070397618, guid: 677e73eebbcf18f4d86ec559f5276406, type: 3}
     - target: {fileID: 4336286228127436173, guid: d93cb44e21569f545b76560b29579f98, type: 3}
       propertyPath: m_Name
       value: Enemy-Virgo
