@@ -1,5 +1,3 @@
-using UnityEngine;
-
 public class PlayerBullet : Bullet
 {
     protected override void OnEnable()
@@ -16,7 +14,7 @@ public class PlayerBullet : Bullet
 
     public override void Destroy()
     {
-        if (movementBehaviour != null) StopCoroutine(movementBehaviour);
+        base.Destroy();
         PlayerBulletPool.Instance.ReturnToPool(this);
     }
 }

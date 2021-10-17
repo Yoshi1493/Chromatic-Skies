@@ -1,12 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class VirgoLaser1 : Laser
 {
-    protected override void Update()
+    protected override void OnEnable()
     {
-        base.Update();
-        Move(MoveSpeed);
+        base.OnEnable();
+        StartCoroutine(this.LerpSpeed(5f, 0f, 0.5f));
+        StartCoroutine(this.LerpSpeed(0f, 5f, 1f, 0.5f));
     }
 }

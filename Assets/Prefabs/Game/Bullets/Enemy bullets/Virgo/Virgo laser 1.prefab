@@ -15,7 +15,8 @@ MonoBehaviour:
   transform: {fileID: 0}
   moveDirection: {x: 0, y: 0, z: 0}
   projectileData: {fileID: 11400000, guid: 16b6d601b1b16994e9f5d4affa29e0ec, type: 2}
-  moveSpeed: 5
+  moveSpeed: 0
+  stationary: 0
   widthInterpolation:
     serializedVersion: 2
     m_Curve:

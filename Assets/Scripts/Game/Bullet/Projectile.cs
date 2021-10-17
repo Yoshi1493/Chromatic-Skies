@@ -1,16 +1,16 @@
-using System.Collections;
 using UnityEngine;
 
 public abstract class Projectile : Actor
 {
     public ProjectileObject projectileData;
 
+    protected virtual float MaxLifetime => 10f;
+    protected float currentLifetime;
+
     [SerializeField] float moveSpeed;
     public float MoveSpeed { get => moveSpeed; set => moveSpeed = value; }
 
     protected abstract Collider2D CollisionCondition { get; }
-
-    protected IEnumerator movementBehaviour;
 
     protected override void Awake()
     {
@@ -27,6 +27,18 @@ public abstract class Projectile : Actor
             Mathf.Sin(transform.localEulerAngles.z * Mathf.Deg2Rad),
             -Mathf.Cos(transform.localEulerAngles.z * Mathf.Deg2Rad)
         );
+
+        currentLifetime = 0f;
+    }
+
+    protected virtual void Update()
+    {
+        Move(MoveSpeed);
+
+        currentLifetime += Time.deltaTime;
+
+        if (currentLifetime > MaxLifetime)
+            Destroy();
     }
 
     protected void CheckCollisionWith<TShip>() where TShip : Ship
@@ -44,5 +56,8 @@ public abstract class Projectile : Actor
         coll.GetComponent<TShip>().TakeDamage(projectileData.Power.value);
     }
 
-    public abstract void Destroy();
+    public virtual void Destroy()
+    {
+        MoveSpeed = 0f;
+    }
 }

@@ -1,10 +1,11 @@
 using System.Collections;
-using UnityEngine;
 
 public abstract class EnemyBullet : Bullet
 {
     protected Enemy ownerShip;
     protected Player playerShip;
+
+    protected IEnumerator movementBehaviour;
 
     void Start()
     {
@@ -18,16 +19,6 @@ public abstract class EnemyBullet : Bullet
         CheckCollisionWith<Player>();
     }
 
-    public override void Destroy()
-    {
-        if (movementBehaviour != null)
-        {
-            StopCoroutine(movementBehaviour);
-            MoveSpeed = 0f;
-        }
-        EnemyBulletPool.Instance.ReturnToPool(this);
-    }
-
     public void Fire()
     {
         if (movementBehaviour != null)
@@ -38,4 +29,13 @@ public abstract class EnemyBullet : Bullet
     }
 
     protected abstract IEnumerator Move();
+
+    public override void Destroy()
+    {
+        if (movementBehaviour != null)
+            StopCoroutine(movementBehaviour);
+
+        base.Destroy();
+        EnemyBulletPool.Instance.ReturnToPool(this);
+    }
 }

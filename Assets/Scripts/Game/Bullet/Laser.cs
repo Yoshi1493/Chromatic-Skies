@@ -4,7 +4,11 @@ using static CoroutineHelper;
 
 public abstract class Laser : Projectile
 {
+    [SerializeField] protected bool stationary;
+
     protected override Collider2D CollisionCondition => Physics2D.OverlapBox(transform.position + (transform.up * spriteRenderer.size.y / 2), spriteRenderer.size, transform.eulerAngles.z);
+
+    IEnumerator sizeAnimation;
 
     [SerializeField] AnimationCurve widthInterpolation;
     [SerializeField] AnimationCurve heightInterpolation;
@@ -14,6 +18,17 @@ public abstract class Laser : Projectile
     {
         base.Awake();
         originalSize = spriteRenderer.size;
+    }
+
+    protected override void OnEnable()
+    {
+        base.OnEnable();
+
+        if (sizeAnimation != null)
+            StopCoroutine(sizeAnimation);
+
+        sizeAnimation = LerpSize(Vector2.zero, originalSize);
+        StartCoroutine(sizeAnimation);
     }
 
     IEnumerator LerpSize(Vector2 startSize, Vector2 endSize, float lerpDuration = 0.1f)
@@ -36,22 +51,21 @@ public abstract class Laser : Projectile
         }
     }
 
-    public void Fire()
+    protected override void Update()
     {
-        if (movementBehaviour != null)
-            StopCoroutine(movementBehaviour);
-
-        movementBehaviour = LerpSize(Vector2.zero, originalSize);
-        StartCoroutine(movementBehaviour);
+        base.Update();
+        CheckCollisionWith<Player>();
     }
 
-    protected virtual void Update()
+    protected override void Move(float moveSpeed)
     {
-        CheckCollisionWith<Player>();
+        if (stationary) return;
+        base.Move(moveSpeed);
     }
 
     public override void Destroy()
     {
+        base.Destroy();
         EnemyLaserPool.Instance.ReturnToPool(this);
     }
 
