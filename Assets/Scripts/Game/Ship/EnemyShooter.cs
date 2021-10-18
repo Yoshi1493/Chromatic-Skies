@@ -48,8 +48,8 @@ public abstract class EnemyShooter<TProjectile> : Shooter<TProjectile>, INamedAt
 
     protected void SetSubsystemEnabled(int subsystemIndex)
     {
-        if (transform.GetChild(subsystemIndex - 1).TryGetComponent(out EnemyShooter<TProjectile> subsystem))
-            subsystem.enabled = true;
+        if (transform.GetChild(subsystemIndex - 1).TryGetComponent(out INamedAttack subsystem))
+            subsystem.SetEnabled(true);
     }
 
     protected virtual void OnLoseLife()

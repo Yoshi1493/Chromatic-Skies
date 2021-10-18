@@ -157,9 +157,19 @@ public static class ProjectileBehaviour
     public static Vector3 LookAt(this Projectile p, Actor target)
     {
         if (target != null)
-            p.moveDirection = target.transform.position - p.transform.position;
+        {
+            var newMoveDirection = target.transform.position - p.transform.position;
 
-        return p.moveDirection;
+            if (newMoveDirection != Vector3.zero)
+            {
+                p.moveDirection = newMoveDirection;
+                return p.moveDirection;
+            }
+
+            else return p.moveDirection;
+        }
+
+        else return p.moveDirection;
     }
 
     /// <summary>
@@ -167,8 +177,15 @@ public static class ProjectileBehaviour
     /// </summary>
     public static Vector3 LookAt(this Projectile p, Vector3 targetPos)
     {
-        p.moveDirection = targetPos - p.transform.position;
-        return p.moveDirection;
+        var newMoveDirection = targetPos - p.transform.position;
+
+        if (newMoveDirection != Vector3.zero)
+        {
+            p.moveDirection = newMoveDirection;
+            return p.moveDirection;
+        }
+
+        else return p.moveDirection;
     }
 
     /// <summary>

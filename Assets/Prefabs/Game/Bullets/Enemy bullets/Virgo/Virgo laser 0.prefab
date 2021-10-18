@@ -125,12 +125,16 @@ PrefabInstance:
       value: 2.56
       objectReference: {fileID: 0}
     - target: {fileID: 3686835066270376110, guid: 39cb8f2312bc7ff4bbbe1e60f953f78c, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3686835066270376110, guid: 39cb8f2312bc7ff4bbbe1e60f953f78c, type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3686835066270376111, guid: 39cb8f2312bc7ff4bbbe1e60f953f78c, type: 3}
       propertyPath: m_Name
-      value: Virgo laser 1
+      value: Virgo laser 0
       objectReference: {fileID: 0}
     - target: {fileID: 6465195367137354287, guid: 39cb8f2312bc7ff4bbbe1e60f953f78c, type: 3}
       propertyPath: power

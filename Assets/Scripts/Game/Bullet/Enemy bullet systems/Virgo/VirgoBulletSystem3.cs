@@ -15,28 +15,29 @@ public class VirgoBulletSystem3 : EnemyShooter<EnemyBullet>
     {
         yield return base.Shoot();
 
-        //while (enabled)
+        while (enabled)
         {
-            //rhodonea curve r = cos(theta * n / d), where
-            //theta = rotation amount on polar coordinates from point(1, 0)
+            //rhodonea curve r = sin(theta * n / d), where
+            //theta = anticlockwise rotation amount on polar coordinates from point(1, 0)
             //n / d = angular frequency
-            for (float i = 0; i < d; i += 0.04f)
+            for (float i = 0f; i < d; i += 0.035f)
             {
-                float turnAngle = i * Mathf.PI;
-                float r = Mathf.Sin(turnAngle * n / d);
+                float theta = i * Mathf.PI;
+                float r = Mathf.Sin(theta * n / d);
 
-                Vector3 spawnOffset = transform.right.RotateVectorBy(turnAngle * Mathf.Rad2Deg);
+                Vector3 spawnOffset = transform.right.RotateVectorBy(theta * Mathf.Rad2Deg);
                 float z = spawnOffset.GetRotationDifference(Vector3.zero);
-                print($"{z:f1}");
 
                 var b1 = SpawnProjectile(6, z, r * amp * spawnOffset);
-                //var b2 = SpawnProjectile(6, z + 180, r * amp * -spawnOffset);
+                var b2 = SpawnProjectile(6, z + 180f, -r * amp * spawnOffset);
 
-                //b1.StartCoroutine(b1.LerpSpeed(2f, 0f, 0.5f));
-                //b2.StartCoroutine(b2.LerpSpeed(2f, 0f, 0.5f));
+                //b1.LookAt(transform.position);
+                //b2.LookAt(transform.position);
+                //b1.StartCoroutine(b1.LerpSpeed(-2f, 0f, 0.5f));
+                //b2.StartCoroutine(b2.LerpSpeed(-2f, 0f, 0.5f));
 
                 bullets.Add(b1);
-                //bullets.Add(b2);
+                bullets.Add(b2);
 
                 yield return WaitForSeconds(ShootingCooldown / 20f);
             }
@@ -46,7 +47,13 @@ public class VirgoBulletSystem3 : EnemyShooter<EnemyBullet>
             bullets.ForEach(b => b.Fire());
             bullets.Clear();
 
-            //yield return ownerShip.MoveToRandomPosition(1f, 1f);
+            yield return WaitForSeconds(2f);
+
+            SetSubsystemEnabled(1);
+
+            yield return WaitForSeconds(3f);
+
+            yield return ownerShip.MoveToRandomPosition(1f, 1f);
         }
     }
 }
