@@ -11,7 +11,7 @@ public class VirgoBulletSystem31 : EnemyShooter<Laser>
         for (int i = 0; i < 32; i++)
         {
             float z = Mathf.PingPong(i, 8) * 10f - 40f + (i / 8 * 5 - 7.5f);
-            SpawnProjectile(1, z, Vector3.zero);
+            SpawnProjectile(0, z, Vector3.zero);
 
             yield return WaitForSeconds(ShootingCooldown);
         }
