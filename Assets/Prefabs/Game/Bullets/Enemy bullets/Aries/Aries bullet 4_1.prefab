@@ -12,6 +12,10 @@ PrefabInstance:
       value: 30
       objectReference: {fileID: 0}
     - target: {fileID: -537335154739979936, guid: 69b8f9a5f7014d444b0fc9dbd2eae5eb, type: 3}
+      propertyPath: rotatesClockwise
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -537335154739979936, guid: 69b8f9a5f7014d444b0fc9dbd2eae5eb, type: 3}
       propertyPath: rotationDirection
       value: 0
       objectReference: {fileID: 0}
