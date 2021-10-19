@@ -14,7 +14,6 @@ public class PlayerBullet : Bullet
 
     public override void Destroy()
     {
-        base.Destroy();
         PlayerBulletPool.Instance.ReturnToPool(this);
     }
 }
