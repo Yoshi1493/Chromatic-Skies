@@ -1,27 +1,26 @@
 using UnityEngine;
 using TMPro;
 
-public class AttackNameDisplay : MonoBehaviour
+public class AttackNameDisplay : HUDComponent<Enemy>
 {
-    Enemy enemy;
-
     Animator anim;
     TextMeshProUGUI nameText;
 
     [SerializeField] StringObject[] moduleNames;
     [SerializeField] StringObject[] attackNames;
 
-    void Awake()
+    protected override void Awake()
     {
+        base.Awake();
+
         anim = GetComponent<Animator>();
         nameText = GetComponent<TextMeshProUGUI>();
 
-        enemy = FindObjectOfType<Enemy>();
-        enemy.LoseLifeAction += OnEnemyLoseLife;
+        ship.LoseLifeAction += OnEnemyLoseLife;
 
-        for (int i = 0; i < enemy.transform.childCount; i++)
+        for (int i = 0; i < ship.transform.childCount; i++)
         {
-            enemy.transform.GetChild(i).GetComponent<INamedAttack>().AttackStartAction += OnEnemyAttackStart;
+            ship.transform.GetChild(i).GetComponent<IEnemyAttack>().AttackStartAction += OnEnemyAttackStart;
         }
     }
 

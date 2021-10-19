@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 
-public interface INamedAttack
+public interface IEnemyAttack
 {
     Action<StringObject, StringObject> AttackStartAction { get; set; }
 
@@ -12,17 +12,18 @@ public interface INamedAttack
     void SetEnabled(bool state);
 }
 
-public abstract class EnemyShooter<TProjectile> : Shooter<TProjectile>, INamedAttack
+public abstract class EnemyShooter<TProjectile> : Shooter<TProjectile>, IEnemyAttack
     where TProjectile : Projectile
 {
     Player playerShip;
     protected Vector2 PlayerPosition => playerShip.transform.position;
 
-    [field: SerializeField] public StringObject ModuleName { get; set; }
-    [field: SerializeField] public StringObject AttackName { get; set; }
     public Action<StringObject, StringObject> AttackStartAction { get; set; }
 
-    void INamedAttack.SetEnabled(bool state)
+    [field: SerializeField] public StringObject ModuleName { get; set; }
+    [field: SerializeField] public StringObject AttackName { get; set; }
+
+    void IEnemyAttack.SetEnabled(bool state)
     {
         enabled = state;
     }
@@ -48,7 +49,7 @@ public abstract class EnemyShooter<TProjectile> : Shooter<TProjectile>, INamedAt
 
     protected void SetSubsystemEnabled(int subsystemIndex)
     {
-        if (transform.GetChild(subsystemIndex - 1).TryGetComponent(out INamedAttack subsystem))
+        if (transform.GetChild(subsystemIndex - 1).TryGetComponent(out IEnemyAttack subsystem))
             subsystem.SetEnabled(true);
     }
 

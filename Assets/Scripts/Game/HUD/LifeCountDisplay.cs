@@ -1,29 +1,28 @@
-using UnityEngine;
 using UnityEngine.UI;
 
-public class LifeCountDisplay : MonoBehaviour
+public class LifeCountDisplay : HUDComponent<Enemy>
 {
-    [SerializeField] Enemy enemyShip;
-
     Image[] lifeIcons;
 
-    void Awake()
+    protected override void Awake()
     {
+        base.Awake();
+        ship.LoseLifeAction += OnEnemyLoseLife;
+
         lifeIcons = GetComponentsInChildren<Image>();
-        enemyShip.LoseLifeAction += OnEnemyLoseLife;
     }
 
     void Start()
     {
         for (int i = 0; i < lifeIcons.Length; i++)
         {
-            lifeIcons[i].enabled = i < enemyShip.shipData.MaxLives.Value;
-            lifeIcons[i].color = enemyShip.shipData.UIColour.value;
+            lifeIcons[i].enabled = i < ship.shipData.MaxLives.Value;
+            lifeIcons[i].color = ship.shipData.UIColour.value;
         }
     }
 
     void OnEnemyLoseLife()
     {
-        lifeIcons[enemyShip.shipData.CurrentLives.Value].enabled = false;
+        lifeIcons[ship.shipData.CurrentLives.Value].enabled = false;
     }
 }

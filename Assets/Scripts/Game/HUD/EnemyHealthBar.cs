@@ -3,23 +3,24 @@ using UnityEngine;
 using UnityEngine.UI;
 using static CoroutineHelper;
 
-public class EnemyHealthBar : MonoBehaviour
+public class EnemyHealthBar : HUDComponent<Enemy>
 {
-    Image healthBarImage;
+    float EnemyHealthPercent => (float)ship.shipData.CurrentHealth.Value / ship.shipData.MaxHealth.Value;
 
-    [SerializeField] Enemy enemyShip;
-    float EnemyHealthPercent => (float)enemyShip.shipData.CurrentHealth.Value / enemyShip.shipData.MaxHealth.Value;
+    Image healthBarImage;
 
     [SerializeField] AnimationCurve refillInterpolation;
     IEnumerator refillCoroutine;
 
-    void Awake()
+    protected override void Awake()
     {
-        healthBarImage = GetComponent<Image>();
-        healthBarImage.color = enemyShip.shipData.UIColour.value;
+        ship = FindObjectOfType<Enemy>();
 
-        enemyShip.TakeDamageAction += OnEnemyTakeDamage;
-        enemyShip.LoseLifeAction += OnEnemyLoseLife;
+        healthBarImage = GetComponent<Image>();
+        healthBarImage.color = ship.shipData.UIColour.value;
+
+        ship.TakeDamageAction += OnEnemyTakeDamage;
+        ship.LoseLifeAction += OnEnemyLoseLife;
     }
 
     void OnEnemyTakeDamage()
