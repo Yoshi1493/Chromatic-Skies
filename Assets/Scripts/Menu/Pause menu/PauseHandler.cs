@@ -14,10 +14,15 @@ public class PauseHandler : MonoBehaviour
     void Update()
     {
         if (Input.GetButtonDown("Pause"))        
-            GamePauseAction?.Invoke(!isPaused);        
+            SetGamePaused(!isPaused);        
     }
 
-    public void OnGamePaused(bool state)
+    public void SetGamePaused(bool pauseState)
+    {
+        GamePauseAction?.Invoke(pauseState);
+    }
+
+    void OnGamePaused(bool state)
     {
         isPaused = state;
         Time.timeScale = state ? 0 : 1;

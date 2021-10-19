@@ -1979,7 +1979,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9113669927874555424, guid: 43808b15fa4047946ae6ee640412c78f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: OnGamePaused
+      value: SetGamePaused
       objectReference: {fileID: 0}
     - target: {fileID: 9113669927874555424, guid: 43808b15fa4047946ae6ee640412c78f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName

@@ -33,7 +33,7 @@ public class PauseMenu : Menu
     {
         if (Input.GetButtonDown("Cancel"))
         {
-            pauseHandler.OnGamePaused(false);
+            pauseHandler.SetGamePaused(false);
             Close();
         }
     }
