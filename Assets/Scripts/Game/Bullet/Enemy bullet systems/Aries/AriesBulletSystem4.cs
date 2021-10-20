@@ -15,20 +15,18 @@ public class AriesBulletSystem4 : EnemyShooter<EnemyBullet>
             yield return WaitForSeconds(2f);
 
             float n = 0f;
-            float randSpinDirection = Random.value - 0.5f;
-            float randStartAngle = Random.Range(0f, 90f);
+            float r = Random.value - 0.5f;
+            float t = Random.Range(0f, 90f);
 
             for (int i = 0; i < 360; i += 4)
             {
                 for (int j = 0; j < 5; j++)
                 {
-                    float z = (j * 72f) + n + randStartAngle;
-
+                    float z = j * 72f + n + t;
                     SpawnProjectile(0, z, Vector2.zero).Fire();
-
                 }
 
-                n += i * Mathf.Sign(randSpinDirection);
+                n += i * Mathf.Sign(r);
                 yield return WaitForSeconds(ShootingCooldown);
             }
 
