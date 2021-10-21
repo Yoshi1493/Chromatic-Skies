@@ -3,20 +3,11 @@ using UnityEngine;
 
 public class AriesBullet4 : EnemyBullet
 {
-    [SerializeField] float rotationSpeed;
-
-    [SerializeField] bool rotatesClockwise;
-
     protected override IEnumerator Move()
     {
-        MoveSpeed = 0f;
+        yield return StartCoroutine(this.LerpSpeed(3f, 0f, 1));
 
-        yield return this.RotateAround(FindObjectOfType<AriesBulletSystem31>().transform.position, Mathf.Infinity, rotationSpeed, clockwise: rotatesClockwise, delay: 0.5f);
-    }
-
-    protected override void Update()
-    {
-        CheckCollisionWith<Player>();
-        Move(MoveSpeed);
+        this.LookAt(playerShip);
+        StartCoroutine(this.LerpSpeed(0f, 5f, 0f, 0.5f));
     }
 }

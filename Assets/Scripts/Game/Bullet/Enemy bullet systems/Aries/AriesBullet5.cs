@@ -1,17 +1,22 @@
 using System.Collections;
 using UnityEngine;
-using static CoroutineHelper;
 
 public class AriesBullet5 : EnemyBullet
 {
+    [SerializeField] float rotationSpeed;
+
+    [SerializeField] bool rotatesClockwise;
+
     protected override IEnumerator Move()
     {
-        StartCoroutine(this.LerpSpeed(5f, 3f, 2f));
+        MoveSpeed = 0f;
 
-        while (enabled)
-        {
-            spriteRenderer.transform.Rotate(Vector3.forward);
-            yield return EndOfFrame;
-        }
+        yield return this.RotateAround(FindObjectOfType<AriesBulletSystem31>().transform.position, Mathf.Infinity, rotationSpeed, clockwise: rotatesClockwise, delay: 0.5f);
+    }
+
+    protected override void Update()
+    {
+        CheckCollisionWith<Player>();
+        Move(MoveSpeed);
     }
 }

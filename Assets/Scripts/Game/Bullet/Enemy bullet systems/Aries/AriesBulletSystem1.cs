@@ -1,40 +1,44 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using static CoroutineHelper;
 
 public class AriesBulletSystem1 : EnemyShooter<EnemyBullet>
 {
+    List<EnemyBullet> bigBullets = new List<EnemyBullet>();
+    List<EnemyBullet> smallBullets = new List<EnemyBullet>();
+
     protected override IEnumerator Shoot()
     {
-        while (enabled)
+        //while (enabled)
         {
             yield return base.Shoot();
 
-            for (int i = 0; i < 48; i++)
-            {
-                for (int j = 0; j < 3; j++)
-                {
-                    float z = (i * 45f) + (j * 120f);
-                    SpawnProjectile(1, z, Vector2.zero).Fire();
-                }
+            bigBullets.Add(SpawnProjectile(1, 0f, new Vector3(6f, 5f), false));
+            bigBullets.Add(SpawnProjectile(1, 180f, new Vector3(-6f, -5f), false));
 
-                yield return WaitForSeconds(ShootingCooldown);
+            bigBullets.ForEach(b => b.Fire());
+
+            for (int i = 0; i < 9; i++)
+            {
+                yield return WaitForSeconds(ShootingCooldown * 2f);
+
+                smallBullets.Add(SpawnProjectile(2, 90f, bigBullets[0].transform.position, false));
+                smallBullets.Add(SpawnProjectile(2, -90f, bigBullets[1].transform.position, false));
             }
 
-            yield return WaitForSeconds(ShootingCooldown * 5f);
+            yield return WaitForSeconds(1.2f);
 
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < smallBullets.Count; i += 2)
             {
-                for (int j = 0; j < 30; j++)
+                yield return WaitForSeconds(ShootingCooldown * 2f);
+
+                for (int j = 0; j < 5; j++)
                 {
-                    float z = j * 12f + (i * 6f);
-                    SpawnProjectile(0, z, Vector2.zero).Fire();
+                    SpawnProjectile(0, smallBullets[i].transform.localEulerAngles.z + (j * 72f), smallBullets[i].transform.position, false).Fire();
+                    SpawnProjectile(0, smallBullets[i + 1].transform.localEulerAngles.z + (j * 72f), smallBullets[i + 1].transform.position, false).Fire();
                 }
-
-                yield return WaitForSeconds(ShootingCooldown * 5f);
             }
-
-            yield return ownerShip.MoveToRandomPosition(1f, 1f);
         }
     }
 }
