@@ -15,12 +15,12 @@ public static class EnemyMovementBehaviour
     {
         if (delay > 0) yield return WaitForSeconds(delay);
 
-        Vector2 startPosition = ship.transform.position;
+        Vector3 startPosition = ship.transform.position;
         float currentLerpTime = 0f;
 
         while (ship.transform.position != endPosition)
         {
-            ship.transform.position = Vector2.Lerp(startPosition, endPosition, moveInterpolation.Evaluate(currentLerpTime / moveDuration));
+            ship.transform.position = Vector3.Lerp(startPosition, endPosition, moveInterpolation.Evaluate(currentLerpTime / moveDuration));
 
             currentLerpTime += Time.deltaTime;
             yield return EndOfFrame;
@@ -32,7 +32,7 @@ public static class EnemyMovementBehaviour
     /// </summary>
     public static IEnumerator MoveToRandomPosition(this Ship ship, float moveDuration, float delay = 0f)
     {
-        Vector2 endPosition = GetRandomPosition(ship);
+        Vector3 endPosition = GetRandomPosition(ship);
         yield return ship.MoveTo(endPosition, moveDuration, delay);        
     }
 
@@ -41,10 +41,10 @@ public static class EnemyMovementBehaviour
     #region Helpers/Extensions
 
     /// <summary>
-    /// returns a random Vector2 that is at least <minSqrMagDelta> units away from <ship.transform.position>.
+    /// returns a random Vector3 that is at least <minSqrMagDelta> units away from <ship.transform.position>.
     /// </summary>
     //to-do: fix; get rid of magic numbers
-    static Vector2 GetRandomPosition(Ship ship, float minSqrMagDelta = 4f)
+    static Vector3 GetRandomPosition(Ship ship, float minSqrMagDelta = 4f)
     {
         Vector3 newRandPos = new Vector3
             (

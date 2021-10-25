@@ -8,5 +8,6 @@ public class AriesBullet1 : EnemyBullet
     protected override IEnumerator Move()
     {
         yield return null;
+        MoveSpeed = 5f;
     }
 }
