@@ -15,7 +15,7 @@ public class AriesBulletSystem11 : EnemyShooter<EnemyBullet>
                 SpawnProjectile(1, bigBulletSpawnPos[i].z, bigBulletSpawnPos[i], false).Fire();
             }
 
-            yield return WaitForSeconds(10f);
+            yield return WaitForSeconds(8f);
         }
     }
 }

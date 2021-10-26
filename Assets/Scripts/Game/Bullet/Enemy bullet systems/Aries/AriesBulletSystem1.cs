@@ -14,15 +14,29 @@ public class AriesBulletSystem1 : EnemyShooter<EnemyBullet>
 
         while (enabled)
         {
-            StartCoroutine(ownerShip.MoveToRandomPosition(0.5f));
+            float z = 0f;
 
-            for (int i = 0; i < 24; i++)
+            for (int i = 0; i < 45; i++)
             {
-                float z = i * 15f;
+                z += i;
+
                 SpawnProjectile(0, z, transform.up.RotateVectorBy(z)).Fire();
+                SpawnProjectile(0, z + 180f, transform.up.RotateVectorBy(z + 180f)).Fire();
+
+                yield return WaitForSeconds(ShootingCooldown);
             }
 
-            yield return WaitForSeconds(2f);
+            for (int i = 44; i > 0; i--)
+            {
+                z += i;
+
+                SpawnProjectile(0, z, transform.up.RotateVectorBy(z)).Fire();
+                SpawnProjectile(0, z + 180f, transform.up.RotateVectorBy(z + 180f)).Fire();
+
+                yield return WaitForSeconds(ShootingCooldown);
+            }
+
+            yield return ownerShip.MoveToRandomPosition(1f, 2f);
         }
     }
 }
