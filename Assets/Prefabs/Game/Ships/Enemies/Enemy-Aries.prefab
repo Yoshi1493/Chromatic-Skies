@@ -221,7 +221,7 @@ MonoBehaviour:
   <AttackName>k__BackingField: {fileID: 0}
   bigBulletSpawnPos:
   - {x: 7, y: 5, z: 0}
-  - {x: -7, y: -5, z: 180}
+  - {x: -7, y: -5.5, z: 180}
 --- !u!1001 &5337197869581096772
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -6,23 +6,12 @@ public class AriesBullet2 : EnemyBullet
 {
     protected override IEnumerator Move()
     {
+        MoveSpeed = 0f;
+
         yield return WaitForSeconds(1f);
-        
-        this.LookAt(playerShip);
 
-        float z = Mathf.Atan2(-moveDirection.x, moveDirection.y) * Mathf.Rad2Deg;
+        moveDirection = -transform.right;
 
-        for (int i = 0; i <= 5; i++)
-        {
-            var newBullet = GenericObjectPool<EnemyBullet>.Instance.Get(0);
-
-            newBullet.transform.SetPositionAndRotation(transform.position, Quaternion.Euler(0f, 0f, i * 72f + z + 180f));
-
-            newBullet.gameObject.SetActive(true);
-            newBullet.enabled = true;
-            newBullet.Fire();
-        }
-
-        Destroy();
+        yield return this.LerpSpeed(0f, 3f, 1f);
     }
 }

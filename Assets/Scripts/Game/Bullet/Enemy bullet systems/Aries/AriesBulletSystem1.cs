@@ -20,8 +20,10 @@ public class AriesBulletSystem1 : EnemyShooter<EnemyBullet>
             {
                 z += i;
 
-                SpawnProjectile(0, z, transform.up.RotateVectorBy(z)).Fire();
-                SpawnProjectile(0, z + 180f, transform.up.RotateVectorBy(z + 180f)).Fire();
+                for (int j = 0; j < 360; j += 90)
+                {
+                    SpawnProjectile(0, z + j, transform.up.RotateVectorBy(z + j)).Fire();
+                }
 
                 yield return WaitForSeconds(ShootingCooldown);
             }
@@ -30,8 +32,10 @@ public class AriesBulletSystem1 : EnemyShooter<EnemyBullet>
             {
                 z += i;
 
-                SpawnProjectile(0, z, transform.up.RotateVectorBy(z)).Fire();
-                SpawnProjectile(0, z + 180f, transform.up.RotateVectorBy(z + 180f)).Fire();
+                for (int j = 0; j < 360; j += 90)
+                {
+                    SpawnProjectile(0, z + j, transform.up.RotateVectorBy(z + j)).Fire();
+                }
 
                 yield return WaitForSeconds(ShootingCooldown);
             }

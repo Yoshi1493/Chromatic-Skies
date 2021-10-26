@@ -159,6 +159,7 @@ public static class ProjectileBehaviour
         if (target != null)
         {
             var newMoveDirection = target.transform.position - p.transform.position;
+            newMoveDirection.z = 0f;
 
             if (newMoveDirection != Vector3.zero)
             {
@@ -178,6 +179,7 @@ public static class ProjectileBehaviour
     public static Vector3 LookAt(this Projectile p, Vector3 targetPos)
     {
         var newMoveDirection = targetPos - p.transform.position;
+        newMoveDirection.z = 0f;
 
         if (newMoveDirection != Vector3.zero)
         {
