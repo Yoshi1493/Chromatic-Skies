@@ -26,13 +26,7 @@ public abstract class Ship : Actor
 
         //stats
         shipData.CurrentLives.Value = shipData.MaxLives.Value;
-
         shipData.CurrentHealth.Value = shipData.MaxHealth.Value;
-        shipData.Power.Value = shipData.Power.Value;
-        shipData.Defense.Value = shipData.Defense.Value;
-
-        shipData.MovementSpeed.Value = shipData.MovementSpeed.Value;
-        shipData.ShootingSpeed.Value = shipData.ShootingSpeed.Value;
 
         //debug
         name = shipData.ShipName.value;

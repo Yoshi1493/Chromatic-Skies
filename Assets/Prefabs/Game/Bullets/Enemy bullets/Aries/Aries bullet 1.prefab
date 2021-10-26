@@ -15,7 +15,7 @@ MonoBehaviour:
   transform: {fileID: 0}
   moveDirection: {x: 0, y: 0, z: 0}
   projectileData: {fileID: 11400000, guid: e6cda41d15a90774896b40859f567406, type: 2}
-  moveSpeed: 5
+  moveSpeed: 0
 --- !u!1001 &4489721518377228893
 PrefabInstance:
   m_ObjectHideFlags: 0

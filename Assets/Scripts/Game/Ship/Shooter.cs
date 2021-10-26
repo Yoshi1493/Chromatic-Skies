@@ -7,11 +7,8 @@ public abstract class Shooter<TProjectile> : MonoBehaviour
     new protected Transform transform;
     protected Ship ownerShip;
 
-    [SerializeField] protected FloatObject shootingSpeed;
-    protected float ShootingSpeed => shootingSpeed.value;
-    protected virtual float ShootingCooldown => ShootingSpeed == 0 ? 0 : 1 / ShootingSpeed;
-
     protected IEnumerator shootCoroutine;
+    protected virtual float ShootingCooldown => 0.1f;
 
     protected virtual void Awake()
     {

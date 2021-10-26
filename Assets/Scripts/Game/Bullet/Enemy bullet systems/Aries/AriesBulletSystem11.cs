@@ -1,15 +1,21 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using static CoroutineHelper;
 
 public class AriesBulletSystem11 : EnemyShooter<EnemyBullet>
 {
-    List<EnemyBullet> bigBullets = new List<EnemyBullet>();
-    List<EnemyBullet> smallBullets = new List<EnemyBullet>();
+    [SerializeField] Vector3[] bigBulletSpawnPos;
 
     protected override IEnumerator Shoot()
     {
-        yield return null;
+        while (enabled)
+        {
+            for (int i = 0; i < bigBulletSpawnPos.Length; i++)
+            {
+                SpawnProjectile(1, bigBulletSpawnPos[i].z, bigBulletSpawnPos[i], false).Fire();
+            }
+
+            yield return WaitForSeconds(10f);
+        }
     }
 }
