@@ -1,22 +1,21 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &271751213938448673
+--- !u!114 &2299860448456247027
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6334669179249256380}
+  m_GameObject: {fileID: 4079918356797303241}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 334a1a8f0c8a4dc4bbde515753e86ea0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shootingSpeed:
-    OriginalValue: 12
-    currentValue: {fileID: 11400000, guid: f9b4b6a4546c7384e83247ae8d9945d8, type: 2}
-  enemyBullets:
+  enemyProjectiles:
   - {fileID: 0}
+  <ModuleName>k__BackingField: {fileID: 0}
+  <AttackName>k__BackingField: {fileID: 0}
 --- !u!114 &4985555534978999578
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29,11 +28,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5481dadb70310794eb6f5413ea51820c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shootingSpeed:
-    OriginalValue: 12
-    currentValue: {fileID: 11400000, guid: f9b4b6a4546c7384e83247ae8d9945d8, type: 2}
-  enemyBullets:
+  enemyProjectiles:
   - {fileID: 0}
+  <ModuleName>k__BackingField: {fileID: 0}
+  <AttackName>k__BackingField: {fileID: 0}
 --- !u!114 &5361538365071317450
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -46,11 +44,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 561e6f6e12dcc404bb3ff322fae454c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shootingSpeed:
-    OriginalValue: 12
-    currentValue: {fileID: 11400000, guid: f9b4b6a4546c7384e83247ae8d9945d8, type: 2}
-  enemyBullets:
+  enemyProjectiles:
   - {fileID: 0}
+  <ModuleName>k__BackingField: {fileID: 0}
+  <AttackName>k__BackingField: {fileID: 0}
 --- !u!114 &3481857656569154989
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -63,11 +60,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54c9319ce8204244fa9dba22f4b0fefe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shootingSpeed:
-    OriginalValue: 12
-    currentValue: {fileID: 11400000, guid: f9b4b6a4546c7384e83247ae8d9945d8, type: 2}
-  enemyBullets:
+  enemyProjectiles:
   - {fileID: 0}
+  <ModuleName>k__BackingField: {fileID: 0}
+  <AttackName>k__BackingField: {fileID: 0}
 --- !u!114 &138838956967241730
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -80,11 +76,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09434483e2cdb8c468b82fbf48b06adb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shootingSpeed:
-    OriginalValue: 12
-    currentValue: {fileID: 11400000, guid: f9b4b6a4546c7384e83247ae8d9945d8, type: 2}
-  enemyBullets:
+  enemyProjectiles:
   - {fileID: 0}
+  <ModuleName>k__BackingField: {fileID: 0}
+  <AttackName>k__BackingField: {fileID: 0}
 --- !u!114 &2673837049285224303
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -97,11 +92,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89675e61eb0c2b74c89afd9485157d66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shootingSpeed:
-    OriginalValue: 12
-    currentValue: {fileID: 11400000, guid: f9b4b6a4546c7384e83247ae8d9945d8, type: 2}
-  enemyBullets:
+  enemyProjectiles:
   - {fileID: 0}
+  <ModuleName>k__BackingField: {fileID: 0}
+  <AttackName>k__BackingField: {fileID: 0}
 --- !u!1001 &6759093168088370692
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -159,9 +153,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d93cb44e21569f545b76560b29579f98, type: 3}
---- !u!1 &6334669179249256380 stripped
+--- !u!1 &4079918356797303241 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 730809518176938424, guid: d93cb44e21569f545b76560b29579f98, type: 3}
+  m_CorrespondingSourceObject: {fileID: 7301416149945870285, guid: d93cb44e21569f545b76560b29579f98, type: 3}
   m_PrefabInstance: {fileID: 6759093168088370692}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &3777441332194849460 stripped
