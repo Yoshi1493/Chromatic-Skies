@@ -35,8 +35,8 @@ public class VirgoBulletSystem21 : EnemyBulletSubsystem<EnemyBullet>
                 {
                     bulletData.colour = bulletData.gradient.Evaluate(-yPos);
 
-                    bullets.Push(SpawnProjectile(5, zRot + j - transform.eulerAngles.z, 2 * transform.InverseTransformVector(xPos, yPos, 0f).RotateVectorBy(j)));
-                    bullets.Push(SpawnProjectile(5, -zRot + j - transform.eulerAngles.z, 2 * transform.InverseTransformVector(-xPos, yPos, 0f).RotateVectorBy(j)));
+                    bullets.Push(SpawnProjectile(2, zRot + j - transform.eulerAngles.z, 2 * transform.InverseTransformVector(xPos, yPos, 0f).RotateVectorBy(j)));
+                    bullets.Push(SpawnProjectile(2, -zRot + j - transform.eulerAngles.z, 2 * transform.InverseTransformVector(-xPos, yPos, 0f).RotateVectorBy(j)));
                 }
 
                 yield return WaitForSeconds(ShootingCooldown / 2f);

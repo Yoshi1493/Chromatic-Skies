@@ -14,10 +14,10 @@ public class VirgoBulletSystem41 : EnemyShooter<EnemyBullet>
             for (int i = 1; i < 9; i++)
             {
                 Vector3 spawnPos = 8f * Vector3.left.RotateVectorBy(i * 15f) + new Vector3(5f, 7f);
-                bullets.Enqueue(SpawnProjectile(8, 0f, spawnPos, false));
+                bullets.Enqueue(SpawnProjectile(1, 0f, spawnPos, false));
 
                 spawnPos = 8f * Vector3.right.RotateVectorBy(i * -15f) + new Vector3(-5f, 7f);
-                bullets.Enqueue(SpawnProjectile(8, 0f, spawnPos, false));
+                bullets.Enqueue(SpawnProjectile(1, 0f, spawnPos, false));
 
                 yield return WaitForSeconds(ShootingCooldown);
             }
@@ -33,7 +33,7 @@ public class VirgoBulletSystem41 : EnemyShooter<EnemyBullet>
                     for (int j = 0; j < 6; j++)
                     {
                         float z = j * 60f;
-                        SpawnProjectile(0, z, bullet.transform.position, false).Fire();
+                        SpawnProjectile(2, z, bullet.transform.position, false).Fire();
                     }
                 }
 

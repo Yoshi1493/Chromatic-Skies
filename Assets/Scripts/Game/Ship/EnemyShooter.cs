@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public interface IEnemyAttack
@@ -18,17 +19,20 @@ public abstract class EnemyShooter<TProjectile> : Shooter<TProjectile>, IEnemyAt
     Player playerShip;
     protected Vector2 PlayerPosition => playerShip.transform.position;
 
+    [SerializeField] List<TProjectile> enemyProjectiles = new List<TProjectile>();
+
+    #region IEnemyAttack impl.
+
     public Action<StringObject, StringObject> AttackStartAction { get; set; }
 
     [field: SerializeField] public StringObject ModuleName { get; set; }
     [field: SerializeField] public StringObject AttackName { get; set; }
 
-    void IEnemyAttack.SetEnabled(bool state)
-    {
-        enabled = state;
-    }
+    void IEnemyAttack.SetEnabled(bool state) { enabled = state; }
 
-    protected virtual void Start()
+    #endregion
+
+    protected void Start()
     {
         playerShip = FindObjectOfType<Player>();
         ownerShip.LoseLifeAction += OnLoseLife;
@@ -36,7 +40,11 @@ public abstract class EnemyShooter<TProjectile> : Shooter<TProjectile>, IEnemyAt
 
     protected virtual void OnEnable()
     {
-        if (shootCoroutine != null) StopCoroutine(shootCoroutine);
+        GenericObjectPool<TProjectile>.Instance.UpdatePoolableObjects(enemyProjectiles);
+
+        if (shootCoroutine != null)
+            StopCoroutine(shootCoroutine);
+
         shootCoroutine = Shoot();
         StartCoroutine(shootCoroutine);
     }
@@ -57,5 +65,7 @@ public abstract class EnemyShooter<TProjectile> : Shooter<TProjectile>, IEnemyAt
     {
         StopCoroutine(shootCoroutine);
         DestroyAllProjectiles();
+
+        GenericObjectPool<TProjectile>.Instance.DrainPool();
     }
 }

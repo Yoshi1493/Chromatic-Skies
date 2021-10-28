@@ -12,13 +12,13 @@ public class AriesBulletSystem41 : EnemyBulletSubsystem<EnemyBullet>
         {
             for (int i = -45; i < 45; i++)
             {
-                SpawnProjectile(7, i, RandomSpawnPos, false).Fire();
+                SpawnProjectile(1, i, RandomSpawnPos, false).Fire();
                 yield return WaitForSeconds(ShootingCooldown);
             }
 
             for (int i = 45; i > -45; i--)
             {
-                SpawnProjectile(7, i, RandomSpawnPos, false).Fire();
+                SpawnProjectile(1, i, RandomSpawnPos, false).Fire();
                 yield return WaitForSeconds(ShootingCooldown);
             }
         }

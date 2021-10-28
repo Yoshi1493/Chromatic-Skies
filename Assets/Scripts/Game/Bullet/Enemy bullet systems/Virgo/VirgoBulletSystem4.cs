@@ -20,10 +20,10 @@ public class VirgoBulletSystem4 : EnemyShooter<EnemyBullet>
 
             for (int i = 0; i < 200; i++)
             {
-                for (int j = 0; j < 6; j++)
+                for (int j = 0; j < 5; j++)
                 {
-                    float z = j * 60f + n + t;
-                    SpawnProjectile(7, z, Vector2.zero).Fire();
+                    float z = j * 72f + n + t;
+                    SpawnProjectile(0, z, Vector2.zero).Fire();
                 }
 
                 n += i * Mathf.Sign(r);

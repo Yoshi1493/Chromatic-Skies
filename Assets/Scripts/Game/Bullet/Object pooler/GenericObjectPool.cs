@@ -5,8 +5,7 @@ public abstract class GenericObjectPool<TProjectile> : MonoBehaviour where TProj
 {
     public static GenericObjectPool<TProjectile> Instance { get; private set; }
 
-    const int PoolCap = 256;
-    List<(TProjectile projectile, Queue<TProjectile> queue)> objectPool = new List<(TProjectile, Queue<TProjectile>)>();
+    readonly List<(TProjectile projectile, Queue<TProjectile> queue)> objectPool = new List<(TProjectile, Queue<TProjectile>)>();
 
     void Awake()
     {
@@ -15,17 +14,15 @@ public abstract class GenericObjectPool<TProjectile> : MonoBehaviour where TProj
 
     public void UpdatePoolableObjects(List<TProjectile> projectiles)
     {
-        objectPool.Clear();
-
         for (int i = 0; i < projectiles.Count; i++)
         {
-            objectPool.Add((projectiles[i], new Queue<TProjectile>(PoolCap)));
-
-            //for (int j = 0; j < PoolLimit; j++)
-            //{
-            //    ExpandPool(i);
-            //}
+            objectPool.Add((projectiles[i], new Queue<TProjectile>()));
         }
+    }
+
+    public void DrainPool()
+    {
+        objectPool.Clear();
     }
 
     public TProjectile Get(int ID)

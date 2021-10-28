@@ -16,8 +16,8 @@ public class VirgoBulletSystem2 : EnemyShooter<EnemyBullet>
                 {
                     float z = (j * 12f) + (i * 6f);
 
-                    SpawnProjectile(3, z, Vector2.zero).Fire();
-                    SpawnProjectile(4, z, Vector2.zero).Fire();
+                    SpawnProjectile(0, z, Vector2.zero).Fire();
+                    SpawnProjectile(1, z, Vector2.zero).Fire();
                 }
 
                 yield return WaitForSeconds(ShootingCooldown * 6f);

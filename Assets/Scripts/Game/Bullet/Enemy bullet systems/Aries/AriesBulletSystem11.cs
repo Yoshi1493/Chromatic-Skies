@@ -4,15 +4,15 @@ using static CoroutineHelper;
 
 public class AriesBulletSystem11 : EnemyShooter<EnemyBullet>
 {
-    [SerializeField] Vector3[] bigBulletSpawnPos;
+    [SerializeField] Vector3[] bulletSpawnPos;
 
     protected override IEnumerator Shoot()
     {
         while (enabled)
         {
-            for (int i = 0; i < bigBulletSpawnPos.Length; i++)
+            for (int i = 0; i < bulletSpawnPos.Length; i++)
             {
-                SpawnProjectile(1, bigBulletSpawnPos[i].z, bigBulletSpawnPos[i], false).Fire();
+                SpawnProjectile(1, bulletSpawnPos[i].z, bulletSpawnPos[i], false).Fire();
             }
 
             yield return WaitForSeconds(8f);

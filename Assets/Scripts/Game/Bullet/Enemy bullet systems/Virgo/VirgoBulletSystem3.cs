@@ -28,8 +28,8 @@ public class VirgoBulletSystem3 : EnemyShooter<EnemyBullet>
                 Vector3 spawnOffset = transform.right.RotateVectorBy(theta * Mathf.Rad2Deg);
                 float z = spawnOffset.GetRotationDifference(Vector3.zero);
 
-                var b1 = SpawnProjectile(6, z, r * amp * spawnOffset);
-                var b2 = SpawnProjectile(6, z + 180f, -r * amp * spawnOffset);
+                var b1 = SpawnProjectile(0, z, r * amp * spawnOffset);
+                var b2 = SpawnProjectile(0, z + 180f, -r * amp * spawnOffset);
 
                 //b1.LookAt(transform.position);
                 //b2.LookAt(transform.position);

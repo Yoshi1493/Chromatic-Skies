@@ -1,22 +1,15 @@
-using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 
 public class Enemy : Ship
 {
-    [SerializeField] List<EnemyBullet> enemyBullets = new List<EnemyBullet>();
-    [SerializeField] List<Laser> enemyLasers = new List<Laser>();
-
-    void Start()
-    {
-        EnemyBulletPool.Instance.UpdatePoolableObjects(enemyBullets);
-        EnemyLaserPool.Instance.UpdatePoolableObjects(enemyLasers);
-    }
-
-    protected override void LoseLife()
+    protected override async void LoseLife()
     {
         int currentProjectileSystem = shipData.MaxLives.Value - shipData.CurrentLives.Value;
 
         base.LoseLife();
+
+        await Task.Yield();
 
         if (shipData.CurrentLives.Value > 0)
         {

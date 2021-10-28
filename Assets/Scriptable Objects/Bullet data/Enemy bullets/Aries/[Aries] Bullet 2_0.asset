@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6b79cd0b20b26ac4090b241d65679e69, type: 3}
-  m_Name: '[Virgo] Bullet 2'
+  m_Name: '[Aries] Bullet 2_0'
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: aff5ff3003a41f24d892e26e534d2c72, type: 3}
+  sprite: {fileID: 21300000, guid: 9b86635f8b1fb5941bb865b3a22f5cf0, type: 3}
   useSolidColour: 0
   colour: {r: 0, g: 0, b: 0, a: 0}
   gradient:
     serializedVersion: 2
-    key0: {r: 1, g: 0.91733336, b: 0.75, a: 1}
-    key1: {r: 1, g: 0.9166666, b: 0.5, a: 1}
+    key0: {r: 1, g: 0, b: 0, a: 1}
+    key1: {r: 1, g: 0.5, b: 0, a: 1}
     key2: {r: 0, g: 0, b: 0, a: 0}
     key3: {r: 0, g: 0, b: 0, a: 0}
     key4: {r: 0, g: 0, b: 0, a: 0}
@@ -44,5 +44,5 @@ MonoBehaviour:
     m_Mode: 0
     m_NumColorKeys: 2
     m_NumAlphaKeys: 2
-  BulletID: 2
-  Power: {fileID: 11400000, guid: c9057bec88714fb4b9df3546afd3e41d, type: 2}
+  BulletID: 0
+  Power: {fileID: 11400000, guid: 6059f9293aa347b44a73714bea5bfcd3, type: 2}
