@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyProjectiles:
   - {fileID: 0}
-  <ModuleName>k__BackingField: {fileID: 0}
-  <AttackName>k__BackingField: {fileID: 0}
+  <AttackName>k__BackingField: {fileID: 11400000, guid: 3a92683ad9725d448854696a2e8c82af, type: 2}
+  <ModuleName>k__BackingField: {fileID: 11400000, guid: 456fa206f121ec942a69a63fdf0e195f, type: 2}
 --- !u!114 &4985555534978999578
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30,8 +30,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyProjectiles:
   - {fileID: 0}
-  <ModuleName>k__BackingField: {fileID: 0}
-  <AttackName>k__BackingField: {fileID: 0}
+  <AttackName>k__BackingField: {fileID: 11400000, guid: a8ceb0f1da72bf248832017844c5e8a2, type: 2}
+  <ModuleName>k__BackingField: {fileID: 11400000, guid: 272953e253b97144e896c8d86620ce32, type: 2}
 --- !u!114 &5361538365071317450
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -46,8 +46,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyProjectiles:
   - {fileID: 0}
-  <ModuleName>k__BackingField: {fileID: 0}
-  <AttackName>k__BackingField: {fileID: 0}
+  <AttackName>k__BackingField: {fileID: 11400000, guid: cf4effd6f2dc49144b46740206ee408f, type: 2}
+  <ModuleName>k__BackingField: {fileID: 11400000, guid: cfa09f46b4dbffc4d9230d92e34c8fb2, type: 2}
 --- !u!114 &3481857656569154989
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -62,8 +62,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyProjectiles:
   - {fileID: 0}
-  <ModuleName>k__BackingField: {fileID: 0}
-  <AttackName>k__BackingField: {fileID: 0}
+  <AttackName>k__BackingField: {fileID: 11400000, guid: 1a9b46e685a74f449851344dc0e576e6, type: 2}
+  <ModuleName>k__BackingField: {fileID: 11400000, guid: 39422848dd13af74c9f1efd6432bed88, type: 2}
 --- !u!114 &138838956967241730
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -78,8 +78,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyProjectiles:
   - {fileID: 0}
-  <ModuleName>k__BackingField: {fileID: 0}
-  <AttackName>k__BackingField: {fileID: 0}
+  <AttackName>k__BackingField: {fileID: 11400000, guid: 59dc8c7b014e8954997af8a5f4db7157, type: 2}
+  <ModuleName>k__BackingField: {fileID: 11400000, guid: 08a0ec5f1c0b7414c8cd057d8eb57aad, type: 2}
 --- !u!114 &2673837049285224303
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -94,8 +94,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyProjectiles:
   - {fileID: 0}
-  <ModuleName>k__BackingField: {fileID: 0}
-  <AttackName>k__BackingField: {fileID: 0}
+  <AttackName>k__BackingField: {fileID: 11400000, guid: b50447983280c0242b484c06cbb5aa2e, type: 2}
+  <ModuleName>k__BackingField: {fileID: 11400000, guid: e7f0d2efdbebc9d4986c959c5a2f55ce, type: 2}
 --- !u!1001 &6759093168088370692
 PrefabInstance:
   m_ObjectHideFlags: 0

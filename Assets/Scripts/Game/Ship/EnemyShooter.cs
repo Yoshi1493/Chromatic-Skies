@@ -25,8 +25,8 @@ public abstract class EnemyShooter<TProjectile> : Shooter<TProjectile>, IEnemyAt
 
     public Action<StringObject, StringObject> AttackStartAction { get; set; }
 
-    [field: SerializeField] public StringObject ModuleName { get; set; }
     [field: SerializeField] public StringObject AttackName { get; set; }
+    [field: SerializeField] public StringObject ModuleName { get; set; }
 
     void IEnemyAttack.SetEnabled(bool state) { enabled = state; }
 
