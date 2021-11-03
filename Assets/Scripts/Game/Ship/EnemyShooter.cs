@@ -51,6 +51,7 @@ public abstract class EnemyShooter<TProjectile> : Shooter<TProjectile>, IEnemyAt
 
     protected override IEnumerator Shoot()
     {
+        yield return ownerShip.ReturnToOriginalPosition();
         yield return CoroutineHelper.WaitForSeconds(1f);
         AttackStartAction?.Invoke(ModuleName, AttackName);
     }

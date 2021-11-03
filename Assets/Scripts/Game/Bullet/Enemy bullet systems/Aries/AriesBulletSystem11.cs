@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using static CoroutineHelper;
 
-public class AriesBulletSystem11 : EnemyShooter<EnemyBullet>
+public class AriesBulletSystem11 : EnemyBulletSubsystem<EnemyBullet>
 {
     [SerializeField] Vector3[] bulletSpawnPos;
 

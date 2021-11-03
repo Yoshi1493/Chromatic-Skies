@@ -7,6 +7,7 @@ public static class EnemyMovementBehaviour
     #region Movement behaviour
 
     static readonly AnimationCurve moveInterpolation = AnimationCurve.EaseInOut(0, 0, 1, 1);
+    static readonly Vector3 originalPosition = new Vector3(0f, 2.5f, 0f);
 
     /// <summary>
     /// translates <ship> to <endPosition> over <moveDuration> seconds, along a sigmoid (smoothstep) curve.
@@ -34,6 +35,11 @@ public static class EnemyMovementBehaviour
     {
         Vector3 endPosition = GetRandomPosition(ship);
         yield return ship.MoveTo(endPosition, moveDuration, delay);        
+    }
+
+    public static IEnumerator ReturnToOriginalPosition(this Ship ship, float moveDuration = 1f, float delay = 0f)
+    {
+        yield return ship.MoveTo(originalPosition, moveDuration, delay);
     }
 
     #endregion

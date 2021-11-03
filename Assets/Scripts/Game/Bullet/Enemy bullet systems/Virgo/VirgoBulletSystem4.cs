@@ -12,7 +12,7 @@ public class VirgoBulletSystem4 : EnemyShooter<EnemyBullet>
 
         while (enabled)
         {
-            yield return base.Shoot();
+            yield return WaitForSeconds(1f);
 
             float n = 0f;
             float r = Random.value - 0.5f;
@@ -29,8 +29,6 @@ public class VirgoBulletSystem4 : EnemyShooter<EnemyBullet>
                 n += i * Mathf.Sign(r);
                 yield return WaitForSeconds(ShootingCooldown);
             }
-
-            yield return ownerShip.MoveToRandomPosition(1f, 2f);
         }
     }
 }

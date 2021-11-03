@@ -4,14 +4,14 @@ using static CoroutineHelper;
 
 public class VirgoBulletSystem1 : EnemyShooter<EnemyBullet>
 {
+    readonly float goldenRatio = (1 + Mathf.Sqrt(5)) * 180;
+
     protected override IEnumerator Shoot()
     {
-        float goldenRatio = (1 + Mathf.Sqrt(5)) * 180;
+        yield return base.Shoot();
 
         while (enabled)
         {
-            yield return base.Shoot();
-
             SetSubsystemEnabled(1);
 
             //377 is the 14th number in the fibonacci sequence

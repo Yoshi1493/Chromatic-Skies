@@ -6,10 +6,10 @@ public class VirgoBulletSystem2 : EnemyShooter<EnemyBullet>
 {
     protected override IEnumerator Shoot()
     {
+        yield return base.Shoot();
+
         while (enabled)
         {
-            yield return base.Shoot();
-
             for (int i = 0; i < 3; i++)
             {
                 for (int j = 0; j < 30; j++)
@@ -26,6 +26,7 @@ public class VirgoBulletSystem2 : EnemyShooter<EnemyBullet>
             SetSubsystemEnabled(1);
 
             yield return ownerShip.MoveToRandomPosition(1f, 3f);
+            yield return WaitForSeconds(1f);
         }
     }
 }

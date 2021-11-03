@@ -6,10 +6,10 @@ public class AriesBulletSystem2 : EnemyShooter<EnemyBullet>
 {
     protected override IEnumerator Shoot()
     {
+        yield return base.Shoot();
+
         while (enabled)
         {
-            yield return base.Shoot();
-
             for (int i = 0; i < 111; i++)
             {
                 float rand = Random.value * 360;
