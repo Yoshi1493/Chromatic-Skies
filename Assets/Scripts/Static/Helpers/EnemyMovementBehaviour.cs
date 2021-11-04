@@ -31,9 +31,9 @@ public static class EnemyMovementBehaviour
     /// <summary>
     /// translates <ship> to <GetRandomPosition()> over <moveDuration> seconds.
     /// </summary>
-    public static IEnumerator MoveToRandomPosition(this Ship ship, float moveDuration, float delay = 0f)
+    public static IEnumerator MoveToRandomPosition(this Ship ship, float moveDuration, float minSqrMagDelta = 4f, float maxSqrMagDelta = 16f, float delay = 0f)
     {
-        Vector3 endPosition = GetRandomPosition(ship);
+        Vector3 endPosition = GetRandomPosition(ship.transform.position, minSqrMagDelta, maxSqrMagDelta);
         yield return ship.MoveTo(endPosition, moveDuration, delay);        
     }
 
@@ -50,7 +50,7 @@ public static class EnemyMovementBehaviour
     /// returns a random Vector3 that is at least <minSqrMagDelta> units away from <ship.transform.position>.
     /// </summary>
     //to-do: fix; get rid of magic numbers
-    static Vector3 GetRandomPosition(Ship ship, float minSqrMagDelta = 4f)
+    static Vector3 GetRandomPosition(Vector3 currentPos, float minSqrMagDelta, float maxSqrMagDelta)
     {
         Vector3 newRandPos = new Vector3
             (
@@ -58,7 +58,7 @@ public static class EnemyMovementBehaviour
             Random.Range(2f, 4f)
             );
 
-        while ((ship.transform.position - newRandPos).sqrMagnitude < minSqrMagDelta)
+        while ((currentPos - newRandPos).sqrMagnitude < minSqrMagDelta)
         {
             newRandPos = new Vector3
                 (
