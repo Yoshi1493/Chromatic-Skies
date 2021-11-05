@@ -16,6 +16,13 @@ MonoBehaviour:
   moveDirection: {x: 0, y: 0, z: 0}
   projectileData: {fileID: 11400000, guid: c916471a00084584ab76354b75e0adc2, type: 2}
   moveSpeed: 0
+  speeds: {x: 3, y: 1, z: 2.5}
+  durations: {x: 0.5, y: 1}
+  startSpeed: 3
+  midSpeed: 1
+  endSpeed: 2.5
+  startToMidDuration: 0.5
+  midToEndDuration: 1
 --- !u!1001 &5439199463603466788
 PrefabInstance:
   m_ObjectHideFlags: 0

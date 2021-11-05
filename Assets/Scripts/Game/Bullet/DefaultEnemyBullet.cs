@@ -3,16 +3,15 @@ using UnityEngine;
 
 public class DefaultEnemyBullet : EnemyBullet
 {
-    [SerializeField] float startSpeed = 3f;
-    [SerializeField] float midSpeed = 1f;
-    [SerializeField] float endSpeed = 2.5f;
+    [Tooltip("x = initial speed\ny = mid speed\nz = end speed")]
+    [SerializeField] Vector3 speeds;
 
-    [SerializeField] float startToMidDuration = 0.5f;
-    [SerializeField] float midToEndDuration = 1f;
+    [Tooltip("x = time from moveSpeeds.x -> .y\ny = time from moveSpeeds.y -> .z")]
+    [SerializeField] Vector2 durations;
 
     protected override IEnumerator Move()
     {
-        yield return StartCoroutine(this.LerpSpeed(startSpeed, midSpeed, startToMidDuration));
-        yield return StartCoroutine(this.LerpSpeed(midSpeed, endSpeed, midToEndDuration));
+        yield return StartCoroutine(this.LerpSpeed(speeds.x, speeds.y, durations.x));
+        yield return StartCoroutine(this.LerpSpeed(speeds.y, speeds.z, durations.y));
     }
 }
