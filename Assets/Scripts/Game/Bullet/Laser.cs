@@ -6,7 +6,7 @@ public abstract class Laser : Projectile
 {
     [SerializeField] protected bool stationary;
 
-    protected override Collider2D CollisionCondition => Physics2D.OverlapBox(transform.position + (transform.up * spriteRenderer.size.y / 2), spriteRenderer.size, transform.eulerAngles.z);
+    protected override Collider2D CollisionCondition => Physics2D.OverlapCircle(transform.position, spriteRenderer.size.x);
 
     IEnumerator sizeAnimation;
 
@@ -69,4 +69,8 @@ public abstract class Laser : Projectile
         EnemyLaserPool.Instance.ReturnToPool(this);
     }
 
+    public void OnDrawGizmos()
+    {
+        Gizmos.DrawSphere(transform.position, spriteRenderer.size.x);
+    }
 }

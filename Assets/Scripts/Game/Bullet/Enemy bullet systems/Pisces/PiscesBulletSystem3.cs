@@ -8,7 +8,7 @@ public class PiscesBulletSystem3 : EnemyShooter<EnemyBullet>
     {
         yield return base.Shoot();
 
-        //while (enabled)
+        while (enabled)
         {
             SetSubsystemEnabled(1);
 
@@ -22,6 +22,8 @@ public class PiscesBulletSystem3 : EnemyShooter<EnemyBullet>
 
                 yield return WaitForSeconds(ShootingCooldown * 4f);
             }
+
+            yield return ownerShip.MoveToRandomPosition(1f, maxSqrMagDelta: 10, delay: 1f);
         }
     }
 }

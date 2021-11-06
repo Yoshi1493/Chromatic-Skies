@@ -6,7 +6,7 @@ public class PiscesBulletSystem31 : EnemyBulletSubsystem<Laser>
 {
     protected override IEnumerator Shoot()
     {
-        yield return WaitForSeconds(5f);
+        yield return WaitForSeconds(3f);
 
         for (int i = 0; i < 33; i++)
         {
