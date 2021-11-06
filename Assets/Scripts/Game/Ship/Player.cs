@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Player : Ship
 {
-    [SerializeField] GameObject hitboxVisualizer;
+    [SerializeField] SpriteRenderer hitboxVisualizer;
 
     protected override void Awake()
     {
@@ -28,13 +28,13 @@ public class Player : Ship
     {
         if (Input.GetButtonDown("Slow"))
         {
-            hitboxVisualizer.SetActive(true);
+            hitboxVisualizer.enabled = true;
             shipData.CurrentSpeed = shipData.MovementSpeed.Value / 2f;
         }
 
         if (Input.GetButtonUp("Slow"))
         {
-            hitboxVisualizer.SetActive(false);
+            hitboxVisualizer.enabled = false;
             shipData.CurrentSpeed = shipData.MovementSpeed.Value;
         }
     }
