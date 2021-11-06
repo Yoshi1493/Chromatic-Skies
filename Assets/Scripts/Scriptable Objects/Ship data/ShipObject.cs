@@ -20,5 +20,7 @@ public class ShipObject : ScriptableObject
     public IntReference Defense;
 
     public FloatReference MovementSpeed;
+    [HideInInspector] public float CurrentSpeed;
+
     public FloatReference ShootingSpeed;
 }
