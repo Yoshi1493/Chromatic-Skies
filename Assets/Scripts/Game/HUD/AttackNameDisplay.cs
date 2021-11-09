@@ -6,9 +6,6 @@ public class AttackNameDisplay : HUDComponent<Enemy>
     Animator anim;
     TextMeshProUGUI nameText;
 
-    [SerializeField] StringObject[] moduleNames;
-    [SerializeField] StringObject[] attackNames;
-
     protected override void Awake()
     {
         base.Awake();
