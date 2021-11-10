@@ -1,4 +1,6 @@
+using System.Collections;
 using UnityEngine.UI;
+using static CoroutineHelper;
 
 public class LivesDisplay<TShip> : HUDComponent<TShip>
     where TShip : Ship
@@ -13,13 +15,13 @@ public class LivesDisplay<TShip> : HUDComponent<TShip>
         lifeIcons = GetComponentsInChildren<Image>();
     }
 
-    void Start()
+    protected virtual void Start()
     {
         InitColour();
-        UpdateDisplay();
+        StartCoroutine(InitDisplay());
     }
 
-    void InitColour()
+    protected void InitColour()
     {
         for (int i = 0; i < lifeIcons.Length; i++)
         {
@@ -27,16 +29,22 @@ public class LivesDisplay<TShip> : HUDComponent<TShip>
         }
     }
 
-    void UpdateDisplay()
+    IEnumerator InitDisplay()
     {
-        for (int i = 0; i < lifeIcons.Length; i++)
+        yield return WaitForSeconds(1f);
+
+        for (int i = 0; i < ship.shipData.MaxLives.Value; i++)
         {
-            lifeIcons[i].enabled = i < ship.shipData.CurrentLives.Value;
+            lifeIcons[i].enabled = true;
+            yield return WaitForSeconds(0.1f);
         }
     }
 
     void OnLoseLife()
     {
-        UpdateDisplay();
+        for (int i = 0; i < lifeIcons.Length; i++)
+        {
+            lifeIcons[i].enabled = i < ship.shipData.CurrentLives.Value;
+        }
     }
 }

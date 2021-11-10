@@ -19,18 +19,10 @@ MonoBehaviour:
     useConstant: 1
     ConstantValue: 3
     Variable: {fileID: 11400000, guid: 49e21d1148446a141ab344e253251c17, type: 2}
-  CurrentLives:
-    useConstant: 0
-    ConstantValue: 0
-    Variable: {fileID: 11400000, guid: e2702cea3fe25f846bba74335398e0fa, type: 2}
   MaxHealth:
     useConstant: 1
     ConstantValue: 5860
     Variable: {fileID: 0}
-  CurrentHealth:
-    useConstant: 0
-    ConstantValue: 0
-    Variable: {fileID: 11400000, guid: 16fb8465b51cd12478ab0b4df9d6d52f, type: 2}
   Power:
     useConstant: 0
     ConstantValue: 0
@@ -47,3 +39,13 @@ MonoBehaviour:
     useConstant: 0
     ConstantValue: 0
     Variable: {fileID: 11400000, guid: 8d68258977ea0664bac5db3857bff021, type: 2}
+  CurrentLives:
+    useConstant: 0
+    ConstantValue: 0
+    Variable: {fileID: 11400000, guid: e2702cea3fe25f846bba74335398e0fa, type: 2}
+  CurrentHealth:
+    useConstant: 0
+    ConstantValue: 0
+    Variable: {fileID: 11400000, guid: 16fb8465b51cd12478ab0b4df9d6d52f, type: 2}
+  CurrentSpeed: 5
+  Invincible: 0

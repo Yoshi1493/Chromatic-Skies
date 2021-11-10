@@ -7,7 +7,9 @@ public class Player : Ship
     protected override void Awake()
     {
         base.Awake();
+
         shipData.CurrentSpeed = shipData.MovementSpeed.Value;
+        shipData.Invincible = false;
     }
 
     void Update()
