@@ -9,8 +9,8 @@ public class HealthBar<TShip> : HUDComponent<TShip>
     Image healthBarImage;
     float HealthPercent => (float)ship.shipData.CurrentHealth.Value / ship.shipData.MaxHealth.Value;
 
-    [SerializeField] AnimationCurve refillInterpolation;
-    IEnumerator refillCoroutine;
+    [SerializeField] AnimationCurve fillInterpolation;
+    IEnumerator fillCoroutine;
 
     protected override void Awake()
     {
@@ -25,39 +25,38 @@ public class HealthBar<TShip> : HUDComponent<TShip>
 
     void OnTakeDamage()
     {
-        if (refillCoroutine != null)
-            StopCoroutine(refillCoroutine);
-
-        print(HealthPercent);
-        refillCoroutine = UpdateFill(HealthPercent, animationDuration: 0.2f);
-        StartCoroutine(refillCoroutine);
+        healthBarImage.fillAmount = HealthPercent;
     }
 
     void OnLoseLife()
     {
-        if (refillCoroutine != null)
-            StopCoroutine(refillCoroutine);
+        if (fillCoroutine != null)
+            StopCoroutine(fillCoroutine);
 
-        refillCoroutine = UpdateFill(1f, delay: 1f);
-        StartCoroutine(refillCoroutine);
+        fillCoroutine = Refill();
+        StartCoroutine(fillCoroutine);
     }
 
-    IEnumerator UpdateFill(float endFillAmount, float animationDuration = 0.5f, float delay = 0f)
+    IEnumerator Refill()
     {
-        yield return WaitForSeconds(delay);
+        healthBarImage.fillAmount = 0f;
 
-        float startFillAmount = healthBarImage.fillAmount;
+        if (ship.shipData.CurrentLives.Value <= 0) yield break;
+
+        yield return WaitForSeconds(1f);
+        
         float currentLerpTime = 0f;
+        float animDuration = 0.5f;
 
-        while (currentLerpTime < animationDuration)
+        while (currentLerpTime < animDuration)
         {
-            float lerpProgress = currentLerpTime / animationDuration;
-            healthBarImage.fillAmount = Mathf.Lerp(startFillAmount, endFillAmount, refillInterpolation.Evaluate(lerpProgress));
+            float lerpProgress = currentLerpTime / animDuration;
+            healthBarImage.fillAmount = Mathf.Lerp(0f, 1f, fillInterpolation.Evaluate(lerpProgress));
 
             currentLerpTime += Time.deltaTime;
             yield return EndOfFrame;
         }
 
-        refillCoroutine = null;
+        fillCoroutine = null;
     }
 }

@@ -32,9 +32,7 @@ public class Enemy : Ship
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.K))
-        {
             TakeDamage(shipData.CurrentHealth.Value);
-        }
     }
     #endregion
 

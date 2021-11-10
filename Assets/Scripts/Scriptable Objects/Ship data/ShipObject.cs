@@ -7,20 +7,22 @@ public class ShipObject : ScriptableObject
     public Sprite Sprite;
     public ColourObject UIColour;
 
-    [Header("Stats")]
+    [Header("Constant stats")]
     public StringObject ShipName;
 
     public IntReference MaxLives;
-    public IntReference CurrentLives;
-
     public IntReference MaxHealth;
-    public IntReference CurrentHealth;
-
     public IntReference Power;
     public IntReference Defense;
 
     public FloatReference MovementSpeed;
+    public FloatReference ShootingSpeed;
+
+    [Header("Variable stats")]
+    public IntReference CurrentLives;
+    public IntReference CurrentHealth;
+
     [HideInInspector] public float CurrentSpeed;
 
-    public FloatReference ShootingSpeed;
+    [HideInInspector] public bool Invincible;
 }

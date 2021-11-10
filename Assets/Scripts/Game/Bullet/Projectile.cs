@@ -46,14 +46,15 @@ public abstract class Projectile : Actor
         Collider2D coll = CollisionCondition;
 
         if (coll && coll.TryGetComponent(out TShip _))
-        {
             HandleCollisionWithShip<Ship>(coll);
-        }
     }
 
     protected virtual void HandleCollisionWithShip<TShip>(Collider2D coll) where TShip : Ship
     {
-        coll.GetComponent<TShip>().TakeDamage(projectileData.Power.value);
+        TShip ship = coll.GetComponent<TShip>();
+
+        if (!ship.shipData.Invincible)
+            ship.TakeDamage(projectileData.Power.value);
     }
 
     public virtual void Destroy()

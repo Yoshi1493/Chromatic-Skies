@@ -32,15 +32,17 @@ public abstract class Ship : Actor
     }
 
     //to-do: take shipData.Defense into account for damage calculations
-    public virtual void TakeDamage(int power)
+    public void TakeDamage(int power)
     {
         shipData.CurrentHealth.Value -= power;
         //print($"{name} took {power} damage.");
 
-        if (shipData.CurrentHealth.Value <= 0)        
+        if (shipData.CurrentHealth.Value <= 0)
             LoseLifeAction?.Invoke();
+
         else
             TakeDamageAction?.Invoke();
+
     }
 
     protected virtual void LoseLife()
@@ -48,9 +50,14 @@ public abstract class Ship : Actor
         shipData.CurrentLives.Value--;
 
         if (shipData.CurrentLives.Value <= 0)
+        {
             DeathAction?.Invoke();
+        }
         else
+        {
             shipData.CurrentHealth.Value = shipData.MaxHealth.Value;
+            shipData.Invincible = true;
+        }
     }
 
     protected abstract void Die();
