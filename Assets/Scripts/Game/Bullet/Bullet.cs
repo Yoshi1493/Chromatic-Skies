@@ -16,4 +16,11 @@ public abstract class Bullet : Projectile
         base.Move(moveSpeed);
         transform.eulerAngles = Mathf.Atan2(-moveDirection.x, moveDirection.y) * Mathf.Rad2Deg * Vector3.forward;
     }
+
+    #region DEBUG
+    void OnDrawGizmos()
+    {
+        Gizmos.DrawSphere(transform.position, HitboxSize);
+    }
+    #endregion
 }

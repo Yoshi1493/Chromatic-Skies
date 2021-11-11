@@ -69,8 +69,10 @@ public abstract class Laser : Projectile
         EnemyLaserPool.Instance.ReturnToPool(this);
     }
 
+    #region DEBUG
     public void OnDrawGizmos()
     {
         Gizmos.DrawSphere(transform.position, spriteRenderer.size.x);
     }
+    #endregion
 }
