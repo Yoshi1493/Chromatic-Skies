@@ -9,7 +9,9 @@ public class PlayerShooter : Shooter<PlayerBullet>
     protected override float ShootingCooldown => 1 / shootingSpeed.value;
 
     [SerializeField] List<PlayerBullet> playerBullets = new List<PlayerBullet>();
-    bool canShoot = true;    
+    bool canShoot = true;
+
+    [SerializeField] List<Transform> bulletSpawnPositions = new List<Transform>();
 
     protected override void Awake()
     {
@@ -39,7 +41,9 @@ public class PlayerShooter : Shooter<PlayerBullet>
 
     protected override IEnumerator Shoot()
     {
-        SpawnProjectile(0, 0f, transform.position, false);
+        SpawnProjectile(0, 0f, bulletSpawnPositions[0].position, false);
+        SpawnProjectile(0, 0f, bulletSpawnPositions[1].position, false);
+        SpawnProjectile(0, 0f, bulletSpawnPositions[2].position, false);
 
         canShoot = false;
         yield return WaitForSeconds(ShootingCooldown);
