@@ -8,7 +8,7 @@ public abstract class Shooter<TProjectile> : MonoBehaviour
     protected Ship ownerShip;
 
     protected IEnumerator shootCoroutine;
-    protected virtual float ShootingCooldown => 0.1f;
+    protected virtual float ShootingCooldown => 1 / ownerShip.shipData.ShootingSpeed.Value;
 
     protected virtual void Awake()
     {
@@ -27,7 +27,7 @@ public abstract class Shooter<TProjectile> : MonoBehaviour
         newProjectile.gameObject.SetActive(true);
         newProjectile.enabled = true;
 
-        //newProjectile.name += $" {newProjectile.transform.GetSiblingIndex()}";        //debug
+        newProjectile.name += $" {newProjectile.transform.GetSiblingIndex()}";        //debug
 
         return newProjectile;
     }
