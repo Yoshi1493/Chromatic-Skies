@@ -32,13 +32,15 @@ public class PiscesBulletSystem4 : EnemyShooter<EnemyBullet>
                 {
                     float xPos = BranchWidth;
                     float yPos = ScaleFactor * (i + 4 * (i / 4) + 4);
-
+                    
                     float zRot = j * 60f;
 
+                    Vector3 spawnPos = new Vector3(xPos, yPos).RotateVectorBy(zRot);
+                    bulletData.colour = bulletData.gradient.Evaluate(spawnPos.magnitude / 6f);
+                    SpawnProjectile(0, zRot, spawnPos).Fire();
 
-
-                    SpawnProjectile(0, zRot, new Vector3(xPos, yPos).RotateVectorBy(zRot)).Fire();
-                    SpawnProjectile(0, zRot, new Vector3(-xPos, yPos).RotateVectorBy(zRot)).Fire();
+                    spawnPos = new Vector3(-xPos, yPos).RotateVectorBy(zRot);
+                    SpawnProjectile(0, zRot, spawnPos).Fire();
                 }
 
                 yield return WaitForSeconds(ShootingCooldown);
@@ -58,12 +60,16 @@ public class PiscesBulletSystem4 : EnemyShooter<EnemyBullet>
             {
                 float xPos = Mathf.Cos(branchAngle * Mathf.Deg2Rad) * i * ScaleFactor + xOffset;
                 float yPos = Mathf.Sin(branchAngle * Mathf.Deg2Rad) * i * ScaleFactor + yOffset;
-
+                
                 float zRot = 90 - branchAngle;
                 float theta = j * 360 / BranchCount;
 
-                SpawnProjectile(0, theta - zRot, new Vector3(xPos, yPos).RotateVectorBy(theta)).Fire();
-                SpawnProjectile(0, theta + zRot, new Vector3(-xPos, yPos).RotateVectorBy(theta)).Fire();
+                Vector3 spawnPos = new Vector3(xPos, yPos).RotateVectorBy(theta);
+                bulletData.colour = bulletData.gradient.Evaluate(spawnPos.magnitude / 6f);
+                SpawnProjectile(0, theta - zRot, spawnPos).Fire();
+
+                spawnPos = new Vector3(-xPos, yPos).RotateVectorBy(theta);
+                SpawnProjectile(0, theta + zRot, spawnPos).Fire();
             }
 
             yield return WaitForSeconds(ShootingCooldown);
