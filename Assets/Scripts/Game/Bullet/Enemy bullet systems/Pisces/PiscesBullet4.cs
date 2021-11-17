@@ -5,7 +5,9 @@ public class PiscesBullet4 : EnemyBullet
 {
     protected override IEnumerator Move()
     {
-        MoveSpeed = 0f;
-        yield return null;
+        yield return StartCoroutine(this.LerpSpeed(4f, 0f, 1f));
+
+        StartCoroutine(this.LerpSpeed(0f, 4f, 0f, 1f));
+        this.LookAt(playerShip);
     }
 }

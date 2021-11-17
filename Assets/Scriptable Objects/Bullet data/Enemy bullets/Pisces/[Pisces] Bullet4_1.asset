@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6b79cd0b20b26ac4090b241d65679e69, type: 3}
-  m_Name: '[Pisces] Bullet4_0'
+  m_Name: '[Pisces] Bullet4_1'
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: 9b86635f8b1fb5941bb865b3a22f5cf0, type: 3}
-  useSolidColour: 1
-  colour: {r: 0.2326091, g: 0.80815226, b: 1, a: 1}
+  sprite: {fileID: 21300000, guid: aff5ff3003a41f24d892e26e534d2c72, type: 3}
+  useSolidColour: 0
+  colour: {r: 0, g: 0, b: 0, a: 0}
   gradient:
     serializedVersion: 2
-    key0: {r: 1, g: 1, b: 1, a: 1}
+    key0: {r: 0.5, g: 0.875, b: 1, a: 1}
     key1: {r: 0, g: 0.75, b: 1, a: 1}
     key2: {r: 0, g: 0, b: 0, a: 0}
     key3: {r: 0, g: 0, b: 0, a: 0}
@@ -25,7 +25,7 @@ MonoBehaviour:
     key5: {r: 0, g: 0, b: 0, a: 0}
     key6: {r: 0, g: 0, b: 0, a: 0}
     key7: {r: 0, g: 0, b: 0, a: 0}
-    ctime0: 10922
+    ctime0: 0
     ctime1: 65535
     ctime2: 0
     ctime3: 0
@@ -44,5 +44,5 @@ MonoBehaviour:
     m_Mode: 0
     m_NumColorKeys: 2
     m_NumAlphaKeys: 2
-  BulletID: 0
+  BulletID: 1
   Power: {fileID: 11400000, guid: ed6f69e4d80fba448b94d7e69a4baebc, type: 2}
