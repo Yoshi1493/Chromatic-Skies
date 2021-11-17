@@ -72,7 +72,7 @@ public abstract class Laser : Projectile
     #region DEBUG
     public void OnDrawGizmos()
     {
-        Gizmos.DrawSphere(transform.position, spriteRenderer.size.x);
+        if (UnityEditor.EditorApplication.isPlaying) Gizmos.DrawSphere(transform.position, spriteRenderer.size.x);
     }
     #endregion
 }

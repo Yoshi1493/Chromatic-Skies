@@ -16,6 +16,8 @@ public class PiscesBulletSystem4 : EnemyShooter<EnemyBullet>
     {
         yield return base.Shoot();
 
+        SetSubsystemEnabled(1);
+
         while (enabled)
         {
             transform.localEulerAngles = Random.Range(0f, 60f) * Vector3.forward;
@@ -81,20 +83,7 @@ public class PiscesBulletSystem4 : EnemyShooter<EnemyBullet>
             yield return CreateBranch(4, BranchWidth, 4.6f, 30f);
             yield return CreateBranch(8, BranchWidth * 4, 5.0f, 120f);
 
-            yield return WaitForSeconds(1f);
-
-            for (int i = 0; i < 6; i++)
-            {
-                for (int j = 0; j < 6; j++)
-                {
-                    float z = j * 60f + i * 10f;
-                    SpawnProjectile(1, z, Vector3.zero).Fire();
-                }
-
-                yield return WaitForSeconds(ShootingCooldown * 6f);
-            }
-
-            yield return ownerShip.MoveToRandomPosition(1f, delay: 5f);
+            yield return ownerShip.MoveToRandomPosition(1f, delay: 4f);
         }
     }
 

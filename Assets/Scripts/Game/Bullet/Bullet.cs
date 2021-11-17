@@ -20,7 +20,7 @@ public abstract class Bullet : Projectile
     #region DEBUG
     void OnDrawGizmos()
     {
-        Gizmos.DrawSphere(transform.position, HitboxSize);
+        if (UnityEditor.EditorApplication.isPlaying) Gizmos.DrawSphere(transform.position, HitboxSize);
     }
     #endregion
 }
