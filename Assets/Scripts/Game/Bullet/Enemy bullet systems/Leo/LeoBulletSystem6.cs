@@ -1,12 +1,10 @@
 using System.Collections;
-using UnityEngine;
-using static CoroutineHelper;
 
 public class LeoBulletSystem6 : EnemyShooter<EnemyBullet>
 {
     protected override IEnumerator Shoot()
     {
-		while (true)
+		while (enabled)
 		{
 			yield return null;
 		}        

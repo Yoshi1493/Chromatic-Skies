@@ -20,22 +20,9 @@ public class PiscesBulletSystem4 : EnemyShooter<EnemyBullet>
 
         while (enabled)
         {
-            transform.localEulerAngles = Random.Range(0f, 60f) * Vector3.forward;
-
             for (int i = 3; i < 8; i++)
             {
-                for (int j = 0; j < BranchCount; j++)
-                {
-                    float z = j * 60f;
-
-                    Vector3 spawnPos = new Vector3(BranchWidth, i * ScaleFactor).RotateVectorBy(z);
-                    bulletData.colour = bulletData.gradient.Evaluate(spawnPos.magnitude / 6f);
-                    SpawnProjectile(0, z, spawnPos).Fire();
-
-                    spawnPos = new Vector3(-BranchWidth, i * ScaleFactor).RotateVectorBy(z);
-                    SpawnProjectile(0, z, spawnPos).Fire();
-                }
-
+                SpawnProjectiles(i);
                 yield return WaitForSeconds(ShootingCooldown);
             }
 
@@ -44,18 +31,7 @@ public class PiscesBulletSystem4 : EnemyShooter<EnemyBullet>
 
             for (int i = 12; i < 16; i++)
             {
-                for (int j = 0; j < BranchCount; j++)
-                {
-                    float z = j * 60f;
-
-                    Vector3 spawnPos = new Vector3(BranchWidth, i * ScaleFactor).RotateVectorBy(z);
-                    bulletData.colour = bulletData.gradient.Evaluate(spawnPos.magnitude / 6f);
-                    SpawnProjectile(0, z, spawnPos).Fire();
-
-                    spawnPos = new Vector3(-BranchWidth, i * ScaleFactor).RotateVectorBy(z);
-                    SpawnProjectile(0, z, spawnPos).Fire();
-                }
-
+                SpawnProjectiles(i);
                 yield return WaitForSeconds(ShootingCooldown);
             }
 
@@ -65,18 +41,7 @@ public class PiscesBulletSystem4 : EnemyShooter<EnemyBullet>
 
             for (int i = 20; i < 24; i++)
             {
-                for (int j = 0; j < BranchCount; j++)
-                {
-                    float z = j * 60f;
-
-                    Vector3 spawnPos = new Vector3(BranchWidth, i * ScaleFactor).RotateVectorBy(z);
-                    bulletData.colour = bulletData.gradient.Evaluate(spawnPos.magnitude / 6f);
-                    SpawnProjectile(0, z, spawnPos).Fire();
-
-                    spawnPos = new Vector3(-BranchWidth, i * ScaleFactor).RotateVectorBy(z);
-                    SpawnProjectile(0, z, spawnPos).Fire();
-                }
-
+                SpawnProjectiles(i);
                 yield return WaitForSeconds(ShootingCooldown);
             }
 
@@ -84,6 +49,27 @@ public class PiscesBulletSystem4 : EnemyShooter<EnemyBullet>
             yield return CreateBranch(8, BranchWidth * 4, 5.0f, 120f);
 
             yield return ownerShip.MoveToRandomPosition(1f, delay: 4f);
+        }
+    }
+
+    void SpawnProjectiles(int loopCount)
+    {
+        for (int i = 0; i < BranchCount; i++)
+        {
+            float z = i * 60f;
+
+            Vector3 spawnPos = new Vector3(BranchWidth, loopCount * ScaleFactor).RotateVectorBy(z);
+            Color c = bulletData.gradient.Evaluate(spawnPos.magnitude / 6f);
+
+            var bullet = SpawnProjectile(0, z, spawnPos);
+            bullet.SetColour(c);
+            bullet.Fire();
+
+            spawnPos = new Vector3(-BranchWidth, loopCount * ScaleFactor).RotateVectorBy(z);
+
+            bullet = SpawnProjectile(0, z, spawnPos);
+            bullet.SetColour(c);
+            bullet.Fire();
         }
     }
 
@@ -100,11 +86,17 @@ public class PiscesBulletSystem4 : EnemyShooter<EnemyBullet>
                 float theta = j * 360 / BranchCount;
 
                 Vector3 spawnPos = new Vector3(xPos, yPos).RotateVectorBy(theta);
-                bulletData.colour = bulletData.gradient.Evaluate(spawnPos.magnitude / 6f);
-                SpawnProjectile(0, theta - zRot, spawnPos).Fire();
+                Color c = bulletData.gradient.Evaluate(spawnPos.magnitude / 6f);
+
+                var bullet = SpawnProjectile(0, theta - zRot, spawnPos);
+                bullet.SetColour(c);
+                bullet.Fire();
 
                 spawnPos = new Vector3(-xPos, yPos).RotateVectorBy(theta);
-                SpawnProjectile(0, theta + zRot, spawnPos).Fire();
+
+                bullet = SpawnProjectile(0, theta + zRot, spawnPos);
+                bullet.SetColour(c);
+                bullet.Fire();
             }
 
             yield return WaitForSeconds(ShootingCooldown);

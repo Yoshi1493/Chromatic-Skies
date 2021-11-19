@@ -1,5 +1,3 @@
-using UnityEngine;
-
 public class VirgoLaser1 : Laser
 {
     protected override void OnEnable()

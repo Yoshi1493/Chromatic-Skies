@@ -1,5 +1,4 @@
 using System.Collections;
-using UnityEngine;
 
 public class VirgoBullet6 : EnemyBullet
 {

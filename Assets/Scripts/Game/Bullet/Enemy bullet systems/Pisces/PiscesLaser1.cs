@@ -1,5 +1,3 @@
-using UnityEngine;
-
 public class PiscesLaser1 : Laser
 {
     protected override void OnEnable()

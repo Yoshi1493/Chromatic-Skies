@@ -20,7 +20,7 @@ public abstract class Projectile : Actor
 
     protected virtual void OnEnable()
     {
-        spriteRenderer.color = projectileData.useSolidColour ? projectileData.colour : projectileData.gradient.Evaluate(Random.value);
+        SetColour(projectileData.useSolidColour ? projectileData.colour : projectileData.gradient.Evaluate(Random.value));
 
         moveDirection = new Vector2
         (
@@ -29,6 +29,11 @@ public abstract class Projectile : Actor
         );
 
         currentLifetime = 0f;
+    }
+
+    public void SetColour(Color colour)
+    {
+        spriteRenderer.color = colour;
     }
 
     protected virtual void Update()

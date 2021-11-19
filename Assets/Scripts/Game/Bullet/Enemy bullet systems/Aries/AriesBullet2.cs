@@ -1,5 +1,4 @@
 using System.Collections;
-using UnityEngine;
 using static CoroutineHelper;
 
 public class AriesBullet2 : EnemyBullet

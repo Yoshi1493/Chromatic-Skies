@@ -1,6 +1,4 @@
 using System.Collections;
-using UnityEngine;
-using static CoroutineHelper;
 
 public class AriesBulletSystem6 : EnemyShooter<EnemyBullet>
 {
@@ -8,7 +6,7 @@ public class AriesBulletSystem6 : EnemyShooter<EnemyBullet>
 	{
 		yield return base.Shoot();
 
-		while (true)
+		while (enabled)
 		{
 			yield return null;
 		}        
