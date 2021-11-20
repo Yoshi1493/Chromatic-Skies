@@ -17,7 +17,7 @@ public abstract class EnemyShooter<TProjectile> : Shooter<TProjectile>, IEnemyAt
     where TProjectile : Projectile
 {
     Player playerShip;
-    protected Vector2 PlayerPosition => playerShip.transform.position;
+    protected Vector3 PlayerPosition => playerShip.transform.position;
 
     [SerializeField] List<TProjectile> enemyProjectiles = new List<TProjectile>();
 

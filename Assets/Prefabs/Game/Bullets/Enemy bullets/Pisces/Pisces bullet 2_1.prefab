@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &5495507774462538583
+--- !u!114 &6057851581135339552
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -9,12 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1575430968703495904}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd397fef55f3de444955a9d12b64f128, type: 3}
+  m_Script: {fileID: 11500000, guid: 2c264f051a7d0e647b6978e9dded8f8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   transform: {fileID: 0}
   moveDirection: {x: 0, y: 0, z: 0}
-  projectileData: {fileID: 11400000, guid: d997978b3d9a553459f5e8378d6aa90e, type: 2}
+  projectileData: {fileID: 11400000, guid: b9099015aedd11941822ec9878a5c764, type: 2}
   moveSpeed: 0
 --- !u!1001 &4489721518377228893
 PrefabInstance:
@@ -69,7 +69,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3140064405051798717, guid: 4e06125b108514547b6fc9b6887da3eb, type: 3}
       propertyPath: m_Name
-      value: Pisces bullet 1_0
+      value: Pisces bullet 2_1
       objectReference: {fileID: 0}
     - target: {fileID: 7943771795135557499, guid: 4e06125b108514547b6fc9b6887da3eb, type: 3}
       propertyPath: power

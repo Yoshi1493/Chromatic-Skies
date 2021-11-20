@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyProjectiles:
-  - {fileID: -7333167599736433637, guid: b722036729b5c78429b1f7fcb6d4d335, type: 3}
+  - {fileID: 5495507774462538583, guid: b722036729b5c78429b1f7fcb6d4d335, type: 3}
   <AttackName>k__BackingField: {fileID: 11400000, guid: 1b0f8e72b659f2b42b3b01b493ba13a7, type: 2}
   <ModuleName>k__BackingField: {fileID: 11400000, guid: b323d301571c6504ab5d5f39cd2ed020, type: 2}
 --- !u!114 &1477060624147974941
@@ -23,13 +23,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3777441332194849460}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 487f050c5a8078b4aa76ea07d74b40d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   enemyProjectiles:
-  - {fileID: -7333167599736433637, guid: 9ec3873ac14dcd147b17a2033da1bcd5, type: 3}
+  - {fileID: 6057851581135339552, guid: 9ec3873ac14dcd147b17a2033da1bcd5, type: 3}
+  - {fileID: 6057851581135339552, guid: 5bf3246fa2019544d946044a7191f179, type: 3}
   <AttackName>k__BackingField: {fileID: 11400000, guid: a6515276f2740824585c303f4d37dc9b, type: 2}
   <ModuleName>k__BackingField: {fileID: 11400000, guid: 62aac44641617124ab7130c5a46c350f, type: 2}
 --- !u!114 &2394814954181609465
@@ -55,7 +56,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6867336800114154692}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9b6367a77379eaf49a7392f96e70638f, type: 3}
   m_Name: 
