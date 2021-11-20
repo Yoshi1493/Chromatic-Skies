@@ -39,6 +39,19 @@ public class PiscesBulletSystem2 : EnemyShooter<EnemyBullet>
             {
                 for (int j = 0; j < 360; j += 18)
                 {
+                    float z = j + (i * 2f);
+                    SpawnProjectile(1, z, Vector3.zero).Fire();
+                }
+
+                yield return WaitForSeconds(ShootingCooldown);
+            }
+
+            yield return WaitForSeconds(ShootingCooldown * 4f);
+
+            for (int i = 9; i > 0; i--)
+            {
+                for (int j = 0; j < 360; j += 18)
+                {
                     float z = j + (i * 3f);
                     SpawnProjectile(1, z, Vector3.zero).Fire();
                 }
