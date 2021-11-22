@@ -4,7 +4,6 @@ public class PiscesBullet2 : EnemyBullet
 {
     protected override IEnumerator Move()
     {
-        MoveSpeed = 4f;
-        yield return null;
+        yield return this.LerpSpeed(4f, 3f, 1f);
     }
 }
