@@ -26,6 +26,14 @@ public class Player : Ship
         Move(shipData.CurrentSpeed);
     }
 
+    protected override void Move(float moveSpeed)
+    {
+        RaycastHit2D ray = Physics2D.Raycast(transform.position, moveDirection, 0.1f, shipData.boundaryLayer);
+
+        if (ray.collider == null)
+            base.Move(moveSpeed);
+    }
+
     void GetSlowInput()
     {
         if (Input.GetButtonDown("Slow"))

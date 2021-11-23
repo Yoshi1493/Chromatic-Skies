@@ -15,8 +15,8 @@ TagManager:
   - Enemy
   - Player bullet
   - Enemy bullet
-  - 
-  - 
+  - Player bounds
+  - Enemy bounds
   - 
   - 
   - 

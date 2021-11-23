@@ -7,6 +7,9 @@ public class ShipObject : ScriptableObject
     public Sprite Sprite;
     public ColourObject UIColour;
 
+    [Header("Boundaries")]
+    public LayerMask boundaryLayer;
+
     [Header("Constant stats")]
     public StringObject ShipName;
 
@@ -23,6 +26,5 @@ public class ShipObject : ScriptableObject
     public IntReference CurrentHealth;
 
     [HideInInspector] public float CurrentSpeed;
-
     [HideInInspector] public bool Invincible;
 }

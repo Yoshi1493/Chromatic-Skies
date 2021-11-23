@@ -14,23 +14,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Sprite: {fileID: 21300000, guid: 1aa3e528edb03a147bde37cb52c198d6, type: 3}
   UIColour: {fileID: 11400000, guid: f328e92387526ae42a09b0eadc6fc2f2, type: 2}
+  boundaryLayer:
+    serializedVersion: 2
+    m_Bits: 2048
   ShipName: {fileID: 11400000, guid: 7e1080e308aadde44b76d2eaa9d0c9ee, type: 2}
   MaxLives:
     useConstant: 1
     ConstantValue: 6
     Variable: {fileID: 0}
-  CurrentLives:
-    useConstant: 0
-    ConstantValue: 0
-    Variable: {fileID: 11400000, guid: 71fd3a25c53c4234290c740969c2d1de, type: 2}
   MaxHealth:
     useConstant: 1
     ConstantValue: 100000
     Variable: {fileID: 11400000, guid: d9d70d7029a2b594ab4015982f03497c, type: 2}
-  CurrentHealth:
-    useConstant: 0
-    ConstantValue: 0
-    Variable: {fileID: 11400000, guid: 4fecabb322c57584c997e44400643fb9, type: 2}
   Power:
     useConstant: 0
     ConstantValue: 0
@@ -47,3 +42,13 @@ MonoBehaviour:
     useConstant: 0
     ConstantValue: 0
     Variable: {fileID: 11400000, guid: e04dabb841369cb40a380b2ddc81b811, type: 2}
+  CurrentLives:
+    useConstant: 0
+    ConstantValue: 0
+    Variable: {fileID: 11400000, guid: 71fd3a25c53c4234290c740969c2d1de, type: 2}
+  CurrentHealth:
+    useConstant: 0
+    ConstantValue: 0
+    Variable: {fileID: 11400000, guid: 4fecabb322c57584c997e44400643fb9, type: 2}
+  CurrentSpeed: 0
+  Invincible: 0

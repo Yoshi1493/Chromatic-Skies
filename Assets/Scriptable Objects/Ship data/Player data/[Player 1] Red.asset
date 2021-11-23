@@ -14,6 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Sprite: {fileID: 21300000, guid: 1aa3e528edb03a147bde37cb52c198d6, type: 3}
   UIColour: {fileID: 11400000, guid: fa50113c5f9791a479066b8cb8150261, type: 2}
+  boundaryLayer:
+    serializedVersion: 2
+    m_Bits: 1024
   ShipName: {fileID: 11400000, guid: 11f933d0bc0be4e479e717a3ab9cd50f, type: 2}
   MaxLives:
     useConstant: 1
