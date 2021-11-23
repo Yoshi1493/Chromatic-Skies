@@ -44,7 +44,7 @@ public class PiscesBulletSystem1 : EnemyShooter<EnemyBullet>
                 yield return WaitForSeconds(ShootingCooldown / 2f);
             }
 
-            yield return WaitForSeconds(1f);
+            yield return WaitForSeconds(ShootingCooldown);
 
             for (int i = 0; i < 3; i++)
             {
