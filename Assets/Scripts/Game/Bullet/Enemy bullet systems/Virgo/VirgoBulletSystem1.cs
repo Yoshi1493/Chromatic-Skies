@@ -23,7 +23,7 @@ public class VirgoBulletSystem1 : EnemyShooter<EnemyBullet>
                 yield return WaitForSeconds(ShootingCooldown / 8f);
             }
 
-            yield return ownerShip.MoveToRandomPosition(1f, 2f);
+            yield return ownerShip.MoveToRandomPosition(1f, delay: 2f);
         }
     }
 }

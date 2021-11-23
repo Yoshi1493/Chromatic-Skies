@@ -54,10 +54,10 @@ public class PiscesBulletSystem1 : EnemyShooter<EnemyBullet>
                     SpawnProjectile(1, z, Vector3.zero).Fire();
                 }
 
-                yield return ownerShip.MoveToRandomPosition(0.4f + (i / 10f), minSqrMagDelta: 1, maxSqrMagDelta: 4);
+                yield return ownerShip.MoveToRandomPosition(0.4f + (i / 10f), minSqrMagDelta: 1, maxSqrMagDelta: 2);
             }
 
-            yield return WaitForSeconds(2f);
+            yield return WaitForSeconds(1f);
         }
     }
 }

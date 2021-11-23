@@ -33,7 +33,18 @@ public static class EnemyMovementBehaviour
     /// </summary>
     public static IEnumerator MoveToRandomPosition(this Ship ship, float moveDuration, float minSqrMagDelta = 4f, float maxSqrMagDelta = 16f, float delay = 0f)
     {
-        Vector3 endPosition = GetRandomPosition(ship.transform.position, minSqrMagDelta, maxSqrMagDelta);
+        if (minSqrMagDelta > maxSqrMagDelta)
+            yield break;
+
+        float randMagnitude = Random.Range(minSqrMagDelta, maxSqrMagDelta);
+        Vector3 randDirection = Random.insideUnitCircle.normalized;
+
+        while (Physics2D.Raycast(ship.transform.position, randDirection, randMagnitude, ship.shipData.boundaryLayer).collider != null)
+        {
+            randDirection = Random.insideUnitCircle.normalized;
+        }
+
+        Vector3 endPosition = ship.transform.position + (randMagnitude * randDirection);
         yield return ship.MoveTo(endPosition, moveDuration, delay);        
     }
 
@@ -45,30 +56,6 @@ public static class EnemyMovementBehaviour
     #endregion
 
     #region Helpers/Extensions
-
-    /// <summary>
-    /// returns a random Vector3 that is at least <minSqrMagDelta> units away from <ship.transform.position>.
-    /// </summary>
-    //to-do: fix; get rid of magic numbers
-    static Vector3 GetRandomPosition(Vector3 currentPos, float minSqrMagDelta, float maxSqrMagDelta)
-    {
-        Vector3 newRandPos = new Vector3
-            (
-            Random.Range(-5f, 5f),
-            Random.Range(2f, 4f)
-            );
-
-        while ((currentPos - newRandPos).sqrMagnitude < minSqrMagDelta)
-        {
-            newRandPos = new Vector3
-                (
-                Random.Range(-5f, 5f),
-                Random.Range(2f, 4f)
-                );
-        }
-
-        return newRandPos;
-    }
 
     /// <summary>
     /// (remove later?) Debug.Log shortcut. 
