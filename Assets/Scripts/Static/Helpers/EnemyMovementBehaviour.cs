@@ -31,7 +31,7 @@ public static class EnemyMovementBehaviour
     /// <summary>
     /// translates <ship> to <GetRandomPosition()> over <moveDuration> seconds.
     /// </summary>
-    public static IEnumerator MoveToRandomPosition(this Ship ship, float moveDuration, float minSqrMagDelta = 4f, float maxSqrMagDelta = 16f, float delay = 0f)
+    public static IEnumerator MoveToRandomPosition(this Ship ship, float moveDuration, float minSqrMagDelta = 2f, float maxSqrMagDelta = 4f, float delay = 0f)
     {
         if (minSqrMagDelta > maxSqrMagDelta)
             yield break;

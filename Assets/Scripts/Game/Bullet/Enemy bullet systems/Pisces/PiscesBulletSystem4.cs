@@ -48,7 +48,7 @@ public class PiscesBulletSystem4 : EnemyShooter<EnemyBullet>
             yield return CreateBranch(4, BranchWidth, 4.6f, 30f);
             yield return CreateBranch(8, BranchWidth * 4, 5.0f, 120f);
 
-            yield return ownerShip.MoveToRandomPosition(1f, delay: 4f);
+            yield return ownerShip.MoveToRandomPosition(1f, delay: 6f);
         }
     }
 
