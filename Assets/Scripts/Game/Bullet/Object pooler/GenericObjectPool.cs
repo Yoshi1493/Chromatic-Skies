@@ -22,6 +22,11 @@ public abstract class GenericObjectPool<TProjectile> : MonoBehaviour where TProj
 
     public void DrainPool()
     {
+        foreach (Transform child in transform)
+        {
+            Destroy(child.gameObject);
+        }
+
         objectPool.Clear();
     }
 
