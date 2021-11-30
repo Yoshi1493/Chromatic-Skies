@@ -21,8 +21,7 @@ public class AquariusBulletSystem3 : EnemyShooter<EnemyBullet>
                     float z = (j * 22.5f) + (i * 8f) + rand;
                     bulletData.colour = bulletData.gradient.Evaluate(i / 23f);
 
-                    var bullet = SpawnProjectile(0, z, (i / 1.5f) * transform.up.RotateVectorBy(z));
-                    bullet.Fire();
+                    SpawnProjectile(0, z, (i / 1.5f) * transform.up.RotateVectorBy(z)).Fire();
                 }
 
                 yield return WaitForSeconds(ShootingCooldown * 2f);
