@@ -1,5 +1,51 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3645503737975857005
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4935992915938121116}
+  - component: {fileID: 3878265510806477949}
+  m_Layer: 7
+  m_Name: Bullet Subsystem 1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4935992915938121116
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3645503737975857005}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6341278059232048145}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3878265510806477949
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3645503737975857005}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebfe7366acca7ec45ae016d8b941eb34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyProjectiles: []
+  <AttackName>k__BackingField: {fileID: 0}
+  <ModuleName>k__BackingField: {fileID: 0}
 --- !u!114 &2211473341637987554
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13,9 +59,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyProjectiles:
-  - {fileID: 0}
+  - {fileID: -6013795384315009736, guid: a1f9a9a8d5701bc4faee8364c1004d25, type: 3}
+  - {fileID: 845767740100763142, guid: daa3158e1911abe429712412eec7b517, type: 3}
   <AttackName>k__BackingField: {fileID: 11400000, guid: d8cc7e28e1a40e343be44895b7900f11, type: 2}
   <ModuleName>k__BackingField: {fileID: 11400000, guid: 25d9785edc5bb414a87fa429653c7682, type: 2}
+  bulletData: {fileID: 11400000, guid: b7cc13e258fbdfa4bbdf377aa9a00e70, type: 2}
 --- !u!114 &3868569383790573591
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -103,6 +151,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3922465162775491505, guid: d93cb44e21569f545b76560b29579f98, type: 3}
+      propertyPath: shipData
+      value: 
+      objectReference: {fileID: 11400000, guid: 08e0ea81ba5f3414eb9f185047afc36b, type: 2}
     - target: {fileID: 4336286228127436173, guid: d93cb44e21569f545b76560b29579f98, type: 3}
       propertyPath: m_Name
       value: Enemy-Aquarius
@@ -156,6 +208,11 @@ PrefabInstance:
 --- !u!1 &4079918356797303241 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7301416149945870285, guid: d93cb44e21569f545b76560b29579f98, type: 3}
+  m_PrefabInstance: {fileID: 6759093168088370692}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &6341278059232048145 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 418168052357298709, guid: d93cb44e21569f545b76560b29579f98, type: 3}
   m_PrefabInstance: {fileID: 6759093168088370692}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &3777441332194849460 stripped

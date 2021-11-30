@@ -214,16 +214,23 @@ public static class ProjectileBehaviour
     /// <summary>
     /// modified version of LookAt() that gradually rotates <p> over 
     /// </summary>
-    public static IEnumerator TurnTowards(this Projectile p, Vector3 target, float turnTime, float delay = 0f)
+    public static IEnumerator GraduallyLookAt(this Projectile p, Vector3 target, float turnTime, float delay = 0f)
     {
+        if (turnTime <= 0f) yield break;
         if (delay > 0f) yield return WaitForSeconds(delay);
 
-        Vector3 endDirection = target - p.transform.position;
-        Vector3 vel = p.moveDirection;
+        float currentTime = 0f;
+        Vector3 startDirection = p.moveDirection;
 
-        while (p.moveDirection != endDirection)
+        while (currentTime < turnTime)
         {
-            p.moveDirection = Vector3.SmoothDamp(p.moveDirection, endDirection, ref vel, turnTime);
+            float theta = startDirection.GetRotationDifference(target);
+            float actualTheta = Mathf.Lerp(0f, theta, currentTime / turnTime);
+
+            Vector3 newDirection = startDirection.RotateVectorBy(actualTheta).normalized;
+            p.moveDirection = newDirection;
+
+            currentTime += Time.deltaTime;
             yield return EndOfFrame;
         }
     }
