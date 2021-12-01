@@ -1,10 +1,10 @@
 using System.Collections;
-using UnityEngine;
 
 public class AquariusBullet3 : EnemyBullet
 {
     protected override IEnumerator Move()
     {
-        yield break;
+        MoveSpeed = 0f;
+        yield return this.LerpSpeed(0f, 3f, 2f, 1f);
     }
 }
