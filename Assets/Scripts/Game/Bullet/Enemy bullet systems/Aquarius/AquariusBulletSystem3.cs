@@ -27,7 +27,7 @@ public class AquariusBulletSystem3 : EnemyShooter<EnemyBullet>
                 yield return WaitForSeconds(ShootingCooldown * 2f);
             }
 
-            yield return ownerShip.MoveToRandomPosition(2f, delay: 12f);
+            yield return ownerShip.MoveToRandomPosition(2f, delay: 9f);
         }
     }
 }

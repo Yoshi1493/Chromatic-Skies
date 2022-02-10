@@ -7,6 +7,6 @@ public class AquariusBullet5 : EnemyBullet
     protected override IEnumerator Move()
     {
         MoveSpeed = 0f;
-        yield return StartCoroutine(this.LerpSpeed(0f, -2f, 2f, 2.5f));
+        yield return StartCoroutine(this.LerpSpeed(0f, -3f, 4f, 2f));
     }
 }
