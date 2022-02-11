@@ -12,13 +12,13 @@ public abstract class Ship : Actor
     {
         base.Awake();
 
-        InitShip();
+        InitShipData();
 
         LoseLifeAction += LoseLife;
         DeathAction += Die;
     }
 
-    void InitShip()
+    void InitShipData()
     {
         //appearance
         spriteRenderer.sprite = shipData.Sprite;
@@ -26,9 +26,15 @@ public abstract class Ship : Actor
         //stats
         shipData.CurrentLives.Value = shipData.MaxLives.Value;
         shipData.CurrentHealth.Value = shipData.MaxHealth.Value;
+        shipData.CurrentSpeed = shipData.MovementSpeed.Value;
 
         //debug
         name = shipData.ShipName.value;
+    }
+
+    protected virtual void Update()
+    {
+        Move(moveDirection.normalized, shipData.CurrentSpeed);
     }
 
     //to-do: take shipData.Defense into account for damage calculations

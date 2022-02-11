@@ -2,11 +2,12 @@ using System.Collections;
 using UnityEngine;
 using static CoroutineHelper;
 
+//"helper" class to handle enemy movement
 public static class EnemyMovementBehaviour
 {
     #region Movement behaviour
 
-    static readonly AnimationCurve moveInterpolation = AnimationCurve.EaseInOut(0, 0, 1, 1);
+    static readonly AnimationCurve moveInterpolation = AnimationCurve.EaseInOut(0f, 0f, 1f, 1f);
     static readonly Vector3 originalPosition = new Vector3(0f, 2.5f, 0f);
 
     /// <summary>
@@ -16,16 +17,32 @@ public static class EnemyMovementBehaviour
     {
         if (delay > 0) yield return WaitForSeconds(delay);
 
-        Vector3 startPosition = ship.transform.position;
-        float currentLerpTime = 0f;
+        Vector3 newMoveDirection = endPosition - ship.transform.position;
+        float newMoveSpeed = 2 * newMoveDirection.magnitude / moveDuration;
 
-        while (ship.transform.position != endPosition)
+        float currentTime = 0f;
+        ship.moveDirection = newMoveDirection;
+
+        while (currentTime < moveDuration / 2f)
         {
-            ship.transform.position = Vector3.Lerp(startPosition, endPosition, moveInterpolation.Evaluate(currentLerpTime / moveDuration));
-
-            currentLerpTime += Time.deltaTime;
+            ship.shipData.CurrentSpeed = Mathf.Lerp(0, newMoveSpeed, moveInterpolation.Evaluate(2f * currentTime / moveDuration));
+            print(ship.transform.position.ToString("F5"));
+            currentTime += Time.deltaTime;
             yield return EndOfFrame;
         }
+
+        currentTime = 0f;
+
+        while (currentTime < moveDuration / 2f)
+        {
+            ship.shipData.CurrentSpeed = Mathf.Lerp(newMoveSpeed, 0, moveInterpolation.Evaluate(2f * currentTime / moveDuration));
+            print(ship.transform.position.ToString("F5"));
+            currentTime += Time.deltaTime;
+            yield return EndOfFrame;
+        }
+
+        ship.transform.position = endPosition;
+        ship.shipData.CurrentSpeed = 0f;
     }
 
     /// <summary>
@@ -45,7 +62,7 @@ public static class EnemyMovementBehaviour
         }
 
         Vector3 endPosition = ship.transform.position + (randMagnitude * randDirection);
-        yield return ship.MoveTo(endPosition, moveDuration, delay);        
+        yield return ship.MoveTo(endPosition, moveDuration, delay);
     }
 
     public static IEnumerator ReturnToOriginalPosition(this Ship ship, float moveDuration = 1f, float delay = 0f)

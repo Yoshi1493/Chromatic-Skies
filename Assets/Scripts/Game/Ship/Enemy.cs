@@ -28,15 +28,15 @@ public class Enemy : Ship
         }
     }
 
-    #region DEBUG
-#if UNITY_EDITOR
-    void Update()
+    protected override void Update()
     {
+        base.Update();
+
+#if UNITY_EDITOR
         if (Input.GetKeyDown(KeyCode.K))
             TakeDamage(shipData.CurrentHealth.Value);
-    }
 #endif
-    #endregion
+    }
 
     protected override void Die()
     {
