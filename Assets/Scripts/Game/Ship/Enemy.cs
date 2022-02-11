@@ -29,11 +29,13 @@ public class Enemy : Ship
     }
 
     #region DEBUG
+#if UNITY_EDITOR
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.K))
             TakeDamage(shipData.CurrentHealth.Value);
     }
+#endif
     #endregion
 
     protected override void Die()

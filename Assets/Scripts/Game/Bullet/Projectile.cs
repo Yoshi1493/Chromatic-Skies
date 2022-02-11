@@ -38,7 +38,7 @@ public abstract class Projectile : Actor
 
     protected virtual void Update()
     {
-        Move(MoveSpeed);
+        Move(moveDirection.normalized, MoveSpeed);
 
         currentLifetime += Time.deltaTime;
 

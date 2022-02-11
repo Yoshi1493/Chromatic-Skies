@@ -11,9 +11,9 @@ public abstract class Bullet : Projectile
         Destroy();
     }
 
-    protected override void Move(float moveSpeed)
+    protected override void Move(Vector3 direction, float speed)
     {
-        base.Move(moveSpeed);
+        base.Move(direction, speed);
         transform.eulerAngles = Mathf.Atan2(-moveDirection.x, moveDirection.y) * Mathf.Rad2Deg * Vector3.forward;
     }
 

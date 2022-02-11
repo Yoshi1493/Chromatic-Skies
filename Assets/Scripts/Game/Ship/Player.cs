@@ -16,22 +16,30 @@ public class Player : Ship
     {
         GetMovementInput();
         GetSlowInput();
+
+        Move(moveDirection.normalized, shipData.CurrentSpeed);
     }
 
     void GetMovementInput()
     {
         moveDirection.x = Input.GetAxisRaw("Horizontal");
         moveDirection.y = Input.GetAxisRaw("Vertical");
-
-        Move(shipData.CurrentSpeed);
     }
 
-    protected override void Move(float moveSpeed)
+    protected override void Move(Vector3 direction, float speed)
     {
-        RaycastHit2D ray = Physics2D.Raycast(transform.position, moveDirection, 0.1f, shipData.boundaryLayer);
+        //check for collision on world boundaries along x and y axes independently
+        RaycastHit2D rayH = Physics2D.Raycast(transform.position, Vector3.right, 0.1f * moveDirection.x, shipData.boundaryLayer);
+        RaycastHit2D rayV = Physics2D.Raycast(transform.position, Vector3.up, 0.1f * moveDirection.y, shipData.boundaryLayer);
 
-        if (ray.collider == null)
-            base.Move(moveSpeed);
+        //if movement is restricted on one axis, still allow movement on the other axis
+        if (rayH.collider != null)
+            moveDirection.x = 0;
+
+        if (rayV.collider != null)
+            moveDirection.y = 0;
+
+        base.Move(moveDirection.normalized, speed);
     }
 
     void GetSlowInput()

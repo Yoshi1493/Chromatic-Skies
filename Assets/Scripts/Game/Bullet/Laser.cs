@@ -57,10 +57,10 @@ public abstract class Laser : Projectile
         CheckCollisionWith<Player>();
     }
 
-    protected override void Move(float moveSpeed)
+    protected override void Move(Vector3 direction, float speed)
     {
         if (stationary) return;
-        base.Move(moveSpeed);
+        base.Move(direction, speed);
     }
 
     public override void Destroy()
