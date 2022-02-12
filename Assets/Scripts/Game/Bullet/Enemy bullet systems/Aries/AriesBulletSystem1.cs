@@ -8,39 +8,43 @@ public class AriesBulletSystem1 : EnemyShooter<EnemyBullet>
     {
         yield return base.Shoot();
 
-        SetSubsystemEnabled(1);
-
-        yield return WaitForSeconds(1f);
-
         while (enabled)
         {
-            float z = 0f;
-
-            for (int i = 0; i < 45; i++)
+            for (int i = 0; i < 72; i++)
             {
-                z += i;
+                int randCount = Random.Range(2, 5);
 
-                for (int j = 0; j < 360; j += 90)
+                for (int j = 0; j < randCount; j++)
                 {
-                    SpawnProjectile(0, z + j, Vector3.zero).Fire();
+                    float randZ = Random.Range(0f, 360f);
+                    SpawnProjectile(0, randZ, Vector3.zero).Fire();
+                }
+
+                yield return WaitForSeconds(ShootingCooldown / 2f);
+            }
+
+            yield return WaitForSeconds(ShootingCooldown);
+
+            for (int i = 0; i < 6; i++)
+            {
+                float alt = ((i % 2) - 0.5f) * 2;
+                float offset = 10f * alt;
+
+                for (int j = 0; j < 6; j++)
+                {
+                    for (int k = 0; k < 6; k++)
+                    {
+                        float z = (offset * (j - 1)) + (k * 60f) + (2.5f * alt);
+                        SpawnProjectile(1, z, Vector3.zero).Fire();
+                    }
+
+                    yield return WaitForSeconds(ShootingCooldown / 2f);
                 }
 
                 yield return WaitForSeconds(ShootingCooldown);
             }
 
-            for (int i = 44; i > 0; i--)
-            {
-                z += i;
-
-                for (int j = 0; j < 360; j += 90)
-                {
-                    SpawnProjectile(0, z + j, Vector3.zero).Fire();
-                }
-
-                yield return WaitForSeconds(ShootingCooldown);
-            }
-
-            yield return ownerShip.MoveToRandomPosition(1f, delay: 2f);
+            yield return ownerShip.MoveToRandomPosition(1f);
         }
     }
 }
