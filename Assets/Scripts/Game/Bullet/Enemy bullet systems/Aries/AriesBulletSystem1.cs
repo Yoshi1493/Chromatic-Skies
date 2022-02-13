@@ -10,11 +10,11 @@ public class AriesBulletSystem1 : EnemyShooter<EnemyBullet>
 
         while (enabled)
         {
-            for (int i = 0; i < 72; i++)
+            for (int i = 0; i < 66; i++)
             {
                 int randCount = Random.Range(2, 5);
 
-                for (int j = 0; j < randCount; j++)
+                for (int j = 0; j < 3; j++)
                 {
                     float randZ = Random.Range(0f, 360f);
                     SpawnProjectile(0, randZ, Vector3.zero).Fire();
@@ -44,7 +44,24 @@ public class AriesBulletSystem1 : EnemyShooter<EnemyBullet>
                 yield return WaitForSeconds(ShootingCooldown);
             }
 
-            yield return ownerShip.MoveToRandomPosition(1f);
+            yield return WaitForSeconds(1f);
+            StartCoroutine(ownerShip.MoveToRandomPosition(1f));
+
+            for (int i = 0; i < 3; i++)
+            {
+                float z = transform.position.GetRotationDifference(PlayerPosition) + 180f;
+
+                for (int j = 0; j < 6; j++)
+                {
+                    var bullet = SpawnProjectile(2, z, Vector3.zero);
+                    bullet.GetComponent<DefaultEnemyBullet>().speeds.z = j + 2f;
+                    bullet.Fire();
+                }
+
+                yield return WaitForSeconds(ShootingCooldown * 3f);
+            }
+
+            yield return WaitForSeconds(1f);
         }
     }
 }

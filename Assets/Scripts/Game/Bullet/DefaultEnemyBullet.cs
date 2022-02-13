@@ -4,10 +4,10 @@ using UnityEngine;
 public class DefaultEnemyBullet : EnemyBullet
 {
     [Tooltip("x = initial speed\ny = mid speed\nz = end speed")]
-    [SerializeField] Vector3 speeds;
+    public Vector3 speeds;
 
     [Tooltip("x = time from moveSpeeds.x -> .y\ny = time from moveSpeeds.y -> .z")]
-    [SerializeField] Vector2 durations;
+    public Vector2 durations;
 
     protected override IEnumerator Move()
     {

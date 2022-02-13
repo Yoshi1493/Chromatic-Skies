@@ -109,7 +109,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyProjectiles:
   - {fileID: 8117216779145276408, guid: 59000994238888d44adb292da0f1f538, type: 3}
-  - {fileID: 2931304028134599759, guid: 23f5c05bc5f30cc469a64286d15fc396, type: 3}
+  - {fileID: 6939719341445698013, guid: 23f5c05bc5f30cc469a64286d15fc396, type: 3}
+  - {fileID: 3647314020008327488, guid: 3a7dab77a26e31440aae677e5f123be7, type: 3}
   <AttackName>k__BackingField: {fileID: 11400000, guid: e3634c15e9df1ca4ab1fbe584954a463, type: 2}
   <ModuleName>k__BackingField: {fileID: 11400000, guid: 31e11e2181789a94982fecb97be9fc28, type: 2}
 --- !u!114 &422821353119271399

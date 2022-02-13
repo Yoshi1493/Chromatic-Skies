@@ -71,7 +71,7 @@ public static class ProjectileBehaviour
             yield return EndOfFrame;
         }
 
-        p.moveDirection = startDir.RotateVectorBy(degrees);
+        p.moveDirection = startDir.RotateVectorBy(degrees * (clockwise ? -1 : 1));
     }
 
     /// <summary>
