@@ -44,7 +44,7 @@ public class AriesBulletSystem1 : EnemyShooter<EnemyBullet>
 
             for (int i = 0; i < 3; i++)
             {
-                float z = transform.position.GetRotationDifference(PlayerPosition) + 180f;
+                float z = PlayerPosition.GetRotationDifference(transform.position);
 
                 for (int j = 0; j < 6; j++)
                 {
