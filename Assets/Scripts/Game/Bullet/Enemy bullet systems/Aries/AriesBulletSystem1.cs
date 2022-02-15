@@ -12,13 +12,8 @@ public class AriesBulletSystem1 : EnemyShooter<EnemyBullet>
         {
             for (int i = 0; i < 66; i++)
             {
-                int randCount = Random.Range(2, 5);
-
-                for (int j = 0; j < 3; j++)
-                {
-                    float randZ = Random.Range(0f, 360f);
-                    SpawnProjectile(0, randZ, Vector3.zero).Fire();
-                }
+                SpawnProjectile(0, Random.Range(0f, 360f), Vector3.zero).Fire();
+                SpawnProjectile(0, Random.Range(0f, 360f), Vector3.zero).Fire();
 
                 yield return WaitForSeconds(ShootingCooldown / 2f);
             }
