@@ -708,6 +708,63 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 9113669927874555431, guid: 43808b15fa4047946ae6ee640412c78f, type: 3}
   m_PrefabInstance: {fileID: 284607091}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &288668068
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 7052788978182325129, guid: 9a23cf4b718073c469f4fa669836a07a, type: 3}
+      propertyPath: m_Name
+      value: Enemy-Leo
+      objectReference: {fileID: 0}
+    - target: {fileID: 7052788978182325131, guid: 9a23cf4b718073c469f4fa669836a07a, type: 3}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7052788978182325131, guid: 9a23cf4b718073c469f4fa669836a07a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7052788978182325131, guid: 9a23cf4b718073c469f4fa669836a07a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7052788978182325131, guid: 9a23cf4b718073c469f4fa669836a07a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7052788978182325131, guid: 9a23cf4b718073c469f4fa669836a07a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7052788978182325131, guid: 9a23cf4b718073c469f4fa669836a07a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7052788978182325131, guid: 9a23cf4b718073c469f4fa669836a07a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7052788978182325131, guid: 9a23cf4b718073c469f4fa669836a07a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7052788978182325131, guid: 9a23cf4b718073c469f4fa669836a07a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7052788978182325131, guid: 9a23cf4b718073c469f4fa669836a07a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7052788978182325131, guid: 9a23cf4b718073c469f4fa669836a07a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 180
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9a23cf4b718073c469f4fa669836a07a, type: 3}
 --- !u!1 &400887716
 GameObject:
   m_ObjectHideFlags: 0
@@ -2546,11 +2603,11 @@ EdgeCollider2D:
   m_Offset: {x: 0, y: 0}
   m_EdgeRadius: 0
   m_Points:
-  - {x: -7, y: 4}
-  - {x: 7, y: 4}
-  - {x: 7, y: 1.5}
-  - {x: -7, y: 1.5}
-  - {x: -7, y: 4}
+  - {x: -6, y: 4}
+  - {x: 6, y: 4}
+  - {x: 6, y: 1.5}
+  - {x: -6, y: 1.5}
+  - {x: -6, y: 4}
   m_AdjacentStartPoint: {x: 0, y: 0}
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
