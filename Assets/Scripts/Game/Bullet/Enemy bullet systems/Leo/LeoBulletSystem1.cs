@@ -31,10 +31,10 @@ public class LeoBulletSystem1 : EnemyShooter<EnemyBullet>
                     }
                 }
 
-                yield return WaitForSeconds(ShootingCooldown * 4f);
+                yield return WaitForSeconds(ShootingCooldown * 5f);
             }
 
-            yield return ownerShip.MoveToRandomPosition(1f, delay: 5f);
+            yield return ownerShip.MoveToRandomPosition(1f, delay: 4f);
         }
     }
 }

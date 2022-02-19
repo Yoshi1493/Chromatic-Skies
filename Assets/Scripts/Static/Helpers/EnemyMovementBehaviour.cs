@@ -58,6 +58,7 @@ public static class EnemyMovementBehaviour
 
         while (Physics2D.Raycast(ship.transform.position, randDirection, randMagnitude, ship.shipData.boundaryLayer).collider != null)
         {
+            randMagnitude = Random.Range(minSqrMagDelta, maxSqrMagDelta);
             randDirection = Random.insideUnitCircle.normalized;
         }
 
