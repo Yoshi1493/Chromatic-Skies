@@ -14,7 +14,7 @@ public class LeoBulletSystem1 : EnemyShooter<EnemyBullet>
         {
             SetSubsystemEnabled(1);
 
-            float rand = Random.Range(0f, 60f);
+            float rand = Random.Range(0f, 30f);
 
             for (int i = 1; i <= 6; i++)
             {
