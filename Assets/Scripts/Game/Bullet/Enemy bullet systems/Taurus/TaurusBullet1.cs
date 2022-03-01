@@ -1,11 +1,11 @@
 using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 
 public class TaurusBullet1 : EnemyBullet
 {
     protected override IEnumerator Move()
     {
-        yield return this.LerpSpeed(5f, 0f, 1f);
+        float moveSpeed = MoveSpeed;
+        yield return this.LerpSpeed(0, moveSpeed / -4f, 0.5f);
+        yield return this.LerpSpeed(MoveSpeed, moveSpeed, 2f);
     }
 }

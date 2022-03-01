@@ -1,10 +1,9 @@
 using System.Collections;
 using UnityEngine;
-using static CoroutineHelper;
 
 public class AriesBullet6 : EnemyBullet
 {
-    readonly float spinSpeed = 180f;
+    readonly float SpinSpeed = 180f;
 
     protected override IEnumerator Move()
     {
@@ -12,8 +11,8 @@ public class AriesBullet6 : EnemyBullet
 
         while (enabled)
         {
-            spriteRenderer.transform.Rotate(spinSpeed * Time.deltaTime * Vector3.forward);
-            yield return EndOfFrame;
+            spriteRenderer.transform.Rotate(SpinSpeed * Time.deltaTime * Vector3.forward);
+            yield return null;
         }
     }
 }

@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyProjectiles:
   - {fileID: -2940761742461376048, guid: 82b539308eeacd340b567ac62ef3bee9, type: 3}
+  - {fileID: -167079187603532217, guid: 6564014e53bf4944eaf7daaff1dcf57d, type: 3}
   <AttackName>k__BackingField: {fileID: 11400000, guid: afa7d139cf0ade64f889aaa5134c431b, type: 2}
   <ModuleName>k__BackingField: {fileID: 11400000, guid: bf51ae57b76685843a9e3e5337484be9, type: 2}
 --- !u!114 &1517224165695934772
