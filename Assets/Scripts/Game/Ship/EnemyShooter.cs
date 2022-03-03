@@ -10,27 +10,29 @@ public interface IEnemyAttack
     StringObject ModuleName { get; set; }
     StringObject AttackName { get; set; }
 
+    bool Enabled { get; }
     void SetEnabled(bool state);
 }
 
 public abstract class EnemyShooter<TProjectile> : Shooter<TProjectile>, IEnemyAttack
     where TProjectile : Projectile
 {
-    Player playerShip;
-    protected Vector3 PlayerPosition => playerShip.transform.position;
-
-    [SerializeField] List<TProjectile> enemyProjectiles = new List<TProjectile>();
-
-    #region IEnemyAttack impl.
+    #region Interface impl.
 
     public Action<StringObject, StringObject> AttackStartAction { get; set; }
 
     [field: SerializeField] public StringObject AttackName { get; set; }
     [field: SerializeField] public StringObject ModuleName { get; set; }
 
+    bool IEnemyAttack.Enabled => enabled; 
     void IEnemyAttack.SetEnabled(bool state) { enabled = state; }
 
     #endregion
+
+    Player playerShip;
+    protected Vector3 PlayerPosition => playerShip.transform.position;
+
+    [SerializeField] List<TProjectile> enemyProjectiles = new List<TProjectile>();
 
     protected void Start()
     {
@@ -62,7 +64,16 @@ public abstract class EnemyShooter<TProjectile> : Shooter<TProjectile>, IEnemyAt
     protected void SetSubsystemEnabled(int subsystemIndex)
     {
         if (transform.GetChild(subsystemIndex - 1).TryGetComponent(out IEnemyAttack subsystem))
-            subsystem.SetEnabled(true);
+        {
+            if (!subsystem.Enabled)
+            {
+                subsystem.SetEnabled(true);
+            }
+            else
+            {
+                print("subsystem is already enabled.");
+            }
+        }
     }
 
     protected virtual void OnLoseLife()

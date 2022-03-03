@@ -18,6 +18,8 @@ public class TaurusBulletSystem1 : EnemyShooter<EnemyBullet>
     {
         yield return base.Shoot();
 
+        SetSubsystemEnabled(1);
+
         while (enabled)
         {
             float randDirection = Mathf.Sign(Random.value - 0.5f);
