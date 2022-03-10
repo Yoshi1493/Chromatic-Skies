@@ -42,8 +42,8 @@ public class PlayerShooter : Shooter<PlayerBullet>
     protected override IEnumerator Shoot()
     {
         SpawnProjectile(0, 0f, bulletSpawnPositions[0].position, false);
-        SpawnProjectile(0, 0f, bulletSpawnPositions[1].position, false);
-        SpawnProjectile(0, 0f, bulletSpawnPositions[2].position, false);
+        //SpawnProjectile(0, 0f, bulletSpawnPositions[1].position, false);
+        //SpawnProjectile(0, 0f, bulletSpawnPositions[2].position, false);
 
         canShoot = false;
         yield return WaitForSeconds(ShootingCooldown);

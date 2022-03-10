@@ -8,7 +8,19 @@ public abstract class Bullet : Projectile
     protected override void HandleCollisionWithShip<TShip>(Collider2D coll)
     {
         base.HandleCollisionWithShip<TShip>(coll);
+        SpawnDestructionParticles();
         Destroy();
+    }
+
+    void SpawnDestructionParticles()
+    {
+        print("SpawnDestructionParticles() called.");
+        GameObject destructionParticles = VisualEffectPool.Instance.Get();
+
+        UnityEngine.VFX.VisualEffect vfx = destructionParticles.GetComponent<UnityEngine.VFX.VisualEffect>();
+
+        vfx.SetVector4("ParticleColour", spriteRenderer.color);
+        destructionParticles.SetActive(true);
     }
 
     protected override void Move(Vector3 direction, float speed)

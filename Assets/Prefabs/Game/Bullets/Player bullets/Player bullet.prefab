@@ -13,8 +13,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   transform: {fileID: 0}
-  ownerShip: {fileID: 0}
+  moveDirection: {x: 0, y: 0, z: 0}
+  projectileData: {fileID: 0}
   moveSpeed: 20
+  vfxDestroy: {fileID: 0}
 --- !u!1001 &7233728185905104890
 PrefabInstance:
   m_ObjectHideFlags: 0
