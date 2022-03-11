@@ -26,9 +26,8 @@ public class VisualEffectPool : MonoBehaviour
         }
         else
         {
-            print("pool is empty; instantiating new effect...");
             GameObject newEffect = Instantiate(visualEffect, transform);
-            newEffect.SetActive(false);
+            Disable(newEffect);
 
             return newEffect;
         }
@@ -36,7 +35,13 @@ public class VisualEffectPool : MonoBehaviour
 
     public void ReturnToPool(GameObject returningEffect)
     {
-        returningEffect.SetActive(false);
+        Disable(returningEffect);
         vfxPool.Enqueue(returningEffect);
+    }
+
+    void Disable(GameObject go)
+    {
+        go.SetActive(false);
+        go.GetComponent<ParticleEffect>().enabled = false;
     }
 }

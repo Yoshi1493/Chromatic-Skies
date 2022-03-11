@@ -3,19 +3,24 @@ using UnityEngine;
 using UnityEngine.VFX;
 using static CoroutineHelper;
 
-public class PSProjectileDestruction : MonoBehaviour
+public class PSProjectileDestruction : ParticleEffect
 {
-    public VisualEffect ParticleSystem;
-
-    void Awake()
+    void OnEnable()
     {
-        ParticleSystem = GetComponent<VisualEffect>();
+        PlayAnimation();
     }
 
-    IEnumerator Start()
+    protected override IEnumerator Play()
     {
-        yield return WaitUntil(() => !ParticleSystem.culled);
-        print("particles fully invisible; returning to pool.");
-        VisualEffectPool.Instance.ReturnToPool(this.gameObject);
+        ParticleSystem.SendEvent(OnPlayEventID);
+
+        //necessary to bypass the latency that exists when checking ParticleSystem.aliveParticleCount (wtf??)
+        while (ParticleSystem.aliveParticleCount == 0)
+        {
+            yield return null;
+        }
+
+        yield return WaitUntil(() => ParticleSystem.aliveParticleCount == 0);
+        VisualEffectPool.Instance.ReturnToPool(gameObject);
     }
 }

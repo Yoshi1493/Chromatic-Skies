@@ -14,13 +14,14 @@ public abstract class Bullet : Projectile
 
     void SpawnDestructionParticles()
     {
-        print("SpawnDestructionParticles() called.");
         GameObject destructionParticles = VisualEffectPool.Instance.Get();
+        var particleEffect = destructionParticles.GetComponent<ParticleEffect>();
 
-        UnityEngine.VFX.VisualEffect vfx = destructionParticles.GetComponent<UnityEngine.VFX.VisualEffect>();
-
-        vfx.SetVector4("ParticleColour", spriteRenderer.color);
+        destructionParticles.transform.position = transform.position;
         destructionParticles.SetActive(true);
+
+        particleEffect.ParticleSystem.SetVector4("ParticleColour", spriteRenderer.color);
+        particleEffect.enabled = true;
     }
 
     protected override void Move(Vector3 direction, float speed)
