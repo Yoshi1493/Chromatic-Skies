@@ -35,9 +35,7 @@ public abstract class Menu : MonoBehaviour
         }
 
         enabled = true;
-
-        if (newSelectedGameObject != null)
-            EventSystem.current.SetSelectedGameObject(newSelectedGameObject);
+        EventSystem.current.SetSelectedGameObject(newSelectedGameObject != null ? newSelectedGameObject : null);
     }
 
     public virtual void Disable()

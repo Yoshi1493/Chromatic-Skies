@@ -25,7 +25,7 @@ public class PauseMenu : Menu
         else
         {
             Close();
-            EventSystem.current.SetSelectedGameObject(resumeButton);
+            EventSystem.current.SetSelectedGameObject(null);
         }
     }
 
