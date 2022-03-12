@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class PauseHandler : MonoBehaviour
 {
-    [HideInInspector] public bool isPaused;
+    public bool IsPaused { get; private set; }
     public event Action<bool> GamePauseAction;
 
     void Awake()
@@ -14,7 +14,7 @@ public class PauseHandler : MonoBehaviour
     void Update()
     {
         if (Input.GetButtonDown("Pause"))        
-            SetGamePaused(!isPaused);        
+            SetGamePaused(!IsPaused);        
     }
 
     public void SetGamePaused(bool pauseState)
@@ -24,7 +24,7 @@ public class PauseHandler : MonoBehaviour
 
     void OnGamePaused(bool state)
     {
-        isPaused = state;
+        IsPaused = state;
         Time.timeScale = state ? 0 : 1;
     }
 }

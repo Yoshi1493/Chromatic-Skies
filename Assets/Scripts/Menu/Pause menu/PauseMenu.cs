@@ -3,11 +3,8 @@ using UnityEngine.EventSystems;
 
 public class PauseMenu : Menu
 {
-    [SerializeField] UserSettings userSettings;
-
-    [SerializeField] GameObject resumeButton;
-
     PauseHandler pauseHandler;
+    [SerializeField] GameObject resumeButton;
 
     protected override void Awake()
     {

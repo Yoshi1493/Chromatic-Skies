@@ -7,7 +7,9 @@ public class Player : Ship
     protected override void Awake()
     {
         base.Awake();
+
         shipData.Invincible = false;
+        FindObjectOfType<PauseHandler>().GamePauseAction += OnGamePaused;
     }
 
     protected override void Update()
@@ -44,20 +46,32 @@ public class Player : Ship
     {
         if (Input.GetButtonDown("Slow"))
         {
-            hitboxVisualizer.enabled = true;
-            shipData.CurrentSpeed = shipData.MovementSpeed.Value / 2f;
+            SetSlowState(true);
         }
 
         if (Input.GetButtonUp("Slow"))
         {
-            hitboxVisualizer.enabled = false;
-            shipData.CurrentSpeed = shipData.MovementSpeed.Value;
+            SetSlowState(false);
         }
+    }
+
+    void SetSlowState(bool state)
+    {
+        hitboxVisualizer.enabled = state;
+        shipData.CurrentSpeed = shipData.MovementSpeed.Value * (state ? 0.5f : 1);
     }
 
     protected override void Die()
     {
         spriteRenderer.enabled = false;
         enabled = false;
+    }
+
+    void OnGamePaused(bool state)
+    {
+        enabled = !state;
+
+        if (state)
+            SetSlowState(false);
     }
 }
