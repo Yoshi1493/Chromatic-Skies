@@ -8,16 +8,20 @@ public abstract class Bullet : Projectile
     protected override void HandleCollisionWithShip<TShip>(Collider2D coll)
     {
         base.HandleCollisionWithShip<TShip>(coll);
-        SpawnDestructionParticles();
+
+        Vector3 pos = transform.position;
+        float zRot = coll.transform.position.GetRotationDifference(transform.position);
+        SpawnDestructionParticles(pos, zRot);
+
         Destroy();
     }
 
-    void SpawnDestructionParticles()
+    void SpawnDestructionParticles(Vector3 pos, float zRot)
     {
         GameObject destructionParticles = VisualEffectPool.Instance.Get();
         var particleEffect = destructionParticles.GetComponent<ParticleEffect>();
 
-        destructionParticles.transform.position = transform.position;
+        destructionParticles.transform.SetPositionAndRotation(pos, Quaternion.Euler(0f, 0f, zRot));
         destructionParticles.SetActive(true);
 
         particleEffect.ParticleSystem.SetVector4("ParticleColour", spriteRenderer.color);
