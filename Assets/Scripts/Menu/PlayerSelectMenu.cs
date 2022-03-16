@@ -3,10 +3,6 @@ using UnityEngine.UI;
 
 public class PlayerSelectMenu : Menu
 {
-    [SerializeField] UserSettings userSettings;
-
-    [Space]
-
     [SerializeField] Button backButton;
 
     [Space]
@@ -16,7 +12,7 @@ public class PlayerSelectMenu : Menu
 
     public void SelectPlayer(int playerIndex)
     {
-        userSettings.SelectedPlayer = playerIndex;
+        selectedPlayerIndex.value = playerIndex;
         LoadScene(1);
     }
 

@@ -1,15 +1,9 @@
 using UnityEngine;
 
+[System.Serializable]
 [CreateAssetMenu]
 public class UserSettings : ScriptableObject
 {
-    [SerializeField] IntObject selectedPlayer;
-    public int SelectedPlayer
-    {
-        get => selectedPlayer.value;
-        set => selectedPlayer.value = value;
-    }
-
     [SerializeField] FloatObject musicVolume;
     public float MusicVolume
     {

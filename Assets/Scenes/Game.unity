@@ -1378,7 +1378,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d345840354dfa544939277bda766f69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  userSettings: {fileID: 11400000, guid: 8c59a60a6620c2347b20b6ffaf6ff929, type: 2}
+  selectedPlayerIndex: {fileID: 11400000, guid: dd5a45833c5fb2f41a90cdc643cd1f40, type: 2}
   playerPrefabs:
   - {fileID: 6246849726923490308, guid: 26b5fb5102f37bf408b7ec336e0661a8, type: 3}
   - {fileID: 6246849726923490308, guid: f4b77ff3cb9354646a38902fa9179c82, type: 3}
@@ -3684,7 +3684,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c04bff11345b74f4898d5ffb73bc209e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isPaused: 0
 --- !u!114 &2117771227
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3697,7 +3696,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: faad50d0f49aa0447ad2f483edb0190e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  userSettings: {fileID: 11400000, guid: 8c59a60a6620c2347b20b6ffaf6ff929, type: 2}
   resumeButton: {fileID: 1222481972}
 --- !u!1 &2141172667
 GameObject:

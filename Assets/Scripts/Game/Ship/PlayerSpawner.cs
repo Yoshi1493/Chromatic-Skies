@@ -2,11 +2,11 @@ using UnityEngine;
 
 public class PlayerSpawner : MonoBehaviour
 {
-    [SerializeField] UserSettings userSettings;
+    [SerializeField] IntObject selectedPlayerIndex;
     [SerializeField] GameObject[] playerPrefabs;
 
     void OnEnable()
     {
-        Instantiate(playerPrefabs[userSettings.SelectedPlayer], transform.position, transform.rotation);
+        Instantiate(playerPrefabs[selectedPlayerIndex.value], transform.position, transform.rotation);
     }
 }

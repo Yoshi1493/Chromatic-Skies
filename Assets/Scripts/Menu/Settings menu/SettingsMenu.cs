@@ -21,8 +21,8 @@ public class SettingsMenu : Menu
 
     void InitSettings()
     {
-        musicSlider.value = userSettings.MusicVolume;
-        soundSlider.value = userSettings.SoundVolume;
+        musicSlider.value = userSettings.MusicVolume * 10f;
+        soundSlider.value = userSettings.SoundVolume * 10f;
     }
 
     void Update()
@@ -33,13 +33,13 @@ public class SettingsMenu : Menu
 
     public void OnChangeMusicVolume(TextMeshProUGUI tmp)
     {
-        userSettings.MusicVolume = musicSlider.value;
-        tmp.text = userSettings.MusicVolume.ToString();
+        userSettings.MusicVolume = musicSlider.value * 0.1f;
+        tmp.text = musicSlider.value.ToString();
     }
 
     public void OnChangeSoundVolume(TextMeshProUGUI tmp)
     {
-        userSettings.SoundVolume = soundSlider.value;
-        tmp.text = userSettings.SoundVolume.ToString();
+        userSettings.SoundVolume = soundSlider.value * 0.1f;
+        tmp.text = soundSlider.value.ToString();
     }
 }
