@@ -10,6 +10,7 @@ public abstract class Projectile : Actor
     [SerializeField] float moveSpeed;
     public float MoveSpeed { get => moveSpeed; set => moveSpeed = value; }
 
+    protected float HitboxSize => Mathf.Min(spriteRenderer.size.x, spriteRenderer.size.y) / 2f;
     protected abstract Collider2D CollisionCondition { get; }
 
     protected override void Awake()
@@ -66,4 +67,16 @@ public abstract class Projectile : Actor
     {
         MoveSpeed = 0f;
     }
+
+    #region DEBUG
+
+#if UNITY_EDITOR
+    protected virtual void OnDrawGizmos()
+    {
+        if (UnityEditor.EditorApplication.isPlaying)
+            Gizmos.DrawSphere(transform.position, HitboxSize);
+    }
+#endif
+
+    #endregion
 }

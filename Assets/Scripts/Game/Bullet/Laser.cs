@@ -68,11 +68,4 @@ public abstract class Laser : Projectile
         base.Destroy();
         EnemyLaserPool.Instance.ReturnToPool(this);
     }
-
-    #region DEBUG
-    public void OnDrawGizmos()
-    {
-        if (UnityEditor.EditorApplication.isPlaying) Gizmos.DrawSphere(transform.position, spriteRenderer.size.x);
-    }
-    #endregion
 }
