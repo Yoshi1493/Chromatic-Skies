@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6b79cd0b20b26ac4090b241d65679e69, type: 3}
-  m_Name: '[Pisces] Laser 3_0'
+  m_Name: '[Pisces] Bullet 3_1'
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: 955788fd829b613429b1f8461721ea15, type: 3}
   useSolidColour: 1
@@ -44,5 +44,5 @@ MonoBehaviour:
     m_Mode: 0
     m_NumColorKeys: 2
     m_NumAlphaKeys: 2
-  BulletID: 0
+  BulletID: 1
   Power: {fileID: 11400000, guid: ed6f69e4d80fba448b94d7e69a4baebc, type: 2}
