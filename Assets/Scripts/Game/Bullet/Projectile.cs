@@ -21,7 +21,7 @@ public abstract class Projectile : Actor
 
     protected virtual void OnEnable()
     {
-        SetColour(projectileData.useSolidColour ? projectileData.colour : projectileData.gradient.Evaluate(Random.value));
+        spriteRenderer.color = projectileData.useSolidColour ? projectileData.colour : projectileData.gradient.Evaluate(Random.value);
 
         moveDirection = new Vector2
         (
@@ -32,15 +32,14 @@ public abstract class Projectile : Actor
         currentLifetime = 0f;
     }
 
-    public void SetColour(Color colour)
-    {
-        spriteRenderer.color = colour;
-    }
-
     protected virtual void Update()
     {
         Move(moveDirection.normalized, MoveSpeed);
+        IncrementLifetime();
+    }
 
+    protected virtual void IncrementLifetime()
+    {
         currentLifetime += Time.deltaTime;
 
         if (currentLifetime > MaxLifetime)
@@ -51,8 +50,13 @@ public abstract class Projectile : Actor
     {
         Collider2D coll = CollisionCondition;
 
-        if (coll && coll.TryGetComponent(out TShip _))
-            HandleCollisionWithShip<Ship>(coll);
+        if (coll)
+        {
+            if (coll.TryGetComponent(out TShip _))
+            {
+                HandleCollisionWithShip<Ship>(coll);
+            }
+        }
     }
 
     protected virtual void HandleCollisionWithShip<TShip>(Collider2D coll) where TShip : Ship
