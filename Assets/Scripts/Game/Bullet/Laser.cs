@@ -4,11 +4,10 @@ using static CoroutineHelper;
 
 public abstract class Laser : Projectile
 {
-    [SerializeField] protected bool stationary;
+    protected override Collider2D CollisionCondition => Physics2D.OverlapBox(transform.position, spriteRenderer.size, transform.eulerAngles.z);
 
-    protected override Collider2D CollisionCondition => Physics2D.OverlapCircle(transform.position, spriteRenderer.size.x);
-
-    IEnumerator sizeAnimation;
+    IEnumerator growAnimation;
+    IEnumerator shrinkAnimation;
 
     [SerializeField] AnimationCurve widthInterpolation;
     [SerializeField] AnimationCurve heightInterpolation;
@@ -24,24 +23,42 @@ public abstract class Laser : Projectile
     {
         base.OnEnable();
 
-        if (sizeAnimation != null)
-            StopCoroutine(sizeAnimation);
+        if (growAnimation != null)
+        {
+            StopCoroutine(growAnimation);
+        }
 
-        sizeAnimation = LerpSize(Vector2.zero, originalSize);
-        StartCoroutine(sizeAnimation);
+        growAnimation = Grow(originalSize);
+        StartCoroutine(growAnimation);
     }
 
-    IEnumerator LerpSize(Vector2 startSize, Vector2 endSize, float lerpDuration = 0.1f)
+    protected override void Update()
+    {
+        CheckCollisionWith<Player>();
+        IncrementLifetime();
+    }
+
+    public override void Destroy()
+    {
+        if (shrinkAnimation == null)
+        {
+            shrinkAnimation = ShrinkAndDestroy();
+            StartCoroutine(shrinkAnimation);
+        }
+    }
+
+    IEnumerator Grow(Vector2 endSize, float lerpDuration = 0.1f)
     {
         float currentLerpTime = 0f;
 
+        Vector2 startSize = Vector2.zero;
         spriteRenderer.size = startSize;
 
         while (spriteRenderer.size != endSize)
         {
             float lerpProgress = currentLerpTime / lerpDuration;
 
-            float width = Mathf.Lerp(startSize.x, endSize.x, widthInterpolation.Evaluate(lerpProgress / 5f));
+            float width = Mathf.Lerp(startSize.x, endSize.x, widthInterpolation.Evaluate(lerpProgress / 2f));
             float height = Mathf.Lerp(startSize.y, endSize.y, heightInterpolation.Evaluate(lerpProgress));
 
             spriteRenderer.size = new Vector2(width, height);
@@ -51,21 +68,32 @@ public abstract class Laser : Projectile
         }
     }
 
-    protected override void Update()
+    IEnumerator ShrinkAndDestroy(float lerpDuration = 0.1f)
     {
-        base.Update();
-        CheckCollisionWith<Player>();
-    }
+        float currentLerpTime = 0f;
+        Vector2 startSize = spriteRenderer.size;
 
-    protected override void Move(Vector3 direction, float speed)
-    {
-        if (stationary) return;
-        base.Move(direction, speed);
-    }
+        while (spriteRenderer.size.x != 0f)
+        {
+            float lerpProgress = currentLerpTime / lerpDuration;
 
-    public override void Destroy()
-    {
-        base.Destroy();
+            float width = Mathf.Lerp(startSize.x, 0f, heightInterpolation.Evaluate(lerpProgress));
+            spriteRenderer.size = new Vector2(width, spriteRenderer.size.y);
+
+            currentLerpTime += Time.deltaTime;
+            yield return EndOfFrame;
+        }
+
         EnemyLaserPool.Instance.ReturnToPool(this);
+        shrinkAnimation = null;
+    }
+
+    protected override void OnDrawGizmos()
+    {
+        if (UnityEditor.EditorApplication.isPlaying)
+        {
+            Gizmos.matrix = transform.localToWorldMatrix;
+            Gizmos.DrawCube(Vector3.zero, spriteRenderer.size);
+        }
     }
 }

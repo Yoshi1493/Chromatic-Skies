@@ -2,25 +2,31 @@ using System.Collections;
 using UnityEngine;
 using static CoroutineHelper;
 
-public class PiscesBulletSystem41 : EnemyBulletSubsystem<EnemyBullet>
+public class PiscesBulletSystem41 : EnemyBulletSubsystem<Laser>
 {
+    const int WaveCount = 3;
+    const int LaserCount = 6;
+    const int Spacing = 360 / LaserCount;
+
     protected override IEnumerator Shoot()
     {
-        yield return WaitForSeconds(1f);
+        yield return WaitForSeconds(2.5f);
 
         while (enabled)
         {
-            int rand = Random.Range(1, 5);
-
-            for (int i = 0; i < rand; i++)
+            for (int i = 0; i < WaveCount; i++)
             {
-                float x = Random.Range(-8f, 8f);
-                Vector3 spawnPos = new Vector3(x, 6f);
+                for (int j = 0; j < LaserCount; j++)
+                {
+                    //jx + 0.5ix
+                    float z = Spacing * 0.5f * (2 * j + i);
+                    SpawnProjectile(0, z, Vector3.zero);
+                }
 
-                SpawnProjectile(1, 0f, spawnPos, false).Fire();
+                yield return WaitForSeconds(1f);
             }
 
-            yield return WaitForSeconds(ShootingCooldown * 3);
+            enabled = false;
         }
     }
 }

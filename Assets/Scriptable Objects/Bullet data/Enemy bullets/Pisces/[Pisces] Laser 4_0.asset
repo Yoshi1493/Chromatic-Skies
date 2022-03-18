@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b79cd0b20b26ac4090b241d65679e69, type: 3}
   m_Name: '[Pisces] Laser 4_0'
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: 955788fd829b613429b1f8461721ea15, type: 3}
+  sprite: {fileID: 21300000, guid: a7931915fd0488a4a921fea55c5f6774, type: 3}
   useSolidColour: 1
   colour: {r: 0, g: 0.75, b: 1, a: 1}
   gradient:

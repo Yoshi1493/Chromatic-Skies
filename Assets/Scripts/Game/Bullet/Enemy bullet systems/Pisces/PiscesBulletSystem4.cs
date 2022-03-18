@@ -16,10 +16,10 @@ public class PiscesBulletSystem4 : EnemyShooter<EnemyBullet>
     {
         yield return base.Shoot();
 
-        //SetSubsystemEnabled(1);
-
         while (enabled)
         {
+            SetSubsystemEnabled(1);
+
             for (int i = 3; i < 8; i++)
             {
                 SpawnProjectiles(i);
@@ -48,7 +48,7 @@ public class PiscesBulletSystem4 : EnemyShooter<EnemyBullet>
             yield return CreateBranch(4, BranchWidth, 4.6f, 30f);
             yield return CreateBranch(8, BranchWidth * 4, 5.0f, 120f);
 
-            yield return ownerShip.MoveToRandomPosition(1f, delay: 6f);
+            yield return ownerShip.MoveToRandomPosition(1f, delay: 5f);
         }
     }
 
@@ -60,11 +60,9 @@ public class PiscesBulletSystem4 : EnemyShooter<EnemyBullet>
 
             Vector3 spawnPos = new Vector3(BranchWidth, loopCount * ScaleFactor).RotateVectorBy(z);
             bulletData.colour = bulletData.gradient.Evaluate(spawnPos.magnitude / 6f);
-
             SpawnProjectile(0, z, spawnPos).Fire();
 
             spawnPos = new Vector3(-BranchWidth, loopCount * ScaleFactor).RotateVectorBy(z);
-
             SpawnProjectile(0, z, spawnPos).Fire();
         }
     }
@@ -77,17 +75,15 @@ public class PiscesBulletSystem4 : EnemyShooter<EnemyBullet>
             {
                 float xPos = Mathf.Cos(branchAngle * Mathf.Deg2Rad) * i * ScaleFactor + xOffset;
                 float yPos = Mathf.Sin(branchAngle * Mathf.Deg2Rad) * i * ScaleFactor + yOffset;
-                
+
                 float zRot = 90 - branchAngle;
                 float theta = j * 360 / BranchCount;
 
                 Vector3 spawnPos = new Vector3(xPos, yPos).RotateVectorBy(theta);
                 bulletData.colour = bulletData.gradient.Evaluate(spawnPos.magnitude / 6f);
-
                 SpawnProjectile(0, theta - zRot, spawnPos).Fire();
 
                 spawnPos = new Vector3(-xPos, yPos).RotateVectorBy(theta);
-
                 SpawnProjectile(0, theta + zRot, spawnPos).Fire();
             }
 
