@@ -2,7 +2,7 @@ using UnityEngine;
 
 public abstract class Bullet : Projectile
 {
-    protected override Collider2D CollisionCondition => Physics2D.OverlapCircle(transform.position, HitboxSize);
+    protected override Collider2D CollisionCondition => Physics2D.OverlapCircle(transform.position, HitboxSize, CollisionMask);
 
     protected override void HandleCollisionWithShip<TShip>(Collider2D coll)
     {

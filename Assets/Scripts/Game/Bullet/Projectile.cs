@@ -11,6 +11,7 @@ public abstract class Projectile : Actor
     public float MoveSpeed { get => moveSpeed; set => moveSpeed = value; }
 
     protected float HitboxSize => Mathf.Min(spriteRenderer.size.x, spriteRenderer.size.y) / 2f;
+    protected abstract int CollisionMask { get; }
     protected abstract Collider2D CollisionCondition { get; }
 
     protected override void Awake()

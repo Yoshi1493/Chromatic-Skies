@@ -1,9 +1,12 @@
 using System.Collections;
+using UnityEngine;
 
 public abstract class EnemyBullet : Bullet
 {
     protected Enemy ownerShip;
     protected Player playerShip;
+
+    protected override int CollisionMask => 1 << LayerMask.NameToLayer("Player");
 
     protected IEnumerator movementBehaviour;
 

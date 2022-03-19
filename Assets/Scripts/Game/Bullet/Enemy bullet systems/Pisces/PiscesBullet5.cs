@@ -4,7 +4,7 @@ using static CoroutineHelper;
 
 public class PiscesBullet5 : EnemyBullet
 {
-    protected override float MaxLifetime => 15f;
+    protected override float MaxLifetime => 12.5f;
 
     protected override IEnumerator Move()
     {
