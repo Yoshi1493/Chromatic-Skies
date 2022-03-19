@@ -26,8 +26,8 @@ public class PiscesBulletSystem4 : EnemyShooter<EnemyBullet>
                 yield return WaitForSeconds(ShootingCooldown);
             }
 
-            yield return CreateBranch(5, BranchWidth, 1.4f, 30f);
-            yield return CreateBranch(9, BranchWidth, 2.2f, 30f);
+            yield return CreateBranch(6, BranchWidth, 1.5f, 30f);
+            yield return CreateBranch(10, BranchWidth, 2.2f, 30f);
 
             for (int i = 12; i < 16; i++)
             {
@@ -48,7 +48,7 @@ public class PiscesBulletSystem4 : EnemyShooter<EnemyBullet>
             yield return CreateBranch(4, BranchWidth, 4.6f, 30f);
             yield return CreateBranch(8, BranchWidth * 4, 5.0f, 120f);
 
-            yield return ownerShip.MoveToRandomPosition(1f, delay: 5f);
+            yield return ownerShip.MoveToRandomPosition(1f, delay: 95f);
         }
     }
 

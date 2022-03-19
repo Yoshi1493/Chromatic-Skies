@@ -96,8 +96,6 @@ public static class ProjectileBehaviour
             currentTime += Time.deltaTime;
             yield return EndOfFrame;
         }
-
-        p.moveDirection = direction.RotateVectorBy(rotateDuration * degreesPerSecond);
     }
 
     /// <summary>
@@ -121,8 +119,6 @@ public static class ProjectileBehaviour
             currentTime += Time.deltaTime;
             yield return EndOfFrame;
         }
-
-        p.moveDirection = direction.RotateVectorBy(rotateDuration * degreesPerSecond);
     }
 
     /// <summary>

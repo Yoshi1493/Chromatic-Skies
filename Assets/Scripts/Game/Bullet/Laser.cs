@@ -4,7 +4,8 @@ using static CoroutineHelper;
 
 public abstract class Laser : Projectile
 {
-    protected override Collider2D CollisionCondition => Physics2D.OverlapBox(transform.position, spriteRenderer.size, transform.eulerAngles.z);
+    Vector3 HitboxOffset => spriteRenderer.size.y * 0.5f * Vector3.up;
+    protected override Collider2D CollisionCondition => Physics2D.OverlapBox(transform.position + HitboxOffset, spriteRenderer.size, 0f);
 
     IEnumerator growAnimation;
     IEnumerator shrinkAnimation;
@@ -93,7 +94,7 @@ public abstract class Laser : Projectile
         if (UnityEditor.EditorApplication.isPlaying)
         {
             Gizmos.matrix = transform.localToWorldMatrix;
-            Gizmos.DrawCube(Vector3.zero, spriteRenderer.size);
+            Gizmos.DrawCube(HitboxOffset, spriteRenderer.size);
         }
     }
 }

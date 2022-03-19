@@ -20,7 +20,9 @@ public class PiscesBulletSystem41 : EnemyBulletSubsystem<Laser>
                 {
                     //jx + 0.5ix
                     float z = Spacing * 0.5f * (2 * j + i);
-                    SpawnProjectile(0, z, Vector3.zero);
+
+                    SpawnProjectile(0, z - 5f, Vector3.zero);
+                    SpawnProjectile(0, z + 5f, Vector3.zero);
                 }
 
                 yield return WaitForSeconds(1f);
