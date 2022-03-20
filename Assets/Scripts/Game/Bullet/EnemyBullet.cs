@@ -9,6 +9,7 @@ public abstract class EnemyBullet : Bullet
     protected override int CollisionMask => 1 << LayerMask.NameToLayer("Player");
 
     protected IEnumerator movementBehaviour;
+    protected abstract IEnumerator Move();
 
     void Start()
     {
@@ -31,7 +32,15 @@ public abstract class EnemyBullet : Bullet
         StartCoroutine(movementBehaviour);
     }
 
-    protected abstract IEnumerator Move();
+    protected override void HandleCollisionWithShip<TShip>(Collider2D coll)
+    {
+        //get particle spawn position+rotation
+        Vector3 pos = coll.ClosestPoint(playerShip.transform.position);
+        float rot = coll.transform.position.GetRotationDifference(transform.position);
+        SpawnDestructionParticles(pos, rot);
+
+        base.HandleCollisionWithShip<TShip>(coll);
+    }
 
     public override void Destroy()
     {
