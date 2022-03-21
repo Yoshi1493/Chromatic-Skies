@@ -49,7 +49,7 @@ MonoBehaviour:
   <AttackName>k__BackingField: {fileID: 11400000, guid: 08ae386ec72a5f346864b06452c77071, type: 2}
   <ModuleName>k__BackingField: {fileID: 11400000, guid: 1be0aad95312b1742991c569cbc9163d, type: 2}
   enemyProjectiles:
-  - {fileID: -7333167599736433637, guid: 3d68e80edcaa07542a892ec2d15a0f76, type: 3}
+  - {fileID: 520816034781445578, guid: 3d68e80edcaa07542a892ec2d15a0f76, type: 3}
 --- !u!114 &8688365242695720599
 MonoBehaviour:
   m_ObjectHideFlags: 0
