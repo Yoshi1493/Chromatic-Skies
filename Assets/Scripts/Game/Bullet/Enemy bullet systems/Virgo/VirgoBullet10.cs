@@ -1,6 +1,6 @@
 using System.Collections;
 
-public class VirgoBullet1 : EnemyBullet
+public class VirgoBullet10 : EnemyBullet
 {
     protected override IEnumerator Move()
     {

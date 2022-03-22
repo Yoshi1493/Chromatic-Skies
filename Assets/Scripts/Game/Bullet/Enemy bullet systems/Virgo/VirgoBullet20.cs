@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class VirgoBullet2 : EnemyBullet
+public class VirgoBullet20 : EnemyBullet
 {
     [SerializeField] bool rotatesClockwise;
 
