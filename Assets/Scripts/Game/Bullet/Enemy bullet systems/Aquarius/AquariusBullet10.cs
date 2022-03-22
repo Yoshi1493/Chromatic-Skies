@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using static CoroutineHelper;
 
-public class AquariusBullet1 : EnemyBullet
+public class AquariusBullet10 : EnemyBullet
 {
     protected override IEnumerator Move()
     {
