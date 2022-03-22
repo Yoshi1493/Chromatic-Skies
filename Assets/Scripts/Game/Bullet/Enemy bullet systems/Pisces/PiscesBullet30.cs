@@ -1,6 +1,6 @@
 using System.Collections;
 
-public class PiscesBullet3 : EnemyBullet
+public class PiscesBullet30 : EnemyBullet
 {
     protected override float MaxLifetime => 6f;
 

@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class PiscesBullet4 : EnemyBullet
+public class PiscesBullet31 : EnemyBullet
 {
     protected override Collider2D CollisionCondition => Physics2D.OverlapBox(transform.position, spriteRenderer.size * 0.8f, transform.eulerAngles.z, CollisionMask);
     protected override float MaxLifetime => 4f;

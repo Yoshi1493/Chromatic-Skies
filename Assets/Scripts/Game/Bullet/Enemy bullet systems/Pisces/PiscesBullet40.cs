@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using static CoroutineHelper;
 
-public class PiscesBullet5 : EnemyBullet
+public class PiscesBullet40 : EnemyBullet
 {
     protected override float MaxLifetime => 12.5f;
 
