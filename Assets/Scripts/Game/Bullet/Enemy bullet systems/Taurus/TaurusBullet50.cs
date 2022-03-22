@@ -1,6 +1,6 @@
 using System.Collections;
 
-public class TaurusBullet1 : EnemyBullet
+public class TaurusBullet50 : EnemyBullet
 {
     protected override IEnumerator Move()
     {

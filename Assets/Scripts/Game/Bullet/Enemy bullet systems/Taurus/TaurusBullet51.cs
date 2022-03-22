@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class TaurusBullet2 : EnemyBullet
+public class TaurusBullet51 : EnemyBullet
 {
     protected override IEnumerator Move()
     {
