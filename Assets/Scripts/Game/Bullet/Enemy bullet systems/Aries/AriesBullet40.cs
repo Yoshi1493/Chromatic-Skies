@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class AriesBullet6 : EnemyBullet
+public class AriesBullet40 : EnemyBullet
 {
     readonly float SpinSpeed = 180f;
 

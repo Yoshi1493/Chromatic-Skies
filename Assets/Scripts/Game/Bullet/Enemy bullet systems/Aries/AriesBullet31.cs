@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class AriesBullet5 : EnemyBullet
+public class AriesBullet31 : EnemyBullet
 {
     [SerializeField] float rotationSpeed;
     [SerializeField] bool rotatesClockwise;
