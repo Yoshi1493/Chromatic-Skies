@@ -71,7 +71,7 @@ public abstract class EnemyShooter<TProjectile> : Shooter<TProjectile>, IEnemyAt
             }
             else
             {
-                print("subsystem is already enabled.");
+                Debug.LogError("Error: Subsystem is already enabled.");
             }
         }
     }
