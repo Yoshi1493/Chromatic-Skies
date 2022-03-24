@@ -2,11 +2,11 @@ using System.Collections;
 
 public class LibraBullet10 : EnemyBullet
 {
-    protected override float MaxLifetime => 3f;
+    protected override float MaxLifetime => 4f;
 
     protected override IEnumerator Move()
     {
-        MoveSpeed = 5f;
-        yield return null;
+        yield return this.LerpSpeed(2f, 0f, 0.5f);
+        yield return this.LerpSpeed(0f, 4f, 1f);
     }
 }

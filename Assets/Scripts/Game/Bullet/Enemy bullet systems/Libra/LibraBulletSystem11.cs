@@ -4,32 +4,22 @@ using static CoroutineHelper;
 
 public class LibraBulletSystem11 : EnemyBulletSubsystem<EnemyBullet>
 {
-    const int Spacing = 16;
-    float screenHalfWidth;
-    protected override float ShootingCooldown => 0.5f;
-
-    protected override void Awake()
-    {
-        base.Awake();
-
-        Camera mainCam = Camera.main;
-        screenHalfWidth = mainCam.orthographicSize * mainCam.aspect;
-    }
+    const int BulletCount = 8;
+    const int Spacing = 360 / BulletCount;
 
     protected override IEnumerator Shoot()
     {
+        int i = 0;
+
         while (enabled)
         {
-            float zRot = transform.eulerAngles.z;
-
-            for (int i = 0; i <= Spacing; i++)
+            for (int j = 0; j < BulletCount; j++)
             {
-                float z = 5 * (i - Spacing * 0.5f) + zRot;
-                Vector3 pos = Mathf.Lerp(-screenHalfWidth, screenHalfWidth, i / (float)Spacing) * Vector3.right;
-
-                SpawnProjectile(0, z, pos.RotateVectorBy(zRot)).Fire();
+                float z = (i * BulletCount) + (j * Spacing);
+                SpawnProjectile(0, z, transform.up.RotateVectorBy(z) * Mathf.PingPong(i * 0.05f, 1f)).Fire();
             }
 
+            i++;
             yield return WaitForSeconds(ShootingCooldown);
         }
     }

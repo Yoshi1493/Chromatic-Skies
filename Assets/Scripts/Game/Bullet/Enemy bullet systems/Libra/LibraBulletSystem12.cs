@@ -4,30 +4,33 @@ using static CoroutineHelper;
 
 public class LibraBulletSystem12 : EnemyBulletSubsystem<EnemyBullet>
 {
-    const int Spacing = 20;
-    float screenHalfWidth;
-    protected override float ShootingCooldown => 0.5f;
+    const int MediumCount = 18;
+    const int MediumSpacing = 360 / MediumCount;
+    const int SmallCount = 30;
+    const int SmallSpacing = 360 / SmallCount;
+    const float Offset = -5f;
 
-    protected override void Awake()
-    {
-        base.Awake();
-
-        Camera mainCam = Camera.main;
-        screenHalfWidth = mainCam.orthographicSize * mainCam.aspect;
-    }
+    protected override float ShootingCooldown => 0.8f;
 
     protected override IEnumerator Shoot()
     {
+        int i = 0;
+
         while (enabled)
         {
-            float zRot = transform.eulerAngles.z;
-
-            for (int i = 0; i <= Spacing; i++)
+            for (int j = 0; j < MediumCount; j++)
             {
-                float z = 5 * (i - Spacing * 0.5f) + zRot;
-                Vector3 pos = Mathf.Lerp(-screenHalfWidth, screenHalfWidth, i / (float)Spacing) * Vector3.right;
+                float z = (j * MediumSpacing) + (i * Offset);
+                SpawnProjectile(1, z, transform.up.RotateVectorBy(z) * 0.1f).Fire();
+            }
 
-                SpawnProjectile(1, z, pos.RotateVectorBy(zRot)).Fire();
+            i++;
+            yield return WaitForSeconds(ShootingCooldown);
+
+            for (int j = 0; j < SmallCount; j++)
+            {
+                float z = (j * SmallSpacing) + (i * Offset);
+                SpawnProjectile(2, z, transform.up.RotateVectorBy(z) * 0.1f).Fire();
             }
 
             yield return WaitForSeconds(ShootingCooldown);

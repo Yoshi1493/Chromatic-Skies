@@ -6,7 +6,6 @@ public class LibraBullet11 : EnemyBullet
 
     protected override IEnumerator Move()
     {
-        MoveSpeed = 2f;
-        yield return null;
+        yield return this.LerpSpeed(4f, 2f, 1f);
     }
 }

@@ -1,26 +1,22 @@
 using System.Collections;
-using UnityEngine;
 using static CoroutineHelper;
 
 public class LibraBulletSystem1 : EnemyShooter<EnemyBullet>
 {
-    const float RotationSpeed = 4f;
-
     protected override IEnumerator Shoot()
     {
         yield return base.Shoot();
 
         SetSubsystemEnabled(1);
+        yield return WaitForSeconds(1f);
         SetSubsystemEnabled(2);
 
-        yield return WaitForSeconds(1f);
-
-        float randDirection = Mathf.Sign(Random.value - 0.5f);
-
+#if UNITY_EDITOR
         while (enabled)
         {
-            transform.Rotate(0f, 0f, RotationSpeed * randDirection * Time.deltaTime);
+            print(1f / UnityEngine.Time.deltaTime);
             yield return EndOfFrame;
         }
+#endif
     }
 }
