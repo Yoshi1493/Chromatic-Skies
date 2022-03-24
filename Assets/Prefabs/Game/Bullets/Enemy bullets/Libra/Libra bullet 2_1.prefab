@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-2101597772348799702
+--- !u!114 &6519147887668073956
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -9,12 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1575430968703495904}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 72511ea3016e9a944934526dcb54471f, type: 3}
+  m_Script: {fileID: 11500000, guid: 4696ded96f0712a4394258426e50ef87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   transform: {fileID: 0}
   moveDirection: {x: 0, y: 0, z: 0}
-  projectileData: {fileID: 11400000, guid: f0cc262b01c7c334b9162ea1eddc6be5, type: 2}
+  projectileData: {fileID: 11400000, guid: 1de4e97df1c6ee84ea5a7f7e493fdc39, type: 2}
   moveSpeed: 0
 --- !u!1001 &4489721518377228893
 PrefabInstance:
@@ -69,7 +69,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3140064405051798717, guid: 4e06125b108514547b6fc9b6887da3eb, type: 3}
       propertyPath: m_Name
-      value: Libra bullet 1_0_0
+      value: Libra bullet 2_1
       objectReference: {fileID: 0}
     - target: {fileID: 7943771795135557499, guid: 4e06125b108514547b6fc9b6887da3eb, type: 3}
       propertyPath: power

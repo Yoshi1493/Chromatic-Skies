@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b79cd0b20b26ac4090b241d65679e69, type: 3}
   m_Name: '[Libra] Bullet 2_0'
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: 9c44a70d88a58084b91108bd8d02a677, type: 3}
+  sprite: {fileID: 21300000, guid: 955788fd829b613429b1f8461721ea15, type: 3}
   useSolidColour: 0
   colour: {r: 0, g: 0, b: 0, a: 0}
   gradient:
     serializedVersion: 2
-    key0: {r: 0.39999998, g: 1, b: 0.54999995, a: 1}
-    key1: {r: 0, g: 0.85, b: 0, a: 1}
+    key0: {r: 1, g: 0.7777778, b: 0.1, a: 1}
+    key1: {r: 1, g: 0.8333333, b: 0, a: 1}
     key2: {r: 1, g: 0.875, b: 0.5, a: 0}
     key3: {r: 0, g: 0, b: 0, a: 0}
     key4: {r: 0, g: 0, b: 0, a: 0}
