@@ -10,13 +10,5 @@ public class LibraBulletSystem1 : EnemyShooter<EnemyBullet>
         SetSubsystemEnabled(1);
         yield return WaitForSeconds(1f);
         SetSubsystemEnabled(2);
-
-#if UNITY_EDITOR
-        while (enabled)
-        {
-            print(1f / UnityEngine.Time.deltaTime);
-            yield return EndOfFrame;
-        }
-#endif
     }
 }
