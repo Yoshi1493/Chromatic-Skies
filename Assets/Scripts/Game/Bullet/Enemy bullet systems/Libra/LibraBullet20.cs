@@ -8,7 +8,7 @@ public class LibraBullet20 : EnemyBullet
 
     protected override IEnumerator Move()
     {
-        yield return this.LerpSpeed(5f, 1f, 0.5f);
-        yield return this.LerpSpeed(1f, 6f, 1f);
+        yield return this.LerpSpeed(5f, -1f, 0.5f);
+        yield return this.LerpSpeed(-1f, 6f, 1f);
     }
 }
