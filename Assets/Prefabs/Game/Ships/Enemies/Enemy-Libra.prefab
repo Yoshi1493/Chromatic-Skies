@@ -71,13 +71,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 183331908746105124}
-  m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6341278059232048145}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2727566949690816658
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -119,13 +119,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2762752884681512667}
-  m_LocalRotation: {x: -0, y: -0, z: 1, w: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2362189854743476344}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8651724071306278118
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -142,6 +142,7 @@ MonoBehaviour:
   <ModuleName>k__BackingField: {fileID: 0}
   enemyProjectiles:
   - {fileID: 6519147887668073956, guid: 22d3754754c164543bd832dba2ec01a3, type: 3}
+  - {fileID: 1988602357578893283, guid: 10cbde532389be447b24f49f2af18c35, type: 3}
 --- !u!1 &4711089969750080827
 GameObject:
   m_ObjectHideFlags: 0
@@ -196,7 +197,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4079918356797303241}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 334a1a8f0c8a4dc4bbde515753e86ea0, type: 3}
   m_Name: 
@@ -211,7 +212,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3777441332194849460}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5481dadb70310794eb6f5413ea51820c, type: 3}
   m_Name: 

@@ -4,7 +4,7 @@ using static CoroutineHelper;
 
 public class VirgoBulletSystem1 : EnemyShooter<EnemyBullet>
 {
-    readonly float goldenRatio = (1 + Mathf.Sqrt(5)) * 180;
+    readonly float goldenRatio = (1f + Mathf.Sqrt(5f)) * 180f;
 
     protected override IEnumerator Shoot()
     {

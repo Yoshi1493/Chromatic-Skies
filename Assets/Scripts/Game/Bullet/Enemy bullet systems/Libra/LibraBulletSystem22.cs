@@ -4,19 +4,29 @@ using static CoroutineHelper;
 
 public class LibraBulletSystem22 : EnemyBulletSubsystem<EnemyBullet>
 {
+    const int BulletCount = 4;
+    const int Spacing = 360 / BulletCount;
+    const int Offset = 5;
+
+    protected override float ShootingCooldown => 0.3f;
+
     protected override IEnumerator Shoot()
     {
+        int i = 0;
+
         while (enabled)
         {
-            for (int i = 0; i < 3; i++)
+            for (int j = 0; j < BulletCount; j++)
             {
-                Vector3 randPos = new Vector2(camHalfWidth + 1f, Random.Range(-camHalfHeight, camHalfHeight));
-                float z = Random.Range(-120f, -60f);
+                float z = (i * Offset) + (j * Spacing);
+                SpawnProjectile(1, z, Vector3.zero).Fire();
 
-                SpawnProjectile(1, z, randPos, false).Fire();
-
-                yield return WaitForSeconds(ShootingCooldown);
+                z += 180f;
+                SpawnProjectile(2, z, Vector3.zero).Fire();
             }
+
+            i++;
+            yield return WaitForSeconds(ShootingCooldown);
         }
 
     }

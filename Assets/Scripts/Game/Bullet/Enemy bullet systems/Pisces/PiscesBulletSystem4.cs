@@ -6,7 +6,7 @@ public class PiscesBulletSystem4 : EnemyShooter<EnemyBullet>
 {
     [SerializeField] ProjectileObject bulletData;
 
-    protected override float ShootingCooldown => base.ShootingCooldown / 2;
+    protected override float ShootingCooldown => 0.05f;
 
     const int BranchCount = 6;
     const float BranchWidth = 0.2f;

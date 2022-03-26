@@ -4,25 +4,21 @@ using static CoroutineHelper;
 
 public class LibraBulletSystem21 : EnemyBulletSubsystem<EnemyBullet>
 {
-    protected override float ShootingCooldown => 0.2f;
+    protected override float ShootingCooldown => 0.04f;
+    readonly float goldenRatio = (1f + Mathf.Sqrt(5f)) * 180f;
 
     protected override IEnumerator Shoot()
     {
+        float randDirection = Mathf.Sign(Random.value - 0.5f);
+        int i = 0;
+
         while (enabled)
         {
-            for (int i = 45; i > -45; i--)
-            {
-                Vector3 randPos = new Vector2(Random.Range(-camHalfWidth, camHalfWidth), camHalfHeight + 1f);
-                SpawnProjectile(0, i, randPos).Fire();
-                yield return WaitForSeconds(ShootingCooldown);
-            }
+            float z = i * goldenRatio;
+            SpawnProjectile(0, z * randDirection, Vector3.zero).Fire();
 
-            for (int i = -45; i < 45; i++)
-            {
-                Vector3 randPos = new Vector2(Random.Range(-camHalfWidth, camHalfWidth), camHalfHeight + 1f);
-                SpawnProjectile(0, i, randPos).Fire();
-                yield return WaitForSeconds(ShootingCooldown);
-            }
+            i++;
+            yield return WaitForSeconds(ShootingCooldown);
         }
 
     }
