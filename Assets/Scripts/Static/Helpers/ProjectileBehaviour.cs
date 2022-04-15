@@ -9,7 +9,7 @@ public static class ProjectileBehaviour
     /// <summary>
     /// lerps <p.MoveSpeed> from <startSpeed> to <endSpeed>, in <lerpTime> seconds.
     /// </summary>
-    public static IEnumerator LerpSpeed(this Projectile p, float startSpeed, float endSpeed, float lerpTime, float delay = 0f)
+    public static IEnumerator LerpSpeed(this Bullet p, float startSpeed, float endSpeed, float lerpTime, float delay = 0f)
     {
         if (delay > 0f) yield return WaitForSeconds(delay);
 
@@ -32,7 +32,7 @@ public static class ProjectileBehaviour
     /// <summary>
     /// (unused) uses Vector3.SmoothDamp to lerp <p.moveDirection> from <p.moveDirection> to <endDirection>, in <lerpTime> seconds.
     /// </summary>
-    public static IEnumerator LerpDirection(this Projectile p, Vector3 endDirection, float lerpTime, float delay = 0f)
+    public static IEnumerator LerpDirection(this Bullet p, Vector3 endDirection, float lerpTime, float delay = 0f)
     {
         if (delay > 0f) yield return WaitForSeconds(delay);
 
@@ -61,10 +61,11 @@ public static class ProjectileBehaviour
         float currentTime = 0f;
 
         Vector3 startDir = p.moveDirection;
+        int directionMultiplier = clockwise ? -1 : 1;
 
         while (currentTime < rotateDuration)
         {
-            float degreesPerFrame = (degrees * (clockwise ? -1 : 1)) / rotateDuration * Time.deltaTime;
+            float degreesPerFrame = degrees * directionMultiplier / rotateDuration * Time.deltaTime;
             RotateVectorBy(ref p.moveDirection, degreesPerFrame);
 
             currentTime += Time.deltaTime;
@@ -78,7 +79,7 @@ public static class ProjectileBehaviour
     /// rotates <p> around <target.transform.position> by setting <p.MoveSpeed> and <p.moveDirection>.
     /// rotates by <degreesPerSecond> degrees per second, for <rotateDuration> seconds
     /// </summary>
-    public static IEnumerator RotateAround(this Projectile p, Actor target, float rotateDuration, float degreesPerSecond, bool clockwise = true, float delay = 0f)
+    public static IEnumerator RotateAround(this Bullet p, Actor target, float rotateDuration, float degreesPerSecond, bool clockwise = true, float delay = 0f)
     {
         if (target == null || rotateDuration <= 0f) yield break;
         if (delay > 0f) yield return WaitForSeconds(delay);
@@ -101,7 +102,7 @@ public static class ProjectileBehaviour
     /// <summary>
     /// overload of RotateAround() that takes in a Vector3 to rotate around, instead of an Actor.
     /// </summary>
-    public static IEnumerator RotateAround(this Projectile p, Vector3 targetPosition, float rotateDuration, float degreesPerSecond, bool clockwise = true, float delay = 0f)
+    public static IEnumerator RotateAround(this Bullet p, Vector3 targetPosition, float rotateDuration, float degreesPerSecond, bool clockwise = true, float delay = 0f)
     {
         if (rotateDuration <= 0f) yield break;
         if (delay > 0f) yield return WaitForSeconds(delay);

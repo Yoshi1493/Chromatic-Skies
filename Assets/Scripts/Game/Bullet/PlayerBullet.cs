@@ -4,6 +4,12 @@ public class PlayerBullet : Bullet
 {
     protected override int CollisionMask => 1 << LayerMask.NameToLayer("Enemy");
 
+    protected override void Awake()
+    {
+        base.Awake();
+        MoveSpeed = 20f;
+    }
+
     protected override void OnEnable()
     {
         base.OnEnable();

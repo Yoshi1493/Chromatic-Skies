@@ -1,18 +1,13 @@
 using System.Collections;
 using UnityEngine;
-using static CoroutineHelper;
 
 public class AquariusBullet10 : EnemyBullet
 {
+    [SerializeField] bool rotatesClockwise;
+
     protected override IEnumerator Move()
     {
-        //float delay = 0.1f * (5f - MoveSpeed);
-        yield return WaitForSeconds(0.25f);
-
-        float dX = ownerShip.transform.position.x - transform.position.x;
-        float x = transform.position.x - dX;
-        Vector3 endPos = x * Vector3.right;
-
-        StartCoroutine(this.GraduallyLookAt(endPos, 1f));
+        StartCoroutine(this.LerpSpeed(MoveSpeed, 2f, 2f));
+        yield return this.RotateBy(180f, MaxLifetime, rotatesClockwise);
     }
 }

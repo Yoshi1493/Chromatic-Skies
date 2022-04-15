@@ -36,8 +36,8 @@ public abstract class Laser : Projectile
 
     protected override void Update()
     {
+        base.Update();
         CheckCollisionWith<Player>();
-        IncrementLifetime();
     }
 
     public override void Destroy()

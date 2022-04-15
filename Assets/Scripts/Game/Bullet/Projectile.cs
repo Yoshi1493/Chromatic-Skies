@@ -8,7 +8,6 @@ public abstract class Projectile : Actor
     protected float currentLifetime;
 
     [SerializeField] float moveSpeed;
-    public float MoveSpeed { get => moveSpeed; set => moveSpeed = value; }
 
     protected float HitboxSize => Mathf.Min(spriteRenderer.size.x, spriteRenderer.size.y) / 2f;
     protected abstract int CollisionMask { get; }
@@ -34,8 +33,7 @@ public abstract class Projectile : Actor
     }
 
     protected virtual void Update()
-    {
-        Move(moveDirection.normalized, MoveSpeed);
+    {        
         IncrementLifetime();
     }
 
@@ -68,10 +66,7 @@ public abstract class Projectile : Actor
             ship.TakeDamage(projectileData.Power.value);
     }
 
-    public virtual void Destroy()
-    {
-        MoveSpeed = 0f;
-    }
+    public abstract void Destroy();
 
     #region DEBUG
 

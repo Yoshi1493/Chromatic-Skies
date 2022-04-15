@@ -4,7 +4,10 @@ using static CoroutineHelper;
 
 public class AquariusBulletSystem1 : EnemyShooter<EnemyBullet>
 {
-    [SerializeField] ProjectileObject bulletData;
+    const int WaveCount = 18;
+    const int BulletCount = 4;
+    const float WaveSpacing = 10f;
+    const float BulletSpacing = 10f;
 
     protected override IEnumerator Shoot()
     {
@@ -14,32 +17,25 @@ public class AquariusBulletSystem1 : EnemyShooter<EnemyBullet>
 
         while (enabled)
         {
-            float z = Random.Range(120f, 240f);
+            for (int i = 0; i < WaveCount; i++)
+            {
+                for (int j = 0; j < BulletCount; j++)
+                {
+                    float z = (i * WaveSpacing) - (j * BulletSpacing) + 180f;
 
-            int rand = Random.Range(0, 4);
-            bulletData.colour = bulletData.gradient.Evaluate(rand / 4f);
+                    var bullet = SpawnProjectile(0, z, Vector3.zero);
+                    bullet.GetComponent<Bullet>().MoveSpeed = (j * -0.2f) + 3f;
+                    bullet.Fire();
 
-            var bullet = SpawnProjectile(Random.value > 0.25f ? 0 : 1, z, Vector3.zero);
-            bullet.MoveSpeed = rand + 4f;
-            bullet.Fire();
+                    bullet = SpawnProjectile(1, -z, Vector3.zero);
+                    bullet.GetComponent<Bullet>().MoveSpeed = (j * -0.2f) + 3f;
+                    bullet.Fire();
+                }
 
-            yield return WaitForSeconds(ShootingCooldown);
+                yield return WaitForSeconds(ShootingCooldown);
+            }
 
-            #region DEBUG
-            //for (int i = 0; i < 1; i++)
-            //{
-            //    float z = Random.Range(120f, 240f);
-
-            //    int rand = Random.Range(0, 4);
-            //    bulletData.colour = bulletData.gradient.Evaluate(rand / 4f);
-
-            //    var bullet = SpawnProjectile(0, z, Vector3.zero);
-            //    bullet.MoveSpeed = rand + 4f;
-            //    bullet.Fire();
-
-            //    yield return WaitForSeconds(ShootingCooldown * 100f);
-            //} 
-            #endregion
+            yield return ownerShip.MoveToRandomPosition(2f, delay: 3f);
         }
     }
 }

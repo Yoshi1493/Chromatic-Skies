@@ -1,11 +1,10 @@
 using System.Collections;
-using static CoroutineHelper;
 
 public class AquariusBullet11 : EnemyBullet
 {
     protected override IEnumerator Move()
     {
-        yield return WaitForSeconds(2f);
-        this.LookAt(playerShip.transform.position);
+        StartCoroutine(this.LerpSpeed(0f, 4f, 2f));
+        yield return this.RotateBy(180f, MaxLifetime * 0.5f);
     }
 }

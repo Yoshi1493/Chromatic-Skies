@@ -22,9 +22,8 @@ public abstract class Shooter<TProjectile> : MonoBehaviour
     {
         TProjectile newProjectile = GenericObjectPool<TProjectile>.Instance.Get(projectileIndex);
 
-        newProjectile.transform.SetPositionAndRotation(spawnPos + (asLocalPosition ? transform.position : Vector3.zero), Quaternion.Euler(0f, 0f, spawnRotZ));
-
         newProjectile.gameObject.SetActive(true);
+        newProjectile.transform.SetPositionAndRotation(spawnPos + (asLocalPosition ? transform.position : Vector3.zero), Quaternion.Euler(0f, 0f, spawnRotZ));
         newProjectile.enabled = true;
 
         newProjectile.name += $" {newProjectile.transform.GetSiblingIndex()}";        //debug
