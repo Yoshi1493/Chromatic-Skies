@@ -39,7 +39,6 @@ public abstract class GenericObjectPool<TProjectile> : MonoBehaviour where TProj
         else
         {
             TProjectile newProjectile = Instantiate(objectPool[ID].projectile, transform);
-            //newProjectile.gameObject.SetActive(false);
             newProjectile.enabled = false;
 
             return newProjectile;

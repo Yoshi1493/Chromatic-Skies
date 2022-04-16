@@ -24,11 +24,11 @@ public class AquariusBulletSystem1 : EnemyShooter<EnemyBullet>
                     float z = (i * WaveSpacing) - (j * BulletSpacing) + randOffset;
 
                     var bullet = SpawnProjectile(0, z, Vector3.zero);
-                    bullet.GetComponent<Bullet>().MoveSpeed = (j * -0.2f) + 3f;
+                    bullet.GetComponent<EnemyBullet>().MoveSpeed = (j * -0.2f) + 3f;
                     bullet.Fire();
 
                     bullet = SpawnProjectile(1, -z, Vector3.zero);
-                    bullet.GetComponent<Bullet>().MoveSpeed = (j * -0.2f) + 3f;
+                    bullet.GetComponent<EnemyBullet>().MoveSpeed = (j * -0.2f) + 3f;
                     bullet.Fire();
                 }
 
