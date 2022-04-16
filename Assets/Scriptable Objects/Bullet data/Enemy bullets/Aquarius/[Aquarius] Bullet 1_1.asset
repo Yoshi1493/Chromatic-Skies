@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: '[Aquarius] Bullet 1_1'
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: 9c44a70d88a58084b91108bd8d02a677, type: 3}
-  useSolidColour: 0
-  colour: {r: 0, g: 0, b: 0, a: 0}
+  useSolidColour: 1
+  colour: {r: 0.6003015, g: 0.9443051, b: 1, a: 1}
   gradient:
     serializedVersion: 2
     key0: {r: 0.14999998, g: 0.57666665, b: 1, a: 1}

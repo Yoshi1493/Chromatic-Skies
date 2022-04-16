@@ -8,6 +8,6 @@ public class AquariusBullet10 : EnemyBullet
     protected override IEnumerator Move()
     {
         StartCoroutine(this.LerpSpeed(MoveSpeed, 2f, 2f));
-        yield return this.RotateBy(180f, MaxLifetime, rotatesClockwise);
+        yield return this.RotateBy(120f, MaxLifetime, rotatesClockwise);
     }
 }
