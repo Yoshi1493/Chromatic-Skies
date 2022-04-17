@@ -19,9 +19,7 @@ public class PlayerStatBar : MonoBehaviour
     public void AnimateStatBar(float endFillAmount, Color endColour)
     {
         if (statBarAnimation != null)
-        {
             StopCoroutine(statBarAnimation);
-        }
 
         statBarAnimation = _AnimateStatBar(endFillAmount, endColour);
         StartCoroutine(statBarAnimation);

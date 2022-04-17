@@ -21,8 +21,8 @@ public class PiscesBulletSystem41 : EnemyBulletSubsystem<Laser>
                     //jx + 0.5ix
                     float z = Spacing * 0.5f * (2 * j + i);
 
-                    SpawnProjectile(0, z - 5f, Vector3.zero);
-                    SpawnProjectile(0, z + 5f, Vector3.zero);
+                    SpawnProjectile(0, z - 5f, Vector3.zero).Fire();
+                    SpawnProjectile(0, z + 5f, Vector3.zero).Fire();
                 }
 
                 yield return WaitForSeconds(1f);

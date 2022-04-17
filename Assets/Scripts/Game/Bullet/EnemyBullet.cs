@@ -17,12 +17,6 @@ public abstract class EnemyBullet : Bullet
         playerShip = FindObjectOfType<Player>();
     }
 
-    protected override void Update()
-    {
-        base.Update();
-        CheckCollisionWith<Player>();
-    }
-
     public void Fire()
     {
         if (movementBehaviour != null)
@@ -30,6 +24,12 @@ public abstract class EnemyBullet : Bullet
 
         movementBehaviour = Move();
         StartCoroutine(movementBehaviour);
+    }
+
+    protected override void Update()
+    {
+        base.Update();
+        CheckCollisionWith<Player>();
     }
 
     protected override void HandleCollisionWithShip<TShip>(Collider2D coll)

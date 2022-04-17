@@ -8,6 +8,7 @@ public abstract class Laser : Projectile
     protected override int CollisionMask => 1 << LayerMask.NameToLayer("Player");
     protected override Collider2D CollisionCondition => Physics2D.OverlapBox(transform.position + HitboxOffset, spriteRenderer.size, transform.eulerAngles.z, CollisionMask);
 
+    bool active;
     IEnumerator growAnimation;
     IEnumerator shrinkAnimation;
 
@@ -24,38 +25,46 @@ public abstract class Laser : Projectile
     protected override void OnEnable()
     {
         base.OnEnable();
+        active = false;
+    }
 
+    public void Fire(float delay = 0.5f)
+    {
         if (growAnimation != null)
-        {
             StopCoroutine(growAnimation);
-        }
 
-        growAnimation = Grow(originalSize);
+        growAnimation = Grow(delay);
         StartCoroutine(growAnimation);
     }
 
     protected override void Update()
     {
         base.Update();
-        CheckCollisionWith<Player>();
+        if (active) CheckCollisionWith<Player>();
     }
 
     public override void Destroy()
     {
         if (shrinkAnimation == null)
         {
-            shrinkAnimation = ShrinkAndDestroy();
+            shrinkAnimation = Destroy();
             StartCoroutine(shrinkAnimation);
         }
     }
 
-    IEnumerator Grow(Vector2 endSize, float lerpDuration = 0.1f)
+    IEnumerator Grow(float warningDuration, float lerpDuration = 0.1f)
     {
+        Vector2 startSize = originalSize;
+        Vector2 endSize = startSize;
+        startSize.x = 0.1f;
+
+        //display laser warning
+        spriteRenderer.size = startSize;
+        yield return WaitForSeconds(warningDuration);
+
         float currentLerpTime = 0f;
 
-        Vector2 startSize = Vector2.zero;
-        spriteRenderer.size = startSize;
-
+        //activate laser
         while (spriteRenderer.size != endSize)
         {
             float lerpProgress = currentLerpTime / lerpDuration;
@@ -68,9 +77,12 @@ public abstract class Laser : Projectile
             currentLerpTime += Time.deltaTime;
             yield return EndOfFrame;
         }
+
+        active = true;
+        growAnimation = null;
     }
 
-    IEnumerator ShrinkAndDestroy(float lerpDuration = 0.1f)
+    IEnumerator Destroy(float lerpDuration = 0.1f)
     {
         float currentLerpTime = 0f;
         Vector2 startSize = spriteRenderer.size;
