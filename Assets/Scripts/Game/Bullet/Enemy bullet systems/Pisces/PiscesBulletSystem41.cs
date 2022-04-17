@@ -6,7 +6,8 @@ public class PiscesBulletSystem41 : EnemyBulletSubsystem<Laser>
 {
     const int WaveCount = 3;
     const int LaserCount = 6;
-    const int Spacing = 360 / LaserCount;
+    const int WaveSpacing = 360 / WaveCount;
+    const int LaserSpacing = 360 / LaserCount;
 
     protected override IEnumerator Shoot()
     {
@@ -16,16 +17,15 @@ public class PiscesBulletSystem41 : EnemyBulletSubsystem<Laser>
         {
             for (int i = 0; i < WaveCount; i++)
             {
-                for (int j = 0; j < LaserCount; j++)
-                {
-                    //jx + 0.5ix
-                    float z = Spacing * 0.5f * (2 * j + i);
-
-                    SpawnProjectile(0, z - 5f, Vector3.zero).Fire();
-                    SpawnProjectile(0, z + 5f, Vector3.zero).Fire();
-                }
+                float randOffset = Random.Range(0f, LaserSpacing);
 
                 yield return WaitForSeconds(1f);
+
+                for (int j = 0; j < LaserCount; j++)
+                {
+                    float z = (j * LaserSpacing) + randOffset;
+                    SpawnProjectile(0, z, Vector3.zero).Fire();
+                }
             }
 
             enabled = false;
