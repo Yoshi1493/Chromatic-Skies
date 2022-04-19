@@ -1,4 +1,5 @@
 using System;
+using UnityEngine;
 
 public abstract class Ship : Actor
 {
@@ -7,6 +8,9 @@ public abstract class Ship : Actor
     public event Action TakeDamageAction;
     public event Action LoseLifeAction;
     public event Action DeathAction;
+
+    [HideInInspector] public bool invincible;
+    public const int RespawnTime = 1000;     //amount of time (msec.) to wait before resuming ship functions
 
     protected override void Awake()
     {
@@ -63,7 +67,15 @@ public abstract class Ship : Actor
         {
             shipData.CurrentHealth.Value = shipData.MaxHealth.Value;
             shipData.Invincible = true;
+            SetSpriteAlpha(0.25f);
         }
+    }
+
+    protected void SetSpriteAlpha(float alpha)
+    {
+        Color c = spriteRenderer.color;
+        c.a = alpha;
+        spriteRenderer.color = c;
     }
 
     protected abstract void Die();

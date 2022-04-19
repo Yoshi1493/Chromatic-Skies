@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using UnityEngine;
 
 public class Player : Ship
@@ -18,6 +19,11 @@ public class Player : Ship
 
         GetMovementInput();
         GetSlowInput();
+
+#if UNITY_EDITOR
+        if (Input.GetKeyDown(KeyCode.L))
+            TakeDamage(shipData.CurrentHealth.Value);
+#endif
     }
 
     void GetMovementInput()
@@ -61,9 +67,24 @@ public class Player : Ship
         shipData.CurrentSpeed = shipData.MovementSpeed.Value * (state ? 0.5f : 1);
     }
 
+    //to-do: improve scalability?
+    protected override async void LoseLife()
+    {
+        base.LoseLife();
+
+        if (shipData.CurrentLives.Value > 0)
+        {
+            await Task.Delay(RespawnTime);
+
+            shipData.Invincible = false;
+            SetSpriteAlpha(1f);
+        }
+    }
+
     protected override void Die()
     {
         spriteRenderer.enabled = false;
+        GetComponent<CircleCollider2D>().enabled = false;
         enabled = false;
     }
 

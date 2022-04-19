@@ -40,7 +40,9 @@ public abstract class Laser : Projectile
     protected override void Update()
     {
         base.Update();
-        if (active) CheckCollisionWith<Player>();
+
+        if (active)
+            CheckCollisionWith<Player>();
     }
 
     public override void Destroy()

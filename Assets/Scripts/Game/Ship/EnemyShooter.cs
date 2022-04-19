@@ -24,7 +24,7 @@ public abstract class EnemyShooter<TProjectile> : Shooter<TProjectile>, IEnemyAt
     [field: SerializeField] public StringObject AttackName { get; set; }
     [field: SerializeField] public StringObject ModuleName { get; set; }
 
-    bool IEnemyAttack.Enabled => enabled; 
+    bool IEnemyAttack.Enabled => enabled;
     void IEnemyAttack.SetEnabled(bool state) { enabled = state; }
 
     #endregion
@@ -34,16 +34,20 @@ public abstract class EnemyShooter<TProjectile> : Shooter<TProjectile>, IEnemyAt
 
     [SerializeField] List<TProjectile> enemyProjectiles = new List<TProjectile>();
 
-    protected void Start()
+    void Start()
     {
-        playerShip = FindObjectOfType<Player>();
+        //subscribe actions
         ownerShip.LoseLifeAction += OnLoseLife;
+        playerShip = FindObjectOfType<Player>();
+        playerShip.LoseLifeAction += OnPlayerLoseLife;
     }
 
     protected virtual void OnEnable()
     {
+        //update object pool
         GenericObjectPool<TProjectile>.Instance.UpdatePoolableObjects(enemyProjectiles);
 
+        //start attack pattern
         if (shootCoroutine != null)
             StopCoroutine(shootCoroutine);
 
@@ -51,14 +55,18 @@ public abstract class EnemyShooter<TProjectile> : Shooter<TProjectile>, IEnemyAt
         StartCoroutine(shootCoroutine);
     }
 
+    void OnDisable()
+    {
+        //unsubscribe actions
+        ownerShip.LoseLifeAction -= OnLoseLife;
+        playerShip.LoseLifeAction -= OnPlayerLoseLife;
+    }
+
     protected override IEnumerator Shoot()
     {
-        yield return ownerShip.ReturnToOriginalPosition();
-
-        yield return CoroutineHelper.WaitForSeconds(1f);
-
         AttackStartAction?.Invoke(ModuleName, AttackName);
         ownerShip.shipData.Invincible = false;
+        yield return null;
     }
 
     protected void SetSubsystemEnabled(int subsystemIndex)
@@ -78,7 +86,13 @@ public abstract class EnemyShooter<TProjectile> : Shooter<TProjectile>, IEnemyAt
 
     protected virtual void OnLoseLife()
     {
-        StopCoroutine(shootCoroutine);
+        StopAllCoroutines();
         GenericObjectPool<TProjectile>.Instance.DrainPool();
+    }
+
+    void OnPlayerLoseLife()
+    {
+        StopAllCoroutines();
+        DestroyAllProjectiles();
     }
 }
