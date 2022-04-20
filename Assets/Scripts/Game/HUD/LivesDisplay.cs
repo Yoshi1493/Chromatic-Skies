@@ -44,7 +44,7 @@ public class LivesDisplay<TShip> : HUDComponent<TShip>
     {
         for (int i = 0; i < lifeIcons.Length; i++)
         {
-            lifeIcons[i].enabled = i < ship.shipData.CurrentLives.Value;
+            lifeIcons[i].enabled = i < ship.currentLives;
         }
     }
 }

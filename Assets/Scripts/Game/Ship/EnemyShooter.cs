@@ -65,7 +65,7 @@ public abstract class EnemyShooter<TProjectile> : Shooter<TProjectile>, IEnemyAt
     protected override IEnumerator Shoot()
     {
         AttackStartAction?.Invoke(ModuleName, AttackName);
-        ownerShip.shipData.Invincible = false;
+        ownerShip.invincible = false;
         yield return null;
     }
 

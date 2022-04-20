@@ -14,17 +14,17 @@ public class Enemy : Ship
 
 #if UNITY_EDITOR
         if (Input.GetKeyDown(KeyCode.K))
-            TakeDamage(shipData.CurrentHealth.Value);
+            TakeDamage(currentHealth);
 #endif
     }
 
     protected override async void LoseLife()
     {
-        int currentProjectileSystem = shipData.MaxLives.Value - shipData.CurrentLives.Value;
+        int currentProjectileSystem = shipData.MaxLives.Value - currentLives;
 
         base.LoseLife();
 
-        if (shipData.CurrentLives.Value > 0)
+        if (currentLives > 0)
         {
             var currentEnemyShooter = transform.GetChild(currentProjectileSystem).GetComponentInChildren<IEnemyAttack>();
             var nextEnemyShooter = transform.GetChild(currentProjectileSystem + 1).GetComponent<IEnemyAttack>();
@@ -47,7 +47,7 @@ public class Enemy : Ship
     //disable and re-enable current projectile system upon player losing life
     async void OnPlayerLoseLife()
     {
-        int currentProjectileSystem = shipData.MaxLives.Value - shipData.CurrentLives.Value;
+        int currentProjectileSystem = shipData.MaxLives.Value - currentLives;
         var currentEnemyShooters = transform.GetChild(currentProjectileSystem).GetComponentsInChildren<IEnemyAttack>();
 
         foreach (var enemyShooter in currentEnemyShooters)
@@ -58,7 +58,7 @@ public class Enemy : Ship
         await Task.Delay(RespawnTime);
 
         //if player didn't kill enemy between delay
-        if (currentProjectileSystem == shipData.MaxLives.Value - shipData.CurrentLives.Value)
+        if (currentProjectileSystem == shipData.MaxLives.Value - currentLives)
         {
             currentEnemyShooters[0].SetEnabled(true);
         }

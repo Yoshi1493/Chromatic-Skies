@@ -3,14 +3,26 @@ using UnityEngine;
 
 public abstract class Ship : Actor
 {
+    #region Scriptable Object properties
+
     public ShipObject shipData;
+
+    [HideInInspector] public int currentLives;
+    [HideInInspector] public int currentHealth;
+    [HideInInspector] public float currentSpeed;
+
+    [HideInInspector] public bool invincible;
+    public const int RespawnTime = 1000;     //amount of time (msec.) to wait before resuming ship functions
+
+    #endregion
+
+    #region Actions
 
     public event Action TakeDamageAction;
     public event Action LoseLifeAction;
     public event Action DeathAction;
 
-    [HideInInspector] public bool invincible;
-    public const int RespawnTime = 1000;     //amount of time (msec.) to wait before resuming ship functions
+    #endregion
 
     protected override void Awake()
     {
@@ -28,9 +40,9 @@ public abstract class Ship : Actor
         spriteRenderer.sprite = shipData.Sprite;
 
         //stats
-        shipData.CurrentLives.Value = shipData.MaxLives.Value;
-        shipData.CurrentHealth.Value = shipData.MaxHealth.Value;
-        shipData.CurrentSpeed = shipData.MovementSpeed.Value;
+        currentLives = shipData.MaxLives.Value;
+        currentHealth = shipData.MaxHealth.Value;
+        currentSpeed = shipData.MovementSpeed.Value;
 
         //debug
         name = shipData.ShipName.value;
@@ -38,16 +50,16 @@ public abstract class Ship : Actor
 
     protected virtual void Update()
     {
-        Move(moveDirection.normalized, shipData.CurrentSpeed);
+        Move(moveDirection.normalized, currentSpeed);
     }
 
     //to-do: take shipData.Defense into account for damage calculations
     public void TakeDamage(int power)
     {
-        shipData.CurrentHealth.Value -= power;
+        currentHealth -= power;
         //print($"{name} took {power} damage.");
 
-        if (shipData.CurrentHealth.Value <= 0)
+        if (currentHealth <= 0)
             LoseLifeAction?.Invoke();
 
         else
@@ -57,16 +69,16 @@ public abstract class Ship : Actor
 
     protected virtual void LoseLife()
     {
-        shipData.CurrentLives.Value--;
+        currentLives--;
 
-        if (shipData.CurrentLives.Value <= 0)
+        if (currentLives <= 0)
         {
             DeathAction?.Invoke();
         }
         else
         {
-            shipData.CurrentHealth.Value = shipData.MaxHealth.Value;
-            shipData.Invincible = true;
+            currentHealth = shipData.MaxHealth.Value;
+            invincible = true;
             SetSpriteAlpha(0.25f);
         }
     }

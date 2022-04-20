@@ -62,7 +62,7 @@ public abstract class Projectile : Actor
     {
         TShip ship = coll.GetComponent<TShip>();
 
-        if (!ship.shipData.Invincible)
+        if (!ship.invincible)
             ship.TakeDamage(projectileData.Power.value);
     }
 

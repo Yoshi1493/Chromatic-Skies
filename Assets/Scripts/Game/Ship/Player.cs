@@ -8,8 +8,6 @@ public class Player : Ship
     protected override void Awake()
     {
         base.Awake();
-
-        shipData.Invincible = false;
         FindObjectOfType<PauseHandler>().GamePauseAction += OnGamePaused;
     }
 
@@ -22,7 +20,7 @@ public class Player : Ship
 
 #if UNITY_EDITOR
         if (Input.GetKeyDown(KeyCode.L))
-            TakeDamage(shipData.CurrentHealth.Value);
+            TakeDamage(currentHealth);
 #endif
     }
 
@@ -64,7 +62,7 @@ public class Player : Ship
     void SetSlowState(bool state)
     {
         hitboxVisualizer.enabled = state;
-        shipData.CurrentSpeed = shipData.MovementSpeed.Value * (state ? 0.5f : 1);
+        currentSpeed = shipData.MovementSpeed.Value * (state ? 0.5f : 1);
     }
 
     //to-do: improve scalability?
@@ -72,11 +70,11 @@ public class Player : Ship
     {
         base.LoseLife();
 
-        if (shipData.CurrentLives.Value > 0)
+        if (currentLives > 0)
         {
             await Task.Delay(RespawnTime);
 
-            shipData.Invincible = false;
+            invincible = false;
             SetSpriteAlpha(1f);
         }
     }

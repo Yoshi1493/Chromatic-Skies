@@ -10,7 +10,7 @@ public class ShipObject : ScriptableObject
     [Header("Boundaries")]
     public LayerMask boundaryLayer;
 
-    [Header("Constant stats")]
+    [Header("Stats")]
     public StringObject ShipName;
 
     public IntReference MaxLives;
@@ -20,11 +20,4 @@ public class ShipObject : ScriptableObject
 
     public FloatReference MovementSpeed;
     public FloatReference ShootingSpeed;
-
-    [Header("Variable stats")]
-    public IntReference CurrentLives;
-    public IntReference CurrentHealth;
-
-    [HideInInspector] public float CurrentSpeed;
-    [HideInInspector] public bool Invincible;
 }

@@ -7,7 +7,7 @@ public class HealthBar<TShip> : HUDComponent<TShip>
     where TShip : Ship
 {
     Image healthBarImage;
-    float HealthPercent => (float)ship.shipData.CurrentHealth.Value / ship.shipData.MaxHealth.Value;
+    float HealthPercent => (float)ship.currentHealth / ship.shipData.MaxHealth.Value;
 
     [SerializeField] AnimationCurve fillInterpolation;
     IEnumerator fillCoroutine;
@@ -48,7 +48,7 @@ public class HealthBar<TShip> : HUDComponent<TShip>
     {
         healthBarImage.fillAmount = 0f;
 
-        if (ship.shipData.CurrentLives.Value <= 0) yield break;
+        if (ship.currentLives <= 0) yield break;
 
         yield return WaitForSeconds(1f);
 
