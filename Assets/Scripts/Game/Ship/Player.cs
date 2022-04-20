@@ -76,13 +76,13 @@ public class Player : Ship
 
             invincible = false;
             SetSpriteAlpha(1f);
+            collider.enabled = true;
         }
     }
 
     protected override void Die()
     {
         spriteRenderer.enabled = false;
-        GetComponent<CircleCollider2D>().enabled = false;
         enabled = false;
     }
 

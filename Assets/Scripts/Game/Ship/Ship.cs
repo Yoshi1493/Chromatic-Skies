@@ -24,6 +24,8 @@ public abstract class Ship : Actor
 
     #endregion
 
+    new protected Collider2D collider;
+
     protected override void Awake()
     {
         base.Awake();
@@ -32,6 +34,8 @@ public abstract class Ship : Actor
 
         LoseLifeAction += LoseLife;
         DeathAction += Die;
+
+        collider = GetComponent<Collider2D>();
     }
 
     void InitShipData()
@@ -69,6 +73,8 @@ public abstract class Ship : Actor
 
     protected virtual void LoseLife()
     {
+        collider.enabled = false;
+
         currentLives--;
 
         if (currentLives <= 0)

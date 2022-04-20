@@ -36,6 +36,7 @@ public class Enemy : Ship
 
             nextEnemyShooter.SetEnabled(true);
             SetSpriteAlpha(1f);
+            collider.enabled = true;
         }
     }
 
