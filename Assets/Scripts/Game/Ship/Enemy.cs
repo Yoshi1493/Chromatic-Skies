@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
 
@@ -49,11 +50,12 @@ public class Enemy : Ship
     async void OnPlayerLoseLife()
     {
         int currentProjectileSystem = shipData.MaxLives.Value - currentLives;
-        var currentEnemyShooters = transform.GetChild(currentProjectileSystem).GetComponentsInChildren<IEnemyAttack>();
+        var currentEnemyShooters = GetActiveEnemyShooters();
 
         foreach (var enemyShooter in currentEnemyShooters)
         {
             enemyShooter.SetEnabled(false);
+            print($"disabled {enemyShooter}.");
         }
 
         await Task.Delay(RespawnTime);
@@ -62,6 +64,43 @@ public class Enemy : Ship
         if (currentProjectileSystem == shipData.MaxLives.Value - currentLives)
         {
             currentEnemyShooters[0].SetEnabled(true);
+            print($"re-enabled {currentEnemyShooters[0]}.");
         }
+    }
+
+    List<IEnemyAttack> GetActiveEnemyShooters()
+    {
+        List<IEnemyAttack> activeEnemyShooters = new List<IEnemyAttack>();
+
+        //check all children for active projectile systems
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            Transform child = transform.GetChild(i);
+
+            if (child.TryGetComponent(out IEnemyAttack projectileSystem))
+            {
+                if (projectileSystem.Enabled)
+                {
+                    activeEnemyShooters.Add(projectileSystem);
+                    print($"found {projectileSystem}");
+                }
+            }
+
+            if (child.childCount > 0)
+            {
+                //check all children of children for active projectile subsystems
+                for (int j = 0; j < child.childCount; j++)
+                {
+                    if (child.GetChild(j).TryGetComponent(out IEnemyAttack projectileSubsystem))
+                    {
+                        activeEnemyShooters.Add(projectileSubsystem);
+                        print($"found {projectileSubsystem}");
+                    }
+                }
+            }
+
+        }
+
+        return activeEnemyShooters;
     }
 }

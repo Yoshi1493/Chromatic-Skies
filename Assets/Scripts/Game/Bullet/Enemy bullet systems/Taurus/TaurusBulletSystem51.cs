@@ -6,7 +6,7 @@ public class TaurusBulletSystem51 : EnemyBulletSubsystem<EnemyBullet>
 {
     protected override float ShootingCooldown => 1f;
 
-    readonly int BulletCount = 5;
+    const int BulletCount = 5;
 
     protected override IEnumerator Shoot()
     {
