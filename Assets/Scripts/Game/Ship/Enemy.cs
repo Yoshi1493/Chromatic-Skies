@@ -55,7 +55,6 @@ public class Enemy : Ship
         foreach (var enemyShooter in currentEnemyShooters)
         {
             enemyShooter.SetEnabled(false);
-            print($"disabled {enemyShooter}.");
         }
 
         await Task.Delay(RespawnTime);
@@ -64,7 +63,6 @@ public class Enemy : Ship
         if (currentProjectileSystem == shipData.MaxLives.Value - currentLives)
         {
             currentEnemyShooters[0].SetEnabled(true);
-            print($"re-enabled {currentEnemyShooters[0]}.");
         }
     }
 
@@ -77,13 +75,9 @@ public class Enemy : Ship
         {
             Transform child = transform.GetChild(i);
 
-            if (child.TryGetComponent(out IEnemyAttack projectileSystem))
+            if (child.TryGetComponent(out IEnemyAttack projectileSystem) && projectileSystem.Enabled)
             {
-                if (projectileSystem.Enabled)
-                {
-                    activeEnemyShooters.Add(projectileSystem);
-                    print($"found {projectileSystem}");
-                }
+                activeEnemyShooters.Add(projectileSystem);
             }
 
             if (child.childCount > 0)
@@ -91,10 +85,9 @@ public class Enemy : Ship
                 //check all children of children for active projectile subsystems
                 for (int j = 0; j < child.childCount; j++)
                 {
-                    if (child.GetChild(j).TryGetComponent(out IEnemyAttack projectileSubsystem))
+                    if (child.GetChild(j).TryGetComponent(out IEnemyAttack projectileSubsystem) && projectileSubsystem.Enabled)
                     {
                         activeEnemyShooters.Add(projectileSubsystem);
-                        print($"found {projectileSubsystem}");
                     }
                 }
             }

@@ -47,6 +47,9 @@ public abstract class Laser : Projectile
 
     public override void Destroy()
     {
+        if (growAnimation != null)
+            StopCoroutine(growAnimation);
+
         if (shrinkAnimation == null)
         {
             shrinkAnimation = Destroy();

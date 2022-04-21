@@ -55,13 +55,6 @@ public abstract class EnemyShooter<TProjectile> : Shooter<TProjectile>, IEnemyAt
         StartCoroutine(shootCoroutine);
     }
 
-    void OnDisable()
-    {
-        //unsubscribe actions
-        ownerShip.LoseLifeAction -= OnLoseLife;
-        playerShip.LoseLifeAction -= OnPlayerLoseLife;
-    }
-
     protected override IEnumerator Shoot()
     {
         AttackStartAction?.Invoke(ModuleName, AttackName);
