@@ -4,7 +4,11 @@ using static CoroutineHelper;
 
 public class LeoBulletSystem1 : EnemyShooter<EnemyBullet>
 {
-    readonly float Spacing = 1.2f;
+    readonly float BulletSpacing = 1.2f;
+    const int BranchCount = 6;
+    const int BranchSpacing = 360 / BranchCount;
+
+    protected override float ShootingCooldown => 0.5f;
 
     protected override IEnumerator Shoot()
     {
@@ -13,25 +17,24 @@ public class LeoBulletSystem1 : EnemyShooter<EnemyBullet>
         while (enabled)
         {
             SetSubsystemEnabled(1);
+            float randStartAngle = Random.Range(0f, BranchSpacing);
 
-            float rand = Random.Range(0f, 30f);
-
-            for (int i = 1; i <= 6; i++)
+            for (int i = 1; i <= BranchCount; i++)
             {
-                float xOffset = (i - 1) * Spacing / 2f;
+                float xOffset = (i - 1) * BulletSpacing * 0.5f;
 
                 for (int j = 0; j < i; j++)
                 {
-                    Vector3 offset = (j * Spacing - xOffset) * Vector3.right;
+                    Vector3 offset = (j * BulletSpacing - xOffset) * Vector3.right;
 
-                    for (int k = 0; k < 6; k++)
+                    for (int k = 0; k < BranchCount; k++)
                     {
-                        float z = k * 60f + rand;
+                        float z = k * BranchSpacing + randStartAngle;
                         SpawnProjectile(0, z, offset.RotateVectorBy(z)).Fire();
                     }
                 }
 
-                yield return WaitForSeconds(ShootingCooldown * 5f);
+                yield return WaitForSeconds(ShootingCooldown);
             }
 
             yield return ownerShip.MoveToRandomPosition(1f, delay: 4f);

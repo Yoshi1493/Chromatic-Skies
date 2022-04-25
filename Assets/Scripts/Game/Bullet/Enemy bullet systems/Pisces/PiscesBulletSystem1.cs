@@ -4,47 +4,52 @@ using static CoroutineHelper;
 
 public class PiscesBulletSystem1 : EnemyShooter<EnemyBullet>
 {
+    const int BulletCount = 24;
+    const int BulletSpacing = 360 / BulletCount;
+
+    protected override float ShootingCooldown => 0.05f;
+
     protected override IEnumerator Shoot()
     {
         yield return base.Shoot();
 
         while (enabled)
         {
-            for (int i = 0; i < 24; i++)
+            for (int i = 0; i < BulletCount; i++)
             {
-                float z = i * 15f;
+                float z = i * BulletSpacing;
                 float spd = 2 + (i / 10f);
 
                 var bullet = SpawnProjectile(0, z, Vector3.zero);
                 bullet.MoveSpeed = spd;
                 bullet.Fire();
 
-                bullet = SpawnProjectile(0, z + 7.5f, Vector3.zero);
+                bullet = SpawnProjectile(0, z + (0.5f * BulletSpacing), Vector3.zero);
                 bullet.MoveSpeed = spd * 0.8f;
                 bullet.Fire();
 
-                yield return WaitForSeconds(ShootingCooldown / 2f);
+                yield return WaitForSeconds(ShootingCooldown);
             }
 
-            yield return WaitForSeconds(ShootingCooldown);
+            yield return WaitForSeconds(ShootingCooldown * 2f);
 
-            for (int i = 0; i < 24; i++)
+            for (int i = 0; i < BulletCount; i++)
             {
-                float z = (24 - i) * 15f;
+                float z = (BulletCount - i) * BulletSpacing;
                 float spd = 2 + (i / 10f);
 
                 var bullet = SpawnProjectile(0, z, Vector3.zero);
                 bullet.MoveSpeed = spd;
                 bullet.Fire();
 
-                bullet = SpawnProjectile(0, z - 7.5f, Vector3.zero);
+                bullet = SpawnProjectile(0, z - (0.5f * BulletSpacing), Vector3.zero);
                 bullet.MoveSpeed = spd * 0.8f;
                 bullet.Fire();
 
-                yield return WaitForSeconds(ShootingCooldown / 2f);
+                yield return WaitForSeconds(ShootingCooldown);
             }
 
-            yield return WaitForSeconds(ShootingCooldown);
+            yield return WaitForSeconds(ShootingCooldown * 2f);
 
             for (int i = 0; i < 3; i++)
             {

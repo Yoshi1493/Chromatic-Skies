@@ -6,12 +6,12 @@ public class PiscesBulletSystem4 : EnemyShooter<EnemyBullet>
 {
     [SerializeField] ProjectileObject bulletData;
 
-    protected override float ShootingCooldown => 0.05f;
-
     const int BranchCount = 6;
     const int BranchSpacing = 360 / BranchCount;
     const float BranchWidth = 0.2f;
     const float ScaleFactor = 0.2f;
+
+    protected override float ShootingCooldown => 0.05f;
 
     protected override IEnumerator Shoot()
     {

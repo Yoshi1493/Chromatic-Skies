@@ -4,21 +4,23 @@ using static CoroutineHelper;
 
 public class PiscesBulletSystem31 : EnemyBulletSubsystem<EnemyBullet>
 {
+    const int WaveCount = 60;
+    const int BulletCount = 3;
+    const int BulletSpacing = 360 / BulletCount;
+
     protected override float ShootingCooldown => 0.05f;
-    const int BulletCount = 60;
-    const int BranchCount = 3;
 
     protected override IEnumerator Shoot()
     {
         yield return WaitForSeconds(3f);
 
-        for (int i = 0; i < BulletCount; i++)
+        for (int i = 0; i < WaveCount; i++)
         {
-            float r = Random.Range(0, 120f);
+            float randAngle = Random.Range(0, BulletSpacing);
 
-            for (int j = 0; j < BranchCount; j++)
+            for (int j = 0; j < BulletCount; j++)
             {
-                float z = r + (j * 120f);
+                float z = randAngle + (j * BulletSpacing);
                 SpawnProjectile(1, z, 0.5f * transform.up.RotateVectorBy(z + 90)).Fire();
             }
 

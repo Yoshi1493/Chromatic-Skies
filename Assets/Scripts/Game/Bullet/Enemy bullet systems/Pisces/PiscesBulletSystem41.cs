@@ -5,8 +5,8 @@ using static CoroutineHelper;
 public class PiscesBulletSystem41 : EnemyBulletSubsystem<Laser>
 {
     const int WaveCount = 3;
-    const int LaserCount = 6;
     const int WaveSpacing = 360 / WaveCount;
+    const int LaserCount = 6;
     const int LaserSpacing = 360 / LaserCount;
 
     protected override IEnumerator Shoot()

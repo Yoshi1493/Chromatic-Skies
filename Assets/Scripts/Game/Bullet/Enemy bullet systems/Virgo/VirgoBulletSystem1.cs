@@ -4,8 +4,8 @@ using static CoroutineHelper;
 
 public class VirgoBulletSystem1 : EnemyShooter<EnemyBullet>
 {
-    readonly float goldenRatio = (1f + Mathf.Sqrt(5f)) * 180f;
     const int BulletCount = 377;
+    readonly float RotationPerWave = (1f + Mathf.Sqrt(5f)) * 180f;
 
     protected override float ShootingCooldown => 0.0125f;
 
@@ -18,7 +18,7 @@ public class VirgoBulletSystem1 : EnemyShooter<EnemyBullet>
 
         while (enabled)
         {
-            float z = ctr * goldenRatio;
+            float z = ctr * RotationPerWave;
             SpawnProjectile(0, z, Vector2.zero).Fire();
 
             yield return WaitForSeconds(ShootingCooldown);
