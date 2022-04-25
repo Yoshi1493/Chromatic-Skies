@@ -5,25 +5,24 @@ using static CoroutineHelper;
 public class VirgoBulletSystem1 : EnemyShooter<EnemyBullet>
 {
     readonly float goldenRatio = (1f + Mathf.Sqrt(5f)) * 180f;
+    const int BulletCount = 377;
+
+    protected override float ShootingCooldown => 0.0125f;
 
     protected override IEnumerator Shoot()
     {
         yield return base.Shoot();
+        SetSubsystemEnabled(1);
+
+        int ctr = 0;
 
         while (enabled)
         {
-            SetSubsystemEnabled(1);
+            float z = ctr * goldenRatio;
+            SpawnProjectile(0, z, Vector2.zero).Fire();
 
-            //377 is the 14th number in the fibonacci sequence
-            for (int i = 0; i < 377; i++)
-            {
-                float z = i * goldenRatio;
-                SpawnProjectile(0, z, Vector2.zero).Fire();
-
-                yield return WaitForSeconds(ShootingCooldown / 8f);
-            }
-
-            yield return ownerShip.MoveToRandomPosition(1f, delay: 2f);
+            yield return WaitForSeconds(ShootingCooldown);
+            ctr++;
         }
     }
 }

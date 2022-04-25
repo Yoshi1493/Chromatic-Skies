@@ -4,23 +4,33 @@ using static CoroutineHelper;
 
 public class VirgoBulletSystem11 : EnemyBulletSubsystem<EnemyBullet>
 {
+    const int WaveCount = 55;
+    const float RotationPerWave = 10f;
+    const int BulletCount = 5;
+    const int BulletSpacing = 360 / BulletCount;
+
+    protected override float ShootingCooldown => 0.2f;
+
     protected override IEnumerator Shoot()
     {
-        yield return WaitForSeconds(3f);
-
-        transform.localEulerAngles = new Vector3(0f, 0f, Random.Range(0f, 60f));
-
-        for (int i = 0; i < 18; i++)
+        while (enabled)
         {
-            for (int j = 0; j < 6; j++)
+            yield return WaitForSeconds(1f);
+
+            float randStartAngle = Random.Range(-BulletSpacing, BulletSpacing);
+
+            for (int i = 0; i < WaveCount; i++)
             {
-                float z = (i * 10f) + (j * 60f);
-                SpawnProjectile(1, z, transform.up.RotateVectorBy(z) / 2f).Fire();
+                for (int j = 0; j < BulletCount; j++)
+                {
+                    float z = (i * RotationPerWave) + (j * BulletSpacing) + randStartAngle;
+                    SpawnProjectile(1, z, transform.up.RotateVectorBy(z) / 2f).Fire();
+                }
+
+                yield return WaitForSeconds(ShootingCooldown);
             }
 
-            yield return WaitForSeconds(ShootingCooldown * 2f);
+            yield return ownerShip.MoveToRandomPosition(1f, delay: 2f);
         }
-
-        enabled = false;
     }
 }

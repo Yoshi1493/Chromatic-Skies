@@ -6,7 +6,7 @@ public class TaurusBulletSystem3 : EnemyShooter<EnemyBullet>
 {
     const int BulletCount = 3;
     const int BulletSpacing = 360 / BulletCount;
-    const float OffsetPerWave = 15f;
+    const float RotationPerWave = 15f;
 
     protected override float ShootingCooldown => 0.03f;
 
@@ -22,7 +22,7 @@ public class TaurusBulletSystem3 : EnemyShooter<EnemyBullet>
         {
             for (int i = 0; i < BulletCount; i++)
             {
-                float offset = Mathf.PingPong(ctr, 30f) - OffsetPerWave;
+                float offset = Mathf.PingPong(ctr, 30f) - RotationPerWave;
                 float z = (i * BulletSpacing) + (ctr * offset) + 180f;
 
                 SpawnProjectile(0, z, Vector3.zero).Fire();
