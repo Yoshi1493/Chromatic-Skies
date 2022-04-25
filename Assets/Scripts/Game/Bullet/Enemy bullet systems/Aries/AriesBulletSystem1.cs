@@ -4,33 +4,30 @@ using static CoroutineHelper;
 
 public class AriesBulletSystem1 : EnemyShooter<EnemyBullet>
 {
+    const int WaveCount = 8;
+    const int BranchCount = 6;
+    const int BranchSpacing = 360 / BranchCount;
+    const int BulletCount = 6;
+
     protected override IEnumerator Shoot()
     {
         yield return base.Shoot();
 
         while (enabled)
         {
-            for (int i = 0; i < 66; i++)
-            {
-                SpawnProjectile(0, Random.Range(0f, 360f), Vector3.zero).Fire();
-                SpawnProjectile(0, Random.Range(0f, 360f), Vector3.zero).Fire();
+            SetSubsystemEnabled(1);
 
-                yield return WaitForSeconds(ShootingCooldown / 2f);
-            }
-
-            yield return WaitForSeconds(ShootingCooldown);
-
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < WaveCount; i++)
             {
                 float alt = ((i % 2) - 0.5f) * 2;
                 float offset = 10f * alt;
 
-                for (int j = 0; j < 6; j++)
+                for (int j = 0; j < BranchCount; j++)
                 {
-                    for (int k = 0; k < 6; k++)
+                    for (int k = 0; k < BulletCount; k++)
                     {
-                        float z = (offset * (j - 1)) + (k * 60f) + (2.5f * alt);
-                        SpawnProjectile(1, z, Vector3.zero).Fire();
+                        float z = (offset * (j - 1)) + (k * BranchSpacing) + (2.5f * alt);
+                        SpawnProjectile(0, z, Vector3.zero).Fire();
                     }
 
                     yield return WaitForSeconds(ShootingCooldown / 2f);
@@ -39,24 +36,7 @@ public class AriesBulletSystem1 : EnemyShooter<EnemyBullet>
                 yield return WaitForSeconds(ShootingCooldown);
             }
 
-            yield return WaitForSeconds(1f);
-            StartCoroutine(ownerShip.MoveToRandomPosition(1f));
-
-            for (int i = 0; i < 3; i++)
-            {
-                float z = PlayerPosition.GetRotationDifference(transform.position);
-
-                for (int j = 0; j < 6; j++)
-                {
-                    var bullet = SpawnProjectile(2, z, Vector3.zero);
-                    bullet.GetComponent<DefaultEnemyBullet>().speeds.z = j + 2f;
-                    bullet.Fire();
-                }
-
-                yield return WaitForSeconds(ShootingCooldown * 3f);
-            }
-
-            yield return WaitForSeconds(1f);
+            yield return ownerShip.MoveToRandomPosition(1f, maxSqrMagDelta: 16f, delay: 2f);
         }
     }
 }

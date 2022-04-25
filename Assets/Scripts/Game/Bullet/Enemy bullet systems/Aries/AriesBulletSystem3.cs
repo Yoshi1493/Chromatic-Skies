@@ -4,6 +4,11 @@ using static CoroutineHelper;
 
 public class AriesBulletSystem3 : EnemyShooter<EnemyBullet>
 {
+    const int BulletCount = 6;
+    const float BulletSpacing = 180f / BulletCount;
+
+    protected override float ShootingCooldown => 0.3f;
+
     protected override IEnumerator Shoot()
     {
         yield return base.Shoot();
@@ -16,13 +21,13 @@ public class AriesBulletSystem3 : EnemyShooter<EnemyBullet>
         {
             float rand = Random.Range(-90f, 90f);
 
-            for (int j = 0; j <= 6; j++)
+            for (int j = 0; j <= BulletCount; j++)
             {
-                float z = rand + (j * 30f) - 120f;
+                float z = rand + (j * BulletSpacing) - 120f;
                 SpawnProjectile(0, z, transform.up.RotateVectorBy(rand)).Fire();
             }
 
-            yield return WaitForSeconds(ShootingCooldown * 3f);
+            yield return WaitForSeconds(ShootingCooldown);
         }
     }
 }

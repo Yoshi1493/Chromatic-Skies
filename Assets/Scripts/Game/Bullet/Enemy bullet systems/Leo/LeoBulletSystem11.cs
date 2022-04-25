@@ -26,7 +26,6 @@ public class LeoBulletSystem11 : EnemyBulletSubsystem<EnemyBullet>
 
             yield return WaitForSeconds(ShootingCooldown);
         }
-        print(1f / Time.deltaTime);
 
         enabled = false;
     }

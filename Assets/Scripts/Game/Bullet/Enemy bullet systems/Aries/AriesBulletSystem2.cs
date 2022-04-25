@@ -4,18 +4,22 @@ using static CoroutineHelper;
 
 public class AriesBulletSystem2 : EnemyShooter<EnemyBullet>
 {
+    const int BulletCount = 111;
+    const int BranchCount = 6;
+    const int BranchSpacing = 360 / BranchCount;
+
     protected override IEnumerator Shoot()
     {
         yield return base.Shoot();
 
         while (enabled)
         {
-            for (int i = 0; i < 111; i++)
+            for (int i = 0; i < BulletCount; i++)
             {
                 float rand = Random.value * 360;
-                for (int j = 0; j < 6; j++)
+                for (int j = 0; j < BranchCount; j++)
                 {
-                    float z = j * 60f + rand;
+                    float z = j * BranchSpacing + rand;
                     SpawnProjectile(0, z, Vector2.zero).Fire();
                 }
 

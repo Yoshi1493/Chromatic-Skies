@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class AriesBullet40 : EnemyBullet
 {
-    readonly float SpinSpeed = 180f;
+    const float SpinSpeed = 180f;
 
     protected override IEnumerator Move()
     {

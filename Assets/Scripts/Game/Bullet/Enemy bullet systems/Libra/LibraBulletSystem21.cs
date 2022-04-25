@@ -5,6 +5,7 @@ using static CoroutineHelper;
 public class LibraBulletSystem21 : EnemyBulletSubsystem<EnemyBullet>
 {
     readonly float goldenRatio = (1f + Mathf.Sqrt(5f)) * 180f;
+
     protected override float ShootingCooldown => 0.04f;
 
     protected override IEnumerator Shoot()
