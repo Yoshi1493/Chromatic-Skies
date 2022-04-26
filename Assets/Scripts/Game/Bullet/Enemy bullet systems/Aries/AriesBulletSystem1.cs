@@ -4,7 +4,7 @@ using static CoroutineHelper;
 
 public class AriesBulletSystem1 : EnemyShooter<EnemyBullet>
 {
-    const int WaveCount = 8;
+    const int WaveCount = 16;
     const int BranchCount = 6;
     const int BranchSpacing = 360 / BranchCount;
     const int BulletCount = 6;
@@ -15,6 +15,8 @@ public class AriesBulletSystem1 : EnemyShooter<EnemyBullet>
 
         while (enabled)
         {
+            yield return WaitForSeconds(1f);
+
             SetSubsystemEnabled(1);
 
             for (int i = 0; i < WaveCount; i++)
@@ -36,7 +38,7 @@ public class AriesBulletSystem1 : EnemyShooter<EnemyBullet>
                 yield return WaitForSeconds(ShootingCooldown);
             }
 
-            yield return ownerShip.MoveToRandomPosition(1f, maxSqrMagDelta: 16f, delay: 2f);
+            yield return ownerShip.MoveToRandomPosition(1f, maxSqrMagDelta: 5f, delay: 1f);
         }
     }
 }

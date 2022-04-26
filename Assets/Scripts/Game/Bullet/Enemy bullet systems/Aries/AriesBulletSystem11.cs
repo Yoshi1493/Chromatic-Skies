@@ -4,11 +4,11 @@ using static CoroutineHelper;
 
 public class AriesBulletSystem11 : EnemyShooter<EnemyBullet>
 {
-    const int WaveCount = 6;
+    const int WaveCount = 8;
     const int BulletCount = 12;
     const int BulletSpacing = 360 / BulletCount;
 
-    protected override float ShootingCooldown => 0.5f;
+    protected override float ShootingCooldown => 0.6f;
 
     protected override IEnumerator Shoot()
     {
