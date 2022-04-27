@@ -4,25 +4,24 @@ using static CoroutineHelper;
 
 public class AquariusBulletSystem21 : EnemyBulletSubsystem<EnemyBullet>
 {
-    const int BranchCount = 4;
-    const int BranchSpacing = 360 / BranchCount;
-    const int BulletCount = 44;
+    const int BulletCount = 8;
+    const int BulletSpacing = 360 / BulletCount;
+
+    protected override float ShootingCooldown => 5f;
 
     protected override IEnumerator Shoot()
     {
-        for (int i = 0; i < BulletCount; i++)
+        while (enabled)
         {
-            float rand = Random.Range(0f, 360f);
+            yield return WaitForSeconds(ShootingCooldown);
 
-            for (int j = 0; j < BranchCount; j++)
+            float offset = PlayerPosition.GetRotationDifference(transform.position);
+
+            for (int i = 0; i < BulletCount; i++)
             {
-                float z = rand + (j * BranchSpacing);
+                float z = (i * BulletSpacing) + offset;
                 SpawnProjectile(1, z, Vector3.zero).Fire();
             }
-
-            yield return WaitForSeconds(ShootingCooldown);
         }
-
-        enabled = false;
     }
 }
