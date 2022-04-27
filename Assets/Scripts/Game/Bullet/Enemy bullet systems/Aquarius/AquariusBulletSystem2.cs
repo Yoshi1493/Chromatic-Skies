@@ -1,19 +1,21 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using static CoroutineHelper;
 
 public class AquariusBulletSystem2 : EnemyShooter<EnemyBullet>
 {
+    const int BranchCount = 8;
+    const int BulletCount = 36;
+
     protected override IEnumerator Shoot()
     {
         yield return base.Shoot();
 
         while (enabled)
         {
-            for (int i = 1; i < 36; i++)
+            for (int i = 1; i < BulletCount; i++)
             {
-                for (int j = 0; j < 8; j++)
+                for (int j = 0; j < BranchCount; j++)
                 {
                     float xPos = 2f * Mathf.Abs(Mathf.Sin(i * 15 * Mathf.Deg2Rad));
                     float yPos = i / 3f;
