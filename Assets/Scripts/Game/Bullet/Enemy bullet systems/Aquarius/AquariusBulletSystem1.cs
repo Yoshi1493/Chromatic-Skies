@@ -5,7 +5,7 @@ using static CoroutineHelper;
 public class AquariusBulletSystem1 : EnemyShooter<EnemyBullet>
 {
     const int WaveCount = 18;
-    const float WaveSpacing = 10f;
+    const float WaveSpacing = 12f;
     const int BulletCount = 4;
     const float BulletSpacing = 15f;
 
