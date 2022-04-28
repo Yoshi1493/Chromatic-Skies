@@ -22,8 +22,6 @@ public class AquariusBulletSystem2 : EnemyShooter<EnemyBullet>
 
         while (enabled)
         {
-            yield return WaitForSeconds(1f);
-
             float rand = Mathf.Sign(Random.value - 0.5f);
 
             for (int i = 1; i <= BulletCount; i++)
@@ -46,6 +44,7 @@ public class AquariusBulletSystem2 : EnemyShooter<EnemyBullet>
             bullets.Clear();
 
             yield return ownerShip.MoveToRandomPosition(1f, delay: 4f);
+            yield return WaitForSeconds(1f);
         }
     }
 }

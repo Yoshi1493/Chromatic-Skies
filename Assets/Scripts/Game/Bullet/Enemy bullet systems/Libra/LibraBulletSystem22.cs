@@ -4,9 +4,9 @@ using static CoroutineHelper;
 
 public class LibraBulletSystem22 : EnemyBulletSubsystem<EnemyBullet>
 {
-    const int BulletCount = 4;
-    const int Spacing = 360 / BulletCount;
-    const int Offset = 5;
+    const int BranchCount = 4;
+    const int BranchSpacing = 360 / BranchCount;
+    const int BulletOffset = 5;
 
     protected override float ShootingCooldown => 0.3f;
 
@@ -16,13 +16,13 @@ public class LibraBulletSystem22 : EnemyBulletSubsystem<EnemyBullet>
 
         while (enabled)
         {
-            for (int j = 0; j < BulletCount; j++)
+            for (int j = 0; j < BranchCount; j++)
             {
-                float z = (i * Offset) + (j * Spacing);
-                SpawnProjectile(1, z, Vector3.zero).Fire();
+                float z = (i * BulletOffset) + (j * BranchSpacing);
+                SpawnProjectile(0, z, Vector3.zero).Fire();
 
                 z += 180f;
-                SpawnProjectile(2, z, Vector3.zero).Fire();
+                SpawnProjectile(1, z, Vector3.zero).Fire();
             }
 
             i++;
