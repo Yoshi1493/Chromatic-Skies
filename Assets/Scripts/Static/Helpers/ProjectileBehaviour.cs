@@ -55,13 +55,17 @@ public static class ProjectileBehaviour
     /// </summary>
     public static IEnumerator RotateBy(this Projectile p, float degrees, float rotateDuration, bool clockwise = true, float delay = 0f)
     {
-        if (rotateDuration <= 0f) yield break;
+        int directionMultiplier = clockwise ? -1 : 1;
+
+        if (rotateDuration <= 0f)
+        {
+            if (rotateDuration == 0f) { RotateVectorBy(ref p.moveDirection, degrees * directionMultiplier); }
+            yield break;
+        }
+
         if (delay > 0f) yield return WaitForSeconds(delay);
 
-        float currentTime = 0f;
-
-        Vector3 startDir = p.moveDirection;
-        int directionMultiplier = clockwise ? -1 : 1;
+        float currentTime = 0f; 
 
         while (currentTime < rotateDuration)
         {

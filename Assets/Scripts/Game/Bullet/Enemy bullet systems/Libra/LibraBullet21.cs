@@ -3,12 +3,13 @@ using UnityEngine;
 
 public class LibraBullet21 : EnemyBullet
 {
-    protected override float MaxLifetime => 6f;
     [SerializeField] bool rotatesClockwise;
 
     protected override IEnumerator Move()
     {
+        yield return this.LerpSpeed(3f, 0f, 1f);
+
         MoveSpeed = 3f;
-        yield return this.RotateBy(180f, MaxLifetime, rotatesClockwise);
+        StartCoroutine(this.RotateBy(60f, 0f, rotatesClockwise));
     }
 }
