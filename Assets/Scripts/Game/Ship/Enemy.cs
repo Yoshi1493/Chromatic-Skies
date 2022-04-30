@@ -27,10 +27,13 @@ public class Enemy : Ship
 
         if (currentLives > 0)
         {
-            var currentEnemyShooter = transform.GetChild(currentProjectileSystem).GetComponentInChildren<IEnemyAttack>();
+            var currentEnemyShooters = transform.GetChild(currentProjectileSystem).GetComponentsInChildren<IEnemyAttack>();
             var nextEnemyShooter = transform.GetChild(currentProjectileSystem + 1).GetComponent<IEnemyAttack>();
 
-            currentEnemyShooter.SetEnabled(false);
+            foreach (var enemyShooter in currentEnemyShooters)
+            {
+                enemyShooter.SetEnabled(false);
+            }
 
             StartCoroutine(this.ReturnToOriginalPosition());
             await Task.Delay(RespawnTime * 2);
