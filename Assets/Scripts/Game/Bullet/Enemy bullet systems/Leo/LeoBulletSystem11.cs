@@ -4,10 +4,10 @@ using static CoroutineHelper;
 
 public class LeoBulletSystem11 : EnemyBulletSubsystem<EnemyBullet>
 {
-    const int BulletCount = 180;
+    const int BulletCount = 150;
     const float BulletSpacing = 12f;
 
-    protected override float ShootingCooldown => 0.02f;
+    protected override float ShootingCooldown => 0.03f;
 
     protected override IEnumerator Shoot()
     {
