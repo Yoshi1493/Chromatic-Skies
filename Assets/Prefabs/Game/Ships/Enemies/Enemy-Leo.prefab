@@ -48,6 +48,54 @@ MonoBehaviour:
   <ModuleName>k__BackingField: {fileID: 0}
   enemyProjectiles:
   - {fileID: 8387916636599341324, guid: 164d1557bfc88894a9e203401739b3e9, type: 3}
+--- !u!1 &8829749693624185828
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4060267652154589812}
+  - component: {fileID: 8672576292749201747}
+  m_Layer: 7
+  m_Name: Bullet Subsystem 1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4060267652154589812
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8829749693624185828}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2362189854743476344}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8672576292749201747
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8829749693624185828}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb7b78fcd0d12144296553f75914f7f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <AttackName>k__BackingField: {fileID: 0}
+  <ModuleName>k__BackingField: {fileID: 0}
+  enemyProjectiles:
+  - {fileID: 5755630079477937093, guid: b0f95ec6eb538e243bed9c0c27f87b0a, type: 3}
 --- !u!1001 &6759093168088370692
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -123,6 +171,11 @@ MonoBehaviour:
   <ModuleName>k__BackingField: {fileID: 11400000, guid: 5d3f1733dfc8ae94f9f55c4988ac68ea, type: 2}
   enemyProjectiles:
   - {fileID: 0}
+--- !u!4 &2362189854743476344 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 9008659700516484732, guid: d93cb44e21569f545b76560b29579f98, type: 3}
+  m_PrefabInstance: {fileID: 6759093168088370692}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2558884426390124806 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 9101744854621124354, guid: d93cb44e21569f545b76560b29579f98, type: 3}
@@ -156,7 +209,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3777441332194849460}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8e9085d6720ad4648ad9b46e74f46d82, type: 3}
   m_Name: 
@@ -164,7 +217,11 @@ MonoBehaviour:
   <AttackName>k__BackingField: {fileID: 11400000, guid: e19b66eb017f4c647a02b9648905add5, type: 2}
   <ModuleName>k__BackingField: {fileID: 11400000, guid: bd2e3e97477bed84292fe9378259cb59, type: 2}
   enemyProjectiles:
-  - {fileID: 0}
+  - {fileID: 5755630079477937093, guid: b0f95ec6eb538e243bed9c0c27f87b0a, type: 3}
+  - {fileID: -2456132355269645188, guid: 59fad162e8a3dec4aac0a06a791c3c85, type: 3}
+  bulletData:
+  - {fileID: 11400000, guid: 3b9333daed29ae74fbc90d3b411a92a7, type: 2}
+  - {fileID: 11400000, guid: 8327ecb0269ed294bb3b2fc633d8d805, type: 2}
 --- !u!1 &4079918356797303241 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7301416149945870285, guid: d93cb44e21569f545b76560b29579f98, type: 3}
@@ -177,7 +234,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4079918356797303241}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4daff3b2796b42d47a9e36b73f67a221, type: 3}
   m_Name: 
