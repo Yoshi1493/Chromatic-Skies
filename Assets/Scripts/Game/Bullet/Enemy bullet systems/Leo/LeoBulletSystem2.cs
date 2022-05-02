@@ -5,52 +5,49 @@ using static CoroutineHelper;
 
 public class LeoBulletSystem2 : EnemyShooter<EnemyBullet>
 {
-    [SerializeField] ProjectileObject[] bulletData = new ProjectileObject[2];
-
     const int WaveCount = 1;
     const int BulletCount = 30;
 
-    Queue<EnemyBullet> bullets = new Queue<EnemyBullet>(BulletCount);
+    Queue<EnemyBullet> bullets = new(BulletCount);
 
     protected override float ShootingCooldown => 0.05f;
 
     protected override IEnumerator Shoot()
     {
-        SetSubsystemEnabled(1);
-
-        for (int i = 0; i < WaveCount; i++)
+        while (enabled)
         {
-            for (int j = 0; j < BulletCount; j++)
+            SetSubsystemEnabled(1);
+
+            for (int i = 0; i < WaveCount; i++)
             {
-                float bulletSpacing = 360f / BulletCount;
-                float z = j * bulletSpacing;
+                for (int j = 0; j < BulletCount; j++)
+                {
+                    yield return WaitForSeconds(ShootingCooldown);
 
-                bulletData[0].colour = bulletData[0].gradient.Evaluate((float)j / BulletCount);
-                bullets.Enqueue(SpawnProjectile(0, z, transform.up.RotateVectorBy(z) * 2f));
+                    float bulletSpacing = 360f / BulletCount;
+                    float z = j * bulletSpacing;
 
-                yield return WaitForSeconds(ShootingCooldown);
+                    bullets.Enqueue(SpawnProjectile(0, z, transform.up.RotateVectorBy(z) * 2f));
+                }
+
+                yield return WaitForSeconds(ShootingCooldown * 9f);
+
+                for (int j = 0; j < BulletCount; j++)
+                {
+                    float bulletSpacing = 360f / BulletCount;
+                    float z = j * bulletSpacing;
+
+                    var enemyBullet = bullets.Dequeue();
+                    Vector3 spawnPos = enemyBullet.transform.position;
+
+                    SpawnProjectile(1, z, spawnPos, false).Fire();
+                    SpawnProjectile(1, z + 180f, spawnPos, false).Fire();
+
+                    yield return WaitForSeconds(ShootingCooldown);
+                }
             }
 
-            yield return WaitForSeconds(ShootingCooldown * 9f);
-
-            for (int j = 0; j < BulletCount; j++)
-            {
-                float bulletSpacing = 360f / BulletCount;
-                float z = j * bulletSpacing;
-
-                var enemyBullet = bullets.Dequeue();
-                Vector3 spawnPos = enemyBullet.transform.position;
-
-                bulletData[1].colour = bulletData[1].gradient.Evaluate((float)j / BulletCount);
-
-                SpawnProjectile(1, z, spawnPos, false).Fire();
-                SpawnProjectile(1, z + 180f, spawnPos, false).Fire();
-
-                yield return WaitForSeconds(ShootingCooldown);
-            }
-
+            yield return ownerShip.MoveToRandomPosition(1f, delay: 10f);
         }
-
-        yield return ownerShip.MoveToRandomPosition(1f, delay: 10f);
     }
 }

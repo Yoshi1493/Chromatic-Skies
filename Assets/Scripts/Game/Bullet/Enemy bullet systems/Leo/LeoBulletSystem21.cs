@@ -5,72 +5,96 @@ using static CoroutineHelper;
 
 public class LeoBulletSystem21 : EnemyShooter<EnemyBullet>
 {
+    const int BranchCount = 2;
     const int BulletCount = 8;
+    const int SpawnBranchCount = 3;
+    const int SpawnBranchSpacing = 360 / SpawnBranchCount;
     const float halfPI = 0.5f * Mathf.PI;
 
-    protected override float ShootingCooldown => 0.02f;
+    List<EnemyBullet> bullets = new(BulletCount * 4 * BranchCount - BranchCount);
+
+    protected override float ShootingCooldown => 0.05f;
 
     protected override IEnumerator Shoot()
     {
-        //lemniscate (infinity curve) (x^2 + y^2)^2 - rx^2 + ry^2 = 0, modified and broken into 5 parts:
-        //positive sine wave front half: f(x) = sin(x) {0 < x < t}
-        //right semicircle: 1 = (x-t)^2 + y^2 {x > t}
-        //negative sine wave: f(x) = -sin(x) {-t < x < t}
-        //left semicircle: 1 = (x+t)^2 + y^2 {x < -t}
-        //positive sine wave back half: f(x) = sin(x) {-t < x < 0}
+        yield return WaitForSeconds(2f);
+
+        //lemniscate (infinity curve) (x^2 + y^2)^2 - rx^2 + ry^2 = 0, modified and broken into 3 parts:
+        //positive sine wave:  f(x) = sin(x)      {1 < x < t}
+        //semicircle:          1 = (x-t)^2 + y^2  {x > t}
+        //negative sine wave:  f(x) = -sin(x)     {-t < x < -1}
         //where t = pi / 2
         while (enabled)
         {
             float step = halfPI / BulletCount;
-            float x, y, z = 0f;
+            float x, y, z;
 
-            for (int i = 0; i < BulletCount; i++)
+            for (int i = 1; i < BulletCount; i++)
             {
+                yield return WaitForSeconds(ShootingCooldown);
+
                 x = i * step;
                 y = Mathf.Sin(x);
+                Vector3 pos = new(x, y);
 
-                SpawnProjectile(0, z, new Vector3(x, y)).Fire();
-                yield return WaitForSeconds(ShootingCooldown);
+                SpawnBullets(pos);
             }
 
             for (int i = 0; i < BulletCount * 2; i++)
             {
+                yield return WaitForSeconds(ShootingCooldown);
+
                 Vector3 offset = halfPI * Vector3.right;
                 float theta = i * -90f / BulletCount;
+                Vector3 pos = -transform.up.RotateVectorBy(theta) + offset;
 
-                SpawnProjectile(0, z, -transform.up.RotateVectorBy(theta) + offset).Fire();
-                yield return WaitForSeconds(ShootingCooldown);
+                SpawnBullets(pos);
             }
 
-            for (int i = BulletCount; i > -BulletCount; i--)
+            for (int i = BulletCount; i > 0; i--)
             {
+                yield return WaitForSeconds(ShootingCooldown);
+
                 x = i * step;
                 y = -Mathf.Sin(x);
+                Vector3 pos = new(x, y);
 
-                SpawnProjectile(0, z, new Vector3(x, y)).Fire();
-                yield return WaitForSeconds(ShootingCooldown);
+                SpawnBullets(pos);
             }
 
-            for (int i = 0; i < BulletCount * 2; i++)
+            yield return WaitForSeconds(2f - (ShootingCooldown * bullets.Capacity * 0.5f));
+
+            for (int i = 0; i < bullets.Count; i++)
             {
-                Vector3 offset = halfPI * Vector3.left;
-                float theta = i * 90f / BulletCount;
+                float randOffset = Random.Range(0f, SpawnBranchSpacing);
 
-                SpawnProjectile(0, z, -transform.up.RotateVectorBy(theta) + offset).Fire();
-                yield return WaitForSeconds(ShootingCooldown);
+                for (int j = 0; j < SpawnBranchCount; j++)
+                {
+                    SpawnProjectile(3, j * SpawnBranchSpacing + randOffset, bullets[i].transform.position, false).Fire();
+                }
+
+                if (i % 2 == 1)
+                    yield return WaitForSeconds(ShootingCooldown);
             }
 
-            for (int i = -BulletCount; i < 0; i++)
-            {
-                x = i * step;
-                y = Mathf.Sin(x);
-
-                SpawnProjectile(0, z, new Vector3(x, y)).Fire();
-                yield return WaitForSeconds(ShootingCooldown);
-            }
+            bullets.Clear();
 
             enabled = false;
         }
+    }
 
+    void SpawnBullets(Vector3 pos)
+    {
+        float z = pos.GetRotationDifference(Vector3.zero);
+
+        var bullet = SpawnProjectile(2, z, pos);
+        bullets.Add(bullet);
+        bullet.Fire();
+
+        z += 180f;
+
+        bullet = SpawnProjectile(2, z, -pos);
+        bullets.Add(bullet);
+        bullet.Fire();
     }
 }
