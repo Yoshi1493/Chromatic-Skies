@@ -18,7 +18,7 @@ public abstract class Shooter<TProjectile> : MonoBehaviour
 
     protected abstract IEnumerator Shoot();
 
-    protected TProjectile SpawnProjectile(int projectileIndex, float spawnRotZ, Vector3 spawnPos, bool asLocalPosition = true)
+    public TProjectile SpawnProjectile(int projectileIndex, float spawnRotZ, Vector3 spawnPos, bool asLocalPosition = true)
     {
         TProjectile newProjectile = GenericObjectPool<TProjectile>.Instance.Get(projectileIndex);
 

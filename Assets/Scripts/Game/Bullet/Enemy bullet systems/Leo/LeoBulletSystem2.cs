@@ -1,18 +1,15 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using static CoroutineHelper;
 
 public class LeoBulletSystem2 : EnemyShooter<EnemyBullet>
 {
-    const int BranchCount = 3;
+    const int BranchCount = 2;
     const int BranchSpacing = 360 / BranchCount;
     const int BulletCount = 8;
     const int SpawnBranchCount = 3;
     const int SpawnBranchSpacing = 360 / SpawnBranchCount;
     const float halfPI = 0.5f * Mathf.PI;
-
-    List<EnemyBullet> bullets = new(BulletCount * 4 * BranchCount - BranchCount);
 
     protected override float ShootingCooldown => 0.05f;
 
@@ -27,7 +24,7 @@ public class LeoBulletSystem2 : EnemyShooter<EnemyBullet>
         //where t = pi / 2
         while (enabled)
         {
-            yield return WaitForSeconds(2f);
+            yield return WaitForSeconds(2.5f);
 
             float step = halfPI / BulletCount;
             float x, y;
@@ -65,22 +62,7 @@ public class LeoBulletSystem2 : EnemyShooter<EnemyBullet>
                 SpawnBullets(pos);
             }
 
-            yield return WaitForSeconds(2f - (ShootingCooldown * bullets.Capacity / BranchCount));
-
-            for (int i = 0; i < bullets.Count; i++)
-            {
-                float randOffset = Random.Range(0f, SpawnBranchSpacing);
-
-                for (int j = 0; j < SpawnBranchCount; j++)
-                {
-                    SpawnProjectile(1, j * SpawnBranchSpacing + randOffset, bullets[i].transform.position, false).Fire();
-                }
-
-                if (i % BranchCount == BranchCount - 1)
-                    yield return WaitForSeconds(ShootingCooldown);
-            }
-
-            bullets.Clear();
+            yield return WaitForSeconds(2.5f);
         }
     }
 
@@ -91,7 +73,6 @@ public class LeoBulletSystem2 : EnemyShooter<EnemyBullet>
         for (int i = 0; i < BranchCount; i++)
         {
             var bullet = SpawnProjectile(0, z, Vector3.zero);
-            bullets.Add(bullet);
             bullet.MoveSpeed = pos.sqrMagnitude;
             bullet.Fire();
 
