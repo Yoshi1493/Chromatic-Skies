@@ -1,16 +1,9 @@
 using System.Collections;
 using UnityEngine;
 
-public class LeoBullet20 : EnemyBullet
+public class LeoBullet20 : ScriptableEnemyBullet<LeoBulletSystem2>
 {
-    LeoBulletSystem2 ownerBulletSystem;
     protected override float MaxLifetime => 3f;
-
-    protected override void Awake()
-    {
-        base.Awake();
-        ownerBulletSystem = FindObjectOfType<LeoBulletSystem2>();
-    }
 
     protected override IEnumerator Move()
     {
@@ -25,7 +18,7 @@ public class LeoBullet20 : EnemyBullet
         for (int i = 0; i < 3; i++)
         {
             float z = (i * 120f) + randOffset;
-            ownerBulletSystem.SpawnProjectile(1, z, transform.position, false).Fire();
+            SpawnBullet(1, z, transform.position, false);
         }
 
         base.Destroy();

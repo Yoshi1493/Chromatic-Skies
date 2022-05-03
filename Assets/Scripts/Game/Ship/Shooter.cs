@@ -18,9 +18,9 @@ public abstract class Shooter<TProjectile> : MonoBehaviour
 
     protected abstract IEnumerator Shoot();
 
-    public TProjectile SpawnProjectile(int projectileIndex, float spawnRotZ, Vector3 spawnPos, bool asLocalPosition = true)
+    public TProjectile SpawnProjectile(int projectileID, float spawnRotZ, Vector3 spawnPos, bool asLocalPosition = true)
     {
-        TProjectile newProjectile = GenericObjectPool<TProjectile>.Instance.Get(projectileIndex);
+        TProjectile newProjectile = GenericObjectPool<TProjectile>.Instance.Get(projectileID);
 
         newProjectile.gameObject.SetActive(true);
         newProjectile.transform.SetPositionAndRotation(spawnPos + (asLocalPosition ? transform.position : Vector3.zero), Quaternion.Euler(0f, 0f, spawnRotZ));
