@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using static CoroutineHelper;
+using static MathHelper;
 
 public class LibraBulletSystem21 : EnemyBulletSubsystem<Laser>
 {
@@ -39,7 +40,7 @@ public class LibraBulletSystem21 : EnemyBulletSubsystem<Laser>
             for (int i = 0; i < laserPositions.Count; i++)
             {
                 float y = camHalfHeight;
-                float z = Random.Range(MinLaserRotation, MaxLaserRotation) * Mathf.Sign(Random.value - 0.5f) + 180f;
+                float z = Random.Range(MinLaserRotation, MaxLaserRotation) * PositiveOrNegativeOne + 180f;
 
                 SpawnProjectile(0, z, new Vector3(laserPositions[i], y), false).Fire(1f);
 

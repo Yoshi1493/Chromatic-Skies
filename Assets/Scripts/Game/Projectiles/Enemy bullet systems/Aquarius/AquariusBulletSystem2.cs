@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using static CoroutineHelper;
+using static MathHelper;
 
 public class AquariusBulletSystem2 : EnemyShooter<EnemyBullet>
 {
@@ -22,13 +23,13 @@ public class AquariusBulletSystem2 : EnemyShooter<EnemyBullet>
 
         while (enabled)
         {
-            float rand = Mathf.Sign(Random.value - 0.5f);
+            float randDirection = PositiveOrNegativeOne;
 
             for (int i = 1; i <= BulletCount; i++)
             {
                 for (int j = 0; j < BranchCount; j++)
                 {
-                    float x = Mathf.Sin(i * Frequency * rand * Mathf.Deg2Rad);
+                    float x = Mathf.Sin(i * Frequency * randDirection * Mathf.Deg2Rad);
                     float y = i * BulletSpacingMultiplier;
 
                     float z = j * BranchSpacing;

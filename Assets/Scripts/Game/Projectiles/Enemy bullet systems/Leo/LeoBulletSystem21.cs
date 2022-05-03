@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using static CoroutineHelper;
+using static MathHelper;
 
 public class LeoBulletSystem21 : EnemyBulletSubsystem<EnemyBullet>
 {
@@ -19,7 +20,7 @@ public class LeoBulletSystem21 : EnemyBulletSubsystem<EnemyBullet>
 
         while (enabled)
         {
-            float x = (Random.Range(0f, camHalfWidth * 0.6f) + (camHalfWidth * 0.2f)) * Mathf.Sign(Random.value - 0.5f);
+            float x = (Random.Range(0f, camHalfWidth * 0.6f) + (camHalfWidth * 0.2f)) * PositiveOrNegativeOne;
 
             for (int i = 0; i < BranchCount; i++)
             {

@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using static CoroutineHelper;
+using static MathHelper;
 
 public class AriesBulletSystem4 : EnemyShooter<EnemyBullet>
 {
@@ -14,8 +15,8 @@ public class AriesBulletSystem4 : EnemyShooter<EnemyBullet>
         {
             yield return WaitForSeconds(2f);
 
+            int randDirection = PositiveOrNegativeOne;
             float n = 0f;
-            float r = Random.value - 0.5f;
             float t = Random.Range(0f, 90f);
 
             for (int i = 0; i < 360; i += 4)
@@ -26,7 +27,7 @@ public class AriesBulletSystem4 : EnemyShooter<EnemyBullet>
                     SpawnProjectile(0, z, Vector2.zero).Fire();
                 }
 
-                n += i * Mathf.Sign(r);
+                n += i * randDirection;
                 yield return WaitForSeconds(ShootingCooldown);
             }
 

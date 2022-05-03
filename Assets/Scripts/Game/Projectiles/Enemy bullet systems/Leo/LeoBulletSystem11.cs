@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using static CoroutineHelper;
+using static MathHelper;
 
 public class LeoBulletSystem11 : EnemyBulletSubsystem<EnemyBullet>
 {
@@ -14,7 +15,7 @@ public class LeoBulletSystem11 : EnemyBulletSubsystem<EnemyBullet>
         yield return WaitForSeconds(3f);
 
         float randOffset = Random.Range(0f, 180f);
-        float randDirection = Mathf.Sign(Random.value - 0.5f);
+        float randDirection = PositiveOrNegativeOne;
 
         for (int i = 0; i < BulletCount; i++)
         {

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using static CoroutineHelper;
+using static MathHelper;
 
 public class TaurusBulletSystem5 : EnemyShooter<EnemyBullet>
 {
@@ -22,7 +23,7 @@ public class TaurusBulletSystem5 : EnemyShooter<EnemyBullet>
 
         while (enabled)
         {
-            float randDirection = Mathf.Sign(Random.value - 0.5f);
+            float randDirection = PositiveOrNegativeOne;
 
             for (int i = 0; i < OuterBranchDensity; i++)
             {
