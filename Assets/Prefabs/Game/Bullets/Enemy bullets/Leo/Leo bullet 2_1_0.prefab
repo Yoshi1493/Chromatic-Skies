@@ -83,7 +83,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3140064405051798717, guid: 4e06125b108514547b6fc9b6887da3eb, type: 3}
   m_PrefabInstance: {fileID: 4489721518377228893}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &-6444889727779935089
+--- !u!114 &-8287656287947702384
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -97,5 +97,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   transform: {fileID: 0}
   moveDirection: {x: 0, y: 0, z: 0}
-  projectileData: {fileID: 11400000, guid: a06394068e60f5a4b8e71cc9e358040c, type: 2}
+  projectileData: {fileID: 11400000, guid: 3b9333daed29ae74fbc90d3b411a92a7, type: 2}
   moveSpeed: 0

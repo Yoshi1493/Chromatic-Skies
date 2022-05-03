@@ -1,11 +1,9 @@
 using System.Collections;
-using UnityEngine;
 
 public class LeoBullet23 : EnemyBullet
 {
     protected override IEnumerator Move()
     {
-        float randSpeed = Random.Range(2f, 3f);
-        yield return this.LerpSpeed(1f, randSpeed, 1f);
+        yield return this.LerpSpeed(1f, 2f, 1f);
     }
 }
