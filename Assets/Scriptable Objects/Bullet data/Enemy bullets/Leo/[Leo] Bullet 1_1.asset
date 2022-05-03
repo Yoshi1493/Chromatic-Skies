@@ -44,5 +44,5 @@ MonoBehaviour:
     m_Mode: 1
     m_NumColorKeys: 4
     m_NumAlphaKeys: 2
-  BulletID: 1
+  ID: 1
   Power: {fileID: 11400000, guid: 2f946bc0b32947f468ba6cc9ee2e3f3c, type: 2}
