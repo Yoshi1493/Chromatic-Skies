@@ -50,6 +50,6 @@ public abstract class GenericObjectPool<TProjectile> : MonoBehaviour where TProj
         returningObject.gameObject.SetActive(false);
         returningObject.enabled = false;
 
-        objectPool[returningObject.projectileData.BulletID].queue.Enqueue(returningObject);
+        objectPool[returningObject.projectileData.ID].queue.Enqueue(returningObject);
     }
 }

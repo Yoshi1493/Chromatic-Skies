@@ -12,6 +12,6 @@ public class ProjectileObject : ScriptableObject
     public Gradient gradient;
 
     [Header("Stats")]
-    public int BulletID;
+    public int ID;
     public IntObject Power;
 }
