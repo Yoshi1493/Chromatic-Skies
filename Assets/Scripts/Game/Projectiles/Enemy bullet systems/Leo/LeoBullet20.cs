@@ -3,6 +3,9 @@ using UnityEngine;
 
 public class LeoBullet20 : ScriptableEnemyBullet<LeoBulletSystem2>
 {
+    const int BulletCount = 3;
+    const int BulletSpacing = 360 / BulletCount;
+
     protected override float MaxLifetime => 3f;
 
     protected override IEnumerator Move()
@@ -15,10 +18,10 @@ public class LeoBullet20 : ScriptableEnemyBullet<LeoBulletSystem2>
     {
         float randOffset = Random.Range(0f, 60f);
 
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < BulletCount; i++)
         {
-            float z = (i * 120f) + randOffset;
-            SpawnBullet(1, z, transform.position, false);
+            float z = (i * BulletSpacing) + randOffset;
+            SpawnBullet(1, z, transform.position, false).Fire();
         }
 
         base.Destroy();

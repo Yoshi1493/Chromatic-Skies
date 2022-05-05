@@ -13,8 +13,8 @@ public abstract class ScriptableEnemyBullet<T> : EnemyBullet
         enemyShooter = FindObjectOfType<T>();
     }
 
-    protected void SpawnBullet(int projectileID, float spawnRotZ, Vector3 spawnPos, bool asLocalPosition = true)
+    protected EnemyBullet SpawnBullet(int projectileID, float spawnRotZ, Vector3 spawnPos, bool asLocalPosition = true)
     {
-        enemyShooter.SpawnProjectile(projectileID, spawnRotZ, spawnPos, asLocalPosition).Fire();
+         return enemyShooter.SpawnProjectile(projectileID, spawnRotZ, spawnPos, asLocalPosition);
     }
 }

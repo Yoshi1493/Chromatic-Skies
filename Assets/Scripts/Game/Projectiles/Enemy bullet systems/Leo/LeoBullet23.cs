@@ -2,8 +2,11 @@ using System.Collections;
 
 public class LeoBullet23 : EnemyBullet
 {
+    protected override float MaxLifetime => 12f;
+
     protected override IEnumerator Move()
     {
-        yield return this.LerpSpeed(1f, 2f, 1f);
+        float endSpeed = MoveSpeed;
+        yield return this.LerpSpeed(0f, endSpeed, 2f);
     }
 }

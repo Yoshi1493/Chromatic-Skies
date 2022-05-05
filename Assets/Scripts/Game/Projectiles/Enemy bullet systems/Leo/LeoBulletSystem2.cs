@@ -24,7 +24,8 @@ public class LeoBulletSystem2 : EnemyShooter<EnemyBullet>
         //where t = pi / 2
         while (enabled)
         {
-            yield return WaitForSeconds(2.5f);
+            float randRotation = Random.Range(-180f, 180f);
+            transform.eulerAngles = randRotation * Vector3.forward;
 
             float step = halfPI / BulletCount;
             float x, y;
@@ -46,7 +47,7 @@ public class LeoBulletSystem2 : EnemyShooter<EnemyBullet>
 
                 Vector3 offset = halfPI * Vector3.right;
                 float theta = i * -90f / BulletCount;
-                Vector3 pos = -transform.up.RotateVectorBy(theta) + offset;
+                Vector3 pos = Vector3.up.RotateVectorBy(theta) + offset;
 
                 SpawnBullets(pos);
             }
@@ -62,13 +63,14 @@ public class LeoBulletSystem2 : EnemyShooter<EnemyBullet>
                 SpawnBullets(pos);
             }
 
-            yield return WaitForSeconds(2.5f);
+            yield return WaitForSeconds(5f);
+            yield return ownerShip.MoveToRandomPosition(1f);
         }
     }
 
     void SpawnBullets(Vector3 pos)
     {
-        float z = pos.GetRotationDifference(Vector3.zero);
+        float z = pos.RotateVectorBy(transform.eulerAngles.z).GetRotationDifference(Vector3.zero);
 
         for (int i = 0; i < BranchCount; i++)
         {
