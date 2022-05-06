@@ -6,6 +6,7 @@ public class LeoBulletSystem21 : EnemyBulletSubsystem<EnemyBullet>
 {
     const int BranchCount = 16;
     const float BranchSpacing = 360f / BranchCount;
+    public const float BulletSpeed = 4f;
 
     protected override float ShootingCooldown => 5f;
 
@@ -15,15 +16,19 @@ public class LeoBulletSystem21 : EnemyBulletSubsystem<EnemyBullet>
         {
             yield return WaitForSeconds(1f);
 
-            float randOffset = Random.Range(0f, BranchSpacing * 0.5f);
+            float theta = transform.eulerAngles.z;
 
             for (int i = 0; i < BranchCount; i++)
             {
-                float z = i * BranchSpacing + randOffset;
-                SpawnProjectile(2, z, Vector3.zero).Fire();
+                float z = i * BranchSpacing;
+
+                var bullet = SpawnProjectile(2, theta, Vector3.zero);
+                bullet.moveDirection *= (i + BranchCount / 4 - 2) / (BranchCount / 2 - 1) % 2 * 2 - 1;
+                bullet.MoveSpeed = Mathf.Sin(z * Mathf.Deg2Rad) * BulletSpeed;
+                bullet.Fire();
             }
 
-            yield return WaitForSeconds(4f);
+            enabled = false;
         }
     }
 }
