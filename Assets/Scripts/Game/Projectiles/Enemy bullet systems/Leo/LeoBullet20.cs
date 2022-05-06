@@ -1,12 +1,11 @@
 using System.Collections;
-using UnityEngine;
 
 public class LeoBullet20 : ScriptableEnemyBullet<LeoBulletSystem2>
 {
-    const int BulletCount = 3;
+    const int BulletCount = 6;
     const int BulletSpacing = 360 / BulletCount;
 
-    protected override float MaxLifetime => 3f;
+    protected override float MaxLifetime => 2.5f;
 
     protected override IEnumerator Move()
     {
@@ -16,11 +15,11 @@ public class LeoBullet20 : ScriptableEnemyBullet<LeoBulletSystem2>
 
     public override void Destroy()
     {
-        float randOffset = Random.Range(0f, 60f);
+        float theta = transform.eulerAngles.z;
 
         for (int i = 0; i < BulletCount; i++)
         {
-            float z = (i * BulletSpacing) + randOffset;
+            float z = theta + (i * BulletSpacing);
             SpawnBullet(1, z, transform.position, false).Fire();
         }
 

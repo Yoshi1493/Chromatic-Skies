@@ -4,10 +4,10 @@ using UnityEngine;
 public class LeoBullet22 : ScriptableEnemyBullet<LeoBulletSystem21>
 {
     const float EndSpeed = LeoBulletSystem21.BulletSpeed;
-    const int BulletCount = 8;
-    const float BulletSpacing = 8f;
+    const int BulletCount = 12;
+    const float BulletSpacing = 12f;
 
-    protected override float MaxLifetime => 2.5f;
+    protected override float MaxLifetime => 3f;
 
     protected override IEnumerator Move()
     {
