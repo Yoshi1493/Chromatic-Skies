@@ -1,10 +1,11 @@
 using System.Collections;
-using UnityEngine;
 
 public class LeoBullet32 : EnemyBullet
 {
+    protected override float MaxLifetime => 15f;
+
     protected override IEnumerator Move()
     {
-        yield return null;
+        yield return this.LerpSpeed(0f, 1.5f, 1f);
     }
 }
