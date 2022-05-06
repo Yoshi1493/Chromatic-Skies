@@ -2,7 +2,7 @@ using System.Collections;
 
 public class LeoBullet32 : EnemyBullet
 {
-    protected override float MaxLifetime => 15f;
+    protected override float MaxLifetime => 12f;
 
     protected override IEnumerator Move()
     {
