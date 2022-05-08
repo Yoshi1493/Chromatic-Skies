@@ -11,7 +11,7 @@ public class LibraBulletSystem21 : EnemyBulletSubsystem<Laser>
     const float MinLaserRotation = 5f;
     const float MaxLaserRotation = 30f;
 
-    List<float> laserPositions = new List<float>();
+    List<Vector2> spawnPositions = new List<Vector2>();
 
     protected override float ShootingCooldown => 0.04f;
 
@@ -21,33 +21,19 @@ public class LibraBulletSystem21 : EnemyBulletSubsystem<Laser>
         {
             yield return WaitForSeconds(2f);
 
-            float x = -camHalfWidth;
+            spawnPositions = GetRandomPointsAlongBounds(new Vector2(-camHalfWidth, camHalfHeight), new Vector2(camHalfWidth, camHalfHeight));
 
-            while (x < camHalfWidth)
-            {
-                x += Random.Range(MinLaserSpacing, MaxLaserSpacing);
-                laserPositions.Add(x);
-            }
-
-            for (int i = 0; i < laserPositions.Count - 1; i++)
-            {
-                int r = Random.Range(i, laserPositions.Count);
-                var temp = laserPositions[i];
-                laserPositions[i] = laserPositions[r];
-                laserPositions[r] = temp;
-            }
-
-            for (int i = 0; i < laserPositions.Count; i++)
+            for (int i = 0; i < spawnPositions.Count; i++)
             {
                 float y = camHalfHeight;
                 float z = Random.Range(MinLaserRotation, MaxLaserRotation) * PositiveOrNegativeOne + 180f;
 
-                SpawnProjectile(0, z, new Vector3(laserPositions[i], y), false).Fire(1f);
+                SpawnProjectile(0, z, spawnPositions[i], false).Fire(1f);
 
                 yield return WaitForSeconds(ShootingCooldown);
             }
 
-            laserPositions.Clear();
+            spawnPositions.Clear();
 
             yield return WaitForSeconds(2f);
         }
