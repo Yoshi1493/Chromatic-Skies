@@ -1,19 +1,20 @@
 using System.Collections;
 using UnityEngine;
 
-public abstract class ScriptableEnemyBullet<T> : EnemyBullet
-    where T : EnemyShooter<EnemyBullet>
+public abstract class ScriptableEnemyBullet<TShooter, TProjectile> : EnemyBullet
+    where TShooter : EnemyShooter<TProjectile>
+    where TProjectile : Projectile
 {
-    protected T enemyShooter;
+    protected TShooter enemyShooter;
     protected abstract override IEnumerator Move();
 
     protected override void Awake()
     {
         base.Awake();
-        enemyShooter = FindObjectOfType<T>();
+        enemyShooter = FindObjectOfType<TShooter>();
     }
 
-    protected EnemyBullet SpawnBullet(int projectileID, float spawnRotZ, Vector3 spawnPos, bool asLocalPosition = true)
+    protected TProjectile SpawnBullet(int projectileID, float spawnRotZ, Vector3 spawnPos, bool asLocalPosition = true)
     {
          return enemyShooter.SpawnProjectile(projectileID, spawnRotZ, spawnPos, asLocalPosition);
     }

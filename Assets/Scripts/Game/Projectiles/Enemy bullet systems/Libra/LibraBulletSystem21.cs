@@ -25,9 +25,7 @@ public class LibraBulletSystem21 : EnemyBulletSubsystem<Laser>
 
             for (int i = 0; i < spawnPositions.Count; i++)
             {
-                float y = camHalfHeight;
                 float z = Random.Range(MinLaserRotation, MaxLaserRotation) * PositiveOrNegativeOne + 180f;
-
                 SpawnProjectile(0, z, spawnPositions[i], false).Fire(1f);
 
                 yield return WaitForSeconds(ShootingCooldown);

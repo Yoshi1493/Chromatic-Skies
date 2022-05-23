@@ -1,6 +1,6 @@
 using System.Collections;
 
-public class LeoBullet20 : ScriptableEnemyBullet<LeoBulletSystem2>
+public class LeoBullet20 : ScriptableEnemyBullet<LeoBulletSystem2, EnemyBullet>
 {
     const int BulletCount = 6;
     const int BulletSpacing = 360 / BulletCount;

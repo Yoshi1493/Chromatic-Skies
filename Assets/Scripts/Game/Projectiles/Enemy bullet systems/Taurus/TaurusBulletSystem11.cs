@@ -7,8 +7,9 @@ using static MathHelper;
 
 public class TaurusBulletSystem11 : EnemyBulletSubsystem<EnemyBullet>
 {
-    const int BulletCount = 256;
-    const float minSpacing = 2.25f;
+    const int BulletCount = 150;
+    public const float BulletSpacing = 0.75f;
+    const float minSpacing = 1.44f;
 
     List<Vector2> spawnPositions = new List<Vector2>(BulletCount);
 
@@ -16,25 +17,28 @@ public class TaurusBulletSystem11 : EnemyBulletSubsystem<EnemyBullet>
 
     protected override IEnumerator Shoot()
     {
-        yield return WaitForSeconds(2f);
+        yield return WaitForSeconds(1f);
 
         spawnPositions = GetRandomPointsWithinBounds(new Vector2(-camHalfWidth, -camHalfHeight), new Vector2(camHalfWidth, camHalfHeight), BulletCount);
 
         for (int i = 0; i < spawnPositions.Count; i++)
         {
-            float x = RoundToNearestMultipleOf(spawnPositions[i].x, 0.5f);
-            float y = RoundToNearestMultipleOf(spawnPositions[i].y, 0.5f);
+            float x = RoundToNearestMultipleOf(spawnPositions[i].x, BulletSpacing);
+            float y = RoundToNearestMultipleOf(spawnPositions[i].y, BulletSpacing);
+            Vector3 offset = BulletSpacing * 0.5f * Vector3.one;
 
-            spawnPositions[i] = new Vector2(x, y);
+            Vector3 spawnPos = new Vector3(x, y) - offset;
+            spawnPositions[i] = spawnPos;
         }
 
         //cull spawn positions
         spawnPositions = spawnPositions.Where(p => !IsTooClose(p)).Distinct().ToList();
-        spawnPositions.ForEach(p => print(p));
 
         for (int i = 0; i < spawnPositions.Count; i++)
         {
-            SpawnProjectile(1, 45f, spawnPositions[i], false);
+            SpawnProjectile(1, 45f, spawnPositions[i], false).Fire();
         }
+
+        enabled = false;
     }
 }

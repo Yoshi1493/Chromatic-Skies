@@ -68,10 +68,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 6059f9293aa347b44a73714bea5bfcd3, type: 2}
     - target: {fileID: 9211992883209170045, guid: 4e06125b108514547b6fc9b6887da3eb, type: 3}
-      propertyPath: m_SortingOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9211992883209170045, guid: 4e06125b108514547b6fc9b6887da3eb, type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 0
       objectReference: {fileID: 0}
@@ -83,6 +79,22 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3140064405051798717, guid: 4e06125b108514547b6fc9b6887da3eb, type: 3}
   m_PrefabInstance: {fileID: 4489721518377228893}
   m_PrefabAsset: {fileID: 0}
+--- !u!58 &8000373871332464470
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1575430968703495904}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.32
 --- !u!114 &1707300551592453404
 MonoBehaviour:
   m_ObjectHideFlags: 0

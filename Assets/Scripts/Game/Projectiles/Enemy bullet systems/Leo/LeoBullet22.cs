@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class LeoBullet22 : ScriptableEnemyBullet<LeoBulletSystem21>
+public class LeoBullet22 : ScriptableEnemyBullet<LeoBulletSystem21, EnemyBullet>
 {
     const float EndSpeed = LeoBulletSystem21.BulletSpeed;
     const int BulletCount = 12;

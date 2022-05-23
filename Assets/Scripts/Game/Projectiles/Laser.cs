@@ -61,7 +61,7 @@ public abstract class Laser : Projectile
     {
         Vector2 startSize = originalSize;
         Vector2 endSize = startSize;
-        startSize.x = 0.1f;
+        startSize.x = 0.25f * originalSize.x;
 
         //display laser warning
         spriteRenderer.size = startSize;

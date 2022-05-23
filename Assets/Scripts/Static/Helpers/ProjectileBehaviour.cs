@@ -5,6 +5,8 @@ using static MathHelper;
 
 public static class ProjectileBehaviour
 {
+    static AnimationCurve EaseInOutCurve = AnimationCurve.EaseInOut(0f, 0f, 1f, 1f);
+
     /// <summary>
     /// lerps <p.MoveSpeed> from <startSpeed> to <endSpeed>, in <lerpTime> seconds.
     /// </summary>
@@ -64,7 +66,7 @@ public static class ProjectileBehaviour
 
         if (delay > 0f) yield return WaitForSeconds(delay);
 
-        float currentTime = 0f; 
+        float currentTime = 0f;
 
         while (currentTime < rotateDuration)
         {
@@ -219,13 +221,14 @@ public static class ProjectileBehaviour
 
         float currentTime = 0f;
         Vector3 startDirection = p.moveDirection;
+        Vector3 startPosition = p.transform.position;
+        Vector3 endDirection = target - startPosition;
 
         while (currentTime < turnTime)
         {
-            float theta = startDirection.GetRotationDifference(target);
-            float actualTheta = Mathf.Lerp(0f, theta, currentTime / turnTime);
+            float lerpProgress = EaseInOutCurve.Evaluate(currentTime / turnTime);
+            Vector3 newDirection = Vector3.Slerp(startDirection, endDirection, lerpProgress);
 
-            Vector3 newDirection = startDirection.RotateVectorBy(actualTheta).normalized;
             p.moveDirection = newDirection;
 
             currentTime += Time.deltaTime;
