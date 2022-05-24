@@ -12,6 +12,8 @@ public class TaurusBulletSystem1 : EnemyShooter<EnemyBullet>
 
     protected override IEnumerator Shoot()
     {
+        yield return base.Shoot();
+
         SetSubsystemEnabled(2);
 
         while (enabled)
