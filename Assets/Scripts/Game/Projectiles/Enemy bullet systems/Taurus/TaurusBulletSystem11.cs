@@ -9,11 +9,11 @@ public class TaurusBulletSystem11 : EnemyBulletSubsystem<EnemyBullet>
 {
     const int BulletCount = 150;
     public const float BulletSpacing = 0.75f;
-    const float minSpacing = 1.44f;
+    const float MinDistanceFromShip = BulletSpacing;
 
     List<Vector2> spawnPositions = new List<Vector2>(BulletCount);
 
-    bool IsTooClose(Vector3 p) => (ownerShip.transform.position - p).sqrMagnitude < minSpacing || (PlayerPosition - p).sqrMagnitude < minSpacing;
+    bool IsTooClose(Vector3 p) => (ownerShip.transform.position - p).sqrMagnitude < MinDistanceFromShip || (PlayerPosition - p).sqrMagnitude < MinDistanceFromShip;
 
     protected override IEnumerator Shoot()
     {
