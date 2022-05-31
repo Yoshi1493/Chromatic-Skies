@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6b79cd0b20b26ac4090b241d65679e69, type: 3}
-  m_Name: '[Taurus] Bullet 2_0_0'
+  m_Name: '[Taurus] Bullet 2_0'
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: 9b86635f8b1fb5941bb865b3a22f5cf0, type: 3}
+  sprite: {fileID: 21300000, guid: 955788fd829b613429b1f8461721ea15, type: 3}
   useSolidColour: 1
   colour: {r: 0.25, g: 1, b: 0, a: 1}
   gradient:

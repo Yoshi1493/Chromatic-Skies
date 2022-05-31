@@ -96,6 +96,54 @@ MonoBehaviour:
   <ModuleName>k__BackingField: {fileID: 0}
   enemyProjectiles:
   - {fileID: -122344005121781873, guid: 6632cfe8fb5d7114d8ebf99fee202248, type: 3}
+--- !u!1 &4134586465105956505
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9087805713487352458}
+  - component: {fileID: 1185495944532749787}
+  m_Layer: 7
+  m_Name: 'Bullet Subsystem 1 '
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9087805713487352458
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4134586465105956505}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2362189854743476344}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1185495944532749787
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4134586465105956505}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07190f2f078aa9e4ea0d4b53696207c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <AttackName>k__BackingField: {fileID: 0}
+  <ModuleName>k__BackingField: {fileID: 0}
+  enemyProjectiles:
+  - {fileID: -5229903673143780512, guid: adaa1c9fcc4d6a54698d028a873091aa, type: 3}
 --- !u!1 &4814655708828392414
 GameObject:
   m_ObjectHideFlags: 0
@@ -278,6 +326,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5480852629978713163, guid: d93cb44e21569f545b76560b29579f98, type: 3}
   m_PrefabInstance: {fileID: 6759093168088370692}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &2362189854743476344 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 9008659700516484732, guid: d93cb44e21569f545b76560b29579f98, type: 3}
+  m_PrefabInstance: {fileID: 6759093168088370692}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2558884426390124806 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 9101744854621124354, guid: d93cb44e21569f545b76560b29579f98, type: 3}
@@ -319,8 +372,7 @@ MonoBehaviour:
   <AttackName>k__BackingField: {fileID: 11400000, guid: b5112dbce247fc141ac8555819076d34, type: 2}
   <ModuleName>k__BackingField: {fileID: 11400000, guid: 974e300411ffd2b468cdaa3b742901d1, type: 2}
   enemyProjectiles:
-  - {fileID: -7147441720493208734, guid: adaa1c9fcc4d6a54698d028a873091aa, type: 3}
-  - {fileID: -7147441720493208734, guid: adaa1c9fcc4d6a54698d028a873091aa, type: 3}
+  - {fileID: -7147441720493208734, guid: c13f0889068d803448e3991d2cd7110f, type: 3}
 --- !u!1 &4079918356797303241 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7301416149945870285, guid: d93cb44e21569f545b76560b29579f98, type: 3}
