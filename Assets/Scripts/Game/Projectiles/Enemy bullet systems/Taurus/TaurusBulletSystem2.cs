@@ -9,12 +9,14 @@ public class TaurusBulletSystem2 : EnemyShooter<EnemyBullet>
     const int BulletCount = 2;
     const float BulletSpacing = 360f / BulletCount;
 
-    protected override float ShootingCooldown => 0.05f;
+    protected override float ShootingCooldown => 0.08f;
 
     protected override IEnumerator Shoot()
     {
         yield return base.Shoot();
+
         SetSubsystemEnabled(1);
+        StartCoroutine(Move());
 
         while (enabled)
         {
@@ -31,5 +33,14 @@ public class TaurusBulletSystem2 : EnemyShooter<EnemyBullet>
             }
         }
 
+    }
+
+    IEnumerator Move()
+    {
+        while (enabled)
+        {
+            yield return WaitForSeconds(2.5f);
+            yield return ownerShip.MoveToRandomPosition(1f, 1f, 4f);
+        }
     }
 }
