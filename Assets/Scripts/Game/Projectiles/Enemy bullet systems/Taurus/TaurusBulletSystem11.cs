@@ -7,14 +7,11 @@ using static MathHelper;
 
 public class TaurusBulletSystem11 : EnemyBulletSubsystem<EnemyBullet>
 {
-    const int BulletCount = 150;
-    public const float BulletSpacing = 1f;
+    const int BulletCount = 120;
+    public const float BulletSpacing = 0.8f;
     const float MinDistanceFromShip = BulletSpacing;
 
     List<Vector2> spawnPositions = new(BulletCount);
-    List<EnemyBullet> bullets = new(BulletCount);
-
-    protected override float ShootingCooldown => 0.02f;
 
     bool IsTooClose(Vector3 p) => (ownerShip.transform.position - p).sqrMagnitude < MinDistanceFromShip || (PlayerPosition - p).sqrMagnitude < MinDistanceFromShip;
 
@@ -39,14 +36,8 @@ public class TaurusBulletSystem11 : EnemyBulletSubsystem<EnemyBullet>
 
         for (int i = 0; i < spawnPositions.Count; i++)
         {
-            var bullet = SpawnProjectile(1, 45f, spawnPositions[i], false);
-            bullets.Add(bullet);
-
-            yield return WaitForSeconds(ShootingCooldown);
+            SpawnProjectile(1, 45f, spawnPositions[i], false).Fire();
         }
-
-        bullets.ForEach(b => b.Fire());
-        bullets.Clear();
 
         enabled = false;
     }

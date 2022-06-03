@@ -111,3 +111,6 @@ MonoBehaviour:
   moveDirection: {x: 0, y: 0, z: 0}
   projectileData: {fileID: 11400000, guid: e5c9e460f4104ad41b5f7225d1a51075, type: 2}
   moveSpeed: 0
+  enemyBulletLayer:
+    serializedVersion: 2
+    m_Bits: 512

@@ -5,6 +5,7 @@ using static CoroutineHelper;
 
 public class TaurusBullet11 : ScriptableEnemyBullet<TaurusBulletSystem12, Laser>
 {
+    [SerializeField] LayerMask enemyBulletLayer;
     protected override float MaxLifetime => 8f;
 
     protected override IEnumerator Move()
@@ -19,12 +20,12 @@ public class TaurusBullet11 : ScriptableEnemyBullet<TaurusBulletSystem12, Laser>
     {
         Vector3 rayOrigin = transform.position;
         float rayDistance = TaurusBulletSystem11.BulletSpacing;
-        int layerMask = 1 << LayerMask.NameToLayer("Enemy bullet");
+        int layerMask = enemyBulletLayer.value;
 
-        var hits = Array.FindAll(Physics2D.OverlapCircleAll(rayOrigin, rayDistance, layerMask), i =>
-        (i.transform.position.x == transform.position.x ||
-        i.transform.position.y == transform.position.y) &&
-        i.transform.position != transform.position);
+        var hits = Array.FindAll(Physics2D.OverlapCircleAll(rayOrigin, rayDistance, layerMask), i => (
+            i.transform.position.x == transform.position.x ||
+            i.transform.position.y == transform.position.y) &&
+            i.transform.position != transform.position);
 
         for (int i = 0; i < hits.Length; i++)
         {
