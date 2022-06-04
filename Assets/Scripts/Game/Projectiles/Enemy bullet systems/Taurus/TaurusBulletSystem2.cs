@@ -1,5 +1,4 @@
 using System.Collections;
-using UnityEngine;
 using static CoroutineHelper;
 
 public class TaurusBulletSystem2 : EnemyShooter<EnemyBullet>
@@ -9,7 +8,7 @@ public class TaurusBulletSystem2 : EnemyShooter<EnemyBullet>
     const int BulletCount = 2;
     const float BulletSpacing = 360f / BulletCount;
 
-    protected override float ShootingCooldown => 0.08f;
+    protected override float ShootingCooldown => 0.12f;
 
     protected override IEnumerator Shoot()
     {
