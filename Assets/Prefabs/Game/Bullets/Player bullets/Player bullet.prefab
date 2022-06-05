@@ -1,22 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &3896970343590141465
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4295436845269932089}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 63f7e7433bbce524c925d8578f5628f7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  transform: {fileID: 0}
-  moveDirection: {x: 0, y: 0, z: 0}
-  projectileData: {fileID: 0}
-  moveSpeed: 20
-  vfxDestroy: {fileID: 0}
 --- !u!1001 &7233728185905104890
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24,6 +7,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 845275059315836675, guid: 3d84f4836dc1d5e4ba2123950d014abc, type: 3}
+      propertyPath: m_SortingOrder
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 6917292052819124163, guid: 3d84f4836dc1d5e4ba2123950d014abc, type: 3}
       propertyPath: m_Name
       value: Player bullet
@@ -83,3 +70,19 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6917292052819124163, guid: 3d84f4836dc1d5e4ba2123950d014abc, type: 3}
   m_PrefabInstance: {fileID: 7233728185905104890}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &3896970343590141465
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4295436845269932089}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63f7e7433bbce524c925d8578f5628f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  transform: {fileID: 0}
+  moveDirection: {x: 0, y: 0, z: 0}
+  projectileData: {fileID: 0}
+  moveSpeed: 20
