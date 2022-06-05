@@ -1,14 +1,14 @@
 using System.Collections;
-using UnityEngine;
 using static CoroutineHelper;
 
-public class TaurusBulletSystem4 : EnemyShooter<Laser>
+public class TaurusBulletSystem4 : EnemyShooter<EnemyBullet>
 {
-    const int LaserCount = 21;
-    const float LaserSpacing = 1f;
-    const float MaxRotation = 20f;
+    const int WaveCount = 24;
+    const float WaveSpacing = 360f / WaveCount;
+    const int BranchCount = 12;
+    const float BranchSpacing = 360f / BranchCount;
 
-    protected override float ShootingCooldown => 0.04f;
+    protected override float ShootingCooldown => 0.08f;
 
     protected override IEnumerator Shoot()
     {
@@ -16,22 +16,31 @@ public class TaurusBulletSystem4 : EnemyShooter<Laser>
 
         while (enabled)
         {
-            transform.localEulerAngles = Random.Range(-MaxRotation, MaxRotation) * Vector3.forward;
-            float z = transform.eulerAngles.z;
-            float sinZ = Mathf.Sin(transform.localEulerAngles.z * Mathf.Deg2Rad);
+            yield return WaitForSeconds(1f);
 
-            for (int i = 0; i < LaserCount; i++)
+            for (int i = 0; i < WaveCount; i++)
             {
-                float offset = ((LaserCount - 1) * -0.5f) + i;
-                float x = offset * LaserSpacing;
-                float y = offset * sinZ;
-                Vector3 spawnPos = new(x, y);
+                float s = (WaveCount * 2 - i) * 0.1f;
 
-                SpawnProjectile(0, z, spawnPos).Fire();
+                for (int j = 0; j < BranchCount; j++)
+                {
+                    float z = (i * WaveSpacing) + (j * BranchSpacing);                    
+
+                    var bullet = SpawnProjectile(0, z, transform.up.RotateVectorBy(z));
+                    bullet.MoveSpeed = s;
+                    bullet.Fire();
+
+                    bullet = SpawnProjectile(1, -z, transform.up.RotateVectorBy(-z));
+                    bullet.MoveSpeed = s;
+                    bullet.Fire();
+                }
+
                 yield return WaitForSeconds(ShootingCooldown);
             }
 
-            yield return WaitForSeconds(10f);
+            SetSubsystemEnabled(1);
+
+            yield return ownerShip.MoveToRandomPosition(1f, delay: 1f);
         }
     }
 }
