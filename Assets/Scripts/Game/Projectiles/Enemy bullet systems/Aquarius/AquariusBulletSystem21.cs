@@ -7,7 +7,7 @@ public class AquariusBulletSystem21 : EnemyBulletSubsystem<EnemyBullet>
     const int BulletCount = 8;
     const int BulletSpacing = 360 / BulletCount;
 
-    protected override float ShootingCooldown => 5f;
+    protected override float ShootingCooldown => 4f;
 
     protected override IEnumerator Shoot()
     {

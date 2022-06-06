@@ -15,14 +15,14 @@ public class AquariusBulletSystem1 : EnemyShooter<EnemyBullet>
 
         while (enabled)
         {
-            float randOffset = Random.Range(180f, 240f);
+            float r = Random.Range(180f, 240f);
 
             for (int i = 0; i < WaveCount; i++)
             {
-                for (int j = 0; j < BulletCount; j++)
+                for (int ii = 0; ii < BulletCount; ii++)
                 {
-                    float z = (i * WaveSpacing) - (j * BulletSpacing) + randOffset;
-                    float s = (j * -0.2f) + 3f;
+                    float z = (i * WaveSpacing) - (ii * BulletSpacing) + r;
+                    float s = (ii * -0.2f) + 3f;
 
                     var bullet = SpawnProjectile(0, z, Vector3.zero);
                     bullet.GetComponent<EnemyBullet>().MoveSpeed = s;

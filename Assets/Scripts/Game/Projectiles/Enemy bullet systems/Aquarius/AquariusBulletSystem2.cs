@@ -6,13 +6,13 @@ using static MathHelper;
 
 public class AquariusBulletSystem2 : EnemyShooter<EnemyBullet>
 {
+    const int WaveCount = 40;
+    const float WaveSpacing = 0.25f;
+    const float WaveFrequency = 15f;
     const int BranchCount = 8;
-    const int BranchSpacing = 360 / BranchCount;
-    const int BulletCount = 40;
-    const float BulletSpacingMultiplier = 0.4f;
-    const float Frequency = 15f;
+    const float BranchSpacing = 360f / BranchCount;
 
-    List<EnemyBullet> bullets = new List<EnemyBullet>(BranchCount * BulletCount);
+    List<EnemyBullet> bullets = new(WaveCount * BranchCount);
 
     protected override float ShootingCooldown => 0.05f;
 
@@ -23,18 +23,19 @@ public class AquariusBulletSystem2 : EnemyShooter<EnemyBullet>
 
         while (enabled)
         {
-            float randDirection = PositiveOrNegativeOne;
+            float r = PositiveOrNegativeOne;
 
-            for (int i = 1; i <= BulletCount; i++)
+            for (int i = 1; i <= WaveCount; i++)
             {
-                for (int j = 0; j < BranchCount; j++)
+                for (int ii = 0; ii < BranchCount; ii++)
                 {
-                    float x = Mathf.Sin(i * Frequency * randDirection * Mathf.Deg2Rad);
-                    float y = i * BulletSpacingMultiplier;
+                    float z = ii * BranchSpacing;
 
-                    float z = j * BranchSpacing;
+                    float x = Mathf.Sin(i * WaveFrequency * r * Mathf.Deg2Rad);
+                    float y = i * WaveSpacing;
+                    Vector3 pos = new Vector3(x, y).RotateVectorBy(z);
 
-                    var bullet = SpawnProjectile(0, z + (x * BranchSpacing), new Vector3(x, y).RotateVectorBy(z));
+                    var bullet = SpawnProjectile(0, z + (x * BranchSpacing), pos);
                     bullets.Add(bullet);
                 }
 

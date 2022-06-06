@@ -8,6 +8,5 @@ public class AquariusBullet21 : EnemyBullet
     {
         yield return this.LerpSpeed(5f, 0f, 0.5f);
         StartCoroutine(this.LerpSpeed(0f, 3f, 2f));
-        StartCoroutine(this.RotateBy(180f, 5f));
     }
 }

@@ -9,21 +9,21 @@ public class AquariusBulletSystem11 : EnemyBulletSubsystem<EnemyBullet>
 
     const int WaveCount = 8;
     const int BulletCount = 18;
-    const int BulletSpacing = 360 / BulletCount;
+    const float BulletSpacing = 360f / BulletCount;
 
-    Stack<EnemyBullet> bullets = new Stack<EnemyBullet>(WaveCount * BulletCount);
+    Stack<EnemyBullet> bullets = new(WaveCount * BulletCount);
 
     protected override float ShootingCooldown => 0.2f;
 
     protected override IEnumerator Shoot()
     {
-        float randOffset = Random.Range(0f, BulletSpacing);
+        float r = Random.Range(0f, BulletSpacing);
 
         for (int i = 0; i < WaveCount; i++)
         {
-            for (int j = 0; j < BulletCount; j++)
+            for (int ii = 0; ii < BulletCount; ii++)
             {
-                float z = (i * WaveCount) + (j * BulletSpacing) + randOffset;
+                float z = (i * WaveCount) + (ii * BulletSpacing) + r;
                 bulletData.colour = bulletData.gradient.Evaluate((float)i / WaveCount);
 
                 var bullet = SpawnProjectile(2, z, Vector3.zero);
@@ -36,7 +36,7 @@ public class AquariusBulletSystem11 : EnemyBulletSubsystem<EnemyBullet>
 
         for (int i = 0; i < WaveCount; i++)
         {
-            for (int j = 0; j < BulletCount; j++)
+            for (int ii = 0; ii < BulletCount; ii++)
             {
                 bullets.Pop().Fire();
             }
