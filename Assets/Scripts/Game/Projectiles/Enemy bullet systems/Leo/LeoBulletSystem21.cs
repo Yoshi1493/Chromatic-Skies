@@ -16,15 +16,16 @@ public class LeoBulletSystem21 : EnemyBulletSubsystem<EnemyBullet>
         {
             yield return WaitForSeconds(1f);
 
-            float theta = transform.eulerAngles.z;
+            float r = transform.eulerAngles.z;
 
             for (int i = 0; i < BranchCount; i++)
             {
                 float z = i * BranchSpacing;
 
-                var bullet = SpawnProjectile(2, theta, Vector3.zero);
+                var bullet = SpawnProjectile(2, r, Vector3.zero);
                 bullet.moveDirection *= (i + BranchCount / 4 - 2) / (BranchCount / 2 - 1) % 2 * 2 - 1;
                 bullet.MoveSpeed = Mathf.Sin(z * Mathf.Deg2Rad) * BulletSpeed;
+
                 bullet.Fire();
             }
 

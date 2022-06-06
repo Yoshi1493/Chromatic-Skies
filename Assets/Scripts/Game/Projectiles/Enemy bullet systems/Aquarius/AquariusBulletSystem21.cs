@@ -15,11 +15,11 @@ public class AquariusBulletSystem21 : EnemyBulletSubsystem<EnemyBullet>
         {
             yield return WaitForSeconds(ShootingCooldown);
 
-            float offset = PlayerPosition.GetRotationDifference(transform.position);
+            float r = PlayerPosition.GetRotationDifference(transform.position);
 
             for (int i = 0; i < BulletCount; i++)
             {
-                float z = (i * BulletSpacing) + offset;
+                float z = (i * BulletSpacing) + r;
                 SpawnProjectile(1, z, Vector3.zero).Fire();
             }
         }
