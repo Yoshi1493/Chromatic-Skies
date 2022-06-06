@@ -10,7 +10,7 @@ public class AriesBulletSystem31 : EnemyBulletSubsystem<EnemyBullet>
     const int OuterBulletCount = 16;
     const float OuterBulletSpacing = 360f / OuterBulletCount;
 
-    List<EnemyBullet> bullets = new List<EnemyBullet>(InnerBulletCount + OuterBulletCount);
+    List<EnemyBullet> bullets = new(InnerBulletCount + OuterBulletCount);
 
     protected override float ShootingCooldown => 0.025f;
 
@@ -26,7 +26,7 @@ public class AriesBulletSystem31 : EnemyBulletSubsystem<EnemyBullet>
             yield return WaitForSeconds(ShootingCooldown);
         }
 
-        yield return WaitForSeconds(ShootingCooldown * 4f);
+        yield return WaitForSeconds(0.1f);
 
         for (int i = 0; i < OuterBulletCount; i++)
         {
@@ -35,6 +35,8 @@ public class AriesBulletSystem31 : EnemyBulletSubsystem<EnemyBullet>
 
             yield return WaitForSeconds(ShootingCooldown);
         }
+
+        yield return WaitForSeconds(0.1f);
 
         bullets.ForEach(b => b.Fire());
         bullets.Clear();

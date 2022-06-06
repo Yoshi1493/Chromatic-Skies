@@ -6,7 +6,7 @@ public class AriesBulletSystem1 : EnemyShooter<EnemyBullet>
 {
     const int WaveCount = 16;
     const int BranchCount = 6;
-    const int BranchSpacing = 360 / BranchCount;
+    const float BranchSpacing = 360f / BranchCount;
     const int BulletCount = 6;
 
     protected override IEnumerator Shoot()
@@ -24,11 +24,11 @@ public class AriesBulletSystem1 : EnemyShooter<EnemyBullet>
                 float alt = ((i % 2) - 0.5f) * 2;
                 float offset = 10f * alt;
 
-                for (int j = 0; j < BranchCount; j++)
+                for (int ii = 0; ii < BranchCount; ii++)
                 {
-                    for (int k = 0; k < BulletCount; k++)
+                    for (int iii = 0; iii < BulletCount; iii++)
                     {
-                        float z = (offset * (j - 1)) + (k * BranchSpacing) + (2.5f * alt);
+                        float z = (offset * (ii - 1)) + (iii * BranchSpacing) + (2.5f * alt);
                         SpawnProjectile(0, z, Vector3.zero).Fire();
                     }
 

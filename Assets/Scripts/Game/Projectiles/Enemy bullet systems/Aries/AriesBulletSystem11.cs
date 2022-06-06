@@ -6,7 +6,7 @@ public class AriesBulletSystem11 : EnemyShooter<EnemyBullet>
 {
     const int WaveCount = 8;
     const int BulletCount = 12;
-    const int BulletSpacing = 360 / BulletCount;
+    const float BulletSpacing = 360f / BulletCount;
 
     protected override float ShootingCooldown => 0.6f;
 
@@ -19,9 +19,9 @@ public class AriesBulletSystem11 : EnemyShooter<EnemyBullet>
             float randOffset = Random.Range(0f, BulletSpacing * 0.5f);
             float theta = PlayerPosition.GetRotationDifference(transform.position);
 
-            for (int j = 0; j < BulletCount; j++)
+            for (int ii = 0; ii < BulletCount; ii++)
             {
-                float z = (j * BulletSpacing) + theta;
+                float z = (ii * BulletSpacing) + theta;
                 SpawnProjectile(1, z, Vector3.zero).Fire();
             }
 

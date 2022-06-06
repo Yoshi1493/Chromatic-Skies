@@ -5,6 +5,11 @@ using static MathHelper;
 
 public class AriesBulletSystem4 : EnemyShooter<EnemyBullet>
 {
+    const int WaveCount = 90;
+    const float WaveSpacing = 4f;
+    const int BranchCount = 5;
+    const float BranchSpacing = 360 / BranchCount;
+
     protected override IEnumerator Shoot()
     {
         yield return base.Shoot();
@@ -17,17 +22,17 @@ public class AriesBulletSystem4 : EnemyShooter<EnemyBullet>
 
             int randDirection = PositiveOrNegativeOne;
             float n = 0f;
-            float t = Random.Range(0f, 90f);
+            float o = Random.Range(0f, 90f);
 
-            for (int i = 0; i < 360; i += 4)
+            for (int i = 1; i < WaveCount; i++)
             {
-                for (int j = 0; j < 5; j++)
+                for (int ii = 0; ii < BranchCount; ii++)
                 {
-                    float z = j * 72f + n + t;
+                    float z = ii * BranchSpacing + n + o;
                     SpawnProjectile(0, z, Vector2.zero).Fire();
                 }
 
-                n += i * randDirection;
+                n += i * WaveSpacing * randDirection;
                 yield return WaitForSeconds(ShootingCooldown);
             }
 

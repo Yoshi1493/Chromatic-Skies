@@ -6,7 +6,7 @@ public class AriesBulletSystem2 : EnemyShooter<EnemyBullet>
 {
     const int BulletCount = 111;
     const int BranchCount = 6;
-    const int BranchSpacing = 360 / BranchCount;
+    const float BranchSpacing = 360f / BranchCount;
 
     protected override IEnumerator Shoot()
     {
@@ -17,9 +17,9 @@ public class AriesBulletSystem2 : EnemyShooter<EnemyBullet>
             for (int i = 0; i < BulletCount; i++)
             {
                 float rand = Random.value * 360;
-                for (int j = 0; j < BranchCount; j++)
+                for (int ii = 0; ii < BranchCount; ii++)
                 {
-                    float z = j * BranchSpacing + rand;
+                    float z = ii * BranchSpacing + rand;
                     SpawnProjectile(0, z, Vector2.zero).Fire();
                 }
 
@@ -31,9 +31,9 @@ public class AriesBulletSystem2 : EnemyShooter<EnemyBullet>
 
             for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < 12; j++)
+                for (int ii = 0; ii < 12; ii++)
                 {
-                    float z = j * 30f;
+                    float z = ii * 30f;
 
                     SpawnProjectile(1, z, Vector2.zero).Fire();
                 }
