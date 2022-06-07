@@ -5,11 +5,13 @@ using static CoroutineHelper;
 
 public class VirgoBulletSystem3 : EnemyShooter<EnemyBullet>
 {
-    readonly List<EnemyBullet> bullets = new List<EnemyBullet>();
-
-    readonly float amp = 3f;
+    readonly float amp = 2f;
     readonly int n = 2;
     readonly int d = 7;
+    
+    List<EnemyBullet> bullets = new();
+
+    protected override float ShootingCooldown => 0.01f;
 
     protected override IEnumerator Shoot()
     {
@@ -28,18 +30,10 @@ public class VirgoBulletSystem3 : EnemyShooter<EnemyBullet>
                 Vector3 spawnOffset = transform.right.RotateVectorBy(theta * Mathf.Rad2Deg);
                 float z = spawnOffset.GetRotationDifference(Vector3.zero);
 
-                var b1 = SpawnProjectile(0, z, r * amp * spawnOffset);
-                var b2 = SpawnProjectile(0, z + 180f, -r * amp * spawnOffset);
+                bullets.Add(SpawnProjectile(0, z, r * amp * spawnOffset));
+                bullets.Add(SpawnProjectile(0, z + 180f, -r * amp * spawnOffset));
 
-                //b1.LookAt(transform.position);
-                //b2.LookAt(transform.position);
-                //b1.StartCoroutine(b1.LerpSpeed(-2f, 0f, 0.5f));
-                //b2.StartCoroutine(b2.LerpSpeed(-2f, 0f, 0.5f));
-
-                bullets.Add(b1);
-                bullets.Add(b2);
-
-                yield return WaitForSeconds(ShootingCooldown / 20f);
+                yield return WaitForSeconds(ShootingCooldown);
             }
 
             yield return WaitForSeconds(1f);

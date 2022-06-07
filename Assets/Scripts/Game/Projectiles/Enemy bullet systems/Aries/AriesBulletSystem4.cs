@@ -20,7 +20,7 @@ public class AriesBulletSystem4 : EnemyShooter<EnemyBullet>
         {
             yield return WaitForSeconds(2f);
 
-            int randDirection = PositiveOrNegativeOne;
+            int d = PositiveOrNegativeOne;
             float n = 0f;
             float o = Random.Range(0f, 90f);
 
@@ -32,7 +32,7 @@ public class AriesBulletSystem4 : EnemyShooter<EnemyBullet>
                     SpawnProjectile(0, z, Vector2.zero).Fire();
                 }
 
-                n += i * WaveSpacing * randDirection;
+                n += i * WaveSpacing * d;
                 yield return WaitForSeconds(ShootingCooldown);
             }
 

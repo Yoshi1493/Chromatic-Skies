@@ -4,23 +4,30 @@ using static CoroutineHelper;
 
 public class VirgoBulletSystem2 : EnemyShooter<EnemyBullet>
 {
+    const int WaveCount = 3;
+    const float WaveSpacing = 12f;
+    const int BulletCount = 30;
+    const float BulletSpacing = 360f / BulletCount;
+
+    protected override float ShootingCooldown => 0.6f;
+
     protected override IEnumerator Shoot()
     {
         yield return base.Shoot();
 
         while (enabled)
         {
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < WaveCount; i++)
             {
-                for (int j = 0; j < 30; j++)
+                for (int ii = 0; ii < BulletCount; ii++)
                 {
-                    float z = (j * 12f) + (i * 6f);
+                    float z = (i * WaveSpacing) + (ii * BulletSpacing);
 
                     SpawnProjectile(0, z, Vector2.zero).Fire();
                     SpawnProjectile(1, z, Vector2.zero).Fire();
                 }
 
-                yield return WaitForSeconds(ShootingCooldown * 6f);
+                yield return WaitForSeconds(ShootingCooldown);
             }
 
             SetSubsystemEnabled(1);

@@ -5,9 +5,9 @@ using static CoroutineHelper;
 public class VirgoBulletSystem11 : EnemyBulletSubsystem<EnemyBullet>
 {
     const int WaveCount = 55;
-    const float RotationPerWave = 10f;
-    const int BulletCount = 5;
-    const int BulletSpacing = 360 / BulletCount;
+    const float WaveSpacing = 10f;
+    const int BranchCount = 5;
+    const float BranchSpacing = 360f / BranchCount;
 
     protected override float ShootingCooldown => 0.2f;
 
@@ -17,14 +17,14 @@ public class VirgoBulletSystem11 : EnemyBulletSubsystem<EnemyBullet>
         {
             yield return WaitForSeconds(1f);
 
-            float randStartAngle = Random.Range(-BulletSpacing, BulletSpacing);
+            float r = Random.Range(0f, BranchSpacing);
 
             for (int i = 0; i < WaveCount; i++)
             {
-                for (int j = 0; j < BulletCount; j++)
+                for (int ii = 0; ii < BranchCount; ii++)
                 {
-                    float z = (i * RotationPerWave) + (j * BulletSpacing) + randStartAngle;
-                    SpawnProjectile(1, z, transform.up.RotateVectorBy(z) / 2f).Fire();
+                    float z = -((i * WaveSpacing) + (ii * BranchSpacing)) + r;
+                    SpawnProjectile(1, z, Vector3.zero).Fire();
                 }
 
                 yield return WaitForSeconds(ShootingCooldown);

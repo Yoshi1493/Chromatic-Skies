@@ -23,7 +23,7 @@ public class AquariusBulletSystem2 : EnemyShooter<EnemyBullet>
 
         while (enabled)
         {
-            float r = PositiveOrNegativeOne;
+            float d = PositiveOrNegativeOne;
 
             for (int i = 1; i <= WaveCount; i++)
             {
@@ -31,7 +31,7 @@ public class AquariusBulletSystem2 : EnemyShooter<EnemyBullet>
                 {
                     float z = ii * BranchSpacing;
 
-                    float x = Mathf.Sin(i * WaveFrequency * r * Mathf.Deg2Rad);
+                    float x = Mathf.Sin(i * WaveFrequency * d * Mathf.Deg2Rad);
                     float y = i * WaveSpacing;
                     Vector3 pos = new Vector3(x, y).RotateVectorBy(z);
 

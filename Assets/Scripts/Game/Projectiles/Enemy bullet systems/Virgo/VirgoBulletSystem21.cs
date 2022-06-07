@@ -7,7 +7,7 @@ public class VirgoBulletSystem21 : EnemyBulletSubsystem<EnemyBullet>
 {
     [SerializeField] ProjectileObject bulletData;
 
-    readonly Stack<EnemyBullet> bullets = new Stack<EnemyBullet>(84);
+    readonly Stack<EnemyBullet> bullets = new(84);
 
     readonly float a = 0.7f;
     readonly float b = 0.3f;
@@ -16,7 +16,7 @@ public class VirgoBulletSystem21 : EnemyBulletSubsystem<EnemyBullet>
     {
         transform.localEulerAngles = new Vector3(0f, 0f, Random.Range(-90f, 90f));
 
-        for (int h = 0; h < 4; h++)
+        for (int h = 0; h < 1; h++)
         {
             transform.Rotate(0f, 0f, 45f);
 

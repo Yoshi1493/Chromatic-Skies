@@ -4,6 +4,8 @@ using static CoroutineHelper;
 
 public class VirgoBulletSystem41 : EnemyShooter<EnemyBullet>
 {
+    protected override float ShootingCooldown => 0.05f;
+
     protected override IEnumerator Shoot()
     {
         while (enabled)
@@ -13,7 +15,7 @@ public class VirgoBulletSystem41 : EnemyShooter<EnemyBullet>
                 float z = i * Mathf.Rad2Deg;
                 SpawnProjectile(1, z, (i + 1) * 0.1f * transform.up.RotateVectorBy(z)).Fire();
 
-                yield return WaitForSeconds(ShootingCooldown / 2f);
+                yield return WaitForSeconds(ShootingCooldown);
             }
 
             yield return WaitForSeconds(4.4f);
@@ -23,7 +25,7 @@ public class VirgoBulletSystem41 : EnemyShooter<EnemyBullet>
                 float z = i * -Mathf.Rad2Deg;
                 SpawnProjectile(1, z, (i + 1) * 0.1f * transform.up.RotateVectorBy(z)).Fire();
 
-                yield return WaitForSeconds(ShootingCooldown / 2f);
+                yield return WaitForSeconds(ShootingCooldown);
             }
 
             yield return WaitForSeconds(4.4f);
