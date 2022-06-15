@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b79cd0b20b26ac4090b241d65679e69, type: 3}
   m_Name: '[Virgo] Bullet 4_1'
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: aff5ff3003a41f24d892e26e534d2c72, type: 3}
-  useSolidColour: 0
-  colour: {r: 0, g: 0, b: 0, a: 0}
+  sprite: {fileID: 21300000, guid: 9c44a70d88a58084b91108bd8d02a677, type: 3}
+  useSolidColour: 1
+  colour: {r: 0.09, g: 0.9, b: 0.2925, a: 1}
   gradient:
     serializedVersion: 2
-    key0: {r: 0.09000002, g: 0.9, b: 0.36000013, a: 1}
-    key1: {r: 0.1333334, g: 0.8, b: 0, a: 1}
+    key0: {r: 1, g: 1, b: 1, a: 1}
+    key1: {r: 1, g: 1, b: 1, a: 1}
     key2: {r: 1, g: 0.95866144, b: 0.75, a: 0}
     key3: {r: 0, g: 0, b: 0, a: 0}
     key4: {r: 0, g: 0, b: 0, a: 0}

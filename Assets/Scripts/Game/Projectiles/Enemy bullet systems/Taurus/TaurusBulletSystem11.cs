@@ -11,9 +11,7 @@ public class TaurusBulletSystem11 : EnemyBulletSubsystem<EnemyBullet>
     public const float BulletSpacing = 0.8f;
     const float MinDistanceFromShip = BulletSpacing;
 
-    List<Vector2> spawnPositions = new(BulletCount);
-
-    bool IsTooClose(Vector3 p) => (ownerShip.transform.position - p).sqrMagnitude < MinDistanceFromShip || (PlayerPosition - p).sqrMagnitude < MinDistanceFromShip;
+    List<Vector3> spawnPositions = new(BulletCount);
 
     protected override IEnumerator Shoot()
     {
@@ -32,7 +30,7 @@ public class TaurusBulletSystem11 : EnemyBulletSubsystem<EnemyBullet>
         }
 
         //cull spawn positions
-        spawnPositions = spawnPositions.Where(p => !IsTooClose(p)).Distinct().ToList();
+        spawnPositions = spawnPositions.Where(p => !p.IsTooClose(PlayerPosition, MinDistanceFromShip)).Distinct().ToList();
 
         for (int i = 0; i < spawnPositions.Count; i++)
         {

@@ -65,6 +65,14 @@ public static class MathHelper
         v.y = (Mathf.Sin(theta_r) * _v.x) + (Mathf.Cos(theta_r) * _v.y);
     }
 
+    /// <summary>
+    /// returns true if <v> and <pos> are less than <dist> units apart
+    /// </summary>
+    public static bool IsTooClose(this Vector3 v, Vector3 pos, float minDistance = 1f)
+    {
+        return (pos - v).sqrMagnitude < minDistance;
+    }
+
     #endregion
 
     #region Random
@@ -108,9 +116,9 @@ public static class MathHelper
         return points;
     }
 
-    public static List<Vector2> GetRandomPointsWithinBounds(Vector2 minBoundary, Vector2 maxBoundary, int pointCount)
+    public static List<Vector3> GetRandomPointsWithinBounds(Vector2 minBoundary, Vector2 maxBoundary, int pointCount)
     {
-        List<Vector2> points = new(pointCount);
+        List<Vector3> points = new(pointCount);
         float x, y;
 
         for (int i = 0; i < pointCount; i++)
@@ -118,7 +126,7 @@ public static class MathHelper
             x = Random.Range(minBoundary.x, maxBoundary.x);
             y = Random.Range(minBoundary.y, maxBoundary.y);
 
-            points.Add(new Vector2(x, y));
+            points.Add(new Vector3(x, y));
         }
 
         return points;

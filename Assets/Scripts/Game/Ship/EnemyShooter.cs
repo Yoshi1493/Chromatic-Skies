@@ -38,12 +38,15 @@ public abstract class EnemyShooter<TProjectile> : Shooter<TProjectile>, IEnemyAt
     {
         //subscribe actions
         ownerShip.LoseLifeAction += OnLoseLife;
-        playerShip = FindObjectOfType<Player>();
         playerShip.LoseLifeAction += OnPlayerLoseLife;
     }
 
     protected virtual void OnEnable()
     {
+        //find player
+        if (playerShip == null)
+            playerShip = FindObjectOfType<Player>();
+
         //update object pool
         GenericObjectPool<TProjectile>.Instance.UpdatePoolableObjects(enemyProjectiles);
 

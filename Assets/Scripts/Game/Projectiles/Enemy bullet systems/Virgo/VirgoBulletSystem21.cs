@@ -7,7 +7,7 @@ public class VirgoBulletSystem21 : EnemyBulletSubsystem<EnemyBullet>
 {
     [SerializeField] ProjectileObject bulletData;
 
-    readonly Stack<EnemyBullet> bullets = new(84);
+    Stack<EnemyBullet> bullets = new(84);
 
     readonly float a = 0.7f;
     readonly float b = 0.3f;
