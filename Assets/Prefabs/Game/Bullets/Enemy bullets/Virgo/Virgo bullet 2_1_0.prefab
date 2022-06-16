@@ -1,22 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-3968087173148166216
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6982924580203628185}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe928b9f4b21de6488c2be9543950ed2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  transform: {fileID: 0}
-  moveDirection: {x: 0, y: 0, z: 0}
-  projectileData: {fileID: 11400000, guid: 41f723cbadf355c44a34bbfe92ffbae5, type: 2}
-  moveSpeed: 0
-  rotatesClockwise: 1
 --- !u!1001 &5439199463603466788
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -70,7 +53,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3140064405051798717, guid: 4e06125b108514547b6fc9b6887da3eb, type: 3}
       propertyPath: m_Name
-      value: Virgo bullet 2
+      value: Virgo bullet 2_1_0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4e06125b108514547b6fc9b6887da3eb, type: 3}
@@ -79,3 +62,20 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3140064405051798717, guid: 4e06125b108514547b6fc9b6887da3eb, type: 3}
   m_PrefabInstance: {fileID: 5439199463603466788}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &3825052501702057207
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6982924580203628185}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d85286946ffce504c8a5cd73fa6be205, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  transform: {fileID: 0}
+  moveDirection: {x: 0, y: 0, z: 0}
+  projectileData: {fileID: 11400000, guid: 41f723cbadf355c44a34bbfe92ffbae5, type: 2}
+  moveSpeed: 0
+  rotatesClockwise: 0

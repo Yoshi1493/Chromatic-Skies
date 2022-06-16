@@ -1,55 +1,34 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using static CoroutineHelper;
 
 public class VirgoBulletSystem21 : EnemyBulletSubsystem<EnemyBullet>
 {
-    [SerializeField] ProjectileObject bulletData;
+    const int WaveCount = 3;
+    const float WaveSpacing = 12f;
+    const int BulletCount = 30;
+    const float BulletSpacing = 360f / BulletCount;
 
-    Stack<EnemyBullet> bullets = new(84);
-
-    readonly float a = 0.7f;
-    readonly float b = 0.3f;
+    protected override float ShootingCooldown => 0.6f;
 
     protected override IEnumerator Shoot()
     {
-        transform.localEulerAngles = new Vector3(0f, 0f, Random.Range(-90f, 90f));
-
-        for (int h = 0; h < 1; h++)
+        while (enabled)
         {
-            transform.Rotate(0f, 0f, 45f);
-
-            for (int i = 0; i <= 10; i++)
+            for (int i = 0; i < WaveCount; i++)
             {
-                //sigmoid curve (3(i/a)^2 - 2(i/a)^3) * b, where
-                //i = iterator
-                //a = the point between (0.0, 1.0] at which the curve evaluates to b
-                //b = local maximum height
-                float xPos = (3 * Mathf.Pow((1 - (i * 0.1f)) / a, 2) - 2 * Mathf.Pow((1 - (i * 0.1f)) / a, 3)) * b;
-                float yPos = i / -10f;
-
-                float zRot = (10 - i) * 10f;
-
-                for (int j = 0; j < 360; j += 90)
+                for (int ii = 0; ii < BulletCount; ii++)
                 {
-                    bulletData.colour = bulletData.gradient.Evaluate(-yPos);
+                    float z = (i * WaveSpacing) + (ii * BulletSpacing);
 
-                    bullets.Push(SpawnProjectile(2, zRot + j - transform.eulerAngles.z, 2 * transform.InverseTransformVector(xPos, yPos, 0f).RotateVectorBy(j)));
-                    bullets.Push(SpawnProjectile(2, -zRot + j - transform.eulerAngles.z, 2 * transform.InverseTransformVector(-xPos, yPos, 0f).RotateVectorBy(j)));
+                    SpawnProjectile(1, z, Vector2.zero).Fire();
+                    SpawnProjectile(2, z, Vector2.zero).Fire();
                 }
 
-                yield return WaitForSeconds(ShootingCooldown / 2f);
+                yield return WaitForSeconds(ShootingCooldown);
             }
 
-            int bulletCount = bullets.Count;
-
-            for (int i = 0; i < bulletCount; i++)
-            {
-                bullets.Pop().Fire();
-            }
+            yield return WaitForSeconds(ShootingCooldown * 5f);
         }
-
-        enabled = false;
     }
 }
