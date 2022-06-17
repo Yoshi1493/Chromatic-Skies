@@ -6,13 +6,11 @@ using static CoroutineHelper;
 public class VirgoBulletSystem3 : EnemyShooter<EnemyBullet>
 {
     const float RingRadius = 2.5f;
-    const int d = 7;
-    const float AngularFrequency = 2f / 7f;
-    const int BranchCount = 2;
-    const float BranchSpacing = 360f / BranchCount;
     const int BulletCount = 200;
-    int counter;
-    List<EnemyBullet> bullets = new(BranchCount * BulletCount);
+    const float AngularFrequency = 2f / 7f;
+    const float AngularStep = 0.01f / AngularFrequency;
+
+    List<EnemyBullet> bullets = new(BulletCount * 2);
 
     protected override float ShootingCooldown => 0.01f;
 
@@ -20,31 +18,28 @@ public class VirgoBulletSystem3 : EnemyShooter<EnemyBullet>
     {
         yield return base.Shoot();
 
-        //SetSubsystemEnabled(1);
-
-        const float step = d / (float)BulletCount;
+        SetSubsystemEnabled(1);
 
         while (enabled)
         {
             yield return WaitForSeconds(1f);
 
-            //rhodonea curve r = sin(theta * n / d), where
-            //theta = anticlockwise rotation amount on polar coordinates from point(1, 0)
-            //n / d = angular frequency
-            for (float i = step; i < d; i += step)
+            //rhodonea (rose) curve r = sin(k * theta), where
+            //theta = anticlockwise rotation amount on polar coordinates from the origin
+            //k = angular frequency, espressed in the form n/d
+            for (float i = 0; i < BulletCount; i++)
             {
-                Vector3 pos = transform.right.RotateVectorBy(i * 180f);
-                float z = pos.GetRotationDifference(Vector3.zero);
-                float r = RingRadius * Mathf.Sin(i * AngularFrequency * Mathf.PI);
+                Vector3 pos = transform.right.RotateVectorBy(i * AngularStep * 180f);
 
-                bullets.Add(SpawnProjectile(0, z, r * pos));
-                bullets.Add(SpawnProjectile(0, z + 180f, -r * pos));
-                counter+= 2;
+                float z = pos.GetRotationDifference(Vector3.zero);
+                float d = RingRadius * Mathf.Sin(i * AngularStep * AngularFrequency * Mathf.PI);
+
+                bullets.Add(SpawnProjectile(0, z, d * pos));
+                bullets.Add(SpawnProjectile(0, z + 180f, -d * pos));
 
                 yield return WaitForSeconds(ShootingCooldown);
             }
 
-            print(counter);
             yield return WaitForSeconds(1f);
 
             bullets.ForEach(b => b.Fire());
