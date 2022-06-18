@@ -5,7 +5,7 @@ using static CoroutineHelper;
 
 public class VirgoBulletSystem41 : EnemyShooter<EnemyBullet>
 {
-    const int WaveCount = 16;
+    const int WaveCount = 8;
     const float WaveSpacing = 8f;
     const int BulletCount = 20;
     const float BulletSpacing = 360f / BulletCount;

@@ -17,12 +17,12 @@ public class VirgoBulletSystem21 : EnemyBulletSubsystem<EnemyBullet>
         {
             for (int i = 0; i < WaveCount; i++)
             {
+                int p = i % 2 + 1;
+
                 for (int ii = 0; ii < BulletCount; ii++)
                 {
                     float z = (i * WaveSpacing) + (ii * BulletSpacing);
-
-                    SpawnProjectile(1, z, Vector2.zero).Fire();
-                    SpawnProjectile(2, z, Vector2.zero).Fire();
+                    SpawnProjectile(p, z, Vector2.zero).Fire();
                 }
 
                 yield return WaitForSeconds(ShootingCooldown);

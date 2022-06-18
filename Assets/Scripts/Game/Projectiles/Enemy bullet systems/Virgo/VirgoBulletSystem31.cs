@@ -11,6 +11,8 @@ public class VirgoBulletSystem31 : EnemyShooter<EnemyBullet>
     {
         while (enabled)
         {
+            yield return WaitForSeconds(3f);
+
             float r = Random.Range(0f, BulletSpacing);
 
             for (int i = 0; i < BulletCount; i++)

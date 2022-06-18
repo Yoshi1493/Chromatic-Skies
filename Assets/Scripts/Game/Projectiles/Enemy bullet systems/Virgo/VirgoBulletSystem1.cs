@@ -11,17 +11,27 @@ public class VirgoBulletSystem1 : EnemyShooter<EnemyBullet>
     protected override IEnumerator Shoot()
     {
         yield return base.Shoot();
-        SetSubsystemEnabled(1);
 
-        int n = 0;
+        SetSubsystemEnabled(1);
+        StartCoroutine(Move());
+
+        int i = 0;
 
         while (enabled)
         {
-            float z = n * BulletSpacing;
+            float z = i * BulletSpacing;
             SpawnProjectile(0, z, Vector2.zero).Fire();
 
             yield return WaitForSeconds(ShootingCooldown);
-            n++;
+            i++;
+        }
+    }
+
+    IEnumerator Move()
+    {
+        while (enabled)
+        {
+            yield return ownerShip.MoveToRandomPosition(1f, 1f, 2f, 3f);
         }
     }
 }

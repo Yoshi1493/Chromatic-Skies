@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class VirgoBullet20 : EnemyBullet
 {
+    protected override float MaxLifetime => 8f;
+
     protected override IEnumerator Move()
     {
         StartCoroutine(this.LerpSpeed(0f, Random.Range(-3.5f, -2f), 1f));
