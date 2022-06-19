@@ -52,7 +52,6 @@ public class Enemy : Ship
     //disable and re-enable current projectile system upon player losing life
     async void OnPlayerLoseLife()
     {
-        int currentProjectileSystem = shipData.MaxLives.Value - currentLives;
         var currentEnemyShooters = GetActiveEnemyShooters();
 
         foreach (var enemyShooter in currentEnemyShooters)
@@ -60,13 +59,13 @@ public class Enemy : Ship
             enemyShooter.SetEnabled(false);
         }
 
+        StartCoroutine(this.MoveTo(transform.position, 1f));
+        invincible = true;
+
         await Task.Delay(RespawnTime);
 
-        //if player didn't kill enemy between delay
-        if (currentProjectileSystem == shipData.MaxLives.Value - currentLives)
-        {
-            currentEnemyShooters[0].SetEnabled(true);
-        }
+        currentEnemyShooters[0].SetEnabled(true);
+        invincible = false;
     }
 
     List<IEnemyAttack> GetActiveEnemyShooters()

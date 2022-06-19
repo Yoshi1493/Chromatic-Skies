@@ -8,7 +8,7 @@ public static class EnemyMovementBehaviour
     #region Movement behaviour
 
     static readonly AnimationCurve moveInterpolation = AnimationCurve.EaseInOut(0f, 0f, 1f, 1f);
-    static readonly Vector3 originalPosition = new Vector3(0f, 2.5f, 0f);
+    static readonly Vector3 originalPosition = new(0f, 2.5f, 0f);
 
     /// <summary>
     /// translates <ship> to <endPosition> over <moveDuration> seconds, along a sigmoid (smoothstep) curve.
