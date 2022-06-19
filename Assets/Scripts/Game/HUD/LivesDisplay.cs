@@ -33,7 +33,9 @@ public class LivesDisplay<TShip> : HUDComponent<TShip>
     {
         yield return WaitForSeconds(1f);
 
-        for (int i = 0; i < ship.shipData.MaxLives.Value; i++)
+        int lifeCount = ship.shipData.MaxLives.Value;
+
+        for (int i = 0; i < lifeCount; i++)
         {
             lifeIcons[i].enabled = true;
             yield return WaitForSeconds(0.1f);

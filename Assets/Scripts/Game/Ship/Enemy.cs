@@ -36,7 +36,7 @@ public class Enemy : Ship
             }
 
             StartCoroutine(this.ReturnToOriginalPosition());
-            await Task.Delay(RespawnTime * 2);
+            await Task.Delay(RespawnTime);
 
             nextEnemyShooter.SetEnabled(true);
             SetSpriteAlpha(1f);

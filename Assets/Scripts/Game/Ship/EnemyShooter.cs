@@ -36,7 +36,7 @@ public abstract class EnemyShooter<TProjectile> : Shooter<TProjectile>, IEnemyAt
 
     void Start()
     {
-        //subscribe actions
+        //subscribe methods to actions
         ownerShip.LoseLifeAction += OnLoseLife;
         playerShip.LoseLifeAction += OnPlayerLoseLife;
     }
@@ -60,9 +60,10 @@ public abstract class EnemyShooter<TProjectile> : Shooter<TProjectile>, IEnemyAt
 
     protected override IEnumerator Shoot()
     {
+        yield return CoroutineHelper.WaitForSeconds(1f);
+
         AttackStartAction?.Invoke(ModuleName, AttackName);
         ownerShip.invincible = false;
-        yield return null;
     }
 
     protected void SetSubsystemEnabled(int subsystemIndex)
