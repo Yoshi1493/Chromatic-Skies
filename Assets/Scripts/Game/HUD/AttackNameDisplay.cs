@@ -17,8 +17,7 @@ public class AttackNameDisplay : HUDComponent<Enemy>
 
         for (int i = 0; i < ship.transform.childCount; i++)
         {
-            IEnemyAttack enemyAttack = ship.transform.GetChild(i).GetComponent<IEnemyAttack>();
-            enemyAttack.AttackStartAction += OnEnemyAttackStart;
+            //ship.transform.GetChild(i).GetComponent<IEnemyAttack>().AttackStartAction += OnEnemyAttackStart;
         }
     }
 
