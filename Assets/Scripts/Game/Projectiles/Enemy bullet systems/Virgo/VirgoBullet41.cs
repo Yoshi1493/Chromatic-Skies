@@ -6,7 +6,7 @@ public class VirgoBullet41 : EnemyBullet
 
     protected override IEnumerator Move()
     {
-        StartCoroutine(this.RotateBy(60f, 5f));
-        yield return this.LerpSpeed(0f, -3f, 2f);
+        StartCoroutine(this.RotateBy(-60f, 5f));
+        yield return this.LerpSpeed(0f, 3f, 2f);
     }
 }
