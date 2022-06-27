@@ -1,0 +1,48 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b79cd0b20b26ac4090b241d65679e69, type: 3}
+  m_Name: '[Capricorn] Bullet 1_1'
+  m_EditorClassIdentifier: 
+  sprite: {fileID: 21300000, guid: 9b86635f8b1fb5941bb865b3a22f5cf0, type: 3}
+  useSolidColour: 1
+  colour: {r: 0.5, g: 1, b: 0.5, a: 1}
+  gradient:
+    serializedVersion: 2
+    key0: {r: 1, g: 1, b: 1, a: 1}
+    key1: {r: 1, g: 1, b: 1, a: 1}
+    key2: {r: 1, g: 0.875, b: 0.5, a: 0}
+    key3: {r: 0.75, g: 1, b: 1, a: 0}
+    key4: {r: 0.25, g: 1, b: 1, a: 0}
+    key5: {r: 0.25, g: 0.625, b: 1, a: 0}
+    key6: {r: 1, g: 0.6, b: 1, a: 0}
+    key7: {r: 0, g: 0, b: 0, a: 0}
+    ctime0: 0
+    ctime1: 65535
+    ctime2: 55705
+    ctime3: 65535
+    ctime4: 46792
+    ctime5: 56163
+    ctime6: 65535
+    ctime7: 0
+    atime0: 0
+    atime1: 65535
+    atime2: 0
+    atime3: 0
+    atime4: 0
+    atime5: 0
+    atime6: 0
+    atime7: 0
+    m_Mode: 0
+    m_NumColorKeys: 2
+    m_NumAlphaKeys: 2
+  ID: 1
+  Power: {fileID: 11400000, guid: bdaffaa97c2c2d94eb53da142a9c86c7, type: 2}

@@ -137,7 +137,7 @@ MonoBehaviour:
   <AttackName>k__BackingField: {fileID: 11400000, guid: 11c04127053bc884ab5f6e637d7f7d98, type: 2}
   <ModuleName>k__BackingField: {fileID: 11400000, guid: 4d505b4561ab2fc4484486680ca715df, type: 2}
   enemyProjectiles:
-  - {fileID: 0}
+  - {fileID: 3629783235024105895, guid: 09705185e488e154bb3ba556e0efc06b, type: 3}
 --- !u!1 &6867336800114154692 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 180338613893518016, guid: d93cb44e21569f545b76560b29579f98, type: 3}

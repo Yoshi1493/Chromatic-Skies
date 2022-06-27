@@ -16,20 +16,20 @@ public class TaurusBulletSystem3 : EnemyShooter<EnemyBullet>
 
         SetSubsystemEnabled(1);
 
-        int ctr = 0;
+        int i = 0;
 
         while (enabled)
         {
-            for (int i = 0; i < BulletCount; i++)
+            for (int ii = 0; ii < BulletCount; ii++)
             {
-                float offset = Mathf.PingPong(ctr, 30f) - RotationPerWave;
-                float z = (i * BulletSpacing) + (ctr * offset) + 180f;
+                float offset = Mathf.PingPong(i, 30f) - RotationPerWave;
+                float z = (ii * BulletSpacing) + (i * offset) + 180f;
 
                 SpawnProjectile(0, z, Vector3.zero).Fire();
                 yield return WaitForSeconds(ShootingCooldown);
             }
 
-            ctr++;
+            i++;
         }
     }
 }
