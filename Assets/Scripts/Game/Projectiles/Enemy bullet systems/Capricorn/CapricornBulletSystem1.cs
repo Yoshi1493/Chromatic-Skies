@@ -1,4 +1,5 @@
 using System.Collections;
+using UnityEngine;
 using static CoroutineHelper;
 
 public class CapricornBulletSystem1 : EnemyShooter<EnemyBullet>
@@ -13,7 +14,7 @@ public class CapricornBulletSystem1 : EnemyShooter<EnemyBullet>
     {
         yield return base.Shoot();
 
-        //SetSubsystemEnabled(1);
+        SetSubsystemEnabled(1);
 
         int i = 0;
 
@@ -23,8 +24,8 @@ public class CapricornBulletSystem1 : EnemyShooter<EnemyBullet>
             {
                 float z = (i * WaveSpacing) + (ii * BulletSpacing);
 
-                SpawnProjectile(0, z, transform.up.RotateVectorBy(z)).Fire();
-                SpawnProjectile(0, -z, transform.up.RotateVectorBy(-z)).Fire();
+                SpawnProjectile(0, z, Vector3.zero).Fire();
+                SpawnProjectile(0, -z, Vector3.zero).Fire();
             }
 
             yield return WaitForSeconds(ShootingCooldown);
