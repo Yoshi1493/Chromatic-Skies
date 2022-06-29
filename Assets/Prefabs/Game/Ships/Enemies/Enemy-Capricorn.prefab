@@ -156,7 +156,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3777441332194849460}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e8f3c7ed04499514d903c27dcc52a7f7, type: 3}
   m_Name: 
@@ -164,7 +164,8 @@ MonoBehaviour:
   <AttackName>k__BackingField: {fileID: 11400000, guid: 479a4a7ab3c655b4e820e8fdb1f2ecb1, type: 2}
   <ModuleName>k__BackingField: {fileID: 11400000, guid: c4fd120428f443e4ab5d996a9f27e147, type: 2}
   enemyProjectiles:
-  - {fileID: 0}
+  - {fileID: 2193683086196055694, guid: a4162c1e90c0c424fb11427d1e4e4ad4, type: 3}
+  - {fileID: 65872820419281980, guid: 460ae9a82ab9c5c43abb89a540983a88, type: 3}
 --- !u!1 &4079918356797303241 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7301416149945870285, guid: d93cb44e21569f545b76560b29579f98, type: 3}
@@ -177,7 +178,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4079918356797303241}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6d0a678e43b66c741af0946ebd4e73fa, type: 3}
   m_Name: 
