@@ -11,18 +11,23 @@ public class VirgoBulletSystem31 : EnemyShooter<EnemyBullet>
     {
         while (enabled)
         {
-            yield return WaitForSeconds(3f);
-
             float r = Random.Range(0f, BulletSpacing);
 
             for (int i = 0; i < BulletCount; i++)
             {
                 float z = (i * BulletSpacing) + r;
                 SpawnProjectile(1, z, Vector3.zero).Fire();
+            }
+
+            yield return WaitForSeconds(0.4f);
+
+            for (int i = 0; i < BulletCount; i++)
+            {
+                float z = (i * BulletSpacing) + r;
                 SpawnProjectile(2, z, Vector3.zero).Fire();
             }
 
-            yield return WaitForSeconds(2f);
+            enabled = false;
         }
     }
 }

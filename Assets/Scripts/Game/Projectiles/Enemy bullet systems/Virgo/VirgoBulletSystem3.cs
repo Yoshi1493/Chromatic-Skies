@@ -13,9 +13,7 @@ public class VirgoBulletSystem3 : EnemyShooter<EnemyBullet>
 
     protected override IEnumerator Shoot()
     {
-        yield return base.Shoot();
-
-        SetSubsystemEnabled(1);
+        yield return base.Shoot();        
 
         while (enabled)
         {
@@ -35,6 +33,7 @@ public class VirgoBulletSystem3 : EnemyShooter<EnemyBullet>
                 yield return WaitForSeconds(ShootingCooldown);
             }
 
+            SetSubsystemEnabled(1);
             yield return ownerShip.MoveToRandomPosition(1f, delay: 3f);
         }
     }
