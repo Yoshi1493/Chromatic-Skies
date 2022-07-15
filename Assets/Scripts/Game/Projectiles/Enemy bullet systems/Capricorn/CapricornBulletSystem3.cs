@@ -4,33 +4,37 @@ using static CoroutineHelper;
 
 public class CapricornBulletSystem3 : EnemyShooter<EnemyBullet>
 {
-    const float WaveSpacing = 10f;
-    const int BranchCount = 2;
+    const int WaveCount = 21;
+    const float WaveSpacing = 0.5f;
+    const int BranchCount = 3;
     const float BranchSpacing = 360f / BranchCount;
-    const int BulletCount = 3;
-    const float BulletSpacing = 360f / BulletCount;
+    const float BulletSpacing = 5f;
+
+    protected override float ShootingCooldown => 0.05f;
 
     protected override IEnumerator Shoot()
     {
-        int i = 0;
+        yield return base.Shoot();
+
+        SetSubsystemEnabled(1);
 
         while (enabled)
         {
-            for (int ii = 0; ii < BranchCount; ii++)
+            for (int i = 1; i < WaveCount; i++)
             {
-                for (int iii = 0; iii < BulletCount; iii++)
+                for (int ii = 0; ii < BranchCount; ii++)
                 {
-                    float d = i * WaveSpacing;
-                    float t = ii * BranchSpacing;
-                    float z = d + t + (iii * BulletSpacing);
-                    Vector3 pos = transform.up.RotateVectorBy(d + t);
+                    float z = Random.Range(0f, 360f);
+                    float t = (i * BulletSpacing) + (ii * BranchSpacing);
+                    Vector3 pos = i * WaveSpacing * transform.up.RotateVectorBy(t);
 
-                    SpawnProjectile(ii, z, pos).Fire();
+                    SpawnProjectile(0, z, pos).Fire();
                 }
+
+                yield return WaitForSeconds(ShootingCooldown);
             }
 
-            yield return WaitForSeconds(ShootingCooldown);
-            i++;
+            yield return ownerShip.MoveToRandomPosition(1f, delay: 6f);
         }
     }
 }
