@@ -20,7 +20,7 @@ public class CapricornBulletSystem11 : EnemyShooter<EnemyBullet>
             for (int i = 0; i < BulletCount; i++)
             {
                 float z = r + (i * BulletSpacing);
-                SpawnProjectile(1, z, Vector3.zero).Fire();
+                SpawnProjectile(2, z, Vector3.zero).Fire();
             }
         }
     }

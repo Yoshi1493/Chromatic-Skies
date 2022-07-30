@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6b79cd0b20b26ac4090b241d65679e69, type: 3}
-  m_Name: '[Capricorn] Bullet 1_0'
+  m_Name: '[Capricorn] Bullet 1_0_1'
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: 9b86635f8b1fb5941bb865b3a22f5cf0, type: 3}
   useSolidColour: 1
-  colour: {r: 0.5, g: 1, b: 0.5, a: 1}
+  colour: {r: 0.5, g: 1, b: 0.625, a: 1}
   gradient:
     serializedVersion: 2
     key0: {r: 1, g: 1, b: 1, a: 1}
@@ -44,5 +44,5 @@ MonoBehaviour:
     m_Mode: 0
     m_NumColorKeys: 2
     m_NumAlphaKeys: 2
-  ID: 0
+  ID: 1
   Power: {fileID: 11400000, guid: bdaffaa97c2c2d94eb53da142a9c86c7, type: 2}

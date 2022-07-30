@@ -25,7 +25,7 @@ public class CapricornBulletSystem1 : EnemyShooter<EnemyBullet>
                 float z = (i * WaveSpacing) + (ii * BulletSpacing);
 
                 SpawnProjectile(0, z, Vector3.zero).Fire();
-                SpawnProjectile(0, -z, Vector3.zero).Fire();
+                SpawnProjectile(1, -z, Vector3.zero).Fire();
             }
 
             yield return WaitForSeconds(ShootingCooldown);
