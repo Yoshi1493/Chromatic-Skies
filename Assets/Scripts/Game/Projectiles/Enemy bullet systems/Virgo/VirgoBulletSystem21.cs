@@ -23,7 +23,9 @@ public class VirgoBulletSystem21 : EnemyBulletSubsystem<EnemyBullet>
             for (int ii = 0; ii < BulletCount; ii++)
             {
                 float z = (i * WaveSpacing) + (ii * BulletSpacing);
-                SpawnProjectile(p, z, Vector2.zero).Fire();
+                Vector3 pos = Vector3.zero;
+
+                SpawnProjectile(p, z, pos).Fire();
             }
 
             i++;

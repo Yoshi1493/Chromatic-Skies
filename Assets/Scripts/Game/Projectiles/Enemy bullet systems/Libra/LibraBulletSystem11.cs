@@ -6,6 +6,8 @@ public class LibraBulletSystem11 : EnemyBulletSubsystem<EnemyBullet>
 {
     const int BulletCount = 8;
     const int Spacing = 360 / BulletCount;
+    const float MaxRadius = 1f;
+    const float RadiusScaling = 0.05f;
 
     protected override IEnumerator Shoot()
     {
@@ -16,7 +18,9 @@ public class LibraBulletSystem11 : EnemyBulletSubsystem<EnemyBullet>
             for (int j = 0; j < BulletCount; j++)
             {
                 float z = (i * BulletCount) + (j * Spacing);
-                SpawnProjectile(0, z, transform.up.RotateVectorBy(z) * Mathf.PingPong(i * 0.05f, 1f)).Fire();
+                Vector3 pos = Mathf.PingPong(i * RadiusScaling, MaxRadius) * transform.up.RotateVectorBy(z);
+
+                SpawnProjectile(0, z, pos).Fire();
             }
 
             i++;

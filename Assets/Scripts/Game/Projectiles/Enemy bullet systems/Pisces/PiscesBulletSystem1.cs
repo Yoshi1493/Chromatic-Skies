@@ -19,12 +19,13 @@ public class PiscesBulletSystem1 : EnemyShooter<EnemyBullet>
             {
                 float z = i * BulletSpacing;
                 float spd = 2 + (i / 10f);
+                Vector3 pos = Vector3.zero;
 
-                var bullet = SpawnProjectile(0, z, Vector3.zero);
+                var bullet = SpawnProjectile(0, z, pos);
                 bullet.MoveSpeed = spd;
                 bullet.Fire();
 
-                bullet = SpawnProjectile(0, z + (0.5f * BulletSpacing), Vector3.zero);
+                bullet = SpawnProjectile(0, z + (0.5f * BulletSpacing), pos);
                 bullet.MoveSpeed = spd * 0.8f;
                 bullet.Fire();
 
@@ -37,12 +38,13 @@ public class PiscesBulletSystem1 : EnemyShooter<EnemyBullet>
             {
                 float z = (BulletCount - i) * BulletSpacing;
                 float spd = 2 + (i / 10f);
+                Vector3 pos = Vector3.zero;
 
-                var bullet = SpawnProjectile(0, z, Vector3.zero);
+                var bullet = SpawnProjectile(0, z, pos);
                 bullet.MoveSpeed = spd;
                 bullet.Fire();
 
-                bullet = SpawnProjectile(0, z - (0.5f * BulletSpacing), Vector3.zero);
+                bullet = SpawnProjectile(0, z - (0.5f * BulletSpacing), pos);
                 bullet.MoveSpeed = spd * 0.8f;
                 bullet.Fire();
 
@@ -56,7 +58,9 @@ public class PiscesBulletSystem1 : EnemyShooter<EnemyBullet>
                 for (int j = 0; j < 30; j++)
                 {
                     float z = j * 12f;
-                    SpawnProjectile(1, z, Vector3.zero).Fire();
+                    Vector3 pos = Vector3.zero;
+
+                    SpawnProjectile(1, z, pos).Fire();
                 }
 
                 yield return ownerShip.MoveToRandomPosition(0.4f + (i / 10f), minSqrMagDelta: 1, maxSqrMagDelta: 2);

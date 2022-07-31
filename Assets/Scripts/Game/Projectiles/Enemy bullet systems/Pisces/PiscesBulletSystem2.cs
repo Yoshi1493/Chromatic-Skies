@@ -24,7 +24,9 @@ public class PiscesBulletSystem2 : EnemyShooter<EnemyBullet>
                     for (int k = 0; k < bulletCount; k++)
                     {
                         float z = theta + (k * Spacing - offset);
-                        SpawnProjectile(0, z, Vector3.zero).Fire();
+                        Vector3 pos = Vector3.zero;
+
+                        SpawnProjectile(0, z, pos).Fire();
                     }
 
                     yield return WaitForSeconds(ShootingCooldown);
@@ -40,7 +42,9 @@ public class PiscesBulletSystem2 : EnemyShooter<EnemyBullet>
                 for (int j = 0; j < 360; j += 18)
                 {
                     float z = j + (i * 2f);
-                    SpawnProjectile(1, z, Vector3.zero).Fire();
+                    Vector3 pos = Vector3.zero;
+
+                    SpawnProjectile(1, z, pos).Fire();
                 }
 
                 yield return WaitForSeconds(ShootingCooldown);
@@ -53,7 +57,9 @@ public class PiscesBulletSystem2 : EnemyShooter<EnemyBullet>
                 for (int j = 0; j < 360; j += 18)
                 {
                     float z = j + (i * 3f);
-                    SpawnProjectile(1, z, Vector3.zero).Fire();
+                    Vector3 pos = Vector3.zero;
+
+                    SpawnProjectile(1, z, pos).Fire();
                 }
 
                 yield return WaitForSeconds(ShootingCooldown);

@@ -29,7 +29,9 @@ public class AriesBulletSystem1 : EnemyShooter<EnemyBullet>
                     for (int iii = 0; iii < BulletCount; iii++)
                     {
                         float z = (offset * (ii - 1)) + (iii * BranchSpacing) + (2.5f * alt);
-                        SpawnProjectile(0, z, Vector3.zero).Fire();
+                        Vector3 pos = Vector3.zero;
+
+                        SpawnProjectile(0, z, pos).Fire();
                     }
 
                     yield return WaitForSeconds(ShootingCooldown / 2f);

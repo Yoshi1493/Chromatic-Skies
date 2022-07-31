@@ -26,7 +26,9 @@ public class PiscesBulletSystem41 : EnemyBulletSubsystem<Laser>
                 for (int j = 0; j < LaserCount; j++)
                 {
                     float z = (i * WaveSpacing) + (j * LaserSpacing) + randOffset;
-                    SpawnProjectile(0, z, Vector3.zero).Fire();
+                    Vector3 pos = Vector3.zero;
+
+                    SpawnProjectile(0, z, pos).Fire();
                 }
             }
 

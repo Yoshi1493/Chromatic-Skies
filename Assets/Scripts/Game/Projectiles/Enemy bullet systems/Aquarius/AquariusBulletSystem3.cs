@@ -25,9 +25,10 @@ public class AquariusBulletSystem3 : EnemyShooter<EnemyBullet>
                 for (int ii = 0; ii < BranchCount; ii++)
                 {
                     float z = (i * WaveSpacing) + (ii * BranchSpacing);
+                    Vector3 pos = i * BulletSpacing * transform.up.RotateVectorBy(z);
                     bulletData.colour = bulletData.gradient.Evaluate(i / (WaveCount - 1f));
 
-                    SpawnProjectile(0, z, i * BulletSpacing * transform.up.RotateVectorBy(z)).Fire();
+                    SpawnProjectile(0, z, pos).Fire();
                 }
 
                 yield return WaitForSeconds(ShootingCooldown);

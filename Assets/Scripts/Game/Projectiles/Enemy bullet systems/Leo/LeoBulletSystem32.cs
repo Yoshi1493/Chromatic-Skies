@@ -15,7 +15,9 @@ public class LeoBulletSystem32 : EnemyShooter<EnemyBullet>
             for (int i = 0; i < BulletCount; i++)
             {
                 float z = i * BulletSpacing;
-                SpawnProjectile(1, z, Vector3.zero).Fire();
+                Vector3 pos = Vector3.zero;
+
+                SpawnProjectile(1, z, pos).Fire();
             }
 
             yield return WaitForSeconds(ShootingCooldown);

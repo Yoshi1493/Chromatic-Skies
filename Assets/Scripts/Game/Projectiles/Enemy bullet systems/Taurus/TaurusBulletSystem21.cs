@@ -24,7 +24,9 @@ public class TaurusBulletSystem21 : EnemyShooter<EnemyBullet>
                 for (int j = 0; j < BulletCount; j++)
                 {
                     float z = (i * WaveSpacing) + (j * BulletSpacing) + theta;
-                    SpawnProjectile(1, z, Vector3.zero).Fire();
+                    Vector3 pos = Vector3.zero;
+
+                    SpawnProjectile(1, z, pos).Fire();
                 }
 
                 yield return WaitForSeconds(ShootingCooldown);

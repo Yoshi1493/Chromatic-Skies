@@ -1,4 +1,5 @@
 using System.Collections;
+using UnityEngine;
 using static CoroutineHelper;
 
 public class TaurusBulletSystem2 : EnemyShooter<EnemyBullet>
@@ -25,7 +26,9 @@ public class TaurusBulletSystem2 : EnemyShooter<EnemyBullet>
                 {
                     float z = i * BranchSpacing;
                     float r = j * BulletSpacing;
-                    SpawnProjectile(0, z + 90f, transform.up.RotateVectorBy(z + r)).Fire();
+                    Vector3 pos = transform.up.RotateVectorBy(z + r);
+
+                    SpawnProjectile(0, z + 90f, pos).Fire();
                 }
 
                 yield return WaitForSeconds(ShootingCooldown);

@@ -1,4 +1,5 @@
 using System.Collections;
+using UnityEngine;
 using static CoroutineHelper;
 
 public class TaurusBulletSystem4 : EnemyShooter<EnemyBullet>
@@ -24,13 +25,16 @@ public class TaurusBulletSystem4 : EnemyShooter<EnemyBullet>
 
                 for (int j = 0; j < BranchCount; j++)
                 {
-                    float z = (i * WaveSpacing) + (j * BranchSpacing);                    
+                    float z = (i * WaveSpacing) + (j * BranchSpacing);
+                    Vector3 pos = transform.up.RotateVectorBy(z);
 
-                    var bullet = SpawnProjectile(0, z, transform.up.RotateVectorBy(z));
+                    var bullet = SpawnProjectile(0, z, pos);
                     bullet.MoveSpeed = s;
                     bullet.Fire();
 
-                    bullet = SpawnProjectile(1, -z, transform.up.RotateVectorBy(-z));
+                    pos = transform.up.RotateVectorBy(-z);
+
+                    bullet = SpawnProjectile(1, -z, pos);
                     bullet.MoveSpeed = s;
                     bullet.Fire();
                 }

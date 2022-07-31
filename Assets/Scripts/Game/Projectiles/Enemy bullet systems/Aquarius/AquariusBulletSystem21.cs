@@ -20,7 +20,9 @@ public class AquariusBulletSystem21 : EnemyBulletSubsystem<EnemyBullet>
             for (int i = 0; i < BulletCount; i++)
             {
                 float z = (i * BulletSpacing) + r;
-                SpawnProjectile(1, z, Vector3.zero).Fire();
+                Vector3 pos = Vector3.zero;
+
+                SpawnProjectile(1, z, pos).Fire();
             }
         }
     }

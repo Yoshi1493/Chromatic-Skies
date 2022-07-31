@@ -30,7 +30,9 @@ public class TaurusBulletSystem5 : EnemyShooter<EnemyBullet>
                 for (int j = 0; j < OuterBranchCount; j++)
                 {
                     float z = ((i * 4f) + (j * 72f)) * d;
-                    var bullet = SpawnProjectile(0, z, Vector3.zero);
+                    Vector3 pos = Vector3.zero;
+
+                    var bullet = SpawnProjectile(0, z, pos);
                     outerBullets.Add(bullet);
 
                     bullet.StartCoroutine(bullet.LerpSpeed(BranchSize * 2f, 0f, 1f));
@@ -50,13 +52,13 @@ public class TaurusBulletSystem5 : EnemyShooter<EnemyBullet>
                 {
                     float lerpAmount = i / InnerBranchDensity;
 
-                    float xOffset = Mathf.Lerp(-xRange, xRange, lerpAmount);
-                    float yOffset = Mathf.Sin(18f * Mathf.Deg2Rad) * BranchSize;
-                    Vector3 spawnPos = new Vector3(xOffset, yOffset).RotateVectorBy(randOffset + (j * 72f));
+                    float x = Mathf.Lerp(-xRange, xRange, lerpAmount);
+                    float y = Mathf.Sin(18f * Mathf.Deg2Rad) * BranchSize;
+                    Vector3 pos = new Vector3(x, y).RotateVectorBy(randOffset + (j * 72f));
 
                     float z = Mathf.Lerp(-180f, 180f, lerpAmount);
 
-                    var bullet = SpawnProjectile(1, z, spawnPos);
+                    var bullet = SpawnProjectile(1, z, pos);
                     innerBullets.Add(bullet);
 
                 }

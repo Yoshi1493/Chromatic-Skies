@@ -18,7 +18,9 @@ public class LibraBulletSystem32 : EnemyBulletSubsystem<EnemyBullet>
             for (int j = 0; j < 30; j++)
             {
                 float z = i * goldenRatio;
-                SpawnProjectile(Random.value > Mathf.PingPong(bigBulletChance, 1f) ? 1 : 2, z, transform.up.RotateVectorBy(z) * 0.5f).Fire();
+                Vector3 pos = 0.5f * transform.up.RotateVectorBy(z);
+
+                SpawnProjectile(Random.value > Mathf.PingPong(bigBulletChance, 1f) ? 1 : 2, z, pos).Fire();
 
                 i++;
                 yield return WaitForSeconds(ShootingCooldown);

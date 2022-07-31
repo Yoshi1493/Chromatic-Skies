@@ -21,13 +21,14 @@ public class VirgoBulletSystem4 : EnemyShooter<EnemyBullet>
 
             WaveSpacing = 0f;
             float r = Random.Range(0f, BranchSpacing);
+            Vector3 pos = Vector3.zero;
 
             for (int i = 0; i < WaveCount; i++)
             {
                 for (int ii = 0; ii < BranchCount; ii++)
                 {
                     float z = ii * BranchSpacing + WaveSpacing + r;
-                    SpawnProjectile(0, z, Vector2.zero).Fire();
+                    SpawnProjectile(0, z, pos).Fire();
                 }
 
                 WaveSpacing += i;

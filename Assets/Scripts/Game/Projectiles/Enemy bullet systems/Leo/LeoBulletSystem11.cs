@@ -20,10 +20,14 @@ public class LeoBulletSystem11 : EnemyBulletSubsystem<EnemyBullet>
         for (int i = 0; i < BulletCount; i++)
         {
             float z = (i * BulletSpacing * d) + r;
-            SpawnProjectile(1, z, Vector3.up.RotateVectorBy(z * 0.5f)).Fire();
+            Vector3 pos = Vector3.up.RotateVectorBy(z * 0.5f);
+
+            SpawnProjectile(1, z, pos).Fire();
 
             z += 180f;
-            SpawnProjectile(1, z, Vector3.up.RotateVectorBy(z * 0.5f)).Fire();
+            pos = Vector3.up.RotateVectorBy(z * 0.5f);
+
+            SpawnProjectile(1, z, pos).Fire();
 
             yield return WaitForSeconds(ShootingCooldown);
         }

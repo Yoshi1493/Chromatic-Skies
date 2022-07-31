@@ -20,7 +20,9 @@ public class VirgoBulletSystem1 : EnemyShooter<EnemyBullet>
         while (enabled)
         {
             float z = i * BulletSpacing;
-            SpawnProjectile(0, z, Vector2.zero).Fire();
+            Vector3 pos = Vector3.zero;
+
+            SpawnProjectile(0, z, pos).Fire();
 
             yield return WaitForSeconds(ShootingCooldown);
             i++;

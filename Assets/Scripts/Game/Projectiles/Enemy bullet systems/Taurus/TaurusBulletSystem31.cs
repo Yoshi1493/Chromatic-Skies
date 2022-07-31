@@ -15,7 +15,9 @@ public class TaurusBulletSystem31 : EnemyBulletSubsystem<Laser>
             for (int i = 0; i < LaserCount; i++)
             {
                 float z = Random.Range(0f, 360f);
-                SpawnProjectile(0, z, -transform.up.RotateVectorBy(z)).Fire();
+                Vector3 pos = -transform.up.RotateVectorBy(z);
+
+                SpawnProjectile(0, z, pos).Fire();
 
                 yield return WaitForSeconds(ShootingCooldown);
             }

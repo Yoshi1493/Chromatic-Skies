@@ -21,10 +21,10 @@ public class LibraBulletSystem22 : EnemyBulletSubsystem<EnemyBullet>
             for (int j = 0; j < BranchCount; j++)
             {
                 float z = (i * WaveOffset) + (j * BranchSpacing);
-                Vector3 spawnPos = transform.up.RotateVectorBy(z) * Mathf.PingPong(i * 0.1f, 1f);
+                Vector3 pos = transform.up.RotateVectorBy(z) * Mathf.PingPong(i * 0.1f, 1f);
 
-                SpawnProjectile(0, z - BulletSpacing, spawnPos).Fire();
-                SpawnProjectile(1, z + BulletSpacing, spawnPos).Fire();
+                SpawnProjectile(0, z - BulletSpacing, pos).Fire();
+                SpawnProjectile(1, z + BulletSpacing, pos).Fire();
             }
 
             i++;

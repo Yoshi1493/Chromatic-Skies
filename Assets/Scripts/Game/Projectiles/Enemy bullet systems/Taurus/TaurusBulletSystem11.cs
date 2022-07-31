@@ -34,7 +34,7 @@ public class TaurusBulletSystem11 : EnemyBulletSubsystem<EnemyBullet>
 
         for (int i = 0; i < spawnPositions.Count; i++)
         {
-            SpawnProjectile(1, 45f, spawnPositions[i], false).Fire();
+            SpawnProjectile(1, 90f, spawnPositions[i], false).Fire();
         }
 
         enabled = false;

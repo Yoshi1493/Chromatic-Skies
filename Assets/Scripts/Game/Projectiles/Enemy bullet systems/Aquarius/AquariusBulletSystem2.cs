@@ -29,10 +29,9 @@ public class AquariusBulletSystem2 : EnemyShooter<EnemyBullet>
             {
                 for (int ii = 0; ii < BranchCount; ii++)
                 {
-                    float z = ii * BranchSpacing;
-
                     float x = Mathf.Sin(i * WaveFrequency * d * Mathf.Deg2Rad);
                     float y = i * WaveSpacing;
+                    float z = ii * BranchSpacing;
                     Vector3 pos = new Vector3(x, y).RotateVectorBy(z);
 
                     var bullet = SpawnProjectile(0, z + (x * BranchSpacing), pos);
@@ -41,6 +40,8 @@ public class AquariusBulletSystem2 : EnemyShooter<EnemyBullet>
 
                 yield return WaitForSeconds(ShootingCooldown);
             }
+
+            yield return WaitForSeconds(1f);
 
             bullets.ForEach(b => b.Fire());
             bullets.Clear();

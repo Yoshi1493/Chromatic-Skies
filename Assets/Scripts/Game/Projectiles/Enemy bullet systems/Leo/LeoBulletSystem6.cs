@@ -19,6 +19,7 @@ public class LeoBulletSystem6 : EnemyShooter<EnemyBullet>
                 for (int j = 0; j < BranchCount; j++)
                 {
                     z = (i * WaveSpacing) + (j * BranchSpacing);
+
                     SpawnProjectile(0, z, transform.up.RotateVectorBy(-z)).Fire();
                     SpawnProjectile(1, -z, transform.up.RotateVectorBy(z)).Fire();
                 }

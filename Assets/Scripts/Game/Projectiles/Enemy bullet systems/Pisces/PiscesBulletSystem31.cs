@@ -21,7 +21,9 @@ public class PiscesBulletSystem31 : EnemyBulletSubsystem<EnemyBullet>
             for (int j = 0; j < BulletCount; j++)
             {
                 float z = randAngle + (j * BulletSpacing);
-                SpawnProjectile(1, z, 0.5f * transform.up.RotateVectorBy(z + 90)).Fire();
+                Vector3 pos = 0.5f * transform.up.RotateVectorBy(z + 90f);
+
+                SpawnProjectile(1, z, pos).Fire();
             }
 
             yield return WaitForSeconds(ShootingCooldown);

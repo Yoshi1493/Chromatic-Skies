@@ -28,12 +28,12 @@ public class TaurusBulletSystem1 : EnemyShooter<EnemyBullet>
                 {
                     float x = (i - ((BulletRowCount - 1) * 0.5f)) * BulletSpacing;
                     float y = (j - ((BulletColCount - 1) * 0.5f)) * BulletSpacing;
-                    Vector3 spawnPos = new Vector3(x, y);
+                    Vector3 pos = new(x, y);
 
-                    float z = spawnPos.GetRotationDifference(Vector3.zero);
+                    float z = pos.GetRotationDifference(Vector3.zero);
 
                     var bullet = SpawnProjectile(0, z, Vector3.zero);
-                    bullet.MoveSpeed = spawnPos.magnitude * 2f;
+                    bullet.MoveSpeed = pos.magnitude * 2f;
                     bullet.Fire();
                 }
             }

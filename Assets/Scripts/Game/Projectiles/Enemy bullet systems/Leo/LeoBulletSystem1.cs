@@ -31,7 +31,9 @@ public class LeoBulletSystem1 : EnemyShooter<EnemyBullet>
                     for (int k = 0; k < BulletCount; k++)
                     {
                         float z = k * BranchSpacing + r;
-                        SpawnProjectile(0, z, offset.RotateVectorBy(z)).Fire();
+                        Vector3 pos = offset.RotateVectorBy(z);
+
+                        SpawnProjectile(0, z, pos).Fire();
                     }
                 }
 

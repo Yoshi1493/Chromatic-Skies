@@ -17,7 +17,9 @@ public class PiscesBulletSystem3 : EnemyShooter<EnemyBullet>
                 for (int j = 0; j < 24; j++)
                 {
                     float z = (j * 15f) + (i * 5f);
-                    SpawnProjectile(0, z, Vector3.zero).Fire();
+                    Vector3 pos = Vector3.zero;
+
+                    SpawnProjectile(0, z, pos).Fire();
                 }
 
                 yield return WaitForSeconds(ShootingCooldown * 4f);

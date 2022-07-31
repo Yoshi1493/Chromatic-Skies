@@ -17,7 +17,9 @@ public class TaurusBulletSystem51 : EnemyBulletSubsystem<EnemyBullet>
             for (int i = 0; i < 5; i++)
             {
                 float z = PlayerPosition.GetRotationDifference(transform.position) + (i * 360 / BulletCount);
-                SpawnProjectile(2, z, Vector3.zero).Fire();
+                Vector3 pos = Vector3.zero;
+
+                SpawnProjectile(2, z, pos).Fire();
             }
 
             yield return WaitForSeconds(ShootingCooldown);

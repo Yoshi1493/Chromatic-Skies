@@ -25,9 +25,9 @@ public class TaurusBulletSystem41 : EnemyShooter<Laser>
                 float offset = ((LaserCount - 1) * -0.5f) + i;
                 float x = offset * LaserSpacing;
                 float y = offset * sinZ;
-                Vector3 spawnPos = new(x, y);
+                Vector3 pos = new(x, y);
 
-                SpawnProjectile(0, z, spawnPos).Fire();
+                SpawnProjectile(0, z, pos).Fire();
                 yield return WaitForSeconds(ShootingCooldown);
             }
 

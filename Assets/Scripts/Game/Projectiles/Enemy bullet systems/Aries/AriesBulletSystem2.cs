@@ -20,7 +20,9 @@ public class AriesBulletSystem2 : EnemyShooter<EnemyBullet>
                 for (int ii = 0; ii < BranchCount; ii++)
                 {
                     float z = ii * BranchSpacing + rand;
-                    SpawnProjectile(0, z, Vector2.zero).Fire();
+                    Vector3 pos = Vector3.zero;
+
+                    SpawnProjectile(0, z, pos).Fire();
                 }
 
                 yield return WaitForSeconds(ShootingCooldown);
@@ -34,8 +36,9 @@ public class AriesBulletSystem2 : EnemyShooter<EnemyBullet>
                 for (int ii = 0; ii < 12; ii++)
                 {
                     float z = ii * 30f;
+                    Vector3 pos = Vector3.zero;
 
-                    SpawnProjectile(1, z, Vector2.zero).Fire();
+                    SpawnProjectile(1, z, pos).Fire();
                 }
 
                 yield return WaitForSeconds(ShootingCooldown * 2f);

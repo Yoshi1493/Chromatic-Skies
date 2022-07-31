@@ -24,8 +24,9 @@ public class TaurusBulletSystem3 : EnemyShooter<EnemyBullet>
             {
                 float offset = Mathf.PingPong(i, 30f) - RotationPerWave;
                 float z = (ii * BulletSpacing) + (i * offset) + 180f;
+                Vector3 pos = Vector3.zero;
 
-                SpawnProjectile(0, z, Vector3.zero).Fire();
+                SpawnProjectile(0, z, pos).Fire();
                 yield return WaitForSeconds(ShootingCooldown);
             }
 

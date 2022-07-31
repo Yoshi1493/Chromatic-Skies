@@ -24,7 +24,9 @@ public class AriesBulletSystem3 : EnemyShooter<EnemyBullet>
             for (int i = 0; i <= BulletCount; i++)
             {
                 float z = rand + (i * BulletSpacing) - 120f;
-                SpawnProjectile(0, z, transform.up.RotateVectorBy(rand)).Fire();
+                Vector3 pos = transform.up.RotateVectorBy(rand);
+
+                SpawnProjectile(0, z, pos).Fire();
             }
 
             yield return WaitForSeconds(ShootingCooldown);

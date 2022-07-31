@@ -24,7 +24,9 @@ public class VirgoBulletSystem11 : EnemyBulletSubsystem<EnemyBullet>
                 for (int ii = 0; ii < BranchCount; ii++)
                 {
                     float z = -((i * WaveSpacing) + (ii * BranchSpacing)) + r;
-                    SpawnProjectile(1, z, transform.up.RotateVectorBy(z)).Fire();
+                    Vector3 pos = transform.up.RotateVectorBy(z);
+
+                    SpawnProjectile(1, z, pos).Fire();
                 }
 
                 yield return WaitForSeconds(ShootingCooldown);

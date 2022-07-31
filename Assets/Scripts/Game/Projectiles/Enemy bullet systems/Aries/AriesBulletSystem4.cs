@@ -22,14 +22,16 @@ public class AriesBulletSystem4 : EnemyShooter<EnemyBullet>
 
             int d = PositiveOrNegativeOne;
             float n = 0f;
-            float o = Random.Range(0f, 90f);
+            float r = Random.Range(0f, 90f);
 
             for (int i = 1; i < WaveCount; i++)
             {
                 for (int ii = 0; ii < BranchCount; ii++)
                 {
-                    float z = ii * BranchSpacing + n + o;
-                    SpawnProjectile(0, z, Vector2.zero).Fire();
+                    float z = ii * BranchSpacing + n + r;
+                    Vector3 pos = Vector3.zero;
+
+                    SpawnProjectile(0, z, pos).Fire();
                 }
 
                 n += i * WaveSpacing * d;
