@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using static CoroutineHelper;
+using static MathHelper;
 
 public class CapricornBulletSystem3 : EnemyShooter<EnemyBullet>
 {
@@ -20,13 +21,15 @@ public class CapricornBulletSystem3 : EnemyShooter<EnemyBullet>
 
         while (enabled)
         {
+            int d = PositiveOrNegativeOne;
+
             for (int i = 1; i < WaveCount; i++)
             {
                 for (int ii = 0; ii < BranchCount; ii++)
                 {
                     float z = Random.Range(0f, 360f);
                     float t = (i * BulletSpacing) + (ii * BranchSpacing);
-                    Vector3 pos = i * WaveSpacing * transform.up.RotateVectorBy(t);
+                    Vector3 pos = i * WaveSpacing * transform.up.RotateVectorBy(t * d);
 
                     SpawnProjectile(0, z, pos).Fire();
                 }
