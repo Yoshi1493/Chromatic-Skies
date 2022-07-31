@@ -11,7 +11,7 @@ public class LibraBulletSystem21 : EnemyBulletSubsystem<Laser>
     const float MinLaserRotation = 5f;
     const float MaxLaserRotation = 30f;
 
-    List<Vector2> spawnPositions = new List<Vector2>();
+    List<Vector2> spawnPositions = new();
 
     protected override float ShootingCooldown => 0.04f;
 
@@ -25,8 +25,11 @@ public class LibraBulletSystem21 : EnemyBulletSubsystem<Laser>
 
             for (int i = 0; i < spawnPositions.Count; i++)
             {
-                float z = Random.Range(MinLaserRotation, MaxLaserRotation) * PositiveOrNegativeOne + 180f;
-                SpawnProjectile(0, z, spawnPositions[i], false).Fire(1f);
+                int d = PositiveOrNegativeOne;
+                float z = Random.Range(MinLaserRotation, MaxLaserRotation) * d + 180f;
+                Vector3 pos = spawnPositions[i];
+
+                SpawnProjectile(0, z, pos, false).Fire(1f);
 
                 yield return WaitForSeconds(ShootingCooldown);
             }

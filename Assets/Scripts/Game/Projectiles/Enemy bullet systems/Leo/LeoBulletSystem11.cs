@@ -15,7 +15,7 @@ public class LeoBulletSystem11 : EnemyBulletSubsystem<EnemyBullet>
         yield return WaitForSeconds(3f);
 
         float r = Random.Range(0f, 180f);
-        float d = PositiveOrNegativeOne;
+        int d = PositiveOrNegativeOne;
 
         for (int i = 0; i < BulletCount; i++)
         {

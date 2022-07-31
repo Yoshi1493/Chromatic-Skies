@@ -23,13 +23,13 @@ public class TaurusBulletSystem5 : EnemyShooter<EnemyBullet>
 
         while (enabled)
         {
-            float randDirection = PositiveOrNegativeOne;
+            int d = PositiveOrNegativeOne;
 
             for (int i = 0; i < OuterBranchDensity; i++)
             {
                 for (int j = 0; j < OuterBranchCount; j++)
                 {
-                    float z = ((i * 4f) + (j * 72f)) * randDirection;
+                    float z = ((i * 4f) + (j * 72f)) * d;
                     var bullet = SpawnProjectile(0, z, Vector3.zero);
                     outerBullets.Add(bullet);
 

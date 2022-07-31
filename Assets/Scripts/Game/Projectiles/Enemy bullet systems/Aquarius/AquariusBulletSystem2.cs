@@ -23,7 +23,7 @@ public class AquariusBulletSystem2 : EnemyShooter<EnemyBullet>
 
         while (enabled)
         {
-            float d = PositiveOrNegativeOne;
+            int d = PositiveOrNegativeOne;
 
             for (int i = 1; i <= WaveCount; i++)
             {
