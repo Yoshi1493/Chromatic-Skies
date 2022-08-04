@@ -26,6 +26,14 @@ public static class MathHelper
         }
     }
 
+    /// <summary>
+    /// returns bezier curve coordinate along line [<v1>, <v2>] and line [<v2>, <v3>], based on lerp progress <t>
+    /// </summary>
+    public static Vector3 QuadraticBezierCurve(Vector3 v1, Vector3 v2, Vector3 v3, float t)
+    {
+        return Vector3.Lerp(Vector3.Lerp(v1, v2, t), Vector3.Lerp(v2, v3, t), t);
+    }
+
     #endregion
 
     #region Vector
@@ -78,6 +86,7 @@ public static class MathHelper
     #region Random
 
     public static int PositiveOrNegativeOne => Random.value > 0.5f ? -1 : 1;
+    public static float RandomAngleDeg => Random.Range(0f, 360f);
 
     public static List<Vector2> GetRandomPointsAlongBounds(Vector2 minBoundary, Vector2 maxBoundary, float minSpacing = 1f, float maxSpacing = 3f)
     {

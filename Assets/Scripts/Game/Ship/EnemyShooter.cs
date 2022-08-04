@@ -30,9 +30,22 @@ public abstract class EnemyShooter<TProjectile> : Shooter<TProjectile>, IEnemyAt
     #endregion
 
     Player playerShip;
+
     protected Vector3 PlayerPosition => playerShip.transform.position;
+    protected float screenHalfHeight;
+    protected float screenHalfWidth;
 
     [SerializeField] List<TProjectile> enemyProjectiles = new List<TProjectile>();
+
+    protected override void Awake()
+    {
+        base.Awake();
+
+        Camera mainCam = Camera.main;
+
+        screenHalfHeight = mainCam.orthographicSize;
+        screenHalfWidth = screenHalfHeight * mainCam.aspect;
+    }
 
     void Start()
     {

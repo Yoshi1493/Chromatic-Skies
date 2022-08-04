@@ -27,7 +27,7 @@ public class CapricornBulletSystem3 : EnemyShooter<EnemyBullet>
             {
                 for (int ii = 0; ii < BranchCount; ii++)
                 {
-                    float z = Random.Range(0f, 360f);
+                    float z = RandomAngleDeg;
                     float t = (i * BulletSpacing) + (ii * BranchSpacing);
                     Vector3 pos = i * WaveSpacing * transform.up.RotateVectorBy(t * d);
 
