@@ -17,8 +17,6 @@ public class CapricornBulletSystem2 : EnemyShooter<EnemyBullet>
 
         while (enabled)
         {
-            float r = Random.Range(0f, BranchSpacing);
-
             for (int i = 0; i < WaveCount; i++)
             {
                 for (int ii = 0; ii < BranchCount; ii++)
