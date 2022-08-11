@@ -12,7 +12,7 @@ public class CapricornBulletSystem31 : EnemyShooter<EnemyBullet>
 
     protected override IEnumerator Shoot()
     {
-        yield return WaitForSeconds(2f);
+        //yield return WaitForSeconds(2f);
 
         int i = 0;
 

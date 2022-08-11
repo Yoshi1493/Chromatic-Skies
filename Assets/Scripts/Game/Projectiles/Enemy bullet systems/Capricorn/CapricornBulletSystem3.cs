@@ -1,17 +1,15 @@
 using System.Collections;
 using UnityEngine;
 using static CoroutineHelper;
-using static MathHelper;
 
 public class CapricornBulletSystem3 : EnemyShooter<EnemyBullet>
 {
-    const int WaveCount = 21;
-    const float WaveSpacing = 0.5f;
-    const int BranchCount = 3;
-    const float BranchSpacing = 360f / BranchCount;
-    const float BulletSpacing = 5f;
+    const int WaveCount = 11;
+    const float WaveSpacing = 360f / (2 * (WaveCount - 1));
+    const int BulletCount = 8;
+    const float BulletSpeed = 1.5f;
 
-    protected override float ShootingCooldown => 0.05f;
+    protected override float ShootingCooldown => 0.25f;
 
     protected override IEnumerator Shoot()
     {
@@ -19,25 +17,33 @@ public class CapricornBulletSystem3 : EnemyShooter<EnemyBullet>
 
         SetSubsystemEnabled(1);
 
+        yield return WaitForSeconds(3f);
+
         while (enabled)
         {
-            int d = PositiveOrNegativeOne;
+            float r = PlayerPosition.GetRotationDifference(transform.position);
 
-            for (int i = 1; i < WaveCount; i++)
+            for (int i = 0; i < WaveCount; i++)
             {
+                int BranchCount = i % (WaveCount - 1) == 0 ? 1 : 2;
+
                 for (int ii = 0; ii < BranchCount; ii++)
                 {
-                    float z = RandomAngleDeg;
-                    float t = (i * BulletSpacing) + (ii * BranchSpacing);
-                    Vector3 pos = i * WaveSpacing * transform.up.RotateVectorBy(t * d);
+                    float z = (i * WaveSpacing) * (-ii * 2 + 1) + r;
+                    Vector3 pos = Vector3.zero;
 
-                    SpawnProjectile(0, z, pos).Fire();
+                    for (int iii = 0; iii < BulletCount; iii++)
+                    {
+                        var bullet = SpawnProjectile(0, z, pos);
+                        bullet.MoveSpeed = BulletSpeed + (iii * 0.5f);
+                        bullet.Fire();
+                    }
                 }
 
                 yield return WaitForSeconds(ShootingCooldown);
             }
 
-            yield return ownerShip.MoveToRandomPosition(1f, delay: 6f);
+            yield return ownerShip.MoveToRandomPosition(2f, delay: 2f);
         }
     }
 }
