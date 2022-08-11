@@ -56,11 +56,12 @@ public class CapricornBulletSystem4 : EnemyShooter<EnemyBullet>
 
             yield return WaitForSeconds(1f);
 
-            bullets.ForEach(b => b.Fire());
+            SetSubsystemEnabled(1);
+
             bullets.Clear();
             playerPositions.Clear();
 
-            yield return WaitForSeconds(8f);
+            yield return WaitForSeconds(5f);
         }
     }
 }

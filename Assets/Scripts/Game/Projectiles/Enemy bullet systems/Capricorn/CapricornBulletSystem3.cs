@@ -34,8 +34,10 @@ public class CapricornBulletSystem3 : EnemyShooter<EnemyBullet>
 
                     for (int iii = 0; iii < BulletCount; iii++)
                     {
+                        float s = BulletSpeed + (iii * 0.5f);
+
                         var bullet = SpawnProjectile(0, z, pos);
-                        bullet.MoveSpeed = BulletSpeed + (iii * 0.5f);
+                        bullet.MoveSpeed = s;
                         bullet.Fire();
                     }
                 }
