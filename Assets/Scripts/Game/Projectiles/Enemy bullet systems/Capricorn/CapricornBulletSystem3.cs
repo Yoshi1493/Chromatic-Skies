@@ -4,6 +4,8 @@ using static CoroutineHelper;
 
 public class CapricornBulletSystem3 : EnemyShooter<EnemyBullet>
 {
+    [SerializeField] ProjectileObject bulletData;
+
     const int WaveCount = 11;
     const float WaveSpacing = 360f / (2 * (WaveCount - 1));
     const int BulletCount = 8;
@@ -35,6 +37,7 @@ public class CapricornBulletSystem3 : EnemyShooter<EnemyBullet>
                     for (int iii = 0; iii < BulletCount; iii++)
                     {
                         float s = BulletSpeed + (iii * 0.5f);
+                        bulletData.colour = bulletData.gradient.Evaluate(iii / (float)BulletCount);
 
                         var bullet = SpawnProjectile(0, z, pos);
                         bullet.MoveSpeed = s;

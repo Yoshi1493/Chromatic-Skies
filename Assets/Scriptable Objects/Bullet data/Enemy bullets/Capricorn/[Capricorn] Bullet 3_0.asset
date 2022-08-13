@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: 9c44a70d88a58084b91108bd8d02a677, type: 3}
   useSolidColour: 1
-  colour: {r: 0.39999998, g: 1, b: 0.39999998, a: 1}
+  colour: {r: 1, g: 0.125, b: 0, a: 1}
   gradient:
     serializedVersion: 2
-    key0: {r: 1, g: 1, b: 1, a: 1}
-    key1: {r: 1, g: 1, b: 1, a: 1}
+    key0: {r: 1, g: 0.75, b: 0, a: 1}
+    key1: {r: 1, g: 0.25, b: 0, a: 1}
     key2: {r: 1, g: 0.875, b: 0.5, a: 0}
     key3: {r: 0.75, g: 1, b: 1, a: 0}
     key4: {r: 0.25, g: 1, b: 1, a: 0}

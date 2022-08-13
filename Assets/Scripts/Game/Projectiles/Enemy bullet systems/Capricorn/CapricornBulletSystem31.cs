@@ -12,8 +12,6 @@ public class CapricornBulletSystem31 : EnemyShooter<EnemyBullet>
 
     protected override IEnumerator Shoot()
     {
-        //yield return WaitForSeconds(2f);
-
         int i = 0;
 
         while (enabled)
@@ -27,7 +25,7 @@ public class CapricornBulletSystem31 : EnemyShooter<EnemyBullet>
                     float z = d + t + (iii * BulletSpacing);
                     Vector3 pos = transform.up.RotateVectorBy(d + t);
 
-                    SpawnProjectile(ii + 1, z, pos).Fire();
+                    SpawnProjectile(1, z, pos).Fire();
                 }
             }
 
