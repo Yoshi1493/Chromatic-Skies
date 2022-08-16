@@ -35,7 +35,7 @@ public abstract class EnemyShooter<TProjectile> : Shooter<TProjectile>, IEnemyAt
     protected float screenHalfHeight;
     protected float screenHalfWidth;
 
-    [SerializeField] List<TProjectile> enemyProjectiles = new List<TProjectile>();
+    [SerializeField] List<TProjectile> enemyProjectiles = new();
 
     protected override void Awake()
     {

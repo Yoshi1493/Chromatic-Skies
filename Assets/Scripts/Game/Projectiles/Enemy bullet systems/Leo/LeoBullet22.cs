@@ -30,8 +30,9 @@ public class LeoBullet22 : ScriptableEnemyBullet<LeoBulletSystem21, EnemyBullet>
         for (int i = 0; i < BulletCount; i++)
         {
             float z = i * BulletSpacing + transform.eulerAngles.z;
+            Vector3 pos = transform.position;
 
-            var bullet = SpawnBullet(3, z, transform.position, false);
+            var bullet = SpawnBullet(3, z, pos, false);
             bullet.MoveSpeed = i * 0.25f + 1;
             bullet.Fire();
         }
