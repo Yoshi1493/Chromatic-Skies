@@ -4,14 +4,14 @@ using static CoroutineHelper;
 
 public class CapricornBulletSystem51 : EnemyShooter<EnemyBullet>
 {
-    const int WaveCount = 12;
+    const int WaveCount = 10;
     const float WaveSpacing = BranchSpacing / 2;
     const int BranchCount = 6;
     const float BranchSpacing = 360f / BranchCount;
     const int BulletCount = 6;
     const float BulletSpacing = 5f;
 
-    protected override float ShootingCooldown => 0.4f;
+    protected override float ShootingCooldown => 0.21f;
 
     protected override IEnumerator Shoot()
     {
@@ -24,7 +24,7 @@ public class CapricornBulletSystem51 : EnemyShooter<EnemyBullet>
 
                 for (int iii = 0; iii < BulletCount; iii++)
                 {
-                    float z = t + (iii * (BulletCount * 0.5f - 0.5f) * BulletSpacing);
+                    float z = t + (iii * (BulletCount * 0.5f - 0.5f) * BulletSpacing) + ((iii + 1) % 2 * BulletSpacing);
                     SpawnProjectile(2, z, pos).Fire();
                 }
             }

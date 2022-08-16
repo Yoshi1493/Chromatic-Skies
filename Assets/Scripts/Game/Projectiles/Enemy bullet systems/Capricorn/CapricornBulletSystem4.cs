@@ -8,7 +8,7 @@ public class CapricornBulletSystem4 : EnemyShooter<EnemyBullet>
 {
     const float SpawnTime = 1f;
     const float FollowTime = 5f;
-    const float FollowDelay = 0.25f;
+    const float FollowDelay = 0.4f;
     const float SpawnOffsetRadius = 0.5f;
 
     List<EnemyBullet> bullets = new();
@@ -24,8 +24,7 @@ public class CapricornBulletSystem4 : EnemyShooter<EnemyBullet>
         {
             float t = 0f;
             float x = (Random.Range(0, screenHalfWidth * 0.25f) + screenHalfWidth * 0.5f) * PositiveOrNegativeOne;
-            Vector3 v1 = new(x, screenHalfHeight);
-            Vector3 v2 = new(x, PlayerPosition.y);
+            Vector3 v1 = new(x, screenHalfHeight);            
 
             while (t < FollowTime)
             {
@@ -39,6 +38,7 @@ public class CapricornBulletSystem4 : EnemyShooter<EnemyBullet>
 
                 if (t < SpawnTime)
                 {
+                    Vector3 v2 = new(x, PlayerPosition.y);
                     Vector3 v3 = QuadraticBezierCurve(v1, v2, PlayerPosition, t / SpawnTime);
                     pos += v3;
                 }

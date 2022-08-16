@@ -15,25 +15,27 @@ public class CapricornBulletSystem5 : EnemyShooter<EnemyBullet>
 
     protected override IEnumerator Shoot()
     {
+        yield return base.Shoot();
+
         while (enabled)
         {
-            for (int i = 0; i < WaveCount; i++)
-            {
-                for (int ii = 0; ii < BranchCount; ii++)
-                {
-                    float t = (i * WaveSpacing) + (ii * BranchSpacing);
-                    Vector3 pos = 3f * Vector3.right.RotateVectorBy(t);
+            //for (int i = 0; i < WaveCount; i++)
+            //{
+            //    for (int ii = 0; ii < BranchCount; ii++)
+            //    {
+            //        float t = (i * WaveSpacing) + (ii * BranchSpacing);
+            //        Vector3 pos = 3f * Vector3.right.RotateVectorBy(t);
 
-                    for (int iii = 0; iii < BulletCount; iii++)
-                    {
-                        float z = t + (iii * BulletSpacing);
+            //        for (int iii = 0; iii < BulletCount; iii++)
+            //        {
+            //            float z = t + (iii * BulletSpacing);
 
-                        SpawnProjectile(ii, z, pos).Fire();
-                    }
-                }
+            //            SpawnProjectile(ii, z, pos).Fire();
+            //        }
+            //    }
 
-                yield return WaitForSeconds(ShootingCooldown);
-            }
+            //    yield return WaitForSeconds(ShootingCooldown);
+            //}
 
             SetSubsystemEnabled(1);
 

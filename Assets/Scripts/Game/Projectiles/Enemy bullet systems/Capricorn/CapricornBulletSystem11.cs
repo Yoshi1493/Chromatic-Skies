@@ -11,6 +11,8 @@ public class CapricornBulletSystem11 : EnemyShooter<EnemyBullet>
 
     protected override IEnumerator Shoot()
     {
+        yield return WaitForSeconds(ShootingCooldown);
+
         while (enabled)
         {
             yield return WaitForSeconds(ShootingCooldown);

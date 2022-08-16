@@ -8,6 +8,6 @@ public class CapricornBullet50 : EnemyBullet
     protected override IEnumerator Move()
     {
         StartCoroutine(this.RotateBy(15f, 5f, rotatesClockwise));
-        yield return this.LerpSpeed(2f, 1.5f, 1f);
+        yield return this.LerpSpeed(4f, 2f, 1f);
     }
 }
