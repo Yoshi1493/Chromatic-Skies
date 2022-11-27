@@ -48,6 +48,7 @@ MonoBehaviour:
   <ModuleName>k__BackingField: {fileID: 0}
   enemyProjectiles:
   - {fileID: 9080662429320142756, guid: 28916b14e0ed3c5418642a201b7ad64d, type: 3}
+  bulletData: {fileID: 11400000, guid: 7c6592114465e91479312365c3318156, type: 2}
 --- !u!1 &3485189040803288676
 GameObject:
   m_ObjectHideFlags: 0
