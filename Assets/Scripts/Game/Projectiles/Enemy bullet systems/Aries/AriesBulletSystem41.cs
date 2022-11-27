@@ -4,11 +4,12 @@ using static CoroutineHelper;
 
 public class AriesBulletSystem41 : EnemyBulletSubsystem<EnemyBullet>
 {
-    const float AngleLimit = 90;
+    const int AngleLimit = 90;
 
     protected override IEnumerator Shoot()
     {
-        int n = 0;
+        int n = Random.value > 0.5f ? 0 : AngleLimit;
+
         float y = camHalfHeight + 1f;
 
         while (enabled)

@@ -18,8 +18,6 @@ public class AriesBulletSystem4 : EnemyShooter<EnemyBullet>
 
         while (enabled)
         {
-            yield return WaitForSeconds(2f);
-
             int d = PositiveOrNegativeOne;
             float n = 0f;
             float r = Random.Range(0f, 90f);
@@ -38,7 +36,7 @@ public class AriesBulletSystem4 : EnemyShooter<EnemyBullet>
                 yield return WaitForSeconds(ShootingCooldown);
             }
 
-            yield return ownerShip.MoveToRandomPosition(1f, delay: 1f);
+            yield return ownerShip.MoveToRandomPosition(1f, delay: 2f);
         }
     }
 }
