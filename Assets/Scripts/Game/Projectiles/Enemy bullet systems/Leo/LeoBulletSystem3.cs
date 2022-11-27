@@ -1,12 +1,12 @@
 using System.Collections;
-using UnityEngine;
 using static CoroutineHelper;
 
 public class LeoBulletSystem3 : EnemyShooter<EnemyBullet>
 {
     protected override IEnumerator Shoot()
     {
-        yield return WaitForSeconds(2f);
+        yield return base.Shoot();
+
         SetSubsystemEnabled(1);
         yield return WaitForSeconds(2f);
         SetSubsystemEnabled(2);
@@ -15,8 +15,8 @@ public class LeoBulletSystem3 : EnemyShooter<EnemyBullet>
 
         while (enabled)
         {
-            float randDelay = Random.Range(4f, 6f);
-            yield return WaitForSeconds(randDelay);
+            SetSubsystemEnabled(4);
+            yield return WaitForSeconds(6f);
             yield return ownerShip.MoveToRandomPosition(1f);
         }
     }

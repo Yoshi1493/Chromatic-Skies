@@ -15,6 +15,8 @@ public class LeoBulletSystem2 : EnemyShooter<EnemyBullet>
 
     protected override IEnumerator Shoot()
     {
+        yield return base.Shoot();
+
         //lemniscate (infinity curve) (x^2 + y^2)^2 - rx^2 + ry^2 = 0, modified and broken into 3 parts:
         //positive sine wave:  f(x) = sin(x)      {1 < x < t}
         //semicircle:          1 = (x-t)^2 + y^2  {x > t}
@@ -63,7 +65,7 @@ public class LeoBulletSystem2 : EnemyShooter<EnemyBullet>
                 SpawnBullets(pos);
             }
 
-            yield return WaitForSeconds(5f);
+            yield return WaitForSeconds(6f);
             yield return ownerShip.MoveToRandomPosition(1f);
         }
     }
