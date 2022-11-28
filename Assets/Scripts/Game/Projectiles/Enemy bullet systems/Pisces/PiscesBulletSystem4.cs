@@ -57,7 +57,7 @@ public class PiscesBulletSystem4 : EnemyShooter<EnemyBullet>
     {
         for (int i = 0; i < BranchCount; i++)
         {
-            float z = (i + 0.5f) * BranchSpacing;
+            float z = i * BranchSpacing;
 
             Vector3 pos = new Vector3(BranchWidth, loopCount * ScaleFactor).RotateVectorBy(z);
             bulletData.colour = bulletData.gradient.Evaluate(pos.magnitude / 6f);
@@ -72,20 +72,20 @@ public class PiscesBulletSystem4 : EnemyShooter<EnemyBullet>
     {
         for (int i = 1; i < branchLength; i++)
         {
-            for (int j = 0; j < BranchCount; j++)
+            for (int ii = 0; ii < BranchCount; ii++)
             {
                 float x = Mathf.Cos(branchAngle * Mathf.Deg2Rad) * i * ScaleFactor + xOffset;
                 float y = Mathf.Sin(branchAngle * Mathf.Deg2Rad) * i * ScaleFactor + yOffset;
 
-                float z = 90 - branchAngle;
-                float theta = (j + 0.5f) * BranchSpacing;
+                float z = ii * BranchSpacing;
+                float t = 90 - branchAngle;
 
-                Vector3 pos = new Vector3(x, y).RotateVectorBy(theta);
+                Vector3 pos = new Vector3(x, y).RotateVectorBy(z);
                 bulletData.colour = bulletData.gradient.Evaluate(pos.magnitude / 6f);
-                SpawnProjectile(0, theta - z, pos).Fire();
+                SpawnProjectile(0, z - t, pos).Fire();
 
-                pos = new Vector3(-x, y).RotateVectorBy(theta);
-                SpawnProjectile(0, theta + z, pos).Fire();
+                pos = new Vector3(-x, y).RotateVectorBy(z);
+                SpawnProjectile(0, z + t, pos).Fire();
             }
 
             yield return WaitForSeconds(ShootingCooldown);
