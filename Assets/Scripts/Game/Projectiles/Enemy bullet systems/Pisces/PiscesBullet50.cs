@@ -22,11 +22,14 @@ public class PiscesBullet50 : ScriptableEnemyBullet<PiscesBulletSystem5, EnemyBu
 
         for (int i = 0; i < BulletCount; i++)
         {
-            float z = (i - ((BulletCount - 1) * 0.5f)) * BulletSpacing + t;
+            float r = (i - ((BulletCount - 1) * 0.5f)) * BulletSpacing;
+            float z = r + t;
             Vector3 pos = transform.position;
 
             bulletData.colour = bulletData.gradient.Evaluate((float)i / BulletCount);
-            SpawnBullet(1, z, pos, false).Fire();
+            var bullet = SpawnBullet(1, z, pos, false);
+            bullet.StartCoroutine(bullet.RotateBy(r, 2f, false));
+            bullet.Fire();
         }
 
         base.Destroy();
