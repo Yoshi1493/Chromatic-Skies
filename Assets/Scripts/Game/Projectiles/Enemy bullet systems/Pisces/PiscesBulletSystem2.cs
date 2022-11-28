@@ -4,26 +4,35 @@ using static CoroutineHelper;
 
 public class PiscesBulletSystem2 : EnemyShooter<EnemyBullet>
 {
-    readonly float Spacing = 15f;
+    [SerializeField] ProjectileObject bulletData;
+
+    const int WaveCount = 3;
+    const float BulletSpacing = 15f;
 
     protected override IEnumerator Shoot()
     {
         yield return base.Shoot();
 
+        SetSubsystemEnabled(1);
+
         while (enabled)
         {
-            for (int i = 5; i <= 9; i += 2)
+            yield return WaitForSeconds(1f);
+
+            for (int i = 0; i < WaveCount; i++)
             {
-                float theta = PlayerPosition.GetRotationDifference(transform.position);
+                float r = PlayerPosition.GetRotationDifference(transform.position);
+                int m = (i * 2) + 5;
 
-                for (int j = 0; j < i; j++)
+                for (int ii = 0; ii < m; ii++)
                 {
-                    int bulletCount = (int)Mathf.PingPong(j, i / 2) + 1;
-                    float offset = ((bulletCount - 1) * Spacing / 2f);
+                    int n = (int)Mathf.PingPong(ii, m / 2) + 1;
+                    float o = (n - 1) * BulletSpacing / 2f;
 
-                    for (int k = 0; k < bulletCount; k++)
+                    for (int iii = 0; iii < n; iii++)
                     {
-                        float z = theta + (k * Spacing - offset);
+                        bulletData.colour = bulletData.gradient.Evaluate(ii / (m - 1f));
+                        float z = r + (iii * BulletSpacing) - o;
                         Vector3 pos = Vector3.zero;
 
                         SpawnProjectile(0, z, pos).Fire();
@@ -32,37 +41,7 @@ public class PiscesBulletSystem2 : EnemyShooter<EnemyBullet>
                     yield return WaitForSeconds(ShootingCooldown);
                 }
 
-                yield return WaitForSeconds(ShootingCooldown);
-            }
-
-            yield return WaitForSeconds(ShootingCooldown * 2f);
-
-            for (int i = 0; i < 9; i++)
-            {
-                for (int j = 0; j < 360; j += 18)
-                {
-                    float z = j + (i * 2f);
-                    Vector3 pos = Vector3.zero;
-
-                    SpawnProjectile(1, z, pos).Fire();
-                }
-
-                yield return WaitForSeconds(ShootingCooldown);
-            }
-
-            yield return WaitForSeconds(ShootingCooldown * 4f);
-
-            for (int i = 9; i > 0; i--)
-            {
-                for (int j = 0; j < 360; j += 18)
-                {
-                    float z = j + (i * 3f);
-                    Vector3 pos = Vector3.zero;
-
-                    SpawnProjectile(1, z, pos).Fire();
-                }
-
-                yield return WaitForSeconds(ShootingCooldown);
+                yield return WaitForSeconds(ShootingCooldown * 2f);
             }
 
             yield return ownerShip.MoveToRandomPosition(1f, maxSqrMagDelta: 3f, delay: 1f);
