@@ -6,7 +6,7 @@ public class PiscesBulletSystem51 : EnemyShooter<EnemyBullet>
 {
     [SerializeField] ProjectileObject bulletData;
 
-    const int BulletCount = 6;
+    const int BulletCount = 5;
 
     protected override float ShootingCooldown => 1.5f;
 

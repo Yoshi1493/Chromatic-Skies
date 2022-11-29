@@ -2,7 +2,7 @@ using System.Collections;
 
 public class PiscesBullet51 : EnemyBullet
 {
-    protected override float MaxLifetime => 5f;
+    protected override float MaxLifetime => 6f;
 
     protected override IEnumerator Move()
     {
