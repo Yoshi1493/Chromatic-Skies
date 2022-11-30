@@ -47,7 +47,7 @@ MonoBehaviour:
   <AttackName>k__BackingField: {fileID: 0}
   <ModuleName>k__BackingField: {fileID: 0}
   enemyProjectiles:
-  - {fileID: -8852293698933050746, guid: b61f7fc888def7f45a7d53a9c6ff2605, type: 3}
+  - {fileID: 2981126790056077132, guid: b61f7fc888def7f45a7d53a9c6ff2605, type: 3}
 --- !u!1 &5038592034943205865
 GameObject:
   m_ObjectHideFlags: 0
@@ -195,7 +195,7 @@ PrefabInstance:
     - target: {fileID: 3922465162775491505, guid: d93cb44e21569f545b76560b29579f98, type: 3}
       propertyPath: enemyBullets.Array.data[7]
       value: 
-      objectReference: {fileID: -8852293698933050746, guid: b61f7fc888def7f45a7d53a9c6ff2605, type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 4336286228127436173, guid: d93cb44e21569f545b76560b29579f98, type: 3}
       propertyPath: m_Name
       value: Enemy-Aries
@@ -329,7 +329,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3773574035635707974}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 136c79054c36eec4aba1ad84cde272a0, type: 3}
   m_Name: 
@@ -337,7 +337,8 @@ MonoBehaviour:
   <AttackName>k__BackingField: {fileID: 11400000, guid: 0e3ad96293ab63141968bfb412ec5370, type: 2}
   <ModuleName>k__BackingField: {fileID: 11400000, guid: 14f18a63291b6784c87b214f4a0c1b52, type: 2}
   enemyProjectiles:
-  - {fileID: -7333167599736433637, guid: 93cf1ac2e57acfa4e8ea28c5beccb4d9, type: 3}
+  - {fileID: 7757716064999866988, guid: 535302be54a65244f81c3a5b0c4e004a, type: 3}
+  bulletData: {fileID: 11400000, guid: 8a5e4febf0feec84a96efb0add1d06ff, type: 2}
 --- !u!4 &3927816813634689536 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8976766678102363460, guid: d93cb44e21569f545b76560b29579f98, type: 3}
@@ -355,7 +356,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5229022407275218308}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 42c0d7a08d3a18041a566aeddec3f751, type: 3}
   m_Name: 
@@ -363,7 +364,7 @@ MonoBehaviour:
   <AttackName>k__BackingField: {fileID: 11400000, guid: 380795e5a56e9c548a1e2d32874d29a9, type: 2}
   <ModuleName>k__BackingField: {fileID: 11400000, guid: 248d4dc2fba0ca8419aa25ff3aea8b80, type: 2}
   enemyProjectiles:
-  - {fileID: -7333167599736433637, guid: 93cf1ac2e57acfa4e8ea28c5beccb4d9, type: 3}
+  - {fileID: 983179094530019093, guid: b7b239d2a87064b45951b29ed6e0af31, type: 3}
 --- !u!4 &5754519020690091345 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 418168052357298709, guid: d93cb44e21569f545b76560b29579f98, type: 3}
