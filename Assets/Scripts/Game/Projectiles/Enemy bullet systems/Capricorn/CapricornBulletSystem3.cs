@@ -19,10 +19,10 @@ public class CapricornBulletSystem3 : EnemyShooter<EnemyBullet>
 
         SetSubsystemEnabled(1);
 
-        yield return WaitForSeconds(3f);
-
         while (enabled)
         {
+            yield return WaitForSeconds(2f);
+
             float r = PlayerPosition.GetRotationDifference(transform.position);
 
             for (int i = 0; i < WaveCount; i++)
@@ -48,7 +48,7 @@ public class CapricornBulletSystem3 : EnemyShooter<EnemyBullet>
                 yield return WaitForSeconds(ShootingCooldown);
             }
 
-            yield return ownerShip.MoveToRandomPosition(2f, delay: 2f);
+            yield return ownerShip.MoveToRandomPosition(2f);
         }
     }
 }

@@ -97,6 +97,8 @@ MonoBehaviour:
   <ModuleName>k__BackingField: {fileID: 0}
   enemyProjectiles:
   - {fileID: 3956775251690784573, guid: 9ff15f787a62f9949a5376da1ae7c36c, type: 3}
+  - {fileID: -6471326695952348639, guid: aad94df1d7321c4468e5a7687cdf4fcf, type: 3}
+  - {fileID: 5855960414757720005, guid: 6259275464d0f7d42bd56f7b72009a6e, type: 3}
 --- !u!1 &5429772383097462820
 GameObject:
   m_ObjectHideFlags: 0
@@ -265,7 +267,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 716324014634893503}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3e802d69d2db816438b262c4be582f05, type: 3}
   m_Name: 
@@ -297,7 +299,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2558884426390124806}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1035b49db619a2540b66ec771f5e5874, type: 3}
   m_Name: 

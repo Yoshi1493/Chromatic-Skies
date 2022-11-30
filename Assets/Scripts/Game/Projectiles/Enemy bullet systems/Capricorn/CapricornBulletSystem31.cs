@@ -6,9 +6,9 @@ public class CapricornBulletSystem31 : EnemyShooter<EnemyBullet>
 {
     const float WaveSpacing = 10f;
     const int BranchCount = 2;
-    const float BranchSpacing = 360f / BranchCount;
+    const int BranchSpacing = 360 / BranchCount;
     const int BulletCount = 3;
-    const float BulletSpacing = 360f / BulletCount;
+    const int BulletSpacing = 360 / BulletCount;
 
     protected override IEnumerator Shoot()
     {
@@ -25,7 +25,7 @@ public class CapricornBulletSystem31 : EnemyShooter<EnemyBullet>
                     float z = d + t + (iii * BulletSpacing);
                     Vector3 pos = transform.up.RotateVectorBy(d + t);
 
-                    SpawnProjectile(1, z, pos).Fire();
+                    SpawnProjectile(iii + 1, z, pos).Fire();
                 }
             }
 
