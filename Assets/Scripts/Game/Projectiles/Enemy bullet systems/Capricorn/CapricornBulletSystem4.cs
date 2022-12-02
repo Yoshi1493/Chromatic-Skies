@@ -6,9 +6,12 @@ using static MathHelper;
 
 public class CapricornBulletSystem4 : EnemyShooter<EnemyBullet>
 {
+    [SerializeField] ProjectileObject bulletData;
+
     const float SpawnTime = 1f;
-    const float FollowTime = 5f;
-    const float FollowDelay = 0.4f;
+    const float CatchupTime = 2f;
+    const float TotalFollowTime = 5f;
+    const float FollowDelay = 0.2f;
     const float SpawnOffsetRadius = 0.5f;
 
     List<EnemyBullet> bullets = new();
@@ -24,29 +27,38 @@ public class CapricornBulletSystem4 : EnemyShooter<EnemyBullet>
         {
             float t = 0f;
             float x = (Random.Range(0, screenHalfWidth * 0.25f) + screenHalfWidth * 0.5f) * PositiveOrNegativeOne;
-            Vector3 v1 = new(x, screenHalfHeight);            
+            Vector3 v0 = new(x, screenHalfHeight);
 
-            while (t < FollowTime)
+            while (t < TotalFollowTime)
             {
-                float z = RandomAngleDeg;
-                Vector3 pos = SpawnOffsetRadius * Random.insideUnitCircle;
-
-                if (t > SpawnTime - FollowDelay)
+                if (t > FollowDelay)
                 {
                     playerPositions.Enqueue(PlayerPosition);
                 }
 
-                if (t < SpawnTime)
+                Vector2 pos;
+
+                if (t < CatchupTime)
                 {
-                    Vector3 v2 = new(x, PlayerPosition.y);
-                    Vector3 v3 = QuadraticBezierCurve(v1, v2, PlayerPosition, t / SpawnTime);
-                    pos += v3;
+                    Vector3 v1 = new(x, PlayerPosition.y);
+                    Vector3 v2 = QuadraticBezierCurve(v0, v1, PlayerPosition, t / CatchupTime);
+                    pos = v2;
+
+                    if (t > SpawnTime)
+                    {
+                        Vector3 v3 = Vector3.Lerp(v2, playerPositions.Dequeue(), (t - SpawnTime) / (CatchupTime - SpawnTime));
+                        pos = v3;
+                    }
                 }
                 else
                 {
-                    pos += playerPositions.Dequeue();
+                    pos = playerPositions.Dequeue();
                 }
 
+                pos += (SpawnOffsetRadius * Random.insideUnitCircle);
+                float z = RandomAngleDeg;
+
+                bulletData.colour = bulletData.gradient.Evaluate(t / TotalFollowTime);
                 var bullet = SpawnProjectile(0, z, pos, false);
                 bullets.Add(bullet);
 
@@ -58,10 +70,11 @@ public class CapricornBulletSystem4 : EnemyShooter<EnemyBullet>
 
             SetSubsystemEnabled(1);
 
+            bullets.ForEach(b => b.Fire());
             bullets.Clear();
             playerPositions.Clear();
 
-            yield return WaitForSeconds(5f);
+            yield return ownerShip.MoveToRandomPosition(1f, delay: 5f);
         }
     }
 }
