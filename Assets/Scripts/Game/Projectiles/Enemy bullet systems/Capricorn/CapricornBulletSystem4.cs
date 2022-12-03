@@ -17,7 +17,7 @@ public class CapricornBulletSystem4 : EnemyShooter<EnemyBullet>
     List<EnemyBullet> bullets = new();
     Queue<Vector3> playerPositions = new();
 
-    protected override float ShootingCooldown => 0.04f;
+    protected override float ShootingCooldown => 0.02f;
 
     protected override IEnumerator Shoot()
     {
