@@ -26,7 +26,7 @@ public class PiscesBullet50 : ScriptableEnemyBullet<PiscesBulletSystem5, EnemyBu
             float z = r + t;
             Vector3 pos = transform.position;
 
-            bulletData.colour = bulletData.gradient.Evaluate((float)i / BulletCount);
+            bulletData.colour = bulletData.gradient.Evaluate(i / (BulletCount - 1f));
             var bullet = SpawnBullet(1, z, pos, false);
             bullet.StartCoroutine(bullet.RotateBy(r, 1f, false));
             bullet.Fire();

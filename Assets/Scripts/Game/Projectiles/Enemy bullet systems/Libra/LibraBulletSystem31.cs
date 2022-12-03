@@ -28,7 +28,7 @@ public class LibraBulletSystem31 : EnemyBulletSubsystem<EnemyBullet>
                 for (int j = 0; j < i; j++)
                 {
                     Vector3 pos = ((j * Spacing - xOffset) * Vector3.right).RotateVectorBy(z);
-                    bulletData.colour = bulletData.gradient.Evaluate((float)i / randSize);
+                    bulletData.colour = bulletData.gradient.Evaluate(i / (randSize - 1f));
 
                     SpawnProjectile(0, z, pos).Fire();
                 }

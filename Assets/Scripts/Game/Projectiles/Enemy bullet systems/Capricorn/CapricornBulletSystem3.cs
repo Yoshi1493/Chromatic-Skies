@@ -37,7 +37,7 @@ public class CapricornBulletSystem3 : EnemyShooter<EnemyBullet>
                     for (int iii = 0; iii < BulletCount; iii++)
                     {
                         float s = BulletSpeed + (iii * 0.5f);
-                        bulletData.colour = bulletData.gradient.Evaluate((float)iii / BulletCount);
+                        bulletData.colour = bulletData.gradient.Evaluate(iii / (BulletCount - 1f));
 
                         var bullet = SpawnProjectile(0, z, pos);
                         bullet.MoveSpeed = s;

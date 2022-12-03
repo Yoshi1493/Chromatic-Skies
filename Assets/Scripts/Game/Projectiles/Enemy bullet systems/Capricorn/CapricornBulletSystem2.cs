@@ -24,7 +24,7 @@ public class CapricornBulletSystem2 : EnemyShooter<EnemyBullet>
                 for (int iii = 0; iii < BranchCount; iii++)
                 {
                     float z = i * ((ii * WaveSpacing) + (iii * BranchSpacing));
-                    Vector3 pos = i * Vector3.Lerp(Vector3.left, Vector3.right, ii / (float)WaveCount);
+                    Vector3 pos = i * Vector3.Lerp(Vector3.left, Vector3.right, (float)ii / WaveCount);
 
                     SpawnProjectile(ii % 2, z, pos).Fire();
                 }

@@ -24,7 +24,7 @@ public class PiscesBulletSystem1 : EnemyShooter<EnemyBullet>
                 float spd = 2 + (i / 10f);
                 Vector3 pos = Vector3.zero;
 
-                bulletData.colour = bulletData.gradient.Evaluate((float)i / BulletCount);
+                bulletData.colour = bulletData.gradient.Evaluate(i / (BulletCount - 1f));
                 var bullet = SpawnProjectile(0, z, pos);
                 bullet.MoveSpeed = spd;
                 bullet.Fire();
@@ -44,7 +44,7 @@ public class PiscesBulletSystem1 : EnemyShooter<EnemyBullet>
                 float spd = 2 + (i / 10f);
                 Vector3 pos = Vector3.zero;
 
-                bulletData.colour = bulletData.gradient.Evaluate((float)i / BulletCount);
+                bulletData.colour = bulletData.gradient.Evaluate(i / (BulletCount - 1f));
                 var bullet = SpawnProjectile(0, z, pos);
                 bullet.MoveSpeed = spd;
                 bullet.Fire();

@@ -21,7 +21,7 @@ public class PiscesBulletSystem51 : EnemyShooter<EnemyBullet>
                 float z = PlayerPosition.GetRotationDifference(transform.position);
                 Vector3 pos = Vector3.zero;
 
-                bulletData.colour = bulletData.gradient.Evaluate((float)i / BulletCount);
+                bulletData.colour = bulletData.gradient.Evaluate(i / (BulletCount - 1f));
                 var bullet = SpawnProjectile(2, z, pos);
                 bullet.MoveSpeed = (i * 0.5f) + 2f;
                 bullet.Fire();
