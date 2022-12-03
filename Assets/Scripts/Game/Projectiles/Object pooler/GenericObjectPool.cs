@@ -5,7 +5,7 @@ public abstract class GenericObjectPool<TProjectile> : MonoBehaviour where TProj
 {
     public static GenericObjectPool<TProjectile> Instance { get; private set; }
 
-    readonly List<(TProjectile projectile, Queue<TProjectile> queue)> objectPool = new List<(TProjectile, Queue<TProjectile>)>();
+    readonly List<(TProjectile projectile, Queue<TProjectile> queue)> objectPool = new();
 
     void Awake()
     {
@@ -50,6 +50,6 @@ public abstract class GenericObjectPool<TProjectile> : MonoBehaviour where TProj
         returningObject.gameObject.SetActive(false);
         returningObject.enabled = false;
 
-        objectPool[returningObject.projectileData.ID].queue.Enqueue(returningObject);
+        objectPool[returningObject.ProjectileID].queue.Enqueue(returningObject);
     }
 }

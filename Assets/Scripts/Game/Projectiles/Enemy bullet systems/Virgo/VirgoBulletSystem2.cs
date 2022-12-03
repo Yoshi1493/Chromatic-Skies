@@ -6,8 +6,6 @@ using static MathHelper;
 
 public class VirgoBulletSystem2 : EnemyShooter<EnemyBullet>
 {
-    [SerializeField] ProjectileObject bulletData;
-
     const int WaveCount = 2;
     const float RingRadius = 4.2f;
     const int RingCount = 12;

@@ -5,8 +5,6 @@ using static MathHelper;
 
 public class CapricornBulletSystem41 : EnemyShooter<EnemyBullet>
 {
-    [SerializeField] ProjectileObject bulletData;
-
     const int BranchCount = 24;
     const float BranchSpacing = 20f;
     const int BulletCount = 12;

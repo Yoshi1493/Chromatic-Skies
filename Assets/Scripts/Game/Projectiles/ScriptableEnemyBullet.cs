@@ -5,7 +5,7 @@ public abstract class ScriptableEnemyBullet<TShooter, TProjectile> : EnemyBullet
     where TShooter : EnemyShooter<TProjectile>
     where TProjectile : Projectile
 {
-    protected TShooter enemyShooter;
+    TShooter enemyShooter;
     protected abstract override IEnumerator Move();
 
     protected override void Awake()

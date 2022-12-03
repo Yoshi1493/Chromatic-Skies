@@ -6,8 +6,6 @@ using static MathHelper;
 
 public class CapricornBulletSystem4 : EnemyShooter<EnemyBullet>
 {
-    [SerializeField] ProjectileObject bulletData;
-
     const float SpawnTime = 1f;
     const float CatchupTime = 2f;
     const float TotalFollowTime = 5f;

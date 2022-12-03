@@ -4,8 +4,6 @@ using static CoroutineHelper;
 
 public class PiscesBulletSystem2 : EnemyShooter<EnemyBullet>
 {
-    [SerializeField] ProjectileObject bulletData;
-
     const int WaveCount = 3;
     const float BulletSpacing = 15f;
 

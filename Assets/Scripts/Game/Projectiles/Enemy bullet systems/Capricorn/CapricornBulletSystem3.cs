@@ -4,8 +4,6 @@ using static CoroutineHelper;
 
 public class CapricornBulletSystem3 : EnemyShooter<EnemyBullet>
 {
-    [SerializeField] ProjectileObject bulletData;
-
     const int WaveCount = 11;
     const float WaveSpacing = 360f / (2 * (WaveCount - 1));
     const int BulletCount = 8;

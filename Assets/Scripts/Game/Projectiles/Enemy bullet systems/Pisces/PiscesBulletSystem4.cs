@@ -4,8 +4,6 @@ using static CoroutineHelper;
 
 public class PiscesBulletSystem4 : EnemyShooter<EnemyBullet>
 {
-    [SerializeField] ProjectileObject bulletData;
-
     const int BranchCount = 6;
     const int BranchSpacing = 360 / BranchCount;
     const float BranchWidth = 0.2f;

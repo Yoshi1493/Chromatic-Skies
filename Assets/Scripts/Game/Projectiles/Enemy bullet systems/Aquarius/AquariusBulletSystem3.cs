@@ -4,8 +4,6 @@ using static CoroutineHelper;
 
 public class AquariusBulletSystem3 : EnemyShooter<EnemyBullet>
 {
-    [SerializeField] ProjectileObject bulletData;
-
     const int WaveCount = 25;
     const float WaveSpacing = 8f;
     const int BranchCount = 16;

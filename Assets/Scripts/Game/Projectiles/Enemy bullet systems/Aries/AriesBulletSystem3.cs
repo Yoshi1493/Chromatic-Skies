@@ -4,8 +4,6 @@ using static CoroutineHelper;
 
 public class AriesBulletSystem3 : EnemyShooter<EnemyBullet>
 {
-    [SerializeField] ProjectileObject bulletData;
-
     const int BulletCount = 6;
     const float BulletSpacing = 180f / BulletCount;
 

@@ -4,8 +4,6 @@ using static CoroutineHelper;
 
 public class LibraBulletSystem31 : EnemyBulletSubsystem<EnemyBullet>
 {
-    [SerializeField] ProjectileObject bulletData;
-
     const int MinSize = 3;
     const int MaxSize = 6;
     const float Spacing = 1f;

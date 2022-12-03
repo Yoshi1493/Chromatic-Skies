@@ -5,8 +5,6 @@ using static CoroutineHelper;
 
 public class AquariusBulletSystem11 : EnemyBulletSubsystem<EnemyBullet>
 {
-    [SerializeField] ProjectileObject bulletData;
-
     const int WaveCount = 8;
     const int BulletCount = 18;
     const float BulletSpacing = 360f / BulletCount;

@@ -4,8 +4,6 @@ using static CoroutineHelper;
 
 public class PiscesBulletSystem1 : EnemyShooter<EnemyBullet>
 {
-    [SerializeField] ProjectileObject bulletData;
-
     const int BulletCount = 36;
     const int BulletSpacing = 360 / BulletCount;
     const float BulletOffset = BulletSpacing * 0.125f;
