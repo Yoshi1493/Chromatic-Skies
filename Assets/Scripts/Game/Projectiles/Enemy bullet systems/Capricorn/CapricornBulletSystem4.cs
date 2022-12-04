@@ -12,7 +12,6 @@ public class CapricornBulletSystem4 : EnemyShooter<EnemyBullet>
     const float FollowDelay = 0.2f;
     const float SpawnOffsetRadius = 0.5f;
 
-    List<EnemyBullet> bullets = new();
     Queue<Vector3> playerPositions = new();
 
     protected override float ShootingCooldown => 0.02f;
@@ -24,7 +23,7 @@ public class CapricornBulletSystem4 : EnemyShooter<EnemyBullet>
         while (enabled)
         {
             float t = 0f;
-            float x = (Random.Range(0, screenHalfWidth * 0.25f) + screenHalfWidth * 0.5f) * PositiveOrNegativeOne;
+            float x = (Random.Range(0, screenHalfWidth * 0.25f) + screenHalfWidth * 0.5f) * Mathf.Sign(ownerShip.transform.position.x);
             Vector3 v0 = new(x, screenHalfHeight);
 
             while (t < TotalFollowTime)
@@ -57,20 +56,16 @@ public class CapricornBulletSystem4 : EnemyShooter<EnemyBullet>
                 float z = RandomAngleDeg;
 
                 bulletData.colour = bulletData.gradient.Evaluate(t / TotalFollowTime);
-                var bullet = SpawnProjectile(0, z, pos, false);
-                bullets.Add(bullet);
+                SpawnProjectile(0, z, pos, false).Fire();
 
                 yield return WaitForSeconds(ShootingCooldown);
                 t += ShootingCooldown;
             }
 
-            yield return WaitForSeconds(1f);
-
-            SetSubsystemEnabled(1);
-
-            bullets.ForEach(b => b.Fire());
-            bullets.Clear();
             playerPositions.Clear();
+
+            yield return WaitForSeconds(1f);
+            SetSubsystemEnabled(1);
 
             yield return ownerShip.MoveToRandomPosition(1f, delay: 5f);
         }
