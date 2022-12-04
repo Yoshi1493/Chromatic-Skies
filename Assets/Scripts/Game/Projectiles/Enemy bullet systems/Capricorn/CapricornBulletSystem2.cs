@@ -19,6 +19,8 @@ public class CapricornBulletSystem2 : EnemyShooter<EnemyBullet>
 
         while (enabled)
         {
+            SetSubsystemEnabled(1);
+
             for (int ii = 0; ii < WaveCount; ii++)
             {
                 for (int iii = 0; iii < BranchCount; iii++)

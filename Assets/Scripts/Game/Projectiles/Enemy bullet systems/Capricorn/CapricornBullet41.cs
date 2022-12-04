@@ -3,6 +3,8 @@ using static CoroutineHelper;
 
 public class CapricornBullet41 : EnemyBullet
 {
+    protected override float MaxLifetime => 6f;
+
     protected override IEnumerator Move()
     {
         float endSpeed = MoveSpeed;
