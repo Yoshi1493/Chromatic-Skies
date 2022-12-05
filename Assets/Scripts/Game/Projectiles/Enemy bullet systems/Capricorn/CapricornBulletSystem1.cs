@@ -8,7 +8,7 @@ public class CapricornBulletSystem1 : EnemyShooter<EnemyBullet>
     const int BulletCount = 12;
     const float BulletSpacing = 360f / BulletCount;
 
-    protected override float ShootingCooldown => 0.4f;
+    protected override float ShootingCooldown => 0.5f;
 
     protected override IEnumerator Shoot()
     {
