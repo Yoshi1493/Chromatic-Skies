@@ -19,8 +19,8 @@ public class LeoBullet22 : ScriptableEnemyBullet<LeoBulletSystem21, EnemyBullet>
         yield return this.RotateBy(90f * direction, 0f);
 
         float endSpeed = Mathf.Sqrt((EndSpeed * EndSpeed) - (startSpeed * startSpeed)) * direction;
-        yield return this.LerpSpeed(0f, endSpeed, 0.5f);
-        yield return this.LerpSpeed(endSpeed, 0f, 0.5f);
+        yield return this.LerpSpeed(0f, endSpeed, 1 - 0.7071f);
+        yield return this.LerpSpeed(endSpeed, 0f, 0.7071f);
 
         moveDirection = transform.position - ownerShip.transform.position;
     }

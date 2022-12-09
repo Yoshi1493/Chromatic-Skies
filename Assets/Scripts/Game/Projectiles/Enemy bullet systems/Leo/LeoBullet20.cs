@@ -1,8 +1,9 @@
 using System.Collections;
+using static MathHelper;
 
 public class LeoBullet20 : ScriptableEnemyBullet<LeoBulletSystem2, EnemyBullet>
 {
-    const int BulletCount = 6;
+    const int BulletCount = 5;
     const int BulletSpacing = 360 / BulletCount;
 
     protected override float MaxLifetime => 2.5f;
@@ -15,11 +16,9 @@ public class LeoBullet20 : ScriptableEnemyBullet<LeoBulletSystem2, EnemyBullet>
 
     public override void Destroy()
     {
-        float theta = transform.eulerAngles.z;
-
         for (int i = 0; i < BulletCount; i++)
         {
-            float z = theta + (i * BulletSpacing);
+            float z = RandomAngleDeg;
             SpawnBullet(1, z, transform.position, false).Fire();
         }
 
