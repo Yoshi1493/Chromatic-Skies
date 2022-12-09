@@ -10,15 +10,15 @@ public class LeoBulletSystem6 : EnemyShooter<EnemyBullet>
 
     protected override IEnumerator Shoot()
     {
+        yield return base.Shoot();
+
         while (enabled)
         {
             for (int i = 0; i < WaveCount; i++)
             {
-                float z;
-
                 for (int j = 0; j < BranchCount; j++)
                 {
-                    z = (i * WaveSpacing) + (j * BranchSpacing);
+                    float z = (i * WaveSpacing) + (j * BranchSpacing);
 
                     SpawnProjectile(0, z, transform.up.RotateVectorBy(-z)).Fire();
                     SpawnProjectile(1, -z, transform.up.RotateVectorBy(z)).Fire();
@@ -26,8 +26,6 @@ public class LeoBulletSystem6 : EnemyShooter<EnemyBullet>
 
                 yield return WaitForSeconds(ShootingCooldown);
             }
-
-            SetSubsystemEnabled(1);
 
             yield return ownerShip.MoveToRandomPosition(1f);
         }
