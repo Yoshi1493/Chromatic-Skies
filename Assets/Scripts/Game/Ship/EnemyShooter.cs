@@ -2,13 +2,11 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static CoroutineHelper;
 
 public interface IEnemyAttack
 {
-    Action<StringObject, StringObject> AttackStartAction { get; set; }
-
-    StringObject ModuleName { get; set; }
-    StringObject AttackName { get; set; }
+    Action<int> AttackStartAction { get; set; }
 
     bool Enabled { get; }
     void SetEnabled(bool state);
@@ -19,10 +17,7 @@ public abstract class EnemyShooter<TProjectile> : Shooter<TProjectile>, IEnemyAt
 {
     #region Interface impl.
 
-    public Action<StringObject, StringObject> AttackStartAction { get; set; }
-
-    [field: SerializeField] public StringObject AttackName { get; set; }
-    [field: SerializeField] public StringObject ModuleName { get; set; }
+    public Action<int> AttackStartAction { get; set; }
 
     bool IEnemyAttack.Enabled => enabled;
     void IEnemyAttack.SetEnabled(bool state) { enabled = state; }
@@ -30,8 +25,8 @@ public abstract class EnemyShooter<TProjectile> : Shooter<TProjectile>, IEnemyAt
     #endregion
 
     Player playerShip;
-
     protected Vector3 PlayerPosition => playerShip.transform.position;
+
     protected float screenHalfHeight;
     protected float screenHalfWidth;
 
@@ -44,8 +39,14 @@ public abstract class EnemyShooter<TProjectile> : Shooter<TProjectile>, IEnemyAt
     {
         base.Awake();
 
-        Camera mainCam = Camera.main;
+        //find player
+        if (playerShip == null)
+        {
+            playerShip = FindObjectOfType<Player>();
+        }
 
+        //set screen dimensions
+        Camera mainCam = Camera.main;
         screenHalfHeight = mainCam.orthographicSize;
         screenHalfWidth = screenHalfHeight * mainCam.aspect;
     }
@@ -59,16 +60,14 @@ public abstract class EnemyShooter<TProjectile> : Shooter<TProjectile>, IEnemyAt
 
     protected virtual void OnEnable()
     {
-        //find player
-        if (playerShip == null)
-            playerShip = FindObjectOfType<Player>();
-
         //update object pool
         GenericObjectPool<TProjectile>.Instance.UpdatePoolableObjects(enemyProjectiles);
 
         //start attack pattern
         if (shootCoroutine != null)
+        {
             StopCoroutine(shootCoroutine);
+        }
 
         shootCoroutine = Shoot();
         StartCoroutine(shootCoroutine);
@@ -76,9 +75,9 @@ public abstract class EnemyShooter<TProjectile> : Shooter<TProjectile>, IEnemyAt
 
     protected override IEnumerator Shoot()
     {
-        yield return CoroutineHelper.WaitForSeconds(1f);
+        yield return WaitForSeconds(1f);
 
-        AttackStartAction?.Invoke(ModuleName, AttackName);
+        AttackStartAction?.Invoke(ownerShip.shipData.MaxLives.Value - ownerShip.currentLives);
         ownerShip.invincible = false;
     }
 

@@ -6,6 +6,8 @@ public class AttackNameDisplay : HUDComponent<Enemy>
     Animator anim;
     TextMeshProUGUI nameText;
 
+    [SerializeField] StringObject[] attackNames;
+
     protected override void Awake()
     {
         base.Awake();
@@ -21,10 +23,9 @@ public class AttackNameDisplay : HUDComponent<Enemy>
         }
     }
 
-    void OnEnemyAttackStart(StringObject moduleName, StringObject attackName)
+    void OnEnemyAttackStart(int attackIndex)
     {
-        nameText.text = $"{moduleName.value} Module | {attackName.value}";
-
+        nameText.text = attackNames[attackIndex].value;
         anim.SetBool("show_name", true);
     }
 
