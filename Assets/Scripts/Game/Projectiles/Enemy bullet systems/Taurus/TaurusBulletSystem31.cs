@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using static CoroutineHelper;
 
-public class TaurusBulletSystem31 : EnemyBulletSubsystem<Laser>
+public class TaurusBulletSystem31 : EnemyShooter<Laser>
 {
     const int LaserCount = 99;
 

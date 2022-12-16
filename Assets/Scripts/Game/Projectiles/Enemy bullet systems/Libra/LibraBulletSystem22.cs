@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using static CoroutineHelper;
 
-public class LibraBulletSystem22 : EnemyBulletSubsystem<EnemyBullet>
+public class LibraBulletSystem22 : EnemyShooter<EnemyBullet>
 {
     const float WaveOffset = 10f;
     const int BranchCount = 4;

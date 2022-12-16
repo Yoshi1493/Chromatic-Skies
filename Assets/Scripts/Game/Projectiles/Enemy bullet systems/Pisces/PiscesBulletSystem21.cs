@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using static CoroutineHelper;
 
-public class PiscesBulletSystem21 : EnemyBulletSubsystem<EnemyBullet>
+public class PiscesBulletSystem21 : EnemyShooter<EnemyBullet>
 {
     const int MaxBullets = 5;
     const int MaxAngle = 15;
@@ -12,12 +12,12 @@ public class PiscesBulletSystem21 : EnemyBulletSubsystem<EnemyBullet>
     protected override IEnumerator Shoot()
     {
         int r = Random.value > 0.5f ? 0 : MaxAngle;
-        float y = camHalfHeight + 1f;
+        float y = screenHalfHeight + 1f;
 
         while (enabled)
         {
             float z = Mathf.PingPong(r, MaxAngle) - (MaxAngle * 0.5f);
-            float x = Random.Range(-camHalfWidth, camHalfWidth);
+            float x = Random.Range(-screenHalfWidth, screenHalfWidth);
             Vector3 pos = new(x, y);
 
             SpawnProjectile(1, z, pos, false).Fire();

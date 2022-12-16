@@ -3,7 +3,7 @@ using UnityEngine;
 using static CoroutineHelper;
 using static MathHelper;
 
-public class LeoBulletSystem11 : EnemyBulletSubsystem<EnemyBullet>
+public class LeoBulletSystem11 : EnemyShooter<EnemyBullet>
 {
     const int BulletCount = 150;
     const float BulletSpacing = 12f;

@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using static CoroutineHelper;
 
-public class LibraBulletSystem12 : EnemyBulletSubsystem<EnemyBullet>
+public class LibraBulletSystem12 : EnemyShooter<EnemyBullet>
 {
     const int MediumCount = 18;
     const int MediumSpacing = 360 / MediumCount;

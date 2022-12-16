@@ -5,7 +5,7 @@ using UnityEngine;
 using static CoroutineHelper;
 using static MathHelper;
 
-public class TaurusBulletSystem11 : EnemyBulletSubsystem<EnemyBullet>
+public class TaurusBulletSystem11 : EnemyShooter<EnemyBullet>
 {
     const int BulletCount = 120;
     public const float BulletSpacing = 0.8f;
@@ -17,7 +17,7 @@ public class TaurusBulletSystem11 : EnemyBulletSubsystem<EnemyBullet>
     {
         yield return WaitForSeconds(1f);
 
-        spawnPositions = GetRandomPointsWithinBounds(new Vector2(-camHalfWidth, -camHalfHeight), new Vector2(camHalfWidth, camHalfHeight), BulletCount);
+        spawnPositions = GetRandomPointsWithinBounds(new Vector2(-screenHalfWidth, -screenHalfHeight), new Vector2(screenHalfWidth, screenHalfHeight), BulletCount);
 
         for (int i = 0; i < spawnPositions.Count; i++)
         {

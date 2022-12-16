@@ -4,7 +4,7 @@ using UnityEngine;
 using static CoroutineHelper;
 using static MathHelper;
 
-public class LibraBulletSystem21 : EnemyBulletSubsystem<Laser>
+public class LibraBulletSystem21 : EnemyShooter<Laser>
 {
     const float MinLaserSpacing = 1f;
     const float MaxLaserSpacing = 3f;
@@ -21,7 +21,7 @@ public class LibraBulletSystem21 : EnemyBulletSubsystem<Laser>
         {
             yield return WaitForSeconds(2f);
 
-            spawnPositions = GetRandomPointsAlongBounds(new Vector2(-camHalfWidth, camHalfHeight), new Vector2(camHalfWidth, camHalfHeight));
+            spawnPositions = GetRandomPointsAlongBounds(new Vector2(-screenHalfWidth, screenHalfHeight), new Vector2(screenHalfWidth, screenHalfHeight));
 
             for (int i = 0; i < spawnPositions.Count; i++)
             {

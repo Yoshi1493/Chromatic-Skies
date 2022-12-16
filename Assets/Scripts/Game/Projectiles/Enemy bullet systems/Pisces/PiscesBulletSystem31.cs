@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using static CoroutineHelper;
 
-public class PiscesBulletSystem31 : EnemyBulletSubsystem<EnemyBullet>
+public class PiscesBulletSystem31 : EnemyShooter<EnemyBullet>
 {
     const int WaveCount = 60;
     const int BulletCount = 3;

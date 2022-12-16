@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using static CoroutineHelper;
 
-public class AquariusBulletSystem11 : EnemyBulletSubsystem<EnemyBullet>
+public class AquariusBulletSystem11 : EnemyShooter<EnemyBullet>
 {
     const int WaveCount = 8;
     const int BulletCount = 18;

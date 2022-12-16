@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using static CoroutineHelper;
 
-public class PiscesBulletSystem41 : EnemyBulletSubsystem<Laser>
+public class PiscesBulletSystem41 : EnemyShooter<Laser>
 {
     const int WaveCount = 3;
     const int WaveSpacing = LaserSpacing / WaveCount;

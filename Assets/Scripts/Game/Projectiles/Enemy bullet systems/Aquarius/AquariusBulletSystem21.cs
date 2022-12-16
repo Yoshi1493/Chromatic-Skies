@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using static CoroutineHelper;
 
-public class AquariusBulletSystem21 : EnemyBulletSubsystem<EnemyBullet>
+public class AquariusBulletSystem21 : EnemyShooter<EnemyBullet>
 {
     const int BulletCount = 8;
     const int BulletSpacing = 360 / BulletCount;

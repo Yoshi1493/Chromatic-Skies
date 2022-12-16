@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using static CoroutineHelper;
 
-public class VirgoBulletSystem21 : EnemyBulletSubsystem<EnemyBullet>
+public class VirgoBulletSystem21 : EnemyShooter<EnemyBullet>
 {
     const float WaveSpacing = 12f;
     const int BulletCount = 30;

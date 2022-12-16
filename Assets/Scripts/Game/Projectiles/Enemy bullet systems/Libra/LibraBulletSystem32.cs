@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using static CoroutineHelper;
 
-public class LibraBulletSystem32 : EnemyBulletSubsystem<EnemyBullet>
+public class LibraBulletSystem32 : EnemyShooter<EnemyBullet>
 {
     readonly float goldenRatio = (1f + Mathf.Sqrt(5f)) * 180f;
 

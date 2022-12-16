@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using static CoroutineHelper;
 
-public class LibraBulletSystem31 : EnemyBulletSubsystem<EnemyBullet>
+public class LibraBulletSystem31 : EnemyShooter<EnemyBullet>
 {
     const int MinSize = 3;
     const int MaxSize = 6;

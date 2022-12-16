@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using static CoroutineHelper;
 
-public class AriesBulletSystem31 : EnemyBulletSubsystem<EnemyBullet>
+public class AriesBulletSystem31 : EnemyShooter<EnemyBullet>
 {
     const float InnerRadius = 2f;
     const int InnerBulletCount = 12;

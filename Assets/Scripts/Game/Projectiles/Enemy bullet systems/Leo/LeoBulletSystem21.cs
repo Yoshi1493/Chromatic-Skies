@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using static CoroutineHelper;
 
-public class LeoBulletSystem21 : EnemyBulletSubsystem<EnemyBullet>
+public class LeoBulletSystem21 : EnemyShooter<EnemyBullet>
 {
     const int BranchCount = 16;
     const float BranchSpacing = 360f / BranchCount;

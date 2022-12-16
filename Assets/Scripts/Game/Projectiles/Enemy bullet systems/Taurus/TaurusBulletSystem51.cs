@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using static CoroutineHelper;
 
-public class TaurusBulletSystem51 : EnemyBulletSubsystem<EnemyBullet>
+public class TaurusBulletSystem51 : EnemyShooter<EnemyBullet>
 {
     protected override float ShootingCooldown => 1f;
 
