@@ -99,7 +99,6 @@ public abstract class EnemyShooter<TProjectile> : Shooter<TProjectile>, IEnemyAt
     protected virtual void OnLoseLife()
     {
         StopAllCoroutines();
-        GenericObjectPool<TProjectile>.Instance.DrainPool();
     }
 
     void OnPlayerLoseLife()

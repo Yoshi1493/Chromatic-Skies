@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Enemy : Ship
 {
+    List<IEnemyAttack> activeEnemyShooters = new();
+
     void Start()
     {
         FindObjectOfType<Player>().LoseLifeAction += OnPlayerLoseLife;
@@ -24,13 +26,14 @@ public class Enemy : Ship
         int currentProjectileSystem = shipData.MaxLives.Value - currentLives;
 
         base.LoseLife();
+        EnemyBulletPool.Instance.DrainPool();
 
         if (currentLives > 0)
         {
-            var currentEnemyShooters = transform.GetChild(currentProjectileSystem).GetComponentsInChildren<IEnemyAttack>();
-            var nextEnemyShooter = transform.GetChild(currentProjectileSystem + 1).GetComponent<IEnemyAttack>();
+            GetActiveEnemyShooters();
+            IEnemyAttack nextEnemyShooter = transform.GetChild(currentProjectileSystem + 1).GetComponent<IEnemyAttack>();
 
-            foreach (var enemyShooter in currentEnemyShooters)
+            foreach (var enemyShooter in activeEnemyShooters)
             {
                 enemyShooter.SetEnabled(false);
             }
@@ -44,17 +47,12 @@ public class Enemy : Ship
         }
     }
 
-    protected override void Die()
-    {
-        gameObject.SetActive(false);
-    }
-
     //disable and re-enable current projectile system upon player losing life
     async void OnPlayerLoseLife()
     {
-        var currentEnemyShooters = GetActiveEnemyShooters();
+        GetActiveEnemyShooters();
 
-        foreach (var enemyShooter in currentEnemyShooters)
+        foreach (var enemyShooter in activeEnemyShooters)
         {
             enemyShooter.SetEnabled(false);
         }
@@ -64,13 +62,13 @@ public class Enemy : Ship
 
         await Task.Delay(RespawnTime);
 
-        currentEnemyShooters[0].SetEnabled(true);
+        activeEnemyShooters[0].SetEnabled(true);
         invincible = false;
     }
 
-    List<IEnemyAttack> GetActiveEnemyShooters()
+    void GetActiveEnemyShooters()
     {
-        List<IEnemyAttack> activeEnemyShooters = new List<IEnemyAttack>();
+        activeEnemyShooters.Clear();
 
         //check all children for active projectile systems
         for (int i = 0; i < transform.childCount; i++)
@@ -85,17 +83,19 @@ public class Enemy : Ship
             if (child.childCount > 0)
             {
                 //check all children of children for active projectile subsystems
-                for (int j = 0; j < child.childCount; j++)
+                for (int ii = 0; ii < child.childCount; ii++)
                 {
-                    if (child.GetChild(j).TryGetComponent(out IEnemyAttack projectileSubsystem) && projectileSubsystem.Enabled)
+                    if (child.GetChild(ii).TryGetComponent(out IEnemyAttack projectileSubsystem) && projectileSubsystem.Enabled)
                     {
                         activeEnemyShooters.Add(projectileSubsystem);
                     }
                 }
             }
-
         }
+    }
 
-        return activeEnemyShooters;
+    protected override void Die()
+    {
+        gameObject.SetActive(false);
     }
 }

@@ -11,8 +11,10 @@ public abstract class EnemyBullet : Bullet
     protected IEnumerator movementBehaviour;
     protected abstract IEnumerator Move();
 
-    void Start()
+    protected override void Awake()
     {
+        base.Awake();
+
         ownerShip = FindObjectOfType<Enemy>();
         playerShip = FindObjectOfType<Player>();
     }
