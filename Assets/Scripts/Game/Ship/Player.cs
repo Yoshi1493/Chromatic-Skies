@@ -74,8 +74,8 @@ public class Player : Ship
         {
             await Task.Delay(RespawnTime);
 
+            Respawn();
             invincible = false;
-            SetSpriteAlpha(1f);
             collider.enabled = true;
         }
     }

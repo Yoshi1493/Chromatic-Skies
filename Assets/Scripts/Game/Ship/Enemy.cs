@@ -39,10 +39,11 @@ public class Enemy : Ship
             }
 
             StartCoroutine(this.ReturnToOriginalPosition());
+
             await Task.Delay(RespawnTime);
+            Respawn();
 
             nextEnemyShooter.SetEnabled(true);
-            SetSpriteAlpha(1f);
             collider.enabled = true;
         }
     }

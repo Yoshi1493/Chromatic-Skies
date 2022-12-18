@@ -22,6 +22,9 @@ public abstract class Ship : Actor
     public event Action LoseLifeAction;
     public event Action DeathAction;
 
+    public delegate void RespawnDelegate();
+    public RespawnDelegate RespawnAction;
+
     #endregion
 
     new protected Collider2D collider;
@@ -34,8 +37,6 @@ public abstract class Ship : Actor
 
         LoseLifeAction += LoseLife;
         DeathAction += Die;
-
-        collider = GetComponent<Collider2D>();
     }
 
     void InitShipData()
@@ -47,6 +48,9 @@ public abstract class Ship : Actor
         currentLives = shipData.MaxLives.Value;
         currentHealth = shipData.MaxHealth.Value;
         currentSpeed = shipData.MovementSpeed.Value;
+
+        //collision
+        collider = GetComponent<Collider2D>();
 
         //debug
         name = shipData.ShipName.value;
@@ -85,15 +89,13 @@ public abstract class Ship : Actor
         {
             currentHealth = shipData.MaxHealth.Value;
             invincible = true;
-            SetSpriteAlpha(0.25f);
         }
     }
 
-    protected void SetSpriteAlpha(float alpha)
+    //called by child classes after RespawnTime has passed
+    protected void Respawn()
     {
-        Color c = spriteRenderer.color;
-        c.a = alpha;
-        spriteRenderer.color = c;
+        RespawnAction?.Invoke();
     }
 
     protected abstract void Die();
