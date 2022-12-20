@@ -33,7 +33,7 @@ public class SagittariusBulletSystem3 : EnemyShooter<EnemyBullet>
                 yield return WaitForSeconds(ShootingCooldown);
             }
 
-            yield return ownerShip.MoveToRandomPosition(1f, delay: 10f);
+            //yield return ownerShip.MoveToRandomPosition(1f, delay: 10f);
         }
     }
 }

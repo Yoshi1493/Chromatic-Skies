@@ -34,7 +34,7 @@ public class VirgoBulletSystem4 : EnemyShooter<EnemyBullet>
                 WaveSpacing += i;
                 yield return WaitForSeconds(ShootingCooldown);
             }
-            yield return ownerShip.MoveToRandomPosition(1f, minSqrMagDelta: 1f, maxSqrMagDelta: 3f, delay: 1f);
+            //yield return ownerShip.MoveToRandomPosition(1f, minSqrMagDelta: 1f, maxSqrMagDelta: 3f, delay: 1f);
         }
     }
 }

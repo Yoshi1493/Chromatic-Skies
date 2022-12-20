@@ -83,7 +83,7 @@ public class TaurusBulletSystem5 : EnemyShooter<EnemyBullet>
 
             innerBullets.Clear();
 
-            yield return ownerShip.MoveToRandomPosition(1f, delay: 1f);
+            //yield return ownerShip.MoveToRandomPosition(1f, delay: 1f);
         }
     }
 }

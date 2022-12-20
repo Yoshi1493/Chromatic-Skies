@@ -42,7 +42,7 @@ public class TaurusBulletSystem2 : EnemyShooter<EnemyBullet>
         while (enabled)
         {
             yield return WaitForSeconds(2.5f);
-            yield return ownerShip.MoveToRandomPosition(1f, 1f, 4f);
+            //yield return ownerShip.MoveToRandomPosition(1f, 1f, 4f);
         }
     }
 }

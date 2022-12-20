@@ -46,7 +46,7 @@ public class AquariusBulletSystem2 : EnemyShooter<EnemyBullet>
             bullets.ForEach(b => b.Fire());
             bullets.Clear();
 
-            yield return ownerShip.MoveToRandomPosition(1f, delay: 4f);
+            //yield return ownerShip.MoveToRandomPosition(1f, delay: 4f);
             yield return WaitForSeconds(1f);
         }
     }

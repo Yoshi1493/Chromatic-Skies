@@ -46,7 +46,7 @@ public class CapricornBulletSystem3 : EnemyShooter<EnemyBullet>
                 yield return WaitForSeconds(ShootingCooldown);
             }
 
-            yield return ownerShip.MoveToRandomPosition(2f);
+            //yield return ownerShip.MoveToRandomPosition(2f);
         }
     }
 }

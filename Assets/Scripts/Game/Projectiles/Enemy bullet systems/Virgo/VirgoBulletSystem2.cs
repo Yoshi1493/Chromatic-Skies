@@ -67,7 +67,7 @@ public class VirgoBulletSystem2 : EnemyShooter<EnemyBullet>
                 yield return WaitForSeconds(3f);
             }
 
-            yield return ownerShip.MoveToRandomPosition(1f);
+            //yield return ownerShip.MoveToRandomPosition(1f);
         }
     }
 

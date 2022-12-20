@@ -38,7 +38,7 @@ public class AquariusBulletSystem1 : EnemyShooter<EnemyBullet>
             }
 
             SetSubsystemEnabled(1);
-            yield return ownerShip.MoveToRandomPosition(2f, delay: 3f);
+            //yield return ownerShip.MoveToRandomPosition(2f, delay: 3f);
         }
     }
 }

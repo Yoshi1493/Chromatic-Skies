@@ -13,19 +13,19 @@ public static class EnemyMovementBehaviour
     /// <summary>
     /// translates <ship> to <endPosition> over <moveDuration> seconds, along a sigmoid (smoothstep) curve.
     /// </summary>
-    public static IEnumerator MoveTo(this Ship ship, Vector3 endPosition, float moveDuration, float delay = 0f)
+    public static IEnumerator MoveTo(this EnemyMovement enemy, Vector3 endPosition, float moveDuration, float delay = 0f)
     {
         if (delay > 0) yield return WaitForSeconds(delay);
 
-        Vector3 newMoveDirection = endPosition - ship.transform.position;
+        Vector3 newMoveDirection = endPosition - enemy.transform.position;
         float newMoveSpeed = 2 * newMoveDirection.magnitude / moveDuration;
 
         float currentTime = 0f;
-        ship.moveDirection = newMoveDirection;
+        enemy.moveDirection = newMoveDirection;
 
         while (currentTime < moveDuration / 2f)
         {
-            ship.currentSpeed = Mathf.Lerp(0, newMoveSpeed, moveInterpolation.Evaluate(2f * currentTime / moveDuration));
+            enemy.currentSpeed = Mathf.Lerp(0, newMoveSpeed, moveInterpolation.Evaluate(2f * currentTime / moveDuration));
 
             currentTime += Time.deltaTime;
             yield return EndOfFrame;
@@ -35,20 +35,20 @@ public static class EnemyMovementBehaviour
 
         while (currentTime < moveDuration / 2f)
         {
-            ship.currentSpeed = Mathf.Lerp(newMoveSpeed, 0, moveInterpolation.Evaluate(2f * currentTime / moveDuration));
+            enemy.currentSpeed = Mathf.Lerp(newMoveSpeed, 0, moveInterpolation.Evaluate(2f * currentTime / moveDuration));
 
             currentTime += Time.deltaTime;
             yield return EndOfFrame;
         }
 
-        ship.transform.position = endPosition;
-        ship.currentSpeed = 0f;
+        enemy.transform.position = endPosition;
+        enemy.currentSpeed = 0f;
     }
 
     /// <summary>
     /// translates <ship> to <GetRandomPosition()> over <moveDuration> seconds.
     /// </summary>
-    public static IEnumerator MoveToRandomPosition(this Ship ship, float moveDuration, float minSqrMagDelta = 2f, float maxSqrMagDelta = 4f, float delay = 0f)
+    public static IEnumerator MoveToRandomPosition(this EnemyMovement enemy, float moveDuration, float minSqrMagDelta = 2f, float maxSqrMagDelta = 4f, float delay = 0f)
     {
         if (minSqrMagDelta > maxSqrMagDelta)
             yield break;
@@ -56,19 +56,19 @@ public static class EnemyMovementBehaviour
         float randMagnitude = Random.Range(minSqrMagDelta, maxSqrMagDelta);
         Vector3 randDirection = Random.insideUnitCircle.normalized;
 
-        while (Physics2D.Raycast(ship.transform.position, randDirection, randMagnitude, ship.shipData.boundaryLayer).collider != null)
+        while (Physics2D.Raycast(enemy.transform.position, randDirection, randMagnitude, enemy.shipData.boundaryLayer).collider != null)
         {
             randMagnitude = Random.Range(minSqrMagDelta, maxSqrMagDelta);
             randDirection = Random.insideUnitCircle.normalized;
         }
 
-        Vector3 endPosition = ship.transform.position + (randMagnitude * randDirection);
-        yield return ship.MoveTo(endPosition, moveDuration, delay);
+        Vector3 endPosition = enemy.transform.position + (randMagnitude * randDirection);
+        yield return enemy.MoveTo(endPosition, moveDuration, delay);
     }
 
-    public static IEnumerator ReturnToOriginalPosition(this Ship ship, float moveDuration = 1f, float delay = 0f)
+    public static IEnumerator ReturnToOriginalPosition(this EnemyMovement enemy, float moveDuration = 1f, float delay = 0f)
     {
-        yield return ship.MoveTo(originalPosition, moveDuration, delay);
+        yield return enemy.MoveTo(originalPosition, moveDuration, delay);
     }
 
     #endregion

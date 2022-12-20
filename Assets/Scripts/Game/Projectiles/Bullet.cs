@@ -32,9 +32,9 @@ public abstract class Bullet : Projectile
         particleEffect.enabled = true;
     }
 
-    protected override void Move(Vector3 direction, float speed)
+    protected void Move(Vector3 direction, float speed)
     {
-        base.Move(direction, speed);
+        transform.Translate(Time.deltaTime * speed * direction, Space.World);
 
         //update z-rotation based on moveDirection
         transform.eulerAngles = Mathf.Atan2(-moveDirection.x, moveDirection.y) * Mathf.Rad2Deg * Vector3.forward;

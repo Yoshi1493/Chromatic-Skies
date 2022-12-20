@@ -44,7 +44,7 @@ public class TaurusBulletSystem4 : EnemyShooter<EnemyBullet>
 
             SetSubsystemEnabled(1);
 
-            yield return ownerShip.MoveToRandomPosition(1f, delay: 1f);
+            //yield return ownerShip.MoveToRandomPosition(1f, delay: 1f);
         }
     }
 }

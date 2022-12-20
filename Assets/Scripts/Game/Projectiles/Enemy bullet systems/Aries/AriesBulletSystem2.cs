@@ -29,7 +29,7 @@ public class AriesBulletSystem2 : EnemyShooter<EnemyBullet>
             }
 
             yield return WaitForSeconds(3f);
-            StartCoroutine(ownerShip.MoveToRandomPosition(1f));
+            //StartCoroutine(ownerShip.MoveToRandomPosition(1f));
 
             for (int i = 0; i < 4; i++)
             {

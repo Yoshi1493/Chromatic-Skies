@@ -9,7 +9,6 @@ public abstract class Ship : Actor
 
     [HideInInspector] public int currentLives;
     [HideInInspector] public int currentHealth;
-    [HideInInspector] public float currentSpeed;
 
     [HideInInspector] public bool invincible;
     public const int RespawnTime = 1000;     //amount of time (msec.) to wait before resuming ship functions
@@ -47,18 +46,12 @@ public abstract class Ship : Actor
         //stats
         currentLives = shipData.MaxLives.Value;
         currentHealth = shipData.MaxHealth.Value;
-        currentSpeed = shipData.MovementSpeed.Value;
 
         //collision
         collider = GetComponent<Collider2D>();
 
         //debug
         name = shipData.ShipName.value;
-    }
-
-    protected virtual void Update()
-    {
-        Move(moveDirection.normalized, currentSpeed);
     }
 
     //to-do: take shipData.Defense into account for damage calculations
@@ -68,11 +61,13 @@ public abstract class Ship : Actor
         //print($"{name} took {power} damage.");
 
         if (currentHealth <= 0)
+        {
             LoseLifeAction?.Invoke();
-
+        }
         else
+        {
             TakeDamageAction?.Invoke();
-
+        }
     }
 
     protected virtual void LoseLife()

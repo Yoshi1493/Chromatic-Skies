@@ -57,7 +57,7 @@ public class PiscesBulletSystem1 : EnemyShooter<EnemyBullet>
             yield return WaitForSeconds(1f);
 
             SetSubsystemEnabled(1);
-            yield return ownerShip.MoveToRandomPosition(1f, delay: 1f);
+            //yield return ownerShip.MoveToRandomPosition(1f, delay: 1f);
         }
     }
 }

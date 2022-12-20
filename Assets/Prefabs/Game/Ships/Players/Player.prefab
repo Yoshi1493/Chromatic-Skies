@@ -322,6 +322,21 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6593195506016961493, guid: 2ad3a7352f03714438318db50497c30d, type: 3}
   m_PrefabInstance: {fileID: 1518647169365373978}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2642116491854811024
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5651153232659691471}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f0a88e58f5eb15428d0964494a8534e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shipData: {fileID: 0}
+  moveDirection: {x: 0, y: 0, z: 0}
+  currentSpeed: 0
 --- !u!114 &7467897710815529108
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -335,11 +350,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   transform: {fileID: 0}
-  moveDirection: {x: 0, y: 0, z: 0}
   shipData: {fileID: 0}
   currentLives: 0
   currentHealth: 0
-  currentSpeed: 0
   invincible: 0
   hitboxVisualizer: {fileID: 2423900889455833876}
 --- !u!114 &4347026370913049934

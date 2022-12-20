@@ -66,7 +66,7 @@ public class LeoBulletSystem2 : EnemyShooter<EnemyBullet>
             }
 
             yield return WaitForSeconds(6f);
-            yield return ownerShip.MoveToRandomPosition(1f);
+            //yield return ownerShip.MoveToRandomPosition(1f);
         }
     }
 

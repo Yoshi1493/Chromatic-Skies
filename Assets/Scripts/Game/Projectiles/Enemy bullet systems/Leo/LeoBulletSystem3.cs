@@ -17,7 +17,7 @@ public class LeoBulletSystem3 : EnemyShooter<EnemyBullet>
         {
             SetSubsystemEnabled(4);
             yield return WaitForSeconds(6f);
-            yield return ownerShip.MoveToRandomPosition(1f);
+            //yield return ownerShip.MoveToRandomPosition(1f);
         }
     }
 }

@@ -13,6 +13,9 @@ public abstract class Projectile : Actor
     protected abstract int CollisionMask { get; }
     protected abstract Collider2D CollisionCondition { get; }
 
+    [HideInInspector] public Vector3 moveDirection;
+    [HideInInspector] public float currentSpeed;
+
     protected override void Awake()
     {
         base.Awake();

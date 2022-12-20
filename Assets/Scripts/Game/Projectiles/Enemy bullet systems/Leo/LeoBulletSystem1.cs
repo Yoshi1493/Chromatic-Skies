@@ -40,7 +40,7 @@ public class LeoBulletSystem1 : EnemyShooter<EnemyBullet>
                 yield return WaitForSeconds(ShootingCooldown);
             }
 
-            yield return ownerShip.MoveToRandomPosition(1f, delay: 2f);
+            //yield return ownerShip.MoveToRandomPosition(1f, delay: 2f);
             yield return WaitForSeconds(3f);
         }
     }

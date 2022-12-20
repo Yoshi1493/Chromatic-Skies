@@ -7,6 +7,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2642116491854811024, guid: c97d5c4695dca31449990c95a6810900, type: 3}
+      propertyPath: shipData
+      value: 
+      objectReference: {fileID: 11400000, guid: f38ea00f8dc589b4d92154f38d3b8138, type: 2}
     - target: {fileID: 4768422070276441097, guid: c97d5c4695dca31449990c95a6810900, type: 3}
       propertyPath: shootingSpeed
       value: 

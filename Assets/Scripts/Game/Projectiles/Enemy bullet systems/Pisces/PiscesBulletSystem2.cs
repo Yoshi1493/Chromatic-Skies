@@ -42,7 +42,7 @@ public class PiscesBulletSystem2 : EnemyShooter<EnemyBullet>
                 yield return WaitForSeconds(ShootingCooldown * 2f);
             }
 
-            yield return ownerShip.MoveToRandomPosition(1f, maxSqrMagDelta: 3f, delay: 1f);
+            //yield return ownerShip.MoveToRandomPosition(1f, maxSqrMagDelta: 3f, delay: 1f);
         }
     }
 }

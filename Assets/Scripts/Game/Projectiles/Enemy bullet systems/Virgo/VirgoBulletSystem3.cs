@@ -34,7 +34,7 @@ public class VirgoBulletSystem3 : EnemyShooter<EnemyBullet>
             }
 
             SetSubsystemEnabled(1);
-            yield return ownerShip.MoveToRandomPosition(1f, delay: 3f);
+            //yield return ownerShip.MoveToRandomPosition(1f, delay: 3f);
         }
     }
 }

@@ -31,9 +31,11 @@ public class VirgoBulletSystem1 : EnemyShooter<EnemyBullet>
 
     IEnumerator Move()
     {
+        yield break;
+
         while (enabled)
         {
-            yield return ownerShip.MoveToRandomPosition(1f, 1f, 2f, 3f);
+            //yield return ownerShip.MoveToRandomPosition(1f, 1f, 2f, 3f);
         }
     }
 }

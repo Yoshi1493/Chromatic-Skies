@@ -40,7 +40,7 @@ public class AriesBulletSystem1 : EnemyShooter<EnemyBullet>
                 yield return WaitForSeconds(ShootingCooldown);
             }
 
-            yield return ownerShip.MoveToRandomPosition(1f, maxSqrMagDelta: 5f, delay: 1f);
+            //yield return ownerShip.MoveToRandomPosition(1f, maxSqrMagDelta: 5f, delay: 1f);
         }
     }
 }

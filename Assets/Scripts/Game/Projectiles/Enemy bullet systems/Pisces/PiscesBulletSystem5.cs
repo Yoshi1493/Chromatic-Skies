@@ -39,7 +39,7 @@ public class PiscesBulletSystem5 : EnemyShooter<EnemyBullet>
         {
             int r = Random.Range(4, 7);
             yield return WaitForSeconds(r);
-            yield return ownerShip.MoveToRandomPosition(1f, minSqrMagDelta: 1f, maxSqrMagDelta: 2f);
+            //yield return ownerShip.MoveToRandomPosition(1f, minSqrMagDelta: 1f, maxSqrMagDelta: 2f);
         }
     }
 }

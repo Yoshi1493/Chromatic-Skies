@@ -40,7 +40,7 @@ public class CapricornBulletSystem5 : EnemyShooter<EnemyBullet>
             SetSubsystemEnabled(1);
 
             yield return WaitForSeconds(5f);
-            yield return ownerShip.MoveToRandomPosition(1f);
+            //yield return ownerShip.MoveToRandomPosition(1f);
         }
     }
 }

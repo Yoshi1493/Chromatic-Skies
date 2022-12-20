@@ -35,7 +35,7 @@ public class CapricornBulletSystem2 : EnemyShooter<EnemyBullet>
             }
 
             i *= -1;
-            yield return ownerShip.MoveToRandomPosition(1f, 1f, 1.44f, 1.5f);
+            //yield return ownerShip.MoveToRandomPosition(1f, 1f, 1.44f, 1.5f);
         }
     }
 }

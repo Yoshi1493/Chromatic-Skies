@@ -22,7 +22,7 @@ public class TaurusBulletSystem31 : EnemyShooter<Laser>
                 yield return WaitForSeconds(ShootingCooldown);
             }
 
-            StartCoroutine(ownerShip.MoveToRandomPosition(1f));
+            //StartCoroutine(ownerShip.MoveToRandomPosition(1f));
         }
     }
 }

@@ -11,10 +11,8 @@ public class Enemy : Ship
         FindObjectOfType<Player>().LoseLifeAction += OnPlayerLoseLife;
     }
 
-    protected override void Update()
+    void Update()
     {
-        base.Update();
-
 #if UNITY_EDITOR
         if (Input.GetKeyDown(KeyCode.K))
             TakeDamage(currentHealth);
@@ -38,7 +36,7 @@ public class Enemy : Ship
                 enemyShooter.SetEnabled(false);
             }
 
-            StartCoroutine(this.ReturnToOriginalPosition());
+            //StartCoroutine(this.ReturnToOriginalPosition());
 
             await Task.Delay(RespawnTime);
             Respawn();
@@ -58,7 +56,7 @@ public class Enemy : Ship
             enemyShooter.SetEnabled(false);
         }
 
-        StartCoroutine(this.MoveTo(transform.position, 1f));
+        //StartCoroutine(this.MoveTo(transform.position, 1f));
         invincible = true;
 
         await Task.Delay(RespawnTime);
