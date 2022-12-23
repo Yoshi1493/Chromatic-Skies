@@ -44,8 +44,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 606c5a1527522b84eb117139c6bc847b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <AttackName>k__BackingField: {fileID: 0}
-  <ModuleName>k__BackingField: {fileID: 0}
   enemyProjectiles:
   - {fileID: 2981126790056077132, guid: b61f7fc888def7f45a7d53a9c6ff2605, type: 3}
   bulletData: {fileID: 11400000, guid: 7c34ef2f1f7107b47afc9424dfdf8be3, type: 2}
@@ -93,8 +91,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d37db6cf5890a4644b915cada77cc8f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <AttackName>k__BackingField: {fileID: 0}
-  <ModuleName>k__BackingField: {fileID: 0}
   enemyProjectiles:
   - {fileID: -537335154739979936, guid: 69b8f9a5f7014d444b0fc9dbd2eae5eb, type: 3}
   - {fileID: 4477512428396088053, guid: 8128d28458d1b904b8a1d5b69ce7da78, type: 3}
@@ -143,8 +139,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b4cec90a57303f47a00d3d7e0ac64a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <AttackName>k__BackingField: {fileID: 0}
-  <ModuleName>k__BackingField: {fileID: 0}
   enemyProjectiles:
   - {fileID: 6939719341445698013, guid: 23f5c05bc5f30cc469a64286d15fc396, type: 3}
   bulletData: {fileID: 11400000, guid: e6cda41d15a90774896b40859f567406, type: 2}
@@ -159,6 +153,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bullet System 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2164267929168977294, guid: d93cb44e21569f545b76560b29579f98, type: 3}
+      propertyPath: shipData
+      value: 
+      objectReference: {fileID: 11400000, guid: c3f8016a8b24a984cb0d1bf54bf9c153, type: 2}
     - target: {fileID: 3922465162775491505, guid: d93cb44e21569f545b76560b29579f98, type: 3}
       propertyPath: shipData
       value: 
@@ -252,8 +250,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13c74ca9800379f4da433529f3751c94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <AttackName>k__BackingField: {fileID: 11400000, guid: 7b99fede207de2a43b6ec450b294c31f, type: 2}
-  <ModuleName>k__BackingField: {fileID: 11400000, guid: 4e24541afbe931145a3b4d4c4339a7c7, type: 2}
   enemyProjectiles:
   - {fileID: 0}
   bulletData: {fileID: 0}
@@ -274,8 +270,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e5f34d6111c3184d9be6db291f9128a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <AttackName>k__BackingField: {fileID: 11400000, guid: f8dcc90ba24faff4fbd61afc7ab5f349, type: 2}
-  <ModuleName>k__BackingField: {fileID: 11400000, guid: 9b2f7dca9b3975144bb0122f3cf15975, type: 2}
   enemyProjectiles:
   - {fileID: 0}
   bulletData: {fileID: 0}
@@ -296,8 +290,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d11dbc80e44c704792cab44ac41ecba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <AttackName>k__BackingField: {fileID: 11400000, guid: 027f18f643b79064db8ad873fd331818, type: 2}
-  <ModuleName>k__BackingField: {fileID: 11400000, guid: 23b36bab9132fe1439aa5c01331f44bb, type: 2}
   enemyProjectiles:
   - {fileID: -17074376929910479, guid: 8e9ffeb01425de14283a7aa6979dd0b2, type: 3}
   - {fileID: 4949795630923884701, guid: 1319c36f669ff60419fbc335f58c2201, type: 3}
@@ -319,8 +311,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db2f6f3089841934e82902e61ef3e51c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <AttackName>k__BackingField: {fileID: 11400000, guid: e3634c15e9df1ca4ab1fbe584954a463, type: 2}
-  <ModuleName>k__BackingField: {fileID: 11400000, guid: 31e11e2181789a94982fecb97be9fc28, type: 2}
   enemyProjectiles:
   - {fileID: 8117216779145276408, guid: 59000994238888d44adb292da0f1f538, type: 3}
   bulletData: {fileID: 11400000, guid: 8ca1d4ccce03d4045bbb26e7f8d5ee7e, type: 2}
@@ -341,8 +331,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 136c79054c36eec4aba1ad84cde272a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <AttackName>k__BackingField: {fileID: 11400000, guid: 0e3ad96293ab63141968bfb412ec5370, type: 2}
-  <ModuleName>k__BackingField: {fileID: 11400000, guid: 14f18a63291b6784c87b214f4a0c1b52, type: 2}
   enemyProjectiles:
   - {fileID: 7757716064999866988, guid: 535302be54a65244f81c3a5b0c4e004a, type: 3}
   bulletData: {fileID: 11400000, guid: 8a5e4febf0feec84a96efb0add1d06ff, type: 2}
@@ -368,8 +356,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42c0d7a08d3a18041a566aeddec3f751, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <AttackName>k__BackingField: {fileID: 11400000, guid: 380795e5a56e9c548a1e2d32874d29a9, type: 2}
-  <ModuleName>k__BackingField: {fileID: 11400000, guid: 248d4dc2fba0ca8419aa25ff3aea8b80, type: 2}
   enemyProjectiles:
   - {fileID: 983179094530019093, guid: b7b239d2a87064b45951b29ed6e0af31, type: 3}
   bulletData: {fileID: 11400000, guid: a1671e4c4f6007a46803526567020a57, type: 2}

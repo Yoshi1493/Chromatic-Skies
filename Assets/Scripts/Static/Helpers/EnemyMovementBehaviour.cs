@@ -23,7 +23,7 @@ public static class EnemyMovementBehaviour
         float currentTime = 0f;
         enemy.moveDirection = newMoveDirection;
 
-        while (currentTime < moveDuration / 2f)
+        while (currentTime < moveDuration * 0.5f)
         {
             enemy.currentSpeed = Mathf.Lerp(0, newMoveSpeed, moveInterpolation.Evaluate(2f * currentTime / moveDuration));
 
@@ -33,7 +33,7 @@ public static class EnemyMovementBehaviour
 
         currentTime = 0f;
 
-        while (currentTime < moveDuration / 2f)
+        while (currentTime < moveDuration * 0.5f)
         {
             enemy.currentSpeed = Mathf.Lerp(newMoveSpeed, 0, moveInterpolation.Evaluate(2f * currentTime / moveDuration));
 
@@ -41,7 +41,7 @@ public static class EnemyMovementBehaviour
             yield return EndOfFrame;
         }
 
-        enemy.transform.position = endPosition;
+        enemy.parentShip.transform.position = endPosition;
         enemy.currentSpeed = 0f;
     }
 

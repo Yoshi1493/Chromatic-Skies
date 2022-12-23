@@ -44,8 +44,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73b5d3ea421b25a419a38a921081b6db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <AttackName>k__BackingField: {fileID: 0}
-  <ModuleName>k__BackingField: {fileID: 0}
   enemyProjectiles:
   - {fileID: 9080662429320142756, guid: 28916b14e0ed3c5418642a201b7ad64d, type: 3}
   bulletData: {fileID: 11400000, guid: 7c6592114465e91479312365c3318156, type: 2}
@@ -93,8 +91,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91170eb7f9d01484b96d18a9f9bcffe7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <AttackName>k__BackingField: {fileID: 0}
-  <ModuleName>k__BackingField: {fileID: 0}
   enemyProjectiles:
   - {fileID: 806651502422138401, guid: 74d2799281624344ab82b594b25f9086, type: 3}
   bulletData: {fileID: 11400000, guid: 06bc28c9df35ccd46a9c096e9d7cf30c, type: 2}
@@ -142,8 +138,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1187f0a445424041b67e3ca90d69bd5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <AttackName>k__BackingField: {fileID: 0}
-  <ModuleName>k__BackingField: {fileID: 0}
   enemyProjectiles:
   - {fileID: 3956775251690784573, guid: 9ff15f787a62f9949a5376da1ae7c36c, type: 3}
   - {fileID: -6471326695952348639, guid: aad94df1d7321c4468e5a7687cdf4fcf, type: 3}
@@ -193,8 +187,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66375a078ea7cac40af4a2e59871cd18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <AttackName>k__BackingField: {fileID: 0}
-  <ModuleName>k__BackingField: {fileID: 0}
   enemyProjectiles:
   - {fileID: 8372736504313509400, guid: 133af709a6c89b84b8ef3e59f08ba6e1, type: 3}
   bulletData: {fileID: 11400000, guid: 25ebad663f6abd243ad2ffecd1a74657, type: 2}
@@ -242,8 +234,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77adbe77258407142a08093dcd62c3cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <AttackName>k__BackingField: {fileID: 0}
-  <ModuleName>k__BackingField: {fileID: 0}
   enemyProjectiles:
   - {fileID: 5912271191948083845, guid: e827a4ecdffcec34e9c7cb9e0aa27b66, type: 3}
   bulletData: {fileID: 0}
@@ -254,6 +244,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2164267929168977294, guid: d93cb44e21569f545b76560b29579f98, type: 3}
+      propertyPath: shipData
+      value: 
+      objectReference: {fileID: 11400000, guid: c327f1531df3e204297f51a6d0a7af15, type: 2}
     - target: {fileID: 3922465162775491505, guid: d93cb44e21569f545b76560b29579f98, type: 3}
       propertyPath: shipData
       value: 
@@ -302,8 +296,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11703cc8d4dbabe41b7cecfed5d1bab5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <AttackName>k__BackingField: {fileID: 11400000, guid: 8a6319decbe9b524586faa92eda0a985, type: 2}
-  <ModuleName>k__BackingField: {fileID: 11400000, guid: 9540e596e5139df49a4a362fb532aa0b, type: 2}
   enemyProjectiles:
   - {fileID: 0}
   bulletData: {fileID: 0}
@@ -324,8 +316,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e802d69d2db816438b262c4be582f05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <AttackName>k__BackingField: {fileID: 11400000, guid: 5ec0ea92f4347a24c80f4cd9db86d653, type: 2}
-  <ModuleName>k__BackingField: {fileID: 11400000, guid: 81ef5a38e69818e4ca3094b93251a477, type: 2}
   enemyProjectiles:
   - {fileID: -3832623966883798544, guid: 3e7c47aae76392b47a6f5b893ca72484, type: 3}
   - {fileID: 6386806094822233492, guid: e56fb85b3409424499a7eaeeda6f19d3, type: 3}
@@ -362,8 +352,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1035b49db619a2540b66ec771f5e5874, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <AttackName>k__BackingField: {fileID: 11400000, guid: 0c9105fc6dfd9024286ef89548a60a1c, type: 2}
-  <ModuleName>k__BackingField: {fileID: 11400000, guid: 41e569c3c8d65204b9a5f3188194d1e9, type: 2}
   enemyProjectiles:
   - {fileID: 4069047345727971359, guid: 5062ab778b00bbc4da1587cb84e8bb5c, type: 3}
   bulletData: {fileID: 11400000, guid: 54067d740835add4abb9b6751086316a, type: 2}
@@ -384,8 +372,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8f3c7ed04499514d903c27dcc52a7f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <AttackName>k__BackingField: {fileID: 11400000, guid: 479a4a7ab3c655b4e820e8fdb1f2ecb1, type: 2}
-  <ModuleName>k__BackingField: {fileID: 11400000, guid: c4fd120428f443e4ab5d996a9f27e147, type: 2}
   enemyProjectiles:
   - {fileID: 2193683086196055694, guid: a4162c1e90c0c424fb11427d1e4e4ad4, type: 3}
   - {fileID: 65872820419281980, guid: 460ae9a82ab9c5c43abb89a540983a88, type: 3}
@@ -407,8 +393,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d0a678e43b66c741af0946ebd4e73fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <AttackName>k__BackingField: {fileID: 11400000, guid: 11c04127053bc884ab5f6e637d7f7d98, type: 2}
-  <ModuleName>k__BackingField: {fileID: 11400000, guid: 4d505b4561ab2fc4484486680ca715df, type: 2}
   enemyProjectiles:
   - {fileID: 3629783235024105895, guid: 09705185e488e154bb3ba556e0efc06b, type: 3}
   - {fileID: 401512749434155317, guid: 1c4bc39f8062c3b4fbe4fd712d9e63b9, type: 3}
@@ -435,8 +419,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3cd737aee4f67d4e8034675bab112e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <AttackName>k__BackingField: {fileID: 11400000, guid: 6b9a453f98808914b99074c94169ca5f, type: 2}
-  <ModuleName>k__BackingField: {fileID: 11400000, guid: e1dade3621cf57242a3eb148e00eb62b, type: 2}
   enemyProjectiles:
   - {fileID: -2316401099181874556, guid: ca439d9efd7a19e47b0d4d21726dabe7, type: 3}
   bulletData: {fileID: 11400000, guid: e25a864d61184d348a1ce9e480849f88, type: 2}

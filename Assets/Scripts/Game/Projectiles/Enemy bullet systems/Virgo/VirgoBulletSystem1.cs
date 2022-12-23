@@ -13,7 +13,6 @@ public class VirgoBulletSystem1 : EnemyShooter<EnemyBullet>
         yield return base.Shoot();
 
         SetSubsystemEnabled(1);
-        StartCoroutine(Move());
 
         int i = 0;
 
@@ -26,16 +25,6 @@ public class VirgoBulletSystem1 : EnemyShooter<EnemyBullet>
 
             yield return WaitForSeconds(ShootingCooldown);
             i++;
-        }
-    }
-
-    IEnumerator Move()
-    {
-        yield break;
-
-        while (enabled)
-        {
-            //yield return ownerShip.MoveToRandomPosition(1f, 1f, 2f, 3f);
         }
     }
 }

@@ -4,11 +4,41 @@ using UnityEngine;
 
 public class Enemy : Ship
 {
-    List<IEnemyAttack> activeEnemyShooters = new();
+    [SerializeField] Transform bulletSystemContainer;
+    [SerializeField] Transform movementSystemContainer;
+
+    List<IEnemyAttack> bulletSystems;
+    List<IEnemyAttack> currentBulletSystems = new();
+
+    List<EnemyMovement> movementSystems;
+    EnemyMovement currentMovementSystem;
 
     void Start()
     {
         FindObjectOfType<Player>().LoseLifeAction += OnPlayerLoseLife;
+        ValidateAttackSystems();
+    }
+
+    void ValidateAttackSystems()
+    {
+        bulletSystems = new(bulletSystemContainer.childCount);
+        movementSystems = new(movementSystemContainer.childCount);
+
+        for (int i = 0; i < bulletSystemContainer.childCount; i++)
+        {
+            if (bulletSystemContainer.GetChild(i).TryGetComponent(out IEnemyAttack enemyAttack))
+            {
+                bulletSystems.Add(enemyAttack);
+            }
+        }
+
+        for (int i = 0; i < movementSystemContainer.childCount; i++)
+        {
+            if (movementSystemContainer.GetChild(i).TryGetComponent(out EnemyMovement enemyMovement))
+            {
+                movementSystems.Add(enemyMovement);
+            }
+        }
     }
 
     void Update()
@@ -19,77 +49,95 @@ public class Enemy : Ship
 #endif
     }
 
+    //disable current systems, and enable next systems upon losing life
     protected override async void LoseLife()
     {
-        int currentProjectileSystem = shipData.MaxLives.Value - currentLives;
+        int currentAttackSystemIndex = shipData.MaxLives.Value - currentLives;
 
         base.LoseLife();
         EnemyBulletPool.Instance.DrainPool();
 
         if (currentLives > 0)
         {
-            GetActiveEnemyShooters();
-            IEnemyAttack nextEnemyShooter = transform.GetChild(currentProjectileSystem + 1).GetComponent<IEnemyAttack>();
+            GetActiveEnemySystems();
 
-            foreach (var enemyShooter in activeEnemyShooters)
+            foreach (var bulletSystem in currentBulletSystems)
             {
-                enemyShooter.SetEnabled(false);
+                bulletSystem.SetEnabled(false);
             }
-
-            //StartCoroutine(this.ReturnToOriginalPosition());
+            currentMovementSystem.enabled = false;
 
             await Task.Delay(RespawnTime);
             Respawn();
 
-            nextEnemyShooter.SetEnabled(true);
+            bulletSystems[currentAttackSystemIndex + 1].SetEnabled(true);
+            movementSystems[currentAttackSystemIndex + 1].enabled = true;
             collider.enabled = true;
         }
     }
 
-    //disable and re-enable current projectile system upon player losing life
+    //disable and re-enable current systems upon player losing life
     async void OnPlayerLoseLife()
     {
-        GetActiveEnemyShooters();
+        GetActiveEnemySystems();
 
-        foreach (var enemyShooter in activeEnemyShooters)
+        foreach (var bulletSystem in currentBulletSystems)
         {
-            enemyShooter.SetEnabled(false);
+            bulletSystem.SetEnabled(false);
         }
+        currentMovementSystem.enabled = false;
 
-        //StartCoroutine(this.MoveTo(transform.position, 1f));
         invincible = true;
 
         await Task.Delay(RespawnTime);
 
-        activeEnemyShooters[0].SetEnabled(true);
+        currentBulletSystems[0].SetEnabled(true);
+        currentMovementSystem.enabled = true;
+
         invincible = false;
     }
 
-    void GetActiveEnemyShooters()
+    void GetActiveEnemySystems()
     {
-        activeEnemyShooters.Clear();
+        currentBulletSystems.Clear();
 
-        //check all children for active projectile systems
-        for (int i = 0; i < transform.childCount; i++)
+        //check all children for active IEnemyAttack
+        for (int i = 0; i < bulletSystemContainer.childCount; i++)
         {
-            Transform child = transform.GetChild(i);
+            Transform child = bulletSystemContainer.GetChild(i);
 
-            if (child.TryGetComponent(out IEnemyAttack projectileSystem) && projectileSystem.Enabled)
+            //find bullet systems
+            if (child.TryGetComponent(out IEnemyAttack bulletSystem))
             {
-                activeEnemyShooters.Add(projectileSystem);
+                //if a bullet system exists, regardless of its enabled status, find respective movement system
+                currentMovementSystem = movementSystemContainer.GetChild(i).GetComponent<EnemyMovement>();
+
+                if (bulletSystem.Enabled)
+                {
+                    currentBulletSystems.Add(bulletSystem);
+                }
             }
 
             if (child.childCount > 0)
             {
-                //check all children of children for active projectile subsystems
+                //check for active bullet subsystems
                 for (int ii = 0; ii < child.childCount; ii++)
                 {
-                    if (child.GetChild(ii).TryGetComponent(out IEnemyAttack projectileSubsystem) && projectileSubsystem.Enabled)
+                    if (child.GetChild(ii).TryGetComponent(out IEnemyAttack bulletSubsystem) && bulletSubsystem.Enabled)
                     {
-                        activeEnemyShooters.Add(projectileSubsystem);
+                        currentBulletSystems.Add(bulletSubsystem);
                     }
                 }
             }
+
+            //find movement system
+            if (child.TryGetComponent(out EnemyMovement movementSystem) && movementSystem.enabled)
+            {
+                currentMovementSystem = movementSystem;
+            }
+
+            //if an active bullet system exists, immediately break out to avoid further checks
+            if (currentBulletSystems.Count > 0) break;
         }
     }
 
