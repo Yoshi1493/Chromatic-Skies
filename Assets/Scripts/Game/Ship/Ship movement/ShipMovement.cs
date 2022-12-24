@@ -13,8 +13,6 @@ public abstract class ShipMovement : MonoBehaviour
         parentShip = GetComponentInParent<Ship>();
         parentShip.LoseLifeAction += OnLoseLife;
 
-        FindObjectOfType<PauseHandler>().GamePauseAction += OnGamePaused;
-
         currentSpeed = shipData.MovementSpeed.Value;
     }
 
@@ -29,9 +27,4 @@ public abstract class ShipMovement : MonoBehaviour
     }
 
     protected abstract void OnLoseLife();
-
-    protected virtual void OnGamePaused(bool state)
-    {
-        enabled = !state;
-    }
 }

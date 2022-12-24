@@ -50,8 +50,8 @@ public static class EnemyMovementBehaviour
     /// </summary>
     public static IEnumerator MoveToRandomPosition(this EnemyMovement enemy, float moveDuration, float minSqrMagDelta = 2f, float maxSqrMagDelta = 4f, float delay = 0f)
     {
-        if (minSqrMagDelta > maxSqrMagDelta)
-            yield break;
+        if (minSqrMagDelta > maxSqrMagDelta) yield break;
+        if (delay > 0) yield return WaitForSeconds(delay);
 
         float randMagnitude = Random.Range(minSqrMagDelta, maxSqrMagDelta);
         Vector3 randDirection = Random.insideUnitCircle.normalized;
@@ -63,7 +63,7 @@ public static class EnemyMovementBehaviour
         }
 
         Vector3 endPosition = enemy.transform.position + (randMagnitude * randDirection);
-        yield return enemy.MoveTo(endPosition, moveDuration, delay);
+        yield return enemy.MoveTo(endPosition, moveDuration);
     }
 
     public static IEnumerator ReturnToOriginalPosition(this EnemyMovement enemy, float moveDuration = 1f, float delay = 0f)

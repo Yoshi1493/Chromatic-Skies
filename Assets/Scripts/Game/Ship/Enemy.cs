@@ -66,12 +66,12 @@ public class Enemy : Ship
                 bulletSystem.SetEnabled(false);
             }
             currentMovementSystem.enabled = false;
+            movementSystems[currentAttackSystemIndex + 1].enabled = true;
 
             await Task.Delay(RespawnTime);
             Respawn();
 
             bulletSystems[currentAttackSystemIndex + 1].SetEnabled(true);
-            movementSystems[currentAttackSystemIndex + 1].enabled = true;
             collider.enabled = true;
         }
     }

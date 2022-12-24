@@ -11,6 +11,8 @@ public class PlayerMovement : ShipMovement
 
         parentShip.RespawnAction += OnRespawn;
         MovementSlowAction += SetSlowState;
+
+        FindObjectOfType<PauseHandler>().GamePauseAction += OnGamePaused;
     }
 
     protected override void Update()
@@ -66,10 +68,8 @@ public class PlayerMovement : ShipMovement
         currentSpeed = shipData.MovementSpeed.Value;
     }
 
-    protected override void OnGamePaused(bool state)
+    void OnGamePaused(bool state)
     {
-        base.OnGamePaused(state);
-
         if (state)
         {
             MovementSlowAction?.Invoke(false);
