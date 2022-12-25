@@ -64,10 +64,10 @@ public class VirgoBulletSystem2 : EnemyShooter<EnemyBullet>
                 bullets.ForEach(b => b.Fire());
                 bullets.Clear();
 
+                AttackFinishAction?.Invoke();
+
                 yield return WaitForSeconds(3f);
             }
-
-            //yield return ownerShip.MoveToRandomPosition(1f);
         }
     }
 

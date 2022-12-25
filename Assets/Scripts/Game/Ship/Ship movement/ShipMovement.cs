@@ -1,16 +1,17 @@
 using UnityEngine;
 
-public abstract class ShipMovement : MonoBehaviour
+public abstract class ShipMovement<TShip> : MonoBehaviour
+    where TShip : Ship
 {
     public ShipObject shipData;
-    [HideInInspector] public Ship parentShip;
+    [HideInInspector] public TShip parentShip;
 
     [HideInInspector] public Vector3 moveDirection;
     [HideInInspector] public float currentSpeed;
 
     protected virtual void Awake()
     {
-        parentShip = GetComponentInParent<Ship>();
+        parentShip = GetComponentInParent<TShip>();
         parentShip.LoseLifeAction += OnLoseLife;
 
         currentSpeed = shipData.MovementSpeed.Value;

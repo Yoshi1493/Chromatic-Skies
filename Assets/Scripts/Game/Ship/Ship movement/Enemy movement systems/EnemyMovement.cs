@@ -1,19 +1,34 @@
 using System.Collections;
 using static CoroutineHelper;
 
-public abstract class EnemyMovement : ShipMovement
+public abstract class EnemyMovement : ShipMovement<Enemy>
 {
     protected IEnumerator moveCoroutine;
+    protected abstract IEnumerator Move();
 
-    protected virtual IEnumerator Move()
+    protected override void Awake()
     {
-        yield return WaitForSeconds(1f);
+        base.Awake();
+
+        // get respective bullet system
+        int siblingIndex = transform.GetSiblingIndex();
+        parentShip.bulletSystems[siblingIndex].AttackStartAction += OnAttackStart;
+        parentShip.bulletSystems[siblingIndex].AttackFinishAction += OnAttackFinish;
     }
 
     void OnEnable()
     {
         StartCoroutine(this.ReturnToOriginalPosition());
-        
+    }
+
+    protected override void OnLoseLife()
+    {
+        StopAllCoroutines();
+        StartCoroutine(this.ReturnToOriginalPosition());
+    }
+
+    protected void StartMove()
+    {
         if (moveCoroutine != null)
         {
             StopCoroutine(moveCoroutine);
@@ -23,9 +38,13 @@ public abstract class EnemyMovement : ShipMovement
         StartCoroutine(moveCoroutine);
     }
 
-    protected override void OnLoseLife()
+    protected virtual void OnAttackStart(int _)
     {
-        StopAllCoroutines();
-        StartCoroutine(this.ReturnToOriginalPosition());
+
+    }
+
+    protected virtual void OnAttackFinish()
+    {
+
     }
 }

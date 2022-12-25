@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class PlayerMovement : ShipMovement
+public class PlayerMovement : ShipMovement<Player>
 {
     public event Action<bool> MovementSlowAction;
 

@@ -7,14 +7,16 @@ public class Enemy : Ship
     [SerializeField] Transform bulletSystemContainer;
     [SerializeField] Transform movementSystemContainer;
 
-    List<IEnemyAttack> bulletSystems;
+    public List<IEnemyAttack> bulletSystems { get; private set; }
     List<IEnemyAttack> currentBulletSystems = new();
 
     List<EnemyMovement> movementSystems;
     EnemyMovement currentMovementSystem;
 
-    void Start()
+    protected override void Awake()
     {
+        base.Awake();
+
         FindObjectOfType<Player>().LoseLifeAction += OnPlayerLoseLife;
         ValidateAttackSystems();
     }
