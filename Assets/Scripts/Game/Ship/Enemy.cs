@@ -17,8 +17,8 @@ public class Enemy : Ship
     {
         base.Awake();
 
-        FindObjectOfType<Player>().LoseLifeAction += OnPlayerLoseLife;
         ValidateAttackSystems();
+        FindObjectOfType<Player>().LoseLifeAction += OnPlayerLoseLife;
     }
 
     void ValidateAttackSystems()

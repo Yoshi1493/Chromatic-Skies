@@ -5,11 +5,11 @@ using static CoroutineHelper;
 public class VirgoBulletSystem3 : EnemyShooter<EnemyBullet>
 {
     const float RingRadius = 2.5f;
-    const int BulletCount = 100;
+    const int BulletCount = 200;
     const float AngularFrequency = 2f / 7f;
     const float AngularStep = 2f / BulletCount / AngularFrequency;
 
-    protected override float ShootingCooldown => 0.02f;
+    protected override float ShootingCooldown => 0.01f;
 
     protected override IEnumerator Shoot()
     {
@@ -34,7 +34,9 @@ public class VirgoBulletSystem3 : EnemyShooter<EnemyBullet>
             }
 
             SetSubsystemEnabled(1);
-            //yield return ownerShip.MoveToRandomPosition(1f, delay: 3f);
+
+            AttackFinishAction?.Invoke();
+            yield return WaitForSeconds(3f);
         }
     }
 }

@@ -65,8 +65,7 @@ public class VirgoBulletSystem2 : EnemyShooter<EnemyBullet>
                 bullets.Clear();
 
                 AttackFinishAction?.Invoke();
-
-                yield return WaitForSeconds(3f);
+                yield return WaitForSeconds(4f);
             }
         }
     }
