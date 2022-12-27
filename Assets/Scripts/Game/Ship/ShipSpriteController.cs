@@ -7,7 +7,7 @@ public abstract class ShipSpriteController<TShip> : MonoBehaviour
     protected TShip parentShip;
     SpriteRenderer spriteRenderer;
 
-    void Awake()
+    protected virtual void Awake()
     {
         parentShip = GetComponentInParent<TShip>();
         spriteRenderer = GetComponent<SpriteRenderer>();
