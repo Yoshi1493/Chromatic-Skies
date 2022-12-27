@@ -1,12 +1,16 @@
 using System.Collections;
+using UnityEngine;
 
 public class VirgoBullet41 : EnemyBullet
 {
+    [SerializeField] bool rotatesClockwise;
+
     protected override float MaxLifetime => 15f;
 
     protected override IEnumerator Move()
     {
-        StartCoroutine(this.RotateBy(-60f, 5f));
-        yield return this.LerpSpeed(0f, 3f, 2f);
+        yield return null;
+        StartCoroutine(this.LerpSpeed(4f, 2.5f, 1f));
+        StartCoroutine(this.RotateBy(120f, 5f, rotatesClockwise, 0.5f));
     }
 }
