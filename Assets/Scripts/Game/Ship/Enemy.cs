@@ -9,9 +9,11 @@ public class Enemy : Ship
 
     public List<IEnemyAttack> bulletSystems { get; private set; }
     List<IEnemyAttack> currentBulletSystems = new();
+    IEnemyAttack nextBulletSystem;
 
     List<EnemyMovement> movementSystems;
     EnemyMovement currentMovementSystem;
+    EnemyMovement nextMovementSystem;
 
     protected override void Awake()
     {
@@ -62,18 +64,22 @@ public class Enemy : Ship
         if (currentLives > 0)
         {
             GetActiveEnemySystems();
+            nextBulletSystem = bulletSystems[currentAttackSystemIndex + 1];
+            nextMovementSystem = movementSystems[currentAttackSystemIndex + 1];
 
             foreach (var bulletSystem in currentBulletSystems)
             {
                 bulletSystem.SetEnabled(false);
             }
+
+            currentMovementSystem.StopAllCoroutines();
             currentMovementSystem.enabled = false;
-            movementSystems[currentAttackSystemIndex + 1].enabled = true;
 
             await Task.Delay(RespawnTime);
             Respawn();
 
-            bulletSystems[currentAttackSystemIndex + 1].SetEnabled(true);
+            nextBulletSystem.SetEnabled(true);
+            nextMovementSystem.enabled = true;
             collider.enabled = true;
         }
     }
@@ -87,14 +93,19 @@ public class Enemy : Ship
         {
             bulletSystem.SetEnabled(false);
         }
+
+        currentMovementSystem.StopAllCoroutines();
         currentMovementSystem.enabled = false;
 
         invincible = true;
 
         await Task.Delay(RespawnTime);
 
-        currentBulletSystems[0].SetEnabled(true);
-        currentMovementSystem.enabled = true;
+        if (currentBulletSystems.Count > 0)
+        {
+            currentBulletSystems[0].SetEnabled(true);
+            currentMovementSystem.enabled = true;
+        }
 
         invincible = false;
     }
@@ -103,7 +114,7 @@ public class Enemy : Ship
     {
         currentBulletSystems.Clear();
 
-        //check all children for active IEnemyAttack
+        //check all children of BulletSystem container for enabled IEnemyAttack
         for (int i = 0; i < bulletSystemContainer.childCount; i++)
         {
             Transform child = bulletSystemContainer.GetChild(i);
@@ -120,9 +131,9 @@ public class Enemy : Ship
                 }
             }
 
+            //check for active bullet subsystems
             if (child.childCount > 0)
             {
-                //check for active bullet subsystems
                 for (int ii = 0; ii < child.childCount; ii++)
                 {
                     if (child.GetChild(ii).TryGetComponent(out IEnemyAttack bulletSubsystem) && bulletSubsystem.Enabled)

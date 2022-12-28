@@ -1,5 +1,4 @@
 using System.Collections;
-using static CoroutineHelper;
 
 public abstract class EnemyMovement : ShipMovement<Enemy>
 {
@@ -24,7 +23,6 @@ public abstract class EnemyMovement : ShipMovement<Enemy>
     protected override void OnLoseLife()
     {
         StopAllCoroutines();
-        StartCoroutine(this.ReturnToOriginalPosition());
     }
 
     protected void StartMove()
