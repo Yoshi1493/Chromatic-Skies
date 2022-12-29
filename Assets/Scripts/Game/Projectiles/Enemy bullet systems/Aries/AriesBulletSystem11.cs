@@ -4,32 +4,28 @@ using static CoroutineHelper;
 
 public class AriesBulletSystem11 : EnemyShooter<EnemyBullet>
 {
-    const int WaveCount = 8;
     const int BulletCount = 12;
     const float BulletSpacing = 360f / BulletCount;
 
-    protected override float ShootingCooldown => 0.6f;
+    protected override float ShootingCooldown => 1.5f;
 
     protected override IEnumerator Shoot()
     {
-        yield return WaitForSeconds(3f);
+        yield return WaitForSeconds(2f);
 
-        for (int i = 0; i < WaveCount; i++)
+        while (enabled)
         {
-            float randOffset = Random.Range(0f, BulletSpacing * 0.5f);
-            float theta = PlayerPosition.GetRotationDifference(transform.position);
+            float r = PlayerPosition.GetRotationDifference(transform.position);
 
             for (int ii = 0; ii < BulletCount; ii++)
             {
-                float z = (ii * BulletSpacing) + theta;
+                float z = (ii * BulletSpacing) + r;
                 Vector3 pos = Vector3.zero;
 
-                SpawnProjectile(1, z, pos).Fire();
+                SpawnProjectile(2, z, pos).Fire();
             }
 
             yield return WaitForSeconds(ShootingCooldown);
         }
-
-        enabled = false;
     }
 }
