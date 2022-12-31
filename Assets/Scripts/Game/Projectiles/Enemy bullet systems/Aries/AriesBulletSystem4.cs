@@ -35,8 +35,6 @@ public class AriesBulletSystem4 : EnemyShooter<EnemyBullet>
                 n += i * WaveSpacing * d;
                 yield return WaitForSeconds(ShootingCooldown);
             }
-
-            //yield return ownerShip.MoveToRandomPosition(1f);
         }
     }
 }

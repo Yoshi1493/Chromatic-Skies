@@ -12,6 +12,10 @@ PrefabInstance:
       value: 30
       objectReference: {fileID: 0}
     - target: {fileID: -537335154739979936, guid: 69b8f9a5f7014d444b0fc9dbd2eae5eb, type: 3}
+      propertyPath: projectileData
+      value: 
+      objectReference: {fileID: 11400000, guid: 41d1696ff05bb034da12666eb792eec3, type: 2}
+    - target: {fileID: -537335154739979936, guid: 69b8f9a5f7014d444b0fc9dbd2eae5eb, type: 3}
       propertyPath: rotatesClockwise
       value: 0
       objectReference: {fileID: 0}
@@ -21,7 +25,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1575430968703495904, guid: 69b8f9a5f7014d444b0fc9dbd2eae5eb, type: 3}
       propertyPath: m_Name
-      value: Aries bullet 4_1
+      value: Aries bullet 3_1_1
       objectReference: {fileID: 0}
     - target: {fileID: 4406597186128934183, guid: 69b8f9a5f7014d444b0fc9dbd2eae5eb, type: 3}
       propertyPath: m_RootOrder

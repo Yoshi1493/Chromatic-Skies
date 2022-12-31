@@ -4,8 +4,9 @@ using static CoroutineHelper;
 
 public class AriesBulletSystem3 : EnemyShooter<EnemyBullet>
 {
-    const int BulletCount = 6;
+    const int BulletCount = 9;
     const float BulletSpacing = 180f / BulletCount;
+    const float MaxAngle = 90f;
 
     protected override float ShootingCooldown => 0.3f;
 
@@ -18,14 +19,13 @@ public class AriesBulletSystem3 : EnemyShooter<EnemyBullet>
 
         while (enabled)
         {
-            float r = Random.Range(-90f, 90f);
+            float r = Random.Range(-MaxAngle, MaxAngle);
 
-            for (int i = 0; i <= BulletCount; i++)
+            for (int i = 0; i < BulletCount; i++)
             {
-                float z = r + (i * BulletSpacing) - 120f;
+                float z = r + (i * BulletSpacing) - (BulletSpacing * ((BulletCount - 1) / 2f));
                 Vector3 pos = transform.up.RotateVectorBy(r);
 
-                bulletData.colour = bulletData.gradient.Evaluate(i / (BulletCount - 1f));
                 SpawnProjectile(0, z, pos).Fire();
             }
 
