@@ -38,7 +38,8 @@ public class TaurusBulletSystem1 : EnemyShooter<EnemyBullet>
                 }
             }
 
-            //yield return ownerShip.MoveToRandomPosition(1f, delay: ShootingCooldown);
+            AttackFinishAction?.Invoke();
+            yield return WaitForSeconds(3f);
         }
     }
 }

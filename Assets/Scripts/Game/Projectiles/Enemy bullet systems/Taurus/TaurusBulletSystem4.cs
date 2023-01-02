@@ -17,8 +17,6 @@ public class TaurusBulletSystem4 : EnemyShooter<EnemyBullet>
 
         while (enabled)
         {
-            yield return WaitForSeconds(1f);
-
             for (int i = 0; i < WaveCount; i++)
             {
                 float s = (WaveCount * 2 - i) * 0.1f;
@@ -44,7 +42,8 @@ public class TaurusBulletSystem4 : EnemyShooter<EnemyBullet>
 
             SetSubsystemEnabled(1);
 
-            //yield return ownerShip.MoveToRandomPosition(1f, delay: 1f);
+            AttackFinishAction?.Invoke();
+            yield return WaitForSeconds(4f);
         }
     }
 }

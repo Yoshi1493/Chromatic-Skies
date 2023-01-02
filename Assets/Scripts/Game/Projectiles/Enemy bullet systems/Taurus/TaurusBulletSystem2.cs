@@ -16,7 +16,6 @@ public class TaurusBulletSystem2 : EnemyShooter<EnemyBullet>
         yield return base.Shoot();
 
         SetSubsystemEnabled(1);
-        StartCoroutine(Move());
 
         while (enabled)
         {
@@ -33,16 +32,6 @@ public class TaurusBulletSystem2 : EnemyShooter<EnemyBullet>
 
                 yield return WaitForSeconds(ShootingCooldown);
             }
-        }
-
-    }
-
-    IEnumerator Move()
-    {
-        while (enabled)
-        {
-            yield return WaitForSeconds(2.5f);
-            //yield return ownerShip.MoveToRandomPosition(1f, 1f, 4f);
         }
     }
 }

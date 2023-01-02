@@ -6,8 +6,8 @@ using static MathHelper;
 
 public class TaurusBulletSystem5 : EnemyShooter<EnemyBullet>
 {
-    List<EnemyBullet> outerBullets = new List<EnemyBullet>(90);
-    List<EnemyBullet> innerBullets = new List<EnemyBullet>(90);
+    List<EnemyBullet> outerBullets = new(90);
+    List<EnemyBullet> innerBullets = new(90);
 
     readonly int OuterBranchCount = 5;
     readonly int OuterBranchDensity = 18;
@@ -83,7 +83,8 @@ public class TaurusBulletSystem5 : EnemyShooter<EnemyBullet>
 
             innerBullets.Clear();
 
-            //yield return ownerShip.MoveToRandomPosition(1f, delay: 1f);
+            AttackFinishAction?.Invoke();
+            yield return WaitForSeconds(3f);
         }
     }
 }

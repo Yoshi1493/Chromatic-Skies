@@ -4,9 +4,10 @@ using static CoroutineHelper;
 
 public class TaurusBulletSystem3 : EnemyShooter<EnemyBullet>
 {
-    const int BulletCount = 3;
-    const int BulletSpacing = 360 / BulletCount;
-    const float RotationPerWave = 15f;
+    const int BranchCount = 3;
+    const int BranchSpacing = 360 / BranchCount;
+    const float BulletSpacing = 15f;
+    const float MaxBulletSpacing = BulletSpacing * 2f;
 
     protected override float ShootingCooldown => 0.03f;
 
@@ -20,17 +21,18 @@ public class TaurusBulletSystem3 : EnemyShooter<EnemyBullet>
 
         while (enabled)
         {
-            for (int ii = 0; ii < BulletCount; ii++)
+            float r = Mathf.PingPong(i, MaxBulletSpacing) - BulletSpacing;
+
+            for (int ii = 0; ii < BranchCount; ii++)
             {
-                float offset = Mathf.PingPong(i, 30f) - RotationPerWave;
-                float z = (ii * BulletSpacing) + (i * offset) + 180f;
+                float z = (ii * BranchSpacing) + (i * r) + 180f;
                 Vector3 pos = Vector3.zero;
 
                 SpawnProjectile(0, z, pos).Fire();
                 yield return WaitForSeconds(ShootingCooldown);
             }
 
-            i++;
+            i = (int)Mathf.Repeat(++i, MaxBulletSpacing * 2);
         }
     }
 }
