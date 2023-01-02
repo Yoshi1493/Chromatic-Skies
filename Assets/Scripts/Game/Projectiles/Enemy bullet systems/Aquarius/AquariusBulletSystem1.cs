@@ -8,6 +8,8 @@ public class AquariusBulletSystem1 : EnemyShooter<EnemyBullet>
     const float WaveSpacing = 12f;
     const int BulletCount = 4;
     const float BulletSpacing = 15f;
+    const float MinAngle = 180f;
+    const float MaxAngle = 240f;
 
     protected override IEnumerator Shoot()
     {
@@ -15,13 +17,13 @@ public class AquariusBulletSystem1 : EnemyShooter<EnemyBullet>
 
         while (enabled)
         {
-            float r = Random.Range(180f, 240f);
+            float r = Random.Range(MinAngle, MaxAngle);
 
             for (int i = 0; i < WaveCount; i++)
             {
                 for (int ii = 0; ii < BulletCount; ii++)
                 {
-                    float z = (i * WaveSpacing) - (ii * BulletSpacing) + r;
+                    float z = (i * WaveSpacing) - (ii * BulletSpacing) + 180f;
                     float s = (ii * -0.2f) + 3f;
                     Vector3 pos = Vector3.zero;
 
@@ -38,7 +40,9 @@ public class AquariusBulletSystem1 : EnemyShooter<EnemyBullet>
             }
 
             SetSubsystemEnabled(1);
-            //yield return ownerShip.MoveToRandomPosition(2f, delay: 3f);
+
+            AttackFinishAction?.Invoke();
+            yield return WaitForSeconds(5f);
         }
     }
 }

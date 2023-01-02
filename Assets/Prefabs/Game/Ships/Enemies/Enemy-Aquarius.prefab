@@ -109,6 +109,14 @@ PrefabInstance:
       propertyPath: shipData
       value: 
       objectReference: {fileID: 11400000, guid: 08e0ea81ba5f3414eb9f185047afc36b, type: 2}
+    - target: {fileID: 3922465162775491505, guid: d93cb44e21569f545b76560b29579f98, type: 3}
+      propertyPath: bulletSystemContainer
+      value: 
+      objectReference: {fileID: 392403506839100695}
+    - target: {fileID: 3922465162775491505, guid: d93cb44e21569f545b76560b29579f98, type: 3}
+      propertyPath: movementSystemContainer
+      value: 
+      objectReference: {fileID: 1683642109594022218}
     - target: {fileID: 4336286228127436173, guid: d93cb44e21569f545b76560b29579f98, type: 3}
       propertyPath: m_Name
       value: Enemy-Aquarius
@@ -131,6 +139,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d93cb44e21569f545b76560b29579f98, type: 3}
+--- !u!4 &392403506839100695 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6394838267030557459, guid: d93cb44e21569f545b76560b29579f98, type: 3}
+  m_PrefabInstance: {fileID: 6759093168088370692}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &649014644346800800 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6110500745880798372, guid: d93cb44e21569f545b76560b29579f98, type: 3}
@@ -171,6 +184,11 @@ MonoBehaviour:
   enemyProjectiles:
   - {fileID: 0}
   bulletData: {fileID: 0}
+--- !u!4 &1683642109594022218 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5372900977354538830, guid: d93cb44e21569f545b76560b29579f98, type: 3}
+  m_PrefabInstance: {fileID: 6759093168088370692}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2362189854743476344 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9008659700516484732, guid: d93cb44e21569f545b76560b29579f98, type: 3}
@@ -188,7 +206,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2558884426390124806}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 67f978dc31aa85741ad296e6262d192d, type: 3}
   m_Name: 
@@ -228,7 +246,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4079918356797303241}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a428a0f1804dd874cb44dd74f3090e27, type: 3}
   m_Name: 
@@ -337,7 +355,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7913653206763732874}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ec80d92109d11d248890b3e9d9bafe74, type: 3}
   m_Name: 
@@ -358,7 +376,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9083349842419879498}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bd0a293b56d637342a52a47435dfbb24, type: 3}
   m_Name: 
