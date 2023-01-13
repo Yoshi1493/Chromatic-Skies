@@ -8,6 +8,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -6471326695952348639, guid: aad94df1d7321c4468e5a7687cdf4fcf, type: 3}
+      propertyPath: projectileData
+      value: 
+      objectReference: {fileID: 11400000, guid: ab96988a55a89fb4e8b5f74331d1937e, type: 2}
+    - target: {fileID: -6471326695952348639, guid: aad94df1d7321c4468e5a7687cdf4fcf, type: 3}
       propertyPath: rotatesClockwise
       value: 1
       objectReference: {fileID: 0}

@@ -11,7 +11,7 @@ public class CapricornBulletSystem5 : EnemyShooter<EnemyBullet>
     const int BulletCount = 16;
     const float BulletSpacing = 360f / BulletCount;
 
-    protected override float ShootingCooldown => 0.2f;
+    protected override float ShootingCooldown => 0.5f;
 
     protected override IEnumerator Shoot()
     {
@@ -19,6 +19,8 @@ public class CapricornBulletSystem5 : EnemyShooter<EnemyBullet>
 
         while (enabled)
         {
+            SetSubsystemEnabled(1);
+
             for (int i = 0; i < WaveCount; i++)
             {
                 for (int ii = 0; ii < BranchCount; ii++)
@@ -37,10 +39,8 @@ public class CapricornBulletSystem5 : EnemyShooter<EnemyBullet>
                 yield return WaitForSeconds(ShootingCooldown);
             }
 
-            SetSubsystemEnabled(1);
-
-            yield return WaitForSeconds(5f);
-            //yield return ownerShip.MoveToRandomPosition(1f);
+            AttackFinishAction?.Invoke();
+            yield return WaitForSeconds(1f);
         }
     }
 }

@@ -9,7 +9,7 @@ public class CapricornBulletSystem3 : EnemyShooter<EnemyBullet>
     const int BulletCount = 8;
     const float BulletSpeed = 1.5f;
 
-    protected override float ShootingCooldown => 0.25f;
+    protected override float ShootingCooldown => 0.2f;
 
     protected override IEnumerator Shoot()
     {
@@ -46,7 +46,8 @@ public class CapricornBulletSystem3 : EnemyShooter<EnemyBullet>
                 yield return WaitForSeconds(ShootingCooldown);
             }
 
-            //yield return ownerShip.MoveToRandomPosition(2f);
+            AttackFinishAction?.Invoke();
+            yield return WaitForSeconds(2f);
         }
     }
 }

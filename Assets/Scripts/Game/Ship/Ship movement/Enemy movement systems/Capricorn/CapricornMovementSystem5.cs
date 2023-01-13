@@ -7,6 +7,12 @@ public class CapricornMovementSystem5 : EnemyMovement
 {
     protected override IEnumerator Move()
     {
-        yield return null;
+        yield return this.MoveToRandomPosition(1f);
+    }
+
+    protected override void OnAttackFinish()
+    {
+        print(".");
+        StartMove();
     }
 }

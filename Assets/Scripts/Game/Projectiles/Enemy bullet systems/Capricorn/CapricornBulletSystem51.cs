@@ -11,7 +11,7 @@ public class CapricornBulletSystem51 : EnemyShooter<EnemyBullet>
     const int BulletCount = 6;
     const float BulletSpacing = 5f;
 
-    protected override float ShootingCooldown => 0.25f;
+    protected override float ShootingCooldown => 0.4f;
 
     protected override IEnumerator Shoot()
     {
@@ -26,10 +26,11 @@ public class CapricornBulletSystem51 : EnemyShooter<EnemyBullet>
                 for (int iii = 0; iii < BulletCount; iii++)
                 {
                     float z = t + (iii * (BulletCount * 0.5f - 0.5f) * BulletSpacing);
+                    float s = iii + 1f;
                     bulletData.colour = bulletData.gradient.Evaluate(iii / (BulletCount - 1f));
 
                     var bullet = SpawnProjectile(2, z, pos);
-                    bullet.MoveSpeed = iii + 2f;
+                    bullet.MoveSpeed = s;
                     bullet.Fire();
                 }
             }

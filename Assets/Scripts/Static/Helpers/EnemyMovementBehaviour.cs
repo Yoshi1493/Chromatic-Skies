@@ -45,6 +45,38 @@ public static class EnemyMovementBehaviour
         enemy.currentSpeed = 0f;
     }
 
+    public static IEnumerator MoveToLinear(this EnemyMovement enemy, Vector3 endPosition, float moveDuration, float delay = 0f)
+    {
+        if (delay > 0) yield return WaitForSeconds(delay);
+
+        Vector3 newMoveDirection = endPosition - enemy.transform.position;
+        float newMoveSpeed = 2 * newMoveDirection.magnitude / moveDuration;
+
+        float currentTime = 0f;
+        enemy.moveDirection = newMoveDirection;
+
+        while (currentTime < moveDuration * 0.5f)
+        {
+            enemy.currentSpeed = Mathf.Lerp(0, newMoveSpeed, 2f * currentTime / moveDuration);
+
+            currentTime += Time.deltaTime;
+            yield return EndOfFrame;
+        }
+
+        currentTime = 0f;
+
+        while (currentTime < moveDuration * 0.5f)
+        {
+            enemy.currentSpeed = Mathf.Lerp(newMoveSpeed, 0, 2f * currentTime / moveDuration);
+
+            currentTime += Time.deltaTime;
+            yield return EndOfFrame;
+        }
+
+        enemy.parentShip.transform.position = endPosition;
+        enemy.currentSpeed = 0f;
+    }
+
     /// <summary>
     /// translates <ship> to <GetRandomPosition()> over <moveDuration> seconds.
     /// </summary>

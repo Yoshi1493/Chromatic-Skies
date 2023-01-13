@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b79cd0b20b26ac4090b241d65679e69, type: 3}
   m_Name: '[Capricorn] Bullet 2_0_0'
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: 9c44a70d88a58084b91108bd8d02a677, type: 3}
+  sprite: {fileID: 21300000, guid: 9b86635f8b1fb5941bb865b3a22f5cf0, type: 3}
   useSolidColour: 1
-  colour: {r: 1, g: 1, b: 0, a: 1}
+  colour: {r: 0, g: 1, b: 0.25, a: 1}
   gradient:
     serializedVersion: 2
     key0: {r: 1, g: 1, b: 1, a: 1}

@@ -4,7 +4,7 @@ using static CoroutineHelper;
 
 public class CapricornBulletSystem11 : EnemyShooter<EnemyBullet>
 {
-    const int BulletCount = 20;
+    const int BulletCount = 15;
     const float BulletSpacing = 360f / BulletCount;
 
     protected override float ShootingCooldown => 1.5f;

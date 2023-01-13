@@ -4,7 +4,9 @@ using static CoroutineHelper;
 
 public class CapricornBulletSystem2 : EnemyShooter<EnemyBullet>
 {
-    const int WaveCount = 45;
+    AnimationCurve spawnInterpolation = AnimationCurve.EaseInOut(0f, 0f, 1f, 1f);
+
+    const int WaveCount = 39;
     const float WaveSpacing = 5f;
     const int BranchCount = 4;
     const float BranchSpacing = 360f / BranchCount;
@@ -15,27 +17,26 @@ public class CapricornBulletSystem2 : EnemyShooter<EnemyBullet>
     {
         yield return base.Shoot();
 
-        float i = 1;
-
-        while (enabled)
+        for (int i = 1; ; i *= -1)
         {
             SetSubsystemEnabled(1);
+
+            yield return WaitForSeconds(1f);
 
             for (int ii = 0; ii < WaveCount; ii++)
             {
                 for (int iii = 0; iii < BranchCount; iii++)
                 {
                     float z = i * ((ii * WaveSpacing) + (iii * BranchSpacing));
-                    Vector3 pos = i * Vector3.Lerp(Vector3.left, Vector3.right, (float)ii / WaveCount);
+                    //Vector3 pos = i * Vector3.Lerp(Vector3.left, Vector3.right, spawnInterpolation.Evaluate((float)ii / WaveCount));
+                    Vector3 pos = Vector3.zero;
 
                     SpawnProjectile(ii % 2, z, pos).Fire();
                 }
 
                 yield return WaitForSeconds(ShootingCooldown);
             }
-
-            i *= -1;
-            //yield return ownerShip.MoveToRandomPosition(1f, 1f, 1.44f, 1.5f);
+            yield return WaitForSeconds(3f);
         }
     }
 }
