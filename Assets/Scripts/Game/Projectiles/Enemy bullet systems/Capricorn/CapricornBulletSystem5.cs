@@ -4,14 +4,14 @@ using static CoroutineHelper;
 
 public class CapricornBulletSystem5 : EnemyShooter<EnemyBullet>
 {
-    const int WaveCount = 20;
-    const float WaveSpacing = 360f / WaveCount;
-    const int BranchCount = 2;
-    const float BranchSpacing = 360f / BranchCount;
-    const int BulletCount = 16;
+    const int WaveCount = 3;
+    const int RingCount = 7;
+    const int BulletCount = 48;
     const float BulletSpacing = 360f / BulletCount;
+    const float BulletSpeed = 2.5f;
+    const float BulletSpeedMultiplier = 0.2f;
 
-    protected override float ShootingCooldown => 0.5f;
+    protected override float ShootingCooldown => 0.3f;
 
     protected override IEnumerator Shoot()
     {
@@ -21,26 +21,30 @@ public class CapricornBulletSystem5 : EnemyShooter<EnemyBullet>
         {
             SetSubsystemEnabled(1);
 
-            for (int i = 0; i < WaveCount; i++)
+            for (int i = 0; i < RingCount; i++)
             {
-                for (int ii = 0; ii < BranchCount; ii++)
+                for (int ii = 0; ii < BulletCount; ii++)
                 {
-                    float t = (i * WaveSpacing) + (ii * BranchSpacing);
-                    Vector3 pos = 3f * Vector3.right.RotateVectorBy(t);
+                    float z = ii * BulletSpacing;
+                    float s = -i * BulletSpeedMultiplier + BulletSpeed;
+                    Vector3 pos = Vector3.zero;
 
-                    for (int iii = 0; iii < BulletCount; iii++)
-                    {
-                        float z = t + (iii * BulletSpacing);
+                    bulletData.colour = bulletData.gradient.Evaluate(i / (RingCount - 1f));
 
-                        SpawnProjectile(ii, z, pos).Fire();
-                    }
+                    var bullet = SpawnProjectile(0, z, pos);
+                    bullet.MoveSpeed = s;
+                    bullet.Fire();
                 }
 
                 yield return WaitForSeconds(ShootingCooldown);
             }
 
+            yield return WaitForSeconds(3f);
+
             AttackFinishAction?.Invoke();
-            yield return WaitForSeconds(1f);
+            SetSubsystemEnabled(2);
+
+            yield return WaitForSeconds(3f);
         }
     }
 }

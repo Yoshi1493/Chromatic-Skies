@@ -4,38 +4,26 @@ using static CoroutineHelper;
 
 public class CapricornBulletSystem51 : EnemyShooter<EnemyBullet>
 {
-    const int WaveCount = 10;
-    const float WaveSpacing = BranchSpacing / 2;
-    const int BranchCount = 6;
-    const float BranchSpacing = 360f / BranchCount;
-    const int BulletCount = 6;
-    const float BulletSpacing = 5f;
+    const int WaveCount = 36;
+    const int BulletCount = 1;
 
-    protected override float ShootingCooldown => 0.4f;
+    protected override float ShootingCooldown => 0.08f;
 
     protected override IEnumerator Shoot()
     {
+        yield return WaitForSeconds(1f);
+
         for (int i = 0; i < WaveCount; i++)
         {
-            Vector3 pos = Vector3.zero;
-
-            for (int ii = 0; ii < BranchCount; ii++)
+            for (int ii = 0; ii < BulletCount; ii++)
             {
-                float t = (i * WaveSpacing) + (ii * BranchSpacing);
+                float z = Random.Range(0f, 360f);
+                Vector3 pos = Vector3.zero;
 
-                for (int iii = 0; iii < BulletCount; iii++)
-                {
-                    float z = t + (iii * (BulletCount * 0.5f - 0.5f) * BulletSpacing);
-                    float s = iii + 1f;
-                    bulletData.colour = bulletData.gradient.Evaluate(iii / (BulletCount - 1f));
-
-                    var bullet = SpawnProjectile(2, z, pos);
-                    bullet.MoveSpeed = s;
-                    bullet.Fire();
-                }
+                SpawnProjectile(1, z, pos).Fire();
+                yield return WaitForSeconds(ShootingCooldown);
+                SpawnProjectile(2, z + 180f, pos).Fire();
             }
-
-            yield return WaitForSeconds(ShootingCooldown);
         }
 
         enabled = false;

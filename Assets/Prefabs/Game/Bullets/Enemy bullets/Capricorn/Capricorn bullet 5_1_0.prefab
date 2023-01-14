@@ -53,7 +53,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3140064405051798717, guid: 4e06125b108514547b6fc9b6887da3eb, type: 3}
       propertyPath: m_Name
-      value: Capricorn bullet 5_1
+      value: Capricorn bullet 5_1_0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9211992883209170045, guid: 4e06125b108514547b6fc9b6887da3eb, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4e06125b108514547b6fc9b6887da3eb, type: 3}
@@ -75,6 +79,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   transform: {fileID: 0}
-  moveDirection: {x: 0, y: 0, z: 0}
   projectileData: {fileID: 11400000, guid: 7c6592114465e91479312365c3318156, type: 2}
-  moveSpeed: 0
+  moveDirection: {x: 0, y: 0, z: 0}
+  currentSpeed: 0
+  rotatesClockwise: 0
