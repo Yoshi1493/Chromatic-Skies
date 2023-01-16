@@ -7,10 +7,13 @@ public class AriesMovementSystem1 : EnemyMovement
 {
     protected override IEnumerator Move()
     {
-        yield return this.MoveToRandomPosition(2f, 2.5f, 5f, 1f);
+        while (enabled)
+        {
+            yield return this.MoveToRandomPosition(2f, 2f, 4f, 4f);
+        }
     }
 
-    protected override void OnAttackFinish()
+    protected override void OnAttackStart(int _)
     {
         StartMove();
     }
