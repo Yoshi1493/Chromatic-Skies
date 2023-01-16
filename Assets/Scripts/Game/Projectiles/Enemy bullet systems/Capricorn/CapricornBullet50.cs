@@ -8,6 +8,8 @@ public class CapricornBullet50 : EnemyBullet
 
         yield return this.LerpSpeed(0f, 3f, 0.5f);
         yield return this.RotateAround(ownerShip, 1f, 180f);
-        StartCoroutine(this.LerpSpeed(MoveSpeed, endSpeed, 1f));
+
+        yield return this.LerpSpeed(MoveSpeed, endSpeed * 2f, 0.5f);
+        yield return this.LerpSpeed(endSpeed * 2f, endSpeed, 0.5f);
     }
 }
