@@ -11,6 +11,6 @@ public class AriesBullet31 : EnemyBullet
     protected override IEnumerator Move()
     {
         MoveSpeed = 0f;
-        yield return this.RotateAround(FindObjectOfType<AriesBulletSystem31>().transform.position, MaxLifetime, rotationSpeed, clockwise: rotatesClockwise);
+        yield return this.RotateAround(2f * Vector3.down, MaxLifetime, rotationSpeed, clockwise: rotatesClockwise);
     }
 }

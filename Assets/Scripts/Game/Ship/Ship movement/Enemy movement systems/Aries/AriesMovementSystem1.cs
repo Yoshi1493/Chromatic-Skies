@@ -9,7 +9,7 @@ public class AriesMovementSystem1 : EnemyMovement
     {
         while (enabled)
         {
-            yield return this.MoveToRandomPosition(2f, 2f, 4f, 4f);
+            yield return this.MoveToRandomPosition(2f, 2f, 4f, 3f);
         }
     }
 

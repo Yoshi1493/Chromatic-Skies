@@ -18,32 +18,33 @@ public class AriesBulletSystem31 : EnemyShooter<EnemyBullet>
 
     protected override IEnumerator Shoot()
     {
-        transform.position = 2f * Vector3.down;
+        yield return WaitForSeconds(3f);
+        Vector3 o = 2f * Vector3.down;
 
         for (int i = 0; i < InnerBulletCount; i++)
         {
             float z = i * -InnerBulletSpacing + 90f;
-            Vector3 pos = InnerRadius * transform.up.RotateVectorBy(z + 90f);
+            Vector3 pos = InnerRadius * transform.up.RotateVectorBy(z + 90f) + o;
 
-            bullets.Add(SpawnProjectile(1, z, pos));
+            bullets.Add(SpawnProjectile(1, z, pos, false));
 
             yield return WaitForSeconds(ShootingCooldown);
         }
 
-        yield return WaitForSeconds(0.1f);
+        yield return WaitForSeconds(ShootingCooldown * 4f);
 
         for (int i = 0; i < OuterBulletCount; i++)
         {
             float z = i * OuterBulletSpacing - 90f;
-            Vector3 pos = OuterRadius * transform.up.RotateVectorBy(z - 90f);
+            Vector3 pos = OuterRadius * transform.up.RotateVectorBy(z - 90f) + o;
 
-            bullets.Add(SpawnProjectile(2, z, pos));
+            bullets.Add(SpawnProjectile(2, z, pos, false));
 
             yield return WaitForSeconds(ShootingCooldown);
         }
 
-        yield return WaitForSeconds(0.1f);
-
+        yield return WaitForSeconds(ShootingCooldown * 4f);
+        print(Time.timeSinceLevelLoad);
         bullets.ForEach(b => b.Fire());
         bullets.Clear();
     }
