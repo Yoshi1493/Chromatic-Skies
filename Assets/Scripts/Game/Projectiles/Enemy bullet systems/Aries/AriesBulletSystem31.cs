@@ -44,7 +44,7 @@ public class AriesBulletSystem31 : EnemyShooter<EnemyBullet>
         }
 
         yield return WaitForSeconds(ShootingCooldown * 4f);
-        print(Time.timeSinceLevelLoad);
+
         bullets.ForEach(b => b.Fire());
         bullets.Clear();
     }

@@ -24,7 +24,7 @@ MonoBehaviour:
     Variable: {fileID: 0}
   MaxHealth:
     useConstant: 1
-    ConstantValue: 40000
+    ConstantValue: 100000
     Variable: {fileID: 11400000, guid: 7f9a1d80f8cf45e4cbbb8acb037274b8, type: 2}
   Power:
     useConstant: 0
@@ -42,13 +42,3 @@ MonoBehaviour:
     useConstant: 0
     ConstantValue: 0
     Variable: {fileID: 11400000, guid: a9486c0c650b1d84b81d322b4fdc8ea4, type: 2}
-  CurrentLives:
-    useConstant: 0
-    ConstantValue: 0
-    Variable: {fileID: 11400000, guid: 6b86e65bdacdeaa4283b2572437967e5, type: 2}
-  CurrentHealth:
-    useConstant: 0
-    ConstantValue: 0
-    Variable: {fileID: 11400000, guid: 1441a4e2d5e287441bc0044748157691, type: 2}
-  CurrentSpeed: 0
-  Invincible: 0
