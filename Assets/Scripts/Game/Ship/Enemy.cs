@@ -60,6 +60,7 @@ public class Enemy : Ship
 
         base.LoseLife();
         EnemyBulletPool.Instance.DrainPool();
+        EnemyLaserPool.Instance.DrainPool();
 
         if (currentLives > 0)
         {
