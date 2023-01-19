@@ -9,7 +9,7 @@ public class TaurusBullet10 : EnemyBullet
         yield return this.LerpSpeed(0f, startSpeed, 0.5f);
         yield return this.LerpSpeed(MoveSpeed, 0f, 0.5f);
 
-        yield return this.GraduallyLookAt(playerShip.transform.position, 1f);
-        StartCoroutine(this.LerpSpeed(0f, 2f, 0.5f, 0.5f));
+        yield return this.GraduallyLookAt(playerShip.transform.position, 0.5f);
+        StartCoroutine(this.LerpSpeed(0f, 3f, 0.5f));
     }
 }
