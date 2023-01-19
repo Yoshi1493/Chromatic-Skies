@@ -95,4 +95,4 @@ MonoBehaviour:
   projectileData: {fileID: 11400000, guid: e6cda41d15a90774896b40859f567406, type: 2}
   moveDirection: {x: 0, y: 0, z: 0}
   currentSpeed: 0
-  rotatesClockwise: 1
+  rotatesClockwise: 0

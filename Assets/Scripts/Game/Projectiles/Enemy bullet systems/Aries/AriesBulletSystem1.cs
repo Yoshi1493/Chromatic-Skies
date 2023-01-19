@@ -5,6 +5,7 @@ using static MathHelper;
 
 public class AriesBulletSystem1 : EnemyShooter<EnemyBullet>
 {
+    const int WaveCount = 6;
     const int BranchCount = 6;
     const float BranchSpacing = 360f / BranchCount;
     const int BulletCount = 6;
@@ -14,31 +15,38 @@ public class AriesBulletSystem1 : EnemyShooter<EnemyBullet>
 
     protected override IEnumerator Shoot()
     {
-        yield return base.Shoot();
-
-        SetSubsystemEnabled(1);
-
-        int i = PositiveOrNegativeOne;
+        yield return base.Shoot();        
 
         while (enabled)
         {
-            float r = BulletSpacing * i;
+            int d = PositiveOrNegativeOne;
 
-            for (int ii = 0; ii < BranchCount; ii++)
+            for (int i = 0; i < WaveCount; i++)
             {
-                for (int iii = 0; iii < BulletCount; iii++)
-                {
-                    float z = (r * (ii - 1)) + (iii * BranchSpacing) + (2.5f * i);
-                    Vector3 pos = Vector3.zero;
+                float r = BulletSpacing * d;
 
-                    SpawnProjectile(ii % 2, z, pos).Fire();
+                for (int ii = 0; ii < BranchCount; ii++)
+                {
+                    for (int iii = 0; iii < BulletCount; iii++)
+                    {
+                        float z = (r * (ii - 1)) + (iii * BranchSpacing);
+                        Vector3 pos = Vector3.zero;
+
+                        SpawnProjectile(ii % 2, z, pos).Fire();
+                    }
+
+                    yield return WaitForSeconds(ShootingCooldown * 0.5f);
                 }
 
-                yield return WaitForSeconds(ShootingCooldown * 0.5f);
+                yield return WaitForSeconds(ShootingCooldown);
+                d *= -1;
             }
 
-            yield return WaitForSeconds(ShootingCooldown);
-            i *= -1;
+            yield return WaitForSeconds(1f);
+
+            SetSubsystemEnabled(1);
+            AttackFinishAction?.Invoke();
+            yield return WaitForSeconds(2f);
         }
     }
 }

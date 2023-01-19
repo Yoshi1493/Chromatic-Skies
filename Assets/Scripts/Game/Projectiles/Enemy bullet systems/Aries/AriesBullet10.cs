@@ -9,8 +9,7 @@ public class AriesBullet10 : EnemyBullet
 
     protected override IEnumerator Move()
     {
-        yield return null;
-        StartCoroutine(this.LerpSpeed(5f, 2.5f, 0.5f));
-        StartCoroutine(this.RotateBy(15f, 4f, rotatesClockwise));
+        yield return StartCoroutine(this.LerpSpeed(5f, 2.5f, 0.5f));
+        StartCoroutine(this.RotateBy(30f, 4f, rotatesClockwise));
     }
 }
