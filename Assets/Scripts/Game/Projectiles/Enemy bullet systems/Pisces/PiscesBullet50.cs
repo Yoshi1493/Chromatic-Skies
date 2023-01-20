@@ -22,7 +22,7 @@ public class PiscesBullet50 : ScriptableEnemyBullet<PiscesBulletSystem5, EnemyBu
 
         for (int i = 0; i < BulletCount; i++)
         {
-            float r = (i - ((BulletCount - 1) * 0.5f)) * BulletSpacing;
+            float r = (i - ((BulletCount - 1) / 2f)) * BulletSpacing;
             float z = r + t;
             Vector3 pos = transform.position;
 
