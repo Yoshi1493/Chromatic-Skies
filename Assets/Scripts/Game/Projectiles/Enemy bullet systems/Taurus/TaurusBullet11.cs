@@ -6,7 +6,7 @@ using static CoroutineHelper;
 public class TaurusBullet11 : ScriptableEnemyBullet<TaurusBulletSystem12, Laser>
 {
     [SerializeField] LayerMask enemyBulletLayer;
-    protected override float MaxLifetime => 8f;
+    protected override float MaxLifetime => 9f;
 
     protected override IEnumerator Move()
     {

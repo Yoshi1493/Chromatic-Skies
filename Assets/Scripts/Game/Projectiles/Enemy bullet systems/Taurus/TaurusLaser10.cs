@@ -1,4 +1,4 @@
 public class TaurusLaser10 : Laser
 {
-    protected override float MaxLifetime => 2.5f;
+    protected override float MaxLifetime => 3.5f;
 }

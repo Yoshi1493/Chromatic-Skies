@@ -8,26 +8,25 @@ public class TaurusBulletSystem1 : EnemyShooter<EnemyBullet>
     const int BulletColCount = 5;
     const float BulletSpacing = 0.8f;
 
-    protected override float ShootingCooldown => 2f;
+    protected override float ShootingCooldown => 0.04f;
 
     protected override IEnumerator Shoot()
     {
         yield return base.Shoot();
 
+        SetSubsystemEnabled(1);
         SetSubsystemEnabled(2);
 
         while (enabled)
         {
-            SetSubsystemEnabled(1);
+            yield return WaitForSeconds(1f);
 
-            yield return WaitForSeconds(2f);
-
-            for (int i = 0; i < BulletRowCount; i++)
+            for (int i = 0; i < BulletColCount; i++)
             {
-                for (int j = 0; j < BulletColCount; j++)
+                for (int j = 0; j < BulletRowCount; j++)
                 {
-                    float x = (i - ((BulletRowCount - 1) * 0.5f)) * BulletSpacing;
-                    float y = (j - ((BulletColCount - 1) * 0.5f)) * BulletSpacing;
+                    float x = (j - ((BulletRowCount - 1) / 2f)) * BulletSpacing;
+                    float y = (i - ((BulletColCount - 1) / 2f)) * BulletSpacing;
                     Vector3 pos = new(x, y);
 
                     float z = pos.GetRotationDifference(Vector3.zero);
@@ -35,6 +34,8 @@ public class TaurusBulletSystem1 : EnemyShooter<EnemyBullet>
                     var bullet = SpawnProjectile(0, z, Vector3.zero);
                     bullet.MoveSpeed = pos.magnitude * 2f;
                     bullet.Fire();
+
+                    yield return WaitForSeconds(ShootingCooldown);
                 }
             }
 
