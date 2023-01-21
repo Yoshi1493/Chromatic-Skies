@@ -1,36 +1,48 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using static CoroutineHelper;
+using static MathHelper;
 
-public class TaurusBulletSystem21 : EnemyShooter<EnemyBullet>
+public class TaurusBulletSystem21 : EnemyShooter<Laser>
 {
-    const int BulletCount = 16;
-    const float BulletSpacing = 360f / BulletCount;
-    const int WaveCount = 3;
-    const float WaveSpacing = BulletSpacing / 2f;
-
-    protected override float ShootingCooldown => 0.2f;
+    List<Vector2> spawnPositions = new();
 
     protected override IEnumerator Shoot()
     {
+        yield return WaitForSeconds(2f);
+
         while (enabled)
         {
-            yield return WaitForSeconds(2f);
+            spawnPositions.Clear();
+            spawnPositions.AddRange(GetRandomPointsAlongBounds(new Vector2(-screenHalfWidth, screenHalfHeight), new Vector2(screenHalfWidth, screenHalfHeight), 2f, 3f));
+            spawnPositions.AddRange(GetRandomPointsAlongBounds(new Vector2(screenHalfWidth, -screenHalfHeight), new Vector2(screenHalfWidth, screenHalfHeight), 2f, 3f));
+            spawnPositions.Randomize();
 
-            float theta = PlayerPosition.GetRotationDifference(transform.position);
+            int c = spawnPositions.Count;
+            float r = Random.Range(-45f, 45f);
 
-            for (int i = 0; i < WaveCount; i++)
+            for (int i = 0; i < c; i++)
             {
-                for (int j = 0; j < BulletCount; j++)
-                {
-                    float z = (i * WaveSpacing) + (j * BulletSpacing) + theta;
-                    Vector3 pos = Vector3.zero;
+                Vector3 pos = spawnPositions[i];
 
-                    SpawnProjectile(1, z, pos).Fire();
+                float z = 0f;
+
+                if (Mathf.Abs(pos.x) == screenHalfWidth)
+                {
+                    z = 90f * Mathf.Sign(pos.x);
                 }
+                else if (pos.y == screenHalfHeight)
+                {
+                    z = 180f;
+                }
+
+                SpawnProjectile(0, z + r, pos, false).Fire(1f);
 
                 yield return WaitForSeconds(ShootingCooldown);
             }
+
+            yield return WaitForSeconds(5f);
         }
     }
 }

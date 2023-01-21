@@ -4,8 +4,7 @@ using static CoroutineHelper;
 
 public class CapricornBulletSystem5 : EnemyShooter<EnemyBullet>
 {
-    const int WaveCount = 3;
-    const int RingCount = 7;
+    const int WaveCount = 7;
     const int BulletCount = 48;
     const float BulletSpacing = 360f / BulletCount;
     const float BulletSpeed = 2.5f;
@@ -21,7 +20,7 @@ public class CapricornBulletSystem5 : EnemyShooter<EnemyBullet>
         {
             SetSubsystemEnabled(1);
 
-            for (int i = 0; i < RingCount; i++)
+            for (int i = 0; i < WaveCount; i++)
             {
                 for (int ii = 0; ii < BulletCount; ii++)
                 {
@@ -29,7 +28,7 @@ public class CapricornBulletSystem5 : EnemyShooter<EnemyBullet>
                     float s = -i * BulletSpeedMultiplier + BulletSpeed;
                     Vector3 pos = Vector3.zero;
 
-                    bulletData.colour = bulletData.gradient.Evaluate(i / (RingCount - 1f));
+                    bulletData.colour = bulletData.gradient.Evaluate(i / (WaveCount - 1f));
 
                     var bullet = SpawnProjectile(0, z, pos);
                     bullet.MoveSpeed = s;
