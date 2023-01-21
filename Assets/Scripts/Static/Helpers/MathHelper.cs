@@ -121,13 +121,14 @@ public static class MathHelper
             }
         }
 
-        points.ForEach(p => print(p));
         return points;
     }
 
     public static List<Vector3> GetRandomPointsWithinBounds(Vector2 minBoundary, Vector2 maxBoundary, int pointCount)
     {
         List<Vector3> points = new(pointCount);
+        if (minBoundary.x < maxBoundary.x || minBoundary.y < maxBoundary.y) return points;
+
         float x, y;
 
         for (int i = 0; i < pointCount; i++)
