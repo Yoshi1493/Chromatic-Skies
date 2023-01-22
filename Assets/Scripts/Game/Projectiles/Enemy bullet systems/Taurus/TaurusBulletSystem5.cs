@@ -83,7 +83,7 @@ public class TaurusBulletSystem5 : EnemyShooter<EnemyBullet>
 
             innerBullets.Clear();
 
-            AttackFinishAction?.Invoke();
+            StartMoveAction?.Invoke();
             yield return WaitForSeconds(3f);
         }
     }

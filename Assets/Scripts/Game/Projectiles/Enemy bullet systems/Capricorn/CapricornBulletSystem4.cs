@@ -67,7 +67,7 @@ public class CapricornBulletSystem4 : EnemyShooter<EnemyBullet>
             yield return WaitForSeconds(1f);
             SetSubsystemEnabled(1);
 
-            AttackFinishAction?.Invoke();
+            StartMoveAction?.Invoke();
             yield return WaitForSeconds(6f);
         }
     }

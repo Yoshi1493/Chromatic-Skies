@@ -41,7 +41,7 @@ public class AquariusBulletSystem1 : EnemyShooter<EnemyBullet>
 
             SetSubsystemEnabled(1);
 
-            AttackFinishAction?.Invoke();
+            StartMoveAction?.Invoke();
             yield return WaitForSeconds(5f);
         }
     }

@@ -32,7 +32,7 @@ public class AquariusBulletSystem3 : EnemyShooter<EnemyBullet>
                 yield return WaitForSeconds(ShootingCooldown);
             }
 
-            AttackFinishAction?.Invoke();
+            StartMoveAction?.Invoke();
             yield return WaitForSeconds(10f);
         }
     }

@@ -46,7 +46,7 @@ public class AquariusBulletSystem2 : EnemyShooter<EnemyBullet>
             bullets.ForEach(b => b.Fire());
             bullets.Clear();
 
-            AttackFinishAction?.Invoke();
+            StartMoveAction?.Invoke();
             yield return WaitForSeconds(5f);
         }
     }

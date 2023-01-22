@@ -7,7 +7,7 @@ using static CoroutineHelper;
 public interface IEnemyAttack
 {
     Action<int> AttackStartAction { get; set; }
-    Action AttackFinishAction { get; set; }
+    Action StartMoveAction { get; set; }
 
     bool Enabled { get; }
     void SetEnabled(bool state);
@@ -19,7 +19,7 @@ public abstract class EnemyShooter<TProjectile> : Shooter<TProjectile>, IEnemyAt
     #region Interface impl.
 
     public Action<int> AttackStartAction { get; set; }
-    public Action AttackFinishAction { get; set; }
+    public Action StartMoveAction { get; set; }
 
     bool IEnemyAttack.Enabled => enabled;
     void IEnemyAttack.SetEnabled(bool state) { enabled = state; }

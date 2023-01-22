@@ -42,7 +42,7 @@ public class TaurusBulletSystem4 : EnemyShooter<EnemyBullet>
 
             SetSubsystemEnabled(1);
 
-            AttackFinishAction?.Invoke();
+            StartMoveAction?.Invoke();
             yield return WaitForSeconds(4f);
         }
     }

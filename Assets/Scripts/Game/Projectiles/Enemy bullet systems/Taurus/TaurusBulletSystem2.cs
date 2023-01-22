@@ -40,7 +40,7 @@ public class TaurusBulletSystem2 : EnemyShooter<EnemyBullet>
 
             yield return WaitForSeconds(2f);
 
-            AttackFinishAction?.Invoke();
+            StartMoveAction?.Invoke();
             yield return WaitForSeconds(1f);
         }
     }

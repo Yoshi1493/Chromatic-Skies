@@ -12,7 +12,7 @@ public abstract class EnemyMovement : ShipMovement<Enemy>
         // get respective bullet system
         int siblingIndex = transform.GetSiblingIndex();
         parentShip.bulletSystems[siblingIndex].AttackStartAction += OnAttackStart;
-        parentShip.bulletSystems[siblingIndex].AttackFinishAction += OnAttackFinish;
+        parentShip.bulletSystems[siblingIndex].StartMoveAction += OnAttackFinish;
     }
 
     void OnEnable()
