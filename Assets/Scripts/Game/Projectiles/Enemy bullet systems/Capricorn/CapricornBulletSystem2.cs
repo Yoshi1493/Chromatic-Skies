@@ -17,6 +17,8 @@ public class CapricornBulletSystem2 : EnemyShooter<EnemyBullet>
     {
         yield return base.Shoot();
 
+        StartMoveAction?.Invoke();
+
         for (int i = 1; ; i *= -1)
         {
             SetSubsystemEnabled(1);

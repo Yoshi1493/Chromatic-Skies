@@ -14,6 +14,7 @@ public class AriesBulletSystem4 : EnemyShooter<EnemyBullet>
     {
         yield return base.Shoot();
 
+        StartMoveAction?.Invoke();
         SetSubsystemEnabled(1);
 
         while (enabled)

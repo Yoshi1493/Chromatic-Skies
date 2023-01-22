@@ -12,6 +12,7 @@ public class VirgoBulletSystem1 : EnemyShooter<EnemyBullet>
     {
         yield return base.Shoot();
 
+        StartMoveAction?.Invoke();
         SetSubsystemEnabled(1);
 
         int i = 0;
