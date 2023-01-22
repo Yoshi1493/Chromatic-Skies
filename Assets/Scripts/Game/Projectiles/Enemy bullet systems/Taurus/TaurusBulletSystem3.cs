@@ -15,6 +15,7 @@ public class TaurusBulletSystem3 : EnemyShooter<EnemyBullet>
     {
         yield return base.Shoot();
 
+        StartMoveAction?.Invoke();
         SetSubsystemEnabled(1);
 
         int i = 0;
@@ -25,10 +26,16 @@ public class TaurusBulletSystem3 : EnemyShooter<EnemyBullet>
 
             for (int ii = 0; ii < BranchCount; ii++)
             {
-                float z = (ii * BranchSpacing) + (i * r) + 180f;
+                float z = (i * r) + (ii * BranchSpacing);
                 Vector3 pos = Vector3.zero;
 
                 SpawnProjectile(0, z, pos).Fire();
+
+                if (z != -z)
+                {
+                    SpawnProjectile(0, -z, pos).Fire();
+                }
+
                 yield return WaitForSeconds(ShootingCooldown);
             }
 

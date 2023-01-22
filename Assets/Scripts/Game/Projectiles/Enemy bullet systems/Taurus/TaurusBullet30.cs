@@ -2,6 +2,8 @@ using System.Collections;
 
 public class TaurusBullet30 : EnemyBullet
 {
+    protected override float MaxLifetime => 8f;
+
     protected override IEnumerator Move()
     {
         MoveSpeed = 3f;
