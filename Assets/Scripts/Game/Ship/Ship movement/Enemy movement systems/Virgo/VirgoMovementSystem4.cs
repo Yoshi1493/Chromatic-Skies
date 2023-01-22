@@ -9,9 +9,4 @@ public class VirgoMovementSystem4 : EnemyMovement
             yield return this.MoveToRandomPosition(1f, delay: 5f);
         }
     }
-
-    protected override void OnAttackStart(int _)
-    {
-        StartMove();
-    }
 }

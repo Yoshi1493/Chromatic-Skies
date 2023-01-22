@@ -6,9 +6,4 @@ public class AquariusMovementSystem1 : EnemyMovement
     {
         yield return this.MoveToRandomPosition(2f, delay: 3f);
     }
-
-    protected override void OnAttackFinish()
-    {
-        StartMove();
-    }
 }

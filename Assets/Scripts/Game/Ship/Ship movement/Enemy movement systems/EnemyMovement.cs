@@ -11,8 +11,7 @@ public abstract class EnemyMovement : ShipMovement<Enemy>
 
         // get respective bullet system
         int siblingIndex = transform.GetSiblingIndex();
-        parentShip.bulletSystems[siblingIndex].AttackStartAction += OnAttackStart;
-        parentShip.bulletSystems[siblingIndex].StartMoveAction += OnAttackFinish;
+        parentShip.bulletSystems[siblingIndex].StartMoveAction += StartMove;
     }
 
     void OnEnable()
@@ -25,7 +24,7 @@ public abstract class EnemyMovement : ShipMovement<Enemy>
         StopAllCoroutines();
     }
 
-    protected void StartMove()
+    protected virtual void StartMove()
     {
         if (moveCoroutine != null)
         {
@@ -34,15 +33,5 @@ public abstract class EnemyMovement : ShipMovement<Enemy>
 
         moveCoroutine = Move();
         StartCoroutine(moveCoroutine);
-    }
-
-    protected virtual void OnAttackStart(int _)
-    {
-
-    }
-
-    protected virtual void OnAttackFinish()
-    {
-
     }
 }

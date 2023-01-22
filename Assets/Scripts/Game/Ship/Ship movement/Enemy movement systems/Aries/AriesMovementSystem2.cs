@@ -6,9 +6,4 @@ public class AriesMovementSystem2 : EnemyMovement
     {
         yield return this.MoveToRandomPosition(1f);
     }
-
-    protected override void OnAttackFinish()
-    {
-        StartMove();
-    }
 }

@@ -6,9 +6,4 @@ public class CapricornMovementSystem3 : EnemyMovement
     {
         yield return this.MoveToRandomPosition(2f);
     }
-
-    protected override void OnAttackFinish()
-    {
-        StartMove();
-    }
 }

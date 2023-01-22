@@ -9,9 +9,4 @@ public class CapricornMovementSystem1 : EnemyMovement
             yield return this.MoveToRandomPosition(1f, 1f, 2f, 3f);
         }
     }
-
-    protected override void OnAttackStart(int _)
-    {
-        StartMove();
-    }
 }
