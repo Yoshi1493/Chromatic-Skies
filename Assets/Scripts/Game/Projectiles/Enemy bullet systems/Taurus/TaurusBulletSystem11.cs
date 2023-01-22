@@ -11,7 +11,7 @@ public class TaurusBulletSystem11 : EnemyShooter<EnemyBullet>
     public const float BulletSpacing = 0.8f;
     const float MinDistanceFromShip = BulletSpacing * 2f;
 
-    List<Vector3> spawnPositions = new(BulletCount);
+    List<Vector2> spawnPositions = new(BulletCount);
 
     protected override IEnumerator Shoot()
     {

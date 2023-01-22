@@ -9,6 +9,6 @@ public class TaurusBullet20 : EnemyBullet
     protected override IEnumerator Move()
     {
         yield return this.LerpSpeed(4f, 0f, 0.5f);
-        yield return this.LerpSpeed(0f, Random.Range(3f, 5f), 0.5f);
+        yield return this.LerpSpeed(0f, Random.Range(2f, 5f), 0.5f);
     }
 }

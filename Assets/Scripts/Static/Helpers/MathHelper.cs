@@ -76,7 +76,7 @@ public static class MathHelper
     /// <summary>
     /// returns true if <v> and <pos> are less than <dist> units apart
     /// </summary>
-    public static bool IsTooClose(this Vector3 v, Vector3 pos, float minDistance = 1f)
+    public static bool IsTooClose(this Vector2 v, Vector2 pos, float minDistance = 1f)
     {
         return (pos - v).sqrMagnitude < minDistance;
     }
@@ -99,35 +99,37 @@ public static class MathHelper
         {
             x = minBoundary.x;
 
-            while (x < maxBoundary.x)
+            do
             {
                 x += Random.Range(minSpacing, maxSpacing);
                 y = Random.value > 0.5f ? maxBoundary.y : minBoundary.y;
 
                 points.Add(new Vector2(x, y));
             }
+            while (x < maxBoundary.x);
         }
 
         if (minBoundary.y < maxBoundary.y)
         {
             y = minBoundary.y;
 
-            while (y < maxBoundary.y)
+            do
             {
                 x = Random.value > 0.5f ? maxBoundary.x : minBoundary.x;
                 y += Random.Range(minSpacing, maxSpacing);
 
                 points.Add(new Vector2(x, y));
             }
+            while (y < maxBoundary.y);
         }
 
         return points;
     }
 
-    public static List<Vector3> GetRandomPointsWithinBounds(Vector2 minBoundary, Vector2 maxBoundary, int pointCount)
+    public static List<Vector2> GetRandomPointsWithinBounds(Vector2 minBoundary, Vector2 maxBoundary, int pointCount)
     {
-        List<Vector3> points = new(pointCount);
-        if (minBoundary.x < maxBoundary.x || minBoundary.y < maxBoundary.y) return points;
+        List<Vector2> points = new(pointCount);
+        if (minBoundary.x > maxBoundary.x || minBoundary.y > maxBoundary.y) return points;
 
         float x, y;
 
@@ -136,7 +138,7 @@ public static class MathHelper
             x = Random.Range(minBoundary.x, maxBoundary.x);
             y = Random.Range(minBoundary.y, maxBoundary.y);
 
-            points.Add(new Vector3(x, y));
+            points.Add(new Vector2(x, y));
         }
 
         return points;

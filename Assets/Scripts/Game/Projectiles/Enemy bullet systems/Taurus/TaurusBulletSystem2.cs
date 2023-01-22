@@ -8,7 +8,7 @@ public class TaurusBulletSystem2 : EnemyShooter<EnemyBullet>
     const float BranchSpacing = 180f / BranchCount;
     const int BulletCount = 2;
     const float MinBulletSpacing = 15f;
-    const float MaxBulletSpacing = 30f;
+    const float MaxBulletSpacing = 45f;
 
     protected override IEnumerator Shoot()
     {
