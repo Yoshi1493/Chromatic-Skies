@@ -14,4 +14,7 @@ public class ProjectileObject : ScriptableObject
     [Header("Stats")]
     public int ID;
     public IntObject Power;
+
+    [Header("Properties")]
+    public bool destructible = true;
 }

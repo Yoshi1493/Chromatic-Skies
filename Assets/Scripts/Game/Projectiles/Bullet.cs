@@ -14,7 +14,11 @@ public abstract class Bullet : Projectile
     protected override void HandleCollisionWithShip<TShip>(Collider2D coll)
     {
         base.HandleCollisionWithShip<TShip>(coll);
-        Destroy();
+
+        if (projectileData.destructible)
+        {
+            Destroy();
+        }
     }
 
     protected virtual void SpawnDestructionParticles(Vector3 spawnPos, float spawnRotZ)
