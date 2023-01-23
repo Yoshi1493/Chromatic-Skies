@@ -17,13 +17,19 @@ public class TaurusBulletSystem4 : EnemyShooter<EnemyBullet>
 
         while (enabled)
         {
+            StartMoveAction?.Invoke();
+
+            SetSubsystemEnabled(1);
+
+            yield return WaitForSeconds(6f);
+
             for (int i = 0; i < WaveCount; i++)
             {
-                float s = (WaveCount * 2 - i) * 0.1f;
+                float s = (WaveCount * 2 - i) * 0.1f - 1f;
 
-                for (int j = 0; j < BranchCount; j++)
+                for (int ii = 0; ii < BranchCount; ii++)
                 {
-                    float z = (i * WaveSpacing) + (j * BranchSpacing);
+                    float z = (i * WaveSpacing) + (ii * BranchSpacing);
                     Vector3 pos = transform.up.RotateVectorBy(z);
 
                     var bullet = SpawnProjectile(0, z, pos);
@@ -40,9 +46,6 @@ public class TaurusBulletSystem4 : EnemyShooter<EnemyBullet>
                 yield return WaitForSeconds(ShootingCooldown);
             }
 
-            SetSubsystemEnabled(1);
-
-            StartMoveAction?.Invoke();
             yield return WaitForSeconds(4f);
         }
     }

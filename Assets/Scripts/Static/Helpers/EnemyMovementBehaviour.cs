@@ -11,14 +11,14 @@ public static class EnemyMovementBehaviour
     static readonly Vector3 originalPosition = new(0f, 2.5f, 0f);
 
     /// <summary>
-    /// translates <ship> to <endPosition> over <moveDuration> seconds, along a sigmoid (smoothstep) curve.
+    /// translates <enemy> to <endPosition> over <moveDuration> seconds, along a sigmoid (smoothstep) curve.
     /// </summary>
     public static IEnumerator MoveTo(this EnemyMovement enemy, Vector3 endPosition, float moveDuration, float delay = 0f)
     {
         if (delay > 0) yield return WaitForSeconds(delay);
 
         Vector3 newMoveDirection = endPosition - enemy.transform.position;
-        float newMoveSpeed = 2 * newMoveDirection.magnitude / moveDuration;
+        float newMoveSpeed = 2f * newMoveDirection.magnitude / moveDuration;
 
         float currentTime = 0f;
         enemy.moveDirection = newMoveDirection;
@@ -45,19 +45,21 @@ public static class EnemyMovementBehaviour
         enemy.currentSpeed = 0f;
     }
 
-    public static IEnumerator MoveToLinear(this EnemyMovement enemy, Vector3 endPosition, float moveDuration, float delay = 0f)
+    public static IEnumerator MoveFromTo(this EnemyMovement enemy, Vector3 startPosition, Vector3 endPosition, float moveDuration, float delay = 0f)
     {
         if (delay > 0) yield return WaitForSeconds(delay);
 
-        Vector3 newMoveDirection = endPosition - enemy.transform.position;
-        float newMoveSpeed = 2 * newMoveDirection.magnitude / moveDuration;
+        Vector3 newMoveDirection = endPosition - startPosition;
+        float newMoveSpeed = 2f * newMoveDirection.magnitude / moveDuration;
 
         float currentTime = 0f;
+
+        enemy.parentShip.transform.position = startPosition;
         enemy.moveDirection = newMoveDirection;
 
         while (currentTime < moveDuration * 0.5f)
         {
-            enemy.currentSpeed = Mathf.Lerp(0, newMoveSpeed, 2f * currentTime / moveDuration);
+            enemy.currentSpeed = Mathf.Lerp(0, newMoveSpeed, moveInterpolation.Evaluate(2f * currentTime / moveDuration));
 
             currentTime += Time.deltaTime;
             yield return EndOfFrame;
@@ -67,11 +69,30 @@ public static class EnemyMovementBehaviour
 
         while (currentTime < moveDuration * 0.5f)
         {
-            enemy.currentSpeed = Mathf.Lerp(newMoveSpeed, 0, 2f * currentTime / moveDuration);
+            enemy.currentSpeed = Mathf.Lerp(newMoveSpeed, 0, moveInterpolation.Evaluate(2f * currentTime / moveDuration));
 
             currentTime += Time.deltaTime;
             yield return EndOfFrame;
         }
+
+        enemy.parentShip.transform.position = endPosition;
+        enemy.currentSpeed = 0f;
+    }
+
+    /// <summary>
+    /// linearly translates <enemy> to <endPosition> over <moveDuration> seconds.
+    /// </summary>
+    public static IEnumerator MoveToLinear(this EnemyMovement enemy, Vector3 endPosition, float moveDuration, float delay = 0f)
+    {
+        if (delay > 0) yield return WaitForSeconds(delay);
+
+        Vector3 newMoveDirection = endPosition - enemy.transform.position;
+        float newMoveSpeed = newMoveDirection.magnitude / moveDuration;
+
+        enemy.moveDirection = newMoveDirection;
+        enemy.currentSpeed = newMoveSpeed;
+
+        yield return WaitForSeconds(moveDuration);
 
         enemy.parentShip.transform.position = endPosition;
         enemy.currentSpeed = 0f;
