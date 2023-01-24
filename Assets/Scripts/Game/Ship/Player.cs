@@ -3,12 +3,23 @@ using UnityEngine;
 
 public class Player : Ship
 {
+    protected override void Awake()
+    {
+        base.Awake();
+        TakeDamageAction += OnTakeDamage;
+    }
+
     void Update()
     {
 #if UNITY_EDITOR
         if (Input.GetKeyDown(KeyCode.L))
             TakeDamage(currentHealth);
 #endif
+    }
+
+    void OnTakeDamage()
+    {
+        SetInvincible(1f);
     }
 
     //to-do: improve scalability?
@@ -19,9 +30,8 @@ public class Player : Ship
         if (currentLives > 0)
         {
             await Task.Delay(RespawnTime);
-            Respawn();
 
-            invincible = false;
+            Respawn();
             collider.enabled = true;
         }
     }

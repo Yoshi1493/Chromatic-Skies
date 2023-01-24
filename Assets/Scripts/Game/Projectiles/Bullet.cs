@@ -13,7 +13,17 @@ public abstract class Bullet : Projectile
 
     protected override void HandleCollisionWithShip<TShip>(Collider2D coll)
     {
-        base.HandleCollisionWithShip<TShip>(coll);
+        TShip ship = coll.GetComponent<TShip>();
+
+        if (!ship.invincible)
+        {
+            ship.TakeDamage(projectileData.Power.value);
+
+            //get particle spawn position+rotation
+            Vector3 pos = coll.ClosestPoint(transform.position);
+            float rot = coll.transform.position.GetRotationDifference(transform.position);
+            SpawnDestructionParticles(pos, rot);
+        }
 
         if (projectileData.destructible)
         {
@@ -21,7 +31,7 @@ public abstract class Bullet : Projectile
         }
     }
 
-    protected virtual void SpawnDestructionParticles(Vector3 spawnPos, float spawnRotZ)
+    void SpawnDestructionParticles(Vector3 spawnPos, float spawnRotZ)
     {
         //grab particle obj from pool; get VFX component
         GameObject destructionParticles = VisualEffectPool.Instance.Get();

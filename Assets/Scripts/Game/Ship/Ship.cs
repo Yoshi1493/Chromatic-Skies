@@ -1,5 +1,7 @@
 using System;
+using System.Collections;
 using UnityEngine;
+using static CoroutineHelper;
 
 public abstract class Ship : Actor
 {
@@ -27,6 +29,7 @@ public abstract class Ship : Actor
     #endregion
 
     new protected Collider2D collider;
+    IEnumerator invincibilityCoroutine;
 
     protected override void Awake()
     {
@@ -83,7 +86,7 @@ public abstract class Ship : Actor
         else
         {
             currentHealth = shipData.MaxHealth.Value;
-            invincible = true;
+            SetInvincible(1f);
         }
     }
 
@@ -94,4 +97,22 @@ public abstract class Ship : Actor
     }
 
     protected abstract void Die();
+
+    protected void SetInvincible(float duration)
+    {
+        if (invincibilityCoroutine != null)
+        {
+            StopCoroutine(invincibilityCoroutine);
+        }
+
+        invincibilityCoroutine = ToggleInvincibility(duration);
+        StartCoroutine(invincibilityCoroutine);
+    }
+
+    IEnumerator ToggleInvincibility(float duration)
+    {
+        invincible = true;
+        yield return WaitForSeconds(duration);
+        invincible = false;
+    }
 }

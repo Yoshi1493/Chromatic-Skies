@@ -36,7 +36,7 @@ public abstract class Projectile : Actor
     }
 
     protected virtual void Update()
-    {        
+    {
         IncrementLifetime();
     }
 
@@ -45,7 +45,9 @@ public abstract class Projectile : Actor
         currentLifetime += Time.deltaTime;
 
         if (currentLifetime > MaxLifetime)
+        {
             Destroy();
+        }
     }
 
     protected void CheckCollisionWith<TShip>() where TShip : Ship
@@ -66,7 +68,9 @@ public abstract class Projectile : Actor
         TShip ship = coll.GetComponent<TShip>();
 
         if (!ship.invincible)
+        {
             ship.TakeDamage(projectileData.Power.value);
+        }
     }
 
     public abstract void Destroy();
