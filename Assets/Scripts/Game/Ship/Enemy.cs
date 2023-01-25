@@ -98,7 +98,7 @@ public class Enemy : Ship
         currentMovementSystem.StopAllCoroutines();
         currentMovementSystem.enabled = false;
 
-        //SetInvincible(1f);
+        SetInvincible(1f);
 
         await Task.Delay(RespawnTime);
 
