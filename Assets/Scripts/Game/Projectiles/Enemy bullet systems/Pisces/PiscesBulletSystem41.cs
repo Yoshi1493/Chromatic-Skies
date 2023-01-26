@@ -23,9 +23,9 @@ public class PiscesBulletSystem41 : EnemyShooter<Laser>
             {
                 yield return WaitForSeconds(ShootingCooldown);
 
-                for (int j = 0; j < LaserCount; j++)
+                for (int ii = 0; ii < LaserCount; ii++)
                 {
-                    float z = (i * WaveSpacing) + (j * LaserSpacing) + r;
+                    float z = (i * WaveSpacing) + (ii * LaserSpacing) + r;
                     Vector3 pos = Vector3.zero;
 
                     SpawnProjectile(0, z, pos).Fire();

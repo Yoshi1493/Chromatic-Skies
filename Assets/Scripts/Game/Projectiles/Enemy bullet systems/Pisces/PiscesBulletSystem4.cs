@@ -9,7 +9,7 @@ public class PiscesBulletSystem4 : EnemyShooter<EnemyBullet>
     const float BranchWidth = 0.2f;
     const float ScaleFactor = 0.2f;
 
-    protected override float ShootingCooldown => 0.05f;
+    protected override float ShootingCooldown => 0.06f;
 
     protected override IEnumerator Shoot()
     {
@@ -47,7 +47,10 @@ public class PiscesBulletSystem4 : EnemyShooter<EnemyBullet>
             yield return CreateBranch(4, BranchWidth, 4.6f, 30f);
             yield return CreateBranch(8, BranchWidth * 4, 5.0f, 120f);
 
-            //yield return ownerShip.MoveToRandomPosition(1f, delay: 5f);
+            yield return WaitForSeconds(5f);
+
+            StartMoveAction?.Invoke();
+            yield return WaitForSeconds(2f);
         }
     }
 
@@ -55,7 +58,7 @@ public class PiscesBulletSystem4 : EnemyShooter<EnemyBullet>
     {
         for (int i = 0; i < BranchCount; i++)
         {
-            float z = i * BranchSpacing;
+            float z = i * BranchSpacing + 30f;
 
             Vector3 pos = new Vector3(BranchWidth, loopCount * ScaleFactor).RotateVectorBy(z);
             bulletData.colour = bulletData.gradient.Evaluate(pos.magnitude / 6f);
@@ -75,8 +78,8 @@ public class PiscesBulletSystem4 : EnemyShooter<EnemyBullet>
                 float x = Mathf.Cos(branchAngle * Mathf.Deg2Rad) * i * ScaleFactor + xOffset;
                 float y = Mathf.Sin(branchAngle * Mathf.Deg2Rad) * i * ScaleFactor + yOffset;
 
-                float z = ii * BranchSpacing;
-                float t = 90 - branchAngle;
+                float z = ii * BranchSpacing + 30f;
+                float t = 90f - branchAngle;
 
                 Vector3 pos = new Vector3(x, y).RotateVectorBy(z);
                 bulletData.colour = bulletData.gradient.Evaluate(pos.magnitude / 6f);

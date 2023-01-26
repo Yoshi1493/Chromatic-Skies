@@ -1,14 +1,14 @@
 using System.Collections;
+using UnityEngine;
 
 public class PiscesBullet30 : EnemyBullet
 {
-    protected override float MaxLifetime => 6f;
+    protected override Collider2D CollisionCondition => Physics2D.OverlapBox(transform.position, spriteRenderer.size * 0.8f, transform.eulerAngles.z, CollisionMask);
+    protected override float MaxLifetime => 4f;
 
     protected override IEnumerator Move()
     {
-        MoveSpeed = 2f;
-
-        yield return this.LerpSpeed(2, 0.5f, 0.5f);
-        yield return this.LerpSpeed(MoveSpeed, 3f, 1f);
+        StartCoroutine(this.LerpSpeed(6f, 3f, 2f));
+        yield return this.RotateBy(30f, 3f);
     }
 }

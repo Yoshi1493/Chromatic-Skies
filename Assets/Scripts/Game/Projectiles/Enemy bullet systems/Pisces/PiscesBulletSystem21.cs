@@ -4,7 +4,7 @@ using static CoroutineHelper;
 
 public class PiscesBulletSystem21 : EnemyShooter<EnemyBullet>
 {
-    protected override float ShootingCooldown => 0.12f;
+    protected override float ShootingCooldown => 0.2f;
 
     protected override IEnumerator Shoot()
     {
