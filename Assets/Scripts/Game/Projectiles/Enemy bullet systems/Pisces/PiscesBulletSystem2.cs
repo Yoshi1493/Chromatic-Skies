@@ -15,7 +15,7 @@ public class PiscesBulletSystem2 : EnemyShooter<EnemyBullet>
 
         while (enabled)
         {
-            yield return WaitForSeconds(1f);
+            yield return WaitForSeconds(3f);
 
             for (int i = 0; i < WaveCount; i++)
             {
@@ -39,10 +39,10 @@ public class PiscesBulletSystem2 : EnemyShooter<EnemyBullet>
                     yield return WaitForSeconds(ShootingCooldown);
                 }
 
-                yield return WaitForSeconds(ShootingCooldown * 2f);
+                yield return WaitForSeconds(ShootingCooldown * 5f);
             }
 
-            //yield return ownerShip.MoveToRandomPosition(1f, maxSqrMagDelta: 3f, delay: 1f);
+            StartMoveAction?.Invoke();
         }
     }
 }
