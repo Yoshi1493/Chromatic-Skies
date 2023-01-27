@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b79cd0b20b26ac4090b241d65679e69, type: 3}
   m_Name: '[Libra] Bullet 1_0_1'
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: 3a6d85b91188ffc42a6cd1efe9bf9997, type: 3}
+  sprite: {fileID: 21300000, guid: 6cd90f82dd81c3a479831f5ef884e8e1, type: 3}
   useSolidColour: 1
   colour: {r: 0, g: 1, b: 0.25, a: 1}
   gradient:

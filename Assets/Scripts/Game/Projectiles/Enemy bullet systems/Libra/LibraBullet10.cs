@@ -5,7 +5,6 @@ using static CoroutineHelper;
 public class LibraBullet10 : ScriptableEnemyBullet<LibraBulletSystem1, EnemyBullet>
 {
     [SerializeField] int bulletID;
-    [SerializeField] float rotationSpeed;
 
     const float WaveSpacing = 8f;
     const int BranchCount = 4;
@@ -17,12 +16,12 @@ public class LibraBullet10 : ScriptableEnemyBullet<LibraBulletSystem1, EnemyBull
 
     protected override IEnumerator Move()
     {
+        StartCoroutine(this.RotateBy(90f, 1f));
         yield return this.LerpSpeed(3f, 0f, 1f);
-        yield return this.RotateBy(90f, 0f);
 
         StartCoroutine(Shoot());
         transform.parent = ownerShip.transform;
-        yield return this.RotateAround(ownerShip, MaxLifetime, rotationSpeed);
+        yield return this.RotateAround(ownerShip, MaxLifetime, 90f);
     }
 
     IEnumerator Shoot()
@@ -33,7 +32,7 @@ public class LibraBullet10 : ScriptableEnemyBullet<LibraBulletSystem1, EnemyBull
         {
             for (int ii = 0; ii < BranchCount; ii++)
             {
-                float z = (i * WaveSpacing) + (ii * BranchSpacing);
+                float z = -(i * WaveSpacing) - (ii * BranchSpacing);
                 float s = (BranchCount - ii) * BulletSpeedMultiplier + 2f;
                 Vector3 pos = transform.position;
 

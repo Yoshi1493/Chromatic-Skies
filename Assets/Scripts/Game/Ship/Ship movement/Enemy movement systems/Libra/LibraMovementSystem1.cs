@@ -8,7 +8,7 @@ public class LibraMovementSystem1 : EnemyMovement
         while (enabled)
         {
             yield return WaitForSeconds(5f);
-            yield return this.MoveToRandomPosition(1f);
+            yield return this.MoveToRandomPosition(2f);
         }
     }
 }
