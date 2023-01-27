@@ -57,6 +57,7 @@ public class Enemy : Ship
     protected override async void LoseLife()
     {
         int currentAttackSystemIndex = shipData.MaxLives.Value - currentLives;
+        await Task.Yield();
 
         base.LoseLife();
         EnemyBulletPool.Instance.DrainPool();

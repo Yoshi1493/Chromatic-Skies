@@ -101,6 +101,7 @@ public abstract class EnemyShooter<TProjectile> : Shooter<TProjectile>, IEnemyAt
     protected virtual void OnLoseLife()
     {
         StopAllCoroutines();
+        DestroyAllProjectiles();
     }
 
     void OnPlayerLoseLife()

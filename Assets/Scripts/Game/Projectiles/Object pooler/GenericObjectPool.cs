@@ -6,10 +6,12 @@ public abstract class GenericObjectPool<TProjectile> : MonoBehaviour where TProj
     public static GenericObjectPool<TProjectile> Instance { get; private set; }
 
     readonly List<(TProjectile projectile, Queue<TProjectile> queue)> objectPool = new();
+    new Transform transform;
 
     void Awake()
     {
         Instance = this;
+        transform = GetComponent<Transform>();
     }
 
     public void UpdatePoolableObjects(List<TProjectile> projectiles)
@@ -47,6 +49,7 @@ public abstract class GenericObjectPool<TProjectile> : MonoBehaviour where TProj
 
     public void ReturnToPool(TProjectile returningObject)
     {
+        returningObject.transform.parent = transform;
         returningObject.gameObject.SetActive(false);
         returningObject.enabled = false;
 
