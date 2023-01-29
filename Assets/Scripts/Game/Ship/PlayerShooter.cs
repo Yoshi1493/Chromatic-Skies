@@ -8,16 +8,14 @@ public class PlayerShooter : Shooter<PlayerBullet>
     [SerializeField] protected FloatObject shootingSpeed;
     protected override float ShootingCooldown => 1 / shootingSpeed.value;
 
-    [SerializeField] List<PlayerBullet> playerBullets = new List<PlayerBullet>();
+    [SerializeField] List<PlayerBullet> playerBullets = new();
     bool canShoot = true;
 
-    [SerializeField] List<Transform> bulletSpawnPositions = new List<Transform>();
+    [SerializeField] List<Transform> bulletSpawnPositions = new();
 
     protected override void Awake()
     {
         base.Awake();
-
-        ownerShip.LoseLifeAction += DestroyAllProjectiles;
         FindObjectOfType<PauseHandler>().GamePauseAction += OnGamePaused;
     }
 

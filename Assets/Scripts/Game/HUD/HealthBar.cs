@@ -9,8 +9,9 @@ public class HealthBar<TShip> : HUDComponent<TShip>
     Image healthBarImage;
     float HealthPercent => (float)ship.currentHealth / ship.shipData.MaxHealth.Value;
 
-    [SerializeField] AnimationCurve fillInterpolation;
     IEnumerator fillCoroutine;
+    const float FillAnimationDuration = 0.5f;
+    [SerializeField] AnimationCurve fillInterpolation;
 
     protected override void Awake()
     {
@@ -20,10 +21,10 @@ public class HealthBar<TShip> : HUDComponent<TShip>
         healthBarImage.color = ship.shipData.UIColour.value;
 
         ship.TakeDamageAction += OnTakeDamage;
-        ship.LoseLifeAction += OnLoseLife;
+        ship.RespawnAction += OnRespawn;
     }
 
-    protected virtual void Start()
+    void Start()
     {
         fillCoroutine = Refill();
         StartCoroutine(fillCoroutine);
@@ -32,16 +33,18 @@ public class HealthBar<TShip> : HUDComponent<TShip>
     void OnTakeDamage()
     {
         if (fillCoroutine == null)
+        {
             healthBarImage.fillAmount = HealthPercent;
+        }
     }
 
-    void OnLoseLife()
+    void OnRespawn()
     {
-        if (fillCoroutine != null)
-            StopCoroutine(fillCoroutine);
-
-        fillCoroutine = Refill();
-        StartCoroutine(fillCoroutine);
+        if (fillCoroutine == null)
+        {
+            fillCoroutine = Refill();
+            StartCoroutine(fillCoroutine);
+        }
     }
 
     IEnumerator Refill()
@@ -50,19 +53,18 @@ public class HealthBar<TShip> : HUDComponent<TShip>
 
         if (ship.currentLives <= 0) yield break;
 
-        yield return WaitForSeconds(1f);
-
         float currentLerpTime = 0f;
-        float animDuration = 0.5f;
 
-        while (currentLerpTime < animDuration)
+        while (currentLerpTime < FillAnimationDuration)
         {
-            float lerpProgress = currentLerpTime / animDuration;
+            float lerpProgress = currentLerpTime / FillAnimationDuration;
             healthBarImage.fillAmount = Mathf.Lerp(0f, HealthPercent, fillInterpolation.Evaluate(lerpProgress));
 
             currentLerpTime += Time.deltaTime;
             yield return EndOfFrame;
         }
+
+        healthBarImage.fillAmount = HealthPercent;
 
         fillCoroutine = null;
     }

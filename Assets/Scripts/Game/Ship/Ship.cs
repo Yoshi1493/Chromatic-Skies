@@ -13,7 +13,7 @@ public abstract class Ship : Actor
     [HideInInspector] public int currentHealth;
 
     [HideInInspector] public bool invincible;
-    public const int RespawnTime = 1000;     //amount of time (msec.) to wait before resuming ship functions
+    public const float RespawnTime = 1f;
 
     #endregion
 
@@ -21,14 +21,14 @@ public abstract class Ship : Actor
 
     public event Action TakeDamageAction;
     public event Action LoseLifeAction;
+    public event Action RespawnAction;
     public event Action DeathAction;
-
-    public delegate void RespawnDelegate();
-    public RespawnDelegate RespawnAction;
 
     #endregion
 
     new protected Collider2D collider;
+
+    IEnumerator loseLifeCoroutine;
     IEnumerator invincibilityCoroutine;
 
     protected override void Awake()
@@ -36,8 +36,6 @@ public abstract class Ship : Actor
         base.Awake();
 
         InitShipData();
-
-        LoseLifeAction += LoseLife;
         DeathAction += Die;
     }
 
@@ -58,46 +56,57 @@ public abstract class Ship : Actor
     }
 
     //to-do: take shipData.Defense into account for damage calculations
-    public void TakeDamage(int power)
+    public void TakeDamage(int damage)
     {
-        currentHealth -= power;
-        //print($"{name} took {power} damage.");
+        currentHealth -= damage;
+        //print($"{name} took {damage} damage.");
 
+        TakeDamageAction?.Invoke();
+
+        //check if LoseLife methods should be called
         if (currentHealth <= 0)
         {
-            LoseLifeAction?.Invoke();
-        }
-        else
-        {
-            TakeDamageAction?.Invoke();
+            if (loseLifeCoroutine != null)
+            {
+                StopCoroutine(loseLifeCoroutine);
+            }
+
+            loseLifeCoroutine = LoseLife();
+            StartCoroutine(loseLifeCoroutine);
         }
     }
 
-    protected virtual void LoseLife()
+    protected virtual IEnumerator LoseLife()
     {
-        collider.enabled = false;
-
         currentLives--;
+        LoseLifeAction?.Invoke();
+
+        collider.enabled = false;
 
         if (currentLives <= 0)
         {
             DeathAction?.Invoke();
         }
+        //only perform if ship still has lives
         else
         {
-            currentHealth = shipData.MaxHealth.Value;
-            SetInvincible(1f);
+            SetInvincible(RespawnTime);
+            yield return WaitForSeconds(RespawnTime);
+
+            Respawn();
+            collider.enabled = true;
         }
     }
 
-    //called by child classes after RespawnTime has passed
     protected void Respawn()
     {
         RespawnAction?.Invoke();
+        currentHealth = shipData.MaxHealth.Value;
     }
 
     protected abstract void Die();
 
+    //called when enemy transition to next attack pattern, and when player receives damage
     protected void SetInvincible(float duration)
     {
         if (invincibilityCoroutine != null)

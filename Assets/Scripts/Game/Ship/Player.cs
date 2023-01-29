@@ -1,4 +1,3 @@
-using System.Threading.Tasks;
 using UnityEngine;
 
 public class Player : Ship
@@ -20,20 +19,6 @@ public class Player : Ship
     void OnTakeDamage()
     {
         SetInvincible(1f);
-    }
-
-    //to-do: improve scalability?
-    protected override async void LoseLife()
-    {
-        base.LoseLife();
-
-        if (currentLives > 0)
-        {
-            await Task.Delay(RespawnTime);
-
-            Respawn();
-            collider.enabled = true;
-        }
     }
 
     protected override void Die()

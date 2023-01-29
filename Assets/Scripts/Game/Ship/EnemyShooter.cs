@@ -55,8 +55,6 @@ public abstract class EnemyShooter<TProjectile> : Shooter<TProjectile>, IEnemyAt
 
     void Start()
     {
-        //subscribe methods to actions
-        ownerShip.LoseLifeAction += OnLoseLife;
         playerShip.LoseLifeAction += OnPlayerLoseLife;
     }
 
@@ -98,10 +96,10 @@ public abstract class EnemyShooter<TProjectile> : Shooter<TProjectile>, IEnemyAt
         }
     }
 
-    protected virtual void OnLoseLife()
+    protected override void OnLoseLife()
     {
         StopAllCoroutines();
-        DestroyAllProjectiles();
+        base.OnLoseLife();
     }
 
     void OnPlayerLoseLife()

@@ -1,6 +1,7 @@
+using System.Collections;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 using UnityEngine;
+using static CoroutineHelper;
 
 public class Enemy : Ship
 {
@@ -14,6 +15,8 @@ public class Enemy : Ship
     List<EnemyMovement> movementSystems;
     EnemyMovement currentMovementSystem;
     EnemyMovement nextMovementSystem;
+
+    IEnumerator systemResetCoroutine;
 
     protected override void Awake()
     {
@@ -54,42 +57,59 @@ public class Enemy : Ship
     }
 
     //disable current systems, and enable next systems upon losing life
-    protected override async void LoseLife()
+    protected override IEnumerator LoseLife()
     {
-        int currentAttackSystemIndex = shipData.MaxLives.Value - currentLives;
-        await Task.Yield();
+        int currentSystemIndex = shipData.MaxLives.Value - currentLives;
 
-        base.LoseLife();
+        StartCoroutine(base.LoseLife());
+
         EnemyBulletPool.Instance.DrainPool();
         EnemyLaserPool.Instance.DrainPool();
 
         if (currentLives > 0)
         {
-            GetActiveEnemySystems();
-            nextBulletSystem = bulletSystems[currentAttackSystemIndex + 1];
-            nextMovementSystem = movementSystems[currentAttackSystemIndex + 1];
-
-            foreach (var bulletSystem in currentBulletSystems)
+            if (systemResetCoroutine != null)
             {
-                bulletSystem.SetEnabled(false);
+                StopCoroutine(systemResetCoroutine);
             }
 
-            currentMovementSystem.StopAllCoroutines();
-            currentMovementSystem.enabled = false;
+            systemResetCoroutine = RefreshEnemySystems(currentSystemIndex);
+            yield return systemResetCoroutine;
 
-            await Task.Delay(RespawnTime);
             Respawn();
-
-            nextBulletSystem.SetEnabled(true);
-            nextMovementSystem.enabled = true;
-            collider.enabled = true;
         }
     }
 
     //disable and re-enable current systems upon player losing life
-    async void OnPlayerLoseLife()
+    void OnPlayerLoseLife()
+    {
+        int currentSystemIndex = shipData.MaxLives.Value - currentLives;
+
+        SetInvincible(1f);
+
+        if (systemResetCoroutine != null)
+        {
+            StopCoroutine(systemResetCoroutine);
+        }
+
+        systemResetCoroutine = RefreshEnemySystems(currentSystemIndex);
+        StartCoroutine(systemResetCoroutine);
+    }
+
+    IEnumerator RefreshEnemySystems(int currentSystemIndex)
     {
         GetActiveEnemySystems();
+
+        if (currentHealth > 0)
+        {
+            nextBulletSystem = currentBulletSystems[0];
+            nextMovementSystem = currentMovementSystem;
+        }
+        else
+        {
+            nextBulletSystem = bulletSystems[currentSystemIndex + 1];
+            nextMovementSystem = movementSystems[currentSystemIndex + 1];
+        }
 
         foreach (var bulletSystem in currentBulletSystems)
         {
@@ -99,15 +119,10 @@ public class Enemy : Ship
         currentMovementSystem.StopAllCoroutines();
         currentMovementSystem.enabled = false;
 
-        SetInvincible(1f);
+        yield return WaitForSeconds(RespawnTime);
 
-        await Task.Delay(RespawnTime);
-
-        if (currentBulletSystems.Count > 0)
-        {
-            currentBulletSystems[0].SetEnabled(true);
-            currentMovementSystem.enabled = true;
-        }
+        nextBulletSystem.SetEnabled(true);
+        nextMovementSystem.enabled = true;
     }
 
     void GetActiveEnemySystems()

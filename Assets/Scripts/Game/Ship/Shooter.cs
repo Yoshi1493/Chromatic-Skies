@@ -14,6 +14,7 @@ public abstract class Shooter<TProjectile> : MonoBehaviour
     {
         transform = GetComponent<Transform>();
         ownerShip = GetComponentInParent<Ship>();
+        ownerShip.LoseLifeAction += OnLoseLife;
     }
 
     protected abstract IEnumerator Shoot();
@@ -40,5 +41,10 @@ public abstract class Shooter<TProjectile> : MonoBehaviour
         {
             projectiles[i].Destroy();
         }
+    }
+
+    protected virtual void OnLoseLife()
+    {
+        DestroyAllProjectiles();
     }
 }
