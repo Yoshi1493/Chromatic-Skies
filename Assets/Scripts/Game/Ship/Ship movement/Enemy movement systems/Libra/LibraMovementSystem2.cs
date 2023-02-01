@@ -1,9 +1,16 @@
 using System.Collections;
+using static CoroutineHelper;
 
 public class LibraMovementSystem2 : EnemyMovement
 {
     protected override IEnumerator Move()
     {
-        yield return null;
+        yield return WaitForSeconds(2f);
+
+        while (enabled)
+        {
+            yield return WaitForSeconds(3f);
+            yield return this.MoveToRandomPosition(2f);
+        }
     }
 }
