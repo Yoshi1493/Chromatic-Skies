@@ -1,11 +1,11 @@
 using System.Collections;
-using UnityEngine;
 
 public class LibraBullet22 : EnemyBullet
 {
+    protected override float MaxLifetime => 8f;
+
     protected override IEnumerator Move()
     {
-        MoveSpeed = 3f;
-        yield return this.RotateBy(Random.Range(-30f, 30f), 2f, Random.value > 0.5f);
+        yield return this.LerpSpeed(5f, 2.5f, 1f);
     }
 }

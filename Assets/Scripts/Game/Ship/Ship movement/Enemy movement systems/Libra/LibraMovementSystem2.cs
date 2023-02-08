@@ -5,12 +5,10 @@ public class LibraMovementSystem2 : EnemyMovement
 {
     protected override IEnumerator Move()
     {
-        yield return WaitForSeconds(2f);
-
         while (enabled)
         {
-            yield return WaitForSeconds(2f);
-            yield return this.MoveToRandomPosition(1f, 1f, 2f);
+            yield return WaitForSeconds(4f);
+            yield return this.MoveToRandomPosition(1f);
         }
     }
 }
