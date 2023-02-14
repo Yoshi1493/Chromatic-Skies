@@ -22,9 +22,9 @@ public class LeoBulletSystem6 : EnemyShooter<EnemyBullet>
 
             for (int i = 0; i < WaveCount; i++)
             {
-                for (int j = 0; j < BranchCount; j++)
+                for (int ii = 0; ii < BranchCount; ii++)
                 {
-                    float z = (i * WaveSpacing) + (j * BranchSpacing);
+                    float z = (i * WaveSpacing) + (ii * BranchSpacing);
                     Vector3 pos = transform.up.RotateVectorBy(-z + r);
 
                     SpawnProjectile(0, z, pos).Fire();
@@ -33,7 +33,7 @@ public class LeoBulletSystem6 : EnemyShooter<EnemyBullet>
                 yield return WaitForSeconds(ShootingCooldown);
             }
 
-            //yield return ownerShip.MoveToRandomPosition(1f);
+            yield return WaitForSeconds(10f);
         }
     }
 }

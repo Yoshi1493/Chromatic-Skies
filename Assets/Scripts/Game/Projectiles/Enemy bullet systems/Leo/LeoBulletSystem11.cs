@@ -5,15 +5,13 @@ using static MathHelper;
 
 public class LeoBulletSystem11 : EnemyShooter<EnemyBullet>
 {
-    const int BulletCount = 150;
+    const int BulletCount = 128;
     const float BulletSpacing = 12f;
 
     protected override float ShootingCooldown => 0.03f;
 
     protected override IEnumerator Shoot()
     {
-        yield return WaitForSeconds(3f);
-
         float r = Random.Range(0f, 180f);
         int d = PositiveOrNegativeOne;
 
