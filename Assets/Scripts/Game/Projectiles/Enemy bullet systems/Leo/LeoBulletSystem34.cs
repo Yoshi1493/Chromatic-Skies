@@ -11,17 +11,18 @@ public class LeoBulletSystem34 : EnemyShooter<Laser>
 
     protected override IEnumerator Shoot()
     {
-        yield return WaitForSeconds(ShootingCooldown);
-
-        float r = PlayerPosition.GetRotationDifference(transform.position);
-
-        for (int i = 0; i < LaserCount; i++)
+        while (enabled)
         {
-            float z = (i * LaserSpacing) + r;
-            Vector3 pos = Vector3.zero;
-            SpawnProjectile(0, z, pos).Fire();
-        }
+            float r = PlayerPosition.GetRotationDifference(transform.position);
 
-        enabled = false;
+            for (int i = 0; i < LaserCount; i++)
+            {
+                float z = (i * LaserSpacing) + r;
+                Vector3 pos = Vector3.zero;
+                SpawnProjectile(0, z, pos).Fire();
+            }
+
+            yield return WaitForSeconds(ShootingCooldown);
+        }
     }
 }
