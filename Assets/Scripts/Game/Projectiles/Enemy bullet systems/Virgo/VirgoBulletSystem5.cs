@@ -29,7 +29,6 @@ public class VirgoBulletSystem5 : EnemyShooter<EnemyBullet>
 
                     SpawnProjectile(i, z, pos).Fire();
                 }
-
             }
 
             yield return WaitForSeconds(ShootingCooldown);

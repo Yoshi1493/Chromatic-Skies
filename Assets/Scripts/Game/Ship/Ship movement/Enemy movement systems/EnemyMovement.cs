@@ -23,7 +23,7 @@ public abstract class EnemyMovement : ShipMovement<Enemy>
         screenHalfWidth = screenHalfHeight * mainCam.aspect;
     }
 
-    void OnEnable()
+    protected virtual void OnEnable()
     {
         StartCoroutine(this.ReturnToOriginalPosition());
     }

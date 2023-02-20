@@ -28,18 +28,17 @@ public class VirgoBulletSystem2 : EnemyShooter<EnemyBullet>
             {
                 for (int ii = 1; ii < RingCount; ii++)
                 {
-                    float x, y, z;
                     Vector3 pos = Vector3.zero;
                     Vector3 newPos = Vector3.zero;
 
                     for (int iii = 0; iii < BulletCount; iii++)
                     {
                         float t = iii * BulletSpacing;
-                        x = RingRadius * ii / RingCount;
-                        y = Mathf.Sin(Mathf.Pow(x, 0.8f));
+                        float x = RingRadius * ii / RingCount;
+                        float y = Mathf.Sin(Mathf.Pow(x, 0.8f));
                         newPos = new(x, y);
 
-                        z = (newPos - pos).GetRotationDifference(Vector3.zero) + t;
+                        float z = (newPos - pos).GetRotationDifference(Vector3.zero) + t;
                         RotateVectorBy(ref newPos, t);
 
                         SpawnBullet(z, newPos);
