@@ -46,8 +46,6 @@ public abstract class Bullet : Projectile
         particleEffect.enabled = true;
     }
 
-    public override void Fire() { }
-
     protected void Move(Vector3 direction, float speed)
     {
         transform.Translate(Time.deltaTime * speed * direction, Space.World);

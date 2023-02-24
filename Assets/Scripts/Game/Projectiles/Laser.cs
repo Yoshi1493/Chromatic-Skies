@@ -16,9 +16,6 @@ public abstract class Laser : Projectile
     [SerializeField] AnimationCurve heightInterpolation;
     Vector2 originalSize;
 
-    const float WarningDuration = 0.5f;
-    const float GrowShrinkDuration = 0.1f;
-
     protected override void Awake()
     {
         base.Awake();
@@ -31,12 +28,12 @@ public abstract class Laser : Projectile
         active = false;
     }
 
-    public override void Fire()
+    public void Fire(float delay = 0.5f)
     {
         if (growAnimation != null)
             StopCoroutine(growAnimation);
 
-        growAnimation = Grow();
+        growAnimation = Grow(delay);
         StartCoroutine(growAnimation);
     }
 
@@ -55,12 +52,12 @@ public abstract class Laser : Projectile
 
         if (shrinkAnimation == null)
         {
-            shrinkAnimation = Shrink();
+            shrinkAnimation = Destroy();
             StartCoroutine(shrinkAnimation);
         }
     }
 
-    IEnumerator Grow()
+    IEnumerator Grow(float warningDuration, float lerpDuration = 0.1f)
     {
         Vector2 startSize = originalSize;
         Vector2 endSize = startSize;
@@ -68,14 +65,14 @@ public abstract class Laser : Projectile
 
         //display laser warning
         spriteRenderer.size = startSize;
-        yield return WaitForSeconds(WarningDuration);
+        yield return WaitForSeconds(warningDuration);
 
         float currentLerpTime = 0f;
 
         //activate laser
         while (spriteRenderer.size != endSize)
         {
-            float lerpProgress = currentLerpTime / GrowShrinkDuration;
+            float lerpProgress = currentLerpTime / lerpDuration;
 
             float width = Mathf.Lerp(startSize.x, endSize.x, widthInterpolation.Evaluate(lerpProgress / 2f));
             float height = Mathf.Lerp(startSize.y, endSize.y, heightInterpolation.Evaluate(lerpProgress));
@@ -90,14 +87,14 @@ public abstract class Laser : Projectile
         growAnimation = null;
     }
 
-    IEnumerator Shrink()
+    IEnumerator Destroy(float lerpDuration = 0.1f)
     {
         float currentLerpTime = 0f;
         Vector2 startSize = spriteRenderer.size;
 
         while (spriteRenderer.size.x != 0f)
         {
-            float lerpProgress = currentLerpTime / GrowShrinkDuration;
+            float lerpProgress = currentLerpTime / lerpDuration;
 
             float width = Mathf.Lerp(startSize.x, 0f, heightInterpolation.Evaluate(lerpProgress));
             spriteRenderer.size = new Vector2(width, spriteRenderer.size.y);

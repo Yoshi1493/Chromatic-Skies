@@ -19,7 +19,7 @@ public abstract class EnemyBullet : Bullet
         playerShip = FindObjectOfType<Player>();
     }
 
-    public override void Fire()
+    public void Fire()
     {
         if (movementBehaviour != null)
         {
