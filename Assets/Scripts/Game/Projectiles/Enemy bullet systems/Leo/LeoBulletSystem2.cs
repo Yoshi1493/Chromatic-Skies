@@ -1,15 +1,16 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using static CoroutineHelper;
 
 public class LeoBulletSystem2 : EnemyShooter<EnemyBullet>
 {
     const int BranchCount = 2;
-    const int BranchSpacing = 360 / BranchCount;
+    const float BranchSpacing = 360f / BranchCount;
     const int BulletCount = 8;
-    const int SpawnBranchCount = 3;
-    const int SpawnBranchSpacing = 360 / SpawnBranchCount;
     const float halfPI = 0.5f * Mathf.PI;
+
+    List<Vector3> bulletPositions = new(BulletCount * 4 - 1);
 
     protected override float ShootingCooldown => 0.05f;
 
@@ -24,49 +25,52 @@ public class LeoBulletSystem2 : EnemyShooter<EnemyBullet>
         //where t = pi / 2
         while (enabled)
         {
-            SetSubsystemEnabled(1);
-
             float randRotation = Random.Range(-180f, 180f);
             transform.eulerAngles = randRotation * Vector3.forward;
 
             float step = halfPI / BulletCount;
             float x, y;
 
+            bulletPositions.Clear();
+
             for (int i = 1; i < BulletCount; i++)
             {
-                yield return WaitForSeconds(ShootingCooldown);
-
                 x = i * step;
                 y = Mathf.Sin(x);
                 Vector3 pos = new(x, y);
 
-                SpawnBullets(pos);
+                bulletPositions.Add(pos);
             }
 
             for (int i = 0; i < BulletCount * 2; i++)
             {
-                yield return WaitForSeconds(ShootingCooldown);
-
                 Vector3 offset = halfPI * Vector3.right;
                 float theta = i * -90f / BulletCount;
                 Vector3 pos = Vector3.up.RotateVectorBy(theta) + offset;
 
-                SpawnBullets(pos);
+                bulletPositions.Add(pos);
             }
 
             for (int i = BulletCount; i > 0; i--)
             {
-                yield return WaitForSeconds(ShootingCooldown);
-
                 x = i * step;
                 y = -Mathf.Sin(x);
                 Vector3 pos = new(x, y);
 
-                SpawnBullets(pos);
+                bulletPositions.Add(pos);
             }
 
-            yield return WaitForSeconds(6f);
-            //yield return ownerShip.MoveToRandomPosition(1f);
+            for (int i = 0; i < bulletPositions.Count; i++)
+            {
+                SpawnBullets(bulletPositions[i]);
+                yield return WaitForSeconds(ShootingCooldown);
+            }
+
+            yield return WaitForSeconds(2f);
+
+            SetSubsystemEnabled(1);
+            StartMoveAction?.Invoke();
+            yield return WaitForSeconds(4f);
         }
     }
 

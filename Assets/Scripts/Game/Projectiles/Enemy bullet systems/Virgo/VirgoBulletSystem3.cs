@@ -19,7 +19,7 @@ public class VirgoBulletSystem3 : EnemyShooter<EnemyBullet>
         {
             //rhodonea (rose) curve r = sin(k * theta), where
             //theta = anticlockwise rotation amount on polar coordinates from the origin
-            //k = angular frequency, espressed in the form n/d
+            //k = angular frequency, expressed in the form n/d
             for (float i = 0; i < BulletCount; i++)
             {
                 Vector3 pos = transform.right.RotateVectorBy(i * AngularStep * 180f);

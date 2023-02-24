@@ -11,7 +11,7 @@ public class VirgoBulletSystem41 : EnemyShooter<EnemyBullet>
 
     protected override IEnumerator Shoot()
     {
-        yield return WaitForSeconds(3f);
+        yield return WaitForSeconds(ShootingCooldown);
 
         while (enabled)
         {

@@ -4,6 +4,6 @@ public class LeoMovementSystem1 : EnemyMovement
 {
     protected override IEnumerator Move()
     {
-        yield return null;
+        yield return this.MoveToRandomPosition(4f);
     }
 }

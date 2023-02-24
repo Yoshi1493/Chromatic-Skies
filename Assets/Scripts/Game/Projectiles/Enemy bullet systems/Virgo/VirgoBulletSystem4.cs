@@ -18,8 +18,6 @@ public class VirgoBulletSystem4 : EnemyShooter<EnemyBullet>
 
         while (enabled)
         {
-            yield return WaitForSeconds(1f);
-
             WaveSpacing = 0f;
             float r = Random.Range(0f, BranchSpacing);
             Vector3 pos = Vector3.zero;
@@ -28,7 +26,7 @@ public class VirgoBulletSystem4 : EnemyShooter<EnemyBullet>
             {
                 for (int ii = 0; ii < BranchCount; ii++)
                 {
-                    float z = ii * BranchSpacing + WaveSpacing + r;
+                    float z = (ii * BranchSpacing) + WaveSpacing + r;
                     SpawnProjectile(0, z, pos).Fire();
                 }
 

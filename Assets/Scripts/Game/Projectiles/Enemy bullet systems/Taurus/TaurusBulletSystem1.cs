@@ -21,12 +21,12 @@ public class TaurusBulletSystem1 : EnemyShooter<EnemyBullet>
         {
             yield return WaitForSeconds(1f);
 
-            for (int i = 0; i < BulletColCount; i++)
+            for (int c = 0; c < BulletColCount; c++)
             {
-                for (int j = 0; j < BulletRowCount; j++)
+                for (int r = 0; r < BulletRowCount; r++)
                 {
-                    float x = (j - ((BulletRowCount - 1) / 2f)) * BulletSpacing;
-                    float y = (i - ((BulletColCount - 1) / 2f)) * BulletSpacing;
+                    float x = (r - ((BulletRowCount - 1) / 2f)) * BulletSpacing;
+                    float y = (c - ((BulletColCount - 1) / 2f)) * BulletSpacing;
                     Vector3 pos = new(x, y);
 
                     float z = pos.GetRotationDifference(Vector3.zero);

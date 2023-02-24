@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class LeoBullet21 : EnemyBullet
 {
+    protected override float MaxLifetime => 9f;
+
     protected override IEnumerator Move()
     {
         float randSpeed = Random.Range(1.5f, 2.5f);

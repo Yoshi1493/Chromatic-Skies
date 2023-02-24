@@ -7,7 +7,7 @@ public class LeoBulletSystem1 : EnemyShooter<EnemyBullet>
     const int BranchCount = 6;
     const float BranchSpacing = 360f / BranchCount;
     const int BulletCount = 6;
-    const float BulletSpacing = 1.2f;
+    const float BulletSpacing = 0.8f;
 
     protected override float ShootingCooldown => 0.5f;
 
@@ -17,21 +17,21 @@ public class LeoBulletSystem1 : EnemyShooter<EnemyBullet>
 
         while (enabled)
         {
-            SetSubsystemEnabled(1);
             float r = PlayerPosition.GetRotationDifference(transform.position);
 
             for (int i = 1; i <= BranchCount; i++)
             {
-                float xOffset = (i - 1) * BulletSpacing * 0.5f;
+                float x = (i - 1) * BulletSpacing * 0.5f;
 
                 for (int ii = 0; ii < i; ii++)
                 {
-                    Vector3 offset = (ii * BulletSpacing - xOffset) * Vector3.right;
+                    Vector3 t = (ii * BulletSpacing - x) * Vector3.right;
 
-                    for (int k = 0; k < BulletCount; k++)
+                    for (int iii = 0; iii < BulletCount; iii++)
                     {
-                        float z = k * BranchSpacing + r;
-                        Vector3 pos = offset.RotateVectorBy(z);
+                        float z = iii * BranchSpacing + r;
+                        Vector3 pos = t.RotateVectorBy(z);
+                        bulletData.colour = bulletData.gradient.Evaluate(i / (float)BranchCount);
 
                         SpawnProjectile(0, z, pos).Fire();
                     }
@@ -40,8 +40,11 @@ public class LeoBulletSystem1 : EnemyShooter<EnemyBullet>
                 yield return WaitForSeconds(ShootingCooldown);
             }
 
-            //yield return ownerShip.MoveToRandomPosition(1f, delay: 2f);
-            yield return WaitForSeconds(3f);
+            SetSubsystemEnabled(1);
+            yield return WaitForSeconds(1f);
+
+            StartMoveAction?.Invoke();
+            yield return WaitForSeconds(5f);
         }
     }
 }
