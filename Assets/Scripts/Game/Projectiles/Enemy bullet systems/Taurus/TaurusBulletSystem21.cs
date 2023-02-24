@@ -37,8 +37,8 @@ public class TaurusBulletSystem21 : EnemyShooter<Laser>
                 z = 180f;
             }
 
-            SpawnProjectile(0, z + r, pos, false).Fire(1f);
-            SpawnProjectile(0, z + r + 180f, -pos, false).Fire(1f);
+            SpawnProjectile(0, z + r, pos, false).Fire();
+            SpawnProjectile(0, z + r + 180f, -pos, false).Fire();
 
             yield return WaitForSeconds(ShootingCooldown);
         }

@@ -50,6 +50,8 @@ public abstract class Projectile : Actor
         }
     }
 
+    public abstract void Fire();
+
     protected void CheckCollisionWith<TShip>() where TShip : Ship
     {
         Collider2D coll = CollisionCondition;
