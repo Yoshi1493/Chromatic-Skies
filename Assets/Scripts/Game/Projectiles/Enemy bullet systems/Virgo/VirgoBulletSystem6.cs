@@ -6,6 +6,7 @@ using static CoroutineHelper;
 public class VirgoBulletSystem6 : EnemyShooter<EnemyBullet>
 {
     const int WaveCount = 3;
+    const float WaveSpacing = 180f;
     const int BranchCount = 5;
     const float BranchSpacing = 360f / BranchCount;
     const int BulletCount = 36;
@@ -30,11 +31,10 @@ public class VirgoBulletSystem6 : EnemyShooter<EnemyBullet>
                 {
                     for (int iii = 0; iii < BranchCount; iii++)
                     {
-                        float r = iii * BranchSpacing;
+                        float r = (i * WaveSpacing) + (iii * BranchSpacing);
                         float z = Mathf.Lerp(-MaxBulletSpacing, MaxBulletSpacing, (float)ii / BulletCount);
 
-                        float t = (i * 180f) + r;
-                        Vector3 v1 = (i * RingRadiusMultiplier + 1) * transform.up.RotateVectorBy(t);
+                        Vector3 v1 = (i * RingRadiusMultiplier + 1) * transform.up.RotateVectorBy(r);
                         Vector3 v2 = v1 + v1.RotateVectorBy(z);
 
                         bulletData.colour = bulletData.gradient.Evaluate(i / (WaveCount - 1f));
@@ -54,7 +54,7 @@ public class VirgoBulletSystem6 : EnemyShooter<EnemyBullet>
                     {
                         int b = (i * BranchCount * BulletCount) + (ii * BranchCount) + iii;
 
-                        float z = (b / BranchCount % BulletClumpCount - ((BulletClumpCount - 1) / 2f)) * BulletClumpSpacing + (i % 2 * 180f);
+                        float z = (b / BranchCount % BulletClumpCount - ((BulletClumpCount - 1) / 2f)) * BulletClumpSpacing;
 
                         bullets[b].StartCoroutine(bullets[b].RotateBy(z, 2f));
                         bullets[b].Fire();
@@ -66,7 +66,9 @@ public class VirgoBulletSystem6 : EnemyShooter<EnemyBullet>
 
             bullets.Clear();
 
-            //yield break;
+            SetSubsystemEnabled(1);
+            StartMoveAction?.Invoke();
+            yield return WaitForSeconds(2f);
         }
     }
 }
