@@ -5,7 +5,7 @@ using static CoroutineHelper;
 
 public class VirgoBulletSystem6 : EnemyShooter<EnemyBullet>
 {
-    const int WaveCount = 3;
+    const int WaveCount = 1;
     const float WaveSpacing = 180f;
     const int BranchCount = 5;
     const float BranchSpacing = 360f / BranchCount;
@@ -37,7 +37,7 @@ public class VirgoBulletSystem6 : EnemyShooter<EnemyBullet>
                         Vector3 v1 = (i * RingRadiusMultiplier + 1) * transform.up.RotateVectorBy(r);
                         Vector3 v2 = v1 + v1.RotateVectorBy(z);
 
-                        bulletData.colour = bulletData.gradient.Evaluate(i / (WaveCount - 1f));
+                        //bulletData.colour = bulletData.gradient.Evaluate(i / (WaveCount - 1f));
                         var bullet = SpawnProjectile(0, z + r, v2);
                         bullets.Add(bullet);
                     }
@@ -67,8 +67,11 @@ public class VirgoBulletSystem6 : EnemyShooter<EnemyBullet>
             bullets.Clear();
 
             SetSubsystemEnabled(1);
+            SetSubsystemEnabled(2);
+            yield return WaitForSeconds(3f);
+
             StartMoveAction?.Invoke();
-            yield return WaitForSeconds(2f);
+            yield return WaitForSeconds(1f);
         }
     }
 }
