@@ -1,7 +1,6 @@
 using System.Collections;
 using UnityEngine;
 using static CoroutineHelper;
-using static MathHelper;
 
 public class VirgoBulletSystem61 : EnemyShooter<EnemyBullet>
 {
@@ -10,17 +9,16 @@ public class VirgoBulletSystem61 : EnemyShooter<EnemyBullet>
 
     protected override IEnumerator Shoot()
     {
-        yield return null;
-
-        float r = PositiveOrNegativeOne;
+        float r = Random.Range(0f, BulletSpacing);
 
         for (int i = 0; i < BulletCount; i++)
         {
-            float z = (i * BulletSpacing) * r;
+            float z = (i * BulletSpacing) + r;
 
             bulletData.colour = bulletData.gradient.Evaluate(i / (BulletCount - 1f));
             SpawnProjectile(1, z, Vector3.zero).Fire();
 
+            yield return WaitForSeconds(ShootingCooldown);
         }
 
         enabled = false;

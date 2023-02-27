@@ -5,7 +5,7 @@ using static CoroutineHelper;
 
 public class VirgoBulletSystem6 : EnemyShooter<EnemyBullet>
 {
-    const int WaveCount = 1;
+    const int WaveCount = 3;
     const float WaveSpacing = 180f;
     const int BranchCount = 5;
     const float BranchSpacing = 360f / BranchCount;
@@ -13,7 +13,7 @@ public class VirgoBulletSystem6 : EnemyShooter<EnemyBullet>
     const float MaxBulletSpacing = 360f * (BranchCount - 1) / BranchCount / 2;
     const float RingRadiusMultiplier = 0.4f;
     const int BulletClumpCount = 3;
-    const float BulletClumpSpacing = 5f;
+    const float BulletClumpSpacing = MaxBulletSpacing * 2f / BulletCount;
 
     List<EnemyBullet> bullets = new(BranchCount * BulletCount);
 
@@ -37,7 +37,7 @@ public class VirgoBulletSystem6 : EnemyShooter<EnemyBullet>
                         Vector3 v1 = (i * RingRadiusMultiplier + 1) * transform.up.RotateVectorBy(r);
                         Vector3 v2 = v1 + v1.RotateVectorBy(z);
 
-                        //bulletData.colour = bulletData.gradient.Evaluate(i / (WaveCount - 1f));
+                        bulletData.colour = bulletData.gradient.Evaluate(i / (WaveCount - 1f));
                         var bullet = SpawnProjectile(0, z + r, v2);
                         bullets.Add(bullet);
                     }
@@ -46,32 +46,36 @@ public class VirgoBulletSystem6 : EnemyShooter<EnemyBullet>
                 }
             }
 
-            for (int i = 0; i < WaveCount; i++)
-            {
-                for (int ii = 0; ii < BulletCount; ii++)
-                {
-                    for (int iii = 0; iii < BranchCount; iii++)
-                    {
-                        int b = (i * BranchCount * BulletCount) + (ii * BranchCount) + iii;
-
-                        float z = (b / BranchCount % BulletClumpCount - ((BulletClumpCount - 1) / 2f)) * BulletClumpSpacing;
-
-                        bullets[b].StartCoroutine(bullets[b].RotateBy(z, 2f));
-                        bullets[b].Fire();
-                    }
-
-                    yield return WaitForSeconds(ShootingCooldown);
-                }
-            }
-
-            bullets.Clear();
+            StartCoroutine(Fire());
+            yield return WaitForSeconds(1f);
 
             SetSubsystemEnabled(1);
-            SetSubsystemEnabled(2);
-            yield return WaitForSeconds(3f);
+            yield return WaitForSeconds(1f);
 
             StartMoveAction?.Invoke();
-            yield return WaitForSeconds(1f);
+            yield return WaitUntil(() => bullets.Count == 0);
         }
+    }
+
+    IEnumerator Fire()
+    {
+        for (int i = 0; i < WaveCount; i++)
+        {
+            for (int ii = 0; ii < BulletCount; ii++)
+            {
+                for (int iii = 0; iii < BranchCount; iii++)
+                {
+                    int b = (i * BranchCount * BulletCount) + (ii * BranchCount) + iii;
+
+                    float z = (b / BranchCount % BulletClumpCount - ((BulletClumpCount - 1) / 2f)) * BulletClumpSpacing;
+                    bullets[b].StartCoroutine(bullets[b].RotateBy(z, 2f));
+                    bullets[b].Fire();
+                }
+
+                yield return WaitForSeconds(ShootingCooldown * 2f);
+            }
+        }
+
+        bullets.Clear();
     }
 }
