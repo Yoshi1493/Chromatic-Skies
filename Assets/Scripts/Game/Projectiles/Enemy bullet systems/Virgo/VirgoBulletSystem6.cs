@@ -37,8 +37,7 @@ public class VirgoBulletSystem6 : EnemyShooter<EnemyBullet>
                         Vector3 v1 = (i * RingRadiusMultiplier + 1) * transform.up.RotateVectorBy(r);
                         Vector3 v2 = v1 + v1.RotateVectorBy(z);
 
-                        bulletData.colour = bulletData.gradient.Evaluate(i / (WaveCount - 1f));
-                        var bullet = SpawnProjectile(0, z + r, v2);
+                        var bullet = SpawnProjectile(i, z + r, v2);
                         bullets.Add(bullet);
                     }
 

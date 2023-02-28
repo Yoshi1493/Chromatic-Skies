@@ -16,7 +16,7 @@ public class VirgoBulletSystem61 : EnemyShooter<EnemyBullet>
             float z = (i * BulletSpacing) + r;
 
             bulletData.colour = bulletData.gradient.Evaluate(i / (BulletCount - 1f));
-            SpawnProjectile(1, z, Vector3.zero).Fire();
+            SpawnProjectile(3, z, Vector3.zero).Fire();
 
             yield return WaitForSeconds(ShootingCooldown);
         }

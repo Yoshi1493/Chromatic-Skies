@@ -39,7 +39,7 @@ public class VirgoBullet61 : ScriptableEnemyBullet<VirgoBulletSystem61, EnemyBul
                 Vector3 pos = transform.position;
 
                 bulletData.colour = spriteRenderer.color;
-                var bullet = SpawnBullet(2, z, pos, false);
+                var bullet = SpawnBullet(4, z, pos, false);
                 bullet.MoveSpeed = s;
                 bullet.Fire();
             }
