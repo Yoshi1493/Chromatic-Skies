@@ -9,7 +9,7 @@ public class VirgoBulletSystem5 : EnemyShooter<EnemyBullet>
     const int BulletCount = 20;
     const float BulletSpacing = 360f / BulletCount;
 
-    protected override float ShootingCooldown => 0.6f;
+    protected override float ShootingCooldown => 1f;
 
     protected override IEnumerator Shoot()
     {
