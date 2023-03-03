@@ -8,20 +8,20 @@ public class AriesBulletSystem41 : EnemyShooter<EnemyBullet>
 
     protected override IEnumerator Shoot()
     {
-        int n = Random.value > 0.5f ? 0 : AngleLimit;
+        int i = Random.value > 0.5f ? 0 : AngleLimit;
 
         float y = screenHalfHeight + 1f;
 
         while (enabled)
         {
-            float z = Mathf.PingPong(n, AngleLimit) - (AngleLimit * 0.5f);
+            float z = Mathf.PingPong(i, AngleLimit) - (AngleLimit * 0.5f);
             float x = Random.Range(-screenHalfWidth, screenHalfWidth);
             Vector3 pos = new(x, y);
 
             SpawnProjectile(1, z, pos, false).Fire();
             yield return WaitForSeconds(ShootingCooldown);
 
-            n++;
+            i++;
         }
     }
 }
