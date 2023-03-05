@@ -4,8 +4,6 @@ using static CoroutineHelper;
 
 public class CapricornBulletSystem2 : EnemyShooter<EnemyBullet>
 {
-    AnimationCurve spawnInterpolation = AnimationCurve.EaseInOut(0f, 0f, 1f, 1f);
-
     const int WaveCount = 39;
     const float WaveSpacing = 5f;
     const int BranchCount = 4;
@@ -30,7 +28,6 @@ public class CapricornBulletSystem2 : EnemyShooter<EnemyBullet>
                 for (int iii = 0; iii < BranchCount; iii++)
                 {
                     float z = i * ((ii * WaveSpacing) + (iii * BranchSpacing));
-                    //Vector3 pos = i * Vector3.Lerp(Vector3.left, Vector3.right, spawnInterpolation.Evaluate((float)ii / WaveCount));
                     Vector3 pos = Vector3.zero;
 
                     SpawnProjectile(ii % 2, z, pos).Fire();
@@ -38,6 +35,7 @@ public class CapricornBulletSystem2 : EnemyShooter<EnemyBullet>
 
                 yield return WaitForSeconds(ShootingCooldown);
             }
+
             yield return WaitForSeconds(3f);
         }
     }
