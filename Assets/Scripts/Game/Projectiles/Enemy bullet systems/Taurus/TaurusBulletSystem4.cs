@@ -4,12 +4,11 @@ using static CoroutineHelper;
 
 public class TaurusBulletSystem4 : EnemyShooter<EnemyBullet>
 {
-    const int WaveCount = 24;
-    const float WaveSpacing = 360f / WaveCount;
-    const int BranchCount = 12;
-    const float BranchSpacing = 360f / BranchCount;
+    const int WaveCount = 120;
+    const int BulletCount = 3;
+    const float SpawnAngleVariance = 45f;
 
-    protected override float ShootingCooldown => 0.08f;
+    protected override float ShootingCooldown => 0.05f;
 
     protected override IEnumerator Shoot()
     {
@@ -18,35 +17,24 @@ public class TaurusBulletSystem4 : EnemyShooter<EnemyBullet>
         while (enabled)
         {
             StartMoveAction?.Invoke();
-
             SetSubsystemEnabled(1);
 
-            yield return WaitForSeconds(6f);
+            yield return WaitForSeconds(1f);
 
             for (int i = 0; i < WaveCount; i++)
             {
-                float s = (WaveCount * 2 - i) * 0.1f - 1f;
-
-                for (int ii = 0; ii < BranchCount; ii++)
+                for (int ii = 0; ii < BulletCount; ii++)
                 {
-                    float z = (i * WaveSpacing) + (ii * BranchSpacing);
-                    Vector3 pos = transform.up.RotateVectorBy(z);
+                    float z = 180f + Random.Range(-SpawnAngleVariance, SpawnAngleVariance);
+                    Vector3 pos = Vector3.zero;
 
-                    var bullet = SpawnProjectile(0, z, pos);
-                    bullet.MoveSpeed = s;
-                    bullet.Fire();
-
-                    pos = transform.up.RotateVectorBy(-z);
-
-                    bullet = SpawnProjectile(1, -z, pos);
-                    bullet.MoveSpeed = s;
-                    bullet.Fire();
+                    SpawnProjectile(0, z, pos).Fire();
                 }
 
                 yield return WaitForSeconds(ShootingCooldown);
             }
 
-            yield return WaitForSeconds(4f);
+            yield return WaitForSeconds(3f);
         }
     }
 }
