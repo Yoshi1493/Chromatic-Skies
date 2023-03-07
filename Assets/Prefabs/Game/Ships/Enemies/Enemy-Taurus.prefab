@@ -503,7 +503,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyProjectiles:
   - {fileID: -4131985106494091585, guid: 078d62b44ea4c9e4b9605578ae725952, type: 3}
-  - {fileID: 709282588226500060, guid: aed82e978be3d7640a701881213c89df, type: 3}
   bulletData: {fileID: 11400000, guid: 67524b2ce0980b54ea411ca7bdfb2680, type: 2}
 --- !u!1 &7008567321455470459 stripped
 GameObject:
