@@ -7,7 +7,7 @@ public class PiscesBullet50 : ScriptableEnemyBullet<PiscesBulletSystem5, EnemyBu
     [SerializeField] ProjectileObject bulletData;
 
     const int BulletCount = 5;
-    const float BulletSpacing = 5f;
+    const float BulletSpacing = 4f;
 
     protected override float MaxLifetime => 1f;
 

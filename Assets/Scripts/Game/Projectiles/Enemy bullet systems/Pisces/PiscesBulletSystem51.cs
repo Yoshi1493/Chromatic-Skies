@@ -4,28 +4,29 @@ using static CoroutineHelper;
 
 public class PiscesBulletSystem51 : EnemyShooter<EnemyBullet>
 {
-    const int BulletCount = 5;
-
-    protected override float ShootingCooldown => 1.5f;
+    const int MinBulletCount = 3;
+    const int MaxBulletCount = 7;
 
     protected override IEnumerator Shoot()
     {
-        yield return WaitForSeconds(3f);
+        yield return WaitForSeconds(2f);
 
         while (enabled)
         {
-            for (int i = 0; i < BulletCount; i++)
-            {
-                float z = PlayerPosition.GetRotationDifference(transform.position);
-                Vector3 pos = Vector3.zero;
+            int bulletCount = Random.Range(MinBulletCount, MaxBulletCount);
 
-                bulletData.colour = bulletData.gradient.Evaluate(i / (BulletCount - 1f));
-                var bullet = SpawnProjectile(2, z, pos);
-                bullet.MoveSpeed = (i * 0.5f) + 2f;
-                bullet.Fire();
+            for (int i = 0; i < bulletCount; i++)
+            {
+                float x = 0.8f * Random.Range(-screenHalfWidth, screenHalfWidth);
+                float y = 1.1f * -screenHalfHeight;
+                float z = 180f;
+                Vector3 pos = new(x, y);
+
+                SpawnProjectile(2, z, pos, false).Fire();
+                yield return WaitForSeconds(ShootingCooldown);
             }
 
-            yield return WaitForSeconds(ShootingCooldown);
+            yield return WaitForSeconds(1f);
         }
     }
 }

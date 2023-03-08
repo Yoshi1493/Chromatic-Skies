@@ -6,7 +6,7 @@ public class PiscesBulletSystem5 : EnemyShooter<EnemyBullet>
 {
     const float WaveSpacing = 10f;
     const int BulletCount = 8;
-    const int BulletSpacing = 360 / BulletCount;
+    const float BulletSpacing = 360f / BulletCount;
 
     protected override float ShootingCooldown => 0.8f;
 
@@ -15,7 +15,8 @@ public class PiscesBulletSystem5 : EnemyShooter<EnemyBullet>
         yield return base.Shoot();
 
         SetSubsystemEnabled(1);
-        StartCoroutine(Move());
+        StartMoveAction?.Invoke();
+
         int i = 0;
 
         while (enabled)
@@ -30,16 +31,6 @@ public class PiscesBulletSystem5 : EnemyShooter<EnemyBullet>
 
             yield return WaitForSeconds(ShootingCooldown);
             i++;
-        }
-    }
-
-    IEnumerator Move()
-    {
-        while (enabled)
-        {
-            int r = Random.Range(4, 7);
-            yield return WaitForSeconds(r);
-            //yield return ownerShip.MoveToRandomPosition(1f, minSqrMagDelta: 1f, maxSqrMagDelta: 2f);
         }
     }
 }
