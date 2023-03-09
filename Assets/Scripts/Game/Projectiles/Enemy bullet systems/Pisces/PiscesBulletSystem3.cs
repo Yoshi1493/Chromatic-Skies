@@ -8,6 +8,8 @@ public class PiscesBulletSystem3 : EnemyShooter<EnemyBullet>
     const int BulletCount = 3;
     const int BulletSpacing = 360 / BulletCount;
 
+    protected override float ShootingCooldown => 0.15f;
+
     protected override IEnumerator Shoot()
     {
         yield return base.Shoot();

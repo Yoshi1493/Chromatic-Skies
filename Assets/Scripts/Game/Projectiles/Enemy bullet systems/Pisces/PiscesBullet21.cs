@@ -11,10 +11,10 @@ public class PiscesBullet21 : EnemyBullet
 
         while (enabled)
         {
-            StartCoroutine(this.RotateBy(90f, 1f, rotatesClockwise));
+            StartCoroutine(this.RotateBy(60f, 1f, rotatesClockwise));
 
-            yield return this.LerpSpeed(0f, 3f, 0.5f);
-            yield return this.LerpSpeed(3f, 0f, 0.5f);
+            yield return this.LerpSpeed(0.5f, 3f, 0.5f);
+            yield return this.LerpSpeed(3f, 0.5f, 0.5f);
 
             yield return this.LerpDirection(Vector3.down, Time.deltaTime);
 
