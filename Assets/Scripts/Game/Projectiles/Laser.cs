@@ -31,7 +31,9 @@ public abstract class Laser : Projectile
     public void Fire(float delay = 0.5f)
     {
         if (growAnimation != null)
+        {
             StopCoroutine(growAnimation);
+        }
 
         growAnimation = Grow(delay);
         StartCoroutine(growAnimation);
@@ -42,13 +44,17 @@ public abstract class Laser : Projectile
         base.Update();
 
         if (active)
+        {
             CheckCollisionWith<Player>();
+        }
     }
 
     public override void Destroy()
     {
         if (growAnimation != null)
+        {
             StopCoroutine(growAnimation);
+        }
 
         if (shrinkAnimation == null)
         {
@@ -67,6 +73,7 @@ public abstract class Laser : Projectile
         spriteRenderer.size = startSize;
         yield return WaitForSeconds(warningDuration);
 
+        active = true;
         float currentLerpTime = 0f;
 
         //activate laser
@@ -83,7 +90,6 @@ public abstract class Laser : Projectile
             yield return EndOfFrame;
         }
 
-        active = true;
         growAnimation = null;
     }
 
