@@ -4,36 +4,26 @@ using static CoroutineHelper;
 
 public class LibraBulletSystem31 : EnemyShooter<EnemyBullet>
 {
-    const int MinSize = 3;
-    const int MaxSize = 6;
-    const float Spacing = 1f;
+    const int WaveCount = 99;
 
-    protected override float ShootingCooldown => 0.3f;
+    protected override float ShootingCooldown => 0.08f;
 
     protected override IEnumerator Shoot()
     {
-        yield return WaitForSeconds(ShootingCooldown);
+        yield return WaitForSeconds(1f);
 
-        while (enabled)
+        for (int i = 0; i < WaveCount; i++)
         {
-            int randSize = Random.Range(MinSize, MaxSize);
-            float z = PlayerPosition.GetRotationDifference(transform.position);
+            float c = LibraBulletSystem3.SafeZone;
+            float z = 0.4f * Random.Range(-c, c);
+            Vector3 pos = Vector3.zero;
 
-            for (int i = 0; i <= randSize; i++)
-            {
-                float xOffset = (i - 1) * Spacing / 2f;
+            bulletData.colour = bulletData.gradient.Evaluate(i / (WaveCount - 1f));
+            SpawnProjectile(1, z, pos).Fire();
 
-                for (int j = 0; j < i; j++)
-                {
-                    Vector3 pos = ((j * Spacing - xOffset) * Vector3.right).RotateVectorBy(z);
-                    bulletData.colour = bulletData.gradient.Evaluate(i / (randSize - 1f));
-
-                    SpawnProjectile(0, z, pos).Fire();
-                }
-
-                yield return WaitForSeconds(ShootingCooldown);
-            }
+            yield return WaitForSeconds(ShootingCooldown);            
         }
 
+        enabled = false;
     }
 }

@@ -2,31 +2,24 @@ using System.Collections;
 using UnityEngine;
 using static CoroutineHelper;
 
-public class LibraBulletSystem32 : EnemyShooter<EnemyBullet>
+public class LibraBulletSystem32 : EnemyShooter<Laser>
 {
-    readonly float goldenRatio = (1f + Mathf.Sqrt(5f)) * 180f;
-
-    protected override float ShootingCooldown => 0.03f;
+    const int LaserCount = 7;
+    protected override float ShootingCooldown => 1f;
 
     protected override IEnumerator Shoot()
     {
-        int i = 0;
-        float bigBulletChance = 0f;
+        yield return WaitForSeconds(3f);
 
-        while (enabled)
+        for (int i = 0; i < LaserCount; i++)
         {
-            for (int j = 0; j < 30; j++)
-            {
-                float z = i * goldenRatio;
-                Vector3 pos = 0.5f * transform.up.RotateVectorBy(z);
+            float z = PlayerPosition.GetRotationDifference(transform.position);
+            Vector3 pos = Vector3.zero;
 
-                SpawnProjectile(Random.value > Mathf.PingPong(bigBulletChance, 1f) ? 1 : 2, z, pos).Fire();
-
-                i++;
-                yield return WaitForSeconds(ShootingCooldown);
-            }
-
-            bigBulletChance += 0.1f;
+            SpawnProjectile(0, z + 180f, pos).Fire();
+            yield return WaitForSeconds(ShootingCooldown);
         }
+
+        enabled = false;
     }
 }
