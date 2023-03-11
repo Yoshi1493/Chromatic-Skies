@@ -1,5 +1,4 @@
 using System.Collections;
-using UnityEngine;
 
 public class LibraBullet31 : EnemyBullet
 {
@@ -7,6 +6,6 @@ public class LibraBullet31 : EnemyBullet
 
     protected override IEnumerator Move()
     {
-        yield return this.LerpSpeed(9f, Random.Range(3f, 4f), 0.6f);
+        yield return this.LerpSpeed(9f, 3f, 0.6f);
     }
 }

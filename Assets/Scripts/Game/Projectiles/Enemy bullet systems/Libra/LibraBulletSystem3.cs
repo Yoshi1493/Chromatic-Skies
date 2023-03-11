@@ -20,9 +20,11 @@ public class LibraBulletSystem3 : EnemyShooter<EnemyBullet>
 
             for (int i = 0; i < WaveCount; i++)
             {
+                float t = Mathf.Sin(i * 3.6f * Mathf.Deg2Rad) * (SafeZone / 4f);
+
                 for (int ii = 0; ii < BranchCount; ii++)
                 {
-                    float z = (SafeZone * 0.5f) + (ii * BranchSpacing);
+                    float z = (SafeZone * 0.5f) + (ii * BranchSpacing) + t;
                     Vector3 pos = Vector3.zero;
 
                     bulletData.colour = bulletData.gradient.Evaluate(i / (WaveCount - 1f));

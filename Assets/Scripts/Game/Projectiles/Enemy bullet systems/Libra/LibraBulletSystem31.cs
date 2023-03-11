@@ -5,6 +5,7 @@ using static CoroutineHelper;
 public class LibraBulletSystem31 : EnemyShooter<EnemyBullet>
 {
     const int WaveCount = 99;
+    const float SafeZone = LibraBulletSystem3.SafeZone;
 
     protected override float ShootingCooldown => 0.08f;
 
@@ -14,8 +15,7 @@ public class LibraBulletSystem31 : EnemyShooter<EnemyBullet>
 
         for (int i = 0; i < WaveCount; i++)
         {
-            float c = LibraBulletSystem3.SafeZone;
-            float z = 0.4f * Random.Range(-c, c);
+            float z = 0.4f * Random.Range(-SafeZone, SafeZone);
             Vector3 pos = Vector3.zero;
 
             bulletData.colour = bulletData.gradient.Evaluate(i / (WaveCount - 1f));

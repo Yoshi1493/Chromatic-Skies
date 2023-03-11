@@ -16,7 +16,9 @@ public class LibraBulletSystem32 : EnemyShooter<Laser>
             float z = PlayerPosition.GetRotationDifference(transform.position);
             Vector3 pos = Vector3.zero;
 
+            bulletData.colour = bulletData.gradient.Evaluate(i / (LaserCount - 1f));
             SpawnProjectile(0, z + 180f, pos).Fire();
+
             yield return WaitForSeconds(ShootingCooldown);
         }
 
