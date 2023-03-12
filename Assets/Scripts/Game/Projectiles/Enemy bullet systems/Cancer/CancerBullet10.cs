@@ -9,6 +9,9 @@ public class CancerBullet10 : ScriptableEnemyBullet<CancerBulletSystem1, EnemyBu
     const float BulletSpeed = 3f;
     const float BulletSpeedMultiplier = 0.3f;
 
+    [Space]
+    [SerializeField] ProjectileObject bulletData;
+
     protected override IEnumerator Move()
     {
         yield return null;
@@ -21,6 +24,8 @@ public class CancerBullet10 : ScriptableEnemyBullet<CancerBulletSystem1, EnemyBu
 
         for (int i = 0; i < WaveCount; i++)
         {
+            bulletData.colour = bulletData.gradient.Evaluate(i / (WaveCount - 1f));
+
             for (int ii = 0; ii < BulletCount; ii++)
             {
                 float z = ii * BulletSpacing + r;
