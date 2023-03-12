@@ -1,0 +1,38 @@
+using System.Collections;
+using UnityEngine;
+
+public class CancerBullet10 : ScriptableEnemyBullet<CancerBulletSystem1, EnemyBullet>
+{
+    const int WaveCount = 3;
+    const int BulletCount = 3;
+    const float BulletSpacing = 360f / BulletCount;
+    const float BulletSpeed = 3f;
+    const float BulletSpeedMultiplier = 0.3f;
+
+    protected override IEnumerator Move()
+    {
+        yield return null;
+        Destroy();
+    }
+
+    public override void Destroy()
+    {
+        float r = ownerShip.transform.position.GetRotationDifference(transform.position);
+
+        for (int i = 0; i < WaveCount; i++)
+        {
+            for (int ii = 0; ii < BulletCount; ii++)
+            {
+                float z = ii * BulletSpacing + r;
+                float s = BulletSpeed + (i * BulletSpeedMultiplier);
+                Vector3 pos = transform.position;
+
+                var bullet = SpawnBullet(1, z, pos, false);
+                bullet.MoveSpeed = s;
+                bullet.Fire();
+            }
+        }
+
+        base.Destroy();
+    }
+}

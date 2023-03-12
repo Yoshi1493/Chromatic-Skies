@@ -1,10 +1,20 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using static CoroutineHelper;
+using static MathHelper;
 
 public class CancerBulletSystem1 : EnemyShooter<EnemyBullet>
 {
-    const int BulletCount = 0;
+    const int WaveCount = 3;
+    const float WaveSpacing = BulletSpacing / 2f;
+    const int BulletCount = 15;
+    const float BulletSpacing = 360f / BulletCount;
+    const float BulletSpeed = 5f;
+
+    Stack<EnemyBullet> bullets = new(BulletCount);
+
+    protected override float ShootingCooldown => 0.2f;
 
     protected override IEnumerator Shoot()
     {
@@ -12,14 +22,38 @@ public class CancerBulletSystem1 : EnemyShooter<EnemyBullet>
 
         while (enabled)
         {
-            for (int i = 0; i < BulletCount; i++)
-            {
-                float z = 0f;
-                Vector3 pos = Vector3.zero;
+            float r = RandomAngleDeg;
 
-                SpawnProjectile(0, z, pos).Fire();
+            for (int i = 0; i < WaveCount; i++)
+            {
+                for (int ii = 0; ii < BulletCount; ii++)
+                {
+                    float z = (i * WaveSpacing) + (ii * -BulletSpacing) + r;
+                    Vector3 pos = Vector3.zero;
+
+                    var bullet = SpawnProjectile(0, z, pos);
+                    bullet.StartCoroutine(bullet.LerpSpeed(BulletSpeed - i, 0f, 1f));
+                    bullets.Push(bullet);
+                }
+
                 yield return WaitForSeconds(ShootingCooldown);
             }
+
+            yield return WaitForSeconds(1f);
+
+            for (int i = 0; i < WaveCount; i++)
+            {
+                for (int ii = 0; ii < BulletCount; ii++)
+                {
+                    bullets.Pop().Fire();
+                    yield return WaitForSeconds(ShootingCooldown * 0.25f);
+                }
+            }
+
+            yield return WaitForSeconds(2f);
+
+            StartMoveAction?.Invoke();
+            yield return WaitForSeconds(2f);
         }
     }
 }
