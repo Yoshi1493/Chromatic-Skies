@@ -5,7 +5,6 @@ using static CoroutineHelper;
 public class VirgoBulletSystem4 : EnemyShooter<EnemyBullet>
 {
     const int WaveCount = 200;
-    float WaveSpacing = 0f;
     const int BranchCount = 5;
     const float BranchSpacing = 360f / BranchCount;
 
@@ -18,7 +17,7 @@ public class VirgoBulletSystem4 : EnemyShooter<EnemyBullet>
 
         while (enabled)
         {
-            WaveSpacing = 0f;
+            float WaveSpacing = 0f;
             float r = Random.Range(0f, BranchSpacing);
             Vector3 pos = Vector3.zero;
 
