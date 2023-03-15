@@ -53,7 +53,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3140064405051798717, guid: 4e06125b108514547b6fc9b6887da3eb, type: 3}
       propertyPath: m_Name
-      value: Cancer bullet 1_2
+      value: Cancer bullet 2_0
       objectReference: {fileID: 0}
     - target: {fileID: 7943771795135557499, guid: 4e06125b108514547b6fc9b6887da3eb, type: 3}
       propertyPath: power
@@ -83,7 +83,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3140064405051798717, guid: 4e06125b108514547b6fc9b6887da3eb, type: 3}
   m_PrefabInstance: {fileID: 4489721518377228893}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &7486984218575050217
+--- !u!114 &7538200852571620569
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -92,10 +92,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1575430968703495904}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 97e7164f6ae54ea4c9cfc84d9eb63f6a, type: 3}
+  m_Script: {fileID: 11500000, guid: a1cceca4c73cb9942acf1addffe2f08f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   transform: {fileID: 0}
-  projectileData: {fileID: 11400000, guid: 13118b2428bcdee47886daa4981d6b8f, type: 2}
+  projectileData: {fileID: 11400000, guid: 3484180bfd812414caaf7207ead3cc87, type: 2}
   moveDirection: {x: 0, y: 0, z: 0}
   currentSpeed: 0
