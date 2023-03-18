@@ -11,8 +11,6 @@ public class CancerBullet20 : ScriptableEnemyBullet<CancerBulletSystem2, EnemyBu
     protected override IEnumerator Move()
     {
         yield return this.LerpSpeed(2.5f, 0f, 0.5f);
-
-        StartCoroutine(this.RotateBy(180f, MaxLifetime, true));
         yield return this.LerpSpeed(0f, 2.5f, 0.5f);
 
         while (currentLifetime < 5f)
