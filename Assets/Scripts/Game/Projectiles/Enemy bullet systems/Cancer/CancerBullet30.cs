@@ -1,37 +1,31 @@
 using System.Collections;
 using UnityEngine;
 
-public class CancerBullet30 : EnemyBullet
+public class CancerBullet30 : ScriptableEnemyBullet<CancerBulletSystem3, EnemyBullet>
 {
-    float magnitude = CancerBulletSystem3.SpawnRadius;
-
-    Vector3 faceDirection;
-    Vector3 smoothDampVel = Vector3.zero;
-    float z;
-
-    protected override float MaxLifetime => Mathf.Infinity;
+    const int BulletCount = 18;
+    const float ArcHalfWidth = 45f;
+    protected override float MaxLifetime => 0.25f;
 
     protected override IEnumerator Move()
     {
-        yield return this.LerpSpeed(magnitude * 2f, 0f, 1f);
-
-        faceDirection = playerShip.transform.position - ownerShip.transform.position;
-        z = transform.eulerAngles.z + 180f;
-
-        while (enabled)
-        {
-            UpdatePosition();
-            yield return null;
-        }
+        MoveSpeed = 8f;
+        yield break;
     }
 
-    void UpdatePosition()
+    public override void Destroy()
     {
-        Vector3 ownerShipPos = ownerShip.transform.position;
-        Vector3 targetFaceDirection = playerShip.transform.position - ownerShipPos;
+        MoveSpeed = 0f;
+        float r = transform.eulerAngles.z + 180f;
 
-        faceDirection = Vector3.SmoothDamp(faceDirection, targetFaceDirection, ref smoothDampVel, 1.0f).normalized;
+        for (int i = 0; i < BulletCount; i++)
+        {
+            float z = r + Random.Range(-ArcHalfWidth, ArcHalfWidth);
+            Vector3 pos = transform.position;
 
-        transform.position = ownerShipPos + (magnitude * faceDirection.RotateVectorBy(z));
+            SpawnBullet(1, z, pos, false).Fire();
+        }
+
+        base.Destroy();
     }
 }

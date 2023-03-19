@@ -56,6 +56,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6528504431092191755}
+  - component: {fileID: 818393631874617243}
   m_Layer: 0
   m_Name: Bullet Subsystem 1
   m_TagString: Untagged
@@ -78,6 +79,23 @@ Transform:
   m_Father: {fileID: 345956944879005479}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &818393631874617243
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1370136738364219184}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c19b5d77ab810f24587ada5f28b9d4ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyProjectiles:
+  - {fileID: -4846121766351668819, guid: 6c9595299dd9bbf4e883f7c9c2596329, type: 3}
+  - {fileID: 2569442909480772670, guid: 0e9152dcfcc10e04c9a65e24a0561c27, type: 3}
+  - {fileID: 2569442909480772670, guid: 1da6367c2e6870a4aab37d6f1e3951df, type: 3}
+  bulletData: {fileID: 11400000, guid: 2c63cc5cd39d6024aa2a38a0ff066275, type: 2}
 --- !u!1001 &6759093168088370692
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -196,9 +214,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyProjectiles:
-  - {fileID: -4846121766351668819, guid: 6c9595299dd9bbf4e883f7c9c2596329, type: 3}
-  - {fileID: 2569442909480772670, guid: 0e9152dcfcc10e04c9a65e24a0561c27, type: 3}
-  - {fileID: 2569442909480772670, guid: 1da6367c2e6870a4aab37d6f1e3951df, type: 3}
+  - {fileID: 1017866418926855754, guid: 3c460a3dfd832554d8b5de8a1918eefe, type: 3}
+  - {fileID: -1226173916632227879, guid: 17acae8a291fe4a43816c10546e583c8, type: 3}
   bulletData: {fileID: 11400000, guid: 2c63cc5cd39d6024aa2a38a0ff066275, type: 2}
 --- !u!1 &3777441332194849460 stripped
 GameObject:
