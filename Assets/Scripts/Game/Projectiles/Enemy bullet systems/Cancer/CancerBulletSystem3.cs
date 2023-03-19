@@ -1,25 +1,25 @@
 using System.Collections;
 using UnityEngine;
-using static CoroutineHelper;
 
 public class CancerBulletSystem3 : EnemyShooter<EnemyBullet>
 {
-    const int BulletCount = 0;
+    const int BulletCount = 16;
+    const float BulletSpacing = 360f / BulletCount;
+    public const float SpawnRadius = 2f;
 
     protected override IEnumerator Shoot()
     {
         yield return base.Shoot();
 
-        while (enabled)
+        for (int i = 0; i < BulletCount; i++)
         {
-            for (int i = 0; i < BulletCount; i++)
-            {
-                float z = 0f;
-                Vector3 pos = Vector3.zero;
+            int b = i == 0 ? 0 : i % 4 == 0 ? 1 : 2;
+            float z = i * BulletSpacing;
+            Vector3 pos = Vector3.zero;
 
-                SpawnProjectile(0, z, pos).Fire();
-                yield return WaitForSeconds(ShootingCooldown);
-            }
+            SpawnProjectile(b, z, pos).Fire();
         }
+
+        yield break;
     }
 }
