@@ -1,24 +1,30 @@
 using System.Collections;
 using UnityEngine;
 
-public class CancerBullet31 : EnemyBullet
+public class CancerBullet31 : ScriptableEnemyBullet<CancerBulletSystem3, EnemyBullet>
 {
-    protected override Collider2D CollisionCondition => Physics2D.OverlapBox(transform.position, spriteRenderer.size, transform.eulerAngles.z, CollisionMask);
+    const int BulletCount = 18;
+    const float BulletSpacing = 360f / BulletCount;
 
-    protected override float MaxLifetime => 3f;
+    protected override float MaxLifetime => 0.5f;
 
     protected override IEnumerator Move()
     {
-        MoveSpeed = Random.Range(6f, 8f);
-        yield break;
+        yield return this.LerpSpeed(5f, 0f, MaxLifetime);
     }
 
-    protected override void OnDrawGizmos()
+    public override void Destroy()
     {
-        if (UnityEditor.EditorApplication.isPlaying)
+        MoveSpeed = 0f;
+
+        for (int i = 0; i < BulletCount; i++)
         {
-            Gizmos.matrix = transform.localToWorldMatrix;
-            Gizmos.DrawCube(Vector3.zero, spriteRenderer.size);
+            float z = i * BulletSpacing;
+            Vector3 pos = transform.position;
+
+            SpawnBullet(2, z, pos, false).Fire();
         }
+
+        base.Destroy();
     }
 }

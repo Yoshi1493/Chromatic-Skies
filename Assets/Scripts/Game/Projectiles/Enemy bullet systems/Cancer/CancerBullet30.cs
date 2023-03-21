@@ -3,8 +3,9 @@ using UnityEngine;
 
 public class CancerBullet30 : ScriptableEnemyBullet<CancerBulletSystem3, EnemyBullet>
 {
-    const int BulletCount = 18;
-    const float ArcHalfWidth = 45f;
+    const int BulletCount = 6;
+    const float BulletSpacing = 360f / BulletCount;
+
     protected override float MaxLifetime => 0.25f;
 
     protected override IEnumerator Move()
@@ -15,12 +16,11 @@ public class CancerBullet30 : ScriptableEnemyBullet<CancerBulletSystem3, EnemyBu
 
     public override void Destroy()
     {
-        MoveSpeed = 0f;
-        float r = transform.eulerAngles.z + 180f;
+        float r = Random.Range(0f, BulletSpacing);
 
         for (int i = 0; i < BulletCount; i++)
         {
-            float z = r + Random.Range(-ArcHalfWidth, ArcHalfWidth);
+            float z = i * BulletSpacing + r;
             Vector3 pos = transform.position;
 
             SpawnBullet(1, z, pos, false).Fire();
