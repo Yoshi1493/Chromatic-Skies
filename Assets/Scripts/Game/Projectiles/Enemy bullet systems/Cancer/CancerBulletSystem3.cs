@@ -4,22 +4,30 @@ using static CoroutineHelper;
 
 public class CancerBulletSystem3 : EnemyShooter<EnemyBullet>
 {
-    protected override float ShootingCooldown => 2f;
+    const int BulletCount = 4;
+    const float BulletSpacing = 360f / BulletCount;
+
+    protected override float ShootingCooldown => 3f;
 
     protected override IEnumerator Shoot()
     {
         yield return base.Shoot();
 
         SetSubsystemEnabled(1);
+        StartMoveAction?.Invoke();
         Transform c = transform.GetChild(0);
+
         yield return WaitForSeconds(1f);
 
         while (enabled)
         {
-            float z = c.eulerAngles.z;
-            Vector3 pos = Vector3.zero;
+            for (int i = 0; i < BulletCount; i++)
+            {
+                float z = i * BulletSpacing + c.eulerAngles.z;
+                Vector3 pos = Vector3.zero;
 
-            SpawnProjectile(0, z, pos).Fire();
+                SpawnProjectile(0, z, pos).Fire();
+            }
 
             yield return WaitForSeconds(ShootingCooldown);
         }

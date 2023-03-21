@@ -5,7 +5,7 @@ public class CancerBullet32 : EnemyBullet
 {
     protected override Collider2D CollisionCondition => Physics2D.OverlapBox(transform.position, spriteRenderer.size, transform.eulerAngles.z, CollisionMask);
 
-    protected override float MaxLifetime => 5f;
+    protected override float MaxLifetime => 6f;
 
     protected override IEnumerator Move()
     {

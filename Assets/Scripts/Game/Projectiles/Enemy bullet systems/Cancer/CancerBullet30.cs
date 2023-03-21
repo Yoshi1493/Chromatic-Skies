@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class CancerBullet30 : ScriptableEnemyBullet<CancerBulletSystem3, EnemyBullet>
 {
-    const int BulletCount = 6;
+    const int BulletCount = 3;
     const float BulletSpacing = 360f / BulletCount;
 
     protected override float MaxLifetime => 0.25f;
