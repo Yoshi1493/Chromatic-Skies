@@ -1,18 +1,30 @@
 using System.Collections;
-using static CoroutineHelper;
+using UnityEngine;
 
 public class CancerBullet40 : EnemyBullet
 {
+    Vector3 rotationAxis;
+    const float RotationSpeed = 0.5f;
+
     protected override IEnumerator Move()
     {
-        MoveSpeed = 8f;
+        MoveSpeed = 5f;
+        yield return null;
+    }
 
-        while (enabled)
+    protected override void OnEnable()
+    {
+        base.OnEnable();
+        rotationAxis = Vector3.right.RotateVectorBy(transform.eulerAngles.z);
+    }
+
+    protected override void Update()
+    {
+        base.Update();
+
+        if (movementBehaviour == null)
         {
-            yield return WaitForSeconds(0.25f);
-            yield return this.RotateBy(180f, 0.1f);
-            MoveSpeed = 8f;
-            yield return WaitForSeconds(0.25f);
+            transform.RotateAround(ownerShip.transform.position, rotationAxis, RotationSpeed);
         }
     }
 }

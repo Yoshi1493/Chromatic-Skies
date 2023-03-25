@@ -1,12 +1,16 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using static CoroutineHelper;
 
 public class CancerBulletSystem4 : EnemyShooter<EnemyBullet>
 {
+    const int WaveCount = 22;
+    const float WaveSpacing = -3f;
     const int BranchCount = 6;
     const float BranchSpacing = 360f / BranchCount;
-    const int BulletCount = 1;
+
+    List<EnemyBullet> bullets = new(WaveCount * BranchCount);
 
     protected override IEnumerator Shoot()
     {
@@ -14,14 +18,23 @@ public class CancerBulletSystem4 : EnemyShooter<EnemyBullet>
 
         //while (enabled)
         {
-            for (int i = 0; i < BulletCount; i++)
+            for (int i = 0; i < WaveCount; i++)
             {
-                float z = 0f;
-                Vector3 pos = 0.1f * transform.up.RotateVectorBy(z + 90f);
+                for (int ii = 0; ii < BranchCount; ii++)
+                {
+                    float z = (i * WaveSpacing) + (ii * BranchSpacing);
+                    Vector3 pos = 2f * Vector3.forward;
 
-                SpawnProjectile(0, z, pos).Fire();
+                    bullets.Add(SpawnProjectile(0, z, pos));
+                }
+
                 yield return WaitForSeconds(ShootingCooldown);
             }
+
+            yield return WaitForSeconds(3);
+
+            bullets.ForEach(b => b.Fire());
+            bullets.Clear();
         }
     }
 }
