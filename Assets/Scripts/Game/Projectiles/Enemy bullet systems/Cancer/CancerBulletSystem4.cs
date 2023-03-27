@@ -31,9 +31,19 @@ public class CancerBulletSystem4 : EnemyShooter<EnemyBullet>
                 yield return WaitForSeconds(ShootingCooldown);
             }
 
-            yield return WaitForSeconds(3);
+            yield return WaitForSeconds(1f);
 
-            bullets.ForEach(b => b.Fire());
+            for (int i = 0; i < WaveCount; i++)
+            {
+                for (int ii = 0; ii < BranchCount; ii++)
+                {
+                    int b = (i * BranchCount) + ii;
+                    bullets[b].Fire();
+                }
+
+                yield return WaitForSeconds(ShootingCooldown);
+            }
+
             bullets.Clear();
         }
     }
