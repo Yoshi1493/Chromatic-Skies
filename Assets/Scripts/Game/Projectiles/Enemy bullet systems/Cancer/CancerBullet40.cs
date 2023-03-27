@@ -8,7 +8,6 @@ public class CancerBullet40 : EnemyBullet
 
     protected override IEnumerator Move()
     {
-        MoveSpeed = 5f;
         yield return null;
     }
 

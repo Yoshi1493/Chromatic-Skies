@@ -9,6 +9,8 @@ public class CancerBulletSystem4 : EnemyShooter<EnemyBullet>
     const float WaveSpacing = -3f;
     const int BranchCount = 6;
     const float BranchSpacing = 360f / BranchCount;
+    const float BulletSpeed = 4f;
+    const float BulletSpeedMultiplier = 0.1f;
 
     List<EnemyBullet> bullets = new(WaveCount * BranchCount);
 
@@ -38,6 +40,9 @@ public class CancerBulletSystem4 : EnemyShooter<EnemyBullet>
                 for (int ii = 0; ii < BranchCount; ii++)
                 {
                     int b = (i * BranchCount) + ii;
+
+                    float s = (i * BulletSpeedMultiplier) + BulletSpeed;
+                    bullets[b].MoveSpeed = s;
                     bullets[b].Fire();
                 }
 
