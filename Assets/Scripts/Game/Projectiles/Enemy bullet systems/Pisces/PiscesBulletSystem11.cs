@@ -9,6 +9,7 @@ public class PiscesBulletSystem11 : EnemyShooter<EnemyBullet>
     const float WaveSpacing = BulletSpacing / WaveCount;
     const int BulletCount = 24;
     const int BulletSpacing = 360 / BulletCount;
+    const float BulletBaseSpeed = 1f;
     const float BulletSpeedMultiplier = 2f;
 
     protected override float ShootingCooldown => 0.5f;
@@ -22,7 +23,7 @@ public class PiscesBulletSystem11 : EnemyShooter<EnemyBullet>
                 float r = Random.value;
 
                 float z = (i * WaveSpacing) + (ii * BulletSpacing);
-                float s = (r * BulletSpeedMultiplier) + 1f;
+                float s = BulletBaseSpeed + (r * BulletSpeedMultiplier);
 
                 bulletData.colour = bulletData.gradient.Evaluate(r);
                 var bullet = SpawnProjectile(1, z, Vector3.zero);

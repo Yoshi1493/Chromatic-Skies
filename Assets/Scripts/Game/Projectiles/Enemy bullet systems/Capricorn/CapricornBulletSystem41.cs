@@ -8,8 +8,8 @@ public class CapricornBulletSystem41 : EnemyShooter<EnemyBullet>
     const int BranchCount = 24;
     const float BranchSpacing = 20f;
     const int BulletCount = 12;
-    const float BulletSpeed = 3f;
-
+    const float BulletBaseSpeed = 3f;
+    const float BulletSpeedMultiplier = 0.4f;
     protected override IEnumerator Shoot()
     {
         for (int i = 0; i < BranchCount; i++)
@@ -19,14 +19,14 @@ public class CapricornBulletSystem41 : EnemyShooter<EnemyBullet>
 
             for (int ii = 0; ii < BulletCount; ii++)
             {
-                float s = BulletSpeed + (ii * 0.4f);
+                float s = BulletBaseSpeed + (ii * BulletSpeedMultiplier);
                 bulletData.colour = bulletData.gradient.Evaluate(ii / (BulletCount - 1f));
 
                 var bullet = SpawnProjectile(1, z, pos);
                 bullet.MoveSpeed = s;
                 bullet.Fire();
 
-                bullet.StartCoroutine(bullet.LerpSpeed(BulletSpeed, 0f, 1f));
+                bullet.StartCoroutine(bullet.LerpSpeed(BulletBaseSpeed, 0f, 1f));
             }
 
             yield return WaitForSeconds(ShootingCooldown);

@@ -10,7 +10,7 @@ public class CancerBulletSystem1 : EnemyShooter<EnemyBullet>
     const float WaveSpacing = BulletSpacing / 2f;
     const int BulletCount = 15;
     const float BulletSpacing = 360f / BulletCount;
-    const float BulletSpeed = 5f;
+    const float BulletBaseSpeed = 5f;
 
     Stack<EnemyBullet> bullets = new(BulletCount);
 
@@ -32,7 +32,7 @@ public class CancerBulletSystem1 : EnemyShooter<EnemyBullet>
                     Vector3 pos = Vector3.zero;
 
                     var bullet = SpawnProjectile(0, z, pos);
-                    bullet.StartCoroutine(bullet.LerpSpeed(BulletSpeed - i, 0f, 1f));
+                    bullet.StartCoroutine(bullet.LerpSpeed(BulletBaseSpeed - i, 0f, 1f));
                     bullets.Push(bullet);
                 }
 

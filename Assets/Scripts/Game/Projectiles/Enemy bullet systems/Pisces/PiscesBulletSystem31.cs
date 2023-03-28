@@ -9,6 +9,7 @@ public class PiscesBulletSystem31 : EnemyShooter<EnemyBullet>
     const float BranchSpacing = 360f / BranchCount;
     const int BulletCount = 3;
     const float BulletSpacing = 6f;
+    const float BulletBaseSpeed = 2f;
     const float BulletSpeedMultiplier = 0.5f;
 
     protected override IEnumerator Shoot()
@@ -22,7 +23,7 @@ public class PiscesBulletSystem31 : EnemyShooter<EnemyBullet>
                 for (int iii = 0; iii < BulletCount; iii++)
                 {
                     float z = (i * WaveSpacing) + (ii * BranchSpacing) + (iii * BulletSpacing);
-                    float s = (iii * BulletSpeedMultiplier) + 2f;
+                    float s = BulletBaseSpeed + (iii * BulletSpeedMultiplier);
                     Vector3 pos = Vector3.zero;
 
                     bulletData.colour = bulletData.gradient.Evaluate(iii / (BulletCount - 1f));

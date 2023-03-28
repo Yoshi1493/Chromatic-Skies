@@ -7,7 +7,8 @@ public class PiscesBulletSystem1 : EnemyShooter<EnemyBullet>
     const int BulletCount = 36;
     const int BulletSpacing = 360 / BulletCount;
     const float BulletOffset = BulletSpacing / 8f;
-    const float BulletSpeedMultiplier = 0.8f;
+    const float BulletBaseSpeed = 2f;
+    const float BulletSpeedMultiplier = 0.1f;
 
     protected override float ShootingCooldown => 0.04f;
 
@@ -20,7 +21,7 @@ public class PiscesBulletSystem1 : EnemyShooter<EnemyBullet>
             for (int i = 0; i < BulletCount; i++)
             {
                 float z = i * BulletSpacing + BulletOffset;
-                float s = 2 + (i / 10f);
+                float s = BulletBaseSpeed + (i * BulletSpeedMultiplier);
                 Vector3 pos = Vector3.zero;
 
                 bulletData.colour = bulletData.gradient.Evaluate(i / (BulletCount - 1f));
@@ -29,7 +30,7 @@ public class PiscesBulletSystem1 : EnemyShooter<EnemyBullet>
                 bullet.Fire();
 
                 bullet = SpawnProjectile(0, z + (0.5f * BulletSpacing), pos);
-                bullet.MoveSpeed = s * BulletSpeedMultiplier;
+                bullet.MoveSpeed = s * 0.8f;
                 bullet.Fire();
 
                 yield return WaitForSeconds(ShootingCooldown);

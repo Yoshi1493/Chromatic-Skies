@@ -9,6 +9,7 @@ public class LibraBullet10 : ScriptableEnemyBullet<LibraBulletSystem1, EnemyBull
     const float WaveSpacing = 8f;
     const int BranchCount = 4;
     const float BranchSpacing = 360f / BranchCount;
+    const float BulletBaseSpeed = 2f;
     const float BulletSpeedMultiplier = 0.5f;
     const float ShootingCooldown = 0.2f;
 
@@ -33,7 +34,7 @@ public class LibraBullet10 : ScriptableEnemyBullet<LibraBulletSystem1, EnemyBull
             for (int ii = 0; ii < BranchCount; ii++)
             {
                 float z = -(i * WaveSpacing) - (ii * BranchSpacing);
-                float s = (BranchCount - ii) * BulletSpeedMultiplier + 2f;
+                float s = BulletBaseSpeed + ((BranchCount - ii) * BulletSpeedMultiplier);
                 Vector3 pos = transform.position;
 
                 var bullet = SpawnBullet(bulletID, z, pos, false);

@@ -7,7 +7,7 @@ public class CapricornBulletSystem5 : EnemyShooter<EnemyBullet>
     const int WaveCount = 7;
     const int BulletCount = 48;
     const float BulletSpacing = 360f / BulletCount;
-    const float BulletSpeed = 2.5f;
+    const float BulletBaseSpeed = 2.5f;
     const float BulletSpeedMultiplier = 0.2f;
 
     protected override float ShootingCooldown => 0.3f;
@@ -25,7 +25,7 @@ public class CapricornBulletSystem5 : EnemyShooter<EnemyBullet>
                 for (int ii = 0; ii < BulletCount; ii++)
                 {
                     float z = ii * BulletSpacing;
-                    float s = -i * BulletSpeedMultiplier + BulletSpeed;
+                    float s = BulletBaseSpeed + (-i * BulletSpeedMultiplier);
                     Vector3 pos = Vector3.zero;
 
                     bulletData.colour = bulletData.gradient.Evaluate(i / (WaveCount - 1f));

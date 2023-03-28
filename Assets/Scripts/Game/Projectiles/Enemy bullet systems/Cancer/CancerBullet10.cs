@@ -6,7 +6,7 @@ public class CancerBullet10 : ScriptableEnemyBullet<CancerBulletSystem1, EnemyBu
     const int WaveCount = 3;
     const int BulletCount = 3;
     const float BulletSpacing = 360f / BulletCount;
-    const float BulletSpeed = 3f;
+    const float BulletBaseSpeed = 3f;
     const float BulletSpeedMultiplier = 0.3f;
 
     [Space]
@@ -29,7 +29,7 @@ public class CancerBullet10 : ScriptableEnemyBullet<CancerBulletSystem1, EnemyBu
             for (int ii = 0; ii < BulletCount; ii++)
             {
                 float z = ii * BulletSpacing + r;
-                float s = BulletSpeed + (i * BulletSpeedMultiplier);
+                float s = BulletBaseSpeed + (i * BulletSpeedMultiplier);
                 Vector3 pos = transform.position;
 
                 var bullet = SpawnBullet(1, z, pos, false);
