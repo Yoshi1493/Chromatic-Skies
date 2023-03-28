@@ -11,6 +11,7 @@ public class VirgoBulletSystem2 : EnemyShooter<EnemyBullet>
     const int RingCount = 12;
     const int BulletCount = 12;
     const float BulletSpacing = 360f / BulletCount;
+    const float BulletBaseSpeed = 2f;
 
     List<EnemyBullet> bullets = new(RingCount * (BulletCount * 2 - 1));
 
@@ -71,7 +72,7 @@ public class VirgoBulletSystem2 : EnemyShooter<EnemyBullet>
 
     void SpawnBullet(float z, Vector3 pos)
     {
-        float s = 2f * pos.magnitude;
+        float s = BulletBaseSpeed * pos.magnitude;
         bulletData.colour = bulletData.gradient.Evaluate(s / RingRadius * 0.5f);
 
         var bullet = SpawnProjectile(0, z, Vector3.zero);

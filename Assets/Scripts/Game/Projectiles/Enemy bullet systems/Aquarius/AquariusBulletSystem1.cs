@@ -10,6 +10,8 @@ public class AquariusBulletSystem1 : EnemyShooter<EnemyBullet>
     const float BulletSpacing = 15f;
     const float MinAngle = 180f;
     const float MaxAngle = 240f;
+    const float BulletBaseSpeed = 3f;
+    const float BulletSpeedMultiplier = -0.2f;
 
     protected override IEnumerator Shoot()
     {
@@ -24,7 +26,7 @@ public class AquariusBulletSystem1 : EnemyShooter<EnemyBullet>
                 for (int ii = 0; ii < BulletCount; ii++)
                 {
                     float z = (i * WaveSpacing) - (ii * BulletSpacing) + 180f;
-                    float s = (ii * -0.2f) + 3f;
+                    float s = BulletBaseSpeed + (ii * BulletSpeedMultiplier);
                     Vector3 pos = Vector3.zero;
 
                     var bullet = SpawnProjectile(0, z, pos);

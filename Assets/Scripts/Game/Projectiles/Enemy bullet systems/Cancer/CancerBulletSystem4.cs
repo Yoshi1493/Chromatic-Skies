@@ -41,7 +41,7 @@ public class CancerBulletSystem4 : EnemyShooter<EnemyBullet>
                 {
                     int b = (i * BranchCount) + ii;
 
-                    float s = (i * BulletSpeedMultiplier) + BulletBaseSpeed;
+                    float s = BulletBaseSpeed + (i * BulletSpeedMultiplier);
                     bullets[b].MoveSpeed = s;
                     bullets[b].Fire();
                 }
