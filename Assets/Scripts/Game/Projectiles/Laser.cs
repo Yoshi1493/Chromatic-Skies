@@ -113,6 +113,7 @@ public abstract class Laser : Projectile
         shrinkAnimation = null;
     }
 
+#if UNITY_EDITOR
     protected override void OnDrawGizmos()
     {
         if (UnityEditor.EditorApplication.isPlaying)
@@ -121,4 +122,5 @@ public abstract class Laser : Projectile
             Gizmos.DrawCube(0.5f * spriteRenderer.size.y * Vector3.up, spriteRenderer.size);
         }
     }
+#endif
 }

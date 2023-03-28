@@ -17,6 +17,7 @@ public class CancerBullet12 : EnemyBullet
         StartCoroutine(this.LerpSpeed(0f, Random.Range(6f, 8f), 1f));
     }
 
+#if UNITY_EDITOR
     protected override void OnDrawGizmos()
     {
         if (UnityEditor.EditorApplication.isPlaying)
@@ -25,4 +26,5 @@ public class CancerBullet12 : EnemyBullet
             Gizmos.DrawCube(Vector3.zero, spriteRenderer.size);
         }
     }
+#endif
 }

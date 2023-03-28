@@ -13,6 +13,7 @@ public class CancerBullet32 : EnemyBullet
         yield return this.LerpSpeed(-5f, 3f, 1f);
     }
 
+#if UNITY_EDITOR
     protected override void OnDrawGizmos()
     {
         if (UnityEditor.EditorApplication.isPlaying)
@@ -21,4 +22,5 @@ public class CancerBullet32 : EnemyBullet
             Gizmos.DrawCube(Vector3.zero, spriteRenderer.size);
         }
     }
+#endif
 }
