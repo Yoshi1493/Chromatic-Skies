@@ -5,7 +5,7 @@ using static CoroutineHelper;
 public class CancerBulletSystem4 : EnemyShooter<EnemyBullet>
 {
     const int WaveCount = 22;
-    const float WaveSpacing = -3f;
+    const float WaveSpacing = -6f;
     const int BranchCount = 6;
     const float BranchSpacing = 360f / BranchCount;
     const float BulletBaseSpeed = 4f;
@@ -14,6 +14,8 @@ public class CancerBulletSystem4 : EnemyShooter<EnemyBullet>
     protected override IEnumerator Shoot()
     {
         yield return base.Shoot();
+
+        SetSubsystemEnabled(1);
 
         while (enabled)
         {

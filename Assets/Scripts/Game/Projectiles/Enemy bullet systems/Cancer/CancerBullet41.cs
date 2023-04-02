@@ -1,12 +1,25 @@
 using System.Collections;
-using static CoroutineHelper;
+using UnityEngine;
 
 public class CancerBullet41 : EnemyBullet
 {
+    protected override Collider2D CollisionCondition => Physics2D.OverlapBox(transform.position, spriteRenderer.size, transform.eulerAngles.z, CollisionMask);
+
+    protected override float MaxLifetime => 5f;
+
     protected override IEnumerator Move()
     {
-        yield return WaitForSeconds(1f);
-        StartCoroutine(this.LerpSpeed(0f, 3f, 1f));
-        yield return this.HomeInOn(playerShip, 0.5f);
+        yield return this.LerpSpeed(6f, 2f, 1f);
     }
+
+#if UNITY_EDITOR
+    protected override void OnDrawGizmos()
+    {
+        if (UnityEditor.EditorApplication.isPlaying)
+        {
+            Gizmos.matrix = transform.localToWorldMatrix;
+            Gizmos.DrawCube(Vector3.zero, spriteRenderer.size);
+        }
+    }
+#endif
 }

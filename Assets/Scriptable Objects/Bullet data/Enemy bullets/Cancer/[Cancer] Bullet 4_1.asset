@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b79cd0b20b26ac4090b241d65679e69, type: 3}
   m_Name: '[Cancer] Bullet 4_1'
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: f04b8c4400ce9d746a64ac967fc3c24a, type: 3}
+  sprite: {fileID: 21300000, guid: cd25628f7aaba46478b5b0358d835261, type: 3}
   useSolidColour: 1
   colour: {r: 0.9, g: 0.17999998, b: 0.35999998, a: 1}
   gradient:
