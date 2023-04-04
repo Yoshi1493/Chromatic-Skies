@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using static CoroutineHelper;
 
-public class AquariusBulletSystem3 : EnemyShooter<EnemyBullet>
+public class AquariusBulletSystem31 : EnemyShooter<EnemyBullet>
 {
     const int RingCount = 20;
     const float RingSpacing = 3f;
@@ -17,26 +17,23 @@ public class AquariusBulletSystem3 : EnemyShooter<EnemyBullet>
 
     protected override IEnumerator Shoot()
     {
-        yield return base.Shoot();
-
         while (enabled)
         {
             for (int i = 0; i < RingCount; i++)
             {
                 for (int ii = 0; ii < BulletCount; ii++)
                 {
-                    float z = (i * RingSpacing) + (ii * BranchSpacing);
+                    float z = -(i * RingSpacing) - (ii * BranchSpacing);
                     Vector3 pos = i * BulletSpacing * transform.up.RotateVectorBy(z);
                     bulletData.colour = bulletData.gradient.Evaluate(i / (RingCount - 1f));
 
-                    bullets.Push(SpawnProjectile(0, z, pos));
+                    bullets.Push(SpawnProjectile(1, z, pos));
                 }
 
                 yield return WaitForSeconds(ShootingCooldown);
             }
 
             yield return WaitForSeconds(1f);
-            SetSubsystemEnabled(1);
 
             for (int i = 0; i < RingCount; i++)
             {
@@ -55,8 +52,7 @@ public class AquariusBulletSystem3 : EnemyShooter<EnemyBullet>
 
             bullets.Clear();
 
-            StartMoveAction?.Invoke();
-            yield return WaitForSeconds(1f);
+            enabled = false;
         }
     }
 }
