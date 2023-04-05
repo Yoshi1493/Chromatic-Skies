@@ -5,11 +5,11 @@ using static CoroutineHelper;
 
 public class AquariusBulletSystem3 : EnemyShooter<EnemyBullet>
 {
-    const int RingCount = 20;
+    const int RingCount = 16;
     const float RingSpacing = 3f;
     const int BulletCount = 16;
     const float BranchSpacing = 360f / BulletCount;
-    const float BulletSpacing = 0.25f;
+    const float BulletSpacing = 0.3f;
 
     Stack<EnemyBullet> bullets = new(RingCount * BulletCount);
 
@@ -35,7 +35,7 @@ public class AquariusBulletSystem3 : EnemyShooter<EnemyBullet>
                 yield return WaitForSeconds(ShootingCooldown);
             }
 
-            yield return WaitForSeconds(1f);
+            yield return WaitForSeconds(ShootingCooldown * 10f);
             SetSubsystemEnabled(1);
 
             for (int i = 0; i < RingCount; i++)
@@ -50,12 +50,11 @@ public class AquariusBulletSystem3 : EnemyShooter<EnemyBullet>
                     }
                 }
 
-                yield return WaitForSeconds(ShootingCooldown * 2f);
+                yield return WaitForSeconds(ShootingCooldown * 3f);
             }
 
             bullets.Clear();
 
-            StartMoveAction?.Invoke();
             yield return WaitForSeconds(1f);
         }
     }

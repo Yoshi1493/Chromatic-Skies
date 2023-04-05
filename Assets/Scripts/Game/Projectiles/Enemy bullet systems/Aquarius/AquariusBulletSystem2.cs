@@ -1,53 +1,42 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using static CoroutineHelper;
-using static MathHelper;
 
 public class AquariusBulletSystem2 : EnemyShooter<EnemyBullet>
 {
-    const int WaveCount = 40;
-    const float WaveSpacing = 0.25f;
-    const float WaveFrequency = 15f;
-    const int BranchCount = 8;
-    const float BranchSpacing = 360f / BranchCount;
+    const int WaveCount = 24;
+    const float WaveSpacing = 360f / WaveCount;
+    const float WaveAmplitude = 10f;
+    const float SafeZone = 30f;
+    const int BranchCount = ((int)(360 - (SafeZone * 2)) / (int)BranchSpacing / 2) + 1;
+    const float BranchSpacing = 6f;
 
-    List<EnemyBullet> bullets = new(WaveCount * BranchCount);
-
-    protected override float ShootingCooldown => 0.05f;
+    protected override float ShootingCooldown => 0.2f;
 
     protected override IEnumerator Shoot()
     {
         yield return base.Shoot();
+
         SetSubsystemEnabled(1);
 
         while (enabled)
         {
-            int d = PositiveOrNegativeOne;
-
-            for (int i = 1; i <= WaveCount; i++)
+            for (int i = 0; i < WaveCount; i++)
             {
+                float t = Mathf.Sin(i * WaveSpacing * Mathf.Deg2Rad);
+                bulletData.colour = bulletData.gradient.Evaluate(t * 0.5f + 0.5f);
+
                 for (int ii = 0; ii < BranchCount; ii++)
                 {
-                    float x = Mathf.Sin(i * WaveFrequency * d * Mathf.Deg2Rad);
-                    float y = i * WaveSpacing;
-                    float z = ii * BranchSpacing;
-                    Vector3 pos = new Vector3(x, y).RotateVectorBy(z);
+                    float z = (SafeZone * 0.5f) + (ii * BranchSpacing) + (t * WaveAmplitude);
+                    Vector3 pos = Vector3.zero;
 
-                    var bullet = SpawnProjectile(0, z + (x * BranchSpacing), pos);
-                    bullets.Add(bullet);
+                    SpawnProjectile(0, z, pos).Fire();
+                    SpawnProjectile(0, z + 180f, pos).Fire();
                 }
 
                 yield return WaitForSeconds(ShootingCooldown);
             }
-
-            yield return WaitForSeconds(1f);
-
-            bullets.ForEach(b => b.Fire());
-            bullets.Clear();
-
-            StartMoveAction?.Invoke();
-            yield return WaitForSeconds(5f);
         }
     }
 }

@@ -5,13 +5,13 @@ using static CoroutineHelper;
 
 public class AquariusBulletSystem31 : EnemyShooter<EnemyBullet>
 {
-    const int RingCount = 20;
+    const int RingCount = 16;
     const float RingSpacing = 3f;
     const int BulletCount = 16;
     const float BranchSpacing = 360f / BulletCount;
-    const float BulletSpacing = 0.25f;
+    const float BulletSpacing = 0.3f;
 
-    Stack<EnemyBullet> bullets = new(RingCount * BulletCount);
+    Queue<EnemyBullet> bullets = new(RingCount * BulletCount);
 
     protected override float ShootingCooldown => 0.06f;
 
@@ -27,19 +27,19 @@ public class AquariusBulletSystem31 : EnemyShooter<EnemyBullet>
                     Vector3 pos = i * BulletSpacing * transform.up.RotateVectorBy(z);
                     bulletData.colour = bulletData.gradient.Evaluate(i / (RingCount - 1f));
 
-                    bullets.Push(SpawnProjectile(1, z, pos));
+                    bullets.Enqueue(SpawnProjectile(1, z, pos));
                 }
 
                 yield return WaitForSeconds(ShootingCooldown);
             }
 
-            yield return WaitForSeconds(1f);
+            yield return WaitForSeconds(ShootingCooldown * 10f);
 
             for (int i = 0; i < RingCount; i++)
             {
                 for (int ii = 0; ii < BulletCount; ii++)
                 {
-                    var b = bullets.Pop();
+                    var b = bullets.Dequeue();
 
                     if (b.enabled)
                     {
@@ -47,7 +47,7 @@ public class AquariusBulletSystem31 : EnemyShooter<EnemyBullet>
                     }
                 }
 
-                yield return WaitForSeconds(ShootingCooldown * 2f);
+                yield return WaitForSeconds(ShootingCooldown * 3f);
             }
 
             bullets.Clear();
