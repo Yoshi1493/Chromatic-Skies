@@ -9,9 +9,9 @@ public class AquariusBulletSystem2 : EnemyShooter<EnemyBullet>
     const float WaveAmplitude = 10f;
     const float SafeZone = 30f;
     const int BranchCount = ((int)(360 - (SafeZone * 2)) / (int)BranchSpacing / 2) + 1;
-    const float BranchSpacing = 6f;
+    const float BranchSpacing = 10f;
 
-    protected override float ShootingCooldown => 0.2f;
+    protected override float ShootingCooldown => 0.25f;
 
     protected override IEnumerator Shoot()
     {

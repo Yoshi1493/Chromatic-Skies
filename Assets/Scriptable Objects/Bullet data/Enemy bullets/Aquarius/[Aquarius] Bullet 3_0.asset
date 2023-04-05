@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6b79cd0b20b26ac4090b241d65679e69, type: 3}
-  m_Name: '[Aquarius] Bullet 3_0_1'
+  m_Name: '[Aquarius] Bullet 3_0'
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: cfb5909c85c607148acbf700836be28e, type: 3}
+  sprite: {fileID: 21300000, guid: 9c44a70d88a58084b91108bd8d02a677, type: 3}
   useSolidColour: 1
-  colour: {r: 0, g: 1, b: 0.9166667, a: 1}
+  colour: {r: 0.39999998, g: 1, b: 1, a: 1}
   gradient:
     serializedVersion: 2
-    key0: {r: 0.39999998, g: 1, b: 0.54999995, a: 1}
-    key1: {r: 0.3, g: 1, b: 0.5916666, a: 1}
-    key2: {r: 0.19999999, g: 1, b: 0.6666666, a: 0}
-    key3: {r: 0.100000024, g: 1, b: 0.775, a: 0}
-    key4: {r: 0, g: 1, b: 0.9166667, a: 0}
+    key0: {r: 0, g: 0.3333335, b: 1, a: 1}
+    key1: {r: 0.100000024, g: 0.55, b: 1, a: 1}
+    key2: {r: 0.19999999, g: 0.73333335, b: 1, a: 1}
+    key3: {r: 0.3, g: 0.88333327, b: 1, a: 0}
+    key4: {r: 0.39999998, g: 1, b: 1, a: 0}
     key5: {r: 0.25, g: 0.625, b: 1, a: 0}
     key6: {r: 1, g: 0.6, b: 1, a: 0}
     key7: {r: 0, g: 0, b: 0, a: 0}
@@ -35,8 +35,8 @@ MonoBehaviour:
     ctime7: 0
     atime0: 0
     atime1: 65535
-    atime2: 0
-    atime3: 0
+    atime2: 57343
+    atime3: 65535
     atime4: 0
     atime5: 0
     atime6: 0
@@ -44,6 +44,6 @@ MonoBehaviour:
     m_Mode: 0
     m_NumColorKeys: 5
     m_NumAlphaKeys: 2
-  ID: 1
+  ID: 0
   Power: {fileID: 11400000, guid: 137b5463d08e81b4c987adc4a5310053, type: 2}
   destructible: 1

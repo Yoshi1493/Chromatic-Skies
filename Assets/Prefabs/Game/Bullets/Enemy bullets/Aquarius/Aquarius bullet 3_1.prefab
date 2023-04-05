@@ -17,7 +17,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1575430968703495904, guid: f5dbfdd6fbecdfd4590de030a6139c31, type: 3}
       propertyPath: m_Name
-      value: Aquarius bullet 3_0_1
+      value: Aquarius bullet 3_1
       objectReference: {fileID: 0}
     - target: {fileID: 4406597186128934183, guid: f5dbfdd6fbecdfd4590de030a6139c31, type: 3}
       propertyPath: m_RootOrder
@@ -62,6 +62,10 @@ PrefabInstance:
     - target: {fileID: 4406597186128934183, guid: f5dbfdd6fbecdfd4590de030a6139c31, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4726848138966906400, guid: f5dbfdd6fbecdfd4590de030a6139c31, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f5dbfdd6fbecdfd4590de030a6139c31, type: 3}
