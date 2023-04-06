@@ -14,12 +14,12 @@ public class AquariusBulletSystem21 : EnemyShooter<EnemyBullet>
     {
         while (enabled)
         {
-            yield return WaitForSeconds(ShootingCooldown * 10f);
-
-            float r = PlayerPosition.GetRotationDifference(transform.position);
+            yield return WaitForSeconds(ShootingCooldown * 5f);
 
             for (int i = 0; i < WaveCount; i++)
             {
+                float r = PlayerPosition.GetRotationDifference(transform.position);
+
                 for (int ii = 0; ii < BranchCount; ii++)
                 {
                     float z = ((ii - 1) / 2f * BranchSpacing) + r;
