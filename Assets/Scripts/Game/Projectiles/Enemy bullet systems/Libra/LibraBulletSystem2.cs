@@ -8,7 +8,7 @@ public class LibraBulletSystem2 : EnemyShooter<EnemyBullet>
     const int BulletCount = 3;
     const float BulletSpacing = 360f / BulletCount;
 
-    protected override float ShootingCooldown => 5f;
+    protected override float ShootingCooldown => 3f;
 
     protected override IEnumerator Shoot()
     {
@@ -29,7 +29,7 @@ public class LibraBulletSystem2 : EnemyShooter<EnemyBullet>
 
             yield return WaitForSeconds(ShootingCooldown);
             StartMoveAction?.Invoke();
-            yield return WaitForSeconds(1f);
+            yield return WaitForSeconds(2f);
         }
     }
 }
