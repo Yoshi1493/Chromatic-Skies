@@ -26,14 +26,6 @@ public static class MathHelper
         }
     }
 
-    /// <summary>
-    /// returns bezier curve coordinate along line [<v1>, <v2>] and line [<v2>, <v3>], based on lerp progress <t>
-    /// </summary>
-    public static Vector3 QuadraticBezierCurve(Vector3 v1, Vector3 v2, Vector3 v3, float t)
-    {
-        return Vector3.Lerp(Vector3.Lerp(v1, v2, t), Vector3.Lerp(v2, v3, t), t);
-    }
-
     #endregion
 
     #region Vector
@@ -160,3 +152,51 @@ public static class MathHelper
 
     static void print(object message) { Debug.Log(message); }
 }
+
+#region Bezier Curve
+
+[System.Serializable]
+public struct QuadraticBezierCurve
+{
+    public Vector3 v0, v1, v2;
+
+    public QuadraticBezierCurve(Vector3 _v0, Vector3 _v1, Vector3 _v2)
+    {
+        v0 = _v0;
+        v1 = _v1;
+        v2 = _v2;
+    }
+
+    public Vector3 Evaluate(float t)
+    {
+        Vector3 p1 = t * ((-2 * v0) + (2 * v1));
+        Vector3 p2 = t * t * (v0 + (-2 * v1) + v2);
+
+        return v0 + p1 + p2;
+    }
+}
+
+[System.Serializable]
+public struct CubicBezierCurve
+{
+    public Vector3 v0, v1, v2, v3;
+
+    public CubicBezierCurve(Vector3 _v0, Vector3 _v1, Vector3 _v2, Vector3 _v3)
+    {
+        v0 = _v0;
+        v1 = _v1;
+        v2 = _v2;
+        v3 = _v3;
+    }
+
+    public Vector3 Evaluate(float t)
+    {
+        Vector3 p1 = t * ((-3 * v0) + (3 * v1));
+        Vector3 p2 = t * t * ((3 * v0) + (-6 * v1) + (3 * v2));
+        Vector3 p3 = t * t * t * (-v0 + (3 * v1) + (-3 * v2) + v3);
+
+        return v0 + p1 + p2 + p3;
+    }
+}
+
+#endregion

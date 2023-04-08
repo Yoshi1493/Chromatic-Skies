@@ -24,7 +24,9 @@ public class CapricornBulletSystem4 : EnemyShooter<EnemyBullet>
         {
             float t = 0f;
             float x = (Random.Range(0, screenHalfWidth * 0.25f) + screenHalfWidth * 0.5f) * Mathf.Sign(ownerShip.transform.position.x);
-            Vector3 v0 = new(x, screenHalfHeight);
+
+            QuadraticBezierCurve curve = new();
+            curve.v0 = new(x, screenHalfHeight);
 
             while (t < TotalFollowTime)
             {
@@ -37,13 +39,13 @@ public class CapricornBulletSystem4 : EnemyShooter<EnemyBullet>
 
                 if (t < CatchupTime)
                 {
-                    Vector3 v1 = new(x, PlayerPosition.y);
-                    Vector3 v2 = QuadraticBezierCurve(v0, v1, PlayerPosition, t / CatchupTime);
-                    pos = v2;
+                    curve.v1 = new(x, PlayerPosition.y);
+                    curve.v2 = PlayerPosition;
+                    pos = curve.Evaluate(t / CatchupTime);
 
                     if (t > SpawnTime)
                     {
-                        Vector3 v3 = Vector3.Lerp(v2, playerPositions.Dequeue(), (t - SpawnTime) / (CatchupTime - SpawnTime));
+                        Vector3 v3 = Vector3.Lerp(pos, playerPositions.Dequeue(), (t - SpawnTime) / (CatchupTime - SpawnTime));
                         pos = v3;
                     }
                 }
