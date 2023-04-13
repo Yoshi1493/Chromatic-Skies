@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using static CoroutineHelper;
 using static MathHelper;
+using static BezierHelper;
 
 public class CapricornBulletSystem4 : EnemyShooter<EnemyBullet>
 {
@@ -25,8 +26,7 @@ public class CapricornBulletSystem4 : EnemyShooter<EnemyBullet>
             float t = 0f;
             float x = (Random.Range(0, screenHalfWidth * 0.25f) + screenHalfWidth * 0.5f) * Mathf.Sign(ownerShip.transform.position.x);
 
-            QuadraticBezierCurve curve = new();
-            curve.v0 = new(x, screenHalfHeight);
+            Vector2 v0 = new(x, screenHalfHeight);
 
             while (t < TotalFollowTime)
             {
@@ -39,9 +39,9 @@ public class CapricornBulletSystem4 : EnemyShooter<EnemyBullet>
 
                 if (t < CatchupTime)
                 {
-                    curve.v1 = new(x, PlayerPosition.y);
-                    curve.v2 = PlayerPosition;
-                    pos = curve.Evaluate(t / CatchupTime);
+                    Vector2 v1 = new(x, PlayerPosition.y);
+                    Vector2 v2 = PlayerPosition;
+                    pos = EvaluateQuadratic(v0, v1, v2, t / CatchupTime);
 
                     if (t > SpawnTime)
                     {
