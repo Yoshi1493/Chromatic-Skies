@@ -230,7 +230,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3777441332194849460}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5481dadb70310794eb6f5413ea51820c, type: 3}
   m_Name: 
@@ -280,7 +280,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6402868668855187777}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 52fc551702c1d694fa8f99ef8bbd15e4, type: 3}
   m_Name: 
@@ -301,14 +301,59 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6867336800114154692}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 54c9319ce8204244fa9dba22f4b0fefe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   enemyProjectiles:
-  - {fileID: 0}
-  bulletData: {fileID: 0}
+  - {fileID: -5684432240969465421, guid: e031284ed1730794bbd08168b3073a11, type: 3}
+  bulletData: {fileID: 11400000, guid: a71a17d0a4f9cd345857c8cd943048a5, type: 2}
+  followPath:
+    points:
+    - {x: 0, y: 0}
+    - {x: 0.5, y: 0}
+    - {x: 1, y: -0.5}
+    - {x: 1, y: -1}
+    - {x: 1, y: -1.5}
+    - {x: 0.25, y: -2}
+    - {x: 0.25, y: -3}
+    - {x: 0.25, y: -4}
+    - {x: 1, y: -4}
+    - {x: 1.5, y: -3.5}
+    - {x: 2, y: -3}
+    - {x: 1.5, y: -2.5}
+    - {x: 1, y: -2.5}
+    - {x: 0.5, y: -2.5}
+    - {x: 0, y: -4}
+    - {x: -1, y: -4}
+--- !u!114 &8565881606446268488
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6867336800114154692}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3efcd23622346be4487e768f16181c58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  curve:
+    points:
+    - {x: -1, y: 6.5}
+    - {x: -0.5, y: 7}
+    - {x: 0.5, y: 6}
+    - {x: 1, y: 6.5}
+  displayControlPoints: 1
+  anchorColour: {r: 1, g: 0, b: 0, a: 1}
+  controlColour: {r: 1, g: 1, b: 1, a: 1}
+  segementColour: {r: 0, g: 1, b: 0, a: 1}
+  selectedSegementColour: {r: 1, g: 0, b: 1, a: 1}
+  anchorGizmoRadius: 0.1
+  controlGizmoRadius: 0.05
+  gridsnapInterval: 0.25
+  points: []
 --- !u!1 &7008567321455470459 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4363550108427413887, guid: d93cb44e21569f545b76560b29579f98, type: 3}
@@ -405,7 +450,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9208180497907977624}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 938ea22641992df41af31fc14ed0d916, type: 3}
   m_Name: 
