@@ -3,7 +3,8 @@ using UnityEngine;
 
 public class BezierCreator : MonoBehaviour
 {
-    [HideInInspector] public BezierCurve curve;
+    [HideInInspector]
+    public BezierCurve curve;
 
     public bool displayControlPoints = true;
 
@@ -25,6 +26,7 @@ public class BezierCreator : MonoBehaviour
     [Range(0.01f, 1f)]
     public float gridsnapInterval = 0.25f;
 
+    [NonReorderable]
     public List<Vector2> points = new();
 
     public void CreateCurve()

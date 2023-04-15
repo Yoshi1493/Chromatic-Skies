@@ -309,24 +309,6 @@ MonoBehaviour:
   enemyProjectiles:
   - {fileID: -5684432240969465421, guid: e031284ed1730794bbd08168b3073a11, type: 3}
   bulletData: {fileID: 11400000, guid: a71a17d0a4f9cd345857c8cd943048a5, type: 2}
-  followPath:
-    points:
-    - {x: 0, y: 0}
-    - {x: 0.5, y: 0}
-    - {x: 1, y: -0.5}
-    - {x: 1, y: -1}
-    - {x: 1, y: -1.5}
-    - {x: 0.25, y: -2}
-    - {x: 0.25, y: -3}
-    - {x: 0.25, y: -4}
-    - {x: 1, y: -4}
-    - {x: 1.5, y: -3.5}
-    - {x: 2, y: -3}
-    - {x: 1.5, y: -2.5}
-    - {x: 1, y: -2.5}
-    - {x: 0.5, y: -2.5}
-    - {x: 0, y: -4}
-    - {x: -1, y: -4}
 --- !u!114 &8565881606446268488
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -353,7 +335,23 @@ MonoBehaviour:
   anchorGizmoRadius: 0.1
   controlGizmoRadius: 0.05
   gridsnapInterval: 0.25
-  points: []
+  points:
+  - {x: 0, y: 0}
+  - {x: 0.5, y: 0}
+  - {x: 1, y: -0.5}
+  - {x: 1, y: -1}
+  - {x: 1, y: -1.5}
+  - {x: 0.25, y: -2}
+  - {x: 0.25, y: -3}
+  - {x: 0.25, y: -4}
+  - {x: 1, y: -4}
+  - {x: 1.5, y: -3.5}
+  - {x: 2, y: -3}
+  - {x: 1.5, y: -2.5}
+  - {x: 1, y: -2.5}
+  - {x: 0.5, y: -2.5}
+  - {x: 0, y: -4}
+  - {x: -1, y: -4}
 --- !u!1 &7008567321455470459 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4363550108427413887, guid: d93cb44e21569f545b76560b29579f98, type: 3}

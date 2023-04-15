@@ -13,7 +13,7 @@ public abstract class EnemyMovement : ShipMovement<Enemy>
     {
         base.Awake();
 
-        // get respective bullet system
+        //get respective bullet system
         int siblingIndex = transform.GetSiblingIndex();
         parentShip.bulletSystems[siblingIndex].StartMoveAction += StartMove;
 
