@@ -323,10 +323,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   curve:
     points:
-    - {x: -1, y: 0}
-    - {x: -0.5, y: 0.5}
-    - {x: 0.5, y: -0.5}
-    - {x: 1, y: 0}
+    - {x: 1, y: 2}
+    - {x: 2, y: 2}
+    - {x: 3.5, y: 1.5}
+    - {x: 2, y: 0}
+    - {x: 0.5, y: -1.5}
+    - {x: 2, y: -2}
+    - {x: 3, y: -2}
   displayControlPoints: 1
   anchorColour: {r: 1, g: 0, b: 0, a: 1}
   controlColour: {r: 1, g: 1, b: 1, a: 1}
@@ -336,10 +339,13 @@ MonoBehaviour:
   controlGizmoRadius: 0.05
   gridsnapInterval: {x: 0.25, y: 0.25}
   points:
-  - {x: -1, y: 0}
-  - {x: -0.5, y: 0.5}
-  - {x: 0.5, y: -0.5}
-  - {x: 1, y: 0}
+  - {x: 1, y: 2}
+  - {x: 2, y: 2}
+  - {x: 3.5, y: 1.5}
+  - {x: 2, y: 0}
+  - {x: 0.5, y: -1.5}
+  - {x: 2, y: -2}
+  - {x: 3, y: -2}
 --- !u!1 &7008567321455470459 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4363550108427413887, guid: d93cb44e21569f545b76560b29579f98, type: 3}

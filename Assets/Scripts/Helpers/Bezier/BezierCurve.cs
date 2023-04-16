@@ -149,7 +149,7 @@ public class BezierCurve
             }
         }
         //if the point that move is a control point,
-        //mirror the control point on th opposite side of the respective anchor point
+        //mirror the control point on the opposite side of the respective anchor point
         else
         {
             bool nextPointIsAnchor = (i + 1) % 3 == 0;          //check if left or right control point is being moved
@@ -158,9 +158,7 @@ public class BezierCurve
 
             if (correspondingControlIndex >= 0 && correspondingControlIndex < NumPoints)
             {
-                float dist = (points[anchorIndex] - points[correspondingControlIndex]).magnitude;
-                Vector2 dir = (points[anchorIndex] - pos).normalized;
-                points[correspondingControlIndex] = points[anchorIndex] + (dist * dir);
+                points[correspondingControlIndex] = 2f * points[anchorIndex] - pos;
             }
         }
     }
