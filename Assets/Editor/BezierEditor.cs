@@ -173,7 +173,7 @@ public class BezierEditor : Editor
             Handles.color = isAnchorPoint ? creator.anchorColour : creator.controlColour;
             float handleGizmoRadius = isAnchorPoint ? creator.anchorGizmoRadius : creator.controlGizmoRadius;
 
-            Vector2 newPos = Handles.FreeMoveHandle(Curve[i], Quaternion.identity, handleGizmoRadius, guiEvent.control ? Vector3.zero : creator.gridsnapInterval, Handles.SphereHandleCap);
+            Vector2 newPos = Handles.FreeMoveHandle(Curve[i], Quaternion.identity, handleGizmoRadius, guiEvent.control ? creator.gridsnapInterval : Vector3.zero, Handles.SphereHandleCap);
 
             //if anchor has updated position
             if (Curve[i] != newPos)
