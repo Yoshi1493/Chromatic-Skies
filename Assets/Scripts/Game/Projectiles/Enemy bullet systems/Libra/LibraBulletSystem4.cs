@@ -5,6 +5,7 @@ using static CoroutineHelper;
 public class LibraBulletSystem4 : EnemyShooter<EnemyBullet>
 {
     protected override float ShootingCooldown => 0.05f;
+    const float BulletSpacing = 0.2f;
 
     protected override IEnumerator Shoot()
     {
@@ -12,7 +13,7 @@ public class LibraBulletSystem4 : EnemyShooter<EnemyBullet>
 
         BezierCurve followPath = GetComponent<BezierCreator>().curve;
 
-        var points = followPath.CalculateEvenlySpacedPoints(0.2f);
+        var points = followPath.CalculateEvenlySpacedPoints(BulletSpacing);
 
         while (enabled)
         {
@@ -22,6 +23,8 @@ public class LibraBulletSystem4 : EnemyShooter<EnemyBullet>
                 Vector3 pos = points[i].position;
 
                 SpawnProjectile(0, z, pos).Fire();
+
+
                 yield return WaitForSeconds(ShootingCooldown);
             }
 

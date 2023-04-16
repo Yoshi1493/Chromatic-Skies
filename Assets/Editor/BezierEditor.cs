@@ -38,15 +38,15 @@ public class BezierEditor : Editor
 
     void OnSceneGUI()
     {
-        GetMouseInput();
-        DrawGizmos();
-    }
-
-    void GetMouseInput()
-    {
         //get current GUI event
         Event guiEvent = Event.current;
 
+        GetMouseInput(guiEvent);
+        DrawGizmos(guiEvent);
+    }
+
+    void GetMouseInput(Event guiEvent)
+    {
         //convert mouse position to world position
         Vector2 mousePos = HandleUtility.GUIPointToWorldRay(guiEvent.mousePosition).origin;
 
@@ -143,7 +143,7 @@ public class BezierEditor : Editor
         HandleUtility.AddDefaultControl(0);
     }
 
-    void DrawGizmos()
+    void DrawGizmos(Event guiEvent)
     {
         Handles.color = Color.black;
 
@@ -173,7 +173,7 @@ public class BezierEditor : Editor
             Handles.color = isAnchorPoint ? creator.anchorColour : creator.controlColour;
             float handleGizmoRadius = isAnchorPoint ? creator.anchorGizmoRadius : creator.controlGizmoRadius;
 
-            Vector2 newPos = Handles.FreeMoveHandle(Curve[i], Quaternion.identity, handleGizmoRadius, Vector3.zero, Handles.SphereHandleCap);
+            Vector2 newPos = Handles.FreeMoveHandle(Curve[i], Quaternion.identity, handleGizmoRadius, guiEvent.control ? creator.gridsnapInterval : Vector3.zero, Handles.SphereHandleCap);
 
             //if anchor has updated position
             if (Curve[i] != newPos)

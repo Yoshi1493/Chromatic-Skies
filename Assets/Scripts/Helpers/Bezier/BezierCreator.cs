@@ -23,8 +23,7 @@ public class BezierCreator : MonoBehaviour
 
     [Space]
 
-    [Range(0.01f, 1f)]
-    public float gridsnapInterval = 0.25f;
+    public Vector2 gridsnapInterval = 0.25f * Vector2.one;
 
     [NonReorderable]
     public List<Vector2> points = new();
