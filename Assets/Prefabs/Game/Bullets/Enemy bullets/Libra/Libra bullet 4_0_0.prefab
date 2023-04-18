@@ -53,7 +53,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3140064405051798717, guid: 4e06125b108514547b6fc9b6887da3eb, type: 3}
       propertyPath: m_Name
-      value: Libra bullet 4_0
+      value: Libra bullet 4_0_0
       objectReference: {fileID: 0}
     - target: {fileID: 7943771795135557499, guid: 4e06125b108514547b6fc9b6887da3eb, type: 3}
       propertyPath: power
@@ -95,3 +95,4 @@ MonoBehaviour:
   projectileData: {fileID: 11400000, guid: a71a17d0a4f9cd345857c8cd943048a5, type: 2}
   moveDirection: {x: 0, y: 0, z: 0}
   currentSpeed: 0
+  rotatesClockwise: 1
