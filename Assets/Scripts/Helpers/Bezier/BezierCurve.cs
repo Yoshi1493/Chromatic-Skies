@@ -101,7 +101,7 @@ public class BezierCurve
     //remove segment from path
     public void RemoveSegment(int anchorIndex)
     {
-        if (NumSegments > 2)                                    //make sure there are enough points
+        if (NumSegments > 1)                                    //make sure there are enough points
         {
             if (anchorIndex == 0)
             {
