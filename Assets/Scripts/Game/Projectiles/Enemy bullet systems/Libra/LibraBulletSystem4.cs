@@ -12,7 +12,7 @@ public class LibraBulletSystem4 : EnemyShooter<EnemyBullet>
 
     List<EnemyBullet> bullets;
 
-    protected override float ShootingCooldown => 0.04f;
+    protected override float ShootingCooldown => 0.05f;
 
     protected override IEnumerator Shoot()
     {
@@ -50,6 +50,7 @@ public class LibraBulletSystem4 : EnemyShooter<EnemyBullet>
             yield return WaitForSeconds(0.5f);
 
             bullets.ForEach(b => b.Fire());
+            bullets.Clear();
 
             yield return WaitForSeconds(10f);
         }
