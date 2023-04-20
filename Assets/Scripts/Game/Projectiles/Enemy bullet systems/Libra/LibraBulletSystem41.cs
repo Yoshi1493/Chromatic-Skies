@@ -10,15 +10,15 @@ public class LibraBulletSystem41 : EnemyShooter<EnemyBullet>
     {
         yield return WaitForSeconds(2f);
 
+        float y = screenHalfHeight + 1f;
+        float z = 0f;
+
         while (enabled)
         {
             float x = Random.Range(-screenHalfWidth, screenHalfWidth);
-            float y = screenHalfHeight + 1f;
             Vector3 pos = new(x, y);
-            float z = PlayerPosition.GetRotationDifference(pos);
 
-            SpawnProjectile(8, z, pos, false).Fire();
-
+            SpawnProjectile(2, z, pos, false).Fire();
             yield return WaitForSeconds(ShootingCooldown);
         }
     }

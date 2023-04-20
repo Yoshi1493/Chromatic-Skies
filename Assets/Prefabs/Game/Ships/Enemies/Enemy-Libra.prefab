@@ -1,80 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &474234574549292543
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 790459496815034688}
-  - component: {fileID: 5531809522482388217}
-  m_Layer: 0
-  m_Name: Curve 2
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &790459496815034688
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 474234574549292543}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 2404639451515421504}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5531809522482388217
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 474234574549292543}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3efcd23622346be4487e768f16181c58, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  curve:
-    points:
-    - {x: -0.5, y: 1.5}
-    - {x: -0.5, y: 0.5}
-    - {x: -1.5, y: 0}
-    - {x: -2, y: 0.5}
-    - {x: -2.5, y: 1}
-    - {x: -2.25, y: 1.75}
-    - {x: -1.5, y: 1.75}
-    - {x: -0.75, y: 1.75}
-    - {x: 1, y: 1}
-    - {x: 0, y: 0}
-  displayControlPoints: 1
-  anchorColour: {r: 1, g: 0, b: 0, a: 1}
-  controlColour: {r: 1, g: 1, b: 1, a: 1}
-  segementColour: {r: 0, g: 1, b: 0, a: 1}
-  selectedSegementColour: {r: 1, g: 0, b: 1, a: 1}
-  anchorGizmoRadius: 0.1
-  controlGizmoRadius: 0.075
-  gridsnapInterval: {x: 0.25, y: 0.25}
-  points:
-  - {x: -0.5, y: 1.5}
-  - {x: -0.5, y: 0.5}
-  - {x: -1.5, y: 0}
-  - {x: -2, y: 0.5}
-  - {x: -2.5, y: 1}
-  - {x: -2.25, y: 1.75}
-  - {x: -1.5, y: 1.75}
-  - {x: -0.75, y: 1.75}
-  - {x: 1, y: 1}
-  - {x: 0, y: 0}
 --- !u!1 &2252933499653306891
 GameObject:
   m_ObjectHideFlags: 0
@@ -122,87 +47,6 @@ MonoBehaviour:
   enemyProjectiles:
   - {fileID: 3458293534673915136, guid: bc9f2ce86c9ef2a44bbcc016589ba8d7, type: 3}
   bulletData: {fileID: 11400000, guid: 6f3d64c7dfa8f9b4a9b5944270a0f701, type: 2}
---- !u!1 &4919216910070711928
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 150232392629851939}
-  - component: {fileID: 5502380819632767494}
-  m_Layer: 0
-  m_Name: Curve 4
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &150232392629851939
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4919216910070711928}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 2404639451515421504}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5502380819632767494
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4919216910070711928}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3efcd23622346be4487e768f16181c58, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  curve:
-    points:
-    - {x: 1.75, y: -1.75}
-    - {x: 1.25, y: -2.25}
-    - {x: 0.25, y: -2.25}
-    - {x: -0.25, y: -1.75}
-    - {x: -0.75, y: -1.25}
-    - {x: -0.75, y: -0.25}
-    - {x: -0.25, y: 0.25}
-    - {x: 0.25, y: 0.75}
-    - {x: 1.25, y: 0.75}
-    - {x: 1.75, y: 0.25}
-    - {x: 2.25, y: -0.25}
-    - {x: 2.25, y: -1.25}
-    - {x: 1.75, y: -1.75}
-  displayControlPoints: 1
-  anchorColour: {r: 1, g: 0, b: 0, a: 1}
-  controlColour: {r: 1, g: 1, b: 1, a: 1}
-  segementColour: {r: 0, g: 1, b: 0, a: 1}
-  selectedSegementColour: {r: 1, g: 0, b: 1, a: 1}
-  anchorGizmoRadius: 0.1
-  controlGizmoRadius: 0.075
-  gridsnapInterval: {x: 0.25, y: 0.25}
-  points:
-  - {x: 1.75, y: -1.75}
-  - {x: 1.25, y: -2.25}
-  - {x: 0.25, y: -2.25}
-  - {x: -0.25, y: -1.75}
-  - {x: -0.75, y: -1.25}
-  - {x: -0.75, y: -0.25}
-  - {x: -0.25, y: 0.25}
-  - {x: 0.25, y: 0.75}
-  - {x: 1.25, y: 0.75}
-  - {x: 1.75, y: 0.25}
-  - {x: 2.25, y: -0.25}
-  - {x: 2.25, y: -1.25}
-  - {x: 1.75, y: -1.75}
 --- !u!1 &4962324588571646310
 GameObject:
   m_ObjectHideFlags: 0
@@ -250,81 +94,6 @@ MonoBehaviour:
   enemyProjectiles:
   - {fileID: -7180047295528485431, guid: a34566fce6423f44ab9a93d714a2d3b6, type: 3}
   bulletData: {fileID: 11400000, guid: bc964db6a838b8d489f5641df8a03fc4, type: 2}
---- !u!1 &6883358957167827129
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 159221335857171674}
-  - component: {fileID: 3006354981208305908}
-  m_Layer: 0
-  m_Name: Curve 1
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &159221335857171674
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6883358957167827129}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 2404639451515421504}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3006354981208305908
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6883358957167827129}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3efcd23622346be4487e768f16181c58, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  curve:
-    points:
-    - {x: 0, y: 2}
-    - {x: 0, y: 1}
-    - {x: 1, y: 0}
-    - {x: 2, y: 0}
-    - {x: 3, y: 0}
-    - {x: 3.5, y: 1}
-    - {x: 3, y: 1.5}
-    - {x: 2.5, y: 2}
-    - {x: 1.25, y: 1.5}
-    - {x: 1.25, y: 0.25}
-  displayControlPoints: 1
-  anchorColour: {r: 1, g: 0, b: 0, a: 1}
-  controlColour: {r: 1, g: 1, b: 1, a: 1}
-  segementColour: {r: 0, g: 1, b: 0, a: 1}
-  selectedSegementColour: {r: 1, g: 0, b: 1, a: 1}
-  anchorGizmoRadius: 0.1
-  controlGizmoRadius: 0.075
-  gridsnapInterval: {x: 0.25, y: 0.25}
-  points:
-  - {x: 0, y: 2}
-  - {x: 0, y: 1}
-  - {x: 1, y: 0}
-  - {x: 2, y: 0}
-  - {x: 3, y: 0}
-  - {x: 3.5, y: 1}
-  - {x: 3, y: 1.5}
-  - {x: 2.5, y: 2}
-  - {x: 1.25, y: 1.5}
-  - {x: 1.25, y: 0.25}
 --- !u!1 &7570647137838200391
 GameObject:
   m_ObjectHideFlags: 0
@@ -372,81 +141,6 @@ MonoBehaviour:
   enemyProjectiles:
   - {fileID: 1722124091335382409, guid: 8096c363fef8eb24d9040d2b0360d427, type: 3}
   bulletData: {fileID: 11400000, guid: e6d6e471a9461b24282b840e87f730a8, type: 2}
---- !u!1 &7583036419966068501
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 7556784643422577515}
-  - component: {fileID: 8122313089556436085}
-  m_Layer: 0
-  m_Name: Curve 3
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &7556784643422577515
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7583036419966068501}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 2404639451515421504}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8122313089556436085
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7583036419966068501}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3efcd23622346be4487e768f16181c58, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  curve:
-    points:
-    - {x: 0, y: -1.5}
-    - {x: 0, y: -1}
-    - {x: -1.75, y: -0.5}
-    - {x: -2.25, y: -1.25}
-    - {x: -2.75, y: -2}
-    - {x: -2, y: -2.75}
-    - {x: -1.25, y: -2.25}
-    - {x: -0.5, y: -1.75}
-    - {x: -1, y: 0}
-    - {x: -1.5, y: 0}
-  displayControlPoints: 1
-  anchorColour: {r: 1, g: 0, b: 0, a: 1}
-  controlColour: {r: 1, g: 1, b: 1, a: 1}
-  segementColour: {r: 0, g: 1, b: 0, a: 1}
-  selectedSegementColour: {r: 1, g: 0, b: 1, a: 1}
-  anchorGizmoRadius: 0.1
-  controlGizmoRadius: 0.075
-  gridsnapInterval: {x: 0.25, y: 0.25}
-  points:
-  - {x: 0, y: -1.5}
-  - {x: 0, y: -1}
-  - {x: -1.75, y: -0.5}
-  - {x: -2.25, y: -1.25}
-  - {x: -2.75, y: -2}
-  - {x: -2, y: -2.75}
-  - {x: -1.25, y: -2.25}
-  - {x: -0.5, y: -1.75}
-  - {x: -1, y: 0}
-  - {x: -1.5, y: 0}
 --- !u!1001 &6759093168088370692
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -652,6 +346,49 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 180338613893518016, guid: d93cb44e21569f545b76560b29579f98, type: 3}
   m_PrefabInstance: {fileID: 6759093168088370692}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &877821432823959876
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6867336800114154692}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3efcd23622346be4487e768f16181c58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  curve:
+    points:
+    - {x: 0, y: 2}
+    - {x: 0, y: 1}
+    - {x: 1, y: 0}
+    - {x: 2, y: 0}
+    - {x: 3, y: 0}
+    - {x: 3.5, y: 1}
+    - {x: 3, y: 1.5}
+    - {x: 2.5, y: 2}
+    - {x: 1.25, y: 1.5}
+    - {x: 1.25, y: 0.25}
+  displayControlPoints: 1
+  anchorColour: {r: 1, g: 0, b: 0, a: 1}
+  controlColour: {r: 1, g: 1, b: 1, a: 1}
+  segementColour: {r: 0, g: 1, b: 0, a: 1}
+  selectedSegementColour: {r: 1, g: 0, b: 1, a: 1}
+  anchorGizmoRadius: 0.1
+  controlGizmoRadius: 0.075
+  gridsnapInterval: {x: 0.25, y: 0.25}
+  points:
+  - {x: 0, y: 2}
+  - {x: 0, y: 1}
+  - {x: 1, y: 0}
+  - {x: 2, y: 0}
+  - {x: 3, y: 0}
+  - {x: 3.5, y: 1}
+  - {x: 3, y: 1.5}
+  - {x: 2.5, y: 2}
+  - {x: 1.25, y: 1.5}
+  - {x: 1.25, y: 0.25}
 --- !u!114 &3481857656569154989
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -667,12 +404,6 @@ MonoBehaviour:
   enemyProjectiles:
   - {fileID: -5684432240969465421, guid: e031284ed1730794bbd08168b3073a11, type: 3}
   - {fileID: 8108707433682132216, guid: 4f709d6719179c7448205a57999b78bc, type: 3}
-  - {fileID: 8108707433682132216, guid: 66b8d95432597744c80d8f02e20b552c, type: 3}
-  - {fileID: 8108707433682132216, guid: c233d120fcf0f724e9abed7de4f2eb70, type: 3}
-  - {fileID: 8108707433682132216, guid: 18a272634ea52b142a606a8071fd63fb, type: 3}
-  - {fileID: 8108707433682132216, guid: 6831c28c13d65f440adbc8cf4f213481, type: 3}
-  - {fileID: 8108707433682132216, guid: a33596c15e31096408e46b3080ff455f, type: 3}
-  - {fileID: 8108707433682132216, guid: 62abc1b5b5eb7c14389a24f22a20cced, type: 3}
   bulletData: {fileID: 11400000, guid: a71a17d0a4f9cd345857c8cd943048a5, type: 2}
 --- !u!1 &7008567321455470459 stripped
 GameObject:
