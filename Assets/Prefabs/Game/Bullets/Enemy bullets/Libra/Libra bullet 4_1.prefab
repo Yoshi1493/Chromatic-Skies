@@ -53,7 +53,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3140064405051798717, guid: 4e06125b108514547b6fc9b6887da3eb, type: 3}
       propertyPath: m_Name
-      value: Libra bullet 4_0_0
+      value: Libra bullet 4_1
       objectReference: {fileID: 0}
     - target: {fileID: 7943771795135557499, guid: 4e06125b108514547b6fc9b6887da3eb, type: 3}
       propertyPath: power
@@ -83,7 +83,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3140064405051798717, guid: 4e06125b108514547b6fc9b6887da3eb, type: 3}
   m_PrefabInstance: {fileID: 4489721518377228893}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &-5684432240969465421
+--- !u!114 &-7180047295528485431
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -92,10 +92,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1575430968703495904}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 98b448a7c59416b4bb8601cb2bce571f, type: 3}
+  m_Script: {fileID: 11500000, guid: 6bc0cf535d2f2394e815cc7b177e4012, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   transform: {fileID: 0}
-  projectileData: {fileID: 11400000, guid: a71a17d0a4f9cd345857c8cd943048a5, type: 2}
+  projectileData: {fileID: 11400000, guid: bc964db6a838b8d489f5641df8a03fc4, type: 2}
   moveDirection: {x: 0, y: 0, z: 0}
   currentSpeed: 0

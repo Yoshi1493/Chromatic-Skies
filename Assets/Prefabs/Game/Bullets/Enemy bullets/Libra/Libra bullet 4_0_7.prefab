@@ -10,14 +10,14 @@ PrefabInstance:
     - target: {fileID: -5684432240969465421, guid: e031284ed1730794bbd08168b3073a11, type: 3}
       propertyPath: projectileData
       value: 
-      objectReference: {fileID: 11400000, guid: 79c686c085039124ebce98bb0f01d1a0, type: 2}
+      objectReference: {fileID: 11400000, guid: 6a5607062e85996439730c4a51240a26, type: 2}
     - target: {fileID: -5684432240969465421, guid: e031284ed1730794bbd08168b3073a11, type: 3}
       propertyPath: rotatesClockwise
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1575430968703495904, guid: e031284ed1730794bbd08168b3073a11, type: 3}
       propertyPath: m_Name
-      value: Libra bullet 4_0_1
+      value: Libra bullet 4_0_7
       objectReference: {fileID: 0}
     - target: {fileID: 4406597186128934183, guid: e031284ed1730794bbd08168b3073a11, type: 3}
       propertyPath: m_RootOrder

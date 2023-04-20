@@ -10,14 +10,14 @@ PrefabInstance:
     - target: {fileID: -5684432240969465421, guid: e031284ed1730794bbd08168b3073a11, type: 3}
       propertyPath: projectileData
       value: 
-      objectReference: {fileID: 11400000, guid: 79c686c085039124ebce98bb0f01d1a0, type: 2}
+      objectReference: {fileID: 11400000, guid: 863ab7e673a4ef641984f70db4a96b36, type: 2}
     - target: {fileID: -5684432240969465421, guid: e031284ed1730794bbd08168b3073a11, type: 3}
       propertyPath: rotatesClockwise
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1575430968703495904, guid: e031284ed1730794bbd08168b3073a11, type: 3}
       propertyPath: m_Name
-      value: Libra bullet 4_0_1
+      value: Libra bullet 4_0_2
       objectReference: {fileID: 0}
     - target: {fileID: 4406597186128934183, guid: e031284ed1730794bbd08168b3073a11, type: 3}
       propertyPath: m_RootOrder
@@ -62,10 +62,6 @@ PrefabInstance:
     - target: {fileID: 4406597186128934183, guid: e031284ed1730794bbd08168b3073a11, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4726848138966906400, guid: e031284ed1730794bbd08168b3073a11, type: 3}
-      propertyPath: m_SortingOrder
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e031284ed1730794bbd08168b3073a11, type: 3}
