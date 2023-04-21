@@ -4,6 +4,9 @@ public class LibraMovementSystem4 : EnemyMovement
 {
     protected override IEnumerator Move()
     {
-        yield return this.MoveToRandomPosition(1f);
+        for (int i = 0; i < 5; i++)
+        {
+            yield return this.MoveToRandomPosition(0.5f);
+        }
     }
 }

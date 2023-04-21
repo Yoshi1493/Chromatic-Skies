@@ -92,7 +92,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyProjectiles:
-  - {fileID: -7180047295528485431, guid: a34566fce6423f44ab9a93d714a2d3b6, type: 3}
+  - {fileID: 4728028567810038167, guid: a34566fce6423f44ab9a93d714a2d3b6, type: 3}
+  - {fileID: 7227585511932537455, guid: 90603dc6355f37647866dee2250deb7c, type: 3}
   bulletData: {fileID: 11400000, guid: bc964db6a838b8d489f5641df8a03fc4, type: 2}
 --- !u!1 &7570647137838200391
 GameObject:
@@ -346,61 +347,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 180338613893518016, guid: d93cb44e21569f545b76560b29579f98, type: 3}
   m_PrefabInstance: {fileID: 6759093168088370692}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &877821432823959876
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6867336800114154692}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3efcd23622346be4487e768f16181c58, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  curve:
-    points:
-    - {x: 0, y: 2}
-    - {x: 0, y: 1}
-    - {x: 1, y: 0}
-    - {x: 2, y: 0}
-    - {x: 3, y: 0}
-    - {x: 3.5, y: 1}
-    - {x: 3, y: 1.5}
-    - {x: 2.5, y: 2}
-    - {x: 1.25, y: 1.25}
-    - {x: 1.25, y: 0.25}
-    - {x: 1.25, y: -0.75}
-    - {x: 0.75, y: -1.25}
-    - {x: 0, y: -1}
-    - {x: -0.75, y: -0.75}
-    - {x: -0.5, y: 0.5}
-    - {x: -1.5, y: 0.5}
-  displayControlPoints: 1
-  anchorColour: {r: 1, g: 0, b: 0, a: 1}
-  controlColour: {r: 1, g: 1, b: 1, a: 1}
-  segementColour: {r: 0, g: 1, b: 0, a: 1}
-  selectedSegementColour: {r: 1, g: 0, b: 1, a: 1}
-  anchorGizmoRadius: 0.1
-  controlGizmoRadius: 0.075
-  gridsnapInterval: {x: 0.25, y: 0.25}
-  points:
-  - {x: 0, y: 2}
-  - {x: 0, y: 1}
-  - {x: 1, y: 0}
-  - {x: 2, y: 0}
-  - {x: 3, y: 0}
-  - {x: 3.5, y: 1}
-  - {x: 3, y: 1.5}
-  - {x: 2.5, y: 2}
-  - {x: 1.25, y: 1.25}
-  - {x: 1.25, y: 0.25}
-  - {x: 1.25, y: -0.75}
-  - {x: 0.75, y: -1.25}
-  - {x: 0, y: -1}
-  - {x: -0.75, y: -0.75}
-  - {x: -0.5, y: 0.5}
-  - {x: -1.5, y: 0.5}
 --- !u!114 &3481857656569154989
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -415,7 +361,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyProjectiles:
   - {fileID: -5684432240969465421, guid: e031284ed1730794bbd08168b3073a11, type: 3}
-  - {fileID: 8108707433682132216, guid: 4f709d6719179c7448205a57999b78bc, type: 3}
+  - {fileID: -3568084756992768584, guid: 9376abdb38a83c349b68ce85475e15a4, type: 3}
   bulletData: {fileID: 11400000, guid: a71a17d0a4f9cd345857c8cd943048a5, type: 2}
 --- !u!1 &7008567321455470459 stripped
 GameObject:

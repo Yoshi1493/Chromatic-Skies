@@ -4,10 +4,8 @@ using static CoroutineHelper;
 
 public class LibraBulletSystem4 : EnemyShooter<EnemyBullet>
 {
-    const int BranchCount = 4;
+    const int BranchCount = 2;
     const float BranchSpacing = 360f / BranchCount;
-    const int BulletCount = 2;
-    const float BulletSpacing = 0.2f;
 
     protected override float ShootingCooldown => 0.04f;
 
@@ -15,39 +13,33 @@ public class LibraBulletSystem4 : EnemyShooter<EnemyBullet>
     {
         yield return base.Shoot();
 
-        SetSubsystemEnabled(1);
-
-        BezierCurve followPath = GetComponent<BezierCreator>().curve;
-
-        var points = followPath.CalculateEvenlySpacedPoints(BulletSpacing);
-        int waveCount = points.Length;
-
         while (enabled)
         {
-            float r = Random.Range(0f, BranchSpacing);
+            StartMoveAction?.Invoke();
 
-            for (int i = 0; i < waveCount; i++)
+            Vector3 p = transform.position;
+
+            yield return WaitForSeconds(ShootingCooldown);
+
+            while (transform.position != p)
             {
-                for (int ii = 0; ii < BranchCount; ii++)
-                {
-                    for (int iii = 0; iii < BulletCount; iii++)
-                    {
-                        float t = Vector3.zero.GetRotationDifference(points[i].normal);
-                        float z = (ii * BranchSpacing) + r;
-                        Vector3 pos = ((Vector3)points[i].position).RotateVectorBy(z);
+                Vector3 d = transform.position - p;
 
-                        SpawnProjectile(iii, z + t + (iii * 180f), pos).Fire();
-                    }
+                for (int i = 0; i < BranchCount; i++)
+                {
+                    float z = (i * BranchSpacing) + Vector3.zero.GetRotationDifference(d.RotateVectorBy(90f));
+                    Vector3 pos = Vector3.zero;
+
+                    SpawnProjectile(0, z, pos).Fire();
                 }
+
+                p = transform.position;
 
                 yield return WaitForSeconds(ShootingCooldown);
             }
 
-            yield return WaitForSeconds(1f);
-
-            StartMoveAction?.Invoke();
-
-            yield return WaitForSeconds(2f);
+            SetSubsystemEnabled(1);
+            yield return WaitForSeconds(5f);
         }
     }
 }
