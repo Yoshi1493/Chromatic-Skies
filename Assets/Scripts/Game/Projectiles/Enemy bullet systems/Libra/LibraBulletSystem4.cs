@@ -36,7 +36,6 @@ public class LibraBulletSystem4 : EnemyShooter<EnemyBullet>
                         float z = (ii * BranchSpacing) + r;
                         Vector3 pos = ((Vector3)points[i].position).RotateVectorBy(z);
 
-                        bulletData.colour = bulletData.gradient.Evaluate(i / (waveCount - 1f));
                         SpawnProjectile(iii, z + t + (iii * 180f), pos).Fire();
                     }
                 }
