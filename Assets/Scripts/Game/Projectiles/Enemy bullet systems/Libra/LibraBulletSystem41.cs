@@ -13,7 +13,7 @@ public class LibraBulletSystem41 : EnemyShooter<EnemyBullet>
 
     protected override IEnumerator Shoot()
     {
-        yield return WaitForSeconds(2f);
+        yield return WaitForSeconds(2.5f);
 
         for (int i = 0; i < WaveCount; i++)
         {

@@ -5,6 +5,6 @@ public class LeoBullet31 : EnemyBullet
     protected override IEnumerator Move()
     {
         yield return this.LerpSpeed(5f, 0.5f, 0.5f);
-        yield return this.LerpSpeed(0.5f, 2f, 1f);
+        yield return this.LerpSpeed(0.5f, 5f, 2f);
     }
 }
