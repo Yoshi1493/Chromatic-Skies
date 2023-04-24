@@ -9,10 +9,9 @@ public class CapricornBulletSystem51 : EnemyShooter<EnemyBullet>
     const float WaveSpacing = 5f;
     const int BranchCount = 20;
     const float BranchSpacing = 360f / BranchCount;
+    const float RingSpacing = 0.3f;
 
     Stack<EnemyBullet> bullets = new(WaveCount * BranchCount);
-
-    //protected override float ShootingCooldown => 0.2f;
 
     protected override IEnumerator Shoot()
     {
@@ -25,7 +24,7 @@ public class CapricornBulletSystem51 : EnemyShooter<EnemyBullet>
                 for (int ii = 0; ii < BranchCount; ii++)
                 {
                     float z = (i * WaveSpacing) + (ii * BranchSpacing);
-                    Vector3 pos = i * 0.4f * transform.up.RotateVectorBy(z);
+                    Vector3 pos = i * RingSpacing * transform.up.RotateVectorBy(z);
                     z += 90f;
 
                     bullets.Push(SpawnProjectile(1, z, pos));
@@ -34,8 +33,6 @@ public class CapricornBulletSystem51 : EnemyShooter<EnemyBullet>
                 yield return WaitForSeconds(ShootingCooldown);
             }
 
-            yield return WaitForSeconds(1f);
-
             for (int i = 0; i < WaveCount; i++)
             {
                 for (int ii = 0; ii < BranchCount; ii++)
@@ -43,7 +40,7 @@ public class CapricornBulletSystem51 : EnemyShooter<EnemyBullet>
                     bullets.Pop().Fire();
                 }
 
-                yield return WaitForSeconds(ShootingCooldown);
+                yield return WaitForSeconds(ShootingCooldown * 2f);
             }
         }
     }
