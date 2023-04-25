@@ -9,6 +9,8 @@ public class CapricornBulletSystem5 : EnemyShooter<EnemyBullet>
     const int BranchCount = 2;
     const float BranchSpacing = 360f / BranchCount;
 
+    protected override float ShootingCooldown => 0.05f;
+
     protected override IEnumerator Shoot()
     {
         yield return base.Shoot();
