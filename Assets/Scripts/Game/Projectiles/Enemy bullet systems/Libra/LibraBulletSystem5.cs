@@ -5,7 +5,7 @@ using static CoroutineHelper;
 public class LibraBulletSystem5 : EnemyShooter<EnemyBullet>
 {
     const int WaveCount = 9;
-    const int BranchCount = 36;
+    const int BranchCount = 24;
     const float BranchSpacing = 360f / BranchCount;
     const float BulletBaseSpeed = 1f;
     const float BulletSpeedMultiplier = 0.1f;
