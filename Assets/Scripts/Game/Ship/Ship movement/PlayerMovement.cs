@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class PlayerMovement : ShipMovement<Player>
 {
+    [SerializeField] FloatObject slowMovementSpeed;
+
     public event Action<bool> MovementSlowAction;
 
     protected override void Awake()
@@ -55,7 +57,7 @@ public class PlayerMovement : ShipMovement<Player>
 
     void SetSlowState(bool state)
     {
-        currentSpeed = parentShip.shipData.MovementSpeed.Value * (state ? 0.5f : 1);
+        currentSpeed = state ? slowMovementSpeed.value : parentShip.shipData.MovementSpeed.Value;
     }
 
     protected override void OnLoseLife()

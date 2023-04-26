@@ -338,6 +338,7 @@ MonoBehaviour:
   parentShip: {fileID: 0}
   moveDirection: {x: 0, y: 0, z: 0}
   currentSpeed: 0
+  slowMovementSpeed: {fileID: 11400000, guid: 595a3d5f4903f4c4a9143602008fd746, type: 2}
 --- !u!114 &4347026370913049934
 MonoBehaviour:
   m_ObjectHideFlags: 0
