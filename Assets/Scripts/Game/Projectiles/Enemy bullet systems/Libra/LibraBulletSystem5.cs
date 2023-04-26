@@ -42,6 +42,8 @@ public class LibraBulletSystem5 : EnemyShooter<EnemyBullet>
                 sc -= MaxShootingCooldown * 0.1f;
             }
 
+            StartMoveAction?.Invoke();
+
             yield return WaitForSeconds(ShootingCooldown);
         }
     }
