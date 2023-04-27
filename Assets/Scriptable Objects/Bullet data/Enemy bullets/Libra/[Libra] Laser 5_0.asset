@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6b79cd0b20b26ac4090b241d65679e69, type: 3}
-  m_Name: '[Libra] Bullet 5_2'
+  m_Name: '[Libra] Laser 5_0'
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: baa0acec5cc11d04e9029cbbda9961ea, type: 3}
+  sprite: {fileID: 21300000, guid: a7931915fd0488a4a921fea55c5f6774, type: 3}
   useSolidColour: 1
   colour: {r: 0.4, g: 1, b: 0.55, a: 1}
   gradient:
@@ -44,6 +44,6 @@ MonoBehaviour:
     m_Mode: 0
     m_NumColorKeys: 2
     m_NumAlphaKeys: 2
-  ID: 2
+  ID: 0
   Power: {fileID: 11400000, guid: 0c14504957821df41849a919e1aa2cdb, type: 2}
   destructible: 1

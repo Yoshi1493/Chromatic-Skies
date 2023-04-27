@@ -2,21 +2,25 @@ using System.Collections;
 using UnityEngine;
 using static CoroutineHelper;
 
-public class LibraBulletSystem51 : EnemyShooter<EnemyBullet>
+public class LibraBulletSystem51 : EnemyShooter<Laser>
 {
-    const int BulletCount = 0;
+    const int LaserCount = 20;
+    const float LaserSpacing = 360f / LaserCount;
+
+    protected override float ShootingCooldown => 2f / LaserCount;
 
     protected override IEnumerator Shoot()
     {
-        while (enabled)
+        for (int i = 0; i < LaserCount; i++)
         {
-            for (int i = 0; i < BulletCount; i++)
-            {
-                float z = 0;
-                SpawnProjectile(0, z, Vector3.zero).Fire();
-            }
+            float z = i * LaserSpacing;
+            Vector3 pos = Vector3.zero;
+
+            SpawnProjectile(0, z, pos).Fire();
 
             yield return WaitForSeconds(ShootingCooldown);
         }
+
+        enabled = false;
     }
 }

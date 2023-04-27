@@ -11,7 +11,7 @@ public class LibraBulletSystem5 : EnemyShooter<EnemyBullet>
     const float BulletSpeedMultiplier = 0.1f;
     const float MaxShootingCooldown = 0.5f;
 
-    protected override float ShootingCooldown => 5f;
+    protected override float ShootingCooldown => 4f;
 
     protected override IEnumerator Shoot()
     {
@@ -43,6 +43,7 @@ public class LibraBulletSystem5 : EnemyShooter<EnemyBullet>
             }
 
             StartMoveAction?.Invoke();
+            SetSubsystemEnabled(1);
 
             yield return WaitForSeconds(ShootingCooldown);
         }
