@@ -23,7 +23,6 @@ public class LibraBulletSystem5 : EnemyShooter<EnemyBullet>
 
             for (int i = 0; i < WaveCount; i++)
             {
-                float r = PlayerPosition.GetRotationDifference(transform.position);
                 float s = BulletBaseSpeed + (i * BulletSpeedMultiplier);
                 Vector3 pos = Random.insideUnitCircle;
 
@@ -31,7 +30,7 @@ public class LibraBulletSystem5 : EnemyShooter<EnemyBullet>
 
                 for (int ii = 0; ii < BranchCount; ii++)
                 {
-                    float z = (ii * BranchSpacing) + r;
+                    float z = ii * BranchSpacing;
 
                     var bullet = SpawnProjectile(0, z, pos);
                     bullet.MoveSpeed = s;
