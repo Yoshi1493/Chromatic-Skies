@@ -8,7 +8,7 @@ public class CancerBulletSystem41 : EnemyShooter<EnemyBullet>
     const float WaveSpacing = 360 / WaveCount;
     const int BranchCount = 3;
     const float BranchSpacing = 360f / BranchCount;
-    const float SpawnRadius = 0.5f;
+    const float BulletSpawnRadius = 0.5f;
 
     protected override IEnumerator Shoot()
     {
@@ -23,7 +23,7 @@ public class CancerBulletSystem41 : EnemyShooter<EnemyBullet>
                 for (int ii = 0; ii < BranchCount; ii++)
                 {
                     float z = (i * WaveSpacing) + (ii * BranchSpacing);
-                    Vector3 pos = (SpawnRadius * r).RotateVectorBy(z);
+                    Vector3 pos = (BulletSpawnRadius * r).RotateVectorBy(z);
 
                     SpawnProjectile(1, z, pos).Fire();
                 }

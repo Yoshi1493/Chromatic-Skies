@@ -27,6 +27,8 @@ public class SagittariusBulletSystem31 : EnemyShooter<EnemyBullet>
                     float s = BulletBaseSpeed + (iii * BulletSpeedMultiplier);
                     Vector3 pos = Vector3.zero;
 
+                    bulletData.colour = bulletData.gradient.Evaluate(iii / (BulletCount - 1f));
+
                     var bullet = SpawnProjectile(1, z, pos);
                     bullet.MoveSpeed = s;
                     bullet.Fire();
