@@ -9,7 +9,7 @@ public abstract class Projectile : Actor
     protected virtual float MaxLifetime => 10f;
     protected float currentLifetime;
 
-    protected float HitboxSize => Mathf.Min(spriteRenderer.size.x, spriteRenderer.size.y) / 2f;
+    protected float HitboxSize => 0.8f * Mathf.Min(spriteRenderer.size.x, spriteRenderer.size.y) / 2f;
     protected abstract int CollisionMask { get; }
     protected abstract Collider2D CollisionCondition { get; }
 
