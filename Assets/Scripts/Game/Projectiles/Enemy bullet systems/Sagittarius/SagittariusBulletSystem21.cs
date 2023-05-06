@@ -5,7 +5,7 @@ using static CoroutineHelper;
 public class SagittariusBulletSystem21 : EnemyShooter<EnemyBullet>
 {
     const float ArcHalfWidth = 60f;
-    const int BulletCount = 2;
+    const int BulletCount = 1;
     const float BulletSpawnRadius = 1.5f;
     const float BulletSpawnOffset = 2.5f;
     const float BulletMinSpeed = 2f;
@@ -29,6 +29,7 @@ public class SagittariusBulletSystem21 : EnemyShooter<EnemyBullet>
                 bullet.MoveSpeed = s;
                 bullet.Fire();
             }
+
             yield return WaitForSeconds(ShootingCooldown);
         }
     }

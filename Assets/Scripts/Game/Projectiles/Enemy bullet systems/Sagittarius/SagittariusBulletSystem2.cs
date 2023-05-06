@@ -10,6 +10,8 @@ public class SagittariusBulletSystem2 : EnemyShooter<EnemyBullet>
     const float BulletBaseSpeed = 4f;
     const float BulletSpeedMultiplier = 0.5f;
 
+    protected override float ShootingCooldown => 0.2f;
+
     protected override IEnumerator Shoot()
     {
         yield return base.Shoot();
