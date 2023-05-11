@@ -9,7 +9,6 @@ public class SagittariusMovementSystem2 : EnemyMovement
         {
             yield return WaitForSeconds(4f);
             yield return this.MoveToRandomPosition(1f);
-            print(UnityEngine.Time.timeSinceLevelLoad);
         }
     }
 }

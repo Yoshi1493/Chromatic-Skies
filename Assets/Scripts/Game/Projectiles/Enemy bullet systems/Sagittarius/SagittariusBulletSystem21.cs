@@ -4,38 +4,38 @@ using static CoroutineHelper;
 
 public class SagittariusBulletSystem21 : EnemyShooter<EnemyBullet>
 {
-    const int WaveCount = 40;
-    const float WaveSpacing = 9f;
-    const int BranchCount = 4;
-    const float BranchSpacing = 360f / BranchCount;
-    const float BulletSpawnRadius = 0.5f;
-    const float SpawnRadiusIncreaseRate = 0.02f;
+    const float WaveSpacing = 222f;
+    const int BulletCount = 7;
+    const float BulletSpacing = 4f;
+    const float BulletBaseSpeed = 4f;
+    const float BulletSpeedMultiplier = 0.5f;
 
-    protected override float ShootingCooldown => 0.05f;
+    protected override float ShootingCooldown => 0.2f;
 
     protected override IEnumerator Shoot()
     {
+        yield return WaitForSeconds(3f);
+
+        int i = 0;
+
         while (enabled)
         {
-            print(Time.timeSinceLevelLoad);
-            Vector3 v = transform.up;
-            float r = BulletSpawnRadius;
-
-            for (int i = 0; i < WaveCount; i++)
+            for (int ii = 0; ii < BulletCount; ii++)
             {
-                for (int ii = 0; ii < BranchCount; ii++)
-                {
-                    float z = (i * WaveSpacing) + (ii * BranchSpacing);
-                    Vector3 pos = r * v.RotateVectorBy(z);
+                float t = ii - ((BulletCount - 1) / 2f);
+                float z = (i * WaveSpacing) + (t * BulletSpacing);
+                float s = BulletBaseSpeed - (Mathf.Abs(t) * BulletSpeedMultiplier * BulletSpeedMultiplier);
+                Vector3 pos = Vector3.zero;
 
-                    SpawnProjectile(i % 2 + 1, z, pos).Fire();
-                }
+                bulletData.colour = bulletData.gradient.Evaluate(ii / (BulletCount - 1f));
 
-                yield return WaitForSeconds(ShootingCooldown);
-                r += SpawnRadiusIncreaseRate;
+                var bullet = SpawnProjectile(2, z, pos);
+                bullet.MoveSpeed = s;
+                bullet.Fire();
             }
 
-            yield return WaitForSeconds(3f - ShootingCooldown);
+            yield return WaitForSeconds(ShootingCooldown);
+            i++;
         }
     }
 }

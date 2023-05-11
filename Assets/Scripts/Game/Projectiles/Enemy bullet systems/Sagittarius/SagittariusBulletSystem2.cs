@@ -4,13 +4,14 @@ using static CoroutineHelper;
 
 public class SagittariusBulletSystem2 : EnemyShooter<EnemyBullet>
 {
-    const float WaveSpacing = 222f;
-    const int BulletCount = 7;
-    const float BulletSpacing = 4f;
-    const float BulletBaseSpeed = 4f;
-    const float BulletSpeedMultiplier = 0.5f;
+    const int WaveCount = 40;
+    const float WaveSpacing = 9f;
+    const int BranchCount = 4;
+    const float BranchSpacing = 360f / BranchCount;
+    const float BulletSpawnRadius = 2.0f;
+    const float SpawnRadiusIncreaseRate = -0.04f;
 
-    protected override float ShootingCooldown => 0.2f;
+    protected override float ShootingCooldown => 0.05f;
 
     protected override IEnumerator Shoot()
     {
@@ -18,28 +19,27 @@ public class SagittariusBulletSystem2 : EnemyShooter<EnemyBullet>
 
         StartMoveAction?.Invoke();
         SetSubsystemEnabled(1);
-        yield return WaitForSeconds(3f);
-
-        int i = 0;
 
         while (enabled)
         {
-            for (int ii = 0; ii < BulletCount; ii++)
+            Vector3 v = transform.up;
+            float r = BulletSpawnRadius;
+
+            for (int i = 0; i < WaveCount; i++)
             {
-                float t = ii - ((BulletCount - 1) / 2f);
-                float z = (i * WaveSpacing) + (t * BulletSpacing);
-                float s = BulletBaseSpeed - (Mathf.Abs(t) * BulletSpeedMultiplier * BulletSpeedMultiplier);
-                Vector3 pos = Vector3.zero;
+                for (int ii = 0; ii < BranchCount; ii++)
+                {
+                    float z = (i * WaveSpacing) + (ii * BranchSpacing);
+                    Vector3 pos = r * v.RotateVectorBy(z);
 
-                bulletData.colour = bulletData.gradient.Evaluate(ii / (BulletCount - 1f));
+                    SpawnProjectile(i % 2, z, pos).Fire();
+                }
 
-                var bullet = SpawnProjectile(0, z, pos);
-                bullet.MoveSpeed = s;
-                bullet.Fire();
+                yield return WaitForSeconds(ShootingCooldown);
+                r += SpawnRadiusIncreaseRate;
             }
 
-            yield return WaitForSeconds(ShootingCooldown);
-            i++;
+            yield return WaitForSeconds(3f - ShootingCooldown);
         }
     }
 }
