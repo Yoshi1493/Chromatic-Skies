@@ -1,31 +1,71 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using static CoroutineHelper;
 
 public class CapricornBulletSystem61 : EnemyShooter<EnemyBullet>
 {
-    const int WaveCount = 36;
-    const int BranchCount = 1;
+    const int WaveCount = 12;
+    const float WaveSpacing = 5f;
+    const int BranchCount = 20;
+    const float BranchSpacing = 360f / BranchCount;
+    const float RingSpacing = 0.3f;
 
-    protected override float ShootingCooldown => 0.08f;
+    Stack<EnemyBullet> bullets = new(WaveCount * BranchCount);
 
     protected override IEnumerator Shoot()
     {
         yield return WaitForSeconds(1f);
 
-        for (int i = 0; i < WaveCount; i++)
+        while (enabled)
         {
-            for (int ii = 0; ii < BranchCount; ii++)
+            for (int i = 0; i < WaveCount; i++)
             {
-                float z = Random.Range(0f, 360f);
-                Vector3 pos = Vector3.zero;
+                for (int ii = 0; ii < BranchCount; ii++)
+                {
+                    float z = (i * WaveSpacing) + (ii * BranchSpacing);
+                    Vector3 pos = i * RingSpacing * transform.up.RotateVectorBy(z);
+                    z += 90f;
 
-                SpawnProjectile(1, z, pos).Fire();
+                    bullets.Push(SpawnProjectile(1, z, pos));
+                }
+
                 yield return WaitForSeconds(ShootingCooldown);
-                SpawnProjectile(2, z + 180f, pos).Fire();
+            }
+
+            for (int i = 0; i < WaveCount; i++)
+            {
+                for (int ii = 0; ii < BranchCount; ii++)
+                {
+                    bullets.Pop().Fire();
+                }
+
+                yield return WaitForSeconds(ShootingCooldown * 2f);
+            }
+
+            for (int i = 0; i < WaveCount; i++)
+            {
+                for (int ii = 0; ii < BranchCount; ii++)
+                {
+                    float z = -(i * WaveSpacing) - (ii * BranchSpacing);
+                    Vector3 pos = i * RingSpacing * transform.up.RotateVectorBy(z);
+                    z -= 90f;
+
+                    bullets.Push(SpawnProjectile(2, z, pos));
+                }
+
+                yield return WaitForSeconds(ShootingCooldown);
+            }
+
+            for (int i = 0; i < WaveCount; i++)
+            {
+                for (int ii = 0; ii < BranchCount; ii++)
+                {
+                    bullets.Pop().Fire();
+                }
+
+                yield return WaitForSeconds(ShootingCooldown * 2f);
             }
         }
-
-        enabled = false;
     }
 }

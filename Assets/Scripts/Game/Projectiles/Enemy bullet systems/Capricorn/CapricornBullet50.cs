@@ -1,14 +1,15 @@
 using System.Collections;
-using UnityEngine;
 
 public class CapricornBullet50 : EnemyBullet
 {
-    protected override Collider2D CollisionCondition => Physics2D.OverlapBox(transform.position, spriteRenderer.size * 0.8f, transform.eulerAngles.z, CollisionMask);
-
-    protected override float MaxLifetime => 6f;
-
     protected override IEnumerator Move()
     {
-        yield return this.LerpSpeed(0f, 3f, 1f);
+        float endSpeed = MoveSpeed;
+
+        yield return this.LerpSpeed(0f, 3f, 0.5f);
+        yield return this.RotateAround(ownerShip, 1f, 180f);
+
+        yield return this.LerpSpeed(MoveSpeed, endSpeed * 2f, 0.5f);
+        yield return this.LerpSpeed(endSpeed * 2f, endSpeed, 0.5f);
     }
 }
