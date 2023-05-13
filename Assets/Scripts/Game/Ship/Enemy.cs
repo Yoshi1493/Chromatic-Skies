@@ -5,18 +5,16 @@ using static CoroutineHelper;
 
 public class Enemy : Ship
 {
+    [Header("Enemy-specific")]
     [SerializeField] Transform bulletSystemContainer;
     [SerializeField] Transform movementSystemContainer;
 
     public List<IEnemyAttack> bulletSystems { get; private set; }
-    List<IEnemyAttack> currentBulletSystems = new();
-    IEnemyAttack nextBulletSystem;
-
     List<EnemyMovement> movementSystems;
-    EnemyMovement currentMovementSystem;
-    EnemyMovement nextMovementSystem;
 
     IEnumerator systemResetCoroutine;
+
+    int CurrentAttackSystem => shipData.MaxLives.Value - currentLives;
 
     protected override void Awake()
     {
@@ -36,6 +34,7 @@ public class Enemy : Ship
             if (bulletSystemContainer.GetChild(i).TryGetComponent(out IEnemyAttack enemyAttack))
             {
                 bulletSystems.Add(enemyAttack);
+                enemyAttack.SetEnabled(false);
             }
         }
 
@@ -44,8 +43,15 @@ public class Enemy : Ship
             if (movementSystemContainer.GetChild(i).TryGetComponent(out EnemyMovement enemyMovement))
             {
                 movementSystems.Add(enemyMovement);
+                enemyMovement.enabled = false;
             }
         }
+    }
+
+    void OnEnable()
+    {
+        bulletSystems[CurrentAttackSystem].SetEnabled(true);
+        movementSystems[CurrentAttackSystem].enabled = true;
     }
 
     void Update()
@@ -59,8 +65,6 @@ public class Enemy : Ship
     //disable current systems, and enable next systems upon losing life
     protected override IEnumerator LoseLife()
     {
-        int currentSystemIndex = shipData.MaxLives.Value - currentLives;
-
         StartCoroutine(base.LoseLife());
 
         EnemyBulletPool.Instance.DrainPool();
@@ -73,7 +77,7 @@ public class Enemy : Ship
                 StopCoroutine(systemResetCoroutine);
             }
 
-            systemResetCoroutine = RefreshEnemySystems(currentSystemIndex);
+            systemResetCoroutine = RefreshEnemySystems();
             yield return systemResetCoroutine;
 
             Respawn();
@@ -83,8 +87,6 @@ public class Enemy : Ship
     //disable and re-enable current systems upon player losing life
     void OnPlayerLoseLife()
     {
-        int currentSystemIndex = shipData.MaxLives.Value - currentLives;
-
         SetInvincible(1f);
 
         if (systemResetCoroutine != null)
@@ -92,81 +94,49 @@ public class Enemy : Ship
             StopCoroutine(systemResetCoroutine);
         }
 
-        systemResetCoroutine = RefreshEnemySystems(currentSystemIndex);
+        systemResetCoroutine = RefreshEnemySystems();
         StartCoroutine(systemResetCoroutine);
     }
 
-    IEnumerator RefreshEnemySystems(int currentSystemIndex)
+    IEnumerator RefreshEnemySystems()
     {
-        GetActiveEnemySystems();
+        int currentSystemIndex = CurrentAttackSystem - (currentHealth > 0 ? 0 : 1);
+        int nextSystemIndex = currentSystemIndex + (currentHealth > 0 ? 0 : 1);
 
-        if (currentHealth > 0)
+        //get current bullet system(s)
+        List<IEnemyAttack> currentBulletSystems = new() { bulletSystems[currentSystemIndex] };
+
+        //get bullet subsystems if they exist
+        foreach (Transform t in bulletSystemContainer.GetChild(currentSystemIndex))
         {
-            nextBulletSystem = currentBulletSystems[0];
-            nextMovementSystem = currentMovementSystem;
-        }
-        else
-        {
-            nextBulletSystem = bulletSystems[currentSystemIndex + 1];
-            nextMovementSystem = movementSystems[currentSystemIndex + 1];
+            if (t.TryGetComponent(out IEnemyAttack bulletSystem))
+            {
+                currentBulletSystems.Add(bulletSystem);
+            }
         }
 
+        //get current movement system
+        EnemyMovement currentMovementSystem = movementSystems[currentSystemIndex];
+
+        //get next bullet + movement systems
+        IEnemyAttack nextBulletSystem = bulletSystems[nextSystemIndex];
+        EnemyMovement nextMovementSystem = movementSystems[nextSystemIndex];
+
+        //disable all bullet systems
         foreach (var bulletSystem in currentBulletSystems)
         {
             bulletSystem.SetEnabled(false);
         }
 
+        //disable all movement systems
         currentMovementSystem.StopAllCoroutines();
         currentMovementSystem.enabled = false;
 
         yield return WaitForSeconds(RespawnTime);
 
+        //enable next bullet + movement systems
         nextBulletSystem.SetEnabled(true);
         nextMovementSystem.enabled = true;
-    }
-
-    void GetActiveEnemySystems()
-    {
-        currentBulletSystems.Clear();
-
-        //check all children of BulletSystem container for enabled IEnemyAttack
-        for (int i = 0; i < bulletSystemContainer.childCount; i++)
-        {
-            Transform child = bulletSystemContainer.GetChild(i);
-
-            //find bullet systems
-            if (child.TryGetComponent(out IEnemyAttack bulletSystem))
-            {
-                //if a bullet system exists, regardless of its enabled status, find respective movement system
-                currentMovementSystem = movementSystemContainer.GetChild(i).GetComponent<EnemyMovement>();
-
-                if (bulletSystem.Enabled)
-                {
-                    currentBulletSystems.Add(bulletSystem);
-                }
-            }
-
-            //check for active bullet subsystems
-            if (child.childCount > 0)
-            {
-                for (int ii = 0; ii < child.childCount; ii++)
-                {
-                    if (child.GetChild(ii).TryGetComponent(out IEnemyAttack bulletSubsystem) && bulletSubsystem.Enabled)
-                    {
-                        currentBulletSystems.Add(bulletSubsystem);
-                    }
-                }
-            }
-
-            //find movement system
-            if (child.TryGetComponent(out EnemyMovement movementSystem) && movementSystem.enabled)
-            {
-                currentMovementSystem = movementSystem;
-            }
-
-            //if an active bullet system exists, immediately break out to avoid further checks
-            if (currentBulletSystems.Count > 0) break;
-        }
     }
 
     protected override void Die()
