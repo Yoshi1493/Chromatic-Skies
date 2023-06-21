@@ -14,7 +14,7 @@ public class CancerBullet12 : EnemyBullet
         yield return WaitForSeconds(0.5f);
 
         moveDirection *= -1;
-        StartCoroutine(this.LerpSpeed(0f, Random.Range(6f, 8f), 1f));
+        StartCoroutine(this.LerpSpeed(0f, Random.Range(4f, 6f), 1f));
     }
 
 #if UNITY_EDITOR

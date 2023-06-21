@@ -6,16 +6,15 @@ public class CancerBullet10 : ScriptableEnemyBullet<CancerBulletSystem1, EnemyBu
     const int WaveCount = 3;
     const int BulletCount = 3;
     const float BulletSpacing = 360f / BulletCount;
-    const float BulletBaseSpeed = 3f;
-    const float BulletSpeedMultiplier = 0.3f;
+    const float BulletBaseSpeed = 2f;
+    const float BulletSpeedMultiplier = 0.6f;
 
     [Space]
     [SerializeField] ProjectileObject bulletData;
 
     protected override IEnumerator Move()
     {
-        yield return null;
-        Destroy();
+        yield break;
     }
 
     public override void Destroy()

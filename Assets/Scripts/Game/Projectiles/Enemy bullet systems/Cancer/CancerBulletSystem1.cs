@@ -45,7 +45,7 @@ public class CancerBulletSystem1 : EnemyShooter<EnemyBullet>
             {
                 for (int ii = 0; ii < BulletCount; ii++)
                 {
-                    bullets.Pop().Fire();
+                    bullets.Pop().Destroy();
                     yield return WaitForSeconds(ShootingCooldown * 0.25f);
                 }
             }
