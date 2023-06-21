@@ -27,6 +27,7 @@ public class CapricornBulletSystem6 : EnemyShooter<EnemyBullet>
                     float z = (i * WaveSpacing) + r;
                     Vector3 pos = 3f * Vector3.right.RotateVectorBy(r);
 
+                    bulletData.colour = bulletData.gradient.Evaluate(i / (WaveCount - 1f) / BranchCount);
                     SpawnProjectile(0, z, pos).Fire();
                 }
 
