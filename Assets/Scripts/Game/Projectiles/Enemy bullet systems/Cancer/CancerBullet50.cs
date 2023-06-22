@@ -2,14 +2,13 @@ using System.Collections;
 using UnityEngine;
 using static CoroutineHelper;
 
-public class CancerBullet40 : EnemyBullet
+public class CancerBullet50 : EnemyBullet
 {
     Vector3 rotationAxis;
     const float RotationSpeed = 180f;
     const float FireDelay = 1.5f;
-    const float MutationChance = 0.1f;
 
-    protected override float MaxLifetime => 5f;
+    protected override float MaxLifetime => 6f;
 
     protected override IEnumerator Move()
     {
@@ -17,7 +16,7 @@ public class CancerBullet40 : EnemyBullet
         MoveSpeed = 0f;
         yield return WaitForSeconds(FireDelay);
 
-        MoveSpeed = endSpeed;
+        StartCoroutine(this.LerpSpeed(endSpeed, 4f, 2f));
         this.LookAt(ownerShip);
     }
 
@@ -30,7 +29,6 @@ public class CancerBullet40 : EnemyBullet
     protected override void Update()
     {
         base.Update();
-
         if (currentLifetime < FireDelay)
         {
             transform.RotateAround(ownerShip.transform.position, rotationAxis, RotationSpeed * Time.deltaTime);

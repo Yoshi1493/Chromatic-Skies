@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using static CoroutineHelper;
 
-public class CancerBulletSystem41 : EnemyShooter<EnemyBullet>
+public class CancerBulletSystem51 : EnemyShooter<EnemyBullet>
 {
     const int WaveCount = 120;
     const float WaveSpacing = 360 / WaveCount;
@@ -22,7 +22,7 @@ public class CancerBulletSystem41 : EnemyShooter<EnemyBullet>
 
                 for (int ii = 0; ii < BranchCount; ii++)
                 {
-                    float z = (i * WaveSpacing) + (ii * BranchSpacing);
+                    float z = -((i * WaveSpacing) + (ii * BranchSpacing));
                     Vector3 pos = (BulletSpawnRadius * r).RotateVectorBy(z);
 
                     SpawnProjectile(1, z, pos).Fire();
