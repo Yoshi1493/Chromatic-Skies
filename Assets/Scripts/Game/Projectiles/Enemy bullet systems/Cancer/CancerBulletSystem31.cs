@@ -5,7 +5,7 @@ public class CancerBulletSystem31 : EnemyShooter<EnemyBullet>
 {
     const int BulletCount = 16;
     const float BulletSpacing = 360f / BulletCount;
-    const float SpawnRadius = 4f;
+    const float BulletSpawnRadius = 4f;
 
     float z;
     float smoothDampVel = 0f;

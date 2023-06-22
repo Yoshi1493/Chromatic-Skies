@@ -15,7 +15,7 @@ public class CancerBullet20 : ScriptableEnemyBullet<CancerBulletSystem2, EnemyBu
 
         while (currentLifetime < 5f)
         {
-            int b = Random.value * 3 <= 1 ? 1 : 2;
+            int b = Random.Range(1, 4);
             Vector3 o = 0.5f * Random.insideUnitCircle;
             float z = transform.eulerAngles.z - (Mathf.Sign(o.x) * 90f);
             Vector3 pos = transform.position + o;

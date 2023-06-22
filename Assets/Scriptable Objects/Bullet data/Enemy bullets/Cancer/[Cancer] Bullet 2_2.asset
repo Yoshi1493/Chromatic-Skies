@@ -10,25 +10,25 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6b79cd0b20b26ac4090b241d65679e69, type: 3}
-  m_Name: '[Cancer] Bullet 2_1_1'
+  m_Name: '[Cancer] Bullet 2_2'
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: 9c44a70d88a58084b91108bd8d02a677, type: 3}
-  useSolidColour: 0
-  colour: {r: 1, g: 1, b: 1, a: 1}
+  sprite: {fileID: 21300000, guid: cd25628f7aaba46478b5b0358d835261, type: 3}
+  useSolidColour: 1
+  colour: {r: 1, g: 0.19999999, b: 0.39999998, a: 1}
   gradient:
     serializedVersion: 2
-    key0: {r: 0.9, g: 0.35999995, b: 0.9, a: 1}
-    key1: {r: 0.9, g: 0.35999995, b: 0.765, a: 1}
-    key2: {r: 1, g: 0.5, b: 0.9, a: 0}
-    key3: {r: 1, g: 0.5, b: 0.9, a: 0}
+    key0: {r: 1, g: 1, b: 1, a: 1}
+    key1: {r: 1, g: 1, b: 1, a: 1}
+    key2: {r: 1, g: 0.75, b: 0, a: 0}
+    key3: {r: 1, g: 0.8754902, b: 0.5019608, a: 0}
     key4: {r: 1, g: 0.75, b: 0, a: 0}
     key5: {r: 1, g: 0.8754902, b: 0.5019608, a: 0}
     key6: {r: 0, g: 0, b: 0, a: 0}
     key7: {r: 0, g: 0, b: 0, a: 0}
-    ctime0: 193
+    ctime0: 0
     ctime1: 65535
-    ctime2: 65535
-    ctime3: 65535
+    ctime2: 33423
+    ctime3: 44564
     ctime4: 55705
     ctime5: 65535
     ctime6: 0
@@ -44,6 +44,6 @@ MonoBehaviour:
     m_Mode: 0
     m_NumColorKeys: 2
     m_NumAlphaKeys: 2
-  ID: 2
+  ID: 4
   Power: {fileID: 11400000, guid: 74afa8ba1024c0d42a3334efc360cdcf, type: 2}
   destructible: 1

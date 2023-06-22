@@ -4,8 +4,6 @@ using static CoroutineHelper;
 
 public class CancerBulletSystem2 : EnemyShooter<EnemyBullet>
 {
-    const int WaveCount = 2;
-    const float WaveSpacing = BulletSpacing / WaveCount;
     const int BulletCount = 6;
     const float BulletSpacing = 360f / BulletCount;
 
@@ -15,22 +13,18 @@ public class CancerBulletSystem2 : EnemyShooter<EnemyBullet>
 
         while (enabled)
         {
-            for (int i = 0; i < WaveCount; i++)
+            for (int i = 0; i < BulletCount; i++)
             {
-                for (int ii = 0; ii < BulletCount; ii++)
-                {
-                    float z = (i * WaveSpacing) + (ii * BulletSpacing);
-                    Vector3 pos = Vector3.zero;
+                float z = i * BulletSpacing;
+                Vector3 pos = Vector3.zero;
 
-                    SpawnProjectile(0, z, pos).Fire();
-                }
-
-                yield return WaitForSeconds(5f);
+                SpawnProjectile(0, z, pos).Fire();
             }
 
-            yield return WaitForSeconds(1f);
+            yield return WaitForSeconds(5f);
 
             StartMoveAction?.Invoke();
+            SetSubsystemEnabled(1);
             yield return WaitForSeconds(1f);
         }
     }

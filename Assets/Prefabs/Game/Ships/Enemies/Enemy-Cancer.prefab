@@ -143,6 +143,53 @@ MonoBehaviour:
   enemyProjectiles:
   - {fileID: -4699469376002808121, guid: e949ec8202478134db2f10e551b8a138, type: 3}
   bulletData: {fileID: 11400000, guid: 40313409690ff3a4b96044c024da5de9, type: 2}
+--- !u!1 &7954419980843629217
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8067852499068092642}
+  - component: {fileID: 3292182465268647148}
+  m_Layer: 0
+  m_Name: Bullet Subsystem 1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8067852499068092642
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7954419980843629217}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2362189854743476344}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3292182465268647148
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7954419980843629217}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae16eb6d3bc251942b6c8df94a46c37e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyProjectiles:
+  - {fileID: 101455206195706677, guid: 28a8493a385b22541ba9445415cb026a, type: 3}
+  bulletData: {fileID: 11400000, guid: f56842f403500ea46b43dfc5fd14816e, type: 2}
 --- !u!1001 &6759093168088370692
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -243,6 +290,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5372900977354538830, guid: d93cb44e21569f545b76560b29579f98, type: 3}
   m_PrefabInstance: {fileID: 6759093168088370692}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &2362189854743476344 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 9008659700516484732, guid: d93cb44e21569f545b76560b29579f98, type: 3}
+  m_PrefabInstance: {fileID: 6759093168088370692}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2404639451515421504 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8976766678102363460, guid: d93cb44e21569f545b76560b29579f98, type: 3}
@@ -282,7 +334,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3777441332194849460}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 819517a620926614885894fd1a0c7f04, type: 3}
   m_Name: 
@@ -291,6 +343,7 @@ MonoBehaviour:
   - {fileID: 7538200852571620569, guid: a781719d9ad0d614bb1a08e7bec0526e, type: 3}
   - {fileID: -5470005097986668068, guid: e68855590adac3448b21f09e3325de51, type: 3}
   - {fileID: 3344892888330521945, guid: aac38db15a723f54db4f62c425386b4c, type: 3}
+  - {fileID: 3344892888330521945, guid: 726e55773247d9446a2c19e825d30cce, type: 3}
   bulletData: {fileID: 11400000, guid: 3484180bfd812414caaf7207ead3cc87, type: 2}
 --- !u!1 &4079918356797303241 stripped
 GameObject:
@@ -304,7 +357,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4079918356797303241}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3568bf9c84f6422488799d74a65f6130, type: 3}
   m_Name: 
@@ -434,7 +487,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9083349842419879498}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 09956b4cfd8c00d4e8d49d41a946a340, type: 3}
   m_Name: 
@@ -455,7 +508,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9208180497907977624}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1bdfd31de472b384292b98cd588fea11, type: 3}
   m_Name: 
