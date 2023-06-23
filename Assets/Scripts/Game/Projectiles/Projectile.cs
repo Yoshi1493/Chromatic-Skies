@@ -50,26 +50,27 @@ public abstract class Projectile : Actor
         }
     }
 
-    protected void CheckCollisionWith<TShip>() where TShip : Ship
+    protected void CheckCollisionWith<T>()
     {
         Collider2D coll = CollisionCondition;
 
         if (coll)
         {
-            if (coll.TryGetComponent(out TShip _))
+            if (coll.TryGetComponent(out T _))
             {
-                HandleCollisionWithShip<Ship>(coll);
+                HandleCollision<Ship>(coll);
             }
         }
     }
 
-    protected virtual void HandleCollisionWithShip<TShip>(Collider2D coll) where TShip : Ship
+    protected virtual void HandleCollision<T>(Collider2D coll)
     {
-        TShip ship = coll.GetComponent<TShip>();
-
-        if (!ship.invincible)
+        if (coll.TryGetComponent(out Ship ship))
         {
-            ship.TakeDamage(projectileData.Power.value);
+            if (!ship.invincible)
+            {
+                ship.TakeDamage(projectileData.Power.value);
+            }
         }
     }
 

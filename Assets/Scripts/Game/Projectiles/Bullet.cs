@@ -11,23 +11,24 @@ public abstract class Bullet : Projectile
         Move(moveDirection.normalized, MoveSpeed);
     }
 
-    protected override void HandleCollisionWithShip<TShip>(Collider2D coll)
+    protected override void HandleCollision<T>(Collider2D coll)
     {
-        TShip ship = coll.GetComponent<TShip>();
-
-        if (!ship.invincible)
+        if (coll.TryGetComponent(out Ship ship))
         {
-            ship.TakeDamage(projectileData.Power.value);
+            if (!ship.invincible)
+            {
+                ship.TakeDamage(projectileData.Power.value);
 
-            //get particle spawn position+rotation
-            Vector3 pos = coll.ClosestPoint(transform.position);
-            float rot = coll.transform.position.GetRotationDifference(transform.position);
-            SpawnDestructionParticles(pos, rot);
-        }
+                //get particle spawn position+rotation
+                Vector3 pos = coll.ClosestPoint(transform.position);
+                float rot = coll.transform.position.GetRotationDifference(transform.position);
+                SpawnDestructionParticles(pos, rot);
 
-        if (projectileData.destructible)
-        {
-            Destroy();
+                if (projectileData.destructible)
+                {
+                    Destroy();
+                }
+            }
         }
     }
 
