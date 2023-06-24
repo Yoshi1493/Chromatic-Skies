@@ -3,16 +3,20 @@ using UnityEngine;
 
 public class GeminiBullet1 : EnemyBullet
 {
-    protected override int CollisionMask => base.CollisionMask | 1 << LayerMask.NameToLayer("Bullet bounds");
-
     const int ReflectCount = 1;
     int reflectCount = ReflectCount;
     const float ReflectCollisionThreshold = 0.1f;
 
+    protected override int CollisionMask => base.CollisionMask | 1 << LayerMask.NameToLayer("Bullet bounds");
+
+    protected override float MaxLifetime => 15f;
+
     protected override void OnEnable()
     {
         base.OnEnable();
+
         reflectCount = ReflectCount;
+        spriteRenderer.color = projectileData.gradient.Evaluate(0f);
     }
 
     protected override IEnumerator Move()
@@ -34,6 +38,10 @@ public class GeminiBullet1 : EnemyBullet
         if (reflectCount > 0)
         {
             Reflect(coll);
+
+            MoveSpeed = 1.5f;
+            spriteRenderer.color = projectileData.gradient.Evaluate(1f);
+
             reflectCount--;
         }
     }
