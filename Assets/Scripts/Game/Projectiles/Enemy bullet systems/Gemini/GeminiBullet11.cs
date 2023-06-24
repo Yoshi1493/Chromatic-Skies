@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class GeminiBullet1 : EnemyBullet
+public class GeminiBullet11 : EnemyBullet
 {
     const int ReflectCount = 1;
     int reflectCount = ReflectCount;
@@ -53,11 +53,11 @@ public class GeminiBullet1 : EnemyBullet
 
         if (Mathf.Abs(p.x - transform.position.x) < ReflectCollisionThreshold)
         {
-            d.x *= -1;
+            d.y *= -1;
         }
         if (Mathf.Abs(p.y - transform.position.y) < ReflectCollisionThreshold)
         {
-            d.y *= -1;
+            d.x *= -1;
         }
 
         moveDirection = d;

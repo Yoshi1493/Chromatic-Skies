@@ -17,27 +17,36 @@ public class GeminiBulletSystem1 : EnemyShooter<EnemyBullet>
     {
         yield return base.Shoot();
 
-        StartMoveAction?.Invoke();
-
-        int i = 0;
-
         while (enabled)
         {
-            float t = i * WaveSpacing;
-
-            for (int ii = 0; ii < BranchCount; ii++)
+            for (int i = 0; i < BulletCount; i++)
             {
-                for (int iii = 0; iii < BulletCount; iii++)
-                {
-                    float z =  t + (ii * BulletSpacing * 0.5f) + (iii * BulletSpacing);
-                    Vector3 pos = BulletSpawnRadius * transform.up.RotateVectorBy(-t + (ii * BranchSpacing));
+                float z = i * BulletSpacing;
+                Vector3 pos = Vector3.zero;
 
-                    SpawnProjectile(0, z, pos).Fire();
-                }
+                SpawnProjectile(0, z, pos).Fire();
             }
 
-            yield return WaitForSeconds(ShootingCooldown);
-            i++;
+            yield return WaitForSeconds(4f);
+
+            StartMoveAction?.Invoke();
+
+            yield return WaitForSeconds(1f);
+            //float t = i * WaveSpacing;
+
+            //for (int ii = 0; ii < BranchCount; ii++)
+            //{
+            //    for (int iii = 0; iii < BulletCount; iii++)
+            //    {
+            //        float z =  t + (ii * BulletSpacing * 0.5f) + (iii * BulletSpacing);
+            //        Vector3 pos = BulletSpawnRadius * transform.up.RotateVectorBy(-t + (ii * BranchSpacing));
+
+            //        SpawnProjectile(0, z, pos).Fire();
+            //    }
+            //}
+
+            //yield return WaitForSeconds(ShootingCooldown);
+            //i++;
         }
     }
 }
