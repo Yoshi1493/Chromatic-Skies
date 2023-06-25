@@ -1,43 +1,65 @@
 using System.Collections;
 using UnityEngine;
-using static CoroutineHelper;
 
-public class GeminiBullet10 : ScriptableEnemyBullet<GeminiBulletSystem1, EnemyBullet>
+public class GeminiBullet10 : EnemyBullet
 {
-    const int WaveCount = 20;
-    const int BranchCount = 1;
-    const float BranchSpacing = 360f / BranchCount;
-    const float ShootingCooldown = 0.1f;
+    const int ReflectCount = 1;
+    int reflectCount = ReflectCount;
+    const float ReflectCollisionThreshold = 0.1f;
 
-    protected override float MaxLifetime => 4f;
+    protected override int CollisionMask => base.CollisionMask | 1 << LayerMask.NameToLayer("Bullet bounds");
+
+    protected override float MaxLifetime => 12.5f;
+
+    protected override void OnEnable()
+    {
+        base.OnEnable();
+
+        reflectCount = ReflectCount;
+        spriteRenderer.color = projectileData.gradient.Evaluate(0f);
+    }
 
     protected override IEnumerator Move()
     {
-        yield return this.LerpSpeed(2f, 0f, 1f);
-        this.LookAt(ownerShip);
-
-        StartCoroutine(Shoot());
-        yield return this.RotateAround(ownerShip, 2f, 180f);
-
-        MoveSpeed = 0f;
-        yield return WaitForSeconds(1f);
+        MoveSpeed = 3f;
+        yield return null;
     }
 
-    IEnumerator Shoot()
+    protected override void Update()
     {
-        for (int i = 0; i < WaveCount; i++)
+        base.Update();
+        CheckCollisionWith<EdgeCollider2D>();
+    }
+
+    protected override void HandleCollision<T>(Collider2D coll)
+    {
+        base.HandleCollision<T>(coll);
+
+        if (reflectCount > 0)
         {
-            float r = transform.eulerAngles.z;
+            Reflect(coll);
 
-            for (int ii = 0; ii < BranchCount; ii++)
-            {
-                float z = (ii * BranchSpacing) + r;
-                Vector3 pos = transform.position;
+            MoveSpeed = 1.5f;
+            spriteRenderer.color = projectileData.gradient.Evaluate(1f);
 
-                SpawnBullet(1, z, pos, false).Fire();
-            }
-
-            yield return WaitForSeconds(ShootingCooldown);
+            reflectCount--;
         }
+    }
+
+    void Reflect(Collider2D coll)
+    {
+        Vector3 p = coll.ClosestPoint(transform.position);
+        Vector3 d = moveDirection;
+
+        if (Mathf.Abs(p.x - transform.position.x) < ReflectCollisionThreshold)
+        {
+            d.y *= -1;
+        }
+        if (Mathf.Abs(p.y - transform.position.y) < ReflectCollisionThreshold)
+        {
+            d.x *= -1;
+        }
+
+        moveDirection = d;
     }
 }
