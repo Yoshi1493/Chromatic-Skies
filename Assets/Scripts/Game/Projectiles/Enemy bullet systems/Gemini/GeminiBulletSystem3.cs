@@ -4,7 +4,7 @@ using static CoroutineHelper;
 
 public class GeminiBulletSystem3 : EnemyShooter<EnemyBullet>
 {
-    const int BulletCount = 0;
+    const int BulletCount = 1;
 
     protected override IEnumerator Shoot()
     {

@@ -11,13 +11,6 @@ public class CancerBulletSystem5 : EnemyShooter<EnemyBullet>
     const float BulletBaseSpeed = 4f;
     const float BulletSpeedMultiplier = 0.1f;
 
-    protected override void Awake()
-    {
-        base.Awake();
-        Application.targetFrameRate = 60;
-
-    }
-
     protected override IEnumerator Shoot()
     {
         yield return base.Shoot();
