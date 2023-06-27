@@ -46,4 +46,4 @@ MonoBehaviour:
     m_NumAlphaKeys: 2
   ID: 0
   Power: {fileID: 11400000, guid: 58d06d90130c88c40bb6c2d31e8c8781, type: 2}
-  destructible: 1
+  destructible: 0
