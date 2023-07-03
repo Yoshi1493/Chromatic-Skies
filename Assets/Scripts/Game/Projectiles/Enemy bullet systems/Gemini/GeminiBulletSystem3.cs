@@ -4,7 +4,7 @@ using static CoroutineHelper;
 
 public class GeminiBulletSystem3 : EnemyShooter<EnemyBullet>
 {
-    const int WaveCount = 42;
+    const int WaveCount = 21;
     const int BranchCount = 2;
     const float BranchSpacing = 360f / BranchCount;
     public const float BranchSpawnOffset = 5f;
@@ -21,7 +21,7 @@ public class GeminiBulletSystem3 : EnemyShooter<EnemyBullet>
         while (enabled)
         {
             Vector3 p = PlayerPosition;
-            float y = Random.Range(-screenHalfHeight, screenHalfHeight);
+            float y = Random.Range(0, screenHalfHeight);
 
             for (int i = 0; i < WaveCount; i++)
             {
