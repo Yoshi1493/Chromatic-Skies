@@ -6,6 +6,7 @@ public class LibraBulletSystem3 : EnemyShooter<EnemyBullet>
 {
     public const float SafeZone = 30f;
     const int WaveCount = 101;
+    const float WaveSpacing = 360f / (WaveCount - 1);
     const int BranchCount = ((int)(360f - SafeZone) / (int)BranchSpacing) + 1;
     const float BranchSpacing = 5f;
 
@@ -20,7 +21,7 @@ public class LibraBulletSystem3 : EnemyShooter<EnemyBullet>
 
             for (int i = 0; i < WaveCount; i++)
             {
-                float t = Mathf.Sin(i * 3.6f * Mathf.Deg2Rad) * (SafeZone / 4f);
+                float t = Mathf.Sin(i * WaveSpacing * Mathf.Deg2Rad) * (SafeZone / 4f);
 
                 for (int ii = 0; ii < BranchCount; ii++)
                 {
