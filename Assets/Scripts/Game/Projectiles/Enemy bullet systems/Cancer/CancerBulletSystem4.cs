@@ -34,6 +34,10 @@ public class CancerBulletSystem4 : EnemyShooter<EnemyBullet>
                 yield return WaitForSeconds(ShootingCooldown);
             }
 
+            yield return WaitForSeconds(1f);
+
+            SetSubsystemEnabled(1);
+
             yield return WaitForSeconds(5f);
             StartMoveAction?.Invoke();
             yield return WaitForSeconds(1f);
