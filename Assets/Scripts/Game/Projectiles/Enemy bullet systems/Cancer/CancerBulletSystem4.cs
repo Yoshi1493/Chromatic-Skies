@@ -1,15 +1,23 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using static CoroutineHelper;
+using static MathHelper;
 
 public class CancerBulletSystem4 : EnemyShooter<EnemyBullet>
 {
-    const float ArcWidth = 300f;
-    const int WaveCount = 61;
-    const float WaveSpacing = ArcWidth / (WaveCount - 1);
+    const float ArcWidth = 295f;
+    const int WaveCount = 2;
+    const float WaveSpacing = 360f / WaveCount;
     const int BranchCount = 3;
     const float BranchSpacing = 360f / BranchCount;
-    const float BulletSpawnRadius = 1.2f;
+    const int BulletCount = 60;
+    const float BulletSpacing = ArcWidth / (BulletCount - 1);
+    const float BulletSpawnRadius = 0.8f;
+    const float BulletBaseSpeed = 2f;
+    const float BulletSpeedMultiplier = 0.08f;
+
+    List<EnemyBullet> bullets = new(BulletCount * BranchCount);
 
     protected override float ShootingCooldown => 0.02f;
 
@@ -19,24 +27,41 @@ public class CancerBulletSystem4 : EnemyShooter<EnemyBullet>
 
         while (enabled)
         {
+            float r = RandomAngleDeg;
+
             for (int i = 0; i < WaveCount; i++)
             {
-                for (int ii = 0; ii < BranchCount; ii++)
+                for (int ii = 0; ii < BulletCount; ii++)
                 {
-                    float t = ii * BranchSpacing;
-                    float z = (i * WaveSpacing) + t + ((360f - ArcWidth) / 2);
-                    Vector3 pos = (BulletSpawnRadius * -transform.up.RotateVectorBy(z) + -transform.up.RotateVectorBy(t));
+                    for (int iii = 0; iii < BranchCount; iii++)
+                    {
+                        float t = (i * WaveSpacing) + (iii * BranchSpacing) + 0;
+                        float z = (ii * BulletSpacing) + t + ((360f - ArcWidth) / 2);
+                        Vector3 pos = (BulletSpawnRadius * -transform.up.RotateVectorBy(z)) - transform.up.RotateVectorBy(t);
 
-                    bulletData.colour = bulletData.gradient.Evaluate(i / (WaveCount - 1f));
-                    SpawnProjectile(0, z, pos).Fire();
+                        bulletData.colour = bulletData.gradient.Evaluate(ii / (BulletCount - 1f));
+                        bullets.Add(SpawnProjectile(0, z, pos));
+                    }
+
+                    yield return WaitForSeconds(ShootingCooldown);
                 }
 
-                yield return WaitForSeconds(ShootingCooldown);
+                yield return EndOfFrame;
+
+                for (int ii = 0; ii < bullets.Count; ii++)
+                {
+                    float s = BulletBaseSpeed + (ii / BranchCount * BulletSpeedMultiplier);
+                    float t = ii % 12f * 2f;
+
+                    bullets[ii].StartCoroutine(bullets[ii].LerpSpeed(0f, s, 2f));
+                    bullets[ii].StartCoroutine(bullets[ii].RotateBy(t, 5f));
+                }
+
+                bullets.Clear();
             }
 
-            yield return WaitForSeconds(1f);
-
             SetSubsystemEnabled(1);
+            bullets.Clear();
 
             yield return WaitForSeconds(5f);
             StartMoveAction?.Invoke();

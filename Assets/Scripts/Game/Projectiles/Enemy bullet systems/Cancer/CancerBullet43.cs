@@ -2,9 +2,10 @@ using System.Collections;
 
 public class CancerBullet43 : EnemyBullet
 {
+    protected override float MaxLifetime => 6f;
+
     protected override IEnumerator Move()
     {
-        MoveSpeed = 2f;
-        yield return null;
+        yield return this.LerpSpeed(4f, 2f, 1f);
     }
 }

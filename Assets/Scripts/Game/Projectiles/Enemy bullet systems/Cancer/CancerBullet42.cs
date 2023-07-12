@@ -10,8 +10,7 @@ public class CancerBullet42 : ScriptableEnemyBullet<CancerBulletSystem41, EnemyB
 
     protected override IEnumerator Move()
     {
-        MoveSpeed = 3f;
-        yield return null;
+        yield return this.LerpSpeed(4f, 0f, MaxLifetime);
     }
 
     public override void Destroy()
