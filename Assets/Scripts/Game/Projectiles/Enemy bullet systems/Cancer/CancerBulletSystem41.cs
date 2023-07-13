@@ -5,19 +5,17 @@ using static CoroutineHelper;
 
 public class CancerBulletSystem41 : EnemyShooter<EnemyBullet>
 {
-    const int WaveCount = 20;
+    const int WaveCount = 32;
     const float WaveSpacing = 360f / WaveCount / BranchCount;
     const int BranchCount = 2;
     const float BranchSpacing = 360f / BranchCount;
-    const float BulletBaseSpeed = 5f;
+    const float BulletBaseSpeed = 4f;
 
     List<EnemyBullet> bullets = new(WaveCount);
 
-    protected override float ShootingCooldown => 0.05f;
-
     protected override IEnumerator Shoot()
     {
-        yield return WaitForSeconds(3f);
+        yield return WaitForSeconds(1.2f);
 
         for (int i = 0; i < WaveCount; i++)
         {
@@ -30,17 +28,15 @@ public class CancerBulletSystem41 : EnemyShooter<EnemyBullet>
                 bullet.StartCoroutine(bullet.LerpSpeed(BulletBaseSpeed, 0f, 0.5f));
                 bullets.Add(bullet);
             }
-
-            yield return WaitForSeconds(ShootingCooldown);
         }
 
         bullets.Randomize();
-        yield return WaitForSeconds(1f);
+        yield return WaitForSeconds(1.2f);
 
         for (int i = 0; i < bullets.Count; i++)
         {
             bullets[i].Fire();
-            yield return WaitForSeconds(ShootingCooldown * 2f);
+            yield return WaitForSeconds(ShootingCooldown);
         }
 
         bullets.Clear();

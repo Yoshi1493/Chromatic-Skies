@@ -48,7 +48,7 @@ public class CancerBulletSystem4 : EnemyShooter<EnemyBullet>
                     yield return WaitForSeconds(ShootingCooldown);
                 }
 
-                yield return WaitForSeconds(0.2f);
+                yield return WaitForSeconds(0.5f);
 
                 for (int ii = 0; ii < bullets.Count; ii++)
                 {
@@ -62,9 +62,9 @@ public class CancerBulletSystem4 : EnemyShooter<EnemyBullet>
                 bullets.Clear();
             }
 
-            yield return WaitForSeconds(2f);
-            StartMoveAction?.Invoke();
             yield return WaitForSeconds(1f);
+            StartMoveAction?.Invoke();
+            yield return WaitForSeconds(2f);
         }
     }
 }
