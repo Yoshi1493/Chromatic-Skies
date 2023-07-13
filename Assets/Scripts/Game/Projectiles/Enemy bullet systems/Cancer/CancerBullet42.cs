@@ -1,30 +1,14 @@
 using System.Collections;
 using UnityEngine;
 
-public class CancerBullet42 : ScriptableEnemyBullet<CancerBulletSystem41, EnemyBullet>
+public class CancerBullet42 : EnemyBullet
 {
-    const int BulletCount = 2;
-    const float BulletSpacing = 45f;
+    protected override Collider2D CollisionCondition => Physics2D.OverlapBox(transform.position, spriteRenderer.size, transform.eulerAngles.z, CollisionMask);
 
-    protected override float MaxLifetime => 1f;
+    protected override float MaxLifetime => 8f;
 
     protected override IEnumerator Move()
     {
-        yield return this.LerpSpeed(4f, 0f, MaxLifetime);
-    }
-
-    public override void Destroy()
-    {
-        float r = transform.eulerAngles.z + 180f;
-
-        for (int i = 0; i < BulletCount; i++)
-        {
-            float z = ((i - ((BulletCount - 1) / 2f)) * BulletSpacing) + r;
-            Vector3 pos = transform.position;
-
-            SpawnBullet(3, z, pos, false).Fire();
-        }
-
-        base.Destroy();
+        yield return this.LerpSpeed(4f, 2f, 1f);
     }
 }

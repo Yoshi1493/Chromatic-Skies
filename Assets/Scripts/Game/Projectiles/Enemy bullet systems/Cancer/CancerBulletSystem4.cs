@@ -7,7 +7,7 @@ using static MathHelper;
 public class CancerBulletSystem4 : EnemyShooter<EnemyBullet>
 {
     const float ArcWidth = 295f;
-    const int WaveCount = 2;
+    const int WaveCount = 4;
     const float WaveSpacing = 360f / WaveCount;
     const int BranchCount = 3;
     const float BranchSpacing = 360f / BranchCount;
@@ -15,7 +15,7 @@ public class CancerBulletSystem4 : EnemyShooter<EnemyBullet>
     const float BulletSpacing = ArcWidth / (BulletCount - 1);
     const float BulletSpawnRadius = 0.8f;
     const float BulletBaseSpeed = 2f;
-    const float BulletSpeedMultiplier = 0.08f;
+    const float BulletSpeedMultiplier = 0.06f;
 
     List<EnemyBullet> bullets = new(BulletCount * BranchCount);
 
@@ -27,6 +27,8 @@ public class CancerBulletSystem4 : EnemyShooter<EnemyBullet>
 
         while (enabled)
         {
+            SetSubsystemEnabled(1);
+
             float r = RandomAngleDeg;
 
             for (int i = 0; i < WaveCount; i++)
@@ -46,7 +48,7 @@ public class CancerBulletSystem4 : EnemyShooter<EnemyBullet>
                     yield return WaitForSeconds(ShootingCooldown);
                 }
 
-                yield return EndOfFrame;
+                yield return WaitForSeconds(0.2f);
 
                 for (int ii = 0; ii < bullets.Count; ii++)
                 {
@@ -60,10 +62,7 @@ public class CancerBulletSystem4 : EnemyShooter<EnemyBullet>
                 bullets.Clear();
             }
 
-            SetSubsystemEnabled(1);
-            bullets.Clear();
-
-            yield return WaitForSeconds(5f);
+            yield return WaitForSeconds(2f);
             StartMoveAction?.Invoke();
             yield return WaitForSeconds(1f);
         }
