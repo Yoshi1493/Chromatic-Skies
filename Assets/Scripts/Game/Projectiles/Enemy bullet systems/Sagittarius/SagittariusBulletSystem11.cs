@@ -1,68 +1,60 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using static CoroutineHelper;
-
+using static MathHelper;
 
 public class SagittariusBulletSystem11 : EnemyShooter<EnemyBullet>
 {
-    const int WaveCount = (360 - (int)SafeZone) / (int)WaveSpacing + 1;
-    const float WaveSpacing = 8f;
-    const float SafeZone = 40f;
-    const int BranchCount = 2;
-    const float BranchSpacing = 360f / BranchCount;
-    const int BulletCount = 2;
-    const float BulletSpacing = 90f;
-    const float BulletSpawnRadius = 0.5f;
-    const float SpawnRadiusMultiplier = 0.5f;
+    const int WaveCount = 6;
+    const float WaveSpacing = 360f / WaveCount;
+    const int BulletCount = 41;
+    const float BulletSpawnRadius = 1.5f;
 
-    protected override float ShootingCooldown => 0.02f;
+    Vector3[] positions = new Vector3[BulletCount];
+    List<EnemyBullet> bullets = new(WaveCount * BulletCount);
 
     protected override IEnumerator Shoot()
     {
-        int r = 1;
+        for (int i = 0; i < BulletCount; i++)
+        {
+            positions[i] = BulletSpawnRadius * Random.insideUnitCircle;
+        }
 
         for (int i = 0; i < WaveCount; i++)
         {
-            for (int ii = 0; ii < BranchCount; ii++)
+            float z = i * -WaveSpacing;
+
+            for (int ii = 0; ii < BulletCount; ii++)
             {
-                float z = ((SafeZone / 2f) + (i * WaveSpacing) + (ii * BranchSpacing)) * r;
-                Vector3 pos = (BulletSpawnRadius + (ii * SpawnRadiusMultiplier)) * transform.up.RotateVectorBy(z);
+                Vector3 pos = positions[ii].RotateVectorBy(z);
 
-                for (int iii = 0; iii < BulletCount; iii++)
-                {
-                    z += iii * BulletSpacing;
+                bulletData.colour = bulletData.gradient.Evaluate(ii / (BulletCount - 1f));
 
-                    bulletData.colour = bulletData.gradient.Evaluate(iii);
-                    SpawnProjectile(1, z, pos).Fire();
-                }
+                var bullet = SpawnProjectile(1, z, pos);
+                bullet.Fire();
+                bullets.Add(bullet);
             }
 
             yield return WaitForSeconds(ShootingCooldown);
         }
 
-        yield return WaitForSeconds(ShootingCooldown * 10f);
-
-        r *= -1;
-
-        for (int i = 0; i < WaveCount; i++)
+        for (int i = 0; i < BulletCount; i++)
         {
-            for (int ii = 0; ii < BranchCount; ii++)
+            float r = RandomAngleDeg;
+
+            for (int ii = 0; ii < WaveCount; ii++)
             {
-                float z = ((SafeZone / 2f) + (i * WaveSpacing) + (ii * BranchSpacing)) * r;
-                Vector3 pos = (BulletSpawnRadius + (ii * SpawnRadiusMultiplier)) * transform.up.RotateVectorBy(z);
+                int b = ii * BulletCount + i;
 
-                for (int iii = 0; iii < BulletCount; iii++)
-                {
-                    z += iii * BulletSpacing;
-
-                    bulletData.colour = bulletData.gradient.Evaluate(iii);
-                    SpawnProjectile(1, z, pos).Fire();
-                }
+                RotateVectorBy(ref bullets[b].moveDirection, r);
+                StartCoroutine(bullets[b].LerpSpeed(0f, 2f, 1f));
             }
 
-            yield return WaitForSeconds(ShootingCooldown);
+            yield return WaitForSeconds(ShootingCooldown * 0.5f);
         }
 
+        bullets.Clear();
         enabled = false;
     }
 }

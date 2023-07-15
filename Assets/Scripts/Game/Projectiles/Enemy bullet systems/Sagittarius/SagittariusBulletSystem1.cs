@@ -1,18 +1,20 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using static CoroutineHelper;
-using static MathHelper;
 
 public class SagittariusBulletSystem1 : EnemyShooter<EnemyBullet>
 {
-    const int WaveCount = 6;
-    const float WaveSpacing = 360f / WaveCount;
-    const int BulletCount = 41;
-    const float BulletSpawnRadius = 1.5f;
+    const int WaveCount = (360 - (int)SafeZone) / (int)WaveSpacing + 1;
+    const float WaveSpacing = 8f;
+    const float SafeZone = 40f;
+    const int BranchCount = 2;
+    const float BranchSpacing = 360f / BranchCount;
+    const int BulletCount = 2;
+    const float BulletSpacing = 90f;
+    const float BulletSpawnRadius = 0.5f;
+    const float SpawnRadiusMultiplier = 0.5f;
 
-    Vector3[] positions = new Vector3[BulletCount];
-    List<EnemyBullet> bullets = new(WaveCount * BulletCount);
+    protected override float ShootingCooldown => 0.02f;
 
     protected override IEnumerator Shoot()
     {
@@ -20,54 +22,57 @@ public class SagittariusBulletSystem1 : EnemyShooter<EnemyBullet>
 
         while (enabled)
         {
-            for (int i = 0; i < BulletCount; i++)
-            {
-                positions[i] = BulletSpawnRadius * Random.insideUnitCircle;
-            }
+            StartMoveAction?.Invoke();
+
+            int r = 1;
 
             for (int i = 0; i < WaveCount; i++)
             {
-                float z = i * -WaveSpacing;
-
-                for (int ii = 0; ii < BulletCount; ii++)
+                for (int ii = 0; ii < BranchCount; ii++)
                 {
-                    Vector3 pos = positions[ii].RotateVectorBy(z);
+                    float z = ((SafeZone / 2f) + (i * WaveSpacing) + (ii * BranchSpacing)) * r;
+                    Vector3 pos = (BulletSpawnRadius + (ii * SpawnRadiusMultiplier)) * transform.up.RotateVectorBy(z);
 
-                    bulletData.colour = bulletData.gradient.Evaluate(ii / (BulletCount - 1f));
+                    for (int iii = 0; iii < BulletCount; iii++)
+                    {
+                        z += iii * BulletSpacing;
 
-                    var bullet = SpawnProjectile(0, z, pos);
-                    bullet.Fire();
-                    bullets.Add(bullet);
+                        bulletData.colour = bulletData.gradient.Evaluate(iii);
+                        SpawnProjectile(0, z, pos).Fire();
+                    }
                 }
 
                 yield return WaitForSeconds(ShootingCooldown);
             }
 
-            for (int i = 0; i < BulletCount; i++)
+            yield return WaitForSeconds(ShootingCooldown * 10f);
+
+            StartMoveAction?.Invoke();
+
+            r *= -1;
+
+            for (int i = 0; i < WaveCount; i++)
             {
-                float r = RandomAngleDeg;
-
-                for (int ii = 0; ii < WaveCount; ii++)
+                for (int ii = 0; ii < BranchCount; ii++)
                 {
-                    int b = ii * BulletCount + i;
+                    float z = ((SafeZone / 2f) + (i * WaveSpacing) + (ii * BranchSpacing)) * r;
+                    Vector3 pos = (BulletSpawnRadius + (ii * SpawnRadiusMultiplier)) * transform.up.RotateVectorBy(z);
 
-                    RotateVectorBy(ref bullets[b].moveDirection, r);
-                    StartCoroutine(bullets[b].LerpSpeed(0f, 2f, 1f));
+                    for (int iii = 0; iii < BulletCount; iii++)
+                    {
+                        z += iii * BulletSpacing;
+
+                        bulletData.colour = bulletData.gradient.Evaluate(iii);
+                        SpawnProjectile(0, z, pos).Fire();
+                    }
                 }
 
-                yield return WaitForSeconds(ShootingCooldown * 0.5f);
+                yield return WaitForSeconds(ShootingCooldown);
             }
 
-            bullets.Clear();
             SetSubsystemEnabled(1);
 
-            for (int i = 0; i < 2; i++)
-            {
-                StartMoveAction?.Invoke();
-                yield return WaitForSeconds(1f);
-            }
-
-            yield return WaitForSeconds(1f);
+            yield return WaitForSeconds(4f);
         }
     }
 }
