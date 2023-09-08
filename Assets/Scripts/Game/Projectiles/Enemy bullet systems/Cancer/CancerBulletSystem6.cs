@@ -24,8 +24,9 @@ public class CancerBulletSystem6 : EnemyShooter<EnemyBullet>
             {
                 float z = i * BulletSpacing;
                 Vector3 pos = BulletSpawnRadius * transform.up.RotateVectorBy(z);
+                int b = i % 2;
 
-                SpawnProjectile(0, z, pos).Fire();
+                SpawnProjectile(b, z, pos).Fire();
                 i++;
             }
 

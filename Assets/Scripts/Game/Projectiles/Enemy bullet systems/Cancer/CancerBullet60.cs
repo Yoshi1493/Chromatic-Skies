@@ -4,8 +4,6 @@ using static CoroutineHelper;
 
 public class CancerBullet60 : EnemyBullet
 {
-    protected override float MaxLifetime => 8f;
-
     const float CorruptionChance = 0.06f;
 
     protected override IEnumerator Move()
