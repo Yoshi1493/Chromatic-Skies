@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6b79cd0b20b26ac4090b241d65679e69, type: 3}
-  m_Name: '[Gemini] Bullet 1_0'
+  m_Name: '[Gemini] Bullet 3_1'
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: b99510b934b0b0940a6de46eb972c2b9, type: 3}
   useSolidColour: 1
@@ -44,6 +44,6 @@ MonoBehaviour:
     m_Mode: 1
     m_NumColorKeys: 2
     m_NumAlphaKeys: 2
-  ID: 0
+  ID: 2
   Power: {fileID: 11400000, guid: 58d06d90130c88c40bb6c2d31e8c8781, type: 2}
   destructible: 1

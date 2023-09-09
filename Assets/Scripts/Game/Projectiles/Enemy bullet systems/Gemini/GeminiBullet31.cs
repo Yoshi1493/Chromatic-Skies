@@ -1,13 +1,12 @@
 using System.Collections;
 using UnityEngine;
 
-public class GeminiBullet10 : ReflectiveEnemyBullet
+public class GeminiBullet31 : ReflectiveEnemyBullet
 {
-    protected override float MaxLifetime => 15f;
+    protected override float MaxLifetime => 12.5f;
 
     protected override IEnumerator Move()
     {
-        MoveSpeed = 3f;
         yield return null;
     }
 
@@ -15,7 +14,7 @@ public class GeminiBullet10 : ReflectiveEnemyBullet
     {
         base.HandleReflection(coll);
 
-        MoveSpeed = 1.5f;
+        MoveSpeed *= 0.5f;
         spriteRenderer.color = projectileData.gradient.Evaluate(1f);
     }
 }
