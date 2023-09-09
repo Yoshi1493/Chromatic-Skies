@@ -49,7 +49,11 @@ public class GeminiBulletSystem3 : EnemyShooter<EnemyBullet>
                 yield return WaitForSeconds(ShootingCooldown);
             }
 
-            yield return WaitForSeconds(5f);
+            SetSubsystemEnabled(1);
+            yield return WaitForSeconds(3f);
+
+            StartMoveAction?.Invoke();
+            yield return WaitForSeconds(3f);
         }
     }
 }

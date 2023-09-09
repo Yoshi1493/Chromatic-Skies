@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class GeminiBullet31 : ReflectiveEnemyBullet
 {
-    protected override float MaxLifetime => 12.5f;
+    protected override float MaxLifetime => 15f;
 
     protected override IEnumerator Move()
     {
