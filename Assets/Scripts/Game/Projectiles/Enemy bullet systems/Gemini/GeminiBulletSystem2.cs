@@ -1,10 +1,16 @@
 using System.Collections;
 using UnityEngine;
 using static CoroutineHelper;
+using static MathHelper;
 
 public class GeminiBulletSystem2 : EnemyShooter<EnemyBullet>
 {
-    const int BulletCount = 0;
+    const int WaveCount = 45;
+    const float WaveSpacing = 0.3f;
+    const int BranchCount = 2;
+    const float SpawnOffset = 0.5f;
+
+    protected override float ShootingCooldown => 0.02f;
 
     protected override IEnumerator Shoot()
     {
@@ -12,14 +18,25 @@ public class GeminiBulletSystem2 : EnemyShooter<EnemyBullet>
 
         while (enabled)
         {
-            for (int i = 0; i < BulletCount; i++)
-            {
-                float z = 0f;
-                Vector3 pos = Vector3.zero;
+            float r = Random.Range(15f, 60f) * PositiveOrNegativeOne;
 
-                SpawnProjectile(0, z, pos).Fire();
+            for (int i = 1; i < WaveCount; i++)
+            {
+                for (int ii = 0; ii < BranchCount; ii++)
+                {
+                    Vector3 v = i * WaveSpacing * transform.up.RotateVectorBy(r);
+                    float z = r + 90f;
+
+                    Vector3 pos = v + (ii * 2 - 1) * SpawnOffset * Vector3.right.RotateVectorBy(r);
+
+                    SpawnProjectile(0, z, pos).Fire();
+                    SpawnProjectile(0, z, -pos).Fire();
+                }
+
                 yield return WaitForSeconds(ShootingCooldown);
             }
+
+            yield return WaitForSeconds(10f);
         }
     }
 }

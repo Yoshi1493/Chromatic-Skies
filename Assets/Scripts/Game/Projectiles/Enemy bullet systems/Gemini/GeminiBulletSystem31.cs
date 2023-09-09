@@ -4,7 +4,7 @@ using static CoroutineHelper;
 
 public class GeminiBulletSystem31 : EnemyShooter<EnemyBullet>
 {
-    const int WaveCount = 10;
+    const int WaveCount = 8;
     const float WaveSpacing = 6;
     const int BranchCount = 3;
     const float BranchSpacing = 360f / BranchCount;
@@ -27,7 +27,7 @@ public class GeminiBulletSystem31 : EnemyShooter<EnemyBullet>
             {
                 for (int iii = 0; iii < BulletCount; iii++)
                 {
-                    float z = -(i * WaveSpacing) - (ii * BranchSpacing) - ((iii - ((BulletCount - 1) / 2f)) * BulletSpacing) + r;
+                    float z = -((i * WaveSpacing) + (ii * BranchSpacing) + ((iii - ((BulletCount - 1) / 2f)) * BulletSpacing) + r);
                     float s = BulletBaseSpeed + (iii * BulletSpeedMultiplier);
                     Vector3 pos = (BulletSpawnRadius - (i * SpawnRadiusMultiplier)) * transform.up.RotateVectorBy(z);
 

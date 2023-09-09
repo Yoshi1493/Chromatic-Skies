@@ -11,7 +11,7 @@ public class GeminiBullet30 : EnemyBullet
 
     protected override IEnumerator Move()
     {
-        MoveSpeed = 5f;
+        MoveSpeed = 4.5f;
         yield return null;
     }
 
