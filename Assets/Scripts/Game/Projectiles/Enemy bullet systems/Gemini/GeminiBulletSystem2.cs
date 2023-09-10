@@ -6,15 +6,17 @@ using static MathHelper;
 
 public class GeminiBulletSystem2 : EnemyShooter<EnemyBullet>
 {
-    const int WaveCount = 45;
+    const int WaveCount = 40;
     const float WaveSpacing = 0.3f;
     const int BranchCount = 2;
     const float BranchSpacing = 360f / BranchCount;
     const int BulletCount = 2;
     const float BulletSpacing = 360f / BulletCount;
+    const float BulletBaseSpeed = 4f;
+    const float BulletSpeedMultiplier = 0.03f;
     const float SpawnOffset = 0.5f;
 
-    Queue<(Vector3 xy, float z)> bulletPosRotData = new(WaveCount * BranchCount * BulletCount);
+    List<(Vector3 xy, float z)> bulletPosRotData = new(WaveCount * BranchCount * BulletCount);
     protected override float ShootingCooldown => 0.02f;
 
     protected override IEnumerator Shoot()
@@ -23,12 +25,12 @@ public class GeminiBulletSystem2 : EnemyShooter<EnemyBullet>
 
         while (enabled)
         {
-
             float r = Random.Range(30f, 75f) * PositiveOrNegativeOne;
 
             for (int i = 1; i < WaveCount; i++)
             {
-                float z = (i * 2f) + 90f + r;
+                float z = r - 90f * Mathf.Sign(r);
+
                 Vector3 v1 = i * WaveSpacing * transform.up.RotateVectorBy(r);
 
                 for (int ii = 0; ii < BranchCount; ii++)
@@ -38,7 +40,7 @@ public class GeminiBulletSystem2 : EnemyShooter<EnemyBullet>
                     for (int iii = 0; iii < BulletCount; iii++)
                     {
                         Vector3 pos = v2.RotateVectorBy(iii * BulletSpacing);
-                        bulletPosRotData.Enqueue((pos, z));
+                        bulletPosRotData.Add((pos, z));
 
                         SpawnProjectile(0, z, pos).Fire();
                     }
@@ -49,19 +51,25 @@ public class GeminiBulletSystem2 : EnemyShooter<EnemyBullet>
 
             yield return WaitForSeconds(1f);
 
+            bulletPosRotData.Randomize();
+
             for (int i = 1; i < WaveCount; i++)
             {
                 for (int ii = 0; ii < BranchCount; ii++)
                 {
                     for (int iii = 0; iii < BulletCount; iii++)
                     {
-                        var xyz = bulletPosRotData.Dequeue();
-                        float x = -xyz.xy.x;
-                        float y = xyz.xy.y;
-                        float z = -xyz.z;
-                        Vector3 pos = new(x, y);
+                        var xyz = bulletPosRotData[0];
+                        float z = xyz.z;
+                        float s = BulletBaseSpeed - (i * BulletSpeedMultiplier);
+                        Vector3 pos = new(xyz.xy.x, xyz.xy.y);
 
-                        SpawnProjectile(1, z, pos).Fire();
+                        var bullet = SpawnProjectile(1, z, pos);
+                        bullet.MoveSpeed = s;
+                        bulletData.colour = bulletData.gradient.Evaluate(i / (WaveCount - 1f));
+                        bullet.Fire();
+
+                        bulletPosRotData.RemoveAt(0);
                     }
                 }
 

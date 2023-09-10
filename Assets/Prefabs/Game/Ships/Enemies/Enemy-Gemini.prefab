@@ -188,7 +188,7 @@ MonoBehaviour:
   enemyProjectiles:
   - {fileID: 244569200683147484, guid: cbd6dd124b883e24bac90ce3074f3e7c, type: 3}
   - {fileID: 5107987264863941301, guid: b99a6da1ceb8c034a9bcfb0cadb6eebc, type: 3}
-  bulletData: {fileID: 11400000, guid: 7b2eda320d28b834bbaaf6b19524eb05, type: 2}
+  bulletData: {fileID: 11400000, guid: 8e9d28fc722918245a3934c0156106d0, type: 2}
 --- !u!1 &4079918356797303241 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7301416149945870285, guid: d93cb44e21569f545b76560b29579f98, type: 3}
