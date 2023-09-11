@@ -18,7 +18,12 @@ public abstract class GenericObjectPool<TProjectile> : MonoBehaviour where TProj
     {
         for (int i = 0; i < projectiles.Count; i++)
         {
-            objectPool.Add((projectiles[i], new Queue<TProjectile>()));
+            // check if projectile type already exists in object pool
+            // this happens if the players loses a life when not all of the projectiles are pooled at the beginning of an attack pattern
+            if (!objectPool.Exists(p => p.projectile.ProjectileID == projectiles[i].ProjectileID))
+            {
+                objectPool.Add((projectiles[i], new Queue<TProjectile>()));
+            }
         }
     }
 
