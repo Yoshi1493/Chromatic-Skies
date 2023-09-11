@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &1622270850638324128
+--- !u!1001 &70902886340143611
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -57,7 +57,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6982924580203628185, guid: 161fb24947f8935449f40c13fe7d620d, type: 3}
       propertyPath: m_Name
-      value: Gemini bullet 3_0_1
+      value: Gemini bullet 3_0_2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 161fb24947f8935449f40c13fe7d620d, type: 3}

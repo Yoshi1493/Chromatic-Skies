@@ -16,12 +16,12 @@ public class GeminiBulletSystem2 : EnemyShooter<EnemyBullet>
     const float BulletSpeedMultiplier = 0.03f;
     const float SpawnOffset = 0.5f;
 
-    List<(Vector3 xy, float z)> bulletPosRotData = new(WaveCount * BranchCount * BulletCount);
     protected override float ShootingCooldown => 0.02f;
 
     protected override IEnumerator Shoot()
     {
         yield return base.Shoot();
+        List<(Vector3 xy, float z)> bulletPosRotData = new(WaveCount * BranchCount * BulletCount);
 
         while (enabled)
         {
@@ -51,6 +51,9 @@ public class GeminiBulletSystem2 : EnemyShooter<EnemyBullet>
 
             yield return WaitForSeconds(1f);
 
+            SetSubsystemEnabled(1);
+            yield return WaitForSeconds(5f);
+
             bulletPosRotData.Randomize();
 
             for (int i = 1; i < WaveCount; i++)
@@ -78,7 +81,10 @@ public class GeminiBulletSystem2 : EnemyShooter<EnemyBullet>
 
             bulletPosRotData.Clear();
 
-            yield return WaitForSeconds(10f);
+            yield return WaitForSeconds(1f);
+
+            StartMoveAction?.Invoke();
+            yield return WaitForSeconds(1f);
         }
     }
 }
