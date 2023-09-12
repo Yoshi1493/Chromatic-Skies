@@ -10,70 +10,62 @@ public class GeminiBulletSystem2 : EnemyShooter<EnemyBullet>
     const float WaveSpacing = 0.3f;
     const int BranchCount = 2;
     const float BranchSpacing = 360f / BranchCount;
-    const int BulletCount = 2;
-    const float BulletSpacing = 360f / BulletCount;
     const float BulletBaseSpeed = 4f;
     const float BulletSpeedMultiplier = 0.03f;
-    const float SpawnOffset = 0.5f;
+    const float BulletSpawnOffset = 0.5f;
 
     protected override float ShootingCooldown => 0.02f;
 
     protected override IEnumerator Shoot()
     {
         yield return base.Shoot();
-        List<(Vector3 xy, float z)> bulletPosRotData = new(WaveCount * BranchCount * BulletCount);
+
+        int i = 1;
+        List<(Vector3 xy, float z)> bulletPosRotData = new(WaveCount * BranchCount);
 
         while (enabled)
         {
-            float r = Random.Range(30f, 75f) * PositiveOrNegativeOne;
+            float r = Random.Range(45f, 75f) * i;
 
-            for (int i = 1; i < WaveCount; i++)
+            for (int ii = 1; ii < WaveCount; ii++)
             {
                 float z = r - 90f * Mathf.Sign(r);
 
-                Vector3 v1 = i * WaveSpacing * transform.up.RotateVectorBy(r);
+                Vector3 v1 = ii * WaveSpacing * transform.up.RotateVectorBy(r);
 
-                for (int ii = 0; ii < BranchCount; ii++)
+                for (int iii = 0; iii < BranchCount; iii++)
                 {
-                    Vector3 v2 = SpawnOffset * Vector3.right.RotateVectorBy((ii * BranchSpacing) + r) + v1;
+                    Vector3 pos = v1.RotateVectorBy(iii * BranchSpacing);
+                    bulletPosRotData.Add((pos, z));
 
-                    for (int iii = 0; iii < BulletCount; iii++)
-                    {
-                        Vector3 pos = v2.RotateVectorBy(iii * BulletSpacing);
-                        bulletPosRotData.Add((pos, z));
-
-                        SpawnProjectile(0, z, pos).Fire();
-                    }
+                    SpawnProjectile(0, z, pos).Fire();
                 }
 
                 yield return WaitForSeconds(ShootingCooldown);
             }
 
-            yield return WaitForSeconds(1f);
+            yield return WaitForSeconds(0.5f);
 
             SetSubsystemEnabled(1);
-            yield return WaitForSeconds(5f);
+            yield return WaitForSeconds(4.5f);
 
             bulletPosRotData.Randomize();
 
-            for (int i = 1; i < WaveCount; i++)
+            for (int ii = 1; ii < WaveCount; ii++)
             {
-                for (int ii = 0; ii < BranchCount; ii++)
+                for (int iii = 0; iii < BranchCount; iii++)
                 {
-                    for (int iii = 0; iii < BulletCount; iii++)
-                    {
-                        var xyz = bulletPosRotData[0];
-                        float z = xyz.z;
-                        float s = BulletBaseSpeed - (i * BulletSpeedMultiplier);
-                        Vector3 pos = new(xyz.xy.x, xyz.xy.y);
+                    var xyz = bulletPosRotData[0];
+                    float z = xyz.z;
+                    float s = BulletBaseSpeed - (ii * BulletSpeedMultiplier);
+                    Vector3 pos = new(xyz.xy.x, xyz.xy.y);
 
-                        var bullet = SpawnProjectile(1, z, pos);
-                        bullet.MoveSpeed = s;
-                        bulletData.colour = bulletData.gradient.Evaluate(i / (WaveCount - 1f));
-                        bullet.Fire();
+                    var bullet = SpawnProjectile(1, z, pos);
+                    bullet.MoveSpeed = s;
+                    bulletData.colour = bulletData.gradient.Evaluate(ii / (WaveCount - 1f));
+                    bullet.Fire();
 
-                        bulletPosRotData.RemoveAt(0);
-                    }
+                    bulletPosRotData.RemoveAt(0);
                 }
 
                 yield return WaitForSeconds(ShootingCooldown);
@@ -85,6 +77,8 @@ public class GeminiBulletSystem2 : EnemyShooter<EnemyBullet>
 
             StartMoveAction?.Invoke();
             yield return WaitForSeconds(1f);
+
+            i *= -1;
         }
     }
 }

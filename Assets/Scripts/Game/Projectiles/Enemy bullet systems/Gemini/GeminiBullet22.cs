@@ -8,7 +8,7 @@ public class GeminiBullet22 : EnemyBullet
         yield return this.LerpSpeed(0f, 3f, 0.5f);
         yield return this.LerpSpeed(3f, 0f, 0.5f);
 
-        StartCoroutine(this.RotateBy(-90f, 3f, true));
+        StartCoroutine(this.RotateBy(90f, 3f, true));
         yield return this.LerpSpeed(0f, 2f, 1.5f);
     }
 }
