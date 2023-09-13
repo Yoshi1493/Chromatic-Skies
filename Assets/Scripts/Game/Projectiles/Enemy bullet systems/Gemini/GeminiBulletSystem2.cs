@@ -2,8 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using static CoroutineHelper;
-using static MathHelper;
-
 public class GeminiBulletSystem2 : EnemyShooter<EnemyBullet>
 {
     const int WaveCount = 40;
@@ -36,8 +34,8 @@ public class GeminiBulletSystem2 : EnemyShooter<EnemyBullet>
                 for (int iii = 0; iii < BranchCount; iii++)
                 {
                     Vector3 pos = v1.RotateVectorBy(iii * BranchSpacing);
-                    bulletPosRotData.Add((pos, z));
 
+                    bulletPosRotData.Add((pos, z));
                     SpawnProjectile(0, z, pos).Fire();
                 }
 
@@ -60,9 +58,9 @@ public class GeminiBulletSystem2 : EnemyShooter<EnemyBullet>
                     float s = BulletBaseSpeed - (ii * BulletSpeedMultiplier);
                     Vector3 pos = new(xyz.xy.x, xyz.xy.y);
 
+                    bulletData.colour = bulletData.gradient.Evaluate(ii / (WaveCount - 1f));
                     var bullet = SpawnProjectile(1, z, pos);
                     bullet.MoveSpeed = s;
-                    bulletData.colour = bulletData.gradient.Evaluate(ii / (WaveCount - 1f));
                     bullet.Fire();
 
                     bulletPosRotData.RemoveAt(0);

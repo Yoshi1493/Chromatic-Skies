@@ -4,17 +4,24 @@ using static CoroutineHelper;
 
 public class GeminiBulletSystem41 : EnemyShooter<EnemyBullet>
 {
-    const int BulletCount = 0;
+    const float ArcHalfWidth = 60f;
+    const float BulletSpacing = 10f;
+
+    protected override float ShootingCooldown => 0.05f;
 
     protected override IEnumerator Shoot()
     {
-        while (enabled)
+        yield return WaitForSeconds(2f);
+
+        int r = Random.Range(0, 360 / (int)BulletSpacing);
+
+        for (int i = r; enabled; i++)
         {
-            for (int i = 0; i < BulletCount; i++)
-            {
-                float z = 0;
-                SpawnProjectile(0, z, Vector3.zero).Fire();
-            }
+            float t = Mathf.Sin(i * BulletSpacing * Mathf.Deg2Rad);
+            float z = t * ArcHalfWidth;
+            Vector3 pos = transform.up.RotateVectorBy(z);
+
+            SpawnProjectile(2, z, pos).Fire();
 
             yield return WaitForSeconds(ShootingCooldown);
         }
