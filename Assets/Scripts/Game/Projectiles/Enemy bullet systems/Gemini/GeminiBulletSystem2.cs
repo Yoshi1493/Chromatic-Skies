@@ -45,7 +45,7 @@ public class GeminiBulletSystem2 : EnemyShooter<EnemyBullet>
             yield return WaitForSeconds(0.5f);
 
             SetSubsystemEnabled(1);
-            yield return WaitForSeconds(4.5f);
+            yield return WaitForSeconds(3f);
 
             bulletPosRotData.Randomize();
 
@@ -66,7 +66,7 @@ public class GeminiBulletSystem2 : EnemyShooter<EnemyBullet>
                     bulletPosRotData.RemoveAt(0);
                 }
 
-                yield return WaitForSeconds(ShootingCooldown);
+                yield return WaitForSeconds(ShootingCooldown * 2f);
             }
 
             bulletPosRotData.Clear();
