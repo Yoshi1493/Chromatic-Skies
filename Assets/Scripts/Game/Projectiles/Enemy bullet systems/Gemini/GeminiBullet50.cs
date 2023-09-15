@@ -1,21 +1,45 @@
 using System.Collections;
 using UnityEngine;
+using static CoroutineHelper;
 
-public class GeminiBullet50 : ReflectiveEnemyBullet
+public class GeminiBullet50 : ScriptableEnemyBullet<GeminiBulletSystem5, EnemyBullet>
 {
-    protected override float MaxLifetime => 15f;
+    const float WaveSpacing = GeminiBulletSystem5.WaveSpacing;
+    const int BranchCount = GeminiBulletSystem5.BranchCount;
+    const float BranchSpacing = GeminiBulletSystem5.BranchSpacing;
+    const float ShootingCooldown = 0.4f;
+
+    protected override Collider2D CollisionCondition => null;
+    protected override float MaxLifetime => Mathf.Infinity;
 
     protected override IEnumerator Move()
     {
-        MoveSpeed = 3f;
-        yield return null;
+        yield return WaitForSeconds(2f);
+
+        for (int i = 0; enabled; i++)
+        {
+            for (int ii = 0; ii < BranchCount; ii++)
+            {
+                float z = (i * WaveSpacing) + (ii * BranchSpacing);
+                Vector3 pos = transform.position;
+
+                SpawnBullet(2, z, pos, false).Fire();
+            }
+
+            yield return WaitForSeconds(ShootingCooldown);
+        }
     }
 
-    protected override void HandleReflection(Collider2D coll)
+    protected override void Update()
     {
-        base.HandleReflection(coll);
+        base.Update();
+        UpdatePosition();
+    }
 
-        MoveSpeed = 1.5f;
-        spriteRenderer.color = projectileData.gradient.Evaluate(1f);
+    void UpdatePosition()
+    {
+        Vector3 pos = ownerShip.transform.position;
+        pos.x *= -1;
+        transform.position = pos;
     }
 }

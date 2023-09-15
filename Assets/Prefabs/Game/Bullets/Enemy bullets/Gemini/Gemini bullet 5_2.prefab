@@ -53,7 +53,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3140064405051798717, guid: 4e06125b108514547b6fc9b6887da3eb, type: 3}
       propertyPath: m_Name
-      value: Gemini bullet 5_0
+      value: Gemini bullet 5_2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4e06125b108514547b6fc9b6887da3eb, type: 3}
@@ -62,7 +62,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3140064405051798717, guid: 4e06125b108514547b6fc9b6887da3eb, type: 3}
   m_PrefabInstance: {fileID: 5439199463603466788}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &-8966807862870356710
+--- !u!114 &-4412134388810875047
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -71,10 +71,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 6982924580203628185}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e8a37ae24c6f766409adf82509dc8eb4, type: 3}
+  m_Script: {fileID: 11500000, guid: f2cb53f60678b5f45b214b08aa79b36b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   transform: {fileID: 0}
-  projectileData: {fileID: 11400000, guid: 7256f3e5dc5765f4d86cee972712ba59, type: 2}
+  projectileData: {fileID: 11400000, guid: fd64dd2eae46f2342bf6f7e6901f6792, type: 2}
   moveDirection: {x: 0, y: 0, z: 0}
   currentSpeed: 0
