@@ -1,5 +1,4 @@
 using System.Collections;
-using UnityEngine;
 using static CoroutineHelper;
 
 public class CapricornMovementSystem2 : EnemyMovement
