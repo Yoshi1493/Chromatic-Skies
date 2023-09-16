@@ -26,14 +26,14 @@ public class PiscesBulletSystem2 : EnemyShooter<EnemyBullet>
                 for (int ii = 0; ii < maxBulletCount; ii++)
                 {
                     int currentBulletCount = (int)Mathf.PingPong(ii, maxBulletCount / 2) + 1;
-                    float o = (currentBulletCount - 1) * BulletSpacing / 2f;
+                    float t = (currentBulletCount - 1) * BulletSpacing / 2f;
                     bulletData.colour = bulletData.gradient.Evaluate(ii / (maxBulletCount - 1f));
 
                     for (int iii = 0; iii < currentBulletCount; iii++)
                     {
                         for (int iv = 0; iv < BranchCount; iv++)
                         {
-                            float z = (iii * BulletSpacing) + (iv * BranchSpacing) + r - o;
+                            float z = (iii * BulletSpacing) + (iv * BranchSpacing) + r - t;
                             Vector3 pos = Vector3.zero;
 
                             SpawnProjectile(0, z, pos).Fire();
