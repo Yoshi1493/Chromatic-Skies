@@ -13,22 +13,23 @@ public class PiscesBulletSystem2 : EnemyShooter<EnemyBullet>
     {
         yield return base.Shoot();
 
-        SetSubsystemEnabled(1);
-
         while (enabled)
         {
+            SetSubsystemEnabled(1);
+            yield return WaitForSeconds(2f);
+
             for (int i = 0; i < WaveCount; i++)
             {
                 float r = PlayerPosition.GetRotationDifference(transform.position);
-                int m = (i * 2) + 5;
+                int maxBulletCount = (i * 2) + 5;
 
-                for (int ii = 0; ii < m; ii++)
+                for (int ii = 0; ii < maxBulletCount; ii++)
                 {
-                    int n = (int)Mathf.PingPong(ii, m / 2) + 1;
-                    float o = (n - 1) * BulletSpacing / 2f;
-                    bulletData.colour = bulletData.gradient.Evaluate(ii / (m - 1f));
+                    int currentBulletCount = (int)Mathf.PingPong(ii, maxBulletCount / 2) + 1;
+                    float o = (currentBulletCount - 1) * BulletSpacing / 2f;
+                    bulletData.colour = bulletData.gradient.Evaluate(ii / (maxBulletCount - 1f));
 
-                    for (int iii = 0; iii < n; iii++)
+                    for (int iii = 0; iii < currentBulletCount; iii++)
                     {
                         for (int iv = 0; iv < BranchCount; iv++)
                         {
@@ -46,7 +47,7 @@ public class PiscesBulletSystem2 : EnemyShooter<EnemyBullet>
             }
 
             StartMoveAction?.Invoke();
-            yield return WaitForSeconds(2f);
+            yield return WaitForSeconds(1f);
         }
     }
 }
