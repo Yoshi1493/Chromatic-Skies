@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class PiscesBullet50 : ScriptableEnemyBullet<PiscesBulletSystem5, EnemyBullet>
+public class PiscesBullet50 : ScriptableEnemyBullet<PiscesBulletSystem51, EnemyBullet>
 {
     [Space]
     [SerializeField] ProjectileObject bulletData;
@@ -13,7 +13,7 @@ public class PiscesBullet50 : ScriptableEnemyBullet<PiscesBulletSystem5, EnemyBu
 
     protected override IEnumerator Move()
     {
-        yield return this.LerpSpeed(4f, 0f, MaxLifetime);
+        yield return this.LerpSpeed(3f, 0f, MaxLifetime);
     }
 
     public override void Destroy()
@@ -28,7 +28,6 @@ public class PiscesBullet50 : ScriptableEnemyBullet<PiscesBulletSystem5, EnemyBu
 
             bulletData.colour = bulletData.gradient.Evaluate(i / (BulletCount - 1f));
             var bullet = SpawnBullet(1, z, pos, false);
-            bullet.StartCoroutine(bullet.RotateBy(r, 1f, false));
             bullet.Fire();
         }
 

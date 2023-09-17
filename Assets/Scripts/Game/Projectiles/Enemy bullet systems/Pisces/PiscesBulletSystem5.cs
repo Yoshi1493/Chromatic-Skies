@@ -2,36 +2,34 @@ using System.Collections;
 using UnityEngine;
 using static CoroutineHelper;
 
-public class PiscesBulletSystem5 : EnemyShooter<EnemyBullet>
+public class PiscesBulletSystem5 : EnemyShooter<Laser>
 {
-    const int BulletCount = 25;
-    const float BulletSpacing = 360f / (BulletCount - 1);
-    const float BulletSpawnRadius = 1f;
-    const float SpawnRadiusMultiplier = 1f / BulletCount;
+    const int LaserCount = 18;
+    const float LaserSpacing = 180f / LaserCount;
 
     protected override IEnumerator Shoot()
     {
         yield return base.Shoot();
 
         SetSubsystemEnabled(1);
-
-        for (int i = 1; enabled; i *= -1)
+        
+        while (enabled)
         {
-            float r = PlayerPosition.GetRotationDifference(transform.position);
+            yield return WaitForSeconds(2f);
 
-            for (int ii = 0; ii < BulletCount; ii++)
+            for (int i = 0; i < LaserCount; i++)
             {
-                float z = i * ii * BulletSpacing + r;
-                Vector3 pos = (BulletSpawnRadius - (ii * SpawnRadiusMultiplier)) * transform.up.RotateVectorBy(z);
+                float z = i * LaserSpacing + 90f;
+                Vector3 pos = Vector3.zero;
 
+                bulletData.colour = bulletData.gradient.Evaluate(i / (LaserCount - 1f));
                 SpawnProjectile(0, z, pos).Fire();
+
                 yield return WaitForSeconds(ShootingCooldown);
             }
 
-            yield return WaitForSeconds(3f);
-
+            yield return WaitForSeconds(2f);
             StartMoveAction?.Invoke();
-            yield return WaitForSeconds(3f);
         }
     }
 }
