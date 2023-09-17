@@ -7,13 +7,13 @@ public class PiscesBullet50 : ScriptableEnemyBullet<PiscesBulletSystem5, EnemyBu
     [SerializeField] ProjectileObject bulletData;
 
     const int BulletCount = 5;
-    const float BulletSpacing = 4f;
+    const float BulletSpacing = 360f / BulletCount;
 
     protected override float MaxLifetime => 1f;
 
     protected override IEnumerator Move()
     {
-        yield return this.LerpSpeed(4f, 1f, 0.5f);
+        yield return this.LerpSpeed(4f, 0f, MaxLifetime);
     }
 
     public override void Destroy()
