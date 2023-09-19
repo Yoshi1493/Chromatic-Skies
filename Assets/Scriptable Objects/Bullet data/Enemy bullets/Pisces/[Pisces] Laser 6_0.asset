@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: '[Pisces] Laser 6_0'
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: a7931915fd0488a4a921fea55c5f6774, type: 3}
-  useSolidColour: 0
-  colour: {r: 0, g: 0, b: 0, a: 0}
+  useSolidColour: 1
+  colour: {r: 0.75, g: 0.5, b: 1, a: 1}
   gradient:
     serializedVersion: 2
     key0: {r: 0.5, g: 1, b: 0.75, a: 1}
