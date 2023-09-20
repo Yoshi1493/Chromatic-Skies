@@ -1,39 +1,47 @@
 using System.Collections;
-using System.Linq;
+using System.Collections.Generic;
 using UnityEngine;
 using static CoroutineHelper;
-using static MathHelper;
 
-public class PiscesBulletSystem6 : EnemyShooter<Laser>
+public class PiscesBulletSystem6 : EnemyShooter<EnemyBullet>
 {
-    const int MinLaserCount = 7;
-    const int MaxLaserCount = 13;
-    const float LaserSpacing = 10f;
-
-    protected override float ShootingCooldown => 0.05f;
+    const int WaveCount = 12;
+    const float WaveSpacing = 360f / WaveCount;
+    const int BranchCount = 6;
+    const float BranchSpacing = 360f / BranchCount;
+    const int BulletCount = 6;
+    const float BulletSpacing = 360f / BulletCount;
+    const float BulletSpawnRadius = 1f;
+    const float SpawnRadiusMultiplier = 1f;
 
     protected override IEnumerator Shoot()
     {
         yield return base.Shoot();
 
+        SetSubsystemEnabled(1);
+
+        List<EnemyBullet> bullets = new(WaveCount * BranchCount * BulletCount);
+
         while (enabled)
         {
-            int laserCount = Random.Range(MinLaserCount, MaxLaserCount);
-
-            var xs = GetRandomPointsWithinBounds(new(-screenHalfWidth, screenHalfHeight), new(screenHalfWidth, screenHalfHeight), laserCount)
-                .Select(i => i.x * 0.5f)
-                .OrderBy(i => i)
-                .ToList();
-
-            for (int i = 0; i < laserCount; i++)
+            for (int i = 0; i < WaveCount; i++)
             {
-                float x = xs[i];
-                float y = 1.1f * screenHalfHeight;
-                float z = ((i - ((laserCount - 1) / 2f)) * LaserSpacing) + 180f;
-                Vector3 pos = new(x, y);
+                float t = i / (WaveCount - 1f);
 
-                bulletData.colour = bulletData.gradient.Evaluate(i / (laserCount - 1f));
-                SpawnProjectile(0, z, pos).Fire();
+                for (int ii = 0; ii < BranchCount; ii++)
+                {
+                    Vector3 v1 = transform.up.RotateVectorBy(ii * BranchSpacing);
+                    Vector3 v2 = transform.up.RotateVectorBy((ii + 1) * BranchSpacing);
+
+                    for (int iii = 0; iii < BulletCount; iii++)
+                    {
+                        float z = iii * BulletSpacing;
+                        Vector3 pos = Vector3.Lerp(v1, v2, t);
+
+                        bullets.Add(SpawnProjectile(0, z, pos));
+                    }
+                }
+
                 yield return WaitForSeconds(ShootingCooldown);
             }
 
