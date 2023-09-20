@@ -14,6 +14,8 @@ public class PiscesBulletSystem61 : EnemyShooter<Laser>
 
     protected override IEnumerator Shoot()
     {
+        yield return WaitForSeconds(5f);
+
         while (enabled)
         {
             int laserCount = Random.Range(MinLaserCount, MaxLaserCount);
