@@ -6,7 +6,7 @@ using static CoroutineHelper;
 public class PiscesBulletSystem6 : EnemyShooter<EnemyBullet>
 {
     const int WaveWaveCount = 3;
-    const float WaveWaveSpacing = BranchSpacing / WaveWaveCount;
+    const float WaveWaveSpacing = BranchSpacing / 2;
     const int WaveCount = 12;
     const float WaveSpacing = 360f / WaveCount;
     const int BranchCount = 6;
@@ -44,6 +44,7 @@ public class PiscesBulletSystem6 : EnemyShooter<EnemyBullet>
                             float z = iv * BulletSpacing;
                             Vector3 pos = (BulletSpawnRadius + (i * SpawnRadiusMultiplier)) * Vector3.Lerp(v1, v2, t);
 
+                            bulletData.colour = bulletData.gradient.Evaluate(i / (WaveWaveCount - 1f));
                             bullets.Add(SpawnProjectile(0, z, pos));
                         }
                     }
@@ -52,12 +53,14 @@ public class PiscesBulletSystem6 : EnemyShooter<EnemyBullet>
                 }
             }
 
-            for (int i = 0; i < WaveWaveCount; i++)
+            for (int i = WaveWaveCount - 1; i >= 0; i--)
             {
                 for (int ii = 0; ii < WaveCount * BranchCount * BulletCount; ii++)
                 {
-                    int b = i + (ii * WaveWaveCount);
+                    int b = (i * WaveCount * BranchCount * BulletCount) + ii;
+
                     bullets[b].Fire();
+                    bullets[b].StartCoroutine(bullets[b].RotateBy(Random.Range(-BranchSpacing, BranchSpacing) * 2f, 3f));
                 }
 
                 yield return WaitForSeconds(0.5f);
