@@ -15,6 +15,8 @@ public class PiscesBulletSystem6 : EnemyShooter<EnemyBullet>
     const float BulletSpacing = 360f / BulletCount;
     const float BulletSpawnRadius = 1.2f;
     const float SpawnRadiusMultiplier = 0.6f;
+    const float BulletBaseSpeed = 2.2f;
+    const float BulletSpeedMultiplier = 0.6f;
 
     protected override float ShootingCooldown => 0.05f;
 
@@ -22,7 +24,7 @@ public class PiscesBulletSystem6 : EnemyShooter<EnemyBullet>
     {
         yield return base.Shoot();
 
-        SetSubsystemEnabled(1);
+        SetSubsystemEnabled(2);
 
         List<EnemyBullet> bullets = new(WaveWaveCount * WaveCount * BranchCount * BulletCount);
 
@@ -58,16 +60,22 @@ public class PiscesBulletSystem6 : EnemyShooter<EnemyBullet>
                 for (int ii = 0; ii < WaveCount * BranchCount * BulletCount; ii++)
                 {
                     int b = (i * WaveCount * BranchCount * BulletCount) + ii;
+                    float s = BulletBaseSpeed - (i * BulletSpeedMultiplier);
 
-                    bullets[b].Fire();
+                    bullets[b].MoveSpeed = s;
                     bullets[b].StartCoroutine(bullets[b].RotateBy(Random.Range(-BranchSpacing, BranchSpacing) * 2f, 3f));
+                    bullets[b].Fire();
                 }
 
-                yield return WaitForSeconds(0.5f);
+                yield return WaitForSeconds(ShootingCooldown * 12f);
             }
 
             bullets.Clear();
-            yield return WaitForSeconds(5f);
+            yield return WaitForSeconds(2f);
+
+            SetSubsystemEnabled(1);
+            StartMoveAction?.Invoke();
+            yield return WaitForSeconds(2f);
         }
     }
 }
