@@ -212,11 +212,11 @@ public static class ProjectileBehaviour
     }
 
     /// <summary>
-    /// modified version of LookAt() that gradually rotates <p> over 
+    /// modified version of LookAt() that gradually rotates <p> over <turnDuration> seconds
     /// </summary>
-    public static IEnumerator GraduallyLookAt(this Projectile p, Vector3 target, float turnTime, float delay = 0f)
+    public static IEnumerator GraduallyLookAt(this Projectile p, Vector3 target, float turnDuration, float delay = 0f)
     {
-        if (turnTime <= 0f) yield break;
+        if (turnDuration <= 0f) yield break;
         if (delay > 0f) yield return WaitForSeconds(delay);
 
         float currentTime = 0f;
@@ -224,9 +224,9 @@ public static class ProjectileBehaviour
         Vector3 startPosition = p.transform.position;
         Vector3 endDirection = target - startPosition;
 
-        while (currentTime < turnTime)
+        while (currentTime < turnDuration)
         {
-            float lerpProgress = EaseInOutCurve.Evaluate(currentTime / turnTime);
+            float lerpProgress = EaseInOutCurve.Evaluate(currentTime / turnDuration);
             Vector3 newDirection = Vector3.Slerp(startDirection, endDirection, lerpProgress);
 
             p.moveDirection = newDirection;
@@ -234,6 +234,30 @@ public static class ProjectileBehaviour
             currentTime += Time.deltaTime;
             yield return EndOfFrame;
         }
+    }
+
+    /// <summary>
+    /// translates <p> to <targetPos> over <moveDuration> seconds.
+    /// </summary>
+    public static IEnumerator MoveTo(this Projectile p, Vector3 endPosition, float moveDuration)
+    {
+        if (moveDuration < 0f) yield break;
+        if (moveDuration == 0f) p.transform.position = endPosition;
+
+        float currentTime = 0f;
+        Vector3 startPosition = p.transform.position;
+
+        while (currentTime < moveDuration)
+        {
+            float lerpProgress = EaseInOutCurve.Evaluate(currentTime / moveDuration);
+
+            p.transform.position = Vector3.Lerp(startPosition, endPosition, lerpProgress);
+
+            currentTime += Time.deltaTime;
+            yield return EndOfFrame;
+        }
+
+        p.transform.position = endPosition;
     }
 
     /// <summary>
