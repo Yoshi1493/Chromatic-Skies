@@ -35,7 +35,7 @@ public class TaurusBulletSystem6 : EnemyShooter<EnemyBullet>
             yield return WaitForSeconds(1.5f);
 
             SetSubsystemEnabled(2);
-            yield return WaitForSeconds(3f);
+            yield return WaitForSeconds(4f);
         }
     }
 }
