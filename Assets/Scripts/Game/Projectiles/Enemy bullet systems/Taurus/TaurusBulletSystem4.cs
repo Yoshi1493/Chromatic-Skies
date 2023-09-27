@@ -7,7 +7,7 @@ public class TaurusBulletSystem4 : EnemyShooter<EnemyBullet>
     const int MinGridLength = 3;
     const int MaxGridLength = 6;
     const float MaxRandomSpawnOffset = 5f;
-    const float BulletSpacing = 0.8f;
+    const float BulletSpacing = 1f;
 
     readonly Vector3[] bulletSpawnDirections = new Vector3[]
     {
@@ -17,7 +17,7 @@ public class TaurusBulletSystem4 : EnemyShooter<EnemyBullet>
         new( 0, -1)
     };
 
-    protected override float ShootingCooldown => 0.5f;
+    protected override float ShootingCooldown => 0.8f;
 
     protected override IEnumerator Shoot()
     {
@@ -30,9 +30,11 @@ public class TaurusBulletSystem4 : EnemyShooter<EnemyBullet>
             i %= bulletSpawnDirections.Length;
 
             int gridLength = Random.Range(MinGridLength, MaxGridLength);
+
             float z = Vector3.zero.GetRotationDifference(bulletSpawnDirections[i]);
             Vector3 v1 = new(bulletSpawnDirections[i].x * (screenHalfWidth + (gridLength / 2f)), bulletSpawnDirections[i].y * (screenHalfHeight + (gridLength / 2f)));
-            Vector3 v2 = Random.Range(-5f, 5f) * new Vector3(bulletSpawnDirections[i].y, bulletSpawnDirections[i].x);
+            Vector3 v2 = Random.Range(-MaxRandomSpawnOffset, MaxRandomSpawnOffset + 1) * new Vector3(bulletSpawnDirections[i].y, bulletSpawnDirections[i].x);
+            
             bulletData.colour = bulletData.gradient.Evaluate(i / (bulletSpawnDirections.Length - 1f));
 
             for (int ii = 0; ii < gridLength; ii++)
