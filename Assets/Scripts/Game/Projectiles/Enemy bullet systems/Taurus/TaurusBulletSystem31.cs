@@ -4,17 +4,18 @@ using static CoroutineHelper;
 
 public class TaurusBulletSystem31 : EnemyShooter<Laser>
 {
+    const int LaserCount = 0;
+
+    protected override float ShootingCooldown => base.ShootingCooldown;
+
     protected override IEnumerator Shoot()
     {
-        yield return WaitForSeconds(2f);
-
-        while (enabled)
+        for (int i = 0; i < LaserCount; i++)
         {
-            float z = Random.Range(0f, 360f);
-            Vector3 pos = -transform.up.RotateVectorBy(z);
+            float z = 0f;
+            Vector3 pos = Vector3.zero;
 
             SpawnProjectile(0, z, pos).Fire();
-
             yield return WaitForSeconds(ShootingCooldown);
         }
     }

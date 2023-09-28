@@ -5,11 +5,11 @@ public class TaurusMovementSystem3 : EnemyMovement
 {
     protected override IEnumerator Move()
     {
-        yield return WaitForSeconds(2f);
-
         while (enabled)
         {
-            yield return this.MoveToRandomPosition(1f, 1f, 2f, 2f);
+            yield return WaitForSeconds(5f);
+            yield return this.MoveToRandomPosition(1f);
+            yield return this.MoveToRandomPosition(1f);
         }
     }
 }
