@@ -4,6 +4,8 @@ using static CoroutineHelper;
 
 public class TaurusBulletSystem41 : EnemyShooter<Laser>
 {
+    protected override float ShootingCooldown => 0.05f;
+
     protected override IEnumerator Shoot()
     {
         yield return WaitForSeconds(2f);
