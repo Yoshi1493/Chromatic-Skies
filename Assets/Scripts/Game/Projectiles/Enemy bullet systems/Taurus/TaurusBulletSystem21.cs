@@ -19,30 +19,34 @@ public class TaurusBulletSystem21 : EnemyShooter<Laser>
         spawnPositions.AddRange(GetRandomPointsAlongBounds(new Vector2(screenHalfWidth, -screenHalfHeight), new Vector2(screenHalfWidth, screenHalfHeight), 1f, 2f));
         spawnPositions.Randomize();
 
-        int c = spawnPositions.Count;
         float r = Random.Range(-45f, 45f);
 
-        for (int i = 0; i < c; i++)
+        for (int i = 0; i < spawnPositions.Count; i++)
         {
             Vector3 pos = spawnPositions[i];
 
-            float z = 0f;
+            float z = r;
 
             if (Mathf.Abs(pos.x) == screenHalfWidth)
             {
-                z = 90f * Mathf.Sign(pos.x);
+                z += 90f * Mathf.Sign(pos.x);
             }
             else if (pos.y == screenHalfHeight)
             {
-                z = 180f;
+                z += 180f;
             }
 
-            SpawnProjectile(0, z + r, pos, false).Fire(1f);
-            SpawnProjectile(0, z + r + 180f, -pos, false).Fire(1f);
+            SpawnProjectile(0, z, pos, false).Fire();
+            SpawnProjectile(0, z + 180f, -pos, false).Fire();
 
             yield return WaitForSeconds(ShootingCooldown);
         }
 
         enabled = false;
+    }
+
+    void OnDisable()
+    {
+        spawnPositions.Clear();
     }
 }

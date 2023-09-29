@@ -4,11 +4,11 @@ using static CoroutineHelper;
 
 public class TaurusBulletSystem2 : EnemyShooter<EnemyBullet>
 {
-    const int BranchCount = 18;
-    const float BranchSpacing = 180f / BranchCount;
-    const int BulletCount = 2;
-    const float MinBulletSpacing = 15f;
-    const float MaxBulletSpacing = 45f;
+    const int WaveCount = 18;
+    const float WaveSpacing = 180f / WaveCount;
+    const int BranchCount = 2;
+    const float MinBranchSpacing = 15f;
+    const float MaxBranchSpacing = 45f;
 
     protected override IEnumerator Shoot()
     {
@@ -18,13 +18,13 @@ public class TaurusBulletSystem2 : EnemyShooter<EnemyBullet>
         {
             SetSubsystemEnabled(1);
 
-            for (int i = BranchCount - 1; i >= 0; i--)
+            for (int i = WaveCount - 1; i >= 0; i--)
             {
-                float r = Random.Range(MinBulletSpacing, MaxBulletSpacing);
+                float r = Random.Range(MinBranchSpacing, MaxBranchSpacing);
 
-                for (int ii = 0; ii < BulletCount; ii++)
+                for (int ii = 0; ii < BranchCount; ii++)
                 {
-                    float z = (i * BranchSpacing) + (ii * r);
+                    float z = (i * WaveSpacing) + (ii * r);
                     Vector3 pos = Vector3.zero;
 
                     SpawnProjectile(0, z, pos).Fire();
