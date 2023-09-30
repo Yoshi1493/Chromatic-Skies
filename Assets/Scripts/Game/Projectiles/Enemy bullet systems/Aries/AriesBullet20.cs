@@ -1,13 +1,13 @@
 using System.Collections;
+using static CoroutineHelper;
 
 public class AriesBullet20 : EnemyBullet
 {
     protected override IEnumerator Move()
     {
-        float endSpeed = MoveSpeed;
+        float startSpeed = MoveSpeed;
 
-        yield return this.LerpSpeed(0f, endSpeed, 1f);
-        yield return this.RotateAround(ownerShip, 1f, 180f);
-        yield return this.LerpSpeed(MoveSpeed, endSpeed, 0.5f);
+        yield return WaitForSeconds(2f);
+        yield return this.LerpSpeed(startSpeed, 2.5f, 0.5f);
     }
 }

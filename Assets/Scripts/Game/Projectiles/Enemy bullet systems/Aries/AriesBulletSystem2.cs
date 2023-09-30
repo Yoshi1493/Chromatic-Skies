@@ -4,15 +4,13 @@ using static CoroutineHelper;
 
 public class AriesBulletSystem2 : EnemyShooter<EnemyBullet>
 {
-    const int WaveCount = 111;
-    const int BranchCount = 3;
+    const int WaveCount = 50;
+    const float WaveSpacing = 6f;
+    const int BranchCount = 6;
     const float BranchSpacing = 360f / BranchCount;
     const int BulletCount = 2;
-    const float BulletSpacing = BranchSpacing / 2f;
-    const float BulletBaseSpeed = 2f;
-    const float BulletSpeedMultiplier = 0.01f;
-
-    protected override float ShootingCooldown => 0.08f;
+    const float BulletBaseSpeed = 3f;
+    const float BulletSpeedMultiplier = 0.02f;
 
     protected override IEnumerator Shoot()
     {
@@ -22,23 +20,23 @@ public class AriesBulletSystem2 : EnemyShooter<EnemyBullet>
 
         while (enabled)
         {
-            float t = 0f;
             float r = Random.Range(0f, BranchSpacing);
 
             for (int i = 0; i < WaveCount; i++)
             {
-                t += i;
+                bulletData.colour = bulletData.gradient.Evaluate(i / (WaveCount - 1f));
 
                 for (int ii = 0; ii < BranchCount; ii++)
                 {
                     for (int iii = 0; iii < BulletCount; iii++)
                     {
-                        float z = (ii * BranchSpacing) + ((iii - 1) / 2f * BulletSpacing) + t + r;
+                        float z = (i * WaveSpacing) + (ii * BranchSpacing) + r;
                         float s = BulletBaseSpeed + (i * BulletSpeedMultiplier);
                         Vector3 pos = Vector3.zero;
 
                         var bullet = SpawnProjectile(0, z, pos);
                         bullet.MoveSpeed = s;
+                        bullet.StartCoroutine(bullet.RotateBy(270f, 2f, iii % BulletCount == 0));
                         bullet.Fire();
                     }
                 }
@@ -49,7 +47,7 @@ public class AriesBulletSystem2 : EnemyShooter<EnemyBullet>
             yield return WaitForSeconds(1f);
 
             StartMoveAction?.Invoke();
-            yield return WaitForSeconds(1f);
+            yield return WaitForSeconds(2f);
         }
     }
 }
