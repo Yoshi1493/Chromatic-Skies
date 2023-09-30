@@ -11,42 +11,40 @@ public class AriesBulletSystem1 : EnemyShooter<EnemyBullet>
     const int BulletCount = 6;
     const float BulletSpacing = 10f;
 
-    protected override float ShootingCooldown => 0.12f;
-
     protected override IEnumerator Shoot()
     {
-        yield return base.Shoot();        
+        yield return base.Shoot();
 
-        while (enabled)
+        SetSubsystemEnabled(1);
+
+        for (int i = 1; enabled;)
         {
-            int d = PositiveOrNegativeOne;
+            float r = i * BulletSpacing;
 
-            for (int i = 0; i < WaveCount; i++)
+            for (int ii = 0; ii < WaveCount; ii++)
             {
-                float r = BulletSpacing * d;
-
-                for (int ii = 0; ii < BranchCount; ii++)
+                for (int iii = 0; iii < BranchCount; iii++)
                 {
-                    for (int iii = 0; iii < BulletCount; iii++)
+                    for (int iv = 0; iv < BulletCount; iv++)
                     {
-                        float z = (r * (ii - 1)) + (iii * BranchSpacing);
+                        int b = iii % 2;
+                        float z = (r * (iii - 1)) + (iv * BranchSpacing);
                         Vector3 pos = Vector3.zero;
 
-                        SpawnProjectile(ii % 2, z, pos).Fire();
+                        SpawnProjectile(b, z, pos).Fire();
                     }
 
                     yield return WaitForSeconds(ShootingCooldown * 0.5f);
                 }
 
                 yield return WaitForSeconds(ShootingCooldown);
-                d *= -1;
+                i *= -1;
             }
 
             yield return WaitForSeconds(1f);
 
-            SetSubsystemEnabled(1);
             StartMoveAction?.Invoke();
-            yield return WaitForSeconds(2f);
+            yield return WaitForSeconds(1f);
         }
     }
 }

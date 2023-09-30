@@ -17,8 +17,8 @@ MonoBehaviour:
   colour: {r: 0, g: 0, b: 0, a: 0}
   gradient:
     serializedVersion: 2
-    key0: {r: 1, g: 0.75, b: 0, a: 1}
-    key1: {r: 1, g: 0.5, b: 0, a: 1}
+    key0: {r: 1, g: 0.5833333, b: 0, a: 1}
+    key1: {r: 1, g: 0.33333334, b: 0, a: 1}
     key2: {r: 0.25, g: 0.62647057, b: 1, a: 0}
     key3: {r: 0.5, g: 0.75, b: 1, a: 0}
     key4: {r: 0.5, g: 0.75, b: 1, a: 0}
@@ -46,3 +46,4 @@ MonoBehaviour:
     m_NumAlphaKeys: 2
   ID: 2
   Power: {fileID: 11400000, guid: 6059f9293aa347b44a73714bea5bfcd3, type: 2}
+  destructible: 1
