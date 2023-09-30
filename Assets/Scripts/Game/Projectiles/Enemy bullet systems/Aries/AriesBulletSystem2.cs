@@ -5,7 +5,7 @@ using static CoroutineHelper;
 public class AriesBulletSystem2 : EnemyShooter<EnemyBullet>
 {
     const int WaveCount = 50;
-    const float WaveSpacing = 6f;
+    const float WaveSpacing = 8f;
     const int BranchCount = 6;
     const float BranchSpacing = 360f / BranchCount;
     const int BulletCount = 2;
