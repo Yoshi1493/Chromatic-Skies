@@ -16,8 +16,6 @@ public class AriesBulletSystem2 : EnemyShooter<EnemyBullet>
     {
         yield return base.Shoot();
 
-        SetSubsystemEnabled(1);
-
         while (enabled)
         {
             float r = Random.Range(0f, BranchSpacing);
@@ -47,7 +45,9 @@ public class AriesBulletSystem2 : EnemyShooter<EnemyBullet>
             yield return WaitForSeconds(1f);
 
             StartMoveAction?.Invoke();
-            yield return WaitForSeconds(2f);
+            SetSubsystemEnabled(1);
+
+            yield return WaitForSeconds(1f);
         }
     }
 }
