@@ -244,6 +244,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1854396389920372690}
+  - component: {fileID: 5509500364015453260}
   m_Layer: 0
   m_Name: Bullet Subsystem 1
   m_TagString: Untagged
@@ -266,6 +267,21 @@ Transform:
   m_Father: {fileID: 1279859028084179535}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5509500364015453260
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4814655708828392414}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b03c28abf6b7271408e78167313a8f9e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyProjectiles:
+  - {fileID: 4915468944426603273, guid: 4a0cb7ffa5a328d4fb704f88fe51b1b2, type: 3}
+  bulletData: {fileID: 11400000, guid: 3666b6f1077cfec449ddf20479c69b36, type: 2}
 --- !u!1 &5819741327546628272
 GameObject:
   m_ObjectHideFlags: 0
@@ -501,7 +517,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyProjectiles:
   - {fileID: -2940761742461376048, guid: 82b539308eeacd340b567ac62ef3bee9, type: 3}
-  - {fileID: -3504910294982117078, guid: f40d1a226dad36f42bb9f4a7d00614dd, type: 3}
+  - {fileID: 2335696217853425603, guid: d92d6e35abd7567439c742ef9068e0d3, type: 3}
+  - {fileID: 9176737614728728130, guid: d0d5fada76bef664f99873bef5589062, type: 3}
+  - {fileID: -249672294240511218, guid: bbc455f583e43f644bedb26b8b279043, type: 3}
+  - {fileID: -2530744195413605081, guid: 79e58a322ec4e9d4c89655afdf9a0916, type: 3}
+  - {fileID: 6276294128428960530, guid: f40d1a226dad36f42bb9f4a7d00614dd, type: 3}
+  - {fileID: 1424291464006283973, guid: c3cf757a4faae2b4f887c131c2291e6e, type: 3}
+  - {fileID: -8849104681967595911, guid: 08be0abda9015844088ba81dcbaf1af6, type: 3}
+  - {fileID: 4255159979495097152, guid: e1b0259ae915d1b478fa29d1a3a8a2c0, type: 3}
   bulletData: {fileID: 11400000, guid: a6a3dd83cc0b98749814f3495071350e, type: 2}
 --- !u!4 &1279859028084179535 stripped
 Transform:

@@ -5,22 +5,26 @@ using static CoroutineHelper;
 public class TaurusBullet50 : ScriptableEnemyBullet<TaurusBulletSystem5, EnemyBullet>
 {
     const int BulletCount = 5;
-    const float ShootingCooldown = 0.1f;
+    const float BulletBaseSpeed = 3.2f;
+    const float BulletSpeedMultiplier = 0.2f;
+    const float ShootingCooldown = 0.2f;
 
     protected override float MaxLifetime => 5f;
 
     protected override IEnumerator Move()
     {
-        StartCoroutine(this.RotateBy(180f, ShootingCooldown * BulletCount, false));
+        float z = playerShip.transform.position.GetRotationDifference(transform.position);
 
         for (int i = 0; i < BulletCount; i++)
         {
-            float z = transform.eulerAngles.z;
+            float s = BulletBaseSpeed + (i * BulletSpeedMultiplier);
             Vector3 pos = transform.position;
 
-            SpawnBullet(1, z, pos, false).Fire();
-
-            yield return WaitForSeconds(ShootingCooldown);
+            var bullet = SpawnBullet(5, z, pos, false);
+            bullet.MoveSpeed = s;
+            bullet.Fire();
         }
+
+        yield return WaitForSeconds(ShootingCooldown);
     }
 }

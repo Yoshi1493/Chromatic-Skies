@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using static CoroutineHelper;
 
@@ -9,6 +10,7 @@ public class TaurusBulletSystem5 : EnemyShooter<EnemyBullet>
     readonly Vector2 MaxBounds = new(7f, 4f);
     const int BulletRowCount = 4;
     const int BulletColCount = 14;
+    const int BulletCount = 5;
 
     List<List<Vector2>> bulletSpawnPositions = new();
     List<EnemyBullet> bullets = new(BulletRowCount * BulletColCount);
@@ -38,7 +40,7 @@ public class TaurusBulletSystem5 : EnemyShooter<EnemyBullet>
     {
         yield return base.Shoot();
 
-        StartMoveAction?.Invoke();
+        SetSubsystemEnabled(1);
 
         for (int i = 1; enabled; i *= -1)
         {
@@ -50,11 +52,11 @@ public class TaurusBulletSystem5 : EnemyShooter<EnemyBullet>
                 {
                     Vector3 pos = bulletSpawnPositions[ii][iii];
                     pos.x *= i;
-                    bulletData.colour = bulletData.gradient.Evaluate(ii / (bulletSpawnPositions.Count - 1f));
 
                     if ((ii + iii) % 2 == 1)
                     {
-                        bullets.Add(SpawnProjectile(0, z, pos, false));
+                        int b = Random.Range(0, BulletCount);
+                        bullets.Add(SpawnProjectile(b, z, pos, false));
                     }
                 }
 
@@ -62,9 +64,9 @@ public class TaurusBulletSystem5 : EnemyShooter<EnemyBullet>
             }
 
             bullets.Randomize();
+            yield return WaitForSeconds(1f);
 
             StartCoroutine(FireBullets());
-
             yield return WaitForSeconds(5f);
         }
     }
@@ -74,7 +76,7 @@ public class TaurusBulletSystem5 : EnemyShooter<EnemyBullet>
         for (int i = 0; i < bullets.Count; i++)
         {
             bullets[i].Fire();
-            yield return WaitForSeconds(ShootingCooldown);
+            yield return WaitForSeconds(ShootingCooldown * 2f);
         }
 
         bullets.Clear();
