@@ -1,9 +1,14 @@
 using System.Collections;
+using static CoroutineHelper;
 
 public class TaurusMovementSystem5 : EnemyMovement
 {
     protected override IEnumerator Move()
     {
-        yield return this.MoveToRandomPosition(1f, delay: 1f);
+        while (enabled)
+        {
+            yield return WaitForSeconds(3f);
+            yield return this.MoveToRandomPosition(1f);
+        }
     }
 }

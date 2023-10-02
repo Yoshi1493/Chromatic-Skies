@@ -2,89 +2,81 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using static CoroutineHelper;
-using static MathHelper;
 
 public class TaurusBulletSystem5 : EnemyShooter<EnemyBullet>
 {
-    List<EnemyBullet> outerBullets = new(90);
-    List<EnemyBullet> innerBullets = new(90);
+    readonly Vector2 MinBounds = new(-7f, 0f);
+    readonly Vector2 MaxBounds = new(7f, 4f);
+    const int BulletRowCount = 4;
+    const int BulletColCount = 14;
 
-    readonly int OuterBranchCount = 5;
-    readonly int OuterBranchDensity = 18;
-    readonly int InnerBranchCount = 5;
-    readonly float InnerBranchDensity = 18f;
-    readonly float BranchSize = 2.5f;
+    List<List<Vector2>> bulletSpawnPositions = new();
+    List<EnemyBullet> bullets = new(BulletRowCount * BulletColCount);
+
+    protected override float ShootingCooldown => 0.05f;
+
+    protected override void Awake()
+    {
+        base.Awake();
+
+        bulletSpawnPositions.Clear();
+
+        for (int i = 0; i <= BulletColCount; i++)
+        {
+            bulletSpawnPositions.Add(new());
+            float x = Mathf.Lerp(MinBounds.x, MaxBounds.x, i / (float)BulletColCount);
+
+            for (int ii = 0; ii <= BulletRowCount; ii++)
+            {
+                float y = Mathf.Lerp(MinBounds.y, MaxBounds.y, ii / (float)BulletRowCount);
+                bulletSpawnPositions[i].Add(new(x, y));
+            }
+        }
+    }
 
     protected override IEnumerator Shoot()
     {
         yield return base.Shoot();
 
-        SetSubsystemEnabled(1);
+        StartMoveAction?.Invoke();
 
-        while (enabled)
+        for (int i = 1; enabled; i *= -1)
         {
-            int d = PositiveOrNegativeOne;
+            float z = 180f;
 
-            for (int i = 0; i < OuterBranchDensity; i++)
+            for (int ii = 0; ii < bulletSpawnPositions.Count; ii++)
             {
-                for (int j = 0; j < OuterBranchCount; j++)
+                for (int iii = 0; iii < bulletSpawnPositions[ii].Count; iii++)
                 {
-                    float z = ((i * 4f) + (j * 72f)) * d;
-                    Vector3 pos = Vector3.zero;
+                    Vector3 pos = bulletSpawnPositions[ii][iii];
+                    pos.x *= i;
+                    bulletData.colour = bulletData.gradient.Evaluate(ii / (bulletSpawnPositions.Count - 1f));
 
-                    var bullet = SpawnProjectile(0, z, pos);
-                    outerBullets.Add(bullet);
-
-                    bullet.StartCoroutine(bullet.LerpSpeed(BranchSize * 2f, 0f, 1f));
+                    if ((ii + iii) % 2 == 1)
+                    {
+                        bullets.Add(SpawnProjectile(0, z, pos, false));
+                    }
                 }
 
-                yield return WaitForSeconds(ShootingCooldown / 4f);
+                yield return WaitForSeconds(ShootingCooldown);
             }
 
-            yield return WaitForSeconds(1f);
+            bullets.Randomize();
 
-            float xRange = Mathf.Cos(18f * Mathf.Deg2Rad) * BranchSize;
-            float randOffset = Random.Range(0f, 36f);
+            StartCoroutine(FireBullets());
 
-            for (int i = 0; i < InnerBranchDensity; i++)
-            {
-                for (int j = 0; j < InnerBranchCount; j++)
-                {
-                    float lerpAmount = i / InnerBranchDensity;
-
-                    float x = Mathf.Lerp(-xRange, xRange, lerpAmount);
-                    float y = Mathf.Sin(18f * Mathf.Deg2Rad) * BranchSize;
-                    Vector3 pos = new Vector3(x, y).RotateVectorBy(randOffset + (j * 72f));
-
-                    float z = Mathf.Lerp(-180f, 180f, lerpAmount);
-
-                    var bullet = SpawnProjectile(1, z, pos);
-                    innerBullets.Add(bullet);
-
-                }
-
-                yield return WaitForSeconds(ShootingCooldown / 2f);
-            }
-
-            yield return WaitForSeconds(ShootingCooldown);
-
-            for (int i = 0; i < outerBullets.Count; i++)
-            {
-                outerBullets[i].MoveSpeed = Random.Range(2f, 4f);
-                outerBullets[i].Fire();
-            }
-
-            outerBullets.Clear();
-
-            for (int i = 0; i < innerBullets.Count; i++)
-            {
-                innerBullets[i].Fire();
-            }
-
-            innerBullets.Clear();
-
-            StartMoveAction?.Invoke();
-            yield return WaitForSeconds(3f);
+            yield return WaitForSeconds(5f);
         }
+    }
+
+    IEnumerator FireBullets()
+    {
+        for (int i = 0; i < bullets.Count; i++)
+        {
+            bullets[i].Fire();
+            yield return WaitForSeconds(ShootingCooldown);
+        }
+
+        bullets.Clear();
     }
 }
