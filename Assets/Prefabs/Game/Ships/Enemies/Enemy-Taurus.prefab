@@ -524,7 +524,6 @@ MonoBehaviour:
   - {fileID: 6276294128428960530, guid: f40d1a226dad36f42bb9f4a7d00614dd, type: 3}
   - {fileID: 1424291464006283973, guid: c3cf757a4faae2b4f887c131c2291e6e, type: 3}
   - {fileID: -8849104681967595911, guid: 08be0abda9015844088ba81dcbaf1af6, type: 3}
-  - {fileID: 4255159979495097152, guid: e1b0259ae915d1b478fa29d1a3a8a2c0, type: 3}
   bulletData: {fileID: 11400000, guid: a6a3dd83cc0b98749814f3495071350e, type: 2}
 --- !u!4 &1279859028084179535 stripped
 Transform:

@@ -4,27 +4,32 @@ using static CoroutineHelper;
 
 public class TaurusBullet54 : ScriptableEnemyBullet<TaurusBulletSystem5, EnemyBullet>
 {
-    const int WaveCount = 3;
-    const float WaveSpacing = BranchSpacing / 2f;
-    const int BranchCount = 12;
-    const float BranchSpacing = 360f / BranchCount;
-    const float ShootingCooldown = 0.2f;
+    const int BulletCount = 8;
+    const float BulletSpacing = 360f / BulletCount;
 
-    protected override float MaxLifetime => 5f;
+    protected override float MaxLifetime => 2f;
 
     protected override IEnumerator Move()
     {
-        for (int i = 0; i < WaveCount; i++)
+        float currentLerpTime = 0f, totalLerpTime = 0.5f;
+
+        while (currentLerpTime < totalLerpTime)
         {
-            for (int ii = 0; ii < BranchCount; ii++)
-            {
-                float z = (i * WaveSpacing) + (ii * BranchSpacing);
-                Vector3 pos = transform.position;
+            float t = currentLerpTime / totalLerpTime;
+            spriteRenderer.color = projectileData.gradient.Evaluate(t);
 
-                SpawnBullet(8, z, pos, false).Fire();
-            }
+            yield return EndOfFrame;
+            currentLerpTime += Time.deltaTime;
+        }
 
-            yield return WaitForSeconds(ShootingCooldown);
+        yield return WaitForSeconds(0.5f);
+
+        for (int i = 0; i < BulletCount; i++)
+        {
+            float z = i * BulletSpacing;
+            Vector3 pos = transform.position;
+
+            SpawnBullet(7, z, pos, false).Fire();
         }
     }
 }

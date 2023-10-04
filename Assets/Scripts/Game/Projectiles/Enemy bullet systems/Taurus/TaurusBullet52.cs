@@ -1,25 +1,45 @@
 using System.Collections;
 using UnityEngine;
+using static CoroutineHelper;
 
-public class TaurusBullet52 : ScriptableEnemyBullet<TaurusBulletSystem51, Laser>
+public class TaurusBullet52 : ScriptableEnemyBullet<TaurusBulletSystem5, EnemyBullet>
 {
-    const int LaserCount = 4;
-    const float LaserSpacing = 360f / LaserCount;
+    const int WaveCount = 3;
+    const float WaveSpacing = BranchSpacing / WaveCount;
+    const int BranchCount = 4;
+    const float BranchSpacing = 360f / BranchCount;
+    const float ShootingCooldown = 0.5f;
 
-    protected override float MaxLifetime => 5f;
+    protected override float MaxLifetime => 2f;
 
     protected override IEnumerator Move()
     {
-        float r = transform.position.GetRotationDifference(playerShip.transform.position);
+        float currentLerpTime = 0f, totalLerpTime = 0.5f;
 
-        for (int i = 0; i < LaserCount; i++)
+        while (currentLerpTime < totalLerpTime)
         {
-            float z = (i * LaserSpacing) + r;
-            Vector3 pos = transform.position;
+            float t = currentLerpTime / totalLerpTime;
+            spriteRenderer.color = projectileData.gradient.Evaluate(t);
 
-            SpawnBullet(0, z, pos, false).Fire();
+            yield return EndOfFrame;
+            currentLerpTime += Time.deltaTime;
         }
 
-        yield break;
+        yield return WaitForSeconds(0.5f);
+
+        for (int i = 0; i < WaveCount; i++)
+        {
+            for (int ii = 0; ii < BranchCount; ii++)
+            {
+                float z = (i * WaveSpacing) + ((ii + 0.5f) * BranchSpacing);
+                Vector3 pos = transform.position;
+
+                SpawnBullet(6, z, pos, false).Fire();
+
+            }
+
+            yield return WaitForSeconds(ShootingCooldown);
+        }
+
     }
 }

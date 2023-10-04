@@ -4,6 +4,7 @@ public class TaurusBullet55 : EnemyBullet
 {
     protected override IEnumerator Move()
     {
-        yield return this.HomeInOn(playerShip, 1f, 1f);
+        MoveSpeed = 3f;
+        yield return this.HomeInOn(playerShip, 2f, 1f);
     }
 }
