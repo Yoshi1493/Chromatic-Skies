@@ -31,7 +31,7 @@ public static class MathHelper
     #region Vector
 
     /// <summary>
-    /// returns the angle (in degrees) that the line created by <pos1> and <pos2> subtends from (0, 0).
+    /// returns the angle (in degrees) that the vector created by <pos2 - pos1> subtends (0, 0).
     /// </summary>
     public static float GetRotationDifference(this Vector3 pos1, Vector3 pos2)
     {

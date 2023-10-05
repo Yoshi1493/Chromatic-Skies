@@ -27,7 +27,7 @@ public abstract class ReflectiveEnemyBullet : EnemyBullet
     {
         base.HandleCollision<T>(coll);
 
-        if (currentReflectCount > 0)
+        if (coll.TryGetComponent(out EdgeCollider2D _) && currentReflectCount > 0)
         {
             HandleReflection(coll);
             currentReflectCount--;

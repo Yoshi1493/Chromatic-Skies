@@ -19,6 +19,8 @@ public class GeminiBulletSystem31 : EnemyShooter<EnemyBullet>
 
     protected override IEnumerator Shoot()
     {
+        yield return WaitForSeconds(2f);
+
         float r = Random.Range(0f, BranchSpacing);
 
         for (int i = 0; i < WaveCount; i++)

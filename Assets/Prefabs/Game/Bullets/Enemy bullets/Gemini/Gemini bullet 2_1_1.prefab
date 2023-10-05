@@ -11,6 +11,10 @@ PrefabInstance:
       propertyPath: projectileData
       value: 
       objectReference: {fileID: 11400000, guid: 9e677f23ae9e486449c4bc5d5b77d796, type: 2}
+    - target: {fileID: -292663564390533424, guid: f1fe21832b460f147923df4574af0420, type: 3}
+      propertyPath: rotatesClockwise
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5193277357379181918, guid: f1fe21832b460f147923df4574af0420, type: 3}
       propertyPath: m_RootOrder
       value: 0

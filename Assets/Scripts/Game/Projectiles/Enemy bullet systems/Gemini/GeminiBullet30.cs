@@ -7,7 +7,7 @@ public class GeminiBullet30 : EnemyBullet
     [HideInInspector] public Vector3 rotationAxis;
     const float RotationSpeed = 240f;
 
-    protected override float MaxLifetime => 6f;
+    protected override float MaxLifetime => 3f;
 
     protected override IEnumerator Move()
     {

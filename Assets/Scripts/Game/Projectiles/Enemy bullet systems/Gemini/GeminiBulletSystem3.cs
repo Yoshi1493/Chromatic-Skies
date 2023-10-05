@@ -4,15 +4,11 @@ using static CoroutineHelper;
 
 public class GeminiBulletSystem3 : EnemyShooter<EnemyBullet>
 {
-    const int WaveCount = 42;
     const int BranchCount = 2;
     const float BranchSpacing = 360f / BranchCount;
-    public const float BranchSpawnOffset = 5f;
     const int BulletCount = 2;
     const float BulletSpacing = 360f / BulletCount;
-    const float SpinRadius = 1f;
-
-    protected override float ShootingCooldown => 0.1f;
+    const float SpinRadius = 1.2f;
 
     protected override IEnumerator Shoot()
     {
@@ -20,22 +16,25 @@ public class GeminiBulletSystem3 : EnemyShooter<EnemyBullet>
 
         while (enabled)
         {
-            float y = PlayerPosition.y;
+            SetSubsystemEnabled(1);
 
-            for (int i = 0; i < WaveCount; i++)
+            float x = screenHalfWidth * 0.5f;
+            float y = screenHalfHeight;
+
+            for (int i = 0; enabled; i++)
             {
                 for (int ii = 0; ii < BranchCount; ii++)
                 {
-                    float x = screenHalfWidth * Mathf.Sign(ii % 2 - 1);
-                    Vector3 v1 = new(x, y, 0f);
-                    Vector3 v2 = new(0f, y, 0f);
+                    float r = ii * BranchSpacing;
+                    Vector3 v1 = new Vector3(x, y, 0f).RotateVectorBy(r);
+                    Vector3 v2 = new Vector3(x, -y, 0f).RotateVectorBy(r);
 
                     float z = v2.GetRotationDifference(v1);
 
                     for (int iii = 0; iii < BulletCount; iii++)
                     {
-                        float vx = SpinRadius * Mathf.Sin(iii * BulletSpacing * Mathf.Deg2Rad);
-                        float vz = SpinRadius * Mathf.Cos(iii * BulletSpacing * Mathf.Deg2Rad);
+                        float vx = SpinRadius * Mathf.Sin((i + (iii * BulletSpacing)) * Mathf.Deg2Rad);
+                        float vz = SpinRadius * Mathf.Cos((i + (iii * BulletSpacing)) * Mathf.Deg2Rad);
                         Vector3 pos = v1 + new Vector3(vx, 0f, vz);
                         int b = (i + iii) % BulletCount;
 
@@ -49,8 +48,7 @@ public class GeminiBulletSystem3 : EnemyShooter<EnemyBullet>
                 yield return WaitForSeconds(ShootingCooldown);
             }
 
-            SetSubsystemEnabled(1);
-            yield return WaitForSeconds(3f);
+            yield return WaitForSeconds(1f);
 
             StartMoveAction?.Invoke();
             yield return WaitForSeconds(3f);

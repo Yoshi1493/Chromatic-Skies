@@ -19,7 +19,7 @@ public class GeminiBulletSystem2 : EnemyShooter<EnemyBullet>
         yield return base.Shoot();
 
         int i = 1;
-        List<(Vector3 xy, float z)> bulletPosRotData = new(WaveCount * BranchCount);
+        List<(Vector2 xy, float z)> bulletPosRotData = new(WaveCount * BranchCount);
 
         while (enabled)
         {
