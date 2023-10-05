@@ -7,7 +7,7 @@ public class TaurusBullet54 : ScriptableEnemyBullet<TaurusBulletSystem5, EnemyBu
     const int BulletCount = 8;
     const float BulletSpacing = 360f / BulletCount;
 
-    protected override float MaxLifetime => 2f;
+    protected override float MaxLifetime => 2.5f;
 
     protected override IEnumerator Move()
     {
@@ -24,9 +24,11 @@ public class TaurusBullet54 : ScriptableEnemyBullet<TaurusBulletSystem5, EnemyBu
 
         yield return WaitForSeconds(0.5f);
 
+        float r = Random.Range(0f, BulletSpacing);
+
         for (int i = 0; i < BulletCount; i++)
         {
-            float z = i * BulletSpacing;
+            float z = (i * BulletSpacing) + r;
             Vector3 pos = transform.position;
 
             SpawnBullet(7, z, pos, false).Fire();

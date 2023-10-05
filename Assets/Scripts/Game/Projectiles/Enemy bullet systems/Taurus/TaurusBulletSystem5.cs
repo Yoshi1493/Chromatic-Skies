@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using static CoroutineHelper;
 
@@ -8,16 +7,14 @@ public class TaurusBulletSystem5 : EnemyShooter<EnemyBullet>
 {
     readonly Vector2 MinBounds = new(-7f, 0f);
     readonly Vector2 MaxBounds = new(7f, 4f);
-    const int BulletRowCount = 4;
-    const int BulletColCount = 14;
+    const int BulletRowCount = 6;
+    const int BulletColCount = 21;
     const int BulletIDCount = 5;
 
     List<List<Vector2>> bulletSpawnPositions = new();
 
     const int AttackPatternCount = 4;
     IEnumerator currentAttackPattern;
-
-    protected override float ShootingCooldown => 0.05f;
 
     protected override void Awake()
     {
@@ -55,10 +52,10 @@ public class TaurusBulletSystem5 : EnemyShooter<EnemyBullet>
                 SpawnProjectile(0, z, pos, false);
             }
 
-            yield return WaitForSeconds(ShootingCooldown);
+            yield return WaitForSeconds(ShootingCooldown * 0.5f);
         }
 
-        yield return WaitForSeconds(1f);
+        yield return WaitForSeconds(0.5f);
 
         int r, r0 = -1;
 
@@ -96,7 +93,7 @@ public class TaurusBulletSystem5 : EnemyShooter<EnemyBullet>
                     break;
 
                 default:
-                    break;
+                    break; 
             }
 
             yield return currentAttackPattern;
@@ -106,7 +103,7 @@ public class TaurusBulletSystem5 : EnemyShooter<EnemyBullet>
 
     IEnumerator FireSquare()
     {
-        int squareSideLength = 4;
+        int squareSideLength = Random.Range(4, BulletRowCount + 1);
         int col = Random.Range(0, BulletColCount - (squareSideLength - 1));
         int row = Random.Range(0, BulletRowCount - (squareSideLength - 1));
         int b = Random.Range(1, BulletIDCount);

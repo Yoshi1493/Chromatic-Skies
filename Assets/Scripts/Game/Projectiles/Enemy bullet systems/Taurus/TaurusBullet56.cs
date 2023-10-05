@@ -6,7 +6,12 @@ public class TaurusBullet56 : EnemyBullet
 
     protected override IEnumerator Move()
     {
-        MoveSpeed = 2.5f;
-        yield return null;
+        yield return this.LerpSpeed(2f, 0f, 1f);
+
+        StartCoroutine(this.RotateBy(90f, 0f));
+        yield return this.LerpSpeed(4f, 0f, 1f);
+
+        yield return this.RotateBy(-90f, 0f);
+        MoveSpeed = 3f;
     }
 }

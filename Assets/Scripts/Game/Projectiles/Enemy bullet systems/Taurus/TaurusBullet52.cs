@@ -4,13 +4,13 @@ using static CoroutineHelper;
 
 public class TaurusBullet52 : ScriptableEnemyBullet<TaurusBulletSystem5, EnemyBullet>
 {
-    const int WaveCount = 3;
+    const int WaveCount = 2;
     const float WaveSpacing = BranchSpacing / WaveCount;
     const int BranchCount = 4;
     const float BranchSpacing = 360f / BranchCount;
     const float ShootingCooldown = 0.5f;
 
-    protected override float MaxLifetime => 2f;
+    protected override float MaxLifetime => 2.5f;
 
     protected override IEnumerator Move()
     {

@@ -4,7 +4,10 @@ using static CoroutineHelper;
 
 public class TaurusBullet51 : ScriptableEnemyBullet<TaurusBulletSystem5, EnemyBullet>
 {
-    protected override float MaxLifetime => 2f;
+    const int WaveCount = 3;
+    const float ShootingCooldown = 0.5f;
+
+    protected override float MaxLifetime => 2.5f;
 
     protected override IEnumerator Move()
     {
@@ -21,9 +24,13 @@ public class TaurusBullet51 : ScriptableEnemyBullet<TaurusBulletSystem5, EnemyBu
 
         yield return WaitForSeconds(0.5f);
 
-        float z = 0f;
-        Vector3 pos = transform.position;
+        for (int i = 0; i < WaveCount; i++)
+        {
+            float z = 0f;
+            Vector3 pos = transform.position;
 
-        SpawnBullet(5, z, pos, false).Fire();
+            SpawnBullet(5, z, pos, false).Fire();
+            yield return WaitForSeconds(ShootingCooldown);
+        }
     }
 }
