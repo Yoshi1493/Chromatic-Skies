@@ -2,31 +2,32 @@ using System.Collections;
 using UnityEngine;
 using static CoroutineHelper;
 
-public class LibraBulletSystem41 : EnemyShooter<EnemyBullet>
+public class LibraBulletSystem41 : EnemyShooter<Laser>
 {
-    const int WaveCount = 6;
-    const float WaveSpacing = BranchSpacing / 2f;
-    const int BranchCount = 36;
-    const float BranchSpacing = 360f / BranchCount;
+    const int WaveCount = 4;
+    const float WaveSpacing = LaserSpacing / 2f;
+    const int LaserCount = 8;
+    const float LaserSpacing = 360f / LaserCount;
+    const float LaserSpawnRadius = 0.5f;
 
-    protected override float ShootingCooldown => 0.2f;
+    protected override float ShootingCooldown => 1f;
 
     protected override IEnumerator Shoot()
     {
-        yield return WaitForSeconds(2.5f);
+        yield return WaitForSeconds(1f);
 
         for (int i = 0; i < WaveCount; i++)
         {
-            for (int ii = 0; ii < BranchCount; ii++)
-            {
-                int b = i % 2 + 2;
-                float z = (i * WaveSpacing) + (ii * BranchSpacing);
-                Vector3 pos = Vector3.zero;
-
-                SpawnProjectile(b, z, pos).Fire();
-            }
-
             yield return WaitForSeconds(ShootingCooldown);
+
+            for (int ii = 0; ii < LaserCount; ii++)
+            {
+                float z = (i * WaveSpacing) + (ii * LaserSpacing);
+                Vector3 pos = LaserSpawnRadius * Vector3.up.RotateVectorBy(z);
+
+                bulletData.colour = bulletData.gradient.Evaluate(i % 2);
+                SpawnProjectile(0, z, pos).Fire();
+            }
         }
 
         enabled = false;
