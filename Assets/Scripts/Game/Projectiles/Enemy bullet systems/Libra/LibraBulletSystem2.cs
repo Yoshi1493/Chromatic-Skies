@@ -28,8 +28,9 @@ public class LibraBulletSystem2 : EnemyShooter<EnemyBullet>
             }
 
             yield return WaitForSeconds(ShootingCooldown);
+
             StartMoveAction?.Invoke();
-            yield return WaitForSeconds(2f);
+            yield return WaitForSeconds(1f);
         }
     }
 }
