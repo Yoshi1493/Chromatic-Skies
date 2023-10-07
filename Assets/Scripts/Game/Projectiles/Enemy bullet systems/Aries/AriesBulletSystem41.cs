@@ -14,8 +14,8 @@ public class AriesBulletSystem41 : EnemyShooter<EnemyBullet>
 
         while (enabled)
         {
-            float z = Mathf.PingPong(i, AngleLimit) - (AngleLimit * 0.5f);
             float x = Random.Range(-screenHalfWidth, screenHalfWidth);
+            float z = Mathf.PingPong(i, AngleLimit) - (AngleLimit * 0.5f);
             Vector3 pos = new(x, y);
 
             SpawnProjectile(1, z, pos, false).Fire();

@@ -34,7 +34,9 @@ public class TaurusBulletSystem11 : EnemyShooter<EnemyBullet>
 
             for (int i = 0; i < bulletSpawnPositions.Count; i++)
             {
-                SpawnProjectile(1, 90f, bulletSpawnPositions[i], false).Fire();
+                float z = 90f;
+                Vector3 pos = bulletSpawnPositions[i];
+                SpawnProjectile(1, z, pos, false).Fire();
             }
 
             yield return WaitForSeconds(5f);
