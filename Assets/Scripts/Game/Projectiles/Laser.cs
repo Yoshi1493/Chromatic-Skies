@@ -8,13 +8,14 @@ public abstract class Laser : Projectile
     protected override int CollisionMask => 1 << LayerMask.NameToLayer("Player");
     protected override Collider2D CollisionCondition => Physics2D.OverlapBox(transform.position + HitboxOffset, spriteRenderer.size, transform.eulerAngles.z, CollisionMask);
 
-    bool active;
+    protected bool active;
+    protected Vector2 originalSize;
+
     IEnumerator growAnimation;
     IEnumerator shrinkAnimation;
 
     [SerializeField] AnimationCurve widthInterpolation;
     [SerializeField] AnimationCurve heightInterpolation;
-    Vector2 originalSize;
 
     protected override void Awake()
     {

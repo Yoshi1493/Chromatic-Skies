@@ -4,38 +4,37 @@ using static CoroutineHelper;
 
 public class TaurusBulletSystem6 : EnemyShooter<EnemyBullet>
 {
-    const int WaveCount = 120;
-    const int BulletCount = 3;
-    const float SpawnAngleVariance = 45f;
+    const int WaveCount = 5;
+    const int BranchCount = 2;
+    const float BranchSpacing = 360f / BranchCount;
 
-    protected override float ShootingCooldown => 0.05f;
+    protected override float ShootingCooldown => 0.2f;
 
     protected override IEnumerator Shoot()
     {
         yield return base.Shoot();
 
+        SetSubsystemEnabled(1);
+        SetSubsystemEnabled(2);
+
         while (enabled)
         {
-            StartMoveAction?.Invoke();
-            SetSubsystemEnabled(1);
-
             for (int i = 0; i < WaveCount; i++)
             {
-                for (int ii = 0; ii < BulletCount; ii++)
+                for (int ii = 0; ii < BranchCount; ii++)
                 {
-                    float z = 180f + Random.Range(-SpawnAngleVariance, SpawnAngleVariance);
-                    Vector3 pos = Vector3.zero;
+                    float x = 3f;
+                    float y = screenHalfHeight * 1.1f;
+                    float z = ii * BranchSpacing;
+                    Vector3 pos = new Vector3(x, y).RotateVectorBy(z);
 
-                    SpawnProjectile(0, z, pos).Fire();
+                    SpawnProjectile(0, z, pos, false).Fire();
                 }
 
                 yield return WaitForSeconds(ShootingCooldown);
             }
 
-            yield return WaitForSeconds(1.5f);
-
-            SetSubsystemEnabled(2);
-            yield return WaitForSeconds(4f);
+            yield return WaitForSeconds(1f);
         }
     }
 }

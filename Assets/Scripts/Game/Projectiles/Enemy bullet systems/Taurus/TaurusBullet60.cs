@@ -1,13 +1,21 @@
 using System.Collections;
+using UnityEngine;
 
 public class TaurusBullet60 : EnemyBullet
 {
-    protected override float MaxLifetime => 7f;
+    protected override Collider2D CollisionCondition => Physics2D.OverlapBox(transform.position, spriteRenderer.size, 0f, CollisionMask);
+
+    protected override float MaxLifetime => 5f;
+
+    protected override void Awake()
+    {
+        base.Awake();
+        GetComponent<BoxCollider2D>().size = spriteRenderer.size;
+    }
 
     protected override IEnumerator Move()
     {
-        yield return this.LerpSpeed(5f, 0f, 0.5f);
-        yield return this.RotateBy(180f, 0f);
-        yield return this.LerpSpeed(0f, 2.5f, 1f);
+        MoveSpeed = 3f;
+        yield return null;
     }
 }
