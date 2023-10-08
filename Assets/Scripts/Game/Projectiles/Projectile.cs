@@ -12,6 +12,7 @@ public abstract class Projectile : Actor
     protected float HitboxSize => 0.8f * Mathf.Min(spriteRenderer.size.x, spriteRenderer.size.y) / 2f;
     protected abstract int CollisionMask { get; }
     protected abstract Collider2D CollisionCondition { get; }
+    protected bool IsColliding => CollisionCondition;
 
     [HideInInspector] public Vector3 moveDirection;
     [HideInInspector] public float currentSpeed;
@@ -52,27 +53,16 @@ public abstract class Projectile : Actor
 
     protected void CheckCollisionWith<T>()
     {
-        Collider2D coll = CollisionCondition;
-
-        if (coll)
+        if (IsColliding)
         {
-            if (coll.TryGetComponent(out T _))
+            if (CollisionCondition.TryGetComponent(out T _))
             {
-                HandleCollision<T>(coll);
+                HandleCollision<T>(CollisionCondition);
             }
         }
     }
 
-    protected virtual void HandleCollision<T>(Collider2D coll)
-    {
-        if (coll.TryGetComponent(out Ship ship))
-        {
-            if (!ship.invincible)
-            {
-                ship.TakeDamage(projectileData.Power.value);
-            }
-        }
-    }
+    protected abstract void HandleCollision<T>(Collider2D coll);
 
     public abstract void Destroy();
 

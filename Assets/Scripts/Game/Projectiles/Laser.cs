@@ -10,6 +10,8 @@ public abstract class Laser : Projectile
 
     protected bool active;
     protected Vector2 originalSize;
+    protected Vector2 activeSize;
+    const float WarningSpriteWidth = 0.04f;
 
     IEnumerator growAnimation;
     IEnumerator shrinkAnimation;
@@ -21,6 +23,7 @@ public abstract class Laser : Projectile
     {
         base.Awake();
         originalSize = spriteRenderer.size;
+        activeSize = originalSize;
     }
 
     protected override void OnEnable()
@@ -50,40 +53,38 @@ public abstract class Laser : Projectile
         }
     }
 
-    public override void Destroy()
+    protected override void HandleCollision<T>(Collider2D coll)
     {
-        if (growAnimation != null)
+        if (coll.TryGetComponent(out Ship ship))
         {
-            StopCoroutine(growAnimation);
-        }
-
-        if (shrinkAnimation == null)
-        {
-            shrinkAnimation = Destroy();
-            StartCoroutine(shrinkAnimation);
+            if (!ship.invincible)
+            {
+                ship.TakeDamage(projectileData.Power.value);
+            }
         }
     }
 
     IEnumerator Grow(float warningDuration, float lerpDuration = 0.1f)
     {
-        Vector2 startSize = originalSize;
-        Vector2 endSize = startSize;
-        startSize.x = 0.25f * originalSize.x;
+        //continuously update sprite renderer initial size in case laser path changes length during warning delay (usually due to collisions)
+        for (float _ = 0; _ < warningDuration; _ += Time.deltaTime)
+        {
+            spriteRenderer.size = new(WarningSpriteWidth, activeSize.y);
+            yield return EndOfFrame;
+        }
 
-        //display laser warning
-        spriteRenderer.size = startSize;
-        yield return WaitForSeconds(warningDuration);
-
-        active = true;
+        //determine animation start and end points after delay (in case it collides with something during warning delay)
+        Vector2 currentSize = spriteRenderer.size;
+        Vector2 endSize = activeSize;
         float currentLerpTime = 0f;
 
-        //activate laser
+        //animate laser from warning size to active size
         while (spriteRenderer.size != endSize)
         {
             float lerpProgress = currentLerpTime / lerpDuration;
 
-            float width = Mathf.Lerp(startSize.x, endSize.x, widthInterpolation.Evaluate(lerpProgress / 2f));
-            float height = Mathf.Lerp(startSize.y, endSize.y, heightInterpolation.Evaluate(lerpProgress));
+            float width = Mathf.Lerp(currentSize.x, endSize.x, widthInterpolation.Evaluate(lerpProgress / 2f));
+            float height = Mathf.Lerp(currentSize.y, endSize.y, heightInterpolation.Evaluate(lerpProgress));
 
             spriteRenderer.size = new Vector2(width, height);
 
@@ -91,6 +92,7 @@ public abstract class Laser : Projectile
             yield return EndOfFrame;
         }
 
+        active = true;
         growAnimation = null;
     }
 
@@ -112,6 +114,25 @@ public abstract class Laser : Projectile
 
         EnemyLaserPool.Instance.ReturnToPool(this);
         shrinkAnimation = null;
+    }
+
+    public override void Destroy()
+    {
+        if (growAnimation != null)
+        {
+            StopCoroutine(growAnimation);
+        }
+
+        if (shrinkAnimation == null)
+        {
+            shrinkAnimation = Destroy();
+            StartCoroutine(shrinkAnimation);
+        }
+    }
+
+    void OnDisable()
+    {
+        active = false;
     }
 
 #if UNITY_EDITOR

@@ -17,15 +17,8 @@ public class TaurusLaser60 : Laser
     {
         base.Update();
 
-        if (isActiveAndEnabled)
-        {
-            CheckCollisionWith<EnemyBullet>();
-
-            if (!CollisionCondition)
-            {
-                spriteRenderer.size = originalSize;
-            }
-        }
+        CheckCollisionWith<EnemyBullet>();
+        spriteRenderer.size = IsColliding ? activeSize : originalSize;
     }
 
     protected override void HandleCollision<T>(Collider2D coll)
@@ -37,9 +30,7 @@ public class TaurusLaser60 : Laser
             Vector2 closestPoint = coll.ClosestPoint(transform.position);
             float height = Mathf.Abs(closestPoint.x - transform.position.x);
 
-            Vector2 size = spriteRenderer.size;
-            size.y = height;
-            spriteRenderer.size = size;
+            activeSize.y = height;
         }
     }
 
