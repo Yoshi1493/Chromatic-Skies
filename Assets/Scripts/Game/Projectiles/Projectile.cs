@@ -58,7 +58,7 @@ public abstract class Projectile : Actor
         {
             if (coll.TryGetComponent(out T _))
             {
-                HandleCollision<Ship>(coll);
+                HandleCollision<T>(coll);
             }
         }
     }
