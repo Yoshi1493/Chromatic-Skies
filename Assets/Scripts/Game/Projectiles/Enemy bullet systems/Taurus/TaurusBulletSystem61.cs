@@ -4,7 +4,7 @@ using static CoroutineHelper;
 
 public class TaurusBulletSystem61 : EnemyShooter<EnemyBullet>
 {
-    const int BranchCount = 2;
+    const int BranchCount = 1;
     const float BranchSpacing = 360f / BranchCount;
 
     protected override float ShootingCooldown => 10f;
@@ -16,7 +16,7 @@ public class TaurusBulletSystem61 : EnemyShooter<EnemyBullet>
             for (int i = 0; i < BranchCount; i++)
             {
                 float x = -screenHalfWidth * 0.8f;
-                float y = screenHalfHeight * 1.1f;
+                float y = screenHalfHeight * 1.2f;
                 float z = i * BranchSpacing;
                 Vector3 pos = new Vector3(x, y).RotateVectorBy(z);
 

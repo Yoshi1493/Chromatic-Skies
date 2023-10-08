@@ -18,4 +18,14 @@ public class TaurusBullet60 : EnemyBullet
         MoveSpeed = 3f;
         yield return null;
     }
+
+#if UNITY_EDITOR
+    protected override void OnDrawGizmos()
+    {
+        if (UnityEditor.EditorApplication.isPlaying)
+        {
+            Gizmos.DrawCube(transform.position, spriteRenderer.size);
+        }
+    }
+#endif
 }

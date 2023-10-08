@@ -10,7 +10,7 @@ public class TaurusBullet61 : ScriptableEnemyBullet<TaurusBulletSystem62, Laser>
     {
         MoveSpeed = 2f;
 
-        yield return WaitForSeconds(1f);
+        yield return WaitForSeconds(0.5f);
 
         float z = transform.eulerAngles.z + 90f;
         Vector3 pos = transform.position;
@@ -18,7 +18,5 @@ public class TaurusBullet61 : ScriptableEnemyBullet<TaurusBulletSystem62, Laser>
         var bullet = SpawnBullet(0, z, pos, false);
         bullet.transform.parent = transform;
         bullet.Fire();
-
-        yield return null;
     }
 }
