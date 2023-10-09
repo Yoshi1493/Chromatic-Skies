@@ -18,7 +18,16 @@ public class TaurusLaser60 : Laser
         base.Update();
 
         CheckCollisionWith<EnemyBullet>();
-        spriteRenderer.size = IsColliding ? activeSize : originalSize;
+
+        if (active)
+        {
+            if (!IsColliding)
+            {
+                activeSize = originalSize;
+            }
+
+            spriteRenderer.size = activeSize;
+        }
     }
 
     protected override void HandleCollision<T>(Collider2D coll)
@@ -30,7 +39,6 @@ public class TaurusLaser60 : Laser
             for (int i = 0; i < NumCollisions; i++)
             {
                 float sqrDistance = (collisionResults[i].ClosestPoint(transform.position) - (Vector2)transform.position).sqrMagnitude;
-                print($"{transform.parent.name} collided with {collisionResults[i].name}, {sqrDistance} units away");
 
                 if (collisionResults[i].TryGetComponent(out EnemyBullet _) && sqrDistance < closestCollisionDistance)
                 {
