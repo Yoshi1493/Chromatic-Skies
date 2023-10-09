@@ -27,7 +27,8 @@ public abstract class Shooter<TProjectile> : MonoBehaviour
         newProjectile.transform.SetPositionAndRotation(spawnPos + (asLocalPosition ? transform.position : Vector3.zero), Quaternion.Euler(0f, 0f, spawnRotZ));
         newProjectile.enabled = true;
 
-        newProjectile.name += $" {newProjectile.transform.GetSiblingIndex()}";        //debug
+        if (!char.IsNumber(newProjectile.name[^1]))                                     //debug
+        newProjectile.name += $" {newProjectile.transform.GetSiblingIndex()}";
 
         return newProjectile;
     }
