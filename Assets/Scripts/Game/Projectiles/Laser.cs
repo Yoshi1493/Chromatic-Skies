@@ -4,9 +4,9 @@ using static CoroutineHelper;
 
 public abstract class Laser : Projectile
 {
-    Vector3 HitboxOffset => spriteRenderer.size.y * 0.5f * transform.up;
+    Vector3 HitboxOffset => originalSize.y * 0.5f * transform.up;
     protected override int CollisionMask => 1 << LayerMask.NameToLayer("Player");
-    protected override Collider2D CollisionCondition => Physics2D.OverlapBox(transform.position + HitboxOffset, spriteRenderer.size, transform.eulerAngles.z, CollisionMask);
+    protected override int NumCollisions => Physics2D.OverlapBoxNonAlloc(transform.position + HitboxOffset, originalSize, transform.eulerAngles.z, collisionResults, CollisionMask);
 
     protected bool active;
     protected Vector2 originalSize;
@@ -22,6 +22,7 @@ public abstract class Laser : Projectile
     protected override void Awake()
     {
         base.Awake();
+
         originalSize = spriteRenderer.size;
         activeSize = originalSize;
     }
@@ -69,7 +70,7 @@ public abstract class Laser : Projectile
         //continuously update sprite renderer initial size in case laser path changes length during warning delay (usually due to collisions)
         for (float _ = 0; _ < warningDuration; _ += Time.deltaTime)
         {
-            spriteRenderer.size = new(WarningSpriteWidth, activeSize.y);
+            spriteRenderer.size = new(WarningSpriteWidth, IsColliding ? activeSize.y : originalSize.y);
             yield return EndOfFrame;
         }
 
@@ -136,7 +137,7 @@ public abstract class Laser : Projectile
     }
 
 #if UNITY_EDITOR
-    protected override void OnDrawGizmos()
+    protected virtual void OnDrawGizmos()
     {
         if (UnityEditor.EditorApplication.isPlaying)
         {

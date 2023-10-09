@@ -4,7 +4,7 @@ using UnityEngine;
 public class VirgoBullet31 : EnemyBullet
 {
     [SerializeField] int multiplier;
-    protected override Collider2D CollisionCondition => Physics2D.OverlapBox(transform.position, spriteRenderer.size * 0.8f, transform.eulerAngles.z, CollisionMask);
+    protected override int NumCollisions => Physics2D.OverlapBoxNonAlloc(transform.position, spriteRenderer.size * 0.8f, transform.eulerAngles.z, collisionResults, CollisionMask);
 
     protected override IEnumerator Move()
     {

@@ -2,7 +2,9 @@ using UnityEngine;
 
 public abstract class Bullet : Projectile
 {
-    protected override Collider2D CollisionCondition => Physics2D.OverlapCircle(transform.position, HitboxSize, CollisionMask);
+    protected float HitboxSize => 0.8f * Mathf.Min(spriteRenderer.size.x, spriteRenderer.size.y) / 2f;
+    protected override int NumCollisions => Physics2D.OverlapCircleNonAlloc(transform.position, HitboxSize, collisionResults, CollisionMask);
+
     public float MoveSpeed { get; set; }
 
     protected override void Update()
@@ -59,4 +61,16 @@ public abstract class Bullet : Projectile
     {
         MoveSpeed = 0f;
     }
+
+    #region DEBUG
+
+#if UNITY_EDITOR
+    protected virtual void OnDrawGizmos()
+    {
+        if (UnityEditor.EditorApplication.isPlaying)
+            Gizmos.DrawSphere(transform.position, HitboxSize);
+    }
+#endif
+
+    #endregion
 }

@@ -9,10 +9,12 @@ public abstract class Projectile : Actor
     protected virtual float MaxLifetime => 10f;
     protected float currentLifetime;
 
-    protected float HitboxSize => 0.8f * Mathf.Min(spriteRenderer.size.x, spriteRenderer.size.y) / 2f;
+    const int MaxCollisions = 4;
+    protected Collider2D[] collisionResults = new Collider2D[MaxCollisions];
+
     protected abstract int CollisionMask { get; }
-    protected abstract Collider2D CollisionCondition { get; }
-    protected bool IsColliding => CollisionCondition;
+    protected abstract int NumCollisions { get; }
+    protected bool IsColliding => NumCollisions > 0;
 
     [HideInInspector] public Vector3 moveDirection;
     [HideInInspector] public float currentSpeed;
@@ -53,11 +55,15 @@ public abstract class Projectile : Actor
 
     protected void CheckCollisionWith<T>()
     {
-        if (IsColliding)
+        if (NumCollisions > 0)
         {
-            if (CollisionCondition.TryGetComponent(out T _))
+            for (int i = 0; i < NumCollisions; i++)
             {
-                HandleCollision<T>(CollisionCondition);
+                if (collisionResults[i].TryGetComponent(out T _))
+                {
+                    HandleCollision<T>(collisionResults[i]);
+                    break;
+                }
             }
         }
     }
@@ -65,16 +71,4 @@ public abstract class Projectile : Actor
     protected abstract void HandleCollision<T>(Collider2D coll);
 
     public abstract void Destroy();
-
-    #region DEBUG
-
-#if UNITY_EDITOR
-    protected virtual void OnDrawGizmos()
-    {
-        if (UnityEditor.EditorApplication.isPlaying)
-            Gizmos.DrawSphere(transform.position, HitboxSize);
-    }
-#endif
-
-    #endregion
 }

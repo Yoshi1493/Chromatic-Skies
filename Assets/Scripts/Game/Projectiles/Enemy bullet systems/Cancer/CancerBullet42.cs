@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class CancerBullet42 : EnemyBullet
 {
-    protected override Collider2D CollisionCondition => Physics2D.OverlapBox(transform.position, spriteRenderer.size, transform.eulerAngles.z, CollisionMask);
+    protected override int NumCollisions => Physics2D.OverlapBoxNonAlloc(transform.position, spriteRenderer.size, transform.eulerAngles.z, collisionResults, CollisionMask);
 
     protected override float MaxLifetime => 8f;
 

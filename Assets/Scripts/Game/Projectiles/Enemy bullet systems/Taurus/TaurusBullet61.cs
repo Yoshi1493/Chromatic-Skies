@@ -3,9 +3,9 @@ using UnityEngine;
 
 public class TaurusBullet61 : EnemyBullet
 {
-    protected override Collider2D CollisionCondition => Physics2D.OverlapBox(transform.position, spriteRenderer.size, 0f, CollisionMask);
+    protected override int NumCollisions => Physics2D.OverlapBoxNonAlloc(transform.position, spriteRenderer.size, 0f, collisionResults, CollisionMask);
 
-    protected override float MaxLifetime => 5f;
+    protected override float MaxLifetime => 6f;
 
     protected override void Awake()
     {

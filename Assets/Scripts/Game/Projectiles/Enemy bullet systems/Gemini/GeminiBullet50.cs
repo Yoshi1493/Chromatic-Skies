@@ -9,7 +9,7 @@ public class GeminiBullet50 : ScriptableEnemyBullet<GeminiBulletSystem5, EnemyBu
     const float BranchSpacing = GeminiBulletSystem5.BranchSpacing;
     const float ShootingCooldown = 0.4f;
 
-    protected override Collider2D CollisionCondition => null;
+    protected override int NumCollisions => 0;
     protected override float MaxLifetime => Mathf.Infinity;
 
     protected override IEnumerator Move()
