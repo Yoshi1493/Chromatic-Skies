@@ -8,7 +8,7 @@ public class TaurusBullet60 : ScriptableEnemyBullet<TaurusBulletSystem62, Laser>
 
     protected override IEnumerator Move()
     {
-        MoveSpeed = 2f;
+        MoveSpeed = 3f;
 
         yield return WaitForSeconds(0.5f);
 

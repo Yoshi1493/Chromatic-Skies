@@ -23,14 +23,31 @@ public class TaurusLaser60 : Laser
 
     protected override void HandleCollision<T>(Collider2D coll)
     {
+        float closestCollisionDistance = (coll.ClosestPoint(transform.position) - (Vector2)transform.position).sqrMagnitude;
+
+        if (NumCollisions > 1)
+        {
+            for (int i = 0; i < NumCollisions; i++)
+            {
+                float sqrDistance = (collisionResults[i].ClosestPoint(transform.position) - (Vector2)transform.position).sqrMagnitude;
+                print($"{transform.parent.name} collided with {collisionResults[i].name}, {sqrDistance} units away");
+
+                if (collisionResults[i].TryGetComponent(out EnemyBullet _) && sqrDistance < closestCollisionDistance)
+                {
+                    closestCollisionDistance = sqrDistance;
+                }
+            }
+        }
+
         base.HandleCollision<T>(coll);
 
         if (coll.TryGetComponent(out EnemyBullet _))
         {
-            Vector2 closestPoint = coll.ClosestPoint(transform.position);
-            float height = Mathf.Abs(closestPoint.x - transform.position.x);
-
-            activeSize.y = height;
+            activeSize.y = Mathf.Sqrt(closestCollisionDistance);
+        }
+        else
+        {
+            activeSize.y = originalSize.y;
         }
     }
 
