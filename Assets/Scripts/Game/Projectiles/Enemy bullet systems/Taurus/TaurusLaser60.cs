@@ -47,7 +47,15 @@ public class TaurusLaser60 : Laser
             }
         }
 
-        base.HandleCollision<T>(coll);
+        if (coll.TryGetComponent(out Ship ship))
+        {
+            float shipDistance = (coll.ClosestPoint(transform.position) - (Vector2)transform.position).sqrMagnitude;
+
+            if (shipDistance <= closestCollisionDistance && !ship.invincible)
+            {
+                ship.TakeDamage(projectileData.Power.value);
+            }
+        }
 
         if (coll.TryGetComponent(out EnemyBullet _))
         {
