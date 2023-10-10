@@ -15,6 +15,8 @@ public class TaurusBulletSystem6 : EnemyShooter<EnemyBullet>
 
         SetSubsystemEnabled(1);
         SetSubsystemEnabled(2);
+        SetSubsystemEnabled(3);
+        SetSubsystemEnabled(4);
 
         while (enabled)
         {

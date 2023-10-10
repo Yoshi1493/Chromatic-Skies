@@ -2,9 +2,9 @@ using System.Collections;
 using UnityEngine;
 using static CoroutineHelper;
 
-public class TaurusBulletSystem62 : EnemyShooter<EnemyBullet>
+public class TaurusBulletSystem63 : EnemyShooter<EnemyBullet>
 {
-    const int WaveCount = 5;
+    const int WaveCount = 3;
     const int BranchCount = 2;
     const float BranchSpacing = 360f / BranchCount;
 
@@ -18,12 +18,12 @@ public class TaurusBulletSystem62 : EnemyShooter<EnemyBullet>
             {
                 for (int ii = 0; ii < BranchCount; ii++)
                 {
-                    float x = 3f;
+                    float x = 2.5f;
                     float y = screenHalfHeight * 1.1f;
                     float z = ii * BranchSpacing;
                     Vector3 pos = new Vector3(x, y).RotateVectorBy(z);
 
-                    SpawnProjectile(1, z, pos, false).Fire();
+                    SpawnProjectile(2, z, pos, false).Fire();
                 }
 
                 yield return WaitForSeconds(ShootingCooldown);

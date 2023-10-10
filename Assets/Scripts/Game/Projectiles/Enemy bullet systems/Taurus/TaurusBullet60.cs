@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using static CoroutineHelper;
 
-public class TaurusBullet60 : ScriptableEnemyBullet<TaurusBulletSystem62, Laser>
+public class TaurusBullet60 : ScriptableEnemyBullet<TaurusBulletSystem61, Laser>
 {
     protected override float MaxLifetime => 6f;
 
