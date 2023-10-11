@@ -50,11 +50,16 @@ public class TaurusLaser60 : Laser
 
         if (coll.TryGetComponent(out Ship ship))
         {
-            float shipDistance = (coll.ClosestPoint(transform.position) - (Vector2)transform.position).sqrMagnitude;
+            Vector3 shipPos = coll.ClosestPoint(transform.position);
+            float shipDistance = (shipPos - transform.position).sqrMagnitude;
 
             if (shipDistance <= closestCollisionDistance && !ship.invincible)
             {
                 ship.TakeDamage(projectileData.Power.value);
+
+                //get particle spawn rotation
+                float rot = coll.transform.position.GetRotationDifference(transform.position);
+                SpawnDestructionParticles(shipPos, rot);
             }
         }
 
