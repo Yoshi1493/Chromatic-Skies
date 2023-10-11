@@ -97,22 +97,24 @@ public abstract class Laser : Projectile
         growAnimation = null;
     }
 
-    IEnumerator Destroy(float lerpDuration = 0.1f)
+    IEnumerator ShrinkAndDestroy(float lerpDuration = 0.1f)
     {
         float currentLerpTime = 0f;
-        Vector2 startSize = spriteRenderer.size;
+        float startWidth = activeSize.x;
 
-        while (spriteRenderer.size.x != 0f)
+        while (currentLerpTime < lerpDuration)
         {
             float lerpProgress = currentLerpTime / lerpDuration;
 
-            float width = Mathf.Lerp(startSize.x, 0f, heightInterpolation.Evaluate(lerpProgress));
-            spriteRenderer.size = new Vector2(width, spriteRenderer.size.y);
+            float width = Mathf.Lerp(startWidth, 0f, lerpProgress);
+            float height = activeSize.y;
+            spriteRenderer.size = new Vector2(width, height);
 
             currentLerpTime += Time.deltaTime;
             yield return EndOfFrame;
         }
 
+        active = false;
         EnemyLaserPool.Instance.ReturnToPool(this);
         shrinkAnimation = null;
     }
@@ -126,7 +128,7 @@ public abstract class Laser : Projectile
 
         if (shrinkAnimation == null)
         {
-            shrinkAnimation = Destroy();
+            shrinkAnimation = ShrinkAndDestroy();
             StartCoroutine(shrinkAnimation);
         }
     }

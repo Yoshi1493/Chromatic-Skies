@@ -9,8 +9,8 @@ public abstract class Projectile : Actor
     protected virtual float MaxLifetime => 10f;
     protected float currentLifetime;
 
-    const int MaxCollisions = 4;
-    protected Collider2D[] collisionResults = new Collider2D[MaxCollisions];
+    protected virtual int MaxCollisions => 4;
+    protected Collider2D[] collisionResults;
 
     protected abstract int CollisionMask { get; }
     protected abstract int NumCollisions { get; }
@@ -22,6 +22,8 @@ public abstract class Projectile : Actor
     protected override void Awake()
     {
         base.Awake();
+
+        collisionResults = new Collider2D[MaxCollisions];
         spriteRenderer.sprite = projectileData.sprite;
     }
 
