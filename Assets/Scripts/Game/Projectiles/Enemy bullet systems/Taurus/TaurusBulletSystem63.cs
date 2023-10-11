@@ -14,22 +14,24 @@ public class TaurusBulletSystem63 : EnemyShooter<EnemyBullet>
     {
         while (enabled)
         {
+            yield return WaitForSeconds(ShootingCooldown * 5f);
+
             for (int i = 0; i < WaveCount; i++)
             {
                 for (int ii = 0; ii < BranchCount; ii++)
                 {
-                    float x = 2.5f;
+                    float x = 3f;
                     float y = screenHalfHeight * 1.1f;
                     float z = ii * BranchSpacing;
                     Vector3 pos = new Vector3(x, y).RotateVectorBy(z);
 
-                    SpawnProjectile(2, z, pos, false).Fire();
+                    var bullet = SpawnProjectile(2, z, pos, false);
+                    bullet.MoveSpeed = 2.4f;
+                    bullet.Fire();
                 }
 
                 yield return WaitForSeconds(ShootingCooldown);
             }
-
-            yield return WaitForSeconds(1f);
         }
     }
 }

@@ -7,30 +7,29 @@ public class TaurusBulletSystem6 : EnemyShooter<EnemyBullet>
     const int BranchCount = 2;
     const float BranchSpacing = 360f / BranchCount;
 
-    protected override float ShootingCooldown => 3.0f;
+    protected override float ShootingCooldown => 1.0f;
 
     protected override IEnumerator Shoot()
     {
         yield return base.Shoot();
 
-        SetSubsystemEnabled(1);
-        SetSubsystemEnabled(2);
-        SetSubsystemEnabled(3);
-        SetSubsystemEnabled(4);
+        for (int i = 1; i <= transform.childCount; i++)
+        {
+            SetSubsystemEnabled(i);
+        }
 
         while (enabled)
         {
             for (int i = 0; i < BranchCount; i++)
             {
-                float x = -screenHalfWidth * 0.8f;
-                float y = screenHalfHeight * 1.5f;
-                float z = i * BranchSpacing;
-                Vector3 pos = new Vector3(x, y).RotateVectorBy(z);
+                float x = (i % 2 * 2 - 1) * (screenHalfWidth * 0.8f);
+                float y = screenHalfHeight * 1.4f;
+                float z = 0f;
+                Vector3 pos = new Vector3(x, y);
 
                 SpawnProjectile(0, z, pos, false).Fire();
+                yield return WaitForSeconds(ShootingCooldown);
             }
-
-            yield return WaitForSeconds(ShootingCooldown);
         }
     }
 }

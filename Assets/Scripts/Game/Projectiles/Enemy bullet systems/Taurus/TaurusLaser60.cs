@@ -5,7 +5,8 @@ public class TaurusLaser60 : Laser
     Transform originalParent;
     protected override int CollisionMask => base.CollisionMask | 1 << LayerMask.NameToLayer("Enemy bullet");
 
-    protected override float MaxLifetime => 5f;
+    protected override int MaxCollisions => 16;
+    //protected override float MaxLifetime => 10f;
 
     protected override void Awake()
     {

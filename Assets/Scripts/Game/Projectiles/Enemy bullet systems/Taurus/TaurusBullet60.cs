@@ -4,15 +4,15 @@ using static CoroutineHelper;
 
 public class TaurusBullet60 : ScriptableEnemyBullet<TaurusBulletSystem61, Laser>
 {
-    protected override float MaxLifetime => 6f;
+    protected override float MaxLifetime => 12f;
 
     protected override IEnumerator Move()
     {
-        MoveSpeed = 3f;
+        MoveSpeed = 1f;
 
-        yield return WaitForSeconds(0.5f);
+        yield return WaitForSeconds(1.5f);
 
-        float z = transform.eulerAngles.z + 90f;
+        float z = 90f * Mathf.Sign(transform.position.x);
         Vector3 pos = transform.position;
 
         var bullet = SpawnBullet(0, z, pos, false);

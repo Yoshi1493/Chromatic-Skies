@@ -8,7 +8,7 @@ public class TaurusBulletSystem62 : EnemyShooter<EnemyBullet>
     const int BranchCount = 2;
     const float BranchSpacing = 360f / BranchCount;
 
-    protected override float ShootingCooldown => 0.2f;
+    protected override float ShootingCooldown => 13/60f;
 
     protected override IEnumerator Shoot()
     {
@@ -18,12 +18,14 @@ public class TaurusBulletSystem62 : EnemyShooter<EnemyBullet>
             {
                 for (int ii = 0; ii < BranchCount; ii++)
                 {
-                    float x = 3f;
+                    float x = 4f;
                     float y = screenHalfHeight * 1.1f;
                     float z = ii * BranchSpacing;
                     Vector3 pos = new Vector3(x, y).RotateVectorBy(z);
 
-                    SpawnProjectile(1, z, pos, false).Fire();
+                    var bullet = SpawnProjectile(1, z, pos, false);
+                    bullet.MoveSpeed = 3f;
+                    bullet.Fire();
                 }
 
                 yield return WaitForSeconds(ShootingCooldown);
