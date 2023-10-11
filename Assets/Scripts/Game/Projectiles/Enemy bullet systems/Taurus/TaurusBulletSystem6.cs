@@ -23,9 +23,9 @@ public class TaurusBulletSystem6 : EnemyShooter<EnemyBullet>
             for (int i = 0; i < BranchCount; i++)
             {
                 float x = (i % 2 * 2 - 1) * (screenHalfWidth * 0.8f);
-                float y = screenHalfHeight * 1.4f;
+                float y = screenHalfHeight * 1.5f;
                 float z = 0f;
-                Vector3 pos = new Vector3(x, y);
+                Vector3 pos = new(x, y);
 
                 SpawnProjectile(0, z, pos, false).Fire();
                 yield return WaitForSeconds(ShootingCooldown);

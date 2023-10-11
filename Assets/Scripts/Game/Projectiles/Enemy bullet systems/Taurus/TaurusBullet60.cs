@@ -8,9 +8,8 @@ public class TaurusBullet60 : ScriptableEnemyBullet<TaurusBulletSystem61, Laser>
 
     protected override IEnumerator Move()
     {
-        MoveSpeed = 1f;
-
-        yield return WaitForSeconds(1.5f);
+        MoveSpeed = 0f;
+        yield return EndOfFrame;
 
         float z = 90f * Mathf.Sign(transform.position.x);
         Vector3 pos = transform.position;
@@ -18,5 +17,7 @@ public class TaurusBullet60 : ScriptableEnemyBullet<TaurusBulletSystem61, Laser>
         var bullet = SpawnBullet(0, z, pos, false);
         bullet.transform.parent = transform;
         bullet.Fire();
+
+        yield return this.LerpSpeed(5f, 1f, 2f);
     }
 }
