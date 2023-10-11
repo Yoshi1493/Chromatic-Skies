@@ -72,5 +72,20 @@ public abstract class Projectile : Actor
 
     protected abstract void HandleCollision<T>(Collider2D coll);
 
+    protected void SpawnDestructionParticles(Vector3 spawnPos, float spawnRotZ)
+    {
+        //grab particle obj from pool; get VFX component
+        GameObject destructionParticles = VisualEffectPool.Instance.Get();
+        var particleEffect = destructionParticles.GetComponent<ParticleEffect>();
+
+        //set spawn pos+rot
+        destructionParticles.transform.SetPositionAndRotation(spawnPos, Quaternion.Euler(0f, 0f, spawnRotZ));
+        destructionParticles.SetActive(true);
+
+        //set colour based on sprite colour
+        particleEffect.ParticleSystem.SetVector4("ParticleColour", spriteRenderer.color);
+        particleEffect.enabled = true;
+    }
+
     public abstract void Destroy();
 }

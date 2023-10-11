@@ -61,6 +61,11 @@ public abstract class Laser : Projectile
             if (!ship.invincible)
             {
                 ship.TakeDamage(projectileData.Power.value);
+
+                //get particle spawn position+rotation
+                Vector3 pos = coll.ClosestPoint(transform.position);
+                float rot = coll.transform.position.GetRotationDifference(transform.position);
+                SpawnDestructionParticles(pos, rot);
             }
         }
     }
