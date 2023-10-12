@@ -4,7 +4,7 @@ using static CoroutineHelper;
 
 public class AquariusBulletSystem21 : EnemyShooter<EnemyBullet>
 {
-    const int WaveCount = 8;
+    const int WaveCount = 5;
     const int BranchCount = 3;
     const float BranchSpacing = 20f;
 
@@ -14,7 +14,7 @@ public class AquariusBulletSystem21 : EnemyShooter<EnemyBullet>
     {
         while (enabled)
         {
-            yield return WaitForSeconds(ShootingCooldown * 5f);
+            yield return WaitForSeconds(1f);
 
             for (int i = 0; i < WaveCount; i++)
             {
