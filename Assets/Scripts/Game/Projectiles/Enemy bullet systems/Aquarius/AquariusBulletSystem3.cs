@@ -1,19 +1,17 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using static CoroutineHelper;
 
 public class AquariusBulletSystem3 : EnemyShooter<EnemyBullet>
 {
-    const int RingCount = 16;
-    const float RingSpacing = 3f;
-    const int BulletCount = 16;
-    const float BranchSpacing = 360f / BulletCount;
-    const float BulletSpacing = 0.3f;
+    const int WaveCount = 20;
+    const float WaveSpacing = 8f;
+    const int BranchCount = 16;
+    const float BranchSpacing = 360f / BranchCount;
+    const float BulletSpawnRadius = 1f;
+    const float SpawnRadiusMultiplier = 0.8f;
 
-    Stack<EnemyBullet> bullets = new(RingCount * BulletCount);
-
-    protected override float ShootingCooldown => 0.06f;
+    protected override float ShootingCooldown => 0.2f;
 
     protected override IEnumerator Shoot()
     {
@@ -21,41 +19,23 @@ public class AquariusBulletSystem3 : EnemyShooter<EnemyBullet>
 
         while (enabled)
         {
-            for (int i = 0; i < RingCount; i++)
+            for (int i = 0; i < WaveCount; i++)
             {
-                for (int ii = 0; ii < BulletCount; ii++)
+                for (int ii = 0; ii < BranchCount; ii++)
                 {
-                    float z = (i * RingSpacing) + (ii * BranchSpacing);
-                    Vector3 pos = i * BulletSpacing * transform.up.RotateVectorBy(z);
-                    bulletData.colour = bulletData.gradient.Evaluate(i / (RingCount - 1f));
+                    float z = (i * WaveSpacing) + (ii * BranchSpacing);
+                    Vector3 pos = (BulletSpawnRadius + (i * SpawnRadiusMultiplier)) * transform.up.RotateVectorBy(z);
+                    bulletData.colour = bulletData.gradient.Evaluate(i / (WaveCount - 1f));
 
-                    bullets.Push(SpawnProjectile(0, z, pos));
+                    SpawnProjectile(0, z, pos).Fire();
                 }
 
                 yield return WaitForSeconds(ShootingCooldown);
             }
 
-            yield return WaitForSeconds(ShootingCooldown * 10f);
-            SetSubsystemEnabled(1);
-
-            for (int i = 0; i < RingCount; i++)
-            {
-                for (int ii = 0; ii < BulletCount; ii++)
-                {
-                    var b = bullets.Pop();
-
-                    if (b.enabled)
-                    {
-                        b.Fire();
-                    }
-                }
-
-                yield return WaitForSeconds(ShootingCooldown * 3f);
-            }
-
-            bullets.Clear();
-
-            yield return WaitForSeconds(1f);
+            yield return WaitForSeconds(6f);
+            StartMoveAction?.Invoke();
+            yield return WaitForSeconds(3f);
         }
     }
 }
