@@ -21,7 +21,7 @@ public class AquariusBulletSystem41 : EnemyShooter<EnemyBullet>
 
             for (int ii = 0; ii < BulletCount; ii++)
             {
-                float x = 2f * Random.Range(-screenHalfWidth, screenHalfWidth);
+                float x = 1.5f * Random.Range(-screenHalfWidth, screenHalfWidth);
                 float s = Random.Range(BulletMinSpeed, BulletMaxSpeed);
                 Vector3 pos = new(x, y);
 

@@ -150,6 +150,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2972425673082857372}
+  - component: {fileID: 2061446639818941676}
   m_Layer: 0
   m_Name: Bullet Subsystem 2
   m_TagString: Untagged
@@ -172,6 +173,21 @@ Transform:
   m_Father: {fileID: 2404639451515421504}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2061446639818941676
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7290386768964515146}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddfe7a6f23b23f04f83524e0b92d5ac3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyProjectiles:
+  - {fileID: -1323077940773445433, guid: 68038aac615f09645a772d591a72653e, type: 3}
+  bulletData: {fileID: 11400000, guid: 417c8cc2e51a9cd40aa5ea3401fa51c9, type: 2}
 --- !u!1001 &6759093168088370692
 PrefabInstance:
   m_ObjectHideFlags: 0
