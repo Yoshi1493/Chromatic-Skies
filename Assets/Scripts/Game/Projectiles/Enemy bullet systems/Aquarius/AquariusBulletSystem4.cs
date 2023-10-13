@@ -26,5 +26,7 @@ public class AquariusBulletSystem4 : EnemyShooter<EnemyBullet>
 
         SetSubsystemEnabled(1);
         SetSubsystemEnabled(2);
+
+        StartMoveAction?.Invoke();
     }
 }
