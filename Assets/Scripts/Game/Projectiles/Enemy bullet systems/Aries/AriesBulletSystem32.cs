@@ -4,21 +4,23 @@ using static CoroutineHelper;
 
 public class AriesBulletSystem32 : EnemyShooter<Laser>
 {
-    const int LaserCount = 21;
-    const float MinAngle = 5f;
-    const float MaxAngle = 85f;
+    const int WaveCount = 17;
+    const float WaveSpacing = 5;
+    const int LaserCount = 2;
 
     protected override IEnumerator Shoot()
     {
-        for (int i = 0; i < LaserCount; i++)
-        {
-            float l = i / (LaserCount - 1f);
-            float z = Mathf.Lerp(MaxAngle, MinAngle, l) + 180f;
-            Vector3 pos = 6f * Vector3.up;
+        Vector3 pos = screenHalfHeight * 1.2f * Vector3.up;
 
-            bulletData.colour = bulletData.gradient.Evaluate(l);
-            SpawnProjectile(0, z, pos).Fire();
-            SpawnProjectile(0, -z, pos).Fire();
+        for (int i = 0; i < WaveCount; i++)
+        {
+            for (int ii = 0; ii < LaserCount; ii++)
+            {
+                float z = (ii % 2 * 2 - 1) * ((i * WaveSpacing) + 90f);
+                bulletData.colour = bulletData.gradient.Evaluate(i / (WaveCount - 1f));
+
+                SpawnProjectile(0, z, pos, false).Fire();
+            }
 
             yield return WaitForSeconds(ShootingCooldown);
         }

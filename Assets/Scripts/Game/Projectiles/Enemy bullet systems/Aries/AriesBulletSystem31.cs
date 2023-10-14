@@ -5,47 +5,58 @@ using static CoroutineHelper;
 
 public class AriesBulletSystem31 : EnemyShooter<EnemyBullet>
 {
-    const float InnerRadius = 2f;
-    const int InnerBulletCount = 12;
-    const float InnerBulletSpacing = 360f / InnerBulletCount;
-    const float OuterRadius = 2.5f;
-    const int OuterBulletCount = 16;
-    const float OuterBulletSpacing = 360f / OuterBulletCount;
+    const int RingCount = 3;
+    const int BaseBulletCount = 18;
+    const int BulletCountModifier = 6;
+    const float BulletSpawnRadius = 1.5f;
+    const float SpawnRadiusMultiplier = 0.5f;
+    const float BulletBaseRotationSpeed = 30f;
+    const float BulletRotationSpeedModifier = 15f;
 
-    List<EnemyBullet> bullets = new(InnerBulletCount + OuterBulletCount);
+    List<EnemyBullet> bullets = new();
 
-    protected override float ShootingCooldown => 0.025f;
+    protected override float ShootingCooldown => 1 / 60f;
 
     protected override IEnumerator Shoot()
     {
         yield return WaitForSeconds(3f);
-        Vector3 o = 2f * Vector3.down;
 
-        for (int i = 0; i < InnerBulletCount; i++)
+        Vector3 v1 = 2f * Vector3.down;
+
+        for (int i = 0; i < RingCount; i++)
         {
-            float z = i * -InnerBulletSpacing + 90f;
-            Vector3 pos = InnerRadius * transform.up.RotateVectorBy(z + 90f) + o;
+            int bulletCount = BaseBulletCount + (i * BulletCountModifier);
+            float bulletSpacing = 360f / bulletCount;
+            int r = i % 2 * 2 - 1;
 
-            bullets.Add(SpawnProjectile(1, z, pos, false));
+            for (int ii = 0; ii < bulletCount; ii++)
+            {                
+                float z = r * ii * bulletSpacing;
+                float t = r * 90f;
+                Vector3 pos = (BulletSpawnRadius + (i * SpawnRadiusMultiplier)) * transform.up.RotateVectorBy(z - t) + v1;
 
-            yield return WaitForSeconds(ShootingCooldown);
+                bulletData.colour = bulletData.gradient.Evaluate(i / (RingCount - 1f));
+
+                bullets.Add(SpawnProjectile(1, z, pos, false));
+                yield return WaitForSeconds(ShootingCooldown);
+            }
+
+            yield return WaitForSeconds(0.1f);
         }
 
-        yield return WaitForSeconds(ShootingCooldown * 4f);
+        yield return WaitForSeconds(0.5f);
 
-        for (int i = 0; i < OuterBulletCount; i++)
+        for (int i = 0; i < RingCount; i++)
         {
-            float z = i * OuterBulletSpacing - 90f;
-            Vector3 pos = OuterRadius * transform.up.RotateVectorBy(z - 90f) + o;
+            int bulletCount = BaseBulletCount + (i * BulletCountModifier);
 
-            bullets.Add(SpawnProjectile(2, z, pos, false));
+            for (int ii = 0; ii < bulletCount; ii++)
+            {
+                float s = (BulletBaseRotationSpeed + (i * BulletRotationSpeedModifier));
 
-            yield return WaitForSeconds(ShootingCooldown);
+                bullets[0].StartCoroutine(bullets[0].RotateAround(2f * Vector3.down, Mathf.Infinity, s, i % 2 == 0));
+                bullets.RemoveAt(0);
+            }
         }
-
-        yield return WaitForSeconds(ShootingCooldown * 4f);
-
-        bullets.ForEach(b => b.Fire());
-        bullets.Clear();
     }
 }
