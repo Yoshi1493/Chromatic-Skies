@@ -8,6 +8,6 @@ public class CapricornBullet21 : EnemyBullet
     {
         yield return this.LerpSpeed(10f, 2f, 0.5f);
         yield return this.LerpSpeed(2f, 0f, 1f);
-        yield return this.LerpSpeed(0f, -3f, 1f, 0.5f);
+        yield return this.LerpSpeed(0f, -3f, 1f);
     }
 }
