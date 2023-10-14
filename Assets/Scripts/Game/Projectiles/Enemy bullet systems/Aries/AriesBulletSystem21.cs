@@ -5,7 +5,7 @@ using static CoroutineHelper;
 public class AriesBulletSystem21 : EnemyShooter<EnemyBullet>
 {
     const int WaveCount = 4;
-    const int BulletCount = 18;
+    const int BulletCount = 8;
     const float BulletBaseSpeed = 2f;
     const float BulletSpeedMultiplier = 0.2f;
 
@@ -21,6 +21,8 @@ public class AriesBulletSystem21 : EnemyShooter<EnemyBullet>
             {
                 float s = BulletBaseSpeed + (ii * BulletSpeedMultiplier);
                 Vector3 pos = Vector3.zero;
+
+                bulletData.colour = bulletData.gradient.Evaluate(ii / (BulletCount - 1f));
 
                 var bullet = SpawnProjectile(1, z, pos);
                 bullet.MoveSpeed = s;

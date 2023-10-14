@@ -4,13 +4,13 @@ using static CoroutineHelper;
 
 public class AriesBulletSystem2 : EnemyShooter<EnemyBullet>
 {
-    const int WaveCount = 50;
-    const float WaveSpacing = 8f;
+    const int WaveCount = 44;
+    const float WaveSpacing = 11f;
     const int BranchCount = 6;
     const float BranchSpacing = 360f / BranchCount;
     const int BulletCount = 2;
-    const float BulletBaseSpeed = 3f;
-    const float BulletSpeedMultiplier = 0.02f;
+    const float BulletBaseSpeed = 4f;
+    const float BulletSpeedMultiplier = 0.05f;
 
     protected override IEnumerator Shoot()
     {
@@ -34,7 +34,7 @@ public class AriesBulletSystem2 : EnemyShooter<EnemyBullet>
 
                         var bullet = SpawnProjectile(0, z, pos);
                         bullet.MoveSpeed = s;
-                        bullet.StartCoroutine(bullet.RotateBy(270f, 2f, iii % BulletCount == 0));
+                        bullet.StartCoroutine(bullet.RotateBy(270f, 1f, iii % BulletCount == 0));
                         bullet.Fire();
                     }
                 }
