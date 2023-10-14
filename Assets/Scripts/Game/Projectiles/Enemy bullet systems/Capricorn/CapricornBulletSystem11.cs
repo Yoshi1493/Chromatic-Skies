@@ -4,28 +4,35 @@ using static CoroutineHelper;
 
 public class CapricornBulletSystem11 : EnemyShooter<EnemyBullet>
 {
-    const int BulletCount = 15;
-    const float BulletSpacing = 360f / BulletCount;
+    const int WaveCount = 3;
+    const int BranchCount = 8;
+    const float BranchSpacing = 360f / BranchCount;
+    const int BulletCount = 2;
+    const float BulletRotationSpeed = 60f;
 
-    protected override float ShootingCooldown => 1.5f;
+    protected override float ShootingCooldown => 0.5f;
 
     protected override IEnumerator Shoot()
     {
-        yield return WaitForSeconds(ShootingCooldown);
-
-        while (enabled)
+        for (int i = 0; i < WaveCount; i++)
         {
-            yield return WaitForSeconds(ShootingCooldown);
-
-            float r = PlayerPosition.GetRotationDifference(transform.position);
-
-            for (int i = 0; i < BulletCount; i++)
+            for (int ii = 0; ii < BranchCount; ii++)
             {
-                float z = r + (i * BulletSpacing);
-                Vector3 pos = Vector3.zero;
+                for (int iii = 0; iii < BulletCount; iii++)
+                {
+                    float z = ii * BranchSpacing;
+                    float r = (iii % 2 * 2 - 1) * BulletRotationSpeed;
+                    Vector3 pos = Vector3.zero;
 
-                SpawnProjectile(2, z, pos).Fire();
+                    var bullet = SpawnProjectile(1, z, pos);
+                    bullet.StartCoroutine(bullet.RotateBy(r, 1f));
+                    bullet.Fire();
+                }
             }
+
+            yield return WaitForSeconds(ShootingCooldown);
         }
+
+        enabled = false;
     }
 }

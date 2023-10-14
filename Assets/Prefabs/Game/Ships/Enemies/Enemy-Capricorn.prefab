@@ -331,7 +331,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyProjectiles:
-  - {fileID: 5912271191948083845, guid: e827a4ecdffcec34e9c7cb9e0aa27b66, type: 3}
+  - {fileID: -4102549138512554706, guid: e827a4ecdffcec34e9c7cb9e0aa27b66, type: 3}
   bulletData: {fileID: 11400000, guid: 54b4fa2c6c63a134fa1b0478542cee69, type: 2}
 --- !u!1001 &6759093168088370692
 PrefabInstance:
@@ -516,7 +516,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyProjectiles:
   - {fileID: 3629783235024105895, guid: 09705185e488e154bb3ba556e0efc06b, type: 3}
-  - {fileID: 401512749434155317, guid: 1c4bc39f8062c3b4fbe4fd712d9e63b9, type: 3}
   bulletData: {fileID: 11400000, guid: b5ea1b76069ffbd4da055b302f47a1bc, type: 2}
 --- !u!4 &6153433117319852303 stripped
 Transform:
