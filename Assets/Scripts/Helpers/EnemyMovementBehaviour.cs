@@ -106,14 +106,15 @@ public static class EnemyMovementBehaviour
         if (minSqrMagDelta > maxSqrMagDelta) yield break;
         if (delay > 0) yield return WaitForSeconds(delay);
 
-        float randMagnitude = Random.Range(minSqrMagDelta, maxSqrMagDelta);
-        Vector3 randDirection = Random.insideUnitCircle.normalized;
+        float randMagnitude;
+        Vector3 randDirection;
 
-        while (Physics2D.Raycast(enemy.transform.position, randDirection, randMagnitude, enemy.shipData.boundaryLayer).collider != null)
+        do
         {
             randMagnitude = Random.Range(minSqrMagDelta, maxSqrMagDelta);
             randDirection = Random.insideUnitCircle.normalized;
         }
+        while (Physics2D.Raycast(enemy.transform.position, randDirection, randMagnitude, enemy.shipData.boundaryLayer).collider != null);
 
         Vector3 endPosition = enemy.transform.position + (randMagnitude * randDirection);
         yield return enemy.MoveTo(endPosition, moveDuration);
