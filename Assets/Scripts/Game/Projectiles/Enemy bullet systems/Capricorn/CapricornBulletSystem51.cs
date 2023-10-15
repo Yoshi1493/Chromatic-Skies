@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using static CoroutineHelper;
+using static MathHelper;
 
 public class CapricornBulletSystem51 : EnemyShooter<EnemyBullet>
 {
@@ -17,7 +18,7 @@ public class CapricornBulletSystem51 : EnemyShooter<EnemyBullet>
         {
             for (int ii = 0; ii < BranchCount; ii++)
             {
-                float z = Random.Range(0f, 360f);
+                float z = RandomAngleDeg;
                 Vector3 pos = Vector3.zero;
 
                 SpawnProjectile(1, z, pos).Fire();
