@@ -11,7 +11,7 @@ public class CapricornBulletSystem31 : EnemyShooter<EnemyBullet>
     const float BulletBaseSpeed = 2f;
     const float BulletSpeedMultiplier = 0.2f;
 
-    protected override float ShootingCooldown => 0.5f;
+    protected override float ShootingCooldown => 1.0f;
 
     protected override IEnumerator Shoot()
     {

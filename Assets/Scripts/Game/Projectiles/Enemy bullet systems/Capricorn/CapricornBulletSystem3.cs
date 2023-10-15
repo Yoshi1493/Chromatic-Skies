@@ -4,15 +4,13 @@ using static CoroutineHelper;
 
 public class CapricornBulletSystem3 : EnemyShooter<EnemyBullet>
 {
-    const int WaveCount = 9;
+    const int WaveCount = 7;
     const float WaveSpacing = 8f;
     const int BranchCount = 2;
-    const int BulletCount = 24;
+    const int BulletCount = 18;
     const float BulletSpacing = 360f / BulletCount;
     const float BulletBaseSpeed = 3f;
     const float BulletSpeedMultiplier = 0.2f;
-
-    protected override float ShootingCooldown => 0.15f;
 
     protected override IEnumerator Shoot()
     {
@@ -22,7 +20,7 @@ public class CapricornBulletSystem3 : EnemyShooter<EnemyBullet>
         {
             for (int i = 0; i < WaveCount; i++)
             {
-                float y = (screenHalfHeight - i);
+                float y = 2f - i;
                 float s = BulletBaseSpeed - (i * BulletSpeedMultiplier);
                 bulletData.colour = bulletData.gradient.Evaluate(i / (WaveCount - 1f));
 
@@ -35,7 +33,7 @@ public class CapricornBulletSystem3 : EnemyShooter<EnemyBullet>
                         float z = (i * WaveSpacing) + (iii * BulletSpacing);
                         Vector3 pos = new(x, y);
 
-                        var bullet = SpawnProjectile(0, z, pos, false);
+                        var bullet = SpawnProjectile(0, z, pos);
                         bullet.MoveSpeed = s;
                         bullet.Fire();
                     }
@@ -49,7 +47,7 @@ public class CapricornBulletSystem3 : EnemyShooter<EnemyBullet>
             StartMoveAction?.Invoke();
             SetSubsystemEnabled(1);
 
-            yield return WaitForSeconds(2f);
+            yield return WaitForSeconds(4f);
         }
     }
 }
