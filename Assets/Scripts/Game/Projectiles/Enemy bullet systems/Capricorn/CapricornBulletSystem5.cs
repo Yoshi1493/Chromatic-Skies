@@ -4,13 +4,14 @@ using static CoroutineHelper;
 
 public class CapricornBulletSystem5 : EnemyShooter<EnemyBullet>
 {
-    const int WaveCount = 7;
-    const int BulletCount = 48;
+    const int WaveCount = 9;
+    const float WaveSpacing = 6f;
+    const int BulletCount = 36;
     const float BulletSpacing = 360f / BulletCount;
-    const float BulletBaseSpeed = 2.5f;
-    const float BulletSpeedMultiplier = 0.2f;
+    const float BulletBaseSpeed = 2f;
+    const float BulletSpeedMultiplier = 0.3f;
 
-    protected override float ShootingCooldown => 0.3f;
+    protected override float ShootingCooldown => 1.5f;
 
     protected override IEnumerator Shoot()
     {
@@ -18,14 +19,12 @@ public class CapricornBulletSystem5 : EnemyShooter<EnemyBullet>
 
         while (enabled)
         {
-            SetSubsystemEnabled(1);
-
             for (int i = 0; i < WaveCount; i++)
             {
                 for (int ii = 0; ii < BulletCount; ii++)
                 {
-                    float z = ii * BulletSpacing;
-                    float s = BulletBaseSpeed + (-i * BulletSpeedMultiplier);
+                    float z = (i * WaveSpacing) + (ii * BulletSpacing);
+                    float s = BulletBaseSpeed + (i * BulletSpeedMultiplier);
                     Vector3 pos = Vector3.zero;
 
                     bulletData.colour = bulletData.gradient.Evaluate(i / (WaveCount - 1f));
@@ -34,16 +33,15 @@ public class CapricornBulletSystem5 : EnemyShooter<EnemyBullet>
                     bullet.MoveSpeed = s;
                     bullet.Fire();
                 }
-
-                yield return WaitForSeconds(ShootingCooldown);
             }
 
-            yield return WaitForSeconds(3f);
+            yield return WaitForSeconds(ShootingCooldown);
 
-            StartMoveAction?.Invoke();
+            SetSubsystemEnabled(1);
+            yield return WaitForSeconds(ShootingCooldown);
+
             SetSubsystemEnabled(2);
-
-            yield return WaitForSeconds(3f);
+            yield return WaitForSeconds(ShootingCooldown);
         }
     }
 }
