@@ -10,7 +10,7 @@ public class CapricornBulletSystem52 : EnemyShooter<EnemyBullet>
     const float BranchSpacing = 360f / BranchCount;
     const int BulletCount = 2;
     const float BulletSpacing = 5f;
-    const float BulletSpawnRadius = 3f;
+    const float BulletSpawnRadius = 2.5f;
 
     protected override float ShootingCooldown => 0.05f;
 
