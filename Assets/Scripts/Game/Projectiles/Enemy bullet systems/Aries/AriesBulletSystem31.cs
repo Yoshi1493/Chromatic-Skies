@@ -10,7 +10,7 @@ public class AriesBulletSystem31 : EnemyShooter<EnemyBullet>
     const int BulletCountModifier = 6;
     const float BulletSpawnRadius = 1.5f;
     const float SpawnRadiusMultiplier = 0.5f;
-    const float BulletBaseRotationSpeed = 30f;
+    const float BulletRotationSpeed = 30f;
     const float BulletRotationSpeedModifier = 15f;
 
     List<EnemyBullet> bullets = new();
@@ -52,10 +52,11 @@ public class AriesBulletSystem31 : EnemyShooter<EnemyBullet>
 
             for (int ii = 0; ii < bulletCount; ii++)
             {
-                float s = (BulletBaseRotationSpeed + (i * BulletRotationSpeedModifier));
+                int b = (i * bulletCount) + ii;
+                float s = BulletRotationSpeed + (i * BulletRotationSpeedModifier);
 
-                bullets[0].StartCoroutine(bullets[0].RotateAround(2f * Vector3.down, Mathf.Infinity, s, i % 2 == 0));
-                bullets.RemoveAt(0);
+                bullets[b].StartCoroutine(bullets[b].RotateAround(2f * Vector3.down, Mathf.Infinity, s, i % 2 == 0));
+                bullets.RemoveAt(b);
             }
         }
     }
