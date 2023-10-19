@@ -21,15 +21,14 @@ public class LibraBullet10 : ScriptableEnemyBullet<LibraBulletSystem1, EnemyBull
         yield return this.LerpSpeed(3f, 0f, 1f);
 
         StartCoroutine(Shoot());
+
         transform.parent = ownerShip.transform;
-        yield return this.RotateAround(ownerShip, MaxLifetime, 90f);
+        StartCoroutine(this.RotateAround(ownerShip, MaxLifetime, 90f));
     }
 
     IEnumerator Shoot()
     {
-        int i = 0;
-
-        while (enabled)
+        for (int i = 0; enabled; i++)
         {
             for (int ii = 0; ii < BranchCount; ii++)
             {
@@ -43,7 +42,6 @@ public class LibraBullet10 : ScriptableEnemyBullet<LibraBulletSystem1, EnemyBull
             }
 
             yield return WaitForSeconds(ShootingCooldown);
-            i++;
         }
     }
 }
