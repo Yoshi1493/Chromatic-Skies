@@ -1,37 +1,20 @@
+using System;
 using System.Collections;
-using UnityEngine;
-using static CoroutineHelper;
 
-public class CapricornBullet60 : ScriptableEnemyBullet<CapricornBulletSystem6, EnemyBullet>
+public class CapricornBullet60 : EnemyBullet
 {
-    const int BranchCount = 2;
-    const float BranchSpacing = 360f / BranchCount;
-    const float ShootingCooldown = 0.1f;
+    public event Action<CapricornBullet60> DestroyAction;
 
-    protected override float MaxLifetime => Mathf.Infinity;
+    protected override float MaxLifetime => 8f;
 
     protected override IEnumerator Move()
     {
-        yield return this.LerpSpeed(3f, 0f, 1f);
-        StartCoroutine(Shoot());
-
-        transform.parent = ownerShip.transform;
-        StartCoroutine(this.RotateAround(ownerShip, MaxLifetime, 90f));
+        yield return this.LerpSpeed(0f, 3f, 2f);
     }
 
-    IEnumerator Shoot()
+    public override void Destroy()
     {
-        while (enabled)
-        {
-            for (int i = 0; i < BranchCount; i++)
-            {
-                float z = i * BranchSpacing;
-                Vector3 pos = transform.position;
-
-                SpawnBullet(1, z, pos, false).Fire();
-            }
-
-            yield return WaitForSeconds(ShootingCooldown);
-        }
+        DestroyAction?.Invoke(this);
+        base.Destroy();
     }
 }
