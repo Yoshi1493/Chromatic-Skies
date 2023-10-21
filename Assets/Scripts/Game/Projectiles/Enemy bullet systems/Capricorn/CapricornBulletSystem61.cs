@@ -1,38 +1,25 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using static CoroutineHelper;
 
 public class CapricornBulletSystem61 : EnemyShooter<EnemyBullet>
 {
     const int BulletCount = 12;
-    const float BulletSpacing = 180f / BulletCount;
-
-    List<EnemyBullet> bullets = new(BulletCount);
+    const float BulletSpacing = 360f / BulletCount;
 
     protected override IEnumerator Shoot()
     {
+        yield return WaitForSeconds(1f);
+
         for (int i = 0; i < BulletCount; i++)
         {
-            float z = (i - ((BulletCount - 1) / 2f)) * BulletSpacing;
+            float z = -i * BulletSpacing;
             Vector3 pos = Vector3.zero;
 
-            var bullet = SpawnProjectile(1, z, pos);
-            bullet.StartCoroutine(bullet.LerpSpeed(5f, 0f, 1f));
-            bullets.Add(bullet);
-        }
-
-        bullets.Randomize();
-
-        yield return WaitForSeconds(2f);
-
-        for (int i = 0; i < BulletCount; i++)
-        {
-            bullets[i].Fire();
+            SpawnProjectile(1, z, pos).Fire();
             yield return WaitForSeconds(ShootingCooldown);
         }
 
-        bullets.Clear();
         enabled = false;
     }
 }

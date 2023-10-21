@@ -1,20 +1,13 @@
-using System;
 using System.Collections;
+using UnityEngine;
+using static CoroutineHelper;
 
 public class CapricornBullet60 : EnemyBullet
 {
-    public event Action<CapricornBullet60> DestroyAction;
-
-    protected override float MaxLifetime => 8f;
-
     protected override IEnumerator Move()
     {
-        yield return this.LerpSpeed(0f, 3f, 2f);
-    }
-
-    public override void Destroy()
-    {
-        DestroyAction?.Invoke(this);
-        base.Destroy();
+        float endSpeed = MoveSpeed;
+        yield return this.LerpSpeed(endSpeed, 0f, 0.5f);
+        yield return this.LerpSpeed(0f, endSpeed, 1f);
     }
 }

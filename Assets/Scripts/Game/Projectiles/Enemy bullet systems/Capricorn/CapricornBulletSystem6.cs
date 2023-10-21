@@ -1,36 +1,18 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using static CoroutineHelper;
 
 public class CapricornBulletSystem6 : EnemyShooter<EnemyBullet>
 {
-    const int WaveCount = 24;
-    const float WaveSpacing = 4f;
-    const int BranchCount = 18;
+    const int WaveWaveCount = 2;
+    const int WaveCount = 12;
+    const float WaveSpacing = 10f;
+    const int BranchCount = 4;
     const float BranchSpacing = 360f / BranchCount;
-    const float SpawnRadiusMultiplier = 0.5f;
-
-    List<EnemyBullet> bullets = new(WaveCount * BranchCount);
-    List<(Vector2 pos, float z)> bulletPositions = new(WaveCount * BranchCount);
-
-    protected override float ShootingCooldown => 1 / 60f;
-
-    protected override void Awake()
-    {
-        base.Awake();
-
-        for (int i = 0; i < WaveCount; i++)
-        {
-            for (int ii = 0; ii < BranchCount; ii++)
-            {
-                float z = (i * WaveSpacing) + (ii * BranchSpacing);
-                Vector3 pos = (i * SpawnRadiusMultiplier) * transform.up.RotateVectorBy(z);
-
-                bulletPositions.Add((pos, z));
-            }
-        }
-    }
+    const int BulletCount = 8;
+    const float BulletSpacing = 15f;
+    const float BulletBaseSpeed = 2f;
+    const float BulletSpeedMultiplier = 0.15f;
 
     protected override IEnumerator Shoot()
     {
@@ -38,44 +20,38 @@ public class CapricornBulletSystem6 : EnemyShooter<EnemyBullet>
 
         while (enabled)
         {
-            StartMoveAction?.Invoke();
-            yield return WaitForSeconds(13f);
+            //StartMoveAction?.Invoke();
 
-            Vector3 playerPos = PlayerPosition;
+            //yield return WaitForSeconds(1.5f);
 
-            for (int i = 0; i < WaveCount; i++)
-            {
-                for (int ii = 0; ii < BranchCount; ii++)
-                {
-                    int b = (i * BranchCount) + ii;
+            //for (int i = 0; i < WaveWaveCount; i++)
+            //{
+            //    for (int ii = 0; ii < WaveCount; ii++)
+            //    {
+            //        for (int iii = 0; iii < BranchCount; iii++)
+            //        {
+            //            for (int iv = 0; iv < BulletCount; iv++)
+            //            {
+            //                float z = (ii * WaveSpacing) + (iii * BranchSpacing) + (iv * BulletSpacing);
+            //                float s = BulletBaseSpeed + (iv * BulletSpeedMultiplier);
+            //                Vector3 pos = Vector3.zero;
 
-                    if (!(bulletPositions[b].pos + (Vector2)ownerShip.transform.position).IsTooClose(playerPos))
-                    {
-                        float z = bulletPositions[b].z;
-                        Vector3 pos = bulletPositions[b].pos;
+            //                bulletData.colour = bulletData.gradient.Evaluate(iv / (BulletCount - 1f));
 
-                        bulletData.colour = bulletData.gradient.Evaluate(i / (WaveCount - 1f));
+            //                var bullet = SpawnProjectile(0, z, pos);
+            //                bullet.MoveSpeed = s;
+            //                bullet.Fire();
+            //            }
+            //        }
 
-                        var bullet = SpawnProjectile(0, z, pos) as CapricornBullet60;
-                        bullet.DestroyAction += OnSpawnedBulletDestroy;
-                        bullets.Add(bullet);
-                    }
-                }
+            //        yield return WaitForSeconds(ShootingCooldown);
+            //    }
 
-                yield return WaitForSeconds(ShootingCooldown);
-            }
+            //    yield return WaitForSeconds(0.5f);
+            //}
 
-            yield return WaitForSeconds(0.5f);
             SetSubsystemEnabled(1);
-
-            bullets.ForEach(b => b.Fire());
-            bullets.Clear(); 
-
+            yield return WaitForSeconds(15f);
         }
-    }
-
-    void OnSpawnedBulletDestroy(EnemyBullet bullet)
-    {
-        bullets.Remove(bullet);
     }
 }
