@@ -31,6 +31,7 @@ public class LibraBullet40 : ScriptableEnemyBullet<LibraBulletSystem4, EnemyBull
             Vector3 pos = transform.position + (i * WaveSpacing * -moveDirection);
 
             bulletData.colour = bulletData.gradient.Evaluate(r);
+
             var bullet = SpawnBullet(1, z, pos, false) as LibraBullet41;
             bullet.DestroyAction += OnSpawnedBulletDestroy;
             bullets.Add(bullet);
