@@ -11,7 +11,7 @@ public class CapricornBulletSystem6 : EnemyShooter<EnemyBullet>
     const float BranchSpacing = 360f / BranchCount;
     const int BulletCount = 8;
     const float BulletSpacing = 15f;
-    const float BulletBaseSpeed = 1f;
+    const float BulletBaseSpeed = 1.5f;
     const float BulletSpeedMultiplier = 0.1f;
 
     protected override IEnumerator Shoot()
@@ -51,7 +51,7 @@ public class CapricornBulletSystem6 : EnemyShooter<EnemyBullet>
             }
 
             SetSubsystemEnabled(1);
-            yield return WaitForSeconds(15f);
+            yield return WaitForSeconds(10f);
         }
     }
 }

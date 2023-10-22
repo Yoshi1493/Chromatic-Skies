@@ -9,7 +9,7 @@ public class CapricornBullet61 : ScriptableEnemyBullet<CapricornBulletSystem6, E
     const int BranchCount = 4;
     const float BranchSpacing = 360f / BranchCount;
     const float ShootingCooldown = 3f / 60;
-    const float BulletBaseSpeed = 3f;
+    const float BulletBaseSpeed = 2.5f;
 
     [SerializeField] ProjectileObject bulletData;
 
