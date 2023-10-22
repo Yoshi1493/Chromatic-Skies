@@ -29,6 +29,8 @@ public class CapricornMovementSystem6 : EnemyMovement
 
         yield return this.MoveFromTo(p6, p7, 2f);
 
-        yield return WaitForSeconds(5f);
+        yield return WaitForSeconds(2f);
+
+        yield return this.MoveToRandomPosition(0.5f);
     }
 }

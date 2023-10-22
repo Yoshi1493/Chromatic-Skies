@@ -1,20 +1,22 @@
 using System.Collections;
 using UnityEngine;
+using static CoroutineHelper;
 
 public class CapricornBullet61 : ScriptableEnemyBullet<CapricornBulletSystem6, EnemyBullet>
 {
-    const int WaveCount = 12;
+    const int WaveCount = 40;
     const float WaveSpacing = 360f / BranchCount / WaveCount;
-    const int BranchCount = 2;
+    const int BranchCount = 4;
     const float BranchSpacing = 360f / BranchCount;
-    const float ShootingCooldown = 0.05f;
-    const float BulletBaseSpeed = 2f;
+    const float ShootingCooldown = 3f / 60;
+    const float BulletBaseSpeed = 3f;
 
     [SerializeField] ProjectileObject bulletData;
 
     protected override IEnumerator Move()
     {
-        yield return this.LerpSpeed(5f, 0f, 0.5f);
+        StartCoroutine(this.LerpSpeed(3f, 1f, 2f));
+        StartCoroutine(this.RotateBy(270f, 2f));
 
         for (int i = 0; i < WaveCount; i++)
         {
@@ -30,6 +32,8 @@ public class CapricornBullet61 : ScriptableEnemyBullet<CapricornBulletSystem6, E
                 bullet.MoveSpeed = s;
                 bullet.Fire();
             }
+
+            yield return WaitForSeconds(ShootingCooldown);
         }
 
         Destroy();
