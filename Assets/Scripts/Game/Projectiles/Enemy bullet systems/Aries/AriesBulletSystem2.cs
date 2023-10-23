@@ -11,25 +11,29 @@ public class AriesBulletSystem2 : EnemyShooter<EnemyBullet>
     const int BulletCount = 2;
     const float BulletBaseSpeed = 4f;
     const float BulletSpeedMultiplier = 0.05f;
+    const float BulletMaxSpeed = 8f;
+
+    protected override float ShootingCooldown => 0.15f;
 
     protected override IEnumerator Shoot()
     {
         yield return base.Shoot();
 
+        StartMoveAction?.Invoke();
+        SetSubsystemEnabled(1);
+
         while (enabled)
         {
-            float r = Random.Range(0f, BranchSpacing);
-
-            for (int i = 0; i < WaveCount; i++)
+            for (int i = 0; enabled; i++)
             {
-                bulletData.colour = bulletData.gradient.Evaluate(i / (WaveCount - 1f));
+                bulletData.colour = bulletData.gradient.Evaluate(Mathf.PingPong(i / (WaveCount - 1f), 1f));
 
                 for (int ii = 0; ii < BranchCount; ii++)
                 {
                     for (int iii = 0; iii < BulletCount; iii++)
                     {
-                        float z = (i * WaveSpacing) + (ii * BranchSpacing) + r;
-                        float s = BulletBaseSpeed + (i * BulletSpeedMultiplier);
+                        float z = (i * WaveSpacing) + (ii * BranchSpacing);
+                        float s = Mathf.Min(BulletBaseSpeed + (i * BulletSpeedMultiplier), BulletMaxSpeed);
                         Vector3 pos = Vector3.zero;
 
                         var bullet = SpawnProjectile(0, z, pos);
@@ -41,13 +45,6 @@ public class AriesBulletSystem2 : EnemyShooter<EnemyBullet>
 
                 yield return WaitForSeconds(ShootingCooldown);
             }
-
-            yield return WaitForSeconds(1f);
-
-            StartMoveAction?.Invoke();
-            SetSubsystemEnabled(1);
-
-            yield return WaitForSeconds(1f);
         }
     }
 }
