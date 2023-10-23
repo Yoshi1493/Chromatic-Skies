@@ -1,17 +1,35 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using static CoroutineHelper;
 
 public class PiscesBulletSystem1 : EnemyShooter<EnemyBullet>
 {
-    const int BulletCount = 36;
-    const int BulletSpacing = 360 / BulletCount;
-    const float BulletOffset = BulletSpacing / 8f;
+    const int WaveCount = 36;
+    const int WaveSpacing = 360 / WaveCount;
+    const float WaveSpeedMultiplier = 0.1f;
+    const int BulletCount = 2;
     const float BulletBaseSpeed = 2f;
-    const float BulletSpeedMultiplier = 0.1f;
-    const float BulletSpeedMultiplierMultiplier = 0.8f;
+    const float BulletSpeedMultiplier = 0.2f;
 
-    protected override float ShootingCooldown => 0.04f;
+    List<(float z, float s)> bulletSpawnData = new(WaveCount * BulletCount);
+
+    protected override float ShootingCooldown => 3 / 60f;
+
+    protected override void Awake()
+    {
+        base.Awake();
+
+        for (int i = 0; i < WaveCount; i++)
+        {
+            for (int ii = 0; ii < BulletCount; ii++)
+            {
+                float z = (i + (ii * 0.5f)) * WaveSpacing;
+                float s = (BulletBaseSpeed + (i * WaveSpeedMultiplier)) * (1 - (ii * BulletSpeedMultiplier));
+                bulletSpawnData.Add((z, s));
+            }
+        }
+    }
 
     protected override IEnumerator Shoot()
     {
@@ -19,49 +37,50 @@ public class PiscesBulletSystem1 : EnemyShooter<EnemyBullet>
 
         while (enabled)
         {
-            for (int i = 0; i < BulletCount; i++)
+            for (int i = 0; i < WaveCount; i++)
             {
-                float z = i * BulletSpacing + BulletOffset;
-                float s = BulletBaseSpeed + (i * BulletSpeedMultiplier);
-                Vector3 pos = Vector3.zero;
+                for (int ii = 0; ii < BulletCount; ii++)
+                {
+                    int b = (i * BulletCount) + ii;
+                    float z = bulletSpawnData[b].z;
+                    float s = bulletSpawnData[b].s;
+                    Vector3 pos = Vector3.zero;
 
-                bulletData.colour = bulletData.gradient.Evaluate(i / (BulletCount - 1f));
-                var bullet = SpawnProjectile(0, z, pos);
-                bullet.MoveSpeed = s;
-                bullet.Fire();
+                    bulletData.colour = bulletData.gradient.Evaluate(i / (WaveCount - 1f));
 
-                bullet = SpawnProjectile(0, z + (0.5f * BulletSpacing), pos);
-                bullet.MoveSpeed = s * BulletSpeedMultiplierMultiplier;
-                bullet.Fire();
+                    var bullet = SpawnProjectile(0, z, pos);
+                    bullet.MoveSpeed = s;
+                    bullet.Fire();
+                }
 
                 yield return WaitForSeconds(ShootingCooldown);
             }
 
             yield return WaitForSeconds(ShootingCooldown * 2f);
 
-            for (int i = 0; i < BulletCount; i++)
+            for (int i = 0; i < WaveCount; i++)
             {
-                float z = (BulletCount - i) * BulletSpacing - BulletOffset;
-                float s = BulletBaseSpeed + (i * BulletSpeedMultiplier);
-                Vector3 pos = Vector3.zero;
+                for (int ii = 0; ii < BulletCount; ii++)
+                {
+                    int b = (i * BulletCount) + ii;
+                    float z = 360f - bulletSpawnData[b].z;
+                    float s = bulletSpawnData[b].s;
+                    Vector3 pos = Vector3.zero;
 
-                bulletData.colour = bulletData.gradient.Evaluate(i / (BulletCount - 1f));
-                var bullet = SpawnProjectile(0, z, pos);
-                bullet.MoveSpeed = s;
-                bullet.Fire();
+                    bulletData.colour = bulletData.gradient.Evaluate(i / (WaveCount - 1f));
 
-                bullet = SpawnProjectile(0, z - (0.5f * BulletSpacing), pos);
-                bullet.MoveSpeed = s * BulletSpeedMultiplierMultiplier;
-                bullet.Fire();
+                    var bullet = SpawnProjectile(0, z, pos);
+                    bullet.MoveSpeed = s;
+                    bullet.Fire();
+                }
 
                 yield return WaitForSeconds(ShootingCooldown);
             }
 
             SetSubsystemEnabled(1);
-            yield return WaitForSeconds(1.5f);
 
             StartMoveAction?.Invoke();
-            yield return WaitForSeconds(1f);
+            yield return WaitForSeconds(2f);
         }
     }
 }

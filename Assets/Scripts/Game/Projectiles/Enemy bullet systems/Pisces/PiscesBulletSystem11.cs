@@ -4,9 +4,9 @@ using static CoroutineHelper;
 
 public class PiscesBulletSystem11 : EnemyShooter<EnemyBullet>
 {
-    const int WaveCount = 3;
+    const int WaveCount = 4;
     const float WaveSpacing = BulletSpacing / WaveCount;
-    const int BulletCount = 36;
+    const int BulletCount = 48;
     const int BulletSpacing = 360 / BulletCount;
     const float BulletBaseSpeed = 1.5f;
     const float BulletSpeedMultiplier = 2f;
@@ -26,6 +26,7 @@ public class PiscesBulletSystem11 : EnemyShooter<EnemyBullet>
                 float s = BulletBaseSpeed + (r * BulletSpeedMultiplier);
 
                 bulletData.colour = bulletData.gradient.Evaluate(r);
+
                 var bullet = SpawnProjectile(b, z, Vector3.zero);
                 bullet.MoveSpeed = s;
                 bullet.Fire();
