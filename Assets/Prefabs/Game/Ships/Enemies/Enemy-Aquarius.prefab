@@ -270,7 +270,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 716324014634893503}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a044f6b05a380af4ab3f74b02e9076d4, type: 3}
   m_Name: 
@@ -345,14 +345,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4079918356797303241}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a428a0f1804dd874cb44dd74f3090e27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   enemyProjectiles:
   - {fileID: -6013795384315009736, guid: a1f9a9a8d5701bc4faee8364c1004d25, type: 3}
-  - {fileID: 8756211777409366151, guid: fe5cfaeb7592a6843ae40a2167ecc6a9, type: 3}
   bulletData: {fileID: 11400000, guid: b7cc13e258fbdfa4bbdf377aa9a00e70, type: 2}
 --- !u!4 &6341278059232048145 stripped
 Transform:
@@ -412,7 +411,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7008567321455470459}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1ded5edb08f6626488879c734d537f8a, type: 3}
   m_Name: 
@@ -475,7 +474,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9083349842419879498}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bd0a293b56d637342a52a47435dfbb24, type: 3}
   m_Name: 

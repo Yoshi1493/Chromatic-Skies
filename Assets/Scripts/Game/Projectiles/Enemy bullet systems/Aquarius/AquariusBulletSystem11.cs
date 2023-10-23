@@ -25,7 +25,7 @@ public class AquariusBulletSystem11 : EnemyShooter<EnemyBullet>
                 Vector3 pos = Vector3.zero;
                 bulletData.colour = bulletData.gradient.Evaluate(i / (WaveCount - 1f));
 
-                var bullet = SpawnProjectile(2, z, pos);
+                var bullet = SpawnProjectile(1, z, pos);
                 bullet.StartCoroutine(bullet.LerpSpeed(WaveCount - i, 0f, 1f));
                 bullets.Push(bullet);
             }
