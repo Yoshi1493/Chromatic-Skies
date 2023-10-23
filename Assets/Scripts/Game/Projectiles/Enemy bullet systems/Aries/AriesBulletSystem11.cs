@@ -6,26 +6,29 @@ public class AriesBulletSystem11 : EnemyShooter<EnemyBullet>
 {
     const int BulletCount = 12;
     const float BulletSpacing = 360f / BulletCount;
+    const float BulletRotationSpeed = 60f;
 
-    protected override float ShootingCooldown => 1.0f;
+    protected override float ShootingCooldown => 3.0f;
 
     protected override IEnumerator Shoot()
     {
-        yield return WaitForSeconds(3f);
-
-        while (enabled)
+        for (int i = 1; enabled; i *= -1)
         {
+            yield return WaitForSeconds(ShootingCooldown);
+
             float r = PlayerPosition.GetRotationDifference(transform.position);
 
-            for (int i = 0; i < BulletCount; i++)
+            for (int ii = 0; ii < BulletCount; ii++)
             {
-                float z = (i * BulletSpacing) + r;
+                float z = (ii * BulletSpacing) + r;
                 Vector3 pos = Vector3.zero;
 
-                SpawnProjectile(2, z, pos).Fire();
-            }
+                bulletData.colour = bulletData.gradient.Evaluate(i % 2);
 
-            yield return WaitForSeconds(ShootingCooldown);
+                var bullet = SpawnProjectile(1, z, pos);
+                bullet.StartCoroutine(bullet.RotateBy(i * BulletRotationSpeed, 5f));
+                bullet.Fire();
+            }
         }
     }
 }
