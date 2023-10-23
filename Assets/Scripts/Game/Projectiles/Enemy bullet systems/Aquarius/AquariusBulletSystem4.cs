@@ -5,7 +5,7 @@ using static CoroutineHelper;
 public class AquariusBulletSystem4 : EnemyShooter<EnemyBullet>
 {
     const float ArcHalfWidth = 30f;
-    const int BulletCount = 99;
+    const int BulletCount = 60;
     const float BulletSpawnRadius = 0.1f;
 
     protected override float ShootingCooldown => 1 / 60f;
@@ -23,6 +23,8 @@ public class AquariusBulletSystem4 : EnemyShooter<EnemyBullet>
 
             yield return WaitForSeconds(ShootingCooldown);
         }
+
+        yield return WaitForSeconds(0.5f);
 
         SetSubsystemEnabled(1);
         SetSubsystemEnabled(2);
