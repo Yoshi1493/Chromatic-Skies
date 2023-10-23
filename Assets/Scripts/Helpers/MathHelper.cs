@@ -68,7 +68,7 @@ public static class MathHelper
     /// <summary>
     /// returns true if <v> and <pos> are less than <dist> units apart
     /// </summary>
-    public static bool IsTooClose(this Vector2 v, Vector2 pos, float minDistance = 1f)
+    public static bool IsTooClose(this Vector3 v, Vector3 pos, float minDistance = 1f)
     {
         return (pos - v).sqrMagnitude < minDistance;
     }
@@ -80,9 +80,9 @@ public static class MathHelper
     public static int PositiveOrNegativeOne => Random.value > 0.5f ? -1 : 1;
     public static float RandomAngleDeg => Random.Range(0f, 360f);
 
-    public static List<Vector2> GetRandomPointsAlongBounds(Vector2 minBoundary, Vector2 maxBoundary, float minSpacing = 1f, float maxSpacing = 3f)
+    public static List<Vector3> GetRandomPointsAlongBounds(Vector3 minBoundary, Vector3 maxBoundary, float minSpacing = 1f, float maxSpacing = 3f)
     {
-        List<Vector2> points = new();
+        List<Vector3> points = new();
         if (minSpacing < 0f || maxSpacing < 0f || maxSpacing < minSpacing) return points;
 
         float x, y;
@@ -96,7 +96,7 @@ public static class MathHelper
                 x += Random.Range(minSpacing, maxSpacing);
                 y = Random.value > 0.5f ? maxBoundary.y : minBoundary.y;
 
-                points.Add(new Vector2(x, y));
+                points.Add(new(x, y));
             }
             while (x < maxBoundary.x);
         }
@@ -110,7 +110,7 @@ public static class MathHelper
                 x = Random.value > 0.5f ? maxBoundary.x : minBoundary.x;
                 y += Random.Range(minSpacing, maxSpacing);
 
-                points.Add(new Vector2(x, y));
+                points.Add(new(x, y));
             }
             while (y < maxBoundary.y);
         }
@@ -118,9 +118,9 @@ public static class MathHelper
         return points;
     }
 
-    public static List<Vector2> GetRandomPointsWithinBounds(Vector2 minBoundary, Vector2 maxBoundary, int pointCount)
+    public static List<Vector3> GetRandomPointsWithinBounds(Vector3 minBoundary, Vector3 maxBoundary, int pointCount)
     {
-        List<Vector2> points = new(pointCount);
+        List<Vector3> points = new(pointCount);
         if (minBoundary.x > maxBoundary.x || minBoundary.y > maxBoundary.y) return points;
 
         float x, y;
@@ -130,7 +130,7 @@ public static class MathHelper
             x = Random.Range(minBoundary.x, maxBoundary.x);
             y = Random.Range(minBoundary.y, maxBoundary.y);
 
-            points.Add(new Vector2(x, y));
+            points.Add(new(x, y));
         }
 
         return points;

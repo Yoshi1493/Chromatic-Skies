@@ -11,13 +11,13 @@ public class TaurusBulletSystem11 : EnemyShooter<EnemyBullet>
     public const float BulletSpacing = 0.8f;
     const float MinDistanceFromShip = BulletSpacing * 2f;
 
-    List<Vector2> bulletSpawnPositions = new(BulletCount);
+    List<Vector3> bulletSpawnPositions = new(BulletCount);
 
     protected override IEnumerator Shoot()
     {
         while (enabled)
         {
-            bulletSpawnPositions = GetRandomPointsWithinBounds(new Vector2(-screenHalfWidth, -screenHalfHeight), new Vector2(screenHalfWidth, screenHalfHeight), BulletCount);
+            bulletSpawnPositions = GetRandomPointsWithinBounds(new(-screenHalfWidth, -screenHalfHeight), new(screenHalfWidth, screenHalfHeight), BulletCount);
 
             for (int i = 0; i < bulletSpawnPositions.Count; i++)
             {

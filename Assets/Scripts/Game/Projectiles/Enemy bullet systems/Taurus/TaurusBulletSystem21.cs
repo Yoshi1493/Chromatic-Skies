@@ -6,7 +6,7 @@ using static MathHelper;
 
 public class TaurusBulletSystem21 : EnemyShooter<Laser>
 {
-    List<Vector2> spawnPositions = new();
+    List<Vector3> bulletSpawnPositions = new();
 
     protected override float ShootingCooldown => 0.05f;
 
@@ -14,16 +14,16 @@ public class TaurusBulletSystem21 : EnemyShooter<Laser>
     {
         yield return WaitForSeconds(2f);
 
-        spawnPositions.Clear();
-        spawnPositions.AddRange(GetRandomPointsAlongBounds(new Vector2(-screenHalfWidth, screenHalfHeight), new Vector2(screenHalfWidth, screenHalfHeight), 2f, 3f));
-        spawnPositions.AddRange(GetRandomPointsAlongBounds(new Vector2(screenHalfWidth, -screenHalfHeight), new Vector2(screenHalfWidth, screenHalfHeight), 1f, 2f));
-        spawnPositions.Randomize();
+        bulletSpawnPositions.Clear();
+        bulletSpawnPositions.AddRange(GetRandomPointsAlongBounds(new(-screenHalfWidth, screenHalfHeight), new(screenHalfWidth, screenHalfHeight), 2f, 3f));
+        bulletSpawnPositions.AddRange(GetRandomPointsAlongBounds(new(screenHalfWidth, -screenHalfHeight), new(screenHalfWidth, screenHalfHeight), 1f, 2f));
+        bulletSpawnPositions.Randomize();
 
         float r = Random.Range(-45f, 45f);
 
-        for (int i = 0; i < spawnPositions.Count; i++)
+        for (int i = 0; i < bulletSpawnPositions.Count; i++)
         {
-            Vector3 pos = spawnPositions[i];
+            Vector3 pos = bulletSpawnPositions[i];
 
             float z = r;
 
@@ -47,6 +47,6 @@ public class TaurusBulletSystem21 : EnemyShooter<Laser>
 
     void OnDisable()
     {
-        spawnPositions.Clear();
+        bulletSpawnPositions.Clear();
     }
 }
