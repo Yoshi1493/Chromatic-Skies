@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using static CoroutineHelper;
 
@@ -11,7 +12,25 @@ public class AquariusBulletSystem3 : EnemyShooter<EnemyBullet>
     const float BulletSpawnRadius = 1f;
     const float SpawnRadiusMultiplier = 0.8f;
 
-    protected override float ShootingCooldown => 0.2f;
+    List<(Vector2 pos, float z)> bulletSpawnData = new(WaveCount * BranchCount);
+
+    protected override float ShootingCooldown => 2 / 60f;
+
+    protected override void Awake()
+    {
+        base.Awake();
+
+        for (int i = 0; i < WaveCount; i++)
+        {
+            for (int ii = 0; ii < BranchCount; ii++)
+            {
+                float z = (i * WaveSpacing) + (ii * BranchSpacing);
+                Vector3 pos = (BulletSpawnRadius + (i * SpawnRadiusMultiplier)) * transform.up.RotateVectorBy(z);
+
+                bulletSpawnData.Add((pos, z));
+            }
+        }
+    }
 
     protected override IEnumerator Shoot()
     {
@@ -19,21 +38,28 @@ public class AquariusBulletSystem3 : EnemyShooter<EnemyBullet>
 
         while (enabled)
         {
+            Vector3 playerPos = PlayerPosition;
+
             for (int i = 0; i < WaveCount; i++)
             {
                 for (int ii = 0; ii < BranchCount; ii++)
                 {
-                    float z = (i * WaveSpacing) + (ii * BranchSpacing);
-                    Vector3 pos = (BulletSpawnRadius + (i * SpawnRadiusMultiplier)) * transform.up.RotateVectorBy(z);
+                    int b = (i * BranchCount) + ii;
+                    float z = bulletSpawnData[b].z;
+                    Vector3 pos = bulletSpawnData[b].pos;
+
                     bulletData.colour = bulletData.gradient.Evaluate(i / (WaveCount - 1f));
 
-                    SpawnProjectile(0, z, pos).Fire();
+                    if (!pos.IsTooClose(playerPos - transform.position))
+                    {
+                        SpawnProjectile(0, z, pos).Fire();
+                    }
                 }
 
                 yield return WaitForSeconds(ShootingCooldown);
             }
 
-            yield return WaitForSeconds(6f);
+            yield return WaitForSeconds(5f);
             StartMoveAction?.Invoke();
             yield return WaitForSeconds(3f);
         }
