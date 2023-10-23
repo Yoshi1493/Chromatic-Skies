@@ -21,7 +21,7 @@ public class GeminiBulletSystem4 : EnemyShooter<EnemyBullet>
         yield return base.Shoot();
 
         SetSubsystemEnabled(1);
-        List<(Vector3 xy, float z)> bulletPosRotData = new(WaveCount * BulletCount);
+        List<(Vector2 pos, float z)> bulletSpawnData = new(WaveCount * BulletCount);
 
         while (enabled)
         {
@@ -34,7 +34,7 @@ public class GeminiBulletSystem4 : EnemyShooter<EnemyBullet>
                     float z = (i * WaveSpacing) + (ii * BulletSpacing);
                     Vector3 pos = (BulletSpawnRadius + (i * SpawnRadiusMultiplier)) * Vector3.up.RotateVectorBy(z) + v1;
 
-                    bulletPosRotData.Add((pos, z));
+                    bulletSpawnData.Add((pos, z));
                     SpawnProjectile(0, z, pos, false).Fire();
                 }
 
@@ -49,23 +49,23 @@ public class GeminiBulletSystem4 : EnemyShooter<EnemyBullet>
             {
                 for (int ii = 0; ii < BulletCount; ii++)
                 {
-                    var xyz = bulletPosRotData[0];
-                    float z = xyz.z;
+                    var data = bulletSpawnData[0];
+                    float z = data.z;
                     float s = BulletBaseSpeed + (ii % 2  * BulletSpeedMultiplier);
-                    Vector3 pos = new(xyz.xy.x, xyz.xy.y);
+                    Vector3 pos = new(data.pos.x, data.pos.y);
 
                     bulletData.colour = bulletData.gradient.Evaluate(ii % 2);
                     var bullet = SpawnProjectile(1, z, pos, false);
                     bullet.MoveSpeed = s;
                     bullet.Fire();
 
-                    bulletPosRotData.RemoveAt(0);
+                    bulletSpawnData.RemoveAt(0);
                 }
 
                 yield return WaitForSeconds(ShootingCooldown);
             }
 
-            bulletPosRotData.Clear();
+            bulletSpawnData.Clear();
             yield return WaitForSeconds(3f);
         }
     }

@@ -12,14 +12,14 @@ public class GeminiBulletSystem2 : EnemyShooter<EnemyBullet>
     const float BulletSpeedMultiplier = 0.03f;
     const float BulletSpawnOffset = 0.5f;
 
-    protected override float ShootingCooldown => 0.02f;
+    protected override float ShootingCooldown => 1 / 60f;
 
     protected override IEnumerator Shoot()
     {
         yield return base.Shoot();
 
         int i = 1;
-        List<(Vector2 xy, float z)> bulletPosRotData = new(WaveCount * BranchCount);
+        List<(Vector2 pos, float z)> bulletSpawnData = new(WaveCount * BranchCount);
 
         while (enabled)
         {
@@ -35,7 +35,7 @@ public class GeminiBulletSystem2 : EnemyShooter<EnemyBullet>
                 {
                     Vector3 pos = v1.RotateVectorBy(iii * BranchSpacing);
 
-                    bulletPosRotData.Add((pos, z));
+                    bulletSpawnData.Add((pos, z));
                     SpawnProjectile(0, z, pos).Fire();
                 }
 
@@ -47,29 +47,29 @@ public class GeminiBulletSystem2 : EnemyShooter<EnemyBullet>
             SetSubsystemEnabled(1);
             yield return WaitForSeconds(3f);
 
-            bulletPosRotData.Randomize();
+            bulletSpawnData.Randomize();
 
             for (int ii = 1; ii < WaveCount; ii++)
             {
                 for (int iii = 0; iii < BranchCount; iii++)
                 {
-                    var xyz = bulletPosRotData[0];
-                    float z = xyz.z;
+                    var data = bulletSpawnData[0];
+                    float z = data.z;
                     float s = BulletBaseSpeed - (ii * BulletSpeedMultiplier);
-                    Vector3 pos = new(xyz.xy.x, xyz.xy.y);
+                    Vector3 pos = new(data.pos.x, data.pos.y);
 
                     bulletData.colour = bulletData.gradient.Evaluate(ii / (WaveCount - 1f));
                     var bullet = SpawnProjectile(1, z, pos);
                     bullet.MoveSpeed = s;
                     bullet.Fire();
 
-                    bulletPosRotData.RemoveAt(0);
+                    bulletSpawnData.RemoveAt(0);
                 }
 
                 yield return WaitForSeconds(ShootingCooldown * 2f);
             }
 
-            bulletPosRotData.Clear();
+            bulletSpawnData.Clear();
 
             yield return WaitForSeconds(1f);
 
