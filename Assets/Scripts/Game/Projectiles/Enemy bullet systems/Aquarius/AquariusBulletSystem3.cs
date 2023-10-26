@@ -38,7 +38,7 @@ public class AquariusBulletSystem3 : EnemyShooter<EnemyBullet>
 
         while (enabled)
         {
-            Vector3 playerPos = PlayerPosition;
+            Vector3 v1 = PlayerPosition;
 
             for (int i = 0; i < WaveCount; i++)
             {
@@ -50,7 +50,7 @@ public class AquariusBulletSystem3 : EnemyShooter<EnemyBullet>
 
                     bulletData.colour = bulletData.gradient.Evaluate(i / (WaveCount - 1f));
 
-                    if (!pos.IsTooClose(playerPos - transform.position))
+                    if (!pos.IsTooClose(v1 - transform.position))
                     {
                         SpawnProjectile(0, z, pos).Fire();
                     }

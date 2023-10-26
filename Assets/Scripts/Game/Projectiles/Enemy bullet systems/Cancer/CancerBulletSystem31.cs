@@ -32,8 +32,8 @@ public class CancerBulletSystem31 : EnemyShooter<EnemyBullet>
 
     void UpdatePosition()
     {
-        float targetZ = PlayerPosition.GetRotationDifference(transform.position);
-        z = Mathf.SmoothDamp(z, targetZ, ref smoothDampVel, SmoothTime);
+        float r = PlayerPosition.GetRotationDifference(transform.position);
+        z = Mathf.SmoothDamp(z, r, ref smoothDampVel, SmoothTime);
 
         transform.eulerAngles = z * Vector3.forward;
     }

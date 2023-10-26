@@ -26,7 +26,7 @@ public class CapricornBulletSystem4 : EnemyShooter<EnemyBullet>
             float t = 0f;
             float x = (Random.Range(0, screenHalfWidth * 0.25f) + screenHalfWidth * 0.5f) * Mathf.Sign(ownerShip.transform.position.x);
 
-            Vector2 v0 = new(x, screenHalfHeight);
+            Vector3 v0 = new(x, screenHalfHeight);
 
             while (t < TotalFollowTime)
             {
@@ -35,12 +35,12 @@ public class CapricornBulletSystem4 : EnemyShooter<EnemyBullet>
                     playerPositions.Enqueue(PlayerPosition);
                 }
 
-                Vector2 pos;
+                Vector3 pos;
 
                 if (t < CatchupTime)
                 {
-                    Vector2 v1 = new(x, PlayerPosition.y);
-                    Vector2 v2 = PlayerPosition;
+                    Vector3 v1 = new(x, PlayerPosition.y);
+                    Vector3 v2 = PlayerPosition;
                     pos = EvaluateQuadratic(v0, v1, v2, t / CatchupTime);
 
                     if (t > SpawnTime)
@@ -54,7 +54,7 @@ public class CapricornBulletSystem4 : EnemyShooter<EnemyBullet>
                     pos = playerPositions.Dequeue();
                 }
 
-                pos += (SpawnOffsetRadius * Random.insideUnitCircle);
+                pos += (Vector3)(SpawnOffsetRadius * Random.insideUnitCircle);
                 float z = RandomAngleDeg;
 
                 bulletData.colour = bulletData.gradient.Evaluate(t / TotalFollowTime);
