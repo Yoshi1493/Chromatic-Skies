@@ -47,6 +47,53 @@ MonoBehaviour:
   enemyProjectiles:
   - {fileID: -5769200188673755797, guid: 0dae8dd385a928c49a0f273c85e196c3, type: 3}
   bulletData: {fileID: 11400000, guid: 3c206f23c06f5ea4aaaccadd8c7ac8ec, type: 2}
+--- !u!1 &3220099799349417790
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8227700105963975791}
+  - component: {fileID: 8474983784992641364}
+  m_Layer: 0
+  m_Name: Bullet Subsystem 1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8227700105963975791
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3220099799349417790}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6153433117319852303}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8474983784992641364
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3220099799349417790}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f3409c38d1f1e94a8108acf06cd3174, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyProjectiles:
+  - {fileID: -8775549156053280484, guid: 80201ef95a4a3e44da939aca9003ec0c, type: 3}
+  bulletData: {fileID: 11400000, guid: 11000d98ba4b0e34c8c0c43e393120e0, type: 2}
 --- !u!1 &3645503737975857005
 GameObject:
   m_ObjectHideFlags: 0
@@ -250,14 +297,15 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 649014644346800800}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f7da90af20ab955438d545821eca0de3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   enemyProjectiles:
-  - {fileID: 0}
-  bulletData: {fileID: 0}
+  - {fileID: -8271846340308157507, guid: 69250d10ae5342c4381cd846feb2d847, type: 3}
+  - {fileID: -7490988633588612344, guid: 149a7f9051107194a864004c040bf9f1, type: 3}
+  bulletData: {fileID: 11400000, guid: 471828fc394645744891265136c1159b, type: 2}
 --- !u!1 &716324014634893503 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6070284441610636987, guid: d93cb44e21569f545b76560b29579f98, type: 3}
@@ -270,7 +318,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 716324014634893503}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a044f6b05a380af4ab3f74b02e9076d4, type: 3}
   m_Name: 
@@ -353,6 +401,11 @@ MonoBehaviour:
   enemyProjectiles:
   - {fileID: -6013795384315009736, guid: a1f9a9a8d5701bc4faee8364c1004d25, type: 3}
   bulletData: {fileID: 11400000, guid: b7cc13e258fbdfa4bbdf377aa9a00e70, type: 2}
+--- !u!4 &6153433117319852303 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 623886802135301899, guid: d93cb44e21569f545b76560b29579f98, type: 3}
+  m_PrefabInstance: {fileID: 6759093168088370692}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6341278059232048145 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 418168052357298709, guid: d93cb44e21569f545b76560b29579f98, type: 3}
@@ -411,7 +464,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7008567321455470459}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1ded5edb08f6626488879c734d537f8a, type: 3}
   m_Name: 
@@ -432,7 +485,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7540179381485964155}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 35dcb6ab5ee00be449dbcf5ad66b856b, type: 3}
   m_Name: 
