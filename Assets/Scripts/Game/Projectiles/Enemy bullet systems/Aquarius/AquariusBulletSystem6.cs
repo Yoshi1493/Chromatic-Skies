@@ -1,13 +1,10 @@
 using System.Collections;
 using UnityEngine;
 using static CoroutineHelper;
-using static MathHelper;
 
 public class AquariusBulletSystem6 : EnemyShooter<EnemyBullet>
 {
-    const int BulletCount = 6;
-    const float BulletMinSpeed = 1f;
-    const float BulletMaxSpeed = 5f;
+    const int BulletCount = 1;
 
     protected override float ShootingCooldown => 0.5f;
 
@@ -20,14 +17,22 @@ public class AquariusBulletSystem6 : EnemyShooter<EnemyBullet>
 
         while (enabled)
         {
+            Vector3 v1 = PlayerPosition;
+
             for (int i = 0; i < BulletCount; i++)
             {
-                float z = RandomAngleDeg;
-                float s = Random.Range(BulletMinSpeed, BulletMaxSpeed);
-                Vector3 pos = Vector3.zero;
+                float z = 0f;
+                Vector3 pos;
 
-                var bullet = SpawnProjectile(0, z, pos);
-                bullet.MoveSpeed = s;
+                do
+                {
+                    pos.x = 0.8f * Random.Range(-screenHalfWidth, screenHalfWidth);
+                    pos.y = 0.8f * Random.Range(-screenHalfHeight, screenHalfHeight);
+                    pos.z = 0f;
+                }
+                while (pos.IsTooClose(v1, 2f));
+
+                var bullet = SpawnProjectile(0, z, pos, false);
                 bullet.Fire();
             }
 
