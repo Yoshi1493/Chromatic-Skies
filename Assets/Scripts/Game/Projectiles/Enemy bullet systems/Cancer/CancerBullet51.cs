@@ -4,18 +4,11 @@ using static CoroutineHelper;
 
 public class CancerBullet51 : EnemyBullet
 {
-    Vector3 rotationPoint;
     Vector3 rotationAxis;
     const float RotationSpeed = 180f;
     const float FireDelay = 1.5f;
 
     protected override float MaxLifetime => 6f;
-
-    protected override void Awake()
-    {
-        base.Awake();
-        rotationPoint = FindObjectOfType<CancerBullet50>().transform.position;
-    }
 
     protected override IEnumerator Move()
     {
@@ -24,7 +17,7 @@ public class CancerBullet51 : EnemyBullet
         yield return WaitForSeconds(FireDelay);
 
         StartCoroutine(this.LerpSpeed(endSpeed, 4f, 2f));
-        this.LookAt(rotationPoint);
+        this.LookAt(ownerShip);
     }
 
     protected override void OnEnable()
@@ -36,9 +29,10 @@ public class CancerBullet51 : EnemyBullet
     protected override void Update()
     {
         base.Update();
+
         if (currentLifetime < FireDelay)
         {
-            transform.RotateAround(rotationPoint, rotationAxis, RotationSpeed * Time.deltaTime);
+            transform.RotateAround(ownerShip.transform.position, rotationAxis, RotationSpeed * Time.deltaTime);
         }
     }
 }

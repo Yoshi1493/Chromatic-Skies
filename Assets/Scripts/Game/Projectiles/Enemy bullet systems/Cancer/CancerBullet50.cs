@@ -4,12 +4,10 @@ using static CoroutineHelper;
 
 public class CancerBullet50 : ScriptableEnemyBullet<CancerBulletSystem5, EnemyBullet>
 {
-    const int WaveCount = 22;
-    const float WaveSpacing = -6f;
-    const int BranchCount = 6;
+    const float WaveSpacing = 3f;
+    const int BranchCount = 3;
     const float BranchSpacing = 360f / BranchCount;
-    const float BulletBaseSpeed = 4f;
-    const float BulletSpeedMultiplier = 0.1f;
+    const float BulletSpawnRadius = 0.5f;
     const float ShootingCooldown = 0.1f;
 
     protected override float MaxLifetime => Mathf.Infinity;
@@ -17,24 +15,21 @@ public class CancerBullet50 : ScriptableEnemyBullet<CancerBulletSystem5, EnemyBu
     protected override IEnumerator Move()
     {
         yield return this.LerpSpeed(5f, 0f, 1f);
+        yield return WaitForSeconds(2f);
 
-        while (enabled)
+        for (int i = 0; enabled; i++)
         {
-            for (int i = 0; i < WaveCount; i++)
+            Vector3 r = Random.insideUnitCircle;
+
+            for (int ii = 0; ii < BranchCount; ii++)
             {
-                for (int ii = 0; ii < BranchCount; ii++)
-                {
-                    float z = (i * WaveSpacing) + (ii * BranchSpacing);
-                    float s = BulletBaseSpeed + (i * BulletSpeedMultiplier);
-                    Vector3 pos = (2f * Vector3.forward) + transform.position;
+                float z = -((i * WaveSpacing) + (ii * BranchSpacing));
+                Vector3 pos = (BulletSpawnRadius * r).RotateVectorBy(z);
 
-                    var bullet = SpawnBullet(1, z, pos, false);
-                    bullet.MoveSpeed = s;
-                    bullet.Fire();
-                }
-
-                yield return WaitForSeconds(ShootingCooldown);
+                SpawnBullet(2, z, pos, false).Fire();
             }
+
+            yield return WaitForSeconds(ShootingCooldown);
         }
     }
 }
