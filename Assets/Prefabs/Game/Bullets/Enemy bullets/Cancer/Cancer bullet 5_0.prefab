@@ -53,7 +53,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3140064405051798717, guid: 4e06125b108514547b6fc9b6887da3eb, type: 3}
       propertyPath: m_Name
-      value: Cancer bullet 4_0
+      value: Cancer bullet 5_0
       objectReference: {fileID: 0}
     - target: {fileID: 7943771795135557499, guid: 4e06125b108514547b6fc9b6887da3eb, type: 3}
       propertyPath: power
@@ -96,6 +96,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   transform: {fileID: 0}
-  projectileData: {fileID: 11400000, guid: e6f96c727bdd394459f85e79e39f8099, type: 2}
+  projectileData: {fileID: 11400000, guid: 851c98c2a71e9c340ad259c8706ce794, type: 2}
   moveDirection: {x: 0, y: 0, z: 0}
   currentSpeed: 0

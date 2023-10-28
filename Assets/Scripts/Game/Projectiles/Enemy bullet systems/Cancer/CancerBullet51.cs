@@ -1,14 +1,44 @@
 using System.Collections;
 using UnityEngine;
+using static CoroutineHelper;
 
 public class CancerBullet51 : EnemyBullet
 {
-    protected override int NumCollisions => Physics2D.OverlapBoxNonAlloc(transform.position, spriteRenderer.size, transform.eulerAngles.z, collisionResults, CollisionMask);
+    Vector3 rotationPoint;
+    Vector3 rotationAxis;
+    const float RotationSpeed = 180f;
+    const float FireDelay = 1.5f;
 
-    protected override float MaxLifetime => 5f;
+    protected override float MaxLifetime => 6f;
+
+    protected override void Awake()
+    {
+        base.Awake();
+        rotationPoint = FindObjectOfType<CancerBullet50>().transform.position;
+    }
 
     protected override IEnumerator Move()
     {
-        yield return this.LerpSpeed(6f, 2f, 1f);
+        float endSpeed = MoveSpeed;
+        MoveSpeed = 0f;
+        yield return WaitForSeconds(FireDelay);
+
+        StartCoroutine(this.LerpSpeed(endSpeed, 4f, 2f));
+        this.LookAt(rotationPoint);
+    }
+
+    protected override void OnEnable()
+    {
+        base.OnEnable();
+        rotationAxis = Vector3.right.RotateVectorBy(transform.eulerAngles.z);
+    }
+
+    protected override void Update()
+    {
+        base.Update();
+        if (currentLifetime < FireDelay)
+        {
+            transform.RotateAround(rotationPoint, rotationAxis, RotationSpeed * Time.deltaTime);
+        }
     }
 }

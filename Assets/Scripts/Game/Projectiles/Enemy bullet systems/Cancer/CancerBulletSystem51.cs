@@ -25,7 +25,7 @@ public class CancerBulletSystem51 : EnemyShooter<EnemyBullet>
                     float z = -((i * WaveSpacing) + (ii * BranchSpacing));
                     Vector3 pos = (BulletSpawnRadius * r).RotateVectorBy(z);
 
-                    SpawnProjectile(1, z, pos).Fire();
+                    SpawnProjectile(2, z, pos).Fire();
                 }
 
                 yield return WaitForSeconds(ShootingCooldown);
