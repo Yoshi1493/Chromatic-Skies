@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b79cd0b20b26ac4090b241d65679e69, type: 3}
   m_Name: '[Aries] Bullet 4_1'
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: 0e485a734d809274db7ba7ca7995028c, type: 3}
+  sprite: {fileID: 21300000, guid: 5c9b2ea5eacb63444ad547727a5dbf8e, type: 3}
   useSolidColour: 0
   colour: {r: 0, g: 0, b: 0, a: 0}
   gradient:
@@ -46,3 +46,4 @@ MonoBehaviour:
     m_NumAlphaKeys: 2
   ID: 1
   Power: {fileID: 11400000, guid: 6059f9293aa347b44a73714bea5bfcd3, type: 2}
+  destructible: 1
