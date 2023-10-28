@@ -20,7 +20,7 @@ MonoBehaviour:
   ShipName: {fileID: 11400000, guid: a00afa31632343b4a9af05c2a5a21a79, type: 2}
   MaxLives:
     useConstant: 1
-    ConstantValue: 6
+    ConstantValue: 4
     Variable: {fileID: 0}
   MaxHealth:
     useConstant: 1
