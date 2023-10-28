@@ -24,6 +24,8 @@ public class Enemy : Ship
 
         ValidateAttackSystems();
         FindObjectOfType<Player>().LoseLifeAction += OnPlayerLoseLife;
+
+        spriteRenderer.color = shipData.UIColour.value;                 //debug
     }
 
     void ValidateAttackSystems()
