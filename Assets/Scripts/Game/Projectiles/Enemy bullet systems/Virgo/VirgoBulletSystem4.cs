@@ -33,7 +33,7 @@ public class VirgoBulletSystem4 : EnemyShooter<EnemyBullet>
                 yield return WaitForSeconds(ShootingCooldown);
             }
 
-            yield return WaitForSeconds(2f);
+            yield return WaitForSeconds(3f);
         }
     }
 }
