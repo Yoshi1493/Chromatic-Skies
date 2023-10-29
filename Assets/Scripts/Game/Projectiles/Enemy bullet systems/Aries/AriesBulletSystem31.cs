@@ -30,7 +30,7 @@ public class AriesBulletSystem31 : EnemyShooter<EnemyBullet>
             int r = i % 2 * 2 - 1;
 
             for (int ii = 0; ii < bulletCount; ii++)
-            {                
+            {
                 float z = r * ii * bulletSpacing;
                 float t = r * 90f;
                 Vector3 pos = (BulletSpawnRadius + (i * SpawnRadiusMultiplier)) * transform.up.RotateVectorBy(z - t) + v1;
@@ -52,11 +52,9 @@ public class AriesBulletSystem31 : EnemyShooter<EnemyBullet>
 
             for (int ii = 0; ii < bulletCount; ii++)
             {
-                int b = (i * bulletCount) + ii;
                 float s = BulletRotationSpeed + (i * BulletRotationSpeedModifier);
-
-                bullets[b].StartCoroutine(bullets[b].RotateAround(2f * Vector3.down, Mathf.Infinity, s, i % 2 == 0));
-                bullets.RemoveAt(b);
+                bullets[0].StartCoroutine(bullets[0].RotateAround(2f * Vector3.down, Mathf.Infinity, s, i % 2 == 0));
+                bullets.RemoveAt(0);
             }
         }
     }
