@@ -53,7 +53,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3140064405051798717, guid: 4e06125b108514547b6fc9b6887da3eb, type: 3}
       propertyPath: m_Name
-      value: Aries bullet 3_1_0
+      value: Aries bullet 3_1
       objectReference: {fileID: 0}
     - target: {fileID: 7943771795135557499, guid: 4e06125b108514547b6fc9b6887da3eb, type: 3}
       propertyPath: power
@@ -67,6 +67,10 @@ PrefabInstance:
       propertyPath: bulletPower.currentValue
       value: 
       objectReference: {fileID: 11400000, guid: 6059f9293aa347b44a73714bea5bfcd3, type: 2}
+    - target: {fileID: 9211992883209170045, guid: 4e06125b108514547b6fc9b6887da3eb, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 9211992883209170045, guid: 4e06125b108514547b6fc9b6887da3eb, type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 0
@@ -95,5 +99,3 @@ MonoBehaviour:
   projectileData: {fileID: 11400000, guid: b5ee0d1b90ab1234187ec2bfe16c0a80, type: 2}
   moveDirection: {x: 0, y: 0, z: 0}
   currentSpeed: 0
-  rotationSpeed: 60
-  rotatesClockwise: 1

@@ -6,7 +6,7 @@ public class AriesBulletSystem3 : EnemyShooter<EnemyBullet>
 {
     const int BulletCount = 9;
     const float BulletSpacing = 180f / BulletCount;
-    const float MaxAngle = 90f;
+    const float SpawnMaxAngle = 90f;
 
     protected override float ShootingCooldown => 0.3f;
 
@@ -21,7 +21,7 @@ public class AriesBulletSystem3 : EnemyShooter<EnemyBullet>
 
         while (enabled)
         {
-            float r = Random.Range(-MaxAngle, MaxAngle);
+            float r = Random.Range(-SpawnMaxAngle, SpawnMaxAngle);
 
             for (int i = 0; i < BulletCount; i++)
             {

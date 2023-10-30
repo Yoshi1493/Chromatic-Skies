@@ -19,7 +19,7 @@ public class AriesBulletSystem31 : EnemyShooter<EnemyBullet>
 
     protected override IEnumerator Shoot()
     {
-        yield return WaitForSeconds(3f);
+        yield return WaitForSeconds(2f);
 
         Vector3 v1 = 2f * Vector3.down;
 

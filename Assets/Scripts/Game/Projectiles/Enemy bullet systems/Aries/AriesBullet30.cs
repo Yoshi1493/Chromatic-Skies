@@ -14,6 +14,6 @@ public class AriesBullet30 : EnemyBullet
         yield return this.LerpSpeed(3f, 0f, 1f);
 
         moveDirection = d;
-        MoveSpeed = 3f;
+        MoveSpeed = 2.5f;
     }
 }
