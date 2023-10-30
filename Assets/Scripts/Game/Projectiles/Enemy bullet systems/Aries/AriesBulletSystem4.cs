@@ -6,9 +6,11 @@ using static MathHelper;
 public class AriesBulletSystem4 : EnemyShooter<EnemyBullet>
 {
     const int WaveCount = 90;
-    const float WaveSpacing = 4f;
+    const float WaveSpacing = 1f;
     const int BranchCount = 5;
     const float BranchSpacing = 360 / BranchCount;
+
+    protected override float ShootingCooldown => 0.05f;
 
     protected override IEnumerator Shoot()
     {
@@ -30,6 +32,7 @@ public class AriesBulletSystem4 : EnemyShooter<EnemyBullet>
                     float z = ii * BranchSpacing + n + r;
                     Vector3 pos = Vector3.zero;
 
+                    bulletData.colour = bulletData.gradient.Evaluate(Mathf.PingPong(i, WaveCount) / (WaveCount - 1));
                     SpawnProjectile(0, z, pos).Fire();
                 }
 
