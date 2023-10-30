@@ -75,8 +75,8 @@ SpriteRenderer:
   m_SortingOrder: 2
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
-  m_FlipY: 0
+  m_FlipX: 1
+  m_FlipY: 1
   m_DrawMode: 0
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
@@ -181,9 +181,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   transform: {fileID: 0}
-  moveDirection: {x: 0, y: 0, z: 0}
   projectileData: {fileID: 11400000, guid: 7c34ef2f1f7107b47afc9424dfdf8be3, type: 2}
-  moveSpeed: 0
+  moveDirection: {x: 0, y: 0, z: 0}
+  currentSpeed: 0
 --- !u!4 &4406597186128934183 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 245957615140351866, guid: 4e06125b108514547b6fc9b6887da3eb, type: 3}
