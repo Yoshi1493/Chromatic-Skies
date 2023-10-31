@@ -10,8 +10,8 @@ public class AriesBulletSystem2 : EnemyShooter<EnemyBullet>
     const float BranchSpacing = 360f / BranchCount;
     const int BulletCount = 2;
     const float BulletBaseSpeed = 4f;
-    const float BulletSpeedMultiplier = 0.05f;
-    const float BulletMaxSpeed = 8f;
+    const float BulletSpeedMultiplier = 0.08f;
+    const float BulletRotationSpeed = 270f;
 
     protected override float ShootingCooldown => 0.15f;
 
@@ -19,12 +19,9 @@ public class AriesBulletSystem2 : EnemyShooter<EnemyBullet>
     {
         yield return base.Shoot();
 
-        StartMoveAction?.Invoke();
-        SetSubsystemEnabled(1);
-
         while (enabled)
         {
-            for (int i = 0; enabled; i++)
+            for (int i = 0; i < WaveCount; i++)
             {
                 bulletData.colour = bulletData.gradient.Evaluate(Mathf.PingPong(i / (WaveCount - 1f), 1f));
 
@@ -33,18 +30,23 @@ public class AriesBulletSystem2 : EnemyShooter<EnemyBullet>
                     for (int iii = 0; iii < BulletCount; iii++)
                     {
                         float z = (i * WaveSpacing) + (ii * BranchSpacing);
-                        float s = Mathf.Min(BulletBaseSpeed + (i * BulletSpeedMultiplier), BulletMaxSpeed);
+                        float s = BulletBaseSpeed + (i * BulletSpeedMultiplier);
                         Vector3 pos = Vector3.zero;
 
                         var bullet = SpawnProjectile(0, z, pos);
                         bullet.MoveSpeed = s;
-                        bullet.StartCoroutine(bullet.RotateBy(270f, 1f, iii % BulletCount == 0));
+                        bullet.StartCoroutine(bullet.RotateBy(BulletRotationSpeed, 1f, iii % BulletCount == 0));
                         bullet.Fire();
                     }
                 }
 
                 yield return WaitForSeconds(ShootingCooldown);
             }
+
+            StartMoveAction?.Invoke();
+            SetSubsystemEnabled(1);
+
+            yield return WaitForSeconds(1f);
         }
     }
 }

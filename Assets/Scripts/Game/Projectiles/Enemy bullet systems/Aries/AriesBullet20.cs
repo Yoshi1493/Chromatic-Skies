@@ -8,6 +8,6 @@ public class AriesBullet20 : EnemyBullet
         float startSpeed = MoveSpeed;
 
         yield return WaitForSeconds(1f);
-        yield return this.LerpSpeed(startSpeed, 2.5f, 0.5f);
+        yield return this.LerpSpeed(startSpeed, 3f, 1f);
     }
 }
