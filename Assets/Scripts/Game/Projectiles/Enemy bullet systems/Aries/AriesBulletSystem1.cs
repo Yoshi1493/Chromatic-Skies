@@ -5,14 +5,14 @@ using static CoroutineHelper;
 public class AriesBulletSystem1 : EnemyShooter<EnemyBullet>
 {
     const int WaveCount = 6;
-    const float WaveSpacing = 6f;
+    const float WaveSpacing = 15f;
     const int BranchCount = 6;
-    const float BranchSpacing = 360f / BranchCount;
+    const float BranchSpacing = 6f;
     const int BulletCount = 6;
-    const float BulletSpacing = 10f;
+    const float BulletSpacing = 360f / BulletCount;
     const float BulletBaseSpeed = 4.8f;
     const float BulletSpeedMultiplier = -0.2f;
-    const float BulletRotationSpeed = 45f;
+    const float BulletRotationSpeed = 90f;
 
     protected override IEnumerator Shoot()
     {
@@ -30,15 +30,15 @@ public class AriesBulletSystem1 : EnemyShooter<EnemyBullet>
                 {
                     for (int iv = 0; iv < BulletCount; iv++)
                     {
-                        float z = (r * (iii - 1)) + (iv * BranchSpacing);
+                        float z = i * (ii % 2 * 2 - 1) * ((ii * WaveSpacing) + (iii * BranchSpacing) + (iv * BulletSpacing));
                         float s = BulletBaseSpeed + (ii * BulletSpeedMultiplier);
                         Vector3 pos = Vector3.zero;
 
-                        bulletData.colour = bulletData.gradient.Evaluate(iii % 2);
+                        bulletData.colour = bulletData.gradient.Evaluate(ii % 2);
 
                         var bullet = SpawnProjectile(0, z, pos);
                         bullet.StartCoroutine(bullet.LerpSpeed(s, s * 0.5f, 0.5f));
-                        bullet.StartCoroutine(bullet.RotateBy((iii % 2 * 2 - 1) * BulletRotationSpeed, 4f));
+                        bullet.StartCoroutine(bullet.RotateBy((ii % 2 * 2 - 1) * BulletRotationSpeed, 4f));
                         bullet.Fire();
                     }
 
