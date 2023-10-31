@@ -6,7 +6,6 @@ using static MathHelper;
 public class AriesBulletSystem4 : EnemyShooter<EnemyBullet>
 {
     const int WaveCount = 90;
-    const float WaveSpacing = 1f;
     const int BranchCount = 5;
     const float BranchSpacing = 360 / BranchCount;
 
@@ -19,26 +18,22 @@ public class AriesBulletSystem4 : EnemyShooter<EnemyBullet>
         StartMoveAction?.Invoke();
         SetSubsystemEnabled(1);
 
-        while (enabled)
+        int i = 0;
+        float r = RandomAngleDeg;
+
+        for (int ii = 1; enabled; ii++)
         {
-            int d = PositiveOrNegativeOne;
-            float n = 0f;
-            float r = Random.Range(0f, 90f);
-
-            for (int i = 1; i < WaveCount; i++)
+            for (int iii = 0; iii < BranchCount; iii++)
             {
-                for (int ii = 0; ii < BranchCount; ii++)
-                {
-                    float z = ii * BranchSpacing + n + r;
-                    Vector3 pos = Vector3.zero;
+                float z = iii * BranchSpacing + i + r;
+                Vector3 pos = Vector3.zero;
 
-                    bulletData.colour = bulletData.gradient.Evaluate(Mathf.PingPong(i, WaveCount) / (WaveCount - 1));
-                    SpawnProjectile(0, z, pos).Fire();
-                }
-
-                n += i * WaveSpacing * d;
-                yield return WaitForSeconds(ShootingCooldown);
+                bulletData.colour = bulletData.gradient.Evaluate(Mathf.PingPong(ii, WaveCount) / (WaveCount - 1));
+                SpawnProjectile(0, z, pos).Fire();
             }
+
+            i = (i + ii) % 360;
+            yield return WaitForSeconds(ShootingCooldown);
         }
     }
 }
