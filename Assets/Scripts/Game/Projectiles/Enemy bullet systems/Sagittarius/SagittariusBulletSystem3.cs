@@ -9,7 +9,7 @@ public class SagittariusBulletSystem3 : EnemyShooter<EnemyBullet>
     const int BranchCount = 10;
     const float BranchSpacing = 360f / BranchCount;
     const float BulletBaseSpeed = 3f;
-    const float BulletSpeedMultiplier = 0.2f;
+    const float BulletSpeedModifier = 0.2f;
     const float BulletSpawnRadius = 0.5f;
 
     protected override float ShootingCooldown => 0.04f;
@@ -27,7 +27,7 @@ public class SagittariusBulletSystem3 : EnemyShooter<EnemyBullet>
                 for (int ii = 0; ii < BranchCount; ii++)
                 {
                     float z = ((i * WaveSpacing) + (ii * BranchSpacing)) * r;
-                    float s = BulletBaseSpeed + (i * BulletSpeedMultiplier);
+                    float s = BulletBaseSpeed + (i * BulletSpeedModifier);
                     Vector3 pos = BulletSpawnRadius * transform.up.RotateVectorBy(z + (90f * r));
 
                     bulletData.colour = bulletData.gradient.Evaluate(i / (WaveCount - 1f));
@@ -48,7 +48,7 @@ public class SagittariusBulletSystem3 : EnemyShooter<EnemyBullet>
                 for (int ii = 0; ii < BranchCount; ii++)
                 {
                     float z = ((i * WaveSpacing) + (ii * BranchSpacing)) * r + (BranchSpacing / 2f);
-                    float s = BulletBaseSpeed + (i * BulletSpeedMultiplier);
+                    float s = BulletBaseSpeed + (i * BulletSpeedModifier);
                     Vector3 pos = BulletSpawnRadius * transform.up.RotateVectorBy(z + (90f * r));
 
                     bulletData.colour = bulletData.gradient.Evaluate(i / (WaveCount - 1f));

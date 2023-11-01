@@ -10,7 +10,7 @@ public class AquariusBulletSystem3 : EnemyShooter<EnemyBullet>
     const int BranchCount = 16;
     const float BranchSpacing = 360f / BranchCount;
     const float BulletSpawnRadius = 1f;
-    const float SpawnRadiusMultiplier = 0.8f;
+    const float SpawnRadiusModifier = 0.8f;
 
     List<(Vector2 pos, float z)> bulletSpawnData = new(WaveCount * BranchCount);
 
@@ -25,7 +25,7 @@ public class AquariusBulletSystem3 : EnemyShooter<EnemyBullet>
             for (int ii = 0; ii < BranchCount; ii++)
             {
                 float z = (i * WaveSpacing) + (ii * BranchSpacing);
-                Vector3 pos = (BulletSpawnRadius + (i * SpawnRadiusMultiplier)) * transform.up.RotateVectorBy(z);
+                Vector3 pos = (BulletSpawnRadius + (i * SpawnRadiusModifier)) * transform.up.RotateVectorBy(z);
 
                 bulletSpawnData.Add((pos, z));
             }

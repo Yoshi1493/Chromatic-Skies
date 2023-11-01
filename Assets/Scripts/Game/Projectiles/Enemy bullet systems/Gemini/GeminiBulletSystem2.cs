@@ -9,7 +9,7 @@ public class GeminiBulletSystem2 : EnemyShooter<EnemyBullet>
     const int BranchCount = 2;
     const float BranchSpacing = 360f / BranchCount;
     const float BulletBaseSpeed = 4f;
-    const float BulletSpeedMultiplier = 0.03f;
+    const float BulletSpeedModifier = 0.03f;
     const float BulletSpawnOffset = 0.5f;
 
     protected override float ShootingCooldown => 1 / 60f;
@@ -55,7 +55,7 @@ public class GeminiBulletSystem2 : EnemyShooter<EnemyBullet>
                 {
                     var data = bulletSpawnData[0];
                     float z = data.z;
-                    float s = BulletBaseSpeed - (ii * BulletSpeedMultiplier);
+                    float s = BulletBaseSpeed - (ii * BulletSpeedModifier);
                     Vector3 pos = new(data.pos.x, data.pos.y);
 
                     bulletData.colour = bulletData.gradient.Evaluate(ii / (WaveCount - 1f));

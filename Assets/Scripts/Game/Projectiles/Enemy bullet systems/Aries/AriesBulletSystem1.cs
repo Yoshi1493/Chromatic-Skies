@@ -11,7 +11,7 @@ public class AriesBulletSystem1 : EnemyShooter<EnemyBullet>
     const int BulletCount = 6;
     const float BulletSpacing = 360f / BulletCount;
     const float BulletBaseSpeed = 4.8f;
-    const float BulletSpeedMultiplier = -0.2f;
+    const float BulletSpeedModifier = -0.2f;
     const float BulletRotationSpeed = 90f;
 
     protected override IEnumerator Shoot()
@@ -31,7 +31,7 @@ public class AriesBulletSystem1 : EnemyShooter<EnemyBullet>
                     for (int iv = 0; iv < BulletCount; iv++)
                     {
                         float z = i * (ii % 2 * 2 - 1) * ((ii * WaveSpacing) + (iii * BranchSpacing) + (iv * BulletSpacing));
-                        float s = BulletBaseSpeed + (ii * BulletSpeedMultiplier);
+                        float s = BulletBaseSpeed + (ii * BulletSpeedModifier);
                         Vector3 pos = Vector3.zero;
 
                         bulletData.colour = bulletData.gradient.Evaluate(ii % 2);

@@ -13,7 +13,7 @@ public class GeminiBulletSystem31 : EnemyShooter<EnemyBullet>
     const float BulletSpawnRadius = 1f;
     const float SpawnRadiusDecreaseRate = 0.1f;
     const float BulletBaseSpeed = 2.5f;
-    const float BulletSpeedMultiplier = 0.5f;
+    const float BulletSpeedModifier = 0.5f;
 
     protected override float ShootingCooldown => 0.2f;
 
@@ -30,7 +30,7 @@ public class GeminiBulletSystem31 : EnemyShooter<EnemyBullet>
                 for (int iii = 0; iii < BulletCount; iii++)
                 {
                     float z = -((i * WaveSpacing) + (ii * BranchSpacing) + ((iii - ((BulletCount - 1) / 2f)) * BulletSpacing) + r);
-                    float s = BulletBaseSpeed + (iii * BulletSpeedMultiplier);
+                    float s = BulletBaseSpeed + (iii * BulletSpeedModifier);
                     Vector3 pos = (BulletSpawnRadius - (i * SpawnRadiusDecreaseRate)) * transform.up.RotateVectorBy(z);
 
                     var bullet = SpawnProjectile(2, z, pos);

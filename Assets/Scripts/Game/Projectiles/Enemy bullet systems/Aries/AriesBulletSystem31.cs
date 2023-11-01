@@ -9,7 +9,7 @@ public class AriesBulletSystem31 : EnemyShooter<EnemyBullet>
     const int BaseBulletCount = 18;
     const int BulletCountModifier = 6;
     const float BulletSpawnRadius = 1.5f;
-    const float SpawnRadiusMultiplier = 0.5f;
+    const float SpawnRadiusModifier = 0.5f;
     const float BulletRotationSpeed = 30f;
     const float BulletRotationSpeedModifier = 15f;
 
@@ -33,7 +33,7 @@ public class AriesBulletSystem31 : EnemyShooter<EnemyBullet>
             {
                 float z = r * ii * bulletSpacing;
                 float t = r * 90f;
-                Vector3 pos = (BulletSpawnRadius + (i * SpawnRadiusMultiplier)) * transform.up.RotateVectorBy(z - t) + v1;
+                Vector3 pos = (BulletSpawnRadius + (i * SpawnRadiusModifier)) * transform.up.RotateVectorBy(z - t) + v1;
 
                 bulletData.colour = bulletData.gradient.Evaluate(i / (RingCount - 1f));
 

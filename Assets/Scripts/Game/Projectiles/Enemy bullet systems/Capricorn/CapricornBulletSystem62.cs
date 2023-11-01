@@ -10,7 +10,7 @@ public class CapricornBulletSystem62 : EnemyShooter<EnemyBullet>
     const float BranchSpacing = 360f / BranchCount;
     const int BulletCount = 8;
     const float BulletBaseSpeed = 2f;
-    const float BulletSpeedMultiplier = 0.5f;
+    const float BulletSpeedModifier = 0.5f;
 
     protected override float ShootingCooldown => 0.2f;
 
@@ -25,7 +25,7 @@ public class CapricornBulletSystem62 : EnemyShooter<EnemyBullet>
                 for (int iii = 0; iii < BulletCount; iii++)
                 {
                     float z = (i * WaveSpacing) + (ii * BranchSpacing) + r;
-                    float s = BulletBaseSpeed + (iii * BulletSpeedMultiplier);
+                    float s = BulletBaseSpeed + (iii * BulletSpeedModifier);
                     Vector3 pos = Vector3.zero;
 
                     bulletData.colour = bulletData.gradient.Evaluate(iii / (BulletCount - 1f));

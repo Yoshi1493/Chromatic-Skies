@@ -9,7 +9,7 @@ public class CancerBulletSystem5 : EnemyShooter<EnemyBullet>
     const int BranchCount = 6;
     const float BranchSpacing = 360f / BranchCount;
     const float BulletBaseSpeed = 4f;
-    const float BulletSpeedMultiplier = 0.1f;
+    const float BulletSpeedModifier = 0.1f;
 
     protected override IEnumerator Shoot()
     {
@@ -29,7 +29,7 @@ public class CancerBulletSystem5 : EnemyShooter<EnemyBullet>
                 for (int ii = 0; ii < BranchCount; ii++)
                 {
                     z = (i * WaveSpacing) + (ii * BranchSpacing);
-                    float s = BulletBaseSpeed + (i * BulletSpeedMultiplier);
+                    float s = BulletBaseSpeed + (i * BulletSpeedModifier);
                     pos = (2f * Vector3.forward) + transform.position;
 
                     var bullet = SpawnProjectile(1, z, pos, false);

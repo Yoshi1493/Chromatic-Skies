@@ -9,7 +9,7 @@ public class AquariusBulletSystem42 : EnemyShooter<EnemyBullet>
     const int BulletCount = 12;
     const float BulletSpacing = 360f / (BulletCount);
     const float BulletBaseSpeed = 2f;
-    const float BulletSpeedMultiplier = 0.5f;
+    const float BulletSpeedModifier = 0.5f;
 
     protected override float ShootingCooldown => 5f;
 
@@ -26,7 +26,7 @@ public class AquariusBulletSystem42 : EnemyShooter<EnemyBullet>
                 for (int iii = 0; iii < BulletCount; iii++)
                 {
                     float z = i * ((ii * BranchSpacing) + (iii * BulletSpacing));
-                    float s = BulletBaseSpeed + (r * BulletSpeedMultiplier);
+                    float s = BulletBaseSpeed + (r * BulletSpeedModifier);
                     Vector3 pos = Vector3.zero;
 
                     bulletData.colour = bulletData.gradient.Evaluate(ii / (BranchCount - 1f));

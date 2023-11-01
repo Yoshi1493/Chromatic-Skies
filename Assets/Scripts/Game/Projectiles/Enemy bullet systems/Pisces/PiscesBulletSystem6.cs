@@ -14,9 +14,9 @@ public class PiscesBulletSystem6 : EnemyShooter<EnemyBullet>
     const int BulletCount = 3;
     const float BulletSpacing = 360f / BulletCount;
     const float BulletSpawnRadius = 1.2f;
-    const float SpawnRadiusMultiplier = 0.6f;
+    const float SpawnRadiusModifier = 0.6f;
     const float BulletBaseSpeed = 2f;
-    const float BulletSpeedMultiplier = 0.4f;
+    const float BulletSpeedModifier = 0.4f;
 
     protected override float ShootingCooldown => 0.05f;
 
@@ -45,7 +45,7 @@ public class PiscesBulletSystem6 : EnemyShooter<EnemyBullet>
                         for (int iv = 0; iv < BulletCount; iv++)
                         {
                             float z = iv * BulletSpacing;
-                            Vector3 pos = (BulletSpawnRadius + (i * SpawnRadiusMultiplier)) * Vector3.Lerp(v1, v2, t);
+                            Vector3 pos = (BulletSpawnRadius + (i * SpawnRadiusModifier)) * Vector3.Lerp(v1, v2, t);
 
                             bulletData.colour = bulletData.gradient.Evaluate(i / (WaveWaveCount - 1f));
                             bullets.Add(SpawnProjectile(0, z, pos));
@@ -61,7 +61,7 @@ public class PiscesBulletSystem6 : EnemyShooter<EnemyBullet>
                 for (int ii = 0; ii < WaveCount * BranchCount * BulletCount; ii++)
                 {
                     int b = (i * WaveCount * BranchCount * BulletCount) + ii;
-                    float s = BulletBaseSpeed - (i * BulletSpeedMultiplier);
+                    float s = BulletBaseSpeed - (i * BulletSpeedModifier);
 
                     bullets[b].MoveSpeed = s;
                     bullets[b].StartCoroutine(bullets[b].RotateBy(Random.Range(-BranchSpacing, BranchSpacing) * 2f, 3f));

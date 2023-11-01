@@ -7,7 +7,7 @@ public class CancerBullet10 : ScriptableEnemyBullet<CancerBulletSystem1, EnemyBu
     const int BulletCount = 3;
     const float BulletSpacing = 360f / BulletCount;
     const float BulletBaseSpeed = 2f;
-    const float BulletSpeedMultiplier = 0.6f;
+    const float BulletSpeedModifier = 0.6f;
 
     [Space]
     [SerializeField] ProjectileObject bulletData;
@@ -28,7 +28,7 @@ public class CancerBullet10 : ScriptableEnemyBullet<CancerBulletSystem1, EnemyBu
             for (int ii = 0; ii < BulletCount; ii++)
             {
                 float z = ii * BulletSpacing + r;
-                float s = BulletBaseSpeed + (i * BulletSpeedMultiplier);
+                float s = BulletBaseSpeed + (i * BulletSpeedModifier);
                 Vector3 pos = transform.position;
 
                 var bullet = SpawnBullet(1, z, pos, false);

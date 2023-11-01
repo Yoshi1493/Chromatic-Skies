@@ -7,7 +7,7 @@ public class TaurusBulletSystem32 : EnemyShooter<EnemyBullet>
     const float BranchSpacing = 360f / BranchCount;
     const int BulletCount = 6;
     const float BulletBaseSpeed = 2.2f;
-    const float BulletSpeedMultiplier = 0.3f;
+    const float BulletSpeedModifier = 0.3f;
 
     protected override IEnumerator Shoot()
     {
@@ -18,7 +18,7 @@ public class TaurusBulletSystem32 : EnemyShooter<EnemyBullet>
             for (int ii = 0; ii < BulletCount; ii++)
             {
                 float z = ((i + 0.5f) * BranchSpacing) + r;
-                float s = BulletBaseSpeed + (ii * BulletSpeedMultiplier);
+                float s = BulletBaseSpeed + (ii * BulletSpeedModifier);
                 Vector3 pos = Vector3.zero;
 
                 bulletData.colour = bulletData.gradient.Evaluate(ii / (BulletCount - 1f));

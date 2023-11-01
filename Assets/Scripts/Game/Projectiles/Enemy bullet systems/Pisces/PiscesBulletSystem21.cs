@@ -11,7 +11,7 @@ public class PiscesBulletSystem21 : EnemyShooter<EnemyBullet>
     const int BranchCount = ((int)(360 - (SafeZone * 2)) / (int)BranchSpacing / 2) + 1;
     const float BranchSpacing = 10f;
     const float BulletBaseSpeed = 3f;
-    const float BulletSpeedMultiplier = 0.1f;
+    const float BulletSpeedModifier = 0.1f;
 
     protected override float ShootingCooldown => 0.2f;
 
@@ -22,7 +22,7 @@ public class PiscesBulletSystem21 : EnemyShooter<EnemyBullet>
         for (int i = 0; i < WaveCount; i++)
         {
             float t = Mathf.PingPong(i, WaveCount / 4) * WaveOffset;
-            float s = BulletBaseSpeed - (i * BulletSpeedMultiplier);
+            float s = BulletBaseSpeed - (i * BulletSpeedModifier);
 
             bulletData.colour = bulletData.gradient.Evaluate(i / (WaveCount - 1f));
 

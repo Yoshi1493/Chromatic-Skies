@@ -10,7 +10,7 @@ public class AriesBulletSystem2 : EnemyShooter<EnemyBullet>
     const float BranchSpacing = 360f / BranchCount;
     const int BulletCount = 2;
     const float BulletBaseSpeed = 4f;
-    const float BulletSpeedMultiplier = 0.08f;
+    const float BulletSpeedModifier = 0.08f;
     const float BulletRotationSpeed = 270f;
 
     protected override float ShootingCooldown => 0.15f;
@@ -30,7 +30,7 @@ public class AriesBulletSystem2 : EnemyShooter<EnemyBullet>
                     for (int iii = 0; iii < BulletCount; iii++)
                     {
                         float z = (i * WaveSpacing) + (ii * BranchSpacing);
-                        float s = BulletBaseSpeed + (i * BulletSpeedMultiplier);
+                        float s = BulletBaseSpeed + (i * BulletSpeedModifier);
                         Vector3 pos = Vector3.zero;
 
                         var bullet = SpawnProjectile(0, z, pos);

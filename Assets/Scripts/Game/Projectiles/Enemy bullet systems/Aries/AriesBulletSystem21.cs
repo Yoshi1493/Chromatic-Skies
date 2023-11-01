@@ -7,7 +7,7 @@ public class AriesBulletSystem21 : EnemyShooter<EnemyBullet>
     const int WaveCount = 6;
     const int BulletCount = 6;
     const float BulletBaseSpeed = 4f;
-    const float BulletSpeedMultiplier = 0.4f;
+    const float BulletSpeedModifier = 0.4f;
 
     protected override float ShootingCooldown => 0.2f;
 
@@ -19,7 +19,7 @@ public class AriesBulletSystem21 : EnemyShooter<EnemyBullet>
 
             for (int ii = 0; ii < BulletCount; ii++)
             {
-                float s = BulletBaseSpeed + (ii * BulletSpeedMultiplier);
+                float s = BulletBaseSpeed + (ii * BulletSpeedModifier);
                 Vector3 pos = Vector3.zero;
 
                 bulletData.colour = bulletData.gradient.Evaluate(ii / (BulletCount - 1f));

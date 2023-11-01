@@ -9,7 +9,7 @@ public class CapricornBulletSystem31 : EnemyShooter<EnemyBullet>
     const float BranchSpacing = 120f / BranchCount;
     const int MaxBulletCount = 7;
     const float BulletBaseSpeed = 2f;
-    const float BulletSpeedMultiplier = 0.2f;
+    const float BulletSpeedModifier = 0.2f;
 
     protected override float ShootingCooldown => 1.0f;
 
@@ -27,7 +27,7 @@ public class CapricornBulletSystem31 : EnemyShooter<EnemyBullet>
                 for (int iii = 0; iii < bulletCount; iii++)
                 {
                     float z = ((ii - ((BranchCount - 1) / 2f)) * BranchSpacing) + r;
-                    float s = BulletBaseSpeed + (iii * BulletSpeedMultiplier);
+                    float s = BulletBaseSpeed + (iii * BulletSpeedModifier);
                     Vector3 pos = Vector3.zero;
 
                     var bullet = SpawnProjectile(1, z, pos);

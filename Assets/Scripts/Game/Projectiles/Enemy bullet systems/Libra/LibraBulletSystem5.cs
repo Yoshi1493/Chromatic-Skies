@@ -8,7 +8,7 @@ public class LibraBulletSystem5 : EnemyShooter<EnemyBullet>
     const int BranchCount = 24;
     const float BranchSpacing = 360f / BranchCount;
     const float BulletBaseSpeed = 1f;
-    const float BulletSpeedMultiplier = 0.1f;
+    const float BulletSpeedModifier = 0.1f;
     const float MaxShootingCooldown = 0.5f;
 
     protected override float ShootingCooldown => 4f;
@@ -23,7 +23,7 @@ public class LibraBulletSystem5 : EnemyShooter<EnemyBullet>
 
             for (int i = 0; i < WaveCount; i++)
             {
-                float s = BulletBaseSpeed + (i * BulletSpeedMultiplier);
+                float s = BulletBaseSpeed + (i * BulletSpeedModifier);
                 Vector3 pos = Random.insideUnitCircle;
 
                 bulletData.colour = bulletData.gradient.Evaluate(i / (WaveCount - 1f));

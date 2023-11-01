@@ -9,7 +9,7 @@ public class PiscesBulletSystem11 : EnemyShooter<EnemyBullet>
     const int BulletCount = 48;
     const int BulletSpacing = 360 / BulletCount;
     const float BulletBaseSpeed = 1.5f;
-    const float BulletSpeedMultiplier = 2f;
+    const float BulletSpeedModifier = 2f;
 
     protected override float ShootingCooldown => 0.5f;
 
@@ -23,7 +23,7 @@ public class PiscesBulletSystem11 : EnemyShooter<EnemyBullet>
 
                 int b = Mathf.RoundToInt(Random.value) + 1;
                 float z = (i * WaveSpacing) + (ii * BulletSpacing);
-                float s = BulletBaseSpeed + (r * BulletSpeedMultiplier);
+                float s = BulletBaseSpeed + (r * BulletSpeedModifier);
 
                 bulletData.colour = bulletData.gradient.Evaluate(r);
 

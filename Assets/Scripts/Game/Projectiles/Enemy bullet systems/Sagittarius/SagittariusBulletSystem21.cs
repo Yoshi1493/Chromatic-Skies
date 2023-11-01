@@ -8,7 +8,7 @@ public class SagittariusBulletSystem21 : EnemyShooter<EnemyBullet>
     const int BulletCount = 7;
     const float BulletSpacing = 4f;
     const float BulletBaseSpeed = 4f;
-    const float BulletSpeedMultiplier = 0.5f;
+    const float BulletSpeedModifier = 0.5f;
 
     protected override float ShootingCooldown => 0.2f;
 
@@ -24,7 +24,7 @@ public class SagittariusBulletSystem21 : EnemyShooter<EnemyBullet>
             {
                 float t = ii - ((BulletCount - 1) / 2f);
                 float z = (i * WaveSpacing) + (t * BulletSpacing);
-                float s = BulletBaseSpeed - (Mathf.Abs(t) * BulletSpeedMultiplier * BulletSpeedMultiplier);
+                float s = BulletBaseSpeed - (Mathf.Abs(t) * BulletSpeedModifier * BulletSpeedModifier);
                 Vector3 pos = Vector3.zero;
 
                 bulletData.colour = bulletData.gradient.Evaluate(ii / (BulletCount - 1f));

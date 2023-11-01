@@ -7,10 +7,10 @@ public class PiscesBulletSystem1 : EnemyShooter<EnemyBullet>
 {
     const int WaveCount = 36;
     const int WaveSpacing = 360 / WaveCount;
-    const float WaveSpeedMultiplier = 0.1f;
+    const float WaveSpeedModifier = 0.1f;
     const int BulletCount = 2;
     const float BulletBaseSpeed = 2f;
-    const float BulletSpeedMultiplier = 0.2f;
+    const float BulletSpeedModifier = 0.2f;
 
     List<(float z, float s)> bulletSpawnData = new(WaveCount * BulletCount);
 
@@ -25,7 +25,7 @@ public class PiscesBulletSystem1 : EnemyShooter<EnemyBullet>
             for (int ii = 0; ii < BulletCount; ii++)
             {
                 float z = (i + (ii * 0.5f)) * WaveSpacing;
-                float s = (BulletBaseSpeed + (i * WaveSpeedMultiplier)) * (1 - (ii * BulletSpeedMultiplier));
+                float s = (BulletBaseSpeed + (i * WaveSpeedModifier)) * (1 - (ii * BulletSpeedModifier));
                 bulletSpawnData.Add((z, s));
             }
         }

@@ -10,7 +10,7 @@ public class VirgoBullet61 : ScriptableEnemyBullet<VirgoBulletSystem61, EnemyBul
     const int BranchCount = 6;
     const float BranchSpacing = 360f / BranchCount;
     const float BulletBaseSpeed = 3f;
-    const float BulletSpeedMultiplier = 0.4f;
+    const float BulletSpeedModifier = 0.4f;
     const float ShootingCooldown = 0.1f;
 
     protected override IEnumerator Move()
@@ -35,7 +35,7 @@ public class VirgoBullet61 : ScriptableEnemyBullet<VirgoBulletSystem61, EnemyBul
             for (int ii = 0; ii < BranchCount; ii++)
             {
                 float z = (transform.eulerAngles.z + 180f) + (ii * BranchSpacing);
-                float s = BulletBaseSpeed + (i * BulletSpeedMultiplier);
+                float s = BulletBaseSpeed + (i * BulletSpeedModifier);
                 Vector3 pos = transform.position;
 
                 bulletData.colour = spriteRenderer.color;

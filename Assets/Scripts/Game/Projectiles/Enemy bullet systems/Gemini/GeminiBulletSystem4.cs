@@ -10,9 +10,9 @@ public class GeminiBulletSystem4 : EnemyShooter<EnemyBullet>
     const int BulletCount = 36;
     const float BulletSpacing = 360f / BulletCount;
     const float BulletSpawnRadius = 1f;
-    const float SpawnRadiusMultiplier = 0.5f;
+    const float SpawnRadiusModifier = 0.5f;
     const float BulletBaseSpeed = 2f;
-    const float BulletSpeedMultiplier = 0.5f;
+    const float BulletSpeedModifier = 0.5f;
 
     protected override float ShootingCooldown => 0.25f;
 
@@ -32,7 +32,7 @@ public class GeminiBulletSystem4 : EnemyShooter<EnemyBullet>
                 for (int ii = 0; ii < BulletCount; ii++)
                 {
                     float z = (i * WaveSpacing) + (ii * BulletSpacing);
-                    Vector3 pos = (BulletSpawnRadius + (i * SpawnRadiusMultiplier)) * Vector3.up.RotateVectorBy(z) + v1;
+                    Vector3 pos = (BulletSpawnRadius + (i * SpawnRadiusModifier)) * Vector3.up.RotateVectorBy(z) + v1;
 
                     bulletSpawnData.Add((pos, z));
                     SpawnProjectile(0, z, pos, false).Fire();
@@ -51,7 +51,7 @@ public class GeminiBulletSystem4 : EnemyShooter<EnemyBullet>
                 {
                     var data = bulletSpawnData[0];
                     float z = data.z;
-                    float s = BulletBaseSpeed + (ii % 2  * BulletSpeedMultiplier);
+                    float s = BulletBaseSpeed + (ii % 2  * BulletSpeedModifier);
                     Vector3 pos = new(data.pos.x, data.pos.y);
 
                     bulletData.colour = bulletData.gradient.Evaluate(ii % 2);

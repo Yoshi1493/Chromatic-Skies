@@ -15,7 +15,7 @@ public class CancerBulletSystem4 : EnemyShooter<EnemyBullet>
     const float BulletSpacing = ArcWidth / (BulletCount - 1);
     const float BulletSpawnRadius = 0.8f;
     const float BulletBaseSpeed = 2f;
-    const float BulletSpeedMultiplier = 0.06f;
+    const float BulletSpeedModifier = 0.06f;
 
     List<EnemyBullet> bullets = new(BulletCount * BranchCount);
 
@@ -52,7 +52,7 @@ public class CancerBulletSystem4 : EnemyShooter<EnemyBullet>
 
                 for (int ii = 0; ii < bullets.Count; ii++)
                 {
-                    float s = BulletBaseSpeed + (ii / BranchCount * BulletSpeedMultiplier);
+                    float s = BulletBaseSpeed + (ii / BranchCount * BulletSpeedModifier);
                     float t = ii % 12f * 2f;
 
                     bullets[ii].StartCoroutine(bullets[ii].LerpSpeed(0f, s, 2f));

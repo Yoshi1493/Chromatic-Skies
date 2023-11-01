@@ -8,7 +8,7 @@ public class CapricornBulletSystem51 : EnemyShooter<EnemyBullet>
     const int BranchCount = 15;
     const float BranchSpacing = 360f / BranchCount;
     const float BulletBaseSpeed = 2f;
-    const float BulletSpeedMultiplier = 0.2f;
+    const float BulletSpeedModifier = 0.2f;
     const float BulletRotationSpeed = -30f;
     const float BulletRotationSpeedModifier = -2f;
 
@@ -23,7 +23,7 @@ public class CapricornBulletSystem51 : EnemyShooter<EnemyBullet>
             for (int ii = 0; ii < BranchCount; ii++)
             {
                 float z = (ii * BranchSpacing) + r;
-                float s = BulletBaseSpeed + (i * BulletSpeedMultiplier);
+                float s = BulletBaseSpeed + (i * BulletSpeedModifier);
                 float t = BulletRotationSpeed + (i * BulletRotationSpeedModifier);
                 Vector3 pos = Vector3.zero;
 

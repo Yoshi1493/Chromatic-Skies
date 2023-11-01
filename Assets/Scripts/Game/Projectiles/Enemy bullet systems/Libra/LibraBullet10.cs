@@ -10,7 +10,7 @@ public class LibraBullet10 : ScriptableEnemyBullet<LibraBulletSystem1, EnemyBull
     const int BranchCount = 4;
     const float BranchSpacing = 360f / BranchCount;
     const float BulletBaseSpeed = 2f;
-    const float BulletSpeedMultiplier = 0.5f;
+    const float BulletSpeedModifier = 0.5f;
     const float ShootingCooldown = 0.2f;
 
     protected override float MaxLifetime => Mathf.Infinity;
@@ -33,7 +33,7 @@ public class LibraBullet10 : ScriptableEnemyBullet<LibraBulletSystem1, EnemyBull
             for (int ii = 0; ii < BranchCount; ii++)
             {
                 float z = -(i * WaveSpacing) - (ii * BranchSpacing);
-                float s = BulletBaseSpeed + ((BranchCount - ii) * BulletSpeedMultiplier);
+                float s = BulletBaseSpeed + ((BranchCount - ii) * BulletSpeedModifier);
                 Vector3 pos = transform.position;
 
                 var bullet = SpawnBullet(bulletID, z, pos, false);

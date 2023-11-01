@@ -11,7 +11,7 @@ public class VirgoBulletSystem6 : EnemyShooter<EnemyBullet>
     const float BranchSpacing = 360f / BranchCount;
     const int BulletCount = 36;
     const float MaxBulletSpacing = 360f * (BranchCount - 1) / BranchCount / 2;
-    const float RingRadiusMultiplier = 0.4f;
+    const float RingRadiusModifier = 0.4f;
     const int BulletClumpCount = 3;
     const float BulletClumpSpacing = MaxBulletSpacing * 2f / BulletCount;
 
@@ -34,7 +34,7 @@ public class VirgoBulletSystem6 : EnemyShooter<EnemyBullet>
                         float r = (i * WaveSpacing) + (iii * BranchSpacing);
                         float z = Mathf.Lerp(-MaxBulletSpacing, MaxBulletSpacing, (float)ii / BulletCount);
 
-                        Vector3 v1 = (i * RingRadiusMultiplier + 1) * transform.up.RotateVectorBy(r);
+                        Vector3 v1 = (i * RingRadiusModifier + 1) * transform.up.RotateVectorBy(r);
                         Vector3 v2 = v1 + v1.RotateVectorBy(z);
 
                         var bullet = SpawnProjectile(i, z + r, v2);
