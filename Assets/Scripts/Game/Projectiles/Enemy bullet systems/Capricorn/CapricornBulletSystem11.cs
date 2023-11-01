@@ -24,6 +24,8 @@ public class CapricornBulletSystem11 : EnemyShooter<EnemyBullet>
                     float r = (iii % 2 * 2 - 1) * BulletRotationSpeed;
                     Vector3 pos = Vector3.zero;
 
+                    bulletData.colour = bulletData.gradient.Evaluate(iii);
+
                     var bullet = SpawnProjectile(1, z, pos);
                     bullet.StartCoroutine(bullet.RotateBy(r, 1f));
                     bullet.Fire();
