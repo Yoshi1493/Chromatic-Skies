@@ -5,7 +5,7 @@ using static CoroutineHelper;
 
 public class AquariusBulletSystem3 : EnemyShooter<EnemyBullet>
 {
-    const int WaveCount = 20;
+    const int WaveCount = 16;
     const float WaveSpacing = 8f;
     const int BranchCount = 16;
     const float BranchSpacing = 360f / BranchCount;
