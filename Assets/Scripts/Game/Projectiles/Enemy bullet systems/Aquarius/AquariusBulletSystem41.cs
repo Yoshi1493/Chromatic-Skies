@@ -5,11 +5,9 @@ using static CoroutineHelper;
 public class AquariusBulletSystem41 : EnemyShooter<EnemyBullet>
 {
     const float SpawnMaxAngle = 15f;
-    const int BulletCount = 4;
+    const int BulletCount = 6;
     const float BulletMinSpeed = 4f;
     const float BulletMaxSpeed = 6f;
-
-    protected override float ShootingCooldown => 0.05f;
 
     protected override IEnumerator Shoot()
     {
