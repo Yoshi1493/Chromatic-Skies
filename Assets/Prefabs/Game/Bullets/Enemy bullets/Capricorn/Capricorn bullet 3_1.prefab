@@ -53,7 +53,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3140064405051798717, guid: 4e06125b108514547b6fc9b6887da3eb, type: 3}
       propertyPath: m_Name
-      value: Capricorn bullet 3_1_0
+      value: Capricorn bullet 3_1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4e06125b108514547b6fc9b6887da3eb, type: 3}
@@ -62,7 +62,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3140064405051798717, guid: 4e06125b108514547b6fc9b6887da3eb, type: 3}
   m_PrefabInstance: {fileID: 5439199463603466788}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &3956775251690784573
+--- !u!114 &-6474535843091857312
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -75,7 +75,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   transform: {fileID: 0}
-  moveDirection: {x: 0, y: 0, z: 0}
   projectileData: {fileID: 11400000, guid: 17b0aa5c2cee5ad44824b8dbf7fe8b4c, type: 2}
-  moveSpeed: 0
-  rotatesClockwise: 0
+  moveDirection: {x: 0, y: 0, z: 0}
+  currentSpeed: 0

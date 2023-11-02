@@ -1,37 +1,46 @@
 using System.Collections;
 using UnityEngine;
 using static CoroutineHelper;
+using static MathHelper;
 
 public class CapricornBulletSystem3 : EnemyShooter<EnemyBullet>
 {
-    const int WaveCount = 7;
-    const float WaveSpacing = 8f;
+    const int WaveCount = 60;
+    const float WaveSpacing = 10f;
     const int BranchCount = 2;
-    const int BulletCount = 18;
+    const int BulletCount = 4;
     const float BulletSpacing = 360f / BulletCount;
-    const float BulletBaseSpeed = 3f;
-    const float BulletSpeedModifier = 0.2f;
+    const float BulletBaseSpeed = 5f;
+    const float BulletSpeedModifier = 0.04f;
+    const float BulletSpawnRadius = 1f;
+    const float SpawnRadiusModifier = 0.01f;
+
+    protected override float ShootingCooldown => 0.05f;
 
     protected override IEnumerator Shoot()
     {
         yield return base.Shoot();
 
+        SetSubsystemEnabled(1);
+        yield return WaitForSeconds(1f);
+
         while (enabled)
         {
             for (int i = 0; i < WaveCount; i++)
             {
-                float y = 2f - i;
-                float s = BulletBaseSpeed - (i * BulletSpeedModifier);
-                bulletData.colour = bulletData.gradient.Evaluate(i / (WaveCount - 1f));
+                float s = BulletBaseSpeed + (i * BulletSpeedModifier);
 
                 for (int ii = 0; ii < BranchCount; ii++)
                 {
-                    float x = (ii % 2 * 2 - 1) * ((0.2f + (i * 0.05f)) * screenHalfWidth);
+                    float r = RandomAngleDeg;
+                    float t = (ii % 2 * 2 - 1) * i * WaveSpacing;
 
                     for (int iii = 0; iii < BulletCount; iii++)
                     {
-                        float z = (i * WaveSpacing) + (iii * BulletSpacing);
-                        Vector3 pos = new(x, y);
+                        float z = (iii * BulletSpacing) + r;
+                        Vector3 pos = (BulletSpawnRadius + (i * SpawnRadiusModifier)) * transform.up.RotateVectorBy(t);
+
+                        bulletData.colour = bulletData.gradient.Evaluate(ii);
 
                         var bullet = SpawnProjectile(0, z, pos);
                         bullet.MoveSpeed = s;
@@ -42,12 +51,8 @@ public class CapricornBulletSystem3 : EnemyShooter<EnemyBullet>
                 yield return WaitForSeconds(ShootingCooldown);
             }
 
-            yield return WaitForSeconds(2f);
-
             StartMoveAction?.Invoke();
-            SetSubsystemEnabled(1);
-
-            yield return WaitForSeconds(4f);
+            yield return WaitForSeconds(2f);
         }
     }
 }
