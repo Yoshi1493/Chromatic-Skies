@@ -5,11 +5,11 @@ using static CoroutineHelper;
 public class CapricornBulletSystem31 : EnemyShooter<EnemyBullet>
 {
     const int WaveCount = 3;
-    const int BranchCount = 5;
-    const float BranchSpacing = 10f;
-    const int BulletCount = 10;
-    const float BulletBaseSpeed = 2.5f;
-    const float BulletSpeedModifier = 0.3f;
+    const int BranchCount = 7;
+    const float BranchSpacing = 15f;
+    const int MinBulletCount = 1;
+    const float BulletBaseSpeed = 2f;
+    const float BulletSpeedModifier = 0.4f;
 
     protected override float ShootingCooldown => 0.3f;
 
@@ -17,11 +17,15 @@ public class CapricornBulletSystem31 : EnemyShooter<EnemyBullet>
     {
         for (int i = 0; i < WaveCount; i++)
         {
+            yield return WaitForSeconds(ShootingCooldown);
+
             float r = PlayerPosition.GetRotationDifference(transform.position);
 
             for (int ii = 0; ii < BranchCount; ii++)
             {
-                for (int iii = 0; iii < BulletCount; iii++)
+                int bulletCount = MinBulletCount + ((int)Mathf.PingPong(ii, BranchCount / 2) * 2);
+
+                for (int iii = 0; iii < bulletCount; iii++)
                 {
                     float z = ((ii - ((BranchCount - 1) / 2f)) * BranchSpacing) + r;
                     float s = BulletBaseSpeed + (iii * BulletSpeedModifier);
@@ -34,8 +38,6 @@ public class CapricornBulletSystem31 : EnemyShooter<EnemyBullet>
                     bullet.StartCoroutine(bullet.LerpSpeed(BulletBaseSpeed, s, 1f));
                 }
             }
-
-            yield return WaitForSeconds(ShootingCooldown);
         }
 
         enabled = false;

@@ -21,9 +21,6 @@ public class CapricornBulletSystem3 : EnemyShooter<EnemyBullet>
     {
         yield return base.Shoot();
 
-        SetSubsystemEnabled(1);
-        yield return WaitForSeconds(1f);
-
         while (enabled)
         {
             for (int i = 0; i < WaveCount; i++)
@@ -52,6 +49,8 @@ public class CapricornBulletSystem3 : EnemyShooter<EnemyBullet>
             }
 
             StartMoveAction?.Invoke();
+            SetSubsystemEnabled(1);
+
             yield return WaitForSeconds(2f);
         }
     }
