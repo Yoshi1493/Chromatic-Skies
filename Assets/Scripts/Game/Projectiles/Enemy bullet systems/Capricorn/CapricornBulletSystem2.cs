@@ -4,8 +4,8 @@ using static CoroutineHelper;
 
 public class CapricornBulletSystem2 : EnemyShooter<EnemyBullet>
 {
-    const int WaveCount = 40;
-    const float WaveSpacing = 5f;
+    const int WaveCount = 80;
+    const float WaveSpacing = 2.5f;
     const int BranchCount = 4;
     const float BranchSpacing = 360f / BranchCount;
 
@@ -13,7 +13,7 @@ public class CapricornBulletSystem2 : EnemyShooter<EnemyBullet>
 
     protected override IEnumerator Shoot()
     {
-        yield return base.Shoot();        
+        yield return base.Shoot();
 
         for (int i = 1; enabled; i *= -1)
         {
@@ -34,7 +34,7 @@ public class CapricornBulletSystem2 : EnemyShooter<EnemyBullet>
                 yield return WaitForSeconds(ShootingCooldown);
             }
 
-            yield return WaitForSeconds(1.2f);
+            yield return WaitForSeconds(1f);
 
             SetSubsystemEnabled(1);
             yield return WaitForSeconds(3f);

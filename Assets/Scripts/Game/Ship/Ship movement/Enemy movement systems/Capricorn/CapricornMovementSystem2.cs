@@ -9,9 +9,9 @@ public class CapricornMovementSystem2 : EnemyMovement
         Vector3 p0 = parentShip.transform.position;
         yield return this.MoveToRandomPosition(1f, 2f, 2f);
 
-        yield return this.MoveTo(p0, 1f);
+        yield return this.MoveTo(p0, 2f);
 
-        yield return WaitForSeconds(1f);
+        yield return WaitForSeconds(0.5f);
         yield return this.MoveToRandomPosition(1f, 3f, 4f);
     }
 }
