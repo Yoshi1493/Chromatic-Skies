@@ -10,6 +10,7 @@ public class CapricornBulletSystem31 : EnemyShooter<EnemyBullet>
     const int MinBulletCount = 1;
     const float BulletBaseSpeed = 2f;
     const float BulletSpeedModifier = 0.4f;
+    const float BulletSpawnRadius = 0.5f;
 
     protected override float ShootingCooldown => 0.3f;
 
@@ -29,7 +30,7 @@ public class CapricornBulletSystem31 : EnemyShooter<EnemyBullet>
                 {
                     float z = ((ii - ((BranchCount - 1) / 2f)) * BranchSpacing) + r;
                     float s = BulletBaseSpeed + (iii * BulletSpeedModifier);
-                    Vector3 pos = Vector3.zero;
+                    Vector3 pos = BulletSpawnRadius * transform.up.RotateVectorBy(z);
 
                     bulletData.colour = bulletData.gradient.Evaluate(i / (WaveCount - 1f));
 
