@@ -1,36 +1,32 @@
 using System.Collections;
 using UnityEngine;
 using static CoroutineHelper;
+using static MathHelper;
 
 public class PiscesBulletSystem31 : EnemyShooter<EnemyBullet>
 {
-    const float WaveSpacing = 10f;
-    const int BranchCount = 3;
-    const float BranchSpacing = 360f / BranchCount;
-    const int BulletCount = 3;
-    const float BulletSpacing = 8f;
-    const float BulletBaseSpeed = 2f;
-    const float BulletSpeedModifier = 0.5f;
+    const int BulletCount = 6;
+    const int BulletSpacing = 360 / BulletCount;
 
-    protected override float ShootingCooldown => 0.2f;
+    protected override float ShootingCooldown => 1.0f;
 
     protected override IEnumerator Shoot()
     {
-        for (int i = 0; enabled; i++)
-        {
-            for (int ii = 0; ii < BranchCount; ii++)
-            {
-                for (int iii = 0; iii < BulletCount; iii++)
-                {
-                    float z = (i * WaveSpacing) + (ii * BranchSpacing) + (iii * BulletSpacing);
-                    float s = BulletBaseSpeed + (iii * BulletSpeedModifier);
-                    Vector3 pos = Vector3.zero;
+        yield return WaitForSeconds(3f);
 
-                    bulletData.colour = bulletData.gradient.Evaluate(iii / (BulletCount - 1f));
-                    var bullet = SpawnProjectile(1, z, pos);
-                    bullet.MoveSpeed = s;
-                    bullet.Fire();
-                }
+        while (enabled)
+        {
+            float t = RandomAngleDeg;
+            Vector3 pos = transform.up.RotateVectorBy(t);
+            float r = PlayerPosition.GetRotationDifference(transform.position + pos);
+
+            bulletData.colour = bulletData.gradient.Evaluate(Random.value);
+
+            for (int ii = 0; ii < BulletCount; ii++)
+            {
+                float z = (ii * BulletSpacing) + r;
+
+                SpawnProjectile(1, z, pos).Fire();
             }
 
             yield return WaitForSeconds(ShootingCooldown);
