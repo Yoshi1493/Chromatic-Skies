@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: '[Pisces] Bullet 3_1'
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: 955788fd829b613429b1f8461721ea15, type: 3}
-  useSolidColour: 0
-  colour: {r: 0, g: 0, b: 0, a: 0}
+  useSolidColour: 1
+  colour: {r: 0.5099341, g: 0.56832236, b: 1, a: 1}
   gradient:
     serializedVersion: 2
     key0: {r: 0.7, g: 0.6, b: 1, a: 1}

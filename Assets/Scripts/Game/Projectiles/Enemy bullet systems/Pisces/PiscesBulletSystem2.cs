@@ -1,53 +1,70 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using static CoroutineHelper;
 
 public class PiscesBulletSystem2 : EnemyShooter<EnemyBullet>
 {
-    const int WaveCount = 3;
-    const int BranchCount = 3;
+    const float WaveSpacing = BranchSpacing / 2f;
+    const int BranchCount = 6;
     const float BranchSpacing = 360f / BranchCount;
-    const float BulletSpacing = 15f;
+    const int BulletCount = 3;
+    const float BulletSpacing = 1f;
+    const int BulletsPerBranch = 6;
+    const float BulletBaseSpeed = 3f;
+    const float BulletSpeedModifier = 1.5f;
+    const float BulletRotationSpeed = 30f;
+
+    List<EnemyBullet> bullets = new(BranchCount * BulletCount * BulletsPerBranch);
+
+    protected override float ShootingCooldown => 1.5f;
 
     protected override IEnumerator Shoot()
     {
         yield return base.Shoot();
 
-        while (enabled)
+        SetSubsystemEnabled(1);
+
+        for (int i = 0; enabled; i++)
         {
-            SetSubsystemEnabled(1);
-            yield return WaitForSeconds(2f);
+            bullets.Clear();
 
-            for (int i = 0; i < WaveCount; i++)
+            for (int ii = 0; ii < BranchCount; ii++)
             {
-                float r = PlayerPosition.GetRotationDifference(transform.position);
-                int maxBulletCount = (i * 2) + 5;
+                float z = (i * WaveSpacing) + (ii * BranchSpacing);
 
-                for (int ii = 0; ii < maxBulletCount; ii++)
+                for (int iii = 0; iii < BulletCount; iii++)
                 {
-                    int currentBulletCount = (int)Mathf.PingPong(ii, maxBulletCount / 2) + 1;
-                    float t = (currentBulletCount - 1) * BulletSpacing / 2f;
-                    bulletData.colour = bulletData.gradient.Evaluate(ii / (maxBulletCount - 1f));
+                    Vector3 pos = ((iii - ((BulletCount - 1) / 2f)) * BulletSpacing * Vector3.right).RotateVectorBy(z);
 
-                    for (int iii = 0; iii < currentBulletCount; iii++)
+                    for (int iv = 0; iv < BulletsPerBranch; iv++)
                     {
-                        for (int iv = 0; iv < BranchCount; iv++)
-                        {
-                            float z = (iii * BulletSpacing) + (iv * BranchSpacing) + r - t;
-                            Vector3 pos = Vector3.zero;
+                        float s = BulletBaseSpeed + (iv * BulletSpeedModifier);
 
-                            SpawnProjectile(0, z, pos).Fire();
-                        }
+                        bulletData.colour = bulletData.gradient.Evaluate(iv / (BulletsPerBranch - 1f));
+
+                        var bullet = SpawnProjectile(0, z, pos) as PiscesBullet20;
+                        bullet.StartCoroutine(bullet.LerpSpeed(s, 0f, 1f));
+                        bullet.DestroyAction += OnSpawnedBulletDestroy;
+                        bullets.Add(bullet);
                     }
-
-                    yield return WaitForSeconds(ShootingCooldown);
                 }
-
-                yield return WaitForSeconds(ShootingCooldown * 3f);
             }
 
-            StartMoveAction?.Invoke();
-            yield return WaitForSeconds(1f);
+            yield return WaitForSeconds(ShootingCooldown);
+
+            for (int ii = 0; ii < bullets.Count; ii++)
+            {
+                float r = (ii % 2 * 2 - 1) * BulletRotationSpeed;
+
+                bullets[ii].StartCoroutine(bullets[ii].RotateBy(r, 0f));
+                bullets[ii].Fire();
+            }
         }
+    }
+
+    void OnSpawnedBulletDestroy(EnemyBullet bullet)
+    {
+        bullets.Remove(bullet);
     }
 }

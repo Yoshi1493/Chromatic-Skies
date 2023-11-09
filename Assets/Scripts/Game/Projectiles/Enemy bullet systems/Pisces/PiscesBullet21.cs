@@ -2,9 +2,10 @@ using System.Collections;
 
 public class PiscesBullet21 : EnemyBullet
 {
+    protected override float MaxLifetime => 5f;
+
     protected override IEnumerator Move()
     {
-        float endSpeed = MoveSpeed;
-        yield return this.LerpSpeed(1f, endSpeed, 1f);
+        yield return this.LerpSpeed(4f, 3f, 1f);
     }
 }

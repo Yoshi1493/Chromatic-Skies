@@ -1,11 +1,21 @@
+using System;
 using System.Collections;
 
 public class PiscesBullet20 : EnemyBullet
 {
-    protected override float MaxLifetime => 5f;
+    public event Action<PiscesBullet20> DestroyAction;
+
+    protected override float MaxLifetime => 8f;
 
     protected override IEnumerator Move()
     {
-        yield return this.LerpSpeed(4f, 3f, 1f);
+        MoveSpeed = 2.5f;
+        yield return null;
+    }
+
+    public override void Destroy()
+    {
+        DestroyAction?.Invoke(this);
+        base.Destroy();
     }
 }
