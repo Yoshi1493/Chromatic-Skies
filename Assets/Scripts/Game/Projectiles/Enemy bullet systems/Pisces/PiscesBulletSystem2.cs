@@ -13,7 +13,8 @@ public class PiscesBulletSystem2 : EnemyShooter<EnemyBullet>
     const int BulletsPerBranch = 6;
     const float BulletBaseSpeed = 3f;
     const float BulletSpeedModifier = 1.5f;
-    const float BulletRotationSpeed = 30f;
+    const float BulletRotationSpeed = 12f;
+    const float BulletRotationSpeedModifier = 12f;
 
     List<EnemyBullet> bullets = new(BranchCount * BulletCount * BulletsPerBranch);
 
@@ -23,7 +24,7 @@ public class PiscesBulletSystem2 : EnemyShooter<EnemyBullet>
     {
         yield return base.Shoot();
 
-        SetSubsystemEnabled(1);
+        //SetSubsystemEnabled(1);
 
         for (int i = 0; enabled; i++)
         {
@@ -43,9 +44,8 @@ public class PiscesBulletSystem2 : EnemyShooter<EnemyBullet>
 
                         bulletData.colour = bulletData.gradient.Evaluate(iv / (BulletsPerBranch - 1f));
 
-                        var bullet = SpawnProjectile(0, z, pos) as PiscesBullet20;
+                        var bullet = SpawnProjectile(0, z, pos);
                         bullet.StartCoroutine(bullet.LerpSpeed(s, 0f, 1f));
-                        bullet.DestroyAction += OnSpawnedBulletDestroy;
                         bullets.Add(bullet);
                     }
                 }
@@ -53,18 +53,24 @@ public class PiscesBulletSystem2 : EnemyShooter<EnemyBullet>
 
             yield return WaitForSeconds(ShootingCooldown);
 
-            for (int ii = 0; ii < bullets.Count; ii++)
+            for (int ii = 0; ii < BranchCount; ii++)
             {
-                float r = (ii % 2 * 2 - 1) * BulletRotationSpeed;
+                for (int iii = 0; iii < BulletCount; iii++)
+                {
+                    for (int iv = 0; iv < BulletsPerBranch; iv++)
+                    {
+                        int b = (ii * BulletCount * BulletsPerBranch) + (iii * BulletsPerBranch) + iv;
+                        float r = BulletRotationSpeed + (b * BulletRotationSpeedModifier);
 
-                bullets[ii].StartCoroutine(bullets[ii].RotateBy(r, 0f));
-                bullets[ii].Fire();
+                        if (bullets[b].isActiveAndEnabled)
+                        {
+                            bullets[b].StartCoroutine(bullets[b].RotateBy(r, 0f));
+                            bullets[b].Fire();
+                        }
+                    }
+                }
             }
-        }
-    }
 
-    void OnSpawnedBulletDestroy(EnemyBullet bullet)
-    {
-        bullets.Remove(bullet);
+        }
     }
 }
