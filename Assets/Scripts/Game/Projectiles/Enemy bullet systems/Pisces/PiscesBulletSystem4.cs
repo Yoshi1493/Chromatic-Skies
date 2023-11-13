@@ -5,19 +5,27 @@ using static CoroutineHelper;
 public class PiscesBulletSystem4 : EnemyShooter<EnemyBullet>
 {
     const int BranchCount = 6;
-    const int BranchSpacing = 360 / BranchCount;
+    const float BranchSpacing = 360f / BranchCount;
     const float BranchWidth = 0.2f;
     const float ScaleFactor = 0.2f;
 
-    protected override float ShootingCooldown => 0.06f;
+    protected override float ShootingCooldown => 0.05f;
 
     protected override IEnumerator Shoot()
     {
         yield return base.Shoot();
+        SetSubsystemEnabled(1);
 
         while (enabled)
         {
-            SetSubsystemEnabled(1);
+            for (int i = 0; i < BranchCount; i++)
+            {
+                float z = i * BranchSpacing;
+                Vector3 pos = Vector3.zero;
+
+                SpawnProjectile(1, z, pos).Fire();
+                yield return WaitForSeconds(0.1f);
+            }
 
             for (int i = 3; i < 8; i++)
             {
