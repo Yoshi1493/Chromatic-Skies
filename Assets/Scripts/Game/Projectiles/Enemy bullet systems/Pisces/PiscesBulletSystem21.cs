@@ -4,46 +4,34 @@ using static CoroutineHelper;
 
 public class PiscesBulletSystem21 : EnemyShooter<EnemyBullet>
 {
-    const int WaveCount = 3;
-    const int BranchCount = 3;
-    const float BranchSpacing = 360f / BranchCount;
-    const float BulletSpacing = 15f;
+    const int WaveCount = 20;
+    const float WaveSpacing = 360f / WaveCount;
+    const int BulletCount = 6;
+    const float BulletSpacing = 360f / BulletCount;
+    const float BulletBaseSpeed = 2f;
+    const float BulletSpeedModifier = 0.1f;
 
     protected override IEnumerator Shoot()
     {
-        yield return WaitForSeconds(3f);
-
-        while (enabled)
+        for (int i = 0; i < WaveCount; i++)
         {
-            for (int i = 0; i < WaveCount; i++)
+            float r = i * WaveSpacing;
+            bulletData.colour = bulletData.gradient.Evaluate(i / (WaveCount - 1f));
+
+            for (int ii = 0; ii < BulletCount; ii++)
             {
-                float r = PlayerPosition.GetRotationDifference(transform.position);
-                int maxBulletCount = (i * 2) + 5;
+                float z = r + (ii * BulletSpacing);
+                float s = BulletBaseSpeed + (i * BulletSpeedModifier);
+                Vector3 pos = transform.up.RotateVectorBy(r);
 
-                for (int ii = 0; ii < maxBulletCount; ii++)
-                {
-                    int currentBulletCount = (int)Mathf.PingPong(ii, maxBulletCount / 2) + 1;
-                    float t = (currentBulletCount - 1) * BulletSpacing / 2f;
-                    bulletData.colour = bulletData.gradient.Evaluate(ii / (maxBulletCount - 1f));
-
-                    for (int iii = 0; iii < currentBulletCount; iii++)
-                    {
-                        for (int iv = 0; iv < BranchCount; iv++)
-                        {
-                            float z = (iii * BulletSpacing) + (iv * BranchSpacing) + r - t;
-                            Vector3 pos = Vector3.zero;
-
-                            SpawnProjectile(1, z, pos).Fire();
-                        }
-                    }
-
-                    yield return WaitForSeconds(ShootingCooldown);
-                }
-
-                yield return WaitForSeconds(ShootingCooldown * 3f);
+                var bullet = SpawnProjectile(1, z, pos);
+                bullet.MoveSpeed = s;
+                bullet.Fire();
             }
 
-            yield return WaitForSeconds(1f);
+            yield return WaitForSeconds(ShootingCooldown);
         }
+
+        enabled = false;
     }
 }
