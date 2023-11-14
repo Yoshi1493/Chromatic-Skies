@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using static CoroutineHelper;
 
@@ -9,7 +10,20 @@ public class PiscesBulletSystem4 : EnemyShooter<EnemyBullet>
     const float BranchWidth = 0.2f;
     const float ScaleFactor = 0.2f;
 
+    List<float> bulletSpawnData = new(BranchCount);
+
     protected override float ShootingCooldown => 0.05f;
+
+    protected override void Awake()
+    {
+        base.Awake();
+
+        for (int i = 0; i < BranchCount; i++)
+        {
+            float z = i * BranchSpacing;
+            bulletSpawnData.Add(z);
+        }
+    }
 
     protected override IEnumerator Shoot()
     {
@@ -18,14 +32,17 @@ public class PiscesBulletSystem4 : EnemyShooter<EnemyBullet>
 
         while (enabled)
         {
+            bulletSpawnData.Randomize();
+
             for (int i = 0; i < BranchCount; i++)
             {
-                float z = i * BranchSpacing;
+                float z = bulletSpawnData[i];
                 Vector3 pos = Vector3.zero;
 
                 SpawnProjectile(1, z, pos).Fire();
-                yield return WaitForSeconds(0.1f);
+
             }
+            yield return WaitForSeconds(0.5f);
 
             for (int i = 3; i < 8; i++)
             {
