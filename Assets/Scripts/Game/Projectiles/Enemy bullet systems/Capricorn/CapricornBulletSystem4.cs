@@ -7,15 +7,15 @@ using static BezierHelper;
 
 public class CapricornBulletSystem4 : EnemyShooter<EnemyBullet>
 {
-    const float SpawnTime = 1f;
-    const float CatchupTime = 2f;
     const float TotalFollowTime = 5f;
+    const float SpawnTime = 0.6f;
+    const float CatchupTime = 3f;
     const float FollowDelay = 0.2f;
     const float SpawnOffsetRadius = 0.5f;
 
-    Queue<Vector3> playerPositions = new();
+    Queue<Vector3> playerPositionData = new();
 
-    protected override float ShootingCooldown => 0.02f;
+    protected override float ShootingCooldown => 1f / 60;
 
     protected override IEnumerator Shoot()
     {
@@ -24,7 +24,7 @@ public class CapricornBulletSystem4 : EnemyShooter<EnemyBullet>
         while (enabled)
         {
             float t = 0f;
-            float x = (Random.Range(0, screenHalfWidth * 0.25f) + screenHalfWidth * 0.5f) * Mathf.Sign(ownerShip.transform.position.x);
+            float x = screenHalfWidth * Random.Range(0.5f, 0.8f) * Mathf.Sign(ownerShip.transform.position.x);
 
             Vector3 v0 = new(x, screenHalfHeight);
 
@@ -32,9 +32,10 @@ public class CapricornBulletSystem4 : EnemyShooter<EnemyBullet>
             {
                 if (t > FollowDelay)
                 {
-                    playerPositions.Enqueue(PlayerPosition);
+                    playerPositionData.Enqueue(PlayerPosition);
                 }
 
+                float z = RandomAngleDeg;
                 Vector3 pos;
 
                 if (t < CatchupTime)
@@ -45,28 +46,30 @@ public class CapricornBulletSystem4 : EnemyShooter<EnemyBullet>
 
                     if (t > SpawnTime)
                     {
-                        Vector3 v3 = Vector3.Lerp(pos, playerPositions.Dequeue(), (t - SpawnTime) / (CatchupTime - SpawnTime));
-                        pos = v3;
+                        if (playerPositionData.TryDequeue(out Vector3 p))
+                        {
+                            float f = (t - SpawnTime) / (CatchupTime - SpawnTime);
+                            Vector3 v3 = Vector3.Lerp(pos, p, f);
+                            pos = v3;
+                        }
                     }
                 }
                 else
                 {
-                    pos = playerPositions.Dequeue();
+                    pos = playerPositionData.Dequeue();
                 }
 
-                pos += (Vector3)(SpawnOffsetRadius * Random.insideUnitCircle);
-                float z = RandomAngleDeg;
+                pos += SpawnOffsetRadius * (Vector3)Random.insideUnitCircle;
 
                 bulletData.colour = bulletData.gradient.Evaluate(t / TotalFollowTime);
+
                 SpawnProjectile(0, z, pos, false).Fire();
 
                 yield return WaitForSeconds(ShootingCooldown);
                 t += ShootingCooldown;
             }
 
-            playerPositions.Clear();
-
-            yield return WaitForSeconds(1f);
+            playerPositionData.Clear();
             SetSubsystemEnabled(1);
 
             StartMoveAction?.Invoke();

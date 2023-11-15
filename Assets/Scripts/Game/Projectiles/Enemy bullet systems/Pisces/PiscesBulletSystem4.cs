@@ -20,7 +20,7 @@ public class PiscesBulletSystem4 : EnemyShooter<EnemyBullet>
 
         for (int i = 0; i < BranchCount; i++)
         {
-            float z = i * BranchSpacing;
+            float z = i * BranchSpacing; 
             bulletSpawnData.Add(z);
         }
     }
