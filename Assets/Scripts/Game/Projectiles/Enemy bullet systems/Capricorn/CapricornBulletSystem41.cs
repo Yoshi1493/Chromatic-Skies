@@ -8,7 +8,7 @@ public class CapricornBulletSystem41 : EnemyShooter<EnemyBullet>
     const int BranchCount = 24;
     const float BranchSpacing = 20f;
     const int BulletCount = 12;
-    const float BulletSpacing = 0.5f;
+    const float BulletSpacing = 2f;
     const float BulletBaseSpeed = 3f;
     const float BulletSpeedModifier = 0.3f;
 

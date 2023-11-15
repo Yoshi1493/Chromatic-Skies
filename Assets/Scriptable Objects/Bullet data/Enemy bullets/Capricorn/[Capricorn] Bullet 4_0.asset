@@ -14,12 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: 9b86635f8b1fb5941bb865b3a22f5cf0, type: 3}
   useSolidColour: 1
-  colour: {r: 0.25, g: 0.5000013, b: 0.25, a: 1}
+  colour: {r: 0.5450071, g: 0.65875536, b: 0.90166426, a: 1}
   gradient:
     serializedVersion: 2
-    key0: {r: 0.75, g: 1, b: 0.75, a: 1}
-    key1: {r: 0.25, g: 1, b: 0.25, a: 1}
-    key2: {r: 0, g: 0.4, b: 0, a: 0}
+    key0: {r: 0.75, g: 0.8125, b: 1, a: 1}
+    key1: {r: 0.25, g: 0.4375, b: 1, a: 1}
+    key2: {r: 0, g: 0.125, b: 0.5, a: 0}
     key3: {r: 0.75, g: 1, b: 1, a: 0}
     key4: {r: 0.25, g: 1, b: 1, a: 0}
     key5: {r: 0.25, g: 0.625, b: 1, a: 0}
@@ -46,3 +46,4 @@ MonoBehaviour:
     m_NumAlphaKeys: 2
   ID: 0
   Power: {fileID: 11400000, guid: bdaffaa97c2c2d94eb53da142a9c86c7, type: 2}
+  destructible: 1
