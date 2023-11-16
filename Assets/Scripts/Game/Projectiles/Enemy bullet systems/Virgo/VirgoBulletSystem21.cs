@@ -5,30 +5,34 @@ using static CoroutineHelper;
 public class VirgoBulletSystem21 : EnemyShooter<EnemyBullet>
 {
     const float WaveSpacing = 12f;
-    const int BulletCount = 30;
-    const float BulletSpacing = 360f / BulletCount;
+    const int BranchCount = 15;
+    const float BranchSpacing = 360f / BranchCount;
+    const int BulletCount = 2;
+    const float BulletRotationSpeed = 90f;
 
-    protected override float ShootingCooldown => 1.2f;
+    protected override float ShootingCooldown => 0.6f;
 
     protected override IEnumerator Shoot()
     {
-        int i = 0;
-
-        while (enabled)
+        for (int i = 0; enabled; i++)
         {
             yield return WaitForSeconds(ShootingCooldown);
 
-            int p = i % 2 + 1;
-
-            for (int ii = 0; ii < BulletCount; ii++)
+            for (int ii = 0; ii < BranchCount; ii++)
             {
-                float z = (i * WaveSpacing) + (ii * BulletSpacing);
-                Vector3 pos = Vector3.zero;
+                for (int iii = 0; iii < BulletCount; iii++)
+                {
+                    float z = (i * WaveSpacing) + (ii * BranchSpacing);
+                    Vector3 pos = Vector3.zero;
 
-                SpawnProjectile(p, z, pos).Fire();
+                    bulletData.colour = bulletData.gradient.Evaluate(iii);
+
+                    var bullet = SpawnProjectile(1, z, pos);
+                    bullet.StartCoroutine(bullet.RotateBy((iii % 2 * 2 - 1) * BulletRotationSpeed, 6f));
+                    bullet.Fire();
+                }
             }
-
-            i++;
         }
     }
+
 }

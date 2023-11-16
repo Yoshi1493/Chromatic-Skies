@@ -15,7 +15,7 @@ public class VirgoBulletSystem2 : EnemyShooter<EnemyBullet>
 
     List<EnemyBullet> bullets = new(RingCount * (BulletCount * 2 - 1));
 
-    protected override float ShootingCooldown => 0.05f;
+    protected override float ShootingCooldown => 1f / 60;
 
     protected override IEnumerator Shoot()
     {
