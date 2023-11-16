@@ -10,10 +10,12 @@ public class VirgoBulletSystem21 : EnemyShooter<EnemyBullet>
     const int BulletCount = 2;
     const float BulletRotationSpeed = 90f;
 
-    protected override float ShootingCooldown => 0.6f;
+    protected override float ShootingCooldown => 0.8f;
 
     protected override IEnumerator Shoot()
     {
+        yield return WaitForSeconds(2f);
+
         for (int i = 0; enabled; i++)
         {
             yield return WaitForSeconds(ShootingCooldown);
