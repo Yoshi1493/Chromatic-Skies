@@ -2,20 +2,44 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using static CoroutineHelper;
-using static MathHelper;
 
 public class VirgoBulletSystem2 : EnemyShooter<EnemyBullet>
 {
-    const int WaveCount = 2;
-    const float RingRadius = 4.2f;
-    const int RingCount = 12;
-    const int BulletCount = 12;
-    const float BulletSpacing = 360f / BulletCount;
+    const int RepeatCount = 2;
+    const int WaveCount = 12;
+    const float WaveModifier = 0.8f;
+    readonly float WaveRadius = Mathf.Pow(Mathf.PI, 1 / WaveModifier);
+    const int BranchCount = 12;
+    const float BranchSpacing = 360f / BranchCount;
+    const int BulletCount = 2;
     const float BulletBaseSpeed = 2f;
 
-    List<EnemyBullet> bullets = new(RingCount * (BulletCount * 2 - 1));
+    List<(Vector2 pos, float z)> bulletSpawnData = new(WaveCount * BranchCount);
+    List<EnemyBullet> bullets = new(WaveCount * (BranchCount * 2 - 1));
 
-    protected override float ShootingCooldown => 1f / 60;
+    protected override float ShootingCooldown => 0.05f;
+
+    protected override void Awake()
+    {
+        base.Awake();
+
+        for (int i = 0; i < WaveCount; i++)
+        {
+            for (int ii = 0; ii < BranchCount; ii++)
+            {
+                float t = ii * BranchSpacing;
+                float x = Mathf.Lerp(0f, WaveRadius, i / (float)WaveCount);
+                float y = Mathf.Sin(Mathf.Pow(x, WaveModifier));
+                Vector3 pos = new Vector3(x, y).RotateVectorBy(t);
+
+                float z = pos.GetRotationDifference(Vector3.zero);
+
+                bulletSpawnData.Add((pos, z));
+                pos.y *= -1;
+                bulletSpawnData.Add((pos, 180f - z));
+            }
+        }
+    }
 
     protected override IEnumerator Shoot()
     {
@@ -25,55 +49,47 @@ public class VirgoBulletSystem2 : EnemyShooter<EnemyBullet>
 
         while (enabled)
         {
-            for (int i = 0; i < WaveCount; i++)
+            for (int i = 0; i < RepeatCount; i++)
             {
-                for (int ii = 1; ii < RingCount; ii++)
+                bullets.Clear();
+
+                for (int ii = 1; ii < WaveCount; ii++)
                 {
-                    Vector3 pos = Vector3.zero;
-                    Vector3 newPos = Vector3.zero;
-
-                    for (int iii = 0; iii < BulletCount; iii++)
+                    for (int iii = 0; iii < BranchCount; iii++)
                     {
-                        float t = iii * BulletSpacing;
-                        float x = RingRadius * ii / RingCount;
-                        float y = Mathf.Sin(Mathf.Pow(x, 0.8f));
-                        newPos = new(x, y);
-
-                        float z = (newPos - pos).GetRotationDifference(Vector3.zero) + t;
-                        RotateVectorBy(ref newPos, t);
-
-                        SpawnBullet(z, newPos);
-                        newPos.y *= -1f;
-                        SpawnBullet(-z, newPos);
-                        newPos.y *= -1f;
+                        for (int iv = 0; iv < BulletCount; iv++)
+                        {
+                            int b = (ii * BranchCount * BulletCount) + (iii * BulletCount) + iv;
+                            (Vector3 pos, float z) = bulletSpawnData[b];
+                            SpawnBullet(z, pos);
+                        }
                     }
-                    pos = newPos;
 
                     yield return WaitForSeconds(ShootingCooldown);
                 }
 
-                for (int ii = 0; ii < BulletCount; ii++)
+                for (int ii = 0; ii < BranchCount; ii++)
                 {
-                    float z = ii * BulletSpacing;
-                    Vector3 pos = RingRadius * Vector3.right.RotateVectorBy(z);
-                    SpawnBullet(z + 90f, pos);
+                    float z = ii * BranchSpacing + 90f;
+                    Vector3 pos = WaveRadius * Vector3.down.RotateVectorBy(z);
+                    SpawnBullet(z, pos);
                 }
 
                 yield return WaitForSeconds(1f);
 
                 bullets.ForEach(b => b.Fire());
-                bullets.Clear();
-
-                StartMoveAction?.Invoke();
-                yield return WaitForSeconds(4f);
+                yield return WaitForSeconds(2f);
             }
+
+            StartMoveAction?.Invoke();
+            yield return WaitForSeconds(1f);
         }
     }
 
     void SpawnBullet(float z, Vector3 pos)
     {
         float s = BulletBaseSpeed * pos.magnitude;
-        bulletData.colour = bulletData.gradient.Evaluate(s / RingRadius * 0.5f);
+        bulletData.colour = bulletData.gradient.Evaluate(s / 2f / WaveRadius);
 
         var bullet = SpawnProjectile(0, z, Vector3.zero);
         bullet.StartCoroutine(bullet.LerpSpeed(s, 0f, 1f));
