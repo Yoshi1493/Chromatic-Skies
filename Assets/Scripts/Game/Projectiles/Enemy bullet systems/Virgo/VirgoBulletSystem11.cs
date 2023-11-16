@@ -4,33 +4,37 @@ using static CoroutineHelper;
 
 public class VirgoBulletSystem11 : EnemyShooter<EnemyBullet>
 {
-    const int WaveCount = 35;
-    const float WaveSpacing = 360f / (WaveCount + 1);
+    const float WaveSpacing = 15f;
     const int BranchCount = 5;
     const float BranchSpacing = 360f / BranchCount;
+    const int BulletCount = 2;
+    const float BulletRotationSpeed = BranchSpacing / 2f;
 
-    protected override float ShootingCooldown => 0.4f;
+    protected override float ShootingCooldown => 0.2f;
 
     protected override IEnumerator Shoot()
     {
         yield return WaitForSeconds(1f);
 
-        while (enabled)
+        for (int i = 0; enabled; i++)
         {
-            float r = Random.Range(0f, BranchSpacing);
-
-            for (int i = 0; i < WaveCount; i++)
+            for (int ii = 0; ii < BranchCount; ii++)
             {
-                for (int ii = 0; ii < BranchCount; ii++)
+                for (int iii = 0; iii < BulletCount; iii++)
                 {
-                    float z = -((i * WaveSpacing) + (ii * BranchSpacing)) + r;
+                    int t = iii % 2 * 2 - 1;
+                    float z = t * ((i * WaveSpacing) + (ii * BranchSpacing));
                     Vector3 pos = transform.up.RotateVectorBy(z);
 
-                    SpawnProjectile(1, z, pos).Fire();
-                }
+                    bulletData.colour = bulletData.gradient.Evaluate(iii);
 
-                yield return WaitForSeconds(ShootingCooldown);
+                    var bullet = SpawnProjectile(1, z, pos);
+                    bullet.StartCoroutine(bullet.RotateBy(t * BulletRotationSpeed, 3f));
+                    bullet.Fire();
+                }
             }
+
+            yield return WaitForSeconds(ShootingCooldown);
         }
     }
 }

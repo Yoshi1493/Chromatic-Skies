@@ -18,7 +18,7 @@ public class CapricornBulletSystem41 : EnemyShooter<EnemyBullet>
         {
             float z = RandomAngleDeg;
 
-            for (int ii = 0; ii < BulletCount; ii++)
+            for (int ii = 0; ii < BulletCount; ii++) 
             {
                 float r = ii * BulletSpacing;
                 float s = BulletBaseSpeed + (ii * BulletSpeedModifier);
