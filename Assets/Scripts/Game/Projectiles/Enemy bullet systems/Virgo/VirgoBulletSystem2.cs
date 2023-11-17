@@ -14,8 +14,8 @@ public class VirgoBulletSystem2 : EnemyShooter<EnemyBullet>
     const int BulletCount = 2;
     const float BulletBaseSpeed = 2f;
 
-    List<Vector3> bulletSpawnData = new(WaveCount * BranchCount);
-    List<EnemyBullet> bullets = new(WaveCount * (BranchCount * 2 - 1));
+    List<Vector3> bulletSpawnData = new(WaveCount * BranchCount * BulletCount);
+    List<EnemyBullet> bullets = new(WaveCount * BranchCount * BulletCount + WaveCount);
 
     protected override float ShootingCooldown => 0.05f;
 
