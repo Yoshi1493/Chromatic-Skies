@@ -14,7 +14,7 @@ public class VirgoBulletSystem2 : EnemyShooter<EnemyBullet>
     const int BulletCount = 2;
     const float BulletBaseSpeed = 2f;
 
-    List<(Vector2 pos, float z)> bulletSpawnData = new(WaveCount * BranchCount);
+    List<Vector3> bulletSpawnData = new(WaveCount * BranchCount);
     List<EnemyBullet> bullets = new(WaveCount * (BranchCount * 2 - 1));
 
     protected override float ShootingCooldown => 0.05f;
@@ -31,12 +31,12 @@ public class VirgoBulletSystem2 : EnemyShooter<EnemyBullet>
                 {
                     float t = ii * BranchSpacing;
                     float x = Mathf.Lerp(0f, WaveRadius, i / (float)WaveCount);
-                    float y = (iii % 2 * 2 - 1) * Mathf.Sin(Mathf.Pow(x, WaveModifier));
+                    float y = (iii % 2 * -2 + 1) * Mathf.Sin(Mathf.Pow(x, WaveModifier));
 
                     Vector3 pos = new Vector3(x, y).RotateVectorBy(t);
-                    float z = (iii * 180f) - pos.GetRotationDifference(Vector3.zero);
+                    float z = pos.GetRotationDifference(Vector3.zero);
 
-                    bulletSpawnData.Add((pos, z));
+                    bulletSpawnData.Add(new(pos.x, pos.y, z));
                 }
             }
         }
@@ -61,8 +61,9 @@ public class VirgoBulletSystem2 : EnemyShooter<EnemyBullet>
                         for (int iv = 0; iv < BulletCount; iv++)
                         {
                             int b = (ii * BranchCount * BulletCount) + (iii * BulletCount) + iv;
-                            (Vector3 pos, float z) = bulletSpawnData[b];
-                            SpawnBullet(z, pos);
+                            Vector3 data = bulletSpawnData[b];
+
+                            SpawnBullet(data.z, (Vector2)data);
                         }
                     }
 
@@ -73,6 +74,7 @@ public class VirgoBulletSystem2 : EnemyShooter<EnemyBullet>
                 {
                     float z = ii * BranchSpacing + 90f;
                     Vector3 pos = WaveRadius * Vector3.down.RotateVectorBy(z);
+
                     SpawnBullet(z, pos);
                 }
 
@@ -92,8 +94,6 @@ public class VirgoBulletSystem2 : EnemyShooter<EnemyBullet>
         float s = BulletBaseSpeed * pos.magnitude;
         bulletData.colour = bulletData.gradient.Evaluate(s / 2f / WaveRadius);
 
-        var bullet = SpawnProjectile(0, z, Vector3.zero);
-        bullet.StartCoroutine(bullet.LerpSpeed(s, 0f, 1f));
-        bullets.Add(bullet);
+        bullets.Add(SpawnProjectile(0, z, pos));
     }
 }
