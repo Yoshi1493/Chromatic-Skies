@@ -27,16 +27,17 @@ public class VirgoBulletSystem2 : EnemyShooter<EnemyBullet>
         {
             for (int ii = 0; ii < BranchCount; ii++)
             {
-                float t = ii * BranchSpacing;
-                float x = Mathf.Lerp(0f, WaveRadius, i / (float)WaveCount);
-                float y = Mathf.Sin(Mathf.Pow(x, WaveModifier));
-                Vector3 pos = new Vector3(x, y).RotateVectorBy(t);
+                for (int iii = 0; iii < BulletCount; iii++)
+                {
+                    float t = ii * BranchSpacing;
+                    float x = Mathf.Lerp(0f, WaveRadius, i / (float)WaveCount);
+                    float y = (iii % 2 * 2 - 1) * Mathf.Sin(Mathf.Pow(x, WaveModifier));
 
-                float z = pos.GetRotationDifference(Vector3.zero);
+                    Vector3 pos = new Vector3(x, y).RotateVectorBy(t);
+                    float z = (iii * 180f) - pos.GetRotationDifference(Vector3.zero);
 
-                bulletSpawnData.Add((pos, z));
-                pos.y *= -1;
-                bulletSpawnData.Add((pos, 180f - z));
+                    bulletSpawnData.Add((pos, z));
+                }
             }
         }
     }
