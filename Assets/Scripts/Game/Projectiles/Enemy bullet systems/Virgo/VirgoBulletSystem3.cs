@@ -1,39 +1,64 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using static CoroutineHelper;
 
 public class VirgoBulletSystem3 : EnemyShooter<EnemyBullet>
 {
-    const float RingRadius = 2.5f;
-    const int BulletCount = 200;
+    const int WaveCount = 100;
     const float AngularFrequency = 2f / 7f;
-    const float AngularStep = 2f / BulletCount / AngularFrequency;
+    const float WaveSpacing = 1f / (WaveCount * AngularFrequency);
+    const int BranchCount = 4;
+    const float BranchSpacing = 360f / BranchCount;
+    const float RingRadius = 2.5f;
 
-    protected override float ShootingCooldown => 0.01f;
+    List<Vector3> bulletSpawnData = new(BranchCount * WaveCount);
+
+    protected override float ShootingCooldown => 1f / 60;
+
+    protected override void Awake()
+    {
+        base.Awake();
+
+        //rhodonea (rose) curve `f(É∆) = r*sin(kÉ∆)`, where
+        //r = radius
+        //É∆ = anticlockwise rotation amount on polar coordinates from the origin
+        //k = angular frequency, expressed in the form n/d
+        for (int i = 0; i < WaveCount; i++)
+        {
+            for (int ii = 0; ii < BranchCount; ii++)
+            {
+                float t = i * WaveSpacing;
+                float r = RingRadius * Mathf.Sin(t * AngularFrequency * Mathf.PI);
+                Vector3 pos = (r * transform.up.RotateVectorBy(t * 180f)).RotateVectorBy(ii * BranchSpacing);
+
+                float z = ((i % 2 * 2 - 1) * 90f) + pos.GetRotationDifference(Vector3.zero);
+                bulletSpawnData.Add(new(pos.x, pos.y, z));
+            }
+        }
+    }
 
     protected override IEnumerator Shoot()
     {
-        yield return base.Shoot();        
+        yield return base.Shoot();
 
         while (enabled)
         {
-            //rhodonea (rose) curve r = sin(k * theta), where
-            //theta = anticlockwise rotation amount on polar coordinates from the origin
-            //k = angular frequency, expressed in the form n/d
-            for (float i = 0; i < BulletCount; i++)
+            for (int i = 0; i < WaveCount; i++)
             {
-                Vector3 pos = transform.right.RotateVectorBy(i * AngularStep * 180f);
+                for (int ii = 0; ii < BranchCount; ii++)
+                {
+                    int b = (i * BranchCount) + ii;
+                    Vector3 data = bulletSpawnData[b];
 
-                float z = pos.GetRotationDifference(Vector3.zero);
-                float d = RingRadius * Mathf.Sin(i * AngularStep * AngularFrequency * Mathf.PI);
-
-                SpawnProjectile(0, z + 90f, d * pos).Fire();
-                SpawnProjectile(0, z - 90f, -d * pos).Fire();
+                    SpawnProjectile(0, data.z, (Vector2)data).Fire();
+                }
 
                 yield return WaitForSeconds(ShootingCooldown);
             }
 
             SetSubsystemEnabled(1);
+            yield return WaitForSeconds(1f);
 
             StartMoveAction?.Invoke();
             yield return WaitForSeconds(3f);
