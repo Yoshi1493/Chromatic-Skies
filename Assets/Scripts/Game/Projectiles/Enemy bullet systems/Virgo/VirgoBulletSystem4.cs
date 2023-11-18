@@ -12,11 +12,12 @@ public class VirgoBulletSystem4 : EnemyShooter<EnemyBullet>
     {
         yield return base.Shoot();
 
-        StartMoveAction?.Invoke();
         SetSubsystemEnabled(1);
 
         while (enabled)
         {
+            StartMoveAction?.Invoke();
+
             float WaveSpacing = 0f;
             float r = Random.Range(0f, BranchSpacing);
             Vector3 pos = Vector3.zero;
@@ -33,7 +34,7 @@ public class VirgoBulletSystem4 : EnemyShooter<EnemyBullet>
                 yield return WaitForSeconds(ShootingCooldown);
             }
 
-            yield return WaitForSeconds(3f);
+            yield return WaitForSeconds(2f);
         }
     }
 }
