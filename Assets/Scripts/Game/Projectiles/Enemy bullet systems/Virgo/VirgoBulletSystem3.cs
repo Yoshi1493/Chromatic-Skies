@@ -58,10 +58,9 @@ public class VirgoBulletSystem3 : EnemyShooter<EnemyBullet>
             }
 
             SetSubsystemEnabled(1);
-            yield return WaitForSeconds(1f);
-
             StartMoveAction?.Invoke();
-            yield return WaitForSeconds(3f);
+
+            yield return WaitForSeconds(5f);
         }
     }
 }

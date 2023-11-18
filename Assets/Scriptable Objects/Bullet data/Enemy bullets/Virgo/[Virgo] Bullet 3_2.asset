@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6b79cd0b20b26ac4090b241d65679e69, type: 3}
-  m_Name: '[Virgo] Bullet 3_1_1'
+  m_Name: '[Virgo] Bullet 3_2'
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: 955788fd829b613429b1f8461721ea15, type: 3}
   useSolidColour: 1
