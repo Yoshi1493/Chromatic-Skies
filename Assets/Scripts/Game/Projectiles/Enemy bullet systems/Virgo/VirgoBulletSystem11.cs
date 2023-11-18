@@ -10,7 +10,7 @@ public class VirgoBulletSystem11 : EnemyShooter<EnemyBullet>
     const int BulletCount = 2;
     const float BulletRotationSpeed = BranchSpacing / 2f;
 
-    protected override float ShootingCooldown => 0.2f;
+    protected override float ShootingCooldown => 0.3f;
 
     protected override IEnumerator Shoot()
     {
