@@ -6,7 +6,7 @@ public class VirgoBulletSystem5 : EnemyShooter<EnemyBullet>
 {
     const int BranchCount = 2;
     const float BranchSpacing = 360f / BranchCount;
-    const int BulletCount = 20;
+    const int BulletCount = 36;
     const float BulletSpacing = 360f / BulletCount;
 
     protected override float ShootingCooldown => 1f;
