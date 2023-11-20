@@ -40,6 +40,8 @@ public class CancerBulletSystem1 : EnemyShooter<EnemyBullet>
             }
 
             yield return WaitForSeconds(0.5f);
+            StartMoveAction?.Invoke();
+            SetSubsystemEnabled(1);
 
             for (int i = 0; i < WaveCount; i++)
             {
@@ -49,11 +51,6 @@ public class CancerBulletSystem1 : EnemyShooter<EnemyBullet>
                     yield return WaitForSeconds(ShootingCooldown * 0.25f);
                 }
             }
-
-            yield return WaitForSeconds(0.5f);
-
-            StartMoveAction?.Invoke();
-            SetSubsystemEnabled(1);
 
             yield return WaitForSeconds(3f);
         }

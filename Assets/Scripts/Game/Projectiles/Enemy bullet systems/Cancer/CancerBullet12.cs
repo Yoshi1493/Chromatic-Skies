@@ -14,17 +14,6 @@ public class CancerBullet12 : EnemyBullet
         yield return WaitForSeconds(0.5f);
 
         moveDirection *= -1;
-        StartCoroutine(this.LerpSpeed(0f, Random.Range(4f, 6f), 1f));
+        StartCoroutine(this.LerpSpeed(0f, Random.Range(3f, 5f), 1f));
     }
-
-#if UNITY_EDITOR
-    protected override void OnDrawGizmos()
-    {
-        if (UnityEditor.EditorApplication.isPlaying)
-        {
-            Gizmos.matrix = transform.localToWorldMatrix;
-            Gizmos.DrawCube(Vector3.zero, spriteRenderer.size);
-        }
-    }
-#endif
 }
