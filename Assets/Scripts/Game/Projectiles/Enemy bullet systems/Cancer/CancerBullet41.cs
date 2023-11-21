@@ -1,41 +1,38 @@
 using System.Collections;
 using UnityEngine;
 using static CoroutineHelper;
-using static MathHelper;
 
-public class CancerBullet41 : ScriptableEnemyBullet<CancerBulletSystem41, EnemyBullet>
+public class CancerBullet41 : EnemyBullet
 {
-    const int BulletCount = 6;
-    const float BulletSpacing = 360f / BulletCount;
+    Vector3 rotationAxis;
+    const float RotationSpeed = 180f;
+    const float FireDelay = 1.5f;
 
-    [SerializeField] ProjectileObject bulletData;
+    protected override float MaxLifetime => 6f;
 
     protected override IEnumerator Move()
     {
-        StartCoroutine(this.LerpSpeed(0f, 5f, 0.5f));
+        float endSpeed = MoveSpeed;
+        MoveSpeed = 0f;
+        yield return WaitForSeconds(FireDelay);
 
-        for (int i = 0; i < 10; i++)
-        {
-            float r = Random.Range(120f, 180f) * PositiveOrNegativeOne;
-            yield return this.RotateBy(r, 0f);
-            yield return WaitForSeconds(0.05f);
-        }
-
-        Destroy();
+        StartCoroutine(this.LerpSpeed(endSpeed, 4f, 2f));
+        this.LookAt(ownerShip);
     }
 
-    public override void Destroy()
+    protected override void OnEnable()
     {
-        float r = transform.eulerAngles.z;
+        base.OnEnable();
+        rotationAxis = Vector3.right.RotateVectorBy(transform.eulerAngles.z);
+    }
 
-        for (int i = 0; i < BulletCount; i++)
+    protected override void Update()
+    {
+        base.Update();
+
+        if (currentLifetime < FireDelay)
         {
-            float z = (i * BulletSpacing) + r;
-            Vector3 pos = transform.position;
-
-            SpawnBullet(2, z, pos, false).Fire();
+            transform.RotateAround(ownerShip.transform.position, rotationAxis, RotationSpeed * Time.deltaTime);
         }
-
-        base.Destroy();
     }
 }
