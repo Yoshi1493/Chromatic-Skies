@@ -1,7 +1,7 @@
 using System.Collections;
 using static CoroutineHelper;
 
-public class CancerBullet21 : EnemyBullet
+public class CancerBullet31 : EnemyBullet
 {
     protected override IEnumerator Move()
     {

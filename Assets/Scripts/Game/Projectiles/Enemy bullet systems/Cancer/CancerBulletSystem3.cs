@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using static CoroutineHelper;
 
-public class CancerBulletSystem2 : EnemyShooter<EnemyBullet>
+public class CancerBulletSystem3 : EnemyShooter<EnemyBullet>
 {
     const int BulletCount = 6;
     const float BulletSpacing = 360f / BulletCount;

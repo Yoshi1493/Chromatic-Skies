@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using static CoroutineHelper;
 
-public class CancerBullet20 : ScriptableEnemyBullet<CancerBulletSystem2, EnemyBullet>
+public class CancerBullet30 : ScriptableEnemyBullet<CancerBulletSystem3, EnemyBullet>
 {
     const float ShootingCooldown = 0.1f;
 

@@ -3,7 +3,7 @@ using UnityEngine;
 using static CoroutineHelper;
 using static MathHelper;
 
-public class CancerBulletSystem21 : EnemyShooter<EnemyBullet>
+public class CancerBulletSystem31 : EnemyShooter<EnemyBullet>
 {
     const int WaveCount = 24;
     const int BulletCount = 4;
