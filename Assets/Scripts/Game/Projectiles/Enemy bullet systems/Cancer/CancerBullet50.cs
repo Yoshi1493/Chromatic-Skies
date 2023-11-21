@@ -2,34 +2,29 @@ using System.Collections;
 using UnityEngine;
 using static CoroutineHelper;
 
-public class CancerBullet50 : ScriptableEnemyBullet<CancerBulletSystem5, EnemyBullet>
+public class CancerBullet50 : EnemyBullet
 {
-    const float WaveSpacing = 3f;
-    const int BranchCount = 3;
-    const float BranchSpacing = 360f / BranchCount;
-    const float BulletSpawnRadius = 0.5f;
-    const float ShootingCooldown = 0.1f;
-
-    protected override float MaxLifetime => Mathf.Infinity;
+    const float CorruptionChance = 0.06f;
 
     protected override IEnumerator Move()
     {
-        yield return this.LerpSpeed(5f, 0f, 1f);
-        yield return WaitForSeconds(2f);
+        yield return StartCoroutine(this.LerpSpeed(3f, 1.5f, 1f));
 
-        for (int i = 0; enabled; i++)
+        if (Random.value <= CorruptionChance)
         {
-            Vector3 r = Random.insideUnitCircle;
+            StartCoroutine(this.GraduallyLookAt(playerShip.transform.position, 1f));
 
-            for (int ii = 0; ii < BranchCount; ii++)
+            float currentLerpTime = 0f, totalLerpTime = 0.5f;
+
+            while (currentLerpTime < totalLerpTime)
             {
-                float z = -((i * WaveSpacing) + (ii * BranchSpacing));
-                Vector3 pos = (BulletSpawnRadius * r).RotateVectorBy(z);
+                float t = currentLerpTime / totalLerpTime;
+                spriteRenderer.color = projectileData.gradient.Evaluate(t);
 
-                SpawnBullet(2, z, pos, false).Fire();
+                yield return EndOfFrame;
+                currentLerpTime += Time.deltaTime;
             }
-
-            yield return WaitForSeconds(ShootingCooldown);
         }
+
     }
 }
