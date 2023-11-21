@@ -86,7 +86,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1370136738364219184}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ae16eb6d3bc251942b6c8df94a46c37e, type: 3}
   m_Name: 
@@ -139,8 +139,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyProjectiles:
-  - {fileID: -6382140739415888076, guid: 7bf6187d1e1421048b1ac6baa77dfe1c, type: 3}
-  - {fileID: 7948714839526541596, guid: 1a937568572798043906f402cb1443fb, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
   bulletData: {fileID: 11400000, guid: 279988d45cdf99843a64699a72afb6e5, type: 2}
 --- !u!1 &7954419980843629217
 GameObject:
@@ -151,6 +151,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8067852499068092642}
+  - component: {fileID: 1792387127869822965}
   m_Layer: 0
   m_Name: Bullet Subsystem 1
   m_TagString: Untagged
@@ -173,6 +174,22 @@ Transform:
   m_Father: {fileID: 2362189854743476344}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1792387127869822965
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7954419980843629217}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8462c7b079668f0459de320e6c57e268, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyProjectiles:
+  - {fileID: -1974821498858811336, guid: 7bf6187d1e1421048b1ac6baa77dfe1c, type: 3}
+  - {fileID: -4504081512470054215, guid: 1a937568572798043906f402cb1443fb, type: 3}
+  bulletData: {fileID: 11400000, guid: 279988d45cdf99843a64699a72afb6e5, type: 2}
 --- !u!1001 &6759093168088370692
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -298,7 +315,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2558884426390124806}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 819517a620926614885894fd1a0c7f04, type: 3}
   m_Name: 
@@ -309,6 +326,26 @@ MonoBehaviour:
   - {fileID: 3344892888330521945, guid: aac38db15a723f54db4f62c425386b4c, type: 3}
   - {fileID: 3344892888330521945, guid: 726e55773247d9446a2c19e825d30cce, type: 3}
   bulletData: {fileID: 11400000, guid: 3484180bfd812414caaf7207ead3cc87, type: 2}
+--- !u!1 &3777441332194849460 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7611423722439146672, guid: d93cb44e21569f545b76560b29579f98, type: 3}
+  m_PrefabInstance: {fileID: 6759093168088370692}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &9006405501141270922
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3777441332194849460}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d575d4f1279494c49a750d3a84584ab2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyProjectiles:
+  - {fileID: 1451153071164244845, guid: 5e6024910203b6e44bece4e3dbd269e1, type: 3}
+  bulletData: {fileID: 11400000, guid: d80dde4c3e0b0b344adf5dca7eaaf125, type: 2}
 --- !u!1 &4079918356797303241 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7301416149945870285, guid: d93cb44e21569f545b76560b29579f98, type: 3}
@@ -347,7 +384,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6402868668855187777}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2d82aea4197d1d04facd9b093bcc0909, type: 3}
   m_Name: 
@@ -368,13 +405,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6867336800114154692}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a3ad946947c7f0a40b3a65eff6d01bfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   enemyProjectiles:
-  - {fileID: -2796314786900650470, guid: 5e6024910203b6e44bece4e3dbd269e1, type: 3}
+  - {fileID: 0}
   bulletData: {fileID: 11400000, guid: d80dde4c3e0b0b344adf5dca7eaaf125, type: 2}
 --- !u!1 &7008567321455470459 stripped
 GameObject:
@@ -430,7 +467,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7913653206763732874}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 73727549904161a4db22af18c1b1d8a3, type: 3}
   m_Name: 
