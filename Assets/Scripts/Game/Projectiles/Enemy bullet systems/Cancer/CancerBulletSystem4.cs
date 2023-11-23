@@ -15,12 +15,7 @@ public class CancerBulletSystem4 : EnemyShooter<EnemyBullet>
     {
         yield return base.Shoot();
 
-        float z = 0f;
-        Vector3 pos = Vector3.zero;
-
-        SpawnProjectile(0, z, pos).Fire();
-
-        yield return WaitForSeconds(1f);
+        SetSubsystemEnabled(1);
 
         while (enabled)
         {
@@ -28,11 +23,11 @@ public class CancerBulletSystem4 : EnemyShooter<EnemyBullet>
             {
                 for (int ii = 0; ii < BranchCount; ii++)
                 {
-                    z = (i * WaveSpacing) + (ii * BranchSpacing);
+                    float z = (i * WaveSpacing) + (ii * BranchSpacing);
                     float s = BulletBaseSpeed + (i * BulletSpeedModifier);
-                    pos = (2f * Vector3.forward) + transform.position;
+                    Vector3 pos = (2f * Vector3.forward) + transform.position;
 
-                    var bullet = SpawnProjectile(1, z, pos, false);
+                    var bullet = SpawnProjectile(0, z, pos, false);
                     bullet.MoveSpeed = s;
                     bullet.Fire();
                 }

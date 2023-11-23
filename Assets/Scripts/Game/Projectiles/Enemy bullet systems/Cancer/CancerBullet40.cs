@@ -2,34 +2,37 @@ using System.Collections;
 using UnityEngine;
 using static CoroutineHelper;
 
-public class CancerBullet40 : ScriptableEnemyBullet<CancerBulletSystem4, EnemyBullet>
+public class CancerBullet40 : EnemyBullet
 {
-    const float WaveSpacing = 3f;
-    const int BranchCount = 3;
-    const float BranchSpacing = 360f / BranchCount;
-    const float BulletSpawnRadius = 0.5f;
-    const float ShootingCooldown = 0.1f;
+    Vector3 rotationAxis;
+    const float RotationSpeed = 180f;
+    const float FireDelay = 1.5f;
 
-    protected override float MaxLifetime => Mathf.Infinity;
+    protected override float MaxLifetime => 6f;
 
     protected override IEnumerator Move()
     {
-        yield return this.LerpSpeed(5f, 0f, 1f);
-        yield return WaitForSeconds(2f);
+        float endSpeed = MoveSpeed;
+        MoveSpeed = 0f;
+        yield return WaitForSeconds(FireDelay);
 
-        for (int i = 0; enabled; i++)
+        StartCoroutine(this.LerpSpeed(endSpeed, 4f, 2f));
+        this.LookAt(ownerShip);
+    }
+
+    protected override void OnEnable()
+    {
+        base.OnEnable();
+        rotationAxis = Vector3.right.RotateVectorBy(transform.eulerAngles.z);
+    }
+
+    protected override void Update()
+    {
+        base.Update();
+
+        if (currentLifetime < FireDelay)
         {
-            Vector3 r = Random.insideUnitCircle;
-
-            for (int ii = 0; ii < BranchCount; ii++)
-            {
-                float z = -((i * WaveSpacing) + (ii * BranchSpacing));
-                Vector3 pos = (BulletSpawnRadius * r).RotateVectorBy(z);
-
-                SpawnBullet(2, z, pos, false).Fire();
-            }
-
-            yield return WaitForSeconds(ShootingCooldown);
+            transform.RotateAround(ownerShip.transform.position, rotationAxis, RotationSpeed * Time.deltaTime);
         }
     }
 }
