@@ -4,7 +4,7 @@ using static CoroutineHelper;
 
 public class CancerBulletSystem41 : EnemyShooter<EnemyBullet>
 {
-    const float WaveSpacing = 3f;
+    const float WaveSpacing = 5f;
     const int BranchCount = 6;
     const float BranchSpacing = 360f / BranchCount;
     const float BulletSpawnRadius = 0.5f;
