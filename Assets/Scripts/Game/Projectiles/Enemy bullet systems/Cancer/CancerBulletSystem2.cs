@@ -66,7 +66,7 @@ public class CancerBulletSystem2 : EnemyShooter<EnemyBullet>
             yield return WaitForSeconds(1f);
 
             StartMoveAction?.Invoke();
-            yield return WaitForSeconds(2f);
+            yield return WaitForSeconds(1f);
         }
     }
 }

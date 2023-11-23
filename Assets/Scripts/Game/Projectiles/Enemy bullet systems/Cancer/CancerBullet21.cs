@@ -5,7 +5,7 @@ using static MathHelper;
 
 public class CancerBullet21 : ScriptableEnemyBullet<CancerBulletSystem21, EnemyBullet>
 {
-    const int BulletCount = 6;
+    const int BulletCount = 8;
     const float BulletSpacing = 360f / BulletCount;
 
     [SerializeField] ProjectileObject bulletData;
