@@ -1,26 +1,21 @@
 using System.Collections;
 using UnityEngine;
 using static CoroutineHelper;
-using static MathHelper;
 
 public class CancerBulletSystem31 : EnemyShooter<EnemyBullet>
 {
     const int WaveCount = 24;
-    const int BulletCount = 4;
     const float BulletSpawnRadius = 0.5f;
 
-    protected override float ShootingCooldown => 0.04f;
+    protected override float ShootingCooldown => 0.05f;
 
     protected override IEnumerator Shoot()
     {
         for (int i = 0; i < WaveCount; i++)
         {
-            for (int ii = 0; ii < BulletCount; ii++)
-            {
-                float z = RandomAngleDeg;
-                Vector3 pos = BulletSpawnRadius * Random.insideUnitCircle;
-                SpawnProjectile(4, z, pos).Fire();
-            }
+            float z = PlayerPosition.GetRotationDifference(transform.position);
+            Vector3 pos = BulletSpawnRadius * Random.insideUnitCircle;
+            SpawnProjectile(4, z, pos).Fire();
 
             yield return WaitForSeconds(ShootingCooldown);
         }
