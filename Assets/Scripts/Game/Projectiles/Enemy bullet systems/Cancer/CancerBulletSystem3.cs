@@ -24,7 +24,7 @@ public class CancerBulletSystem3 : EnemyShooter<EnemyBullet>
             yield return WaitForSeconds(5f);
 
             StartMoveAction?.Invoke();
-            SetSubsystemEnabled(1);
+            //SetSubsystemEnabled(1);
             yield return WaitForSeconds(1f);
         }
     }
