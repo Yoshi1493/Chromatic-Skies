@@ -7,7 +7,7 @@ public class VirgoMovementSystem4 : EnemyMovement
     {
         for (int i = 0; i < 5; i++)
         {
-            yield return WaitForSeconds(2.5f);
+            yield return WaitForSeconds(2f);
             yield return this.MoveToRandomPosition(2f);
         }
     }
