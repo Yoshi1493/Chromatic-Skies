@@ -4,8 +4,8 @@ using static CoroutineHelper;
 
 public class CancerBullet30 : ScriptableEnemyBullet<CancerBulletSystem3, EnemyBullet>
 {
-    const int WaveCount = 24;
-    const float ShootingCooldown = 0.15f;
+    const int WaveCount = 18;
+    const float ShootingCooldown = 0.2f;
 
     protected override float MaxLifetime => 9f;
 
