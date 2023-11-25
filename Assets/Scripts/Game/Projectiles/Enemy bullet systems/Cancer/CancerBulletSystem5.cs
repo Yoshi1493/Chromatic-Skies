@@ -8,7 +8,7 @@ public class CancerBulletSystem5 : EnemyShooter<EnemyBullet>
     readonly float BulletSpacing = (1f + Mathf.Sqrt(5f)) * 180f;
     const float BulletSpawnRadius = 0.5f;
 
-    protected override float ShootingCooldown => 0.06f;
+    protected override float ShootingCooldown => 0.05f;
 
     protected override IEnumerator Shoot()
     {
@@ -16,22 +16,19 @@ public class CancerBulletSystem5 : EnemyShooter<EnemyBullet>
 
         StartMoveAction?.Invoke();
 
-        int i = 0;
-
-        while (enabled)
+        for (int i = 0; enabled; i++)
         {
             for (int ii = 0; ii < BulletCount; ii++)
             {
+                int b = i % 2;
                 float z = i * BulletSpacing;
                 Vector3 pos = BulletSpawnRadius * transform.up.RotateVectorBy(z);
-                int b = i % 2;
 
                 SpawnProjectile(b, z, pos).Fire();
                 i++;
             }
 
             yield return WaitForSeconds(ShootingCooldown);
-            i++;
         }
     }
 }

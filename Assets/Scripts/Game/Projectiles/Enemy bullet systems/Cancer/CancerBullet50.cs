@@ -4,7 +4,7 @@ using static CoroutineHelper;
 
 public class CancerBullet50 : EnemyBullet
 {
-    const float CorruptionChance = 0.06f;
+    const float CorruptionChance = 0.05f;
 
     protected override IEnumerator Move()
     {
