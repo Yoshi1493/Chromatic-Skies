@@ -10,7 +10,7 @@ public class VirgoBulletSystem11 : EnemyShooter<EnemyBullet>
     const int BulletCount = 2;
     const float BulletRotationSpeed = BranchSpacing / 2f;
 
-    protected override float ShootingCooldown => 0.3f;
+    protected override float ShootingCooldown => 0.4f;
 
     protected override IEnumerator Shoot()
     {
@@ -24,7 +24,7 @@ public class VirgoBulletSystem11 : EnemyShooter<EnemyBullet>
                 {
                     int t = iii % 2 * 2 - 1;
                     float z = t * ((i * WaveSpacing) + (ii * BranchSpacing));
-                    Vector3 pos = transform.up.RotateVectorBy(z);
+                    Vector3 pos = Vector3.zero;
 
                     bulletData.colour = bulletData.gradient.Evaluate(iii);
 
