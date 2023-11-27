@@ -5,7 +5,7 @@ public class VirgoBullet41 : ScriptableEnemyBullet<VirgoBulletSystem41, EnemyBul
 {
     [SerializeField] ProjectileObject bulletData;
 
-    const int BranchCount = 18;
+    const int BranchCount = 12;
     const float BranchSpacing = 360f / BranchCount;
     const int BulletCount = 2;
     const float BulletStartSpeed = 4f;
