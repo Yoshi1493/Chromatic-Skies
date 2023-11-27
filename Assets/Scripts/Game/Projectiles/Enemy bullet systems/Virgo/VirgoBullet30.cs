@@ -9,6 +9,6 @@ public class VirgoBullet30 : EnemyBullet
     protected override IEnumerator Move()
     {
         yield return WaitForSeconds(2f);
-        yield return this.LerpSpeed(0f, Random.Range(2f, 2.5f), 2f);
+        yield return this.LerpSpeed(0f, Random.Range(2f, 3f), 2f);
     }
 }

@@ -12,7 +12,7 @@ public class VirgoBulletSystem3 : EnemyShooter<EnemyBullet>
     const float BranchSpacing = 360f / BranchCount;
     const float RingRadius = 2.5f;
 
-    List<Vector3> bulletSpawnData = new(BranchCount * WaveCount);
+    List<Vector3> bulletSpawnData = new(WaveCount * BranchCount);
 
     protected override float ShootingCooldown => 1f / 60;
 
