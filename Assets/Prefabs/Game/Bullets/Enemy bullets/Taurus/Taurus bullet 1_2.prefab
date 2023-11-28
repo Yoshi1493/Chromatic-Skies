@@ -53,7 +53,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3140064405051798717, guid: 4e06125b108514547b6fc9b6887da3eb, type: 3}
       propertyPath: m_Name
-      value: Taurus bullet 1_0
+      value: Taurus bullet 1_2
       objectReference: {fileID: 0}
     - target: {fileID: 7943771795135557499, guid: 4e06125b108514547b6fc9b6887da3eb, type: 3}
       propertyPath: power
@@ -83,7 +83,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3140064405051798717, guid: 4e06125b108514547b6fc9b6887da3eb, type: 3}
   m_PrefabInstance: {fileID: 4489721518377228893}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &5657913384362123125
+--- !u!114 &-4582832511245655886
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -92,10 +92,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1575430968703495904}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1a019aa521795e44fa4b6d0cfd48fb6a, type: 3}
+  m_Script: {fileID: 11500000, guid: d5f442ed106e97a46868ad7d3e5482f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   transform: {fileID: 0}
-  projectileData: {fileID: 11400000, guid: fad07d0aa2e2d0a4a904d13df602ca61, type: 2}
+  projectileData: {fileID: 11400000, guid: 3b3d09faaf02c0c4392721d1af121e89, type: 2}
   moveDirection: {x: 0, y: 0, z: 0}
   currentSpeed: 0

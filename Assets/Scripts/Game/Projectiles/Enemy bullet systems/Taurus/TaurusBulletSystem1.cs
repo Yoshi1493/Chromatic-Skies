@@ -4,11 +4,15 @@ using static CoroutineHelper;
 
 public class TaurusBulletSystem1 : EnemyShooter<EnemyBullet>
 {
-    const int BulletRowCount = 5;
-    const int BulletColCount = 5;
-    const float BulletSpacing = 0.8f;
+    const int WaveCount = 3;
+    const float WaveSpacing = BranchSpacing / 2f;
+    const int BranchCount = 24;
+    const float BranchSpacing = 360f / BranchCount;
+    const int BulletCount = 2;
+    const float BulletRotationSpeed = 45f;
+    const float BulletRotationDuration = 5f;
 
-    protected override float ShootingCooldown => 0.05f;
+    protected override float ShootingCooldown => 1f;
 
     protected override IEnumerator Shoot()
     {
@@ -19,28 +23,34 @@ public class TaurusBulletSystem1 : EnemyShooter<EnemyBullet>
 
         while (enabled)
         {
-            yield return WaitForSeconds(1f);
+            yield return WaitForSeconds(2f);
 
-            for (int c = 0; c < BulletColCount; c++)
+            for (int i = 0; i < WaveCount; i++)
             {
-                for (int r = 0; r < BulletRowCount; r++)
+                for (int ii = 0; ii < BranchCount; ii++)
                 {
-                    float x = (r - ((BulletRowCount - 1) / 2f)) * BulletSpacing;
-                    float y = (c - ((BulletColCount - 1) / 2f)) * BulletSpacing;
-                    Vector3 pos = new(x, y);
+                    for (int iii = 0; iii < BulletCount; iii++)
+                    {
+                        float z = (i * WaveSpacing) + ((ii + (iii * 0.5f)) * BranchSpacing);
+                        Vector3 pos = Vector3.zero;
 
-                    float z = pos.GetRotationDifference(Vector3.zero);
+                        bulletData.colour = bulletData.gradient.Evaluate(iii);
 
-                    var bullet = SpawnProjectile(0, z, Vector3.zero);
-                    bullet.MoveSpeed = pos.magnitude * 2f;
-                    bullet.Fire();
-
-                    yield return WaitForSeconds(ShootingCooldown);
+                        var bullet = SpawnProjectile(0, z, pos);
+                        bullet.StartCoroutine(bullet.RotateBy((iii % 2 * 2 - 1) * BulletRotationSpeed, BulletRotationDuration));
+                        bullet.Fire();
+                    }
                 }
+
+                yield return WaitForSeconds(ShootingCooldown);
             }
 
+            yield return WaitForSeconds(1f);
+
+            SetSubsystemEnabled(3);
+            yield return WaitForSeconds(1f);
+
             StartMoveAction?.Invoke();
-            yield return WaitForSeconds(3f);
         }
     }
 }

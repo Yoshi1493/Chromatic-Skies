@@ -470,6 +470,53 @@ MonoBehaviour:
   enemyProjectiles:
   - {fileID: -219723447350631775, guid: 6632cfe8fb5d7114d8ebf99fee202248, type: 3}
   bulletData: {fileID: 11400000, guid: c9d8b8bfa4dbbb043899d556fb60b465, type: 2}
+--- !u!1 &8762871589534248406
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1166117552169728917}
+  - component: {fileID: 6353347854756215055}
+  m_Layer: 7
+  m_Name: Bullet Subsystem 3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1166117552169728917
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8762871589534248406}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6341278059232048145}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6353347854756215055
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8762871589534248406}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2833770c32a58274298d9cee8bbe4944, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyProjectiles:
+  - {fileID: -4582832511245655886, guid: 435f88ba36fdb124c9bba952cb019634, type: 3}
+  bulletData: {fileID: 11400000, guid: 3b3d09faaf02c0c4392721d1af121e89, type: 2}
 --- !u!1001 &6759093168088370692
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -651,7 +698,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyProjectiles:
   - {fileID: 5657913384362123125, guid: d70057580542b8f428f88c0f005fc5ef, type: 3}
-  bulletData: {fileID: 11400000, guid: 3b3d09faaf02c0c4392721d1af121e89, type: 2}
+  bulletData: {fileID: 11400000, guid: fad07d0aa2e2d0a4a904d13df602ca61, type: 2}
 --- !u!4 &6153433117319852303 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 623886802135301899, guid: d93cb44e21569f545b76560b29579f98, type: 3}

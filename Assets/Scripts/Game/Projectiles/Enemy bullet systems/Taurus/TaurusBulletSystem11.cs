@@ -13,6 +13,8 @@ public class TaurusBulletSystem11 : EnemyShooter<EnemyBullet>
 
     List<Vector3> bulletSpawnPositions = new(BulletCount);
 
+    protected override float ShootingCooldown => 5f;
+
     protected override IEnumerator Shoot()
     {
         while (enabled)
@@ -39,7 +41,7 @@ public class TaurusBulletSystem11 : EnemyShooter<EnemyBullet>
                 SpawnProjectile(1, z, pos, false).Fire();
             }
 
-            yield return WaitForSeconds(5f);
+            yield return WaitForSeconds(ShootingCooldown);
         }
     }
 }
