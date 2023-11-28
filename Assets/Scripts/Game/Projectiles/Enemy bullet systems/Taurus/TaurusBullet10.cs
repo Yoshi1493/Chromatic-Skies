@@ -1,4 +1,5 @@
 using System.Collections;
+using static CoroutineHelper;
 
 public class TaurusBullet10 : EnemyBullet
 {
@@ -13,5 +14,8 @@ public class TaurusBullet10 : EnemyBullet
 
         yield return this.GraduallyLookAt(playerShip.transform.position, 0.5f);
         StartCoroutine(this.LerpSpeed(0f, 3f, 0.5f));
+
+        yield return WaitForSeconds(1f);
+        StartCoroutine(this.HomeInOn(playerShip, 1.5f));
     }
 }

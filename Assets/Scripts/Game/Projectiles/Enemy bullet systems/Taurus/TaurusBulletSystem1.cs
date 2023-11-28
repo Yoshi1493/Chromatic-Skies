@@ -8,7 +8,7 @@ public class TaurusBulletSystem1 : EnemyShooter<EnemyBullet>
     const int BulletColCount = 5;
     const float BulletSpacing = 0.8f;
 
-    protected override float ShootingCooldown => 0.04f;
+    protected override float ShootingCooldown => 0.05f;
 
     protected override IEnumerator Shoot()
     {

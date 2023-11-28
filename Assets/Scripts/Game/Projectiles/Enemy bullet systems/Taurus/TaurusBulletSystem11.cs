@@ -7,9 +7,9 @@ using static MathHelper;
 
 public class TaurusBulletSystem11 : EnemyShooter<EnemyBullet>
 {
-    const int BulletCount = 120;
-    public const float BulletSpacing = 0.8f;
-    const float MinDistanceFromShip = BulletSpacing * 2f;
+    const int BulletCount = 128;
+    public const float BulletSpacing = 0.64f;
+    const float MinDistanceFromShip = 1f;
 
     List<Vector3> bulletSpawnPositions = new(BulletCount);
 
