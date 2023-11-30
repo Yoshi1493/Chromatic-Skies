@@ -13,11 +13,10 @@ public class TaurusBulletSystem2 : EnemyShooter<EnemyBullet>
     protected override IEnumerator Shoot()
     {
         yield return base.Shoot();
+        SetSubsystemEnabled(1);
 
         while (enabled)
         {
-            SetSubsystemEnabled(1);
-
             for (int i = WaveCount - 1; i >= 0; i--)
             {
                 float r = Random.Range(MinBranchSpacing, MaxBranchSpacing);
@@ -41,7 +40,9 @@ public class TaurusBulletSystem2 : EnemyShooter<EnemyBullet>
             yield return WaitForSeconds(2f);
 
             StartMoveAction?.Invoke();
-            yield return WaitForSeconds(1f);
+            SetSubsystemEnabled(2);
+
+            yield return WaitForSeconds(3f);
         }
     }
 }

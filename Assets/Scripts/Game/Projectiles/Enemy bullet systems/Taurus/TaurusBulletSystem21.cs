@@ -6,47 +6,51 @@ using static MathHelper;
 
 public class TaurusBulletSystem21 : EnemyShooter<Laser>
 {
-    List<Vector3> bulletSpawnPositions = new();
+    List<Vector3> laserSpawnPositions = new();
 
     protected override float ShootingCooldown => 0.05f;
 
     protected override IEnumerator Shoot()
     {
-        yield return WaitForSeconds(2f);
-
-        bulletSpawnPositions.Clear();
-        bulletSpawnPositions.AddRange(GetRandomPointsAlongBounds(new(-screenHalfWidth, screenHalfHeight), new(screenHalfWidth, screenHalfHeight), 2f, 3f));
-        bulletSpawnPositions.AddRange(GetRandomPointsAlongBounds(new(screenHalfWidth, -screenHalfHeight), new(screenHalfWidth, screenHalfHeight), 1f, 2f));
-        bulletSpawnPositions.Randomize();
-
-        float r = Random.Range(-45f, 45f);
-
-        for (int i = 0; i < bulletSpawnPositions.Count; i++)
+        while (enabled)
         {
-            Vector3 pos = bulletSpawnPositions[i];
+            laserSpawnPositions.Clear();
+            yield return WaitForSeconds(2f);
 
-            float z = r;
+            laserSpawnPositions.AddRange(GetRandomPointsAlongBounds(new(-screenHalfWidth, screenHalfHeight), new(screenHalfWidth, screenHalfHeight), 2f, 3f));
+            laserSpawnPositions.AddRange(GetRandomPointsAlongBounds(new(screenHalfWidth, -screenHalfHeight), new(screenHalfWidth, screenHalfHeight), 1f, 2f));
+            laserSpawnPositions.Randomize();
 
-            if (Mathf.Abs(pos.x) == screenHalfWidth)
+            float r = Random.Range(-45f, 45f);
+
+            for (int i = 0; i < laserSpawnPositions.Count; i++)
             {
-                z += 90f * Mathf.Sign(pos.x);
-            }
-            else if (pos.y == screenHalfHeight)
-            {
-                z += 180f;
+                Vector3 pos = laserSpawnPositions[i];
+
+                float z = r;
+
+                if (Mathf.Abs(pos.x) == screenHalfWidth)
+                {
+                    z += 90f * Mathf.Sign(pos.x);
+                }
+                else if (pos.y == screenHalfHeight)
+                {
+                    z += 180f;
+                }
+
+                float t = (laserSpawnPositions.Count - 1 - i) * ShootingCooldown + 0.5f;
+                SpawnProjectile(0, z, pos, false).Fire(t);
+                SpawnProjectile(0, z + 180f, -pos, false).Fire(t);
+
+                yield return WaitForSeconds(ShootingCooldown);
             }
 
-            SpawnProjectile(0, z, pos, false).Fire();
-            SpawnProjectile(0, z + 180f, -pos, false).Fire();
-
-            yield return WaitForSeconds(ShootingCooldown);
+            yield return WaitForSeconds(4f);
         }
-
-        enabled = false;
     }
 
     void OnDisable()
     {
-        bulletSpawnPositions.Clear();
+        laserSpawnPositions.Clear();
     }
 }

@@ -4,6 +4,9 @@ public class TaurusMovementSystem2 : EnemyMovement
 {
     protected override IEnumerator Move()
     {
-        yield return this.MoveToRandomPosition(1f);
+        for (int i = 0; i < 4; i++)
+        {
+            yield return this.MoveToRandomPosition(0.6f, 3f, 3f);
+        }
     }
 }
