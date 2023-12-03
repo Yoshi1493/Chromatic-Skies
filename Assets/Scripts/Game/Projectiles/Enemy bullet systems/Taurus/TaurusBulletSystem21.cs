@@ -17,7 +17,7 @@ public class TaurusBulletSystem21 : EnemyShooter<Laser>
             laserSpawnPositions.Clear();
             yield return WaitForSeconds(2f);
 
-            laserSpawnPositions.AddRange(GetRandomPointsAlongBounds(new(-screenHalfWidth, screenHalfHeight), new(screenHalfWidth, screenHalfHeight), 2f, 3f));
+            laserSpawnPositions.AddRange(GetRandomPointsAlongBounds(new(-screenHalfWidth, screenHalfHeight), new(screenHalfWidth, screenHalfHeight), 1f, 3f));
             laserSpawnPositions.AddRange(GetRandomPointsAlongBounds(new(screenHalfWidth, -screenHalfHeight), new(screenHalfWidth, screenHalfHeight), 1f, 2f));
             laserSpawnPositions.Randomize();
 
