@@ -1,33 +1,33 @@
 using System.Collections;
 using UnityEngine;
+using static CoroutineHelper;
 
-public class TaurusBulletSystem32 : EnemyShooter<EnemyBullet>
+public class TaurusBulletSystem32 : EnemyShooter<Laser>
 {
-    const int BranchCount = 12;
-    const float BranchSpacing = 360f / BranchCount;
-    const int BulletCount = 6;
-    const float BulletBaseSpeed = 2.2f;
-    const float BulletSpeedModifier = 0.3f;
+    const int WaveCount = 3;
+    const float WaveSpacing = LaserSpacing / WaveCount;
+    const int LaserCount = 4;
+    const float LaserSpacing = 360f / LaserCount;
+
+    protected override float ShootingCooldown => 1.5f;
 
     protected override IEnumerator Shoot()
     {
-        float r = PlayerPosition.GetRotationDifference(transform.position);
-
-        for (int i = 0; i < BranchCount; i++)
+        while (enabled)
         {
-            for (int ii = 0; ii < BulletCount; ii++)
+            for (int i = 0; i < WaveCount; i++)
             {
-                float z = ((i + 0.5f) * BranchSpacing) + r;
-                float s = BulletBaseSpeed + (ii * BulletSpeedModifier);
-                Vector3 pos = Vector3.zero;
+                yield return WaitForSeconds(ShootingCooldown);
+                Vector3 v1 = PlayerPosition;
 
-                bulletData.colour = bulletData.gradient.Evaluate(ii / (BulletCount - 1f));
-                var bullet = SpawnProjectile(1, z, pos);
-                bullet.MoveSpeed = s;
-                bullet.Fire();
+                for (int ii = 0; ii < LaserCount; ii++)
+                {
+                    float z = (i * WaveSpacing) + (ii * LaserSpacing);
+                    Vector3 pos = v1 + (screenHalfWidth * transform.up.RotateVectorBy(z));
+
+                    SpawnProjectile(0, z, pos, false).Fire(ShootingCooldown);
+                }
             }
         }
-
-        yield return enabled = false;
     }
 }
