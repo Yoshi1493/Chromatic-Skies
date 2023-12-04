@@ -7,7 +7,7 @@ public class TaurusBulletSystem3 : EnemyShooter<Laser>
     const int LaserCount = 12;
     const float LaserSpacing = 360f / LaserCount;
 
-    protected override float ShootingCooldown => 2.5f;
+    protected override float ShootingCooldown => 5f;
 
     protected override IEnumerator Shoot()
     {
@@ -26,18 +26,16 @@ public class TaurusBulletSystem3 : EnemyShooter<Laser>
                 float z = (i * LaserSpacing) + r;
                 Vector3 pos = Vector3.zero;
 
-                SpawnProjectile(0, z, pos).Fire(1f);
+                SpawnProjectile(0, z, pos).Fire();
             }
 
             for (int i = 0; i < 3; i++)
             {
-                //SetSubsystemEnabled(2);
+                SetSubsystemEnabled(2);
                 StartMoveAction?.Invoke();
 
                 yield return WaitForSeconds(0.5f);
             }
-
-            yield return WaitForSeconds(ShootingCooldown);
         }
     }
 }
