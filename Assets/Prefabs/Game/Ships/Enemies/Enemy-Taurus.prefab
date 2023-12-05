@@ -703,9 +703,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba042499e1b3ef54aa3d998a537fdb4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyProjectiles:
-  - {fileID: -2135160941200722073, guid: e46bcdc8ac4e0ed4b9560d3b638ec51e, type: 3}
-  bulletData: {fileID: 11400000, guid: e52477078c5cfe3419e71d091d9361f8, type: 2}
+  enemyProjectiles: []
+  bulletData: {fileID: 0}
 --- !u!1 &3777441332194849460 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7611423722439146672, guid: d93cb44e21569f545b76560b29579f98, type: 3}

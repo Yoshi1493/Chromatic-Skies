@@ -38,7 +38,7 @@ public class TaurusBulletSystem31 : EnemyShooter<EnemyBullet>
                     float y = (ii - ((gridLength - 1) / 2f)) * BulletSpacing;
                     Vector3 pos = v1 + v2 + new Vector3(x, y).RotateVectorBy(z);
 
-                    SpawnProjectile(1, z, pos, false).Fire();
+                    SpawnProjectile(0, z, pos, false).Fire();
                 }
             }
 

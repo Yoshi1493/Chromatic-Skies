@@ -18,12 +18,11 @@ public class TaurusBulletSystem32 : EnemyShooter<Laser>
             for (int i = 0; i < WaveCount; i++)
             {
                 yield return WaitForSeconds(ShootingCooldown);
-                Vector3 v1 = PlayerPosition;
 
                 for (int ii = 0; ii < LaserCount; ii++)
                 {
                     float z = (i * WaveSpacing) + (ii * LaserSpacing);
-                    Vector3 pos = v1 + (screenHalfWidth * transform.up.RotateVectorBy(z));
+                    Vector3 pos = PlayerPosition;
 
                     SpawnProjectile(0, z, pos, false).Fire(ShootingCooldown);
                 }
