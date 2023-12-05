@@ -22,20 +22,14 @@ public class TaurusBulletSystem22 : EnemyShooter<EnemyBullet>
 
         for (int i = 0; i < RepeatCount; i++)
         {
-            Vector3 v1 = transform.position;
-            yield return WaitForSeconds(ShootingCooldown);
-
-            Vector3 v2 = (ownerShip.transform.position - v1).normalized.RotateVectorBy(Random.Range(-15f, 15f));
-            Vector3 v3 = v1 + (3f * v2);
-
             for (int ii = 0; ii < WaveCount; ii++)
             {
-                Vector3 pos = Vector3.Lerp(v1, v3, (ii / (WaveCount - 1f)));
-
                 for (int iii = 0; iii < BulletCount; iii++)
                 {
                     float z = (ii * WaveSpacing) + ((iii - ((BulletCount - 1) / 2f)) * BulletSpacing);
-                    SpawnProjectile(1, z, pos, false).Fire();
+                    Vector3 pos = Vector3.zero;
+
+                    SpawnProjectile(1, z, pos).Fire();
                 }
 
                 yield return WaitForSeconds(ShootingCooldown);
