@@ -16,7 +16,7 @@ public class TaurusBulletSystem31 : EnemyShooter<EnemyBullet>
         new( 1,  0)
     };
 
-    protected override float ShootingCooldown => 1.5f;
+    protected override float ShootingCooldown => 1f;
 
     protected override IEnumerator Shoot()
     {
