@@ -9,7 +9,7 @@ public class TaurusBulletSystem32 : EnemyShooter<Laser>
     const int LaserCount = 4;
     const float LaserSpacing = 360f / LaserCount;
 
-    protected override float ShootingCooldown => 1.5f;
+    protected override float ShootingCooldown => 1f;
 
     protected override IEnumerator Shoot()
     {
