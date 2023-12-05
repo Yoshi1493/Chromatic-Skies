@@ -7,7 +7,7 @@ public class AriesBulletSystem4 : EnemyShooter<EnemyBullet>
 {
     const int WaveCount = 90;
     const int BranchCount = 5;
-    const float BranchSpacing = 360 / BranchCount;
+    const float BranchSpacing = 360f / BranchCount;
 
     protected override float ShootingCooldown => 0.05f;
 

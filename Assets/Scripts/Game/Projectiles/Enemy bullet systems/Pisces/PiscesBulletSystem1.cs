@@ -6,7 +6,7 @@ using static CoroutineHelper;
 public class PiscesBulletSystem1 : EnemyShooter<EnemyBullet>
 {
     const int WaveCount = 36;
-    const int WaveSpacing = 360 / WaveCount;
+    const float WaveSpacing = 360f / WaveCount;
     const float WaveSpeedModifier = 0.1f;
     const int BulletCount = 2;
     const float BulletBaseSpeed = 2f;

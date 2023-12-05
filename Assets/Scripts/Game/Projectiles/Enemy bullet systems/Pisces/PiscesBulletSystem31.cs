@@ -6,7 +6,7 @@ using static MathHelper;
 public class PiscesBulletSystem31 : EnemyShooter<EnemyBullet>
 {
     const int BulletCount = 6;
-    const int BulletSpacing = 360 / BulletCount;
+    const float BulletSpacing = 360f / BulletCount;
 
     protected override float ShootingCooldown => 1.0f;
 

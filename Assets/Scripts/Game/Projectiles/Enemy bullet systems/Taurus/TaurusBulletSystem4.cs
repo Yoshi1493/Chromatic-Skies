@@ -4,8 +4,8 @@ using static CoroutineHelper;
 
 public class TaurusBulletSystem4 : EnemyShooter<EnemyBullet>
 {
-    const int BranchCount = 3;
-    const int BranchSpacing = 360 / BranchCount;
+    const int BranchCount = 5;
+    const float BranchSpacing = 360f / BranchCount;
     const float BulletSpacing = 15f;
     const float MaxBulletSpacing = BulletSpacing * 2f;
 

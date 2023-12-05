@@ -4,7 +4,7 @@ using static MathHelper;
 public class LeoBullet20 : ScriptableEnemyBullet<LeoBulletSystem2, EnemyBullet>
 {
     const int BulletCount = 5;
-    const int BulletSpacing = 360 / BulletCount;
+    const float BulletSpacing = 360f / BulletCount;
 
     protected override float MaxLifetime => 2f;
 

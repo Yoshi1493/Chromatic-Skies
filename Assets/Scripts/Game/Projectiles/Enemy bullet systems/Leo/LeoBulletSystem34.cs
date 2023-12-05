@@ -5,7 +5,7 @@ using static CoroutineHelper;
 public class LeoBulletSystem34 : EnemyShooter<Laser>
 {
     const int LaserCount = 8;
-    const int LaserSpacing = 360 / LaserCount;
+    const float LaserSpacing = 360f / LaserCount;
 
     protected override float ShootingCooldown => 3f;
 

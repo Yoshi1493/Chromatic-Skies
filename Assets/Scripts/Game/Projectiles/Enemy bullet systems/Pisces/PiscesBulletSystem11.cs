@@ -7,7 +7,7 @@ public class PiscesBulletSystem11 : EnemyShooter<EnemyBullet>
     const int WaveCount = 4;
     const float WaveSpacing = BulletSpacing / WaveCount;
     const int BulletCount = 48;
-    const int BulletSpacing = 360 / BulletCount;
+    const float BulletSpacing = 360f / BulletCount;
     const float BulletBaseSpeed = 1.5f;
     const float BulletSpeedModifier = 2f;
 
