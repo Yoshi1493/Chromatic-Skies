@@ -7,7 +7,6 @@ public class TaurusBullet40 : EnemyBullet
 
     protected override IEnumerator Move()
     {
-        yield return WaitForSeconds(1f);
-        yield return this.LerpSpeed(0, 2.5f, 2f);
+        yield return null;
     }
 }

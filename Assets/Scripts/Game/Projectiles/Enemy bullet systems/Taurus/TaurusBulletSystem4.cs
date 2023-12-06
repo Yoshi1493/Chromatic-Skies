@@ -5,13 +5,13 @@ using static CoroutineHelper;
 
 public class TaurusBulletSystem4 : EnemyShooter<EnemyBullet>
 {
-    const int WaveCount = 20;
+    const int WaveCount = 15;
     const int BranchCount = 5;
     const float BranchSpacing = 360f / BranchCount;
     const int BulletCount = 5;
     const float BulletSpawnRadius = 2.5f;
-    const float BulletBaseSpeed = 2.5f;
-    const float BulletSpeedModifier = 0.1f;
+    const float BulletBaseSpeed = 1.5f;
+    const float BulletSpeedModifier = 0.2f;
     const float BulletRotationSpeed = -47.5f;
     const float BulletRotationSpeedModifier = 5f;
     const float BulletRotationDuration = 1f;
@@ -53,7 +53,7 @@ public class TaurusBulletSystem4 : EnemyShooter<EnemyBullet>
                 yield return WaitForSeconds(ShootingCooldown);
             }
 
-            yield return WaitForSeconds(1f);
+            yield return WaitForSeconds(0.5f);
 
             for (int i = 0; i < WaveCount; i++)
             {
@@ -63,15 +63,16 @@ public class TaurusBulletSystem4 : EnemyShooter<EnemyBullet>
                     {
                         int b = (i * BranchCount * BulletCount) + (ii * BulletCount) + iii;
                         float r = transform.eulerAngles.z - (iii * BranchSpacing);
+                        float s = BulletBaseSpeed + (i * BulletSpeedModifier);
 
                         bullets[b].StartCoroutine(bullets[b].RotateBy(r, 0f));
                         bullets[b].StartCoroutine(bullets[b].LerpSpeed(5f, 0f, BulletRotationDuration));
 
-                        //bullets[b].StartCoroutine(bullets[b].RotateBy(-60, 0f, delay: BulletRotationDuration));
+                        bullets[b].StartCoroutine(bullets[b].RotateBy(180f, 0.2f, delay: BulletRotationDuration));
 
-                        //r = BulletRotationSpeed + (i * BulletRotationSpeedModifier);
-                        //bullets[b].StartCoroutine(bullets[b].RotateBy(r, 0f, delay: BulletRotationDuration));
-                        //bullets[b].Fire();
+                        r = BulletRotationSpeed + (i * BulletRotationSpeedModifier);
+                        bullets[b].StartCoroutine(bullets[b].RotateBy(r, BulletRotationDuration, delay: BulletRotationDuration));
+                        bullets[b].StartCoroutine(bullets[b].LerpSpeed(0f, s, 2f, delay: BulletRotationDuration));
                     }
                 }
             }
