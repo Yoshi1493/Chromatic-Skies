@@ -58,13 +58,13 @@ public static class ProjectileBehaviour
     {
         int directionMultiplier = clockwise ? -1 : 1;
 
+        if (delay > 0f) yield return WaitForSeconds(delay);
+
         if (rotateDuration <= 0f)
         {
             if (rotateDuration == 0f) { RotateVectorBy(ref p.moveDirection, degrees * directionMultiplier); }
             yield break;
         }
-
-        if (delay > 0f) yield return WaitForSeconds(delay);
 
         float currentTime = 0f;
 
