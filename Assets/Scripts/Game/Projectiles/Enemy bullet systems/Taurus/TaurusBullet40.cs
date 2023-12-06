@@ -1,12 +1,13 @@
 using System.Collections;
+using static CoroutineHelper;
 
 public class TaurusBullet40 : EnemyBullet
 {
-    protected override float MaxLifetime => 8f;
+    protected override float MaxLifetime => 12f;
 
     protected override IEnumerator Move()
     {
-        MoveSpeed = 3f;
-        yield return this.LerpSpeed(3f, 1.5f, 2f, 1f);
+        yield return WaitForSeconds(1f);
+        yield return this.LerpSpeed(0, 2.5f, 2f);
     }
 }
