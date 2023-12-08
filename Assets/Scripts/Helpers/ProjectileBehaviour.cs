@@ -71,7 +71,15 @@ public static class ProjectileBehaviour
         while (currentTime < rotateDuration)
         {
             float degreesPerFrame = degrees * directionMultiplier / rotateDuration * Time.deltaTime;
-            RotateVectorBy(ref p.moveDirection, degreesPerFrame);
+
+            if (p is Laser)
+            {
+                p.transform.Rotate(degreesPerFrame * Vector3.forward);
+            }
+            else
+            {
+                RotateVectorBy(ref p.moveDirection, degreesPerFrame);
+            }
 
             currentTime += Time.deltaTime;
             yield return EndOfFrame;
