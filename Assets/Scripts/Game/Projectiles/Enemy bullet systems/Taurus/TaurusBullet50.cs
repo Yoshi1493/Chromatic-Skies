@@ -1,12 +1,11 @@
 using System.Collections;
-using UnityEngine;
 
 public class TaurusBullet50 : EnemyBullet
 {
-    protected override float MaxLifetime => Mathf.Infinity;
+    protected override float MaxLifetime => 15f;
 
     protected override IEnumerator Move()
     {
-        yield break;
+        yield return this.LerpSpeed(0f, 1.5f, 3f);
     }
 }

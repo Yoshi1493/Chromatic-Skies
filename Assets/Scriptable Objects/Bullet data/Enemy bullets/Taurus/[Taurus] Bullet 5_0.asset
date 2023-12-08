@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b79cd0b20b26ac4090b241d65679e69, type: 3}
   m_Name: '[Taurus] Bullet 5_0'
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: 619419fcd83afae41988d7a17bf2f355, type: 3}
+  sprite: {fileID: 21300000, guid: 75b646d9d53bbbf41b3ceca6730426b5, type: 3}
   useSolidColour: 1
   colour: {r: 0.5, g: 1, b: 0, a: 1}
   gradient:
