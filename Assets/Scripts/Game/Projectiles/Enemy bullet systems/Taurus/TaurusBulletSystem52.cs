@@ -6,7 +6,7 @@ public class TaurusBulletSystem52 : EnemyShooter<Laser>
 {
     const int LaserCount = 2;
     const float LaserSpacing = 60f;
-    public const float LaserMaxLifetime = 7f;
+    public const float LaserMaxLifetime = 5f;
 
     protected override IEnumerator Shoot()
     {

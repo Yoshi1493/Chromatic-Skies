@@ -23,6 +23,6 @@ public class TaurusBulletSystem51 : EnemyShooter<Laser>
             }
         }
 
-        yield break;
+        yield return enabled = false;
     }
 }
