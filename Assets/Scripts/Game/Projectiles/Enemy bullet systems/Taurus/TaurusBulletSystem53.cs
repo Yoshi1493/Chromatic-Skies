@@ -29,7 +29,7 @@ public class TaurusBulletSystem53 : EnemyShooter<EnemyBullet>
                 if (hit)
                 {
                     Vector3 pos = hit.point;
-                    float r = Random.Range(5f, 15f);
+                    float r = Random.Range(2f, 15f);
                     float z = PlayerPosition.GetRotationDifference(pos) + (r * PositiveOrNegativeOne);
 
                     SpawnProjectile(0, z, pos, false).Fire();
