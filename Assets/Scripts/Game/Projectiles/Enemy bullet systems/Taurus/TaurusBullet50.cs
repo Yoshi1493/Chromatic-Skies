@@ -1,4 +1,5 @@
 using System.Collections;
+using UnityEngine;
 
 public class TaurusBullet50 : EnemyBullet
 {
@@ -6,6 +7,6 @@ public class TaurusBullet50 : EnemyBullet
 
     protected override IEnumerator Move()
     {
-        yield return this.LerpSpeed(0f, 2f, 3f);
+        yield return this.LerpSpeed(0f, Random.Range(1.5f, 2.5f), 3f);
     }
 }

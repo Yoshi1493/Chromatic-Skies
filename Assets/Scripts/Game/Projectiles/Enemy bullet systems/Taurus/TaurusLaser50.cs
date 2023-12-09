@@ -5,7 +5,7 @@ public class TaurusLaser50 : Laser
 {
     static int rotationDirection;
     const float RotationSpeed = 10f;
-    protected override float MaxLifetime => 8f;
+    protected override float MaxLifetime => 7.5f;
 
     protected override void OnEnable()
     {
