@@ -5,7 +5,7 @@ using static CoroutineHelper;
 public class TaurusBulletSystem31 : EnemyShooter<EnemyBullet>
 {
     const int MinGridLength = 3;
-    const int MaxGridLength = 6;
+    const int MaxGridLength = 5;
     const float MaxRandomSpawnOffset = 5f;
     const float BulletSpacing = 1f;
 
@@ -16,7 +16,7 @@ public class TaurusBulletSystem31 : EnemyShooter<EnemyBullet>
         new( 1,  0)
     };
 
-    protected override float ShootingCooldown => 1f;
+    protected override float ShootingCooldown => 1.2f;
 
     protected override IEnumerator Shoot()
     {
