@@ -9,7 +9,7 @@ public class TaurusBulletSystem22 : EnemyShooter<EnemyBullet>
     const float RepeatSpacing = 75f;
     const int WaveCount = 15;
     const float WaveSpacing = 360f / WaveCount;
-    const int BulletCount = 5;
+    const int BulletCount = 3;
     const float BulletSpacing = 5f;
 
     List<EnemyBullet> bullets = new(RepeatCount * WaveCount);
