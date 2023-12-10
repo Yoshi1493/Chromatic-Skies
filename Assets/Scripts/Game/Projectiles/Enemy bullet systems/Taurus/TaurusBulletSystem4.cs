@@ -4,7 +4,7 @@ using static CoroutineHelper;
 
 public class TaurusBulletSystem4 : EnemyShooter<EnemyBullet>
 {
-    const float WaveSpacing = 5f;
+    const float WaveSpacing = 6f;
     const int BranchCount = 12;
     const float BranchSpacing = 360f / BranchCount;
 
