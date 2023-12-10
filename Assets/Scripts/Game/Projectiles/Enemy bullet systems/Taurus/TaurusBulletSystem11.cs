@@ -7,8 +7,8 @@ using static MathHelper;
 
 public class TaurusBulletSystem11 : EnemyShooter<EnemyBullet>
 {
-    const int BulletCount = 128;
-    public const float BulletSpacing = 0.64f;
+    const int BulletCount = 120;
+    public const float BulletDensity = 0.64f;
     const float MinDistanceFromShip = 1f;
 
     List<Vector3> bulletSpawnPositions = new(BulletCount);
@@ -23,9 +23,9 @@ public class TaurusBulletSystem11 : EnemyShooter<EnemyBullet>
 
             for (int i = 0; i < bulletSpawnPositions.Count; i++)
             {
-                float x = RoundToNearestMultipleOf(bulletSpawnPositions[i].x, BulletSpacing);
-                float y = RoundToNearestMultipleOf(bulletSpawnPositions[i].y, BulletSpacing);
-                Vector3 offset = BulletSpacing * 0.5f * Vector3.one;
+                float x = RoundToNearestMultipleOf(bulletSpawnPositions[i].x, BulletDensity);
+                float y = RoundToNearestMultipleOf(bulletSpawnPositions[i].y, BulletDensity);
+                Vector3 offset = BulletDensity * 0.5f * Vector3.one;
 
                 Vector3 spawnPos = new Vector3(x, y) - offset;
                 bulletSpawnPositions[i] = spawnPos;

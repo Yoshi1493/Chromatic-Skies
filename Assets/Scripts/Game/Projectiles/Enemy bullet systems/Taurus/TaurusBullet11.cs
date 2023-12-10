@@ -19,7 +19,7 @@ public class TaurusBullet11 : ScriptableEnemyBullet<TaurusBulletSystem12, Laser>
     void SpawnLasers()
     {
         Vector3 rayOrigin = transform.position;
-        float rayDistance = TaurusBulletSystem11.BulletSpacing;
+        float rayDistance = TaurusBulletSystem11.BulletDensity;
         int layerMask = enemyBulletLayer.value;
 
         var hits = Array.FindAll(Physics2D.OverlapCircleAll(rayOrigin, rayDistance, layerMask), i => (
