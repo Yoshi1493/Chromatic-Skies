@@ -5,7 +5,7 @@ using static MathHelper;
 
 public class TaurusBulletSystem53 : EnemyShooter<EnemyBullet>
 {
-    const int WaveCount = 55;
+    const int WaveCount = 50;
 
     [Space]
     [SerializeField] LayerMask collisionBoundary;
@@ -18,6 +18,7 @@ public class TaurusBulletSystem53 : EnemyShooter<EnemyBullet>
 
         for (int i = 0; i < WaveCount; i++)
         {
+            print(i);
             for (int ii = 0; ii < lasers.Length; ii++)
             {
                 Vector3 rayOrigin = transform.position;
