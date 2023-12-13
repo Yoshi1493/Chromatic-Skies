@@ -16,15 +16,17 @@ public class TaurusMovementSystem5 : EnemyMovement
 
         for (int i = 0; i < positions.Capacity; i++)
         {
-            Vector3 p = p0 + (MovementRadius * Vector3.up.RotateVectorBy((i + 1) * -144f));
+            Vector3 p = p0 + (MovementRadius * Vector3.up.RotateVectorBy((i + 1) * TaurusBulletSystem5.WaveSpacing));
             positions.Add(p);
         }
-
-        //yield return WaitForSeconds(1f);
 
         for (int i = 0; i < positions.Count; i++)
         {
             yield return this.MoveTo(positions[i], 0.5f);
         }
+
+        //yield return this.MoveTo(p0, 0.5f);
+
+        yield return WaitForSeconds(3f);
     }
 }
