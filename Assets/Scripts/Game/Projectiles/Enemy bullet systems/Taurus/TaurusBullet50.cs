@@ -1,12 +1,16 @@
 using System.Collections;
 using UnityEngine;
+using static CoroutineHelper;
 
-public class TaurusBullet50 : EnemyBullet
+public class TaurusBullet50 : ScriptableEnemyBullet<TaurusBulletSystem52, Laser>
 {
-    protected override float MaxLifetime => 15f;
-
     protected override IEnumerator Move()
     {
-        yield return this.LerpSpeed(0f, Random.Range(1.5f, 2.5f), 3f);
+        yield return WaitForSeconds(1f);
+
+        float z = transform.eulerAngles.z;
+        Vector3 pos = transform.position;
+
+        SpawnBullet(0, z, pos, false).Fire();
     }
 }
