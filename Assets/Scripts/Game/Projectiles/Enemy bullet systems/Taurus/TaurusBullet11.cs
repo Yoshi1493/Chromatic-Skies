@@ -30,7 +30,9 @@ public class TaurusBullet11 : ScriptableEnemyBullet<TaurusBulletSystem12, Laser>
         for (int i = 0; i < hits.Length; i++)
         {
             float z = transform.position.GetRotationDifference(hits[i].transform.position);
-            SpawnBullet(0, z, transform.position, false).Fire();
+            Vector3 pos = transform.position;
+
+            SpawnBullet(0, z, pos, false).Fire();
         }
     }
 }
