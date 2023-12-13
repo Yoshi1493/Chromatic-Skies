@@ -25,8 +25,12 @@ public class TaurusMovementSystem5 : EnemyMovement
             yield return this.MoveTo(positions[i], 0.5f);
         }
 
-        //yield return this.MoveTo(p0, 0.5f);
+        yield return this.MoveTo(p0, 0.5f);
+        yield return WaitForSeconds(2f);
 
-        yield return WaitForSeconds(3f);
+        for (int i = 0; i < 4; i++)
+        {
+            yield return this.MoveToRandomPosition(1f, 3f, 5f);
+        }
     }
 }

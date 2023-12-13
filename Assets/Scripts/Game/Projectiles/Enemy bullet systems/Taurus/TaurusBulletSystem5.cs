@@ -21,7 +21,6 @@ public class TaurusBulletSystem5 : EnemyShooter<EnemyBullet>
         while (enabled)
         {
             StartMoveAction?.Invoke();
-            SetSubsystemEnabled(1);
 
             bullets.Clear();
 
@@ -34,8 +33,11 @@ public class TaurusBulletSystem5 : EnemyShooter<EnemyBullet>
 
                 bullets.Add(SpawnProjectile(0, z, pos));
             }
-            
+
             bullets.ForEach(b => b.Fire());
+
+            yield return WaitForSeconds(1f);
+            SetSubsystemEnabled(1);
 
             yield return WaitForSeconds(12f);
         }

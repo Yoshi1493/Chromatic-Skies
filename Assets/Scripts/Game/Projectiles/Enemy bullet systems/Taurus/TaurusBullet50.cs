@@ -6,20 +6,25 @@ public class TaurusBullet50 : ScriptableEnemyBullet<TaurusBulletSystem52, Laser>
 {
     const int LaserCount = 2;
     const float LaserSpacing = TaurusBulletSystem5.WaveSpacing;
+    const float BulletRotationSpeed = 5f;
+
+    protected override float MaxLifetime => 15f;
 
     protected override IEnumerator Move()
     {
-        yield return WaitForSeconds(1f);
+        yield return WaitForSeconds(0.5f);
 
         for (int i = 0; i < LaserCount; i++)
         {
-            float r = (i % 2 * 2 - 1) * (LaserSpacing / 4);
+            int d = i % 2 * 2 - 1;
+            float r = d * (LaserSpacing / 8);
             float z = transform.eulerAngles.z + r;
             Vector3 pos = transform.position;
 
             var laser = SpawnBullet(0, z, pos, false);
             laser.transform.parent = transform;
             laser.Fire();
+            laser.StartCoroutine(laser.RotateBy(d * 36f, 6f, delay: 0.5f));
         }
     }
 }

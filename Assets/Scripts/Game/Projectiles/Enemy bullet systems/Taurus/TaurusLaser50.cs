@@ -3,10 +3,13 @@ using static MathHelper;
 
 public class TaurusLaser50 : Laser
 {
-    static int rotationDirection;
-    const float RotationSpeed = 10f;
-    protected override float MaxLifetime => 7.5f;
+    //static int rotationDirection;
+    //const float RotationSpeed = 10f;
 
+    protected override float MaxLifetime => 6.6f;
+    //protected override float MaxLifetime => 7.8f;
+
+    /*
     protected override void OnEnable()
     {
         base.OnEnable();
@@ -22,4 +25,5 @@ public class TaurusLaser50 : Laser
             transform.Rotate(RotationSpeed * rotationDirection * Time.deltaTime * Vector3.forward, Space.Self);
         }
     }
+    */
 }
