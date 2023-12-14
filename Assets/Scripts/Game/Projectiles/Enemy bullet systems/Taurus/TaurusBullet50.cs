@@ -8,10 +8,11 @@ public class TaurusBullet50 : ScriptableEnemyBullet<TaurusBulletSystem52, Laser>
     const float LaserSpacing = TaurusBulletSystem5.WaveSpacing;
     const float BulletRotationSpeed = 5f;
 
-    protected override float MaxLifetime => 15f;
+    protected override float MaxLifetime => 7f;
 
     protected override IEnumerator Move()
     {
+        currentLifetime = 0f;
         yield return WaitForSeconds(0.5f);
 
         for (int i = 0; i < LaserCount; i++)
@@ -22,7 +23,6 @@ public class TaurusBullet50 : ScriptableEnemyBullet<TaurusBulletSystem52, Laser>
             Vector3 pos = transform.position;
 
             var laser = SpawnBullet(0, z, pos, false);
-            laser.transform.parent = transform;
             laser.Fire();
             laser.StartCoroutine(laser.RotateBy(d * 36f, 6f, delay: 0.5f));
         }

@@ -36,10 +36,10 @@ public class TaurusBulletSystem5 : EnemyShooter<EnemyBullet>
 
             bullets.ForEach(b => b.Fire());
 
-            yield return WaitForSeconds(1f);
+            yield return WaitForSeconds(2.5f);
             SetSubsystemEnabled(1);
 
-            yield return WaitForSeconds(12f);
+            yield return WaitForSeconds(6f);
         }
     }
 }

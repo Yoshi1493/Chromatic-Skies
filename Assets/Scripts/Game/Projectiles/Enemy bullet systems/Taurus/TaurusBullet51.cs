@@ -1,11 +1,10 @@
 using System.Collections;
-using UnityEngine;
-using static CoroutineHelper;
 
 public class TaurusBullet51 : EnemyBullet
 {
     protected override IEnumerator Move()
     {
-        yield break;
+        float endSpeed = MoveSpeed;
+        yield return this.LerpSpeed(1f, endSpeed, 1f);
     }
 }
