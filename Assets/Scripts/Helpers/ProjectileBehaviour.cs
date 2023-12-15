@@ -141,6 +141,8 @@ public static class ProjectileBehaviour
         float currentTime = 0f;
         int rotationDirection = clockwise ? -1 : 1;
 
+        Vector3 direction = p.transform.position - targetPosition;
+
         while (currentTime < rotateDuration)
         {
             p.transform.RotateAround(targetPosition, Vector3.forward, degreesPerSecond * rotationDirection * Time.deltaTime);
@@ -148,6 +150,8 @@ public static class ProjectileBehaviour
             currentTime += Time.deltaTime;
             yield return EndOfFrame;
         }
+
+        p.transform.position = direction.RotateVectorBy(degreesPerSecond * rotateDuration * rotationDirection) + targetPosition;
     }
 
     /// <summary>
