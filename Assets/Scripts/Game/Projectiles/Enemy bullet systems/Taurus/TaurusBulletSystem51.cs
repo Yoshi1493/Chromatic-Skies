@@ -5,12 +5,12 @@ using static CoroutineHelper;
 public class TaurusBulletSystem51 : EnemyShooter<EnemyBullet>
 {
     const int WaveCount = 4;
-    const int BranchCount = 5;
-    const float BranchSpacing = 18f;
+    const int BranchCount = 18;
+    const float BranchSpacing = 360f / BranchCount;
     const int BulletCount = 5;
-    const float BulletSpacing = 3f;
-    const float BulletBaseSpeed = 2.25f;
-    const float BulletSpeedModifier = 0.75f;
+    const float BulletSpacing = 5f;
+    const float BulletBaseSpeed = 1.6f;
+    const float BulletSpeedModifier = 0.2f;
 
     protected override float ShootingCooldown => 1f;
 
@@ -24,7 +24,7 @@ public class TaurusBulletSystem51 : EnemyShooter<EnemyBullet>
             {
                 for (int iii = 0; iii < BulletCount; iii++)
                 {
-                    float z = (ii - ((BranchCount - 1) / 2f)) * BranchSpacing + r;
+                    float z = (i % 2 * 2 - 1) * ((ii * BranchSpacing) + (iii * BulletSpacing) + r);
                     float s = BulletBaseSpeed + (iii * BulletSpeedModifier);
                     Vector3 pos = Vector3.zero;
 
@@ -39,6 +39,6 @@ public class TaurusBulletSystem51 : EnemyShooter<EnemyBullet>
             yield return WaitForSeconds(ShootingCooldown);
         }
 
-       enabled = false;
+        enabled = false;
     }
 }
