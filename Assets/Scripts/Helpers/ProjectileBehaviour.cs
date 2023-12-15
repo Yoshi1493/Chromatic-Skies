@@ -133,6 +133,23 @@ public static class ProjectileBehaviour
         }
     }
 
+    public static IEnumerator TransformRotateAround(this Bullet p, Vector3 targetPosition, float rotateDuration, float degreesPerSecond, bool clockwise = true, float delay = 0f)
+    {
+        if (rotateDuration <= 0) yield break;
+        if (delay > 0f) yield return WaitForSeconds(delay);
+
+        float currentTime = 0f;
+        int rotationDirection = clockwise ? -1 : 1;
+
+        while (currentTime < rotateDuration)
+        {
+            p.transform.RotateAround(targetPosition, Vector3.forward, degreesPerSecond * rotationDirection * Time.deltaTime);
+
+            currentTime += Time.deltaTime;
+            yield return EndOfFrame;
+        }
+    }
+
     /// <summary>
     /// translates <p> such that it looks like it is orbiting <target.transform.position>, at <rotateSpeed> degrees per second, for <rotateDuration> seconds.
     /// </summary>
