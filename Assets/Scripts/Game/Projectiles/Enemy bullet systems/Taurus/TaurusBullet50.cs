@@ -4,6 +4,7 @@ using static CoroutineHelper;
 
 public class TaurusBullet50 : ScriptableEnemyBullet<TaurusBulletSystem52, Laser>
 {
+    const int RepeatCount = 2;
     const int LaserCount = 2;
     const float LaserSpacing = TaurusBulletSystem5.WaveSpacing;
     const float BulletRotationSpeed = 5f;
@@ -16,38 +17,45 @@ public class TaurusBullet50 : ScriptableEnemyBullet<TaurusBulletSystem52, Laser>
     {
         while (enabled)
         {
-            yield return WaitForSeconds(ShootingCooldown);
-
-            for (int i = 0; i < LaserCount; i++)
+            for (int i = 0; i < RepeatCount; i++)
             {
-                int d = i % 2 * 2 - 1;
-                float r = d * (LaserSpacing / 8);
-                float z = transform.eulerAngles.z + r;
-                Vector3 pos = transform.position;
+                float d = i % 2 * 2 - 1;
+                yield return WaitForSeconds(ShootingCooldown);
 
-                var laser = SpawnBullet(0, z, pos, false);
-                laser.Fire();
-                laser.StartCoroutine(laser.RotateBy(d * 36f, 6f, delay: 0.5f));
+                for (int ii = 0; ii < LaserCount; ii++)
+                {
+                    int t = ii % 2 * 2 - 1;
+                    float r = t * (LaserSpacing / 8);
+                    float z = transform.eulerAngles.z + r;
+                    Vector3 pos = transform.position;
+
+                    var laser = SpawnBullet(0, z, pos, false);
+                    laser.Fire(1f);
+                    laser.StartCoroutine(laser.RotateBy(t * 36f, 6f, delay: 1f));
+                }
+
+                yield return WaitForSeconds(7f);
+                StartCoroutine(this.RotateBy(180f, 1f));
+                yield return this.TransformRotateAround(rotationOrigin, 1f, 180f);
+                yield return WaitForSeconds(ShootingCooldown);
+
+                for (int ii = 0; ii < LaserCount; ii++)
+                {
+                    int t = ii % 2 * 2 - 1;
+                    float r = t * (LaserSpacing / 8);
+                    float z = transform.eulerAngles.z + r;
+                    Vector3 pos = transform.position;
+
+                    var laser = SpawnBullet(0, z, pos, false);
+                    laser.Fire(1f);
+                    laser.StartCoroutine(laser.RotateBy(d * 36f, 6f, delay: 1f));
+                }
+
+                yield return WaitForSeconds(7f);
+                StartCoroutine(this.RotateBy(180f, 1f));
+                yield return this.TransformRotateAround(rotationOrigin, 1f, 180f);
             }
-
-            yield return WaitForSeconds(6.5f);
-            StartCoroutine(this.RotateBy(180f, 1f));
-            yield return this.TransformRotateAround(rotationOrigin, 1f, 180f);
-            yield return WaitForSeconds(ShootingCooldown);
-
-            for (int i = 0; i < LaserCount; i++)
-            {
-                int d = i % 2 * 2 - 1;
-                float r = d * (LaserSpacing / 8) + 180f;
-                float z = transform.eulerAngles.z + r;
-                Vector3 pos = transform.position;
-
-                SpawnBullet(1, z, pos, false).Fire();
-            }
-
-            yield return WaitForSeconds(6.5f);
-            StartCoroutine(this.RotateBy(180f, 1f));
-            yield return this.TransformRotateAround(rotationOrigin, 1f, 180f);
         }
+
     }
 }
