@@ -9,7 +9,7 @@ public class GeminiBulletSystem11 : EnemyShooter<EnemyBullet>
     const int BranchCount = 4;
     const float BranchSpacing = 360f / BranchCount;
     const int BulletCount = 8;
-    const float BulletSpacing = 2f;
+    const float BulletSpacing = 2.5f;
 
     protected override float ShootingCooldown => 0.3f;
 
