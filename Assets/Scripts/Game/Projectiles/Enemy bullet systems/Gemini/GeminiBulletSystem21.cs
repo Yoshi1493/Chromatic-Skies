@@ -6,28 +6,29 @@ public class GeminiBulletSystem21 : EnemyShooter<EnemyBullet>
 {
     const int WaveCount = 3;
     const float WaveSpacing = BranchSpacing / 2f;
-    const int BranchCount = 30;
+    const int BranchCount = 48;
     const float BranchSpacing = 360f / BranchCount;
     const int BulletCount = 2;
-    const float BulletRotationSpeed = 15f;
+    const int BulletClumpCount = 3;
+    const float BulletRotationSpeed = 12f;
     const float BulletRotationDuration = 1f;
 
     protected override float ShootingCooldown => 0.5f;
 
     protected override IEnumerator Shoot()
     {
-        for (int i = 0; i < WaveCount; i++)
+        for (int ii = 0; ii < WaveCount; ii++)
         {
-            for (int ii = 0; ii < BranchCount; ii++)
+            for (int iii = 0; iii < BranchCount; iii++)
             {
-                for (int iii = 0; iii < BulletCount; iii++)
+                for (int iv = 0; iv < BulletCount; iv++)
                 {
-                    int b = (iii % 2) + 2;
-                    float z = (i * WaveSpacing) + (ii * BranchSpacing);
+                    int b = (iv % 2) + 2;
+                    float z = (ii * WaveSpacing) + (iii * BranchSpacing);
                     Vector3 pos = Vector3.zero;
 
                     var bullet = SpawnProjectile(b, z, pos);
-                    bullet.StartCoroutine(bullet.RotateBy((iii % 2 * 2 - 1) * BulletRotationSpeed, BulletRotationDuration));
+                    bullet.StartCoroutine(bullet.RotateBy((((ii % 2) + iii + iv) % BulletClumpCount - ((BulletClumpCount - 1) / 2f)) * BulletRotationSpeed, BulletRotationDuration, delay: 1f));
                     bullet.Fire();
                 }
             }
@@ -36,5 +37,5 @@ public class GeminiBulletSystem21 : EnemyShooter<EnemyBullet>
         }
 
         enabled = false;
-    }
+    } 
 }
