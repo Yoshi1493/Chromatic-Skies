@@ -4,14 +4,15 @@ using static CoroutineHelper;
 
 public class GeminiBulletSystem21 : EnemyShooter<EnemyBullet>
 {
+    const int RepeatCount = 3;
     const int WaveCount = 3;
     const float WaveSpacing = BranchSpacing / 2f;
     const int BranchCount = 48;
     const float BranchSpacing = 360f / BranchCount;
     const int BulletCount = 2;
     const int BulletClumpCount = 3;
-    const float BulletRotationSpeed = 12f;
-    const float BulletRotationDuration = 1f;
+    const float BulletRotationSpeed = 15f;
+    const float BulletRotationDuration = 2f;
 
     protected override float ShootingCooldown => 0.5f;
 
