@@ -36,9 +36,10 @@ public class GeminiBulletSystem3 : EnemyShooter<EnemyBullet>
                         float vx = SpinRadius * Mathf.Sin((i + (iii * BulletSpacing)) * Mathf.Deg2Rad);
                         float vz = SpinRadius * Mathf.Cos((i + (iii * BulletSpacing)) * Mathf.Deg2Rad);
                         Vector3 pos = v1 + new Vector3(vx, 0f, vz);
-                        int b = (i + iii) % BulletCount;
 
-                        var bullet = SpawnProjectile(b, z, pos, false) as GeminiBullet30;
+                        bulletData.colour = bulletData.gradient.Evaluate((i + iii) % BulletCount);
+
+                        var bullet = SpawnProjectile(0, z, pos, false) as GeminiBullet30;
                         bullet.rotationAxis = v2 - v1;
                         bullet.rotationPoint = v1;
                         bullet.Fire();

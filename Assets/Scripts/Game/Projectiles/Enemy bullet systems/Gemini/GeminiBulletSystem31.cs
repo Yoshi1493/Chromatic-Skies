@@ -33,7 +33,7 @@ public class GeminiBulletSystem31 : EnemyShooter<EnemyBullet>
                     float s = BulletBaseSpeed + (iii * BulletSpeedModifier);
                     Vector3 pos = (BulletSpawnRadius - (i * SpawnRadiusDecreaseRate)) * transform.up.RotateVectorBy(z);
 
-                    var bullet = SpawnProjectile(2, z, pos);
+                    var bullet = SpawnProjectile(1, z, pos);
                     bullet.MoveSpeed = s;
                 }
             }
