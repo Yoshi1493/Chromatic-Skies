@@ -55,6 +55,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gemini bullet 2_3
       objectReference: {fileID: 0}
+    - target: {fileID: 9211992883209170045, guid: 4e06125b108514547b6fc9b6887da3eb, type: 3}
+      propertyPath: m_SortingOrder
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4e06125b108514547b6fc9b6887da3eb, type: 3}
 --- !u!1 &6982924580203628185 stripped
