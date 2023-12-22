@@ -4,7 +4,7 @@ using UnityEngine;
 using static CoroutineHelper;
 public class GeminiBulletSystem2 : EnemyShooter<EnemyBullet>
 {
-    const int WaveCount = 40;
+    const int WaveCount = 43;
     const float WaveSpacing = 0.3f;
     const int BranchCount = 2;
     const float BranchSpacing = 360f / BranchCount;
@@ -45,7 +45,7 @@ public class GeminiBulletSystem2 : EnemyShooter<EnemyBullet>
                 yield return WaitForSeconds(ShootingCooldown);
             }
 
-            yield return WaitForSeconds(3f);
+            yield return WaitForSeconds(2f);
 
             bulletSpawnData.Randomize();
 
@@ -59,6 +59,7 @@ public class GeminiBulletSystem2 : EnemyShooter<EnemyBullet>
                     Vector3 pos = new(data.pos.x, data.pos.y);
 
                     bulletData.colour = bulletData.gradient.Evaluate(ii / (WaveCount - 1f));
+
                     var bullet = SpawnProjectile(1, z, pos);
                     bullet.MoveSpeed = s;
                     bullet.Fire();

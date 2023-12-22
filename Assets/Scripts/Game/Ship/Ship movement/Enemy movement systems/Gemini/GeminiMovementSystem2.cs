@@ -5,7 +5,7 @@ public class GeminiMovementSystem2 : EnemyMovement
 {
     protected override IEnumerator Move()
     {
-        yield return WaitForSeconds(2f);
+        yield return WaitForSeconds(1f);
 
         while (enabled)
         {
@@ -14,7 +14,7 @@ public class GeminiMovementSystem2 : EnemyMovement
                 yield return this.MoveToRandomPosition(1f, 1f, 2f);
             }
 
-            yield return WaitForSeconds(5f);
+            yield return WaitForSeconds(3f);
         }
     }
 }

@@ -17,7 +17,7 @@ public class GeminiBulletSystem21 : EnemyShooter<EnemyBullet>
 
     protected override IEnumerator Shoot()
     {
-        yield return WaitForSeconds(2f);
+        yield return WaitForSeconds(1f);
 
         while (enabled)
         {
@@ -40,7 +40,7 @@ public class GeminiBulletSystem21 : EnemyShooter<EnemyBullet>
                 yield return WaitForSeconds(ShootingCooldown);
             }
 
-            yield return WaitForSeconds(5f);
+            yield return WaitForSeconds(3f);
         }
     }
 }
