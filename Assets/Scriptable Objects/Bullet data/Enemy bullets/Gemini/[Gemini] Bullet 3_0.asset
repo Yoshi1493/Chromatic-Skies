@@ -12,20 +12,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b79cd0b20b26ac4090b241d65679e69, type: 3}
   m_Name: '[Gemini] Bullet 3_0'
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: 9b86635f8b1fb5941bb865b3a22f5cf0, type: 3}
+  sprite: {fileID: 21300000, guid: f4bc1204278536543b8dc92aa19fd42f, type: 3}
   useSolidColour: 1
-  colour: {r: 0.2, g: 1, b: 0.6, a: 1}
+  colour: {r: 0, g: 0, b: 0, a: 0}
   gradient:
     serializedVersion: 2
-    key0: {r: 0.2, g: 1, b: 0.6, a: 1}
-    key1: {r: 0.6, g: 1, b: 0.8, a: 1}
+    key0: {r: 1, g: 0.3, b: 0.65, a: 1}
+    key1: {r: 0.2, g: 1, b: 0.6, a: 1}
     key2: {r: 1, g: 0.875, b: 0.5, a: 0}
     key3: {r: 0.75, g: 1, b: 1, a: 0}
     key4: {r: 0.25, g: 1, b: 1, a: 0}
     key5: {r: 0.25, g: 0.625, b: 1, a: 0}
     key6: {r: 1, g: 0.6, b: 1, a: 0}
     key7: {r: 0, g: 0, b: 0, a: 0}
-    ctime0: 32768
+    ctime0: 655
     ctime1: 65535
     ctime2: 55705
     ctime3: 65535
@@ -44,6 +44,6 @@ MonoBehaviour:
     m_Mode: 1
     m_NumColorKeys: 2
     m_NumAlphaKeys: 2
-  ID: 0
+  ID: 1
   Power: {fileID: 11400000, guid: 58d06d90130c88c40bb6c2d31e8c8781, type: 2}
-  destructible: 0
+  destructible: 1

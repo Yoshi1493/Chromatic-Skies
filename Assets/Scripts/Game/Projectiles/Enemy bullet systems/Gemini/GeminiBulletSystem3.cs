@@ -4,55 +4,57 @@ using static CoroutineHelper;
 
 public class GeminiBulletSystem3 : EnemyShooter<EnemyBullet>
 {
-    const int BranchCount = 2;
+    const int RepeatCount = 3;
+    const int WaveCount = 6;
+    const float WaveSpacing = 6;
+    const int BranchCount = 3;
     const float BranchSpacing = 360f / BranchCount;
-    const int BulletCount = 2;
-    const float BulletSpacing = 360f / BulletCount;
-    const float SpinRadius = 1.2f;
+    const int BulletCount = 3;
+    const float BulletSpacing = 15f;
+    const float BulletSpawnRadius = 1f;
+    const float SpawnRadiusDecreaseRate = 0.1f;
+    const float BulletBaseSpeed = 2.5f;
+    const float BulletSpeedModifier = 0.5f;
+
+    protected override float ShootingCooldown => 0.15f;
 
     protected override IEnumerator Shoot()
     {
         yield return base.Shoot();
+        SetSubsystemEnabled(1);
+
+        yield return WaitForSeconds(2f);
 
         while (enabled)
         {
-            SetSubsystemEnabled(1);
-
-            float x = screenHalfWidth * 0.5f;
-            float y = screenHalfHeight;
-
-            for (int i = 0; enabled; i++)
+            for (int i = 0; i < RepeatCount; i++)
             {
-                for (int ii = 0; ii < BranchCount; ii++)
+                StartMoveAction?.Invoke();
+                float r = Random.Range(0f, BranchSpacing);
+
+                for (int ii = 0; ii < WaveCount; ii++)
                 {
-                    float r = ii * BranchSpacing;
-                    Vector3 v1 = new Vector3(x, y, 0f).RotateVectorBy(r);
-                    Vector3 v2 = new Vector3(x, -y, 0f).RotateVectorBy(r);
-
-                    float z = v2.GetRotationDifference(v1);
-
-                    for (int iii = 0; iii < BulletCount; iii++)
+                    for (int iii = 0; iii < BranchCount; iii++)
                     {
-                        float vx = SpinRadius * Mathf.Sin((i + (iii * BulletSpacing)) * Mathf.Deg2Rad);
-                        float vz = SpinRadius * Mathf.Cos((i + (iii * BulletSpacing)) * Mathf.Deg2Rad);
-                        Vector3 pos = v1 + new Vector3(vx, 0f, vz);
+                        for (int iv = 0; iv < BulletCount; iv++)
+                        {
+                            float z = -((ii * WaveSpacing) + (iii * BranchSpacing) + ((iv - ((BulletCount - 1) / 2f)) * BulletSpacing) + r);
+                            float s = BulletBaseSpeed + (iv * BulletSpeedModifier);
+                            Vector3 pos = (BulletSpawnRadius - (ii * SpawnRadiusDecreaseRate)) * transform.up.RotateVectorBy(z);
 
-                        bulletData.colour = bulletData.gradient.Evaluate((i + iii) % BulletCount);
-
-                        var bullet = SpawnProjectile(0, z, pos, false) as GeminiBullet30;
-                        bullet.rotationAxis = v2 - v1;
-                        bullet.rotationPoint = v1;
-                        bullet.Fire();
+                            var bullet = SpawnProjectile(0, z, pos);
+                            bullet.MoveSpeed = s;
+                        }
                     }
+
+                    yield return WaitForSeconds(ShootingCooldown);
                 }
 
-                yield return WaitForSeconds(ShootingCooldown);
+                yield return WaitForSeconds(1f);
             }
 
-            yield return WaitForSeconds(1f);
-
-            StartMoveAction?.Invoke();
             yield return WaitForSeconds(3f);
         }
+
     }
 }

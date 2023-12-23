@@ -1,20 +1,23 @@
 using System.Collections;
 using UnityEngine;
 
-public class GeminiBullet31 : ReflectiveEnemyBullet
+public class GeminiBullet31 : EnemyBullet
 {
-    protected override float MaxLifetime => 15f;
+    [HideInInspector] public Vector3 rotationPoint;
+    [HideInInspector] public Vector3 rotationAxis;
+    const float RotationSpeed = 240f;
+
+    protected override float MaxLifetime => 3f;
 
     protected override IEnumerator Move()
     {
+        MoveSpeed = 4.5f;
         yield return null;
     }
 
-    protected override void HandleReflection(Collider2D coll)
+    protected override void Update()
     {
-        base.HandleReflection(coll);
-
-        MoveSpeed *= 0.5f;
-        spriteRenderer.color = projectileData.gradient.Evaluate(1f);
+        base.Update();
+        transform.RotateAround(rotationPoint, rotationAxis, RotationSpeed * Time.deltaTime);
     }
 }

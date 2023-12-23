@@ -75,6 +75,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   transform: {fileID: 0}
-  projectileData: {fileID: 11400000, guid: 4abeb107d383ff945997cad23ba9d6cf, type: 2}
+  projectileData: {fileID: 11400000, guid: da601ed399997414db83044cae746848, type: 2}
   moveDirection: {x: 0, y: 0, z: 0}
   currentSpeed: 0
+  rotationPoint: {x: 0, y: 0, z: 0}
+  rotationAxis: {x: 0, y: 0, z: 0}
