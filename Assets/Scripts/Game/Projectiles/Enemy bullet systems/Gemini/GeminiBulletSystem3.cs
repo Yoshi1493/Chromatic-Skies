@@ -12,9 +12,9 @@ public class GeminiBulletSystem3 : EnemyShooter<EnemyBullet>
     const int BulletCount = 3;
     const float BulletSpacing = 15f;
     const float BulletSpawnRadius = 1f;
-    const float SpawnRadiusDecreaseRate = 0.1f;
-    const float BulletBaseSpeed = 2.5f;
-    const float BulletSpeedModifier = 0.5f;
+    const float SpawnRadiusModifier = 0.15f;
+    const float BulletBaseSpeed = 2.4f;
+    const float BulletSpeedModifier = 0.4f;
 
     protected override float ShootingCooldown => 0.15f;
 
@@ -40,7 +40,7 @@ public class GeminiBulletSystem3 : EnemyShooter<EnemyBullet>
                         {
                             float z = -((ii * WaveSpacing) + (iii * BranchSpacing) + ((iv - ((BulletCount - 1) / 2f)) * BulletSpacing) + r);
                             float s = BulletBaseSpeed + (iv * BulletSpeedModifier);
-                            Vector3 pos = (BulletSpawnRadius - (ii * SpawnRadiusDecreaseRate)) * transform.up.RotateVectorBy(z);
+                            Vector3 pos = (BulletSpawnRadius - (ii * SpawnRadiusModifier)) * transform.up.RotateVectorBy(z);
 
                             var bullet = SpawnProjectile(0, z, pos);
                             bullet.MoveSpeed = s;
@@ -50,10 +50,10 @@ public class GeminiBulletSystem3 : EnemyShooter<EnemyBullet>
                     yield return WaitForSeconds(ShootingCooldown);
                 }
 
-                yield return WaitForSeconds(1f);
+                yield return WaitForSeconds(0.5f);
             }
 
-            yield return WaitForSeconds(3f);
+            yield return WaitForSeconds(4f);
         }
 
     }

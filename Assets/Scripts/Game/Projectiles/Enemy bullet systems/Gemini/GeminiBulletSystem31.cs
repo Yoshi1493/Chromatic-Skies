@@ -4,6 +4,7 @@ using static CoroutineHelper;
 
 public class GeminiBulletSystem31 : EnemyShooter<EnemyBullet>
 {
+    const float WaveSpacing = 0.0025f;
     const int BranchCount = 2;
     const float BranchSpacing = 360f / BranchCount;
     const int BulletCount = 2;
@@ -14,11 +15,11 @@ public class GeminiBulletSystem31 : EnemyShooter<EnemyBullet>
     {
         while (enabled)
         {
-            float x = screenHalfWidth * 0.5f;
-            float y = screenHalfHeight;
-
             for (int i = 0; enabled; i++)
             {
+                float x = screenHalfWidth * (0.5f + Mathf.PingPong(i * WaveSpacing, 0.25f));
+                float y = screenHalfHeight;
+
                 for (int ii = 0; ii < BranchCount; ii++)
                 {
                     float r = ii * BranchSpacing;
