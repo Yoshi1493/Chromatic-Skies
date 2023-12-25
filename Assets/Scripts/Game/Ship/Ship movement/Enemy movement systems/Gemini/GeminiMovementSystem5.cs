@@ -3,7 +3,7 @@ using static CoroutineHelper;
 
 public class GeminiMovementSystem5 : EnemyMovement
 {
-    const int MovesBeforeTeleport = 8;
+    const int MovesBeforeTeleport = 3;
 
     protected override IEnumerator Move()
     {
@@ -14,12 +14,10 @@ public class GeminiMovementSystem5 : EnemyMovement
 
         while (enabled)
         {
-            yield return WaitForSeconds(1f);
-
             for (int i = 0; i < MovesBeforeTeleport; i++)
             {
+                yield return WaitForSeconds(3f);
                 yield return this.MoveToRandomPosition(1f, 0.5f, 1f);
-                yield return WaitForSeconds(1f);
             }
 
             ownerShip.transform.position = twin.transform.position;

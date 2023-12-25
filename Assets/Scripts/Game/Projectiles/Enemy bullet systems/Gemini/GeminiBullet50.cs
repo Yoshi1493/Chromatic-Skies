@@ -4,9 +4,9 @@ using static CoroutineHelper;
 
 public class GeminiBullet50 : ScriptableEnemyBullet<GeminiBulletSystem5, EnemyBullet>
 {
-    const float WaveSpacing = GeminiBulletSystem5.WaveSpacing;
-    const int BranchCount = GeminiBulletSystem5.BranchCount;
-    const float BranchSpacing = GeminiBulletSystem5.BranchSpacing;
+    const float WaveSpacing = 15f;
+    const int BranchCount = 5;
+    const float BranchSpacing = 360f / BranchCount;
     const float ShootingCooldown = 0.4f;
 
     protected override int NumCollisions => 0;
@@ -23,7 +23,7 @@ public class GeminiBullet50 : ScriptableEnemyBullet<GeminiBulletSystem5, EnemyBu
                 float z = (i * WaveSpacing) + (ii * BranchSpacing);
                 Vector3 pos = transform.position;
 
-                SpawnBullet(2, z, pos, false).Fire();
+                SpawnBullet(1, z, pos, false).Fire();
             }
 
             yield return WaitForSeconds(ShootingCooldown);
