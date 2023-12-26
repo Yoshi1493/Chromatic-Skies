@@ -9,7 +9,7 @@ public class GeminiBulletSystem2 : EnemyShooter<EnemyBullet>
     const int BranchCount = 2;
     const float BranchSpacing = 360f / BranchCount;
     const float BulletBaseSpeed = 4f;
-    const float BulletSpeedModifier = 0.03f;
+    const float BulletSpeedModifier = -0.03f;
     const float BulletSpawnOffset = 0.5f;
 
     List<(Vector2 pos, float z)> bulletSpawnData = new(WaveCount * BranchCount);
@@ -31,21 +31,20 @@ public class GeminiBulletSystem2 : EnemyShooter<EnemyBullet>
             for (int ii = 1; ii < WaveCount; ii++)
             {
                 float z = r - 90f * Mathf.Sign(r);
-
                 Vector3 v1 = ii * WaveSpacing * transform.up.RotateVectorBy(r);
 
                 for (int iii = 0; iii < BranchCount; iii++)
                 {
-                    Vector3 pos = v1.RotateVectorBy(iii * BranchSpacing);
+                    Vector3 pos = v1.RotateVectorBy(iii * BranchSpacing) + transform.position;
 
                     bulletSpawnData.Add((pos, z));
-                    SpawnProjectile(0, z, pos).Fire();
+                    SpawnProjectile(0, z, pos, false);
                 }
 
                 yield return WaitForSeconds(ShootingCooldown);
             }
 
-            yield return WaitForSeconds(2f);
+            yield return WaitForSeconds(1f);
 
             bulletSpawnData.Randomize();
 
@@ -55,12 +54,12 @@ public class GeminiBulletSystem2 : EnemyShooter<EnemyBullet>
                 {
                     var data = bulletSpawnData[0];
                     float z = data.z;
-                    float s = BulletBaseSpeed - (ii * BulletSpeedModifier);
+                    float s = BulletBaseSpeed + (ii * BulletSpeedModifier);
                     Vector3 pos = new(data.pos.x, data.pos.y);
 
                     bulletData.colour = bulletData.gradient.Evaluate(ii / (WaveCount - 1f));
 
-                    var bullet = SpawnProjectile(1, z, pos);
+                    var bullet = SpawnProjectile(1, z, pos, false);
                     bullet.MoveSpeed = s;
                     bullet.Fire();
 

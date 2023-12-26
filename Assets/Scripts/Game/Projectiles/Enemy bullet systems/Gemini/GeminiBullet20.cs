@@ -1,6 +1,4 @@
 using System.Collections;
-using UnityEngine;
-using static CoroutineHelper;
 
 public class GeminiBullet20 : EnemyBullet
 {
@@ -8,15 +6,13 @@ public class GeminiBullet20 : EnemyBullet
 
     protected override IEnumerator Move()
     {
-        float currentLerpTime = 0f;
+        yield break;
+    }
 
-        while (currentLerpTime < MaxLifetime)
-        {
-            float t = currentLerpTime / MaxLifetime;
-            spriteRenderer.color = projectileData.gradient.Evaluate(t);
+    protected override void Update()
+    {
+        base.Update();
 
-            yield return EndOfFrame;
-            currentLerpTime += Time.deltaTime;
-        }
+        spriteRenderer.color = projectileData.gradient.Evaluate(currentLifetime);
     }
 }
