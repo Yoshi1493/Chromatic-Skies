@@ -1,9 +1,14 @@
 using System.Collections;
+using static CoroutineHelper;
 
 public class GeminiMovementSystem4 : EnemyMovement
 {
     protected override IEnumerator Move()
     {
-        yield return this.MoveToRandomPosition(2f, 4f, 9f);
+        while (enabled)
+        {
+            yield return WaitForSeconds(2f);
+            yield return this.MoveToRandomPosition(2f);
+        }
     }
 }

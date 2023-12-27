@@ -11,6 +11,8 @@ public class GeminiBulletSystem41 : EnemyShooter<EnemyBullet>
     const float BulletSpawnRadius = 1.0f;
     const float SpawnRadiusMultiplier = 0.02f;
 
+    protected override float ShootingCooldown => 0.15f;
+
     protected override IEnumerator Shoot()
     {
         yield return WaitForSeconds(2f);

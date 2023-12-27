@@ -5,37 +5,45 @@ using static CoroutineHelper;
 
 public class GeminiBulletSystem4 : EnemyShooter<EnemyBullet>
 {
-    const int WaveCount = 4;
-    const float WaveSpacing = BulletSpacing / WaveCount;
-    const int BulletCount = 36;
-    const float BulletSpacing = 360f / BulletCount;
+    const int WaveCount = 24;
+    const float WaveSpacing = 10f;
+    const int BranchCount = 12;
+    const float BranchSpacing = 360f / BranchCount;
     const float BulletSpawnRadius = 1f;
     const float SpawnRadiusModifier = 0.5f;
-    const float BulletBaseSpeed = 2f;
+    const float BulletBaseSpeed = 3f;
     const float BulletSpeedModifier = 0.5f;
+    const float NearestSpawnDistance = 1.5f;
 
-    protected override float ShootingCooldown => 0.25f;
+    List<(Vector2 pos, float z, bool shouldSpawn)> bulletSpawnData = new(WaveCount * BranchCount);
+
+    protected override float ShootingCooldown => 1f / 60;
 
     protected override IEnumerator Shoot()
     {
         yield return base.Shoot();
 
         SetSubsystemEnabled(1);
-        List<(Vector2 pos, float z)> bulletSpawnData = new(WaveCount * BulletCount);
+        StartMoveAction?.Invoke();
 
         while (enabled)
         {
-            Vector3 v1 = transform.position;
+            bulletSpawnData.Clear();
 
             for (int i = 0; i < WaveCount; i++)
             {
-                for (int ii = 0; ii < BulletCount; ii++)
+                for (int ii = 0; ii < BranchCount; ii++)
                 {
-                    float z = (i * WaveSpacing) + (ii * BulletSpacing);
-                    Vector3 pos = (BulletSpawnRadius + (i * SpawnRadiusModifier)) * Vector3.up.RotateVectorBy(z) + v1;
+                    float z = (i * WaveSpacing) + (ii * BranchSpacing);
+                    Vector3 pos = (BulletSpawnRadius + (i * SpawnRadiusModifier)) * transform.up.RotateVectorBy(z) + transform.position;
 
-                    bulletSpawnData.Add((pos, z));
-                    SpawnProjectile(0, z, pos, false).Fire();
+                    bool shouldSpawn = !pos.IsTooClose(PlayerPosition, NearestSpawnDistance);
+                    bulletSpawnData.Add((pos, z, shouldSpawn));
+
+                    if (shouldSpawn)
+                    {
+                        SpawnProjectile(0, z, pos, false);
+                    }
                 }
 
                 yield return WaitForSeconds(ShootingCooldown);
@@ -43,30 +51,27 @@ public class GeminiBulletSystem4 : EnemyShooter<EnemyBullet>
 
             yield return WaitForSeconds(2f);
 
-            StartMoveAction?.Invoke();
-
             for (int i = 0; i < WaveCount; i++)
             {
-                for (int ii = 0; ii < BulletCount; ii++)
+                for (int ii = 0; ii < BranchCount; ii++)
                 {
-                    var data = bulletSpawnData[0];
-                    float z = data.z;
-                    float s = BulletBaseSpeed + (ii % 2  * BulletSpeedModifier);
+                    var data = bulletSpawnData[^1];
+                    float z = data.z + 180f;
                     Vector3 pos = new(data.pos.x, data.pos.y);
 
-                    bulletData.colour = bulletData.gradient.Evaluate(ii % 2);
-                    var bullet = SpawnProjectile(1, z, pos, false);
-                    bullet.MoveSpeed = s;
-                    bullet.Fire();
+                    if (data.shouldSpawn)
+                    {
+                        SpawnProjectile(1, z, pos, false).Fire();
+                    }
 
-                    bulletSpawnData.RemoveAt(0);
+                    bulletSpawnData.RemoveAt(bulletSpawnData.Count - 1);
                 }
 
-                yield return WaitForSeconds(ShootingCooldown);
+                yield return WaitForSeconds(ShootingCooldown * 2f);
             }
 
-            bulletSpawnData.Clear();
-            yield return WaitForSeconds(3f);
+            yield return WaitForSeconds(8f);
         }
+
     }
 }

@@ -1,4 +1,5 @@
 using System.Collections;
+using static CoroutineHelper;
 
 public class GeminiBullet41 : EnemyBullet
 {
@@ -6,8 +7,7 @@ public class GeminiBullet41 : EnemyBullet
 
     protected override IEnumerator Move()
     {
-        float endSpeed = MoveSpeed;
-        yield return this.LerpSpeed(0f, endSpeed * 2f, 1f);
-        yield return this.LerpSpeed(MoveSpeed, endSpeed, 2f);
+        yield return WaitForSeconds(1f);
+        yield return this.LerpSpeed(0f, 2f, 2f);
     }
 }
