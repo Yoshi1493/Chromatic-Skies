@@ -17,8 +17,6 @@ public class GeminiBulletSystem41 : EnemyShooter<EnemyBullet>
     {
         yield return WaitForSeconds(2f);
 
-        int r = Random.Range(0, 360 / (int)BulletSpacing);
-
         for (int i = 0; enabled; i++)
         {
             for (int ii = 0; ii < BranchCount; ii++)
@@ -28,7 +26,6 @@ public class GeminiBulletSystem41 : EnemyShooter<EnemyBullet>
                 Vector3 pos = (Mathf.PingPong(i * SpawnRadiusMultiplier, BulletSpawnRadius)) * transform.up.RotateVectorBy(z);
 
                 SpawnProjectile(2, z, pos).Fire();
-
             }
 
             yield return WaitForSeconds(ShootingCooldown);
