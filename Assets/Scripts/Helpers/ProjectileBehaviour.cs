@@ -66,6 +66,7 @@ public static class ProjectileBehaviour
             yield break;
         }
 
+        Vector3 originalDirection = p.moveDirection;
         float currentTime = 0f;
 
         while (currentTime < rotateDuration)
@@ -84,6 +85,8 @@ public static class ProjectileBehaviour
             currentTime += Time.deltaTime;
             yield return EndOfFrame;
         }
+
+        p.moveDirection = originalDirection.RotateVectorBy(degrees * directionMultiplier);
     }
 
     /// <summary>
