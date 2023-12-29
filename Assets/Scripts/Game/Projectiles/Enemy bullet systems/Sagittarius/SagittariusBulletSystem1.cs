@@ -28,6 +28,8 @@ public class SagittariusBulletSystem1 : EnemyShooter<EnemyBullet>
             {
                 StartMoveAction?.Invoke();
 
+                bulletData.colour = bulletData.gradient.Evaluate(i % 2);
+
                 for (int ii = 0; ii < WaveCount; ii++)
                 {
                     for (int iii = 0; iii < BranchCount; iii++)
@@ -39,8 +41,6 @@ public class SagittariusBulletSystem1 : EnemyShooter<EnemyBullet>
                         for (int iv = 0; iv < BulletCount; iv++)
                         {
                             z += iv * BulletSpacing;
-
-                            bulletData.colour = bulletData.gradient.Evaluate(iv);
 
                             var bullet = SpawnProjectile(0, z, pos);
                             bullet.Fire();
