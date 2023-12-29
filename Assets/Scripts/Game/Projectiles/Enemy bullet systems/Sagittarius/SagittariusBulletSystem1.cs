@@ -4,8 +4,9 @@ using static CoroutineHelper;
 
 public class SagittariusBulletSystem1 : EnemyShooter<EnemyBullet>
 {
+    const int RepeatCount = 4;
     const int WaveCount = (360 - (int)SafeZone) / (int)WaveSpacing + 1;
-    const float WaveSpacing = 8f;
+    const float WaveSpacing = 10f;
     const float SafeZone = 40f;
     const int BranchCount = 2;
     const float BranchSpacing = 360f / BranchCount;
@@ -13,6 +14,7 @@ public class SagittariusBulletSystem1 : EnemyShooter<EnemyBullet>
     const float BulletSpacing = 90f;
     const float BulletSpawnRadius = 0.5f;
     const float SpawnRadiusModifier = 0.5f;
+    const float BulletRotationSpeed = 45f;
 
     protected override float ShootingCooldown => 0.02f;
 
@@ -22,57 +24,38 @@ public class SagittariusBulletSystem1 : EnemyShooter<EnemyBullet>
 
         while (enabled)
         {
-            StartMoveAction?.Invoke();
-
-            int r = 1;
-
-            for (int i = 0; i < WaveCount; i++)
+            for (int i = 0; i < RepeatCount; i++)
             {
-                for (int ii = 0; ii < BranchCount; ii++)
+                StartMoveAction?.Invoke();
+
+                for (int ii = 0; ii < WaveCount; ii++)
                 {
-                    float z = ((SafeZone / 2f) + (i * WaveSpacing) + (ii * BranchSpacing)) * r;
-                    Vector3 pos = (BulletSpawnRadius + (ii * SpawnRadiusModifier)) * transform.up.RotateVectorBy(z);
-
-                    for (int iii = 0; iii < BulletCount; iii++)
+                    for (int iii = 0; iii < BranchCount; iii++)
                     {
-                        z += iii * BulletSpacing;
+                        float r = i % 2 * 2 - 1;
+                        float z = r * ((SafeZone / 2f) + (ii * WaveSpacing) + (iii * BranchSpacing));
+                        Vector3 pos = (BulletSpawnRadius + (iii * SpawnRadiusModifier)) * transform.up.RotateVectorBy(z);
 
-                        bulletData.colour = bulletData.gradient.Evaluate(iii);
-                        SpawnProjectile(0, z, pos).Fire();
+                        for (int iv = 0; iv < BulletCount; iv++)
+                        {
+                            z += iv * BulletSpacing;
+
+                            bulletData.colour = bulletData.gradient.Evaluate(iv);
+
+                            var bullet = SpawnProjectile(0, z, pos);
+                            bullet.Fire();
+                            bullet.StartCoroutine(bullet.RotateBy(r * BulletRotationSpeed, 0f, delay: 1f));
+                        }
                     }
+
+                    yield return WaitForSeconds(ShootingCooldown);
                 }
 
-                yield return WaitForSeconds(ShootingCooldown);
-            }
-
-            yield return WaitForSeconds(ShootingCooldown * 10f);
-
-            StartMoveAction?.Invoke();
-
-            r *= -1;
-
-            for (int i = 0; i < WaveCount; i++)
-            {
-                for (int ii = 0; ii < BranchCount; ii++)
-                {
-                    float z = ((SafeZone / 2f) + (i * WaveSpacing) + (ii * BranchSpacing)) * r;
-                    Vector3 pos = (BulletSpawnRadius + (ii * SpawnRadiusModifier)) * transform.up.RotateVectorBy(z);
-
-                    for (int iii = 0; iii < BulletCount; iii++)
-                    {
-                        z += iii * BulletSpacing;
-
-                        bulletData.colour = bulletData.gradient.Evaluate(iii);
-                        SpawnProjectile(0, z, pos).Fire();
-                    }
-                }
-
-                yield return WaitForSeconds(ShootingCooldown);
+                yield return WaitForSeconds(0.5f);
             }
 
             SetSubsystemEnabled(1);
-
-            yield return WaitForSeconds(4f);
+            yield return WaitForSeconds(3f);
         }
     }
 }

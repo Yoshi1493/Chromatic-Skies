@@ -53,7 +53,7 @@ public class SagittariusBulletSystem11 : EnemyShooter<EnemyBullet>
                 StartCoroutine(bullets[b].LerpSpeed(0f, 2f, 1f));
             }
 
-            yield return WaitForSeconds(ShootingCooldown * 0.5f);
+            yield return WaitForSeconds(0.05f);
         }
 
         enabled = false;
