@@ -7,15 +7,19 @@ using static MathHelper;
 public class SagittariusBulletSystem11 : EnemyShooter<EnemyBullet>
 {
     const int WaveCount = 6;
-    const float WaveSpacing = 360f / WaveCount;
+    const float WaveSpacing = -360f / WaveCount;
     const int BulletCount = 41;
     const float BulletSpawnRadius = 1.5f;
 
-    Vector3[] positions = new Vector3[BulletCount];
     List<EnemyBullet> bullets = new(WaveCount * BulletCount);
+    Vector3[] positions = new Vector3[BulletCount];
+
+    protected override float ShootingCooldown => 0.15f;
 
     protected override IEnumerator Shoot()
     {
+        bullets.Clear();
+
         for (int i = 0; i < BulletCount; i++)
         {
             positions[i] = BulletSpawnRadius * Random.insideUnitCircle;
@@ -23,15 +27,13 @@ public class SagittariusBulletSystem11 : EnemyShooter<EnemyBullet>
 
         for (int i = 0; i < WaveCount; i++)
         {
-            float z = i * -WaveSpacing;
-
             for (int ii = 0; ii < BulletCount; ii++)
             {
+                int b = Mathf.RoundToInt(Random.value) + 1;
+                float z = i * WaveSpacing;
                 Vector3 pos = positions[ii].RotateVectorBy(z);
 
-                bulletData.colour = bulletData.gradient.Evaluate(ii / (BulletCount - 1f));
-
-                var bullet = SpawnProjectile(1, z, pos);
+                var bullet = SpawnProjectile(b, z, pos);
                 bullet.Fire();
                 bullets.Add(bullet);
             }
@@ -54,7 +56,6 @@ public class SagittariusBulletSystem11 : EnemyShooter<EnemyBullet>
             yield return WaitForSeconds(ShootingCooldown * 0.5f);
         }
 
-        bullets.Clear();
         enabled = false;
     }
 }
