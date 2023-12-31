@@ -4,42 +4,37 @@ using static CoroutineHelper;
 
 public class SagittariusBulletSystem2 : EnemyShooter<EnemyBullet>
 {
-    const int WaveCount = 40;
-    const float WaveSpacing = 9f;
-    const int BranchCount = 4;
+    const int WaveCount = 119;
+    const int BranchCount = 6;
     const float BranchSpacing = 360f / BranchCount;
-    const float BulletSpawnRadius = 2.0f;
-    const float SpawnRadiusIncreaseRate = -0.04f;
-
-    protected override float ShootingCooldown => 0.05f;
 
     protected override IEnumerator Shoot()
     {
         yield return base.Shoot();
 
-        StartMoveAction?.Invoke();
         SetSubsystemEnabled(1);
 
-        while (enabled)
+        for (int i = 1; enabled; i *= -1)
         {
-            Vector3 v = transform.up;
-            float r = BulletSpawnRadius;
+            float waveSpacing = 0f;
 
-            for (int i = 0; i < WaveCount; i++)
+            for (int ii = 0; ii < WaveCount; ii++)
             {
-                for (int ii = 0; ii < BranchCount; ii++)
+                for (int iii = 0; iii < BranchCount; iii++)
                 {
-                    float z = (i * WaveSpacing) + (ii * BranchSpacing);
-                    Vector3 pos = r * v.RotateVectorBy(z);
+                    float z = i * (waveSpacing + (iii * BranchSpacing));
+                    Vector3 pos = Vector3.zero;
 
-                    SpawnProjectile(i % 2, z, pos).Fire();
+                    SpawnProjectile(0, z, pos).Fire();
                 }
 
                 yield return WaitForSeconds(ShootingCooldown);
-                r += SpawnRadiusIncreaseRate;
+                waveSpacing += ii;
             }
 
-            yield return WaitForSeconds(3f - ShootingCooldown);
+            StartMoveAction?.Invoke();
+            yield return WaitForSeconds(2f);
         }
+
     }
 }
