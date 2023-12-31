@@ -17,7 +17,7 @@ public class AttackNameDisplay : ShipHUDComponent<Enemy>
 
         for (int i = 0; i < ship.bulletSystems.Count; i++)
         {
-            ship.bulletSystems[i].AttackStartAction += OnEnemyAttackStart;
+            ship.bulletSystems[i].StartAttackAction += OnEnemyAttackStart;
         }
 
         ship.LoseLifeAction += OnEnemyLoseLife;

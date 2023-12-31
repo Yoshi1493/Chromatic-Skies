@@ -6,7 +6,7 @@ using static CoroutineHelper;
 
 public interface IEnemyAttack
 {
-    Action<int> AttackStartAction { get; set; }
+    Action<int> StartAttackAction { get; set; }
     Action StartMoveAction { get; set; }
 
     bool Enabled { get; }
@@ -18,7 +18,7 @@ public abstract class EnemyShooter<TProjectile> : Shooter<TProjectile>, IEnemyAt
 {
     #region Interface impl.
 
-    public Action<int> AttackStartAction { get; set; }
+    public Action<int> StartAttackAction { get; set; }
     public Action StartMoveAction { get; set; }
 
     bool IEnemyAttack.Enabled => enabled;
@@ -77,7 +77,7 @@ public abstract class EnemyShooter<TProjectile> : Shooter<TProjectile>, IEnemyAt
     {
         yield return WaitForSeconds(1f);
 
-        AttackStartAction?.Invoke(ownerShip.shipData.MaxLives.Value - ownerShip.currentLives);
+        StartAttackAction?.Invoke(ownerShip.shipData.MaxLives.Value - ownerShip.currentLives);
         ownerShip.invincible = false;
     }
 
