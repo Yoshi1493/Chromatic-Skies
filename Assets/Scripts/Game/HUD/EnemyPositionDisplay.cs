@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class EnemyPositionDisplay : HUDComponent<Enemy>
+public class EnemyPositionDisplay : ShipHUDComponent<Enemy>
 {
     new Transform transform;
 

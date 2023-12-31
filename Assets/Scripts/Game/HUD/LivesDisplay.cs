@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine.UI;
 using static CoroutineHelper;
 
-public class LivesDisplay<TShip> : HUDComponent<TShip>
+public class LivesDisplay<TShip> : ShipHUDComponent<TShip>
     where TShip : Ship
 {
     Image[] lifeIcons;

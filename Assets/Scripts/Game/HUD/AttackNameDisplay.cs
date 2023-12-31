@@ -1,7 +1,7 @@
 using UnityEngine;
 using TMPro;
 
-public class AttackNameDisplay : HUDComponent<Enemy>
+public class AttackNameDisplay : ShipHUDComponent<Enemy>
 {
     Animator anim;
     TextMeshProUGUI nameText;

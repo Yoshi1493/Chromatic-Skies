@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public abstract class HUDComponent<TShip> : MonoBehaviour
+public abstract class ShipHUDComponent<TShip> : MonoBehaviour
     where TShip : Ship
 {
     protected TShip ship;
