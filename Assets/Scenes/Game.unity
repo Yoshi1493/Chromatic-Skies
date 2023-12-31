@@ -3267,12 +3267,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackNames:
-  - {fileID: 11400000, guid: 6606bcd5b1bb22e46843359f5c367395, type: 2}
-  - {fileID: 11400000, guid: 1cf2b3417ac1cdd4dac67554fcf113ec, type: 2}
-  - {fileID: 11400000, guid: 4080540834125334c9e91596d1df87ee, type: 2}
-  - {fileID: 11400000, guid: 51158c2f7e1c39649846234699873333, type: 2}
-  - {fileID: 11400000, guid: 7ef7e803f8984224c8eadab514b1ef30, type: 2}
-  - {fileID: 11400000, guid: d3cc8086d5ee06c49b1a096bd95f82db, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &1660768948
 GameObject:
   m_ObjectHideFlags: 0
