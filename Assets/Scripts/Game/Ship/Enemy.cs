@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,6 +17,7 @@ public class Enemy : Ship
     EnemyMovement currentMovementSystem;
     EnemyMovement nextMovementSystem;
 
+    public event Action<int> StartAttackAction;
     IEnumerator systemResetCoroutine;
 
     protected override void Awake()
@@ -30,7 +32,7 @@ public class Enemy : Ship
 
     void ValidateAttackSystems()
     {
-        bulletSystems = new(bulletSystemContainer.childCount);
+        bulletSystems = new(shipData.MaxLives.Value);
         movementSystems = new(movementSystemContainer.childCount);
 
         for (int i = 0; i < bulletSystemContainer.childCount; i++)
@@ -50,13 +52,24 @@ public class Enemy : Ship
         }
     }
 
+    void OnEnable()
+    {
+        if (systemResetCoroutine != null)
+        {
+            StopCoroutine(systemResetCoroutine);
+        }
+
+        systemResetCoroutine = RefreshEnemySystems(0);
+        StartCoroutine(systemResetCoroutine);
+    }
+
+#if UNITY_EDITOR
     void Update()
     {
-#if UNITY_EDITOR
         if (Input.GetKeyDown(KeyCode.K))
             TakeDamage(currentHealth);
-#endif
     }
+#endif
 
     //disable current systems, and enable next systems upon losing life
     protected override IEnumerator LoseLife()
@@ -125,6 +138,8 @@ public class Enemy : Ship
 
         nextBulletSystem.SetEnabled(true);
         nextMovementSystem.enabled = true;
+
+        StartAttackAction?.Invoke(currentSystemIndex);
     }
 
     void GetActiveEnemySystems()

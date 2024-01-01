@@ -15,11 +15,7 @@ public class AttackNameDisplay : ShipHUDComponent<Enemy>
         anim = GetComponent<Animator>();
         nameText = GetComponent<TextMeshProUGUI>();
 
-        for (int i = 0; i < ship.bulletSystems.Count; i++)
-        {
-            ship.bulletSystems[i].StartAttackAction += OnEnemyAttackStart;
-        }
-
+        ship.StartAttackAction += OnEnemyAttackStart;
         ship.LoseLifeAction += OnEnemyLoseLife;
     }
 

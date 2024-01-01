@@ -6,11 +6,10 @@ using static CoroutineHelper;
 
 public interface IEnemyAttack
 {
-    Action<int> StartAttackAction { get; set; }
-    Action StartMoveAction { get; set; }
-
     bool Enabled { get; }
     void SetEnabled(bool state);
+
+    Action StartMoveAction { get; set; }
 }
 
 public abstract class EnemyShooter<TProjectile> : Shooter<TProjectile>, IEnemyAttack
@@ -18,11 +17,10 @@ public abstract class EnemyShooter<TProjectile> : Shooter<TProjectile>, IEnemyAt
 {
     #region Interface impl.
 
-    public Action<int> StartAttackAction { get; set; }
-    public Action StartMoveAction { get; set; }
-
     bool IEnemyAttack.Enabled => enabled;
     void IEnemyAttack.SetEnabled(bool state) { enabled = state; }
+
+    public Action StartMoveAction { get; set; }
 
     #endregion
 
@@ -76,8 +74,6 @@ public abstract class EnemyShooter<TProjectile> : Shooter<TProjectile>, IEnemyAt
     protected override IEnumerator Shoot()
     {
         yield return WaitForSeconds(1f);
-
-        StartAttackAction?.Invoke(ownerShip.shipData.MaxLives.Value - ownerShip.currentLives);
         ownerShip.invincible = false;
     }
 
