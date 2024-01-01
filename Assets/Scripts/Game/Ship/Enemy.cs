@@ -9,7 +9,7 @@ public class Enemy : Ship
     [SerializeField] Transform bulletSystemContainer;
     [SerializeField] Transform movementSystemContainer;
 
-    public List<IEnemyAttack> bulletSystems { get; private set; }
+    public IEnemyAttack[] bulletSystems { get; private set; }
     List<IEnemyAttack> currentBulletSystems = new();
     IEnemyAttack nextBulletSystem;
 
@@ -32,14 +32,14 @@ public class Enemy : Ship
 
     void ValidateAttackSystems()
     {
-        bulletSystems = new(shipData.MaxLives.Value);
+        bulletSystems = new IEnemyAttack[shipData.MaxLives.Value];
         movementSystems = new(movementSystemContainer.childCount);
 
         for (int i = 0; i < bulletSystemContainer.childCount; i++)
         {
             if (bulletSystemContainer.GetChild(i).TryGetComponent(out IEnemyAttack enemyAttack))
             {
-                bulletSystems.Add(enemyAttack);
+                bulletSystems[i] = enemyAttack;
             }
         }
 
