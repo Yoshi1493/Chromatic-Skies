@@ -10,7 +10,7 @@ public class GeminiBulletSystem21 : EnemyShooter<EnemyBullet>
     const float BranchSpacing = 360f / BranchCount;
     const int BulletCount = 2;
     const int BulletClumpCount = 3;
-    const float BulletRotationSpeed = 15f;
+    const float BulletRotationSpeed = 10f;
     const float BulletRotationDuration = 2f;
 
     protected override float ShootingCooldown => 1f;
