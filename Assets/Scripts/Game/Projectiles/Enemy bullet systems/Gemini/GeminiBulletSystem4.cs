@@ -38,12 +38,13 @@ public class GeminiBulletSystem4 : EnemyShooter<EnemyBullet>
                     Vector3 pos = (BulletSpawnRadius + (i * SpawnRadiusModifier)) * transform.up.RotateVectorBy(z) + transform.position;
 
                     bool shouldSpawn = !pos.IsTooClose(PlayerPosition, NearestSpawnDistance);
-                    bulletSpawnData.Add((pos, z, shouldSpawn));
 
                     if (shouldSpawn)
                     {
                         SpawnProjectile(0, z, pos, false);
                     }
+
+                    bulletSpawnData.Add((pos, z, shouldSpawn));
                 }
 
                 yield return WaitForSeconds(ShootingCooldown);
