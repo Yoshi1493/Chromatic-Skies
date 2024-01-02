@@ -23,11 +23,10 @@ public class Enemy : Ship
     protected override void Awake()
     {
         base.Awake();
+        spriteRenderer.color = shipData.UIColour.value;                 //debug
 
         ValidateAttackSystems();
         FindObjectOfType<Player>().LoseLifeAction += OnPlayerLoseLife;
-
-        spriteRenderer.color = shipData.UIColour.value;                 //debug
     }
 
     void ValidateAttackSystems()
@@ -60,7 +59,7 @@ public class Enemy : Ship
         }
 
         systemResetCoroutine = RefreshEnemySystems(0);
-        StartCoroutine(systemResetCoroutine);
+        StartCoroutine(systemResetCoroutine); 
     }
 
 #if UNITY_EDITOR
