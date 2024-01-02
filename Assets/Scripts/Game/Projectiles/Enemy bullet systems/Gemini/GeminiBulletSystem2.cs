@@ -31,15 +31,18 @@ public class GeminiBulletSystem2 : EnemyShooter<EnemyBullet>
 
             for (int ii = 1; ii < WaveCount; ii++)
             {
-                float z = r - 90f * Mathf.Sign(r);
                 Vector3 v1 = ii * WaveSpacing * transform.up.RotateVectorBy(r);
 
                 for (int iii = 0; iii < BranchCount; iii++)
                 {
+                    float z = r - 90f * Mathf.Sign(r);
                     Vector3 pos = v1.RotateVectorBy(iii * BranchSpacing) + transform.position;
 
-                    bulletSpawnData.Add((pos, z));
                     SpawnProjectile(0, z, pos, false);
+
+                    pos.x *= -1;
+                    z *= -1;
+                    bulletSpawnData.Add((pos, z));
                 }
 
                 yield return WaitForSeconds(ShootingCooldown);
