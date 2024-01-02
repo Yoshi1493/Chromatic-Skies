@@ -8,9 +8,10 @@ public class GeminiBulletSystem2 : EnemyShooter<EnemyBullet>
     const float WaveSpacing = 0.3f;
     const int BranchCount = 2;
     const float BranchSpacing = 360f / BranchCount;
-    const float BulletBaseSpeed = 4f;
+    const int BulletCount = 2;
+    const float BulletSpacing = 360f / BulletCount;
+    const float BulletBaseSpeed = 3.5f;
     const float BulletSpeedModifier = -0.03f;
-    const float BulletSpawnOffset = 0.5f;
 
     List<(Vector2 pos, float z)> bulletSpawnData = new(WaveCount * BranchCount);
 
@@ -52,16 +53,19 @@ public class GeminiBulletSystem2 : EnemyShooter<EnemyBullet>
             {
                 for (int iii = 0; iii < BranchCount; iii++)
                 {
-                    var data = bulletSpawnData[0];
-                    float z = data.z;
-                    float s = BulletBaseSpeed + (ii * BulletSpeedModifier);
-                    Vector3 pos = new(data.pos.x, data.pos.y);
+                    for (int iv = 0; iv < BulletCount; iv++)
+                    {
+                        var data = bulletSpawnData[0];
+                        float z = data.z + (iv * BulletSpacing);
+                        float s = BulletBaseSpeed + (ii * BulletSpeedModifier);
+                        Vector3 pos = new(data.pos.x, data.pos.y);
 
-                    bulletData.colour = bulletData.gradient.Evaluate(ii / (WaveCount - 1f));
+                        bulletData.colour = bulletData.gradient.Evaluate(ii / (WaveCount - 1f));
 
-                    var bullet = SpawnProjectile(1, z, pos, false);
-                    bullet.MoveSpeed = s;
-                    bullet.Fire();
+                        var bullet = SpawnProjectile(1, z, pos, false);
+                        bullet.MoveSpeed = s;
+                        bullet.Fire();
+                    }
 
                     bulletSpawnData.RemoveAt(0);
                 }
