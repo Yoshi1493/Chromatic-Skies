@@ -12,20 +12,20 @@ public class CancerBullet50 : EnemyBullet
         yield return StartCoroutine(this.LerpSpeed(3f, 2f, 1f));
     }
 
-    public void Corrupt()
+    public void Corrupt(float rotationAmount)
     {
         if (corruptionCoroutine != null)
         {
             StopCoroutine(corruptionCoroutine);
         }
 
-        corruptionCoroutine = _Corrupt();
+        corruptionCoroutine = _Corrupt(rotationAmount);
         StartCoroutine(corruptionCoroutine);
     }
 
-    IEnumerator _Corrupt()
+    IEnumerator _Corrupt(float rotationAmount)
     {
-        StartCoroutine(this.GraduallyLookAt(playerShip.transform.position, 1f));
+        StartCoroutine(this.RotateBy(rotationAmount, 1f, false));
 
         float currentLerpTime = 0f;
         float totalLerpTime = 1f;

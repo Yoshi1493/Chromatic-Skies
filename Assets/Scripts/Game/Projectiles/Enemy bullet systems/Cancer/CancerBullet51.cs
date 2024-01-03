@@ -5,7 +5,7 @@ using static CoroutineHelper;
 
 public class CancerBullet51 : EnemyBullet
 {
-    const float CorruptionRadius = 2.0f;
+    const float CorruptionRadius = 1.5f;
 
     protected override IEnumerator Move()
     {
@@ -50,7 +50,8 @@ public class CancerBullet51 : EnemyBullet
         {
             if (nearbyBullets[i].TryGetComponent(out CancerBullet50 bullet))
             {
-                bullet.Corrupt();
+                float r = transform.eulerAngles.z - bullet.transform.eulerAngles.z;
+                bullet.Corrupt(r);
             }
         }
     }
