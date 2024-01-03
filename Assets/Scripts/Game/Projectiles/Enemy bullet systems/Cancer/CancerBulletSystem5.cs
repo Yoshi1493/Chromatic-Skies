@@ -8,13 +8,14 @@ public class CancerBulletSystem5 : EnemyShooter<EnemyBullet>
     readonly float BulletSpacing = (1f + Mathf.Sqrt(5f)) * 180f;
     const float BulletSpawnRadius = 0.5f;
 
-    protected override float ShootingCooldown => 0.05f;
+    protected override float ShootingCooldown => 1f / 30;
 
     protected override IEnumerator Shoot()
     {
         yield return base.Shoot();
 
         StartMoveAction?.Invoke();
+        SetSubsystemEnabled(1);
 
         for (int i = 0; enabled; i++)
         {

@@ -4,27 +4,39 @@ using static CoroutineHelper;
 
 public class CancerBullet50 : EnemyBullet
 {
+    IEnumerator corruptionCoroutine;
     const float CorruptionChance = 0.05f;
 
     protected override IEnumerator Move()
     {
-        yield return StartCoroutine(this.LerpSpeed(3f, 1.5f, 1f));
+        yield return StartCoroutine(this.LerpSpeed(3f, 2f, 1f));
+    }
 
-        if (Random.value <= CorruptionChance)
+    public void Corrupt()
+    {
+        if (corruptionCoroutine != null)
         {
-            StartCoroutine(this.GraduallyLookAt(playerShip.transform.position, 1f));
-
-            float currentLerpTime = 0f, totalLerpTime = 0.5f;
-
-            while (currentLerpTime < totalLerpTime)
-            {
-                float t = currentLerpTime / totalLerpTime;
-                spriteRenderer.color = projectileData.gradient.Evaluate(t);
-
-                yield return EndOfFrame;
-                currentLerpTime += Time.deltaTime;
-            }
+            StopCoroutine(corruptionCoroutine);
         }
 
+        corruptionCoroutine = _Corrupt();
+        StartCoroutine(corruptionCoroutine);
+    }
+
+    IEnumerator _Corrupt()
+    {
+        StartCoroutine(this.GraduallyLookAt(playerShip.transform.position, 1f));
+
+        float currentLerpTime = 0f;
+        float totalLerpTime = 1f;
+
+        while (currentLerpTime < totalLerpTime)
+        {
+            float t = currentLerpTime / totalLerpTime;
+            spriteRenderer.color = projectileData.gradient.Evaluate(t);
+
+            yield return EndOfFrame;
+            currentLerpTime += Time.deltaTime;
+        }
     }
 }

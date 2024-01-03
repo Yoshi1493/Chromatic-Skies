@@ -4,32 +4,20 @@ using static CoroutineHelper;
 
 public class CancerBulletSystem51 : EnemyShooter<EnemyBullet>
 {
-    const int WaveCount = 120;
-    const float WaveSpacing = 360f / WaveCount;
-    const int BranchCount = 3;
-    const float BranchSpacing = 360f / BranchCount;
-    const float BulletSpawnRadius = 0.5f;
+    const float SpawnMaxAngle = 45f;
+
+    protected override float ShootingCooldown => 3f;
 
     protected override IEnumerator Shoot()
     {
-        yield return WaitForSeconds(2f);
-
         while (enabled)
         {
-            for (int i = 0; i < WaveCount; i++)
-            {
-                Vector3 r = Random.insideUnitCircle;
+            yield return WaitForSeconds(ShootingCooldown);
 
-                for (int ii = 0; ii < BranchCount; ii++)
-                {
-                    float z = -((i * WaveSpacing) + (ii * BranchSpacing));
-                    Vector3 pos = (BulletSpawnRadius * r).RotateVectorBy(z);
+            float z = Random.Range(-SpawnMaxAngle, SpawnMaxAngle);
+            Vector3 pos = Vector3.zero;
 
-                    SpawnProjectile(2, z, pos).Fire();
-                }
-
-                yield return WaitForSeconds(ShootingCooldown);
-            }
+            SpawnProjectile(2, z, pos).Fire();
         }
     }
 }
