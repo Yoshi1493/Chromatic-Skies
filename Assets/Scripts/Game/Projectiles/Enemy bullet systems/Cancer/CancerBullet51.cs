@@ -7,8 +7,6 @@ public class CancerBullet51 : EnemyBullet
 {
     const float CorruptionRadius = 2.0f;
 
-    [SerializeField] LayerMask bulletLayer;
-
     protected override IEnumerator Move()
     {
         float startSpeed = Random.Range(8f, 12f);
