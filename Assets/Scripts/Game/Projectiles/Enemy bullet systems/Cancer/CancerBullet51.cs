@@ -14,7 +14,7 @@ public class CancerBullet51 : EnemyBullet
 
         yield return WaitForSeconds(1f);
 
-        StartCoroutine(this.GraduallyLookAt(playerShip.transform.position, 1f));
+        StartCoroutine(this.GraduallyLookAt(playerShip.transform.position, 2f));
         yield return this.LerpSpeed(0f, 2f, 1f);
 
         CorruptNearbyBullets();
@@ -50,8 +50,7 @@ public class CancerBullet51 : EnemyBullet
         {
             if (nearbyBullets[i].TryGetComponent(out CancerBullet50 bullet))
             {
-                float r = transform.eulerAngles.z - bullet.transform.eulerAngles.z;
-                bullet.Corrupt(r);
+                bullet.Corrupt();
             }
         }
     }

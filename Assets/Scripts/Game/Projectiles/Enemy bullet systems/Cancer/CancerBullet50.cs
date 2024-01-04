@@ -5,27 +5,26 @@ using static CoroutineHelper;
 public class CancerBullet50 : EnemyBullet
 {
     IEnumerator corruptionCoroutine;
-    const float CorruptionChance = 0.05f;
 
     protected override IEnumerator Move()
     {
         yield return StartCoroutine(this.LerpSpeed(3f, 2f, 1f));
     }
 
-    public void Corrupt(float rotationAmount)
+    public void Corrupt()
     {
         if (corruptionCoroutine != null)
         {
             StopCoroutine(corruptionCoroutine);
         }
 
-        corruptionCoroutine = _Corrupt(rotationAmount);
+        corruptionCoroutine = _Corrupt();
         StartCoroutine(corruptionCoroutine);
     }
 
-    IEnumerator _Corrupt(float rotationAmount)
+    IEnumerator _Corrupt()
     {
-        StartCoroutine(this.RotateBy(rotationAmount, 1f, false));
+        StartCoroutine(this.GraduallyLookAt(playerShip.transform.position, 2f));
 
         float currentLerpTime = 0f;
         float totalLerpTime = 1f;

@@ -4,7 +4,7 @@ using static CoroutineHelper;
 
 public class CancerBulletSystem51 : EnemyShooter<EnemyBullet>
 {
-    const float SpawnMaxAngle = 45f;
+    const float SpawnMaxAngle = 30f;
 
     protected override float ShootingCooldown => 3f;
 
