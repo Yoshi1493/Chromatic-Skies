@@ -6,7 +6,8 @@ public class CancerBulletSystem5 : EnemyShooter<EnemyBullet>
 {
     const int BulletCount = 6;
     readonly float BulletSpacing = (1f + Mathf.Sqrt(5f)) * 180f;
-    const float BulletSpawnRadius = 0.5f;
+    const float BulletSpawnRadius = 1.0f;
+    const float SpawnRadiusModifier = 0.002f;
 
     protected override float ShootingCooldown => 1f / 30;
 
@@ -23,7 +24,8 @@ public class CancerBulletSystem5 : EnemyShooter<EnemyBullet>
             {
                 int b = i % 2;
                 float z = i * BulletSpacing;
-                Vector3 pos = BulletSpawnRadius * transform.up.RotateVectorBy(z);
+                Vector3 pos = Mathf.PingPong(i * SpawnRadiusModifier, BulletSpawnRadius) * transform.up.RotateVectorBy(z);
+
 
                 SpawnProjectile(b, z, pos).Fire();
                 i++;

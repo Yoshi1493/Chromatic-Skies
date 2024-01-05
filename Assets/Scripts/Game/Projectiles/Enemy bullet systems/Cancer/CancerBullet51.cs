@@ -5,7 +5,7 @@ using static CoroutineHelper;
 
 public class CancerBullet51 : EnemyBullet
 {
-    const float CorruptionRadius = 1.5f;
+    const float CorruptionRadius = 1f;
 
     protected override IEnumerator Move()
     {
@@ -14,8 +14,8 @@ public class CancerBullet51 : EnemyBullet
 
         yield return WaitForSeconds(1f);
 
-        StartCoroutine(this.GraduallyLookAt(playerShip.transform.position, 2f));
         yield return this.LerpSpeed(0f, 2f, 1f);
+        StartCoroutine(this.GraduallyLookAt(playerShip.transform.position, 1.5f));
 
         CorruptNearbyBullets();
 

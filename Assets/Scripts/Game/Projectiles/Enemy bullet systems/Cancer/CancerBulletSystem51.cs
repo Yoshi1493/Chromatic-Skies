@@ -4,9 +4,7 @@ using static CoroutineHelper;
 
 public class CancerBulletSystem51 : EnemyShooter<EnemyBullet>
 {
-    const float SpawnMaxAngle = 30f;
-
-    protected override float ShootingCooldown => 3f;
+    protected override float ShootingCooldown => 1.5f;
 
     protected override IEnumerator Shoot()
     {
@@ -14,7 +12,7 @@ public class CancerBulletSystem51 : EnemyShooter<EnemyBullet>
         {
             yield return WaitForSeconds(ShootingCooldown);
 
-            float z = Random.Range(-SpawnMaxAngle, SpawnMaxAngle);
+            float z = PlayerPosition.GetRotationDifference(transform.position);
             Vector3 pos = Vector3.zero;
 
             SpawnProjectile(2, z, pos).Fire();

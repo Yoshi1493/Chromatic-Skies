@@ -23,7 +23,7 @@ public class GeminiBulletSystem41 : EnemyShooter<EnemyBullet>
             {
                 float t = Mathf.Sin(i * BulletSpacing * Mathf.Deg2Rad);
                 float z = (t * ArcHalfWidth) + (ii * BranchSpacing);
-                Vector3 pos = (Mathf.PingPong(i * SpawnRadiusMultiplier, BulletSpawnRadius)) * transform.up.RotateVectorBy(z);
+                Vector3 pos = Mathf.PingPong(i * SpawnRadiusMultiplier, BulletSpawnRadius) * transform.up.RotateVectorBy(z);
 
                 SpawnProjectile(2, z, pos).Fire();
             }

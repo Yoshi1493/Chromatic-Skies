@@ -24,7 +24,7 @@ public class CancerBullet50 : EnemyBullet
 
     IEnumerator _Corrupt()
     {
-        StartCoroutine(this.GraduallyLookAt(playerShip.transform.position, 2f));
+        StartCoroutine(this.GraduallyLookAt(playerShip.transform.position, 1.5f));
 
         float currentLerpTime = 0f;
         float totalLerpTime = 1f;
