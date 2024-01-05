@@ -53,6 +53,8 @@ public class Enemy : Ship
 
     void OnEnable()
     {
+        SetInvincible(2f);
+
         if (systemResetCoroutine != null)
         {
             StopCoroutine(systemResetCoroutine);
