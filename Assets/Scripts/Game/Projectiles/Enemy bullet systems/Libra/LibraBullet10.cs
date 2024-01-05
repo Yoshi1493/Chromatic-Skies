@@ -6,12 +6,12 @@ public class LibraBullet10 : ScriptableEnemyBullet<LibraBulletSystem1, EnemyBull
 {
     [SerializeField] int bulletID;
 
-    const float WaveSpacing = 8f;
+    const float WaveSpacing = 12f;
     const int BranchCount = 4;
     const float BranchSpacing = 360f / BranchCount;
-    const float BulletBaseSpeed = 2f;
-    const float BulletSpeedModifier = 0.5f;
-    const float ShootingCooldown = 0.2f;
+    const float BulletBaseSpeed = 3.5f;
+    const float BulletSpeedModifier = -0.25f;
+    const float ShootingCooldown = 0.1f;
 
     protected override float MaxLifetime => Mathf.Infinity;
 
@@ -33,7 +33,7 @@ public class LibraBullet10 : ScriptableEnemyBullet<LibraBulletSystem1, EnemyBull
             for (int ii = 0; ii < BranchCount; ii++)
             {
                 float z = -(i * WaveSpacing) - (ii * BranchSpacing);
-                float s = BulletBaseSpeed + ((BranchCount - ii) * BulletSpeedModifier);
+                float s = BulletBaseSpeed + ((transform.GetSiblingIndex() - 2) * BulletSpeedModifier);
                 Vector3 pos = transform.position;
 
                 var bullet = SpawnBullet(bulletID, z, pos, false);
