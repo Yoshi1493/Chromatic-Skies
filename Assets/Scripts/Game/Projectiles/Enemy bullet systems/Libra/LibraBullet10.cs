@@ -28,12 +28,15 @@ public class LibraBullet10 : ScriptableEnemyBullet<LibraBulletSystem1, EnemyBull
 
     IEnumerator Shoot()
     {
+        yield return WaitForSeconds(ShootingCooldown);
+        int siblingIndex = transform.GetSiblingIndex() - 2;
+
         for (int i = 0; enabled; i++)
         {
             for (int ii = 0; ii < BranchCount; ii++)
             {
                 float z = -(i * WaveSpacing) - (ii * BranchSpacing);
-                float s = BulletBaseSpeed + ((transform.GetSiblingIndex() - 2) * BulletSpeedModifier);
+                float s = BulletBaseSpeed + (siblingIndex * BulletSpeedModifier);
                 Vector3 pos = transform.position;
 
                 var bullet = SpawnBullet(bulletID, z, pos, false);
