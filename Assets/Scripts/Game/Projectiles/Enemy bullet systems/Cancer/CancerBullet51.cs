@@ -4,7 +4,7 @@ using static CoroutineHelper;
 
 public class CancerBullet51 : EnemyBullet
 {
-    const float CorruptionSquareRadius = 2.25f;
+    const float CorruptionSquareRadius = 1.96f;
 
     protected override IEnumerator Move()
     {
