@@ -1,11 +1,10 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using static CoroutineHelper;
 
 public class CancerBullet51 : EnemyBullet
 {
-    const float CorruptionRadius = 1f;
+    const float CorruptionSquareRadius = 2.25f;
 
     protected override IEnumerator Move()
     {
@@ -15,7 +14,7 @@ public class CancerBullet51 : EnemyBullet
         yield return WaitForSeconds(1f);
 
         yield return this.LerpSpeed(0f, 2f, 1f);
-        StartCoroutine(this.GraduallyLookAt(playerShip.transform.position, 1.5f));
+        StartCoroutine(this.GraduallyLookAt(playerShip.transform.position, 0.5f));
 
         CorruptNearbyBullets();
 
@@ -34,24 +33,20 @@ public class CancerBullet51 : EnemyBullet
 
     void CorruptNearbyBullets()
     {
-        List<CancerBullet50> nearbyBullets = new();
-
         var bullets = transform.parent.GetComponentsInChildren<CancerBullet50>();
 
         for (int i = 0; i < bullets.Length; i++)
         {
-            if ((transform.position - bullets[i].transform.position).sqrMagnitude < CorruptionRadius)
+            float sqrDistance = (transform.position - bullets[i].transform.position).sqrMagnitude;
+
+            if (sqrDistance > 0 && sqrDistance < CorruptionSquareRadius)
             {
-                nearbyBullets.Add(bullets[i]);
+                if (bullets[i].TryGetComponent(out CancerBullet50 bullet))
+                {
+                    bullet.Corrupt(sqrDistance);
+                }
             }
         }
 
-        for (int i = 0; i < nearbyBullets.Count; i++)
-        {
-            if (nearbyBullets[i].TryGetComponent(out CancerBullet50 bullet))
-            {
-                bullet.Corrupt();
-            }
-        }
     }
 }
