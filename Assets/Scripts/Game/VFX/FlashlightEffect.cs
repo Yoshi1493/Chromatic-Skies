@@ -81,7 +81,6 @@ public class FlashlightEffect : MonoBehaviour
         }
 
         fadeCoroutine = FadeVignette(1f, 0f, 0.5f);
-        StartCoroutine(fadeCoroutine);
     }
 
 #if UNITY_EDITOR
