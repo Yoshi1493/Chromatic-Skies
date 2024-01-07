@@ -4,14 +4,24 @@ using static CoroutineHelper;
 
 public class SagittariusBulletSystem2 : EnemyShooter<EnemyBullet>
 {
+    FlashlightEffect flashlightEffect;
+
     const int WaveCount = 119;
     const int BranchCount = 6;
     const float BranchSpacing = 360f / BranchCount;
+
+    protected override void Awake()
+    {
+        base.Awake();
+
+        flashlightEffect = FindObjectOfType<FlashlightEffect>();
+    }
 
     protected override IEnumerator Shoot()
     {
         yield return base.Shoot();
 
+        flashlightEffect.enabled = true;
         SetSubsystemEnabled(1);
 
         for (int i = 1; enabled; i *= -1)
