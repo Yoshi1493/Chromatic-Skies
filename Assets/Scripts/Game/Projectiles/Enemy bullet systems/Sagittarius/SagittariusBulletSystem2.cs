@@ -47,4 +47,10 @@ public class SagittariusBulletSystem2 : EnemyShooter<EnemyBullet>
         }
 
     }
+
+    protected override void OnLoseLife()
+    {
+        base.OnLoseLife();
+        flashlightEffect.enabled = false;
+    }
 }

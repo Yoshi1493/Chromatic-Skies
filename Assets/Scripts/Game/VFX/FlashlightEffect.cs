@@ -1,27 +1,19 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.Rendering;
-using UnityEngine.Rendering.Universal;
 using static CoroutineHelper;
 
 public class FlashlightEffect : MonoBehaviour
 {
     Camera mainCam;
-
-    [SerializeField] VolumeProfile volumeProfile;
-    Vignette vignette;
-    Vector2 vignetteCentre;
-
-    IEnumerator fadeCoroutine;
+    Material flashlightMat;
 
     Player playerShip;
+    IEnumerator fadeCoroutine;
 
     void Awake()
     {
         mainCam = Camera.main;
-
-        volumeProfile.TryGet(out vignette);
-        vignette.intensity.value = 0f;
+        flashlightMat = GetComponent<SpriteRenderer>().material;
 
         playerShip = FindObjectOfType<Player>();
 
@@ -38,39 +30,33 @@ public class FlashlightEffect : MonoBehaviour
             StopCoroutine(fadeCoroutine);
         }
 
-        fadeCoroutine = FadeVignette(0f, 1f, 5f);
+        fadeCoroutine = FadeFlashlight(4f, 8f);
         StartCoroutine(fadeCoroutine);
     }
 
-    IEnumerator FadeVignette(float startIntensity, float endIntensity, float fadeDuration)
+    IEnumerator FadeFlashlight(float endStrength, float fadeDuration)
     {
-        volumeProfile.TryGet(out vignette);
+        float currentLerpTime = 0f;
+        float startStrength = flashlightMat.GetFloat("_Strength");
 
-        if (vignette != null)
+        while (currentLerpTime < fadeDuration)
         {
-            float currentLerpTime = 0f;
+            float lerpProgress = currentLerpTime / fadeDuration;
+            float strength = Mathf.Lerp(startStrength, endStrength, lerpProgress);
+            flashlightMat.SetFloat("_Strength", strength);
 
-            vignette.intensity.value = startIntensity;
-
-            while (vignette.intensity.value != endIntensity)
-            {
-                float lerpProgress = currentLerpTime / fadeDuration;
-                vignette.intensity.value = Mathf.Lerp(startIntensity, endIntensity, lerpProgress);
-
-                yield return EndOfFrame;
-                currentLerpTime += Time.deltaTime;
-            }
-
-            vignette.intensity.value = endIntensity;
+            yield return EndOfFrame;
+            currentLerpTime += Time.deltaTime;
         }
 
-        yield return EndOfFrame;
+        flashlightMat.SetFloat("_Strength", endStrength);
     }
 
     void Update()
     {
         //follow player position
-        vignette.center.value = mainCam.WorldToViewportPoint(playerShip.transform.position);
+        Vector2 position = (2 * mainCam.WorldToViewportPoint(playerShip.transform.position)) - Vector3.one;
+        flashlightMat.SetVector("_Position", position);
     }
 
     void OnDisable()
@@ -80,14 +66,14 @@ public class FlashlightEffect : MonoBehaviour
             StopCoroutine(fadeCoroutine);
         }
 
-        fadeCoroutine = FadeVignette(1f, 0f, 0.5f);
+        fadeCoroutine = FadeFlashlight(0f, 0.5f);
+        StartCoroutine(fadeCoroutine);
     }
 
 #if UNITY_EDITOR
     void OnApplicationQuit()
     {
-        vignette.intensity.value = 0;
-        vignette.center.value = 0.5f * Vector2.one;
+        flashlightMat.SetFloat("_Strength", 0f);
     }
 #endif
 }
