@@ -24,6 +24,11 @@ public class FlashlightEffect : MonoBehaviour
         vignette.intensity.value = 0f;
 
         playerShip = FindObjectOfType<Player>();
+
+        if (playerShip != null)
+        {
+            playerShip.LoseLifeAction += () => enabled = false;
+        }
     }
 
     void OnEnable()
@@ -34,6 +39,7 @@ public class FlashlightEffect : MonoBehaviour
         }
 
         fadeCoroutine = FadeVignette(0f, 1f, 5f);
+        StartCoroutine(fadeCoroutine);
     }
 
     IEnumerator FadeVignette(float startIntensity, float endIntensity, float fadeDuration)
@@ -67,21 +73,22 @@ public class FlashlightEffect : MonoBehaviour
         vignette.center.value = mainCam.WorldToViewportPoint(playerShip.transform.position);
     }
 
-    void ResetteVignette()
-    {
-        vignette.intensity.value = 0;
-        vignette.center.value = 0.5f * Vector2.one;
-    }
-
     void OnDisable()
     {
-        ResetteVignette();
+        if (fadeCoroutine != null)
+        {
+            StopCoroutine(fadeCoroutine);
+        }
+
+        fadeCoroutine = FadeVignette(1f, 0f, 0.5f);
+        StartCoroutine(fadeCoroutine);
     }
 
 #if UNITY_EDITOR
     void OnApplicationQuit()
     {
-        ResetteVignette();
+        vignette.intensity.value = 0;
+        vignette.center.value = 0.5f * Vector2.one;
     }
 #endif
 }
