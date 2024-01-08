@@ -15,7 +15,6 @@ public class SagittariusBulletSystem2 : EnemyShooter<EnemyBullet>
     protected override void Awake()
     {
         base.Awake();
-
         flashlightEffect = FindObjectOfType<FlashlightEffect>();
     }
 
