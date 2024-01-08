@@ -6,9 +6,11 @@ public class SagittariusBulletSystem2 : EnemyShooter<EnemyBullet>
 {
     FlashlightEffect flashlightEffect;
 
-    const int WaveCount = 119;
-    const int BranchCount = 6;
-    const float BranchSpacing = 360f / BranchCount;
+    const int WaveCount = 240;
+    const float WaveSpacing = 360f / WaveCount;
+    const float BulletRotationSpeed = 90f;
+
+    protected override float ShootingCooldown => 1f / 60;
 
     protected override void Awake()
     {
@@ -26,26 +28,26 @@ public class SagittariusBulletSystem2 : EnemyShooter<EnemyBullet>
 
         for (int i = 1; enabled; i *= -1)
         {
-            float waveSpacing = 0f;
+            float t = 0f;
 
             for (int ii = 0; ii < WaveCount; ii++)
             {
-                for (int iii = 0; iii < BranchCount; iii++)
-                {
-                    float z = i * (waveSpacing + (iii * BranchSpacing));
-                    Vector3 pos = Vector3.zero;
+                float z = i * (ii * WaveSpacing + t);
+                Vector3 pos = transform.up.RotateVectorBy(i * ii * WaveSpacing);
 
-                    SpawnProjectile(0, z, pos).Fire();
-                }
+                bulletData.colour = bulletData.gradient.Evaluate(ii % 2);
+
+                var bullet = SpawnProjectile(0, z, pos);
+                bullet.StartCoroutine(bullet.RotateBy((ii % 2 * 2 - 1) * BulletRotationSpeed, 5f, delay: 0.5f));
+                bullet.Fire();
 
                 yield return WaitForSeconds(ShootingCooldown);
-                waveSpacing += ii;
+                t += 5f;
             }
 
             StartMoveAction?.Invoke();
             yield return WaitForSeconds(2f);
         }
-
     }
 
     protected override void OnLoseLife()
