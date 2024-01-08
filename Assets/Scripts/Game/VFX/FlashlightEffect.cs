@@ -8,7 +8,13 @@ public class FlashlightEffect : MonoBehaviour
     Material flashlightMat;
 
     Player playerShip;
-    IEnumerator fadeCoroutine;
+    IEnumerator strengthCoroutine;
+    IEnumerator radiusCoroutine;
+    IEnumerator hardnessCoroutine;
+
+    const float DefaultStrength = 0.0f;
+    const float DefaultRadius = 0.5f;
+    const float DefaultHardness = 1.5f;
 
     void Awake()
     {
@@ -21,20 +27,64 @@ public class FlashlightEffect : MonoBehaviour
         {
             playerShip.LoseLifeAction += () => enabled = false;
         }
+
+        ResetProperties();
     }
 
     void OnEnable()
     {
-        if (fadeCoroutine != null)
-        {
-            StopCoroutine(fadeCoroutine);
-        }
-
-        fadeCoroutine = FadeFlashlight(4f, 8f);
-        StartCoroutine(fadeCoroutine);
+        SetStengthOverTime(4f, 8f);
     }
 
-    IEnumerator FadeFlashlight(float endStrength, float fadeDuration)
+    //follow player position
+    void Update()
+    {
+        //convert player position -> viewport space ([0,0], [1,1]) -> shadergraph coordinate space ([-1,-1], [1,1])
+        Vector2 position = (2 * mainCam.WorldToViewportPoint(playerShip.transform.position)) - Vector3.one;
+        flashlightMat.SetVector("_Position", position);
+    }
+
+    void OnDisable()
+    {
+        SetStengthOverTime(0f, 0.5f);
+    }
+
+    #region Coroutines
+
+    public void SetStengthOverTime(float endStrength, float duration)
+    {
+        if (strengthCoroutine != null)
+        {
+            StopCoroutine(strengthCoroutine);
+        }
+
+        strengthCoroutine = FadeStrength(endStrength, duration);
+        StartCoroutine(strengthCoroutine);
+    }
+
+    public void SetRadiusOverTime(float endRadius, float duration)
+    {
+        if (radiusCoroutine != null)
+        {
+            StopCoroutine(radiusCoroutine);
+        }
+
+        radiusCoroutine = FadeRadius(endRadius, duration);
+        StartCoroutine(radiusCoroutine);
+    }
+
+    public void SetHardnessOverTime(float endHardness, float duration)
+    {
+        if (hardnessCoroutine != null)
+        {
+            StopCoroutine(hardnessCoroutine);
+        }
+
+        hardnessCoroutine = FadeHardness(endHardness, duration);
+        StartCoroutine(hardnessCoroutine);
+    }
+
+    IEnumerator FadeStrength(float endStrength, float fadeDuration)
     {
         float currentLerpTime = 0f;
         float startStrength = flashlightMat.GetFloat("_Strength");
@@ -52,28 +102,55 @@ public class FlashlightEffect : MonoBehaviour
         flashlightMat.SetFloat("_Strength", endStrength);
     }
 
-    void Update()
+    IEnumerator FadeRadius(float endRadius, float fadeDuration)
     {
-        //follow player position
-        Vector2 position = (2 * mainCam.WorldToViewportPoint(playerShip.transform.position)) - Vector3.one;
-        flashlightMat.SetVector("_Position", position);
-    }
+        float currentLerpTime = 0f;
+        float startRadius = flashlightMat.GetFloat("_Radius");
 
-    void OnDisable()
-    {
-        if (fadeCoroutine != null)
+        while (currentLerpTime < fadeDuration)
         {
-            StopCoroutine(fadeCoroutine);
+            float lerpProgress = currentLerpTime / fadeDuration;
+            float radius = Mathf.Lerp(startRadius, endRadius, lerpProgress);
+            flashlightMat.SetFloat("_Radius", radius);
+
+            yield return EndOfFrame;
+            currentLerpTime += Time.deltaTime;
         }
 
-        fadeCoroutine = FadeFlashlight(0f, 0.5f);
-        StartCoroutine(fadeCoroutine);
+        flashlightMat.SetFloat("_Radius", endRadius);
+    }
+
+    IEnumerator FadeHardness(float endHardness, float fadeDuration)
+    {
+        float currentLerpTime = 0f;
+        float startHardness = flashlightMat.GetFloat("_Hardness");
+
+        while (currentLerpTime < fadeDuration)
+        {
+            float lerpProgress = currentLerpTime / fadeDuration;
+            float hardness = Mathf.Lerp(startHardness, endHardness, lerpProgress);
+            flashlightMat.SetFloat("_Hardness", hardness);
+
+            yield return EndOfFrame;
+            currentLerpTime += Time.deltaTime;
+        }
+
+        flashlightMat.SetFloat("_Hardness", endHardness);
+    }
+
+    #endregion
+
+    void ResetProperties()
+    {
+        flashlightMat.SetFloat("_Strength", DefaultStrength);
+        flashlightMat.SetFloat("_Radius", DefaultRadius);
+        flashlightMat.SetFloat("_Hardness", DefaultHardness);
     }
 
 #if UNITY_EDITOR
     void OnApplicationQuit()
     {
-        flashlightMat.SetFloat("_Strength", 0f);
+        ResetProperties();
     }
 #endif
 }
