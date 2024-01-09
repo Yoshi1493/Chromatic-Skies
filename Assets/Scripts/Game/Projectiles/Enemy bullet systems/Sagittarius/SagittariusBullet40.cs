@@ -1,10 +1,9 @@
 using System.Collections;
-using UnityEngine;
 
 public class SagittariusBullet40 : EnemyBullet
 {
     protected override IEnumerator Move()
     {
-        yield return null;
+        yield return this.LerpSpeed(5f, 2f, 0.5f);
     }
 }
