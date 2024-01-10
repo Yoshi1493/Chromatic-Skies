@@ -6,12 +6,13 @@ public class SagittariusBulletSystem4 : EnemyShooter<EnemyBullet>
 {
     FlashlightEffect flashlightEffect;
 
-    const int WaveCount = 44;
-    const float WaveSpacing = 18f;
+    const int WaveCount = 48;
+    const float WaveSpacing = 16f;
     const int BranchCount = 2;
     const int BulletCount = 5;
     const float BulletSpacing = 30f;
-    const float BulletSpawnRadius = 1.5f;
+    const float BulletSpawnRadius = 1.92f;
+    const float SpawnRadiusModifier = 0.04f;
 
     protected override void Awake()
     {
@@ -23,26 +24,27 @@ public class SagittariusBulletSystem4 : EnemyShooter<EnemyBullet>
     {
         yield return base.Shoot();
 
-        //flashlightEffect.enabled = true;
-        //flashlightEffect.SetStengthOverTime(4f, 8f);
-        //flashlightEffect.SetRadiusOverTime(0.4f, 8f);
-        //flashlightEffect.SetHardnessOverTime(1.01f, 8f);
+        flashlightEffect.enabled = true;
+        flashlightEffect.SetStengthOverTime(4f, 8f);
+        flashlightEffect.SetRadiusOverTime(0.4f, 8f);
+        flashlightEffect.SetHardnessOverTime(1.01f, 8f);
+
+        SetSubsystemEnabled(1);
 
         while (enabled)
         {
             for (int i = 0; i < WaveCount; i++)
             {
-                float r = PlayerPosition.GetRotationDifference(transform.position);
-
                 for (int ii = 0; ii < BranchCount; ii++)
                 {
-                    float t = (ii % 2 * 2 - 1) * ((i + 0.5f) * WaveSpacing);
+                    float r = ii % 2 * 2 - 1;
+                    float t = r * ((i + 0.5f) * WaveSpacing);
                     bulletData.colour = bulletData.gradient.Evaluate(ii);
 
                     for (int iii = 0; iii < BulletCount; iii++)
                     {
-                        float z = (i * 0.5f * WaveSpacing) + ((iii - ((BulletCount - 1) / 2)) * BulletSpacing);
-                        Vector3 pos = BulletSpawnRadius * transform.up.RotateVectorBy(t);
+                        float z = (r * i * WaveSpacing) + ((iii - ((BulletCount - 1) / 2)) * BulletSpacing);
+                        Vector3 pos = ((i * SpawnRadiusModifier)) * transform.up.RotateVectorBy(t);
 
                         SpawnProjectile(0, z, pos).Fire();
                     }
@@ -52,7 +54,7 @@ public class SagittariusBulletSystem4 : EnemyShooter<EnemyBullet>
             }
 
             StartMoveAction?.Invoke();
-            yield return WaitForSeconds(5f);
+            yield return WaitForSeconds(2f);
         }
 
     }

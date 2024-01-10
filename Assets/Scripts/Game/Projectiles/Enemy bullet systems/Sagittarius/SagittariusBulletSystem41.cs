@@ -1,30 +1,50 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using static CoroutineHelper;
 
 public class SagittariusBulletSystem41 : EnemyShooter<EnemyBullet>
 {
-    const int BulletCount = 24;
+    const int BulletCount = 30;
     const float BulletSpacing = 360f / BulletCount;
     const float BulletSpawnRadius = 1.6f;
+    const float BulletBaseSpeed = 1f;
+
+    List<EnemyBullet> bullets = new(BulletCount);
 
     protected override float ShootingCooldown => 1f / 60;
 
     protected override IEnumerator Shoot()
     {
-        while (enabled)
+        yield return WaitForSeconds(4.5f);
+
+        for (int i = 1; enabled; i *= -1)
         {
-            yield return WaitForSeconds(2f);
+            bullets.Clear();
 
             Vector3 v = PlayerPosition;
 
-            for (int i = 0; i < BulletCount; i++)
+            for (int ii = 0; ii < BulletCount; ii++)
             {
-                float z = i * BulletSpacing;
+                float z = i * ii * BulletSpacing;
                 Vector3 pos = (BulletSpawnRadius * Vector3.up.RotateVectorBy(z)) + v;
 
-                SpawnProjectile(1, z, pos, false).Fire();
+                var bullet = SpawnProjectile(1, z, pos, false);
+                bullet.MoveSpeed = 0f;
+                bullets.Add(bullet);
+
                 yield return WaitForSeconds(ShootingCooldown);
+            }
+
+            yield return WaitForSeconds(2f);
+
+            for (int ii = 0; ii < BulletCount; ii++)
+            {
+                if (bullets[ii].isActiveAndEnabled)
+                {
+                    bullets[ii].StartCoroutine(bullets[ii].LerpSpeed(0f, BulletBaseSpeed, 1f));
+                    yield return WaitForSeconds(0.2f);
+                }
             }
 
             yield return WaitForSeconds(2f);
