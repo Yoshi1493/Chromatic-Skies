@@ -26,14 +26,13 @@ public class SagittariusBulletSystem5 : EnemyShooter<EnemyBullet>
             Vector3 d = ownerShip.GetComponent<Enemy>().GetCurrentMovementSystem().moveDirection;
             d *= -Mathf.Sign(d.x);
 
-            float z = d.RotateVectorBy(90f).GetRotationDifference(Vector3.zero);
-            Vector3 pos = Vector3.zero;
-
             for (int i = 0; i < WaveCount; i++)
             {
                 for (int ii = 0; ii < BulletCount; ii++)
                 {
+                    float z = d.RotateVectorBy(90f).GetRotationDifference(Vector3.zero);
                     float s = BulletBaseSpeed + (ii * BulletSpeedModifier);
+                    Vector3 pos = Vector3.zero;
 
                     bulletData.colour = bulletData.gradient.Evaluate(ii / (BulletCount - 1f));
 
@@ -52,6 +51,10 @@ public class SagittariusBulletSystem5 : EnemyShooter<EnemyBullet>
                 for (int ii = 0; ii < WaveCount; ii++)
                 {
                     int b = ii * BulletCount + i;
+
+                    float z = ((i + ii) * 15f) + bullets[b].transform.eulerAngles.z;
+                    Vector3 pos = bullets[b].transform.position;
+                    SpawnProjectile(1, z, pos, false).Fire();
 
                     bullets[b].Destroy();
                 }
