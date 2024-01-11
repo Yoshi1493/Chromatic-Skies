@@ -10,12 +10,7 @@ public class Enemy : Ship
     [SerializeField] Transform movementSystemContainer;
 
     public List<IEnemyAttack> bulletSystems { get; private set; }
-    List<IEnemyAttack> currentBulletSystems = new();
-    IEnemyAttack nextBulletSystem;
-
     List<EnemyMovement> movementSystems;
-    EnemyMovement currentMovementSystem;
-    EnemyMovement nextMovementSystem;
 
     public event Action<int> StartAttackAction;
     IEnumerator systemResetCoroutine;
@@ -61,7 +56,7 @@ public class Enemy : Ship
         }
 
         systemResetCoroutine = RefreshEnemySystems(0);
-        StartCoroutine(systemResetCoroutine); 
+        StartCoroutine(systemResetCoroutine);
     }
 
 #if UNITY_EDITOR
@@ -114,7 +109,11 @@ public class Enemy : Ship
 
     IEnumerator RefreshEnemySystems(int currentSystemIndex)
     {
-        GetActiveEnemySystems();
+        List<IEnemyAttack> currentBulletSystems = GetCurrentBulletSystem();
+        EnemyMovement currentMovementSystem = GetCurrentMovementSystem();
+
+        IEnemyAttack nextBulletSystem;
+        EnemyMovement nextMovementSystem;
 
         if (currentHealth > 0)
         {
@@ -143,48 +142,52 @@ public class Enemy : Ship
         StartAttackAction?.Invoke(currentSystemIndex);
     }
 
-    void GetActiveEnemySystems()
+    public List<IEnemyAttack> GetCurrentBulletSystem()
     {
-        currentBulletSystems.Clear();
+        List<IEnemyAttack> currentBulletSystems = new();
 
-        //check all children of BulletSystem container for enabled IEnemyAttack
         for (int i = 0; i < bulletSystemContainer.childCount; i++)
         {
             Transform child = bulletSystemContainer.GetChild(i);
 
-            //find bullet systems
-            if (child.TryGetComponent(out IEnemyAttack bulletSystem))
+            if (child.TryGetComponent(out IEnemyAttack bulletSystem) && bulletSystem.Enabled)
             {
-                //if a bullet system exists, regardless of its enabled status, find respective movement system
-                currentMovementSystem = movementSystemContainer.GetChild(i).GetComponent<EnemyMovement>();
+                currentBulletSystems.Add(bulletSystem);
 
-                if (bulletSystem.Enabled)
+                if (child.childCount > 0)
                 {
-                    currentBulletSystems.Add(bulletSystem);
-                }
-            }
-
-            //check for active bullet subsystems
-            if (child.childCount > 0)
-            {
-                for (int ii = 0; ii < child.childCount; ii++)
-                {
-                    if (child.GetChild(ii).TryGetComponent(out IEnemyAttack bulletSubsystem) && bulletSubsystem.Enabled)
+                    for (int ii = 0; ii < child.childCount; ii++)
                     {
-                        currentBulletSystems.Add(bulletSubsystem);
+                        if (child.GetChild(ii).TryGetComponent(out IEnemyAttack bulletSubsystem) && bulletSubsystem.Enabled)
+                        {
+                            currentBulletSystems.Add(bulletSubsystem);
+                        }
                     }
                 }
-            }
 
-            //find movement system
+                break;
+            }
+        }
+
+        return currentBulletSystems;
+    }
+
+    public EnemyMovement GetCurrentMovementSystem()
+    {
+        EnemyMovement currentMovementSystem = null;
+
+        for (int i = 0; i < movementSystemContainer.childCount; i++)
+        {
+            Transform child = movementSystemContainer.GetChild(i);
+
             if (child.TryGetComponent(out EnemyMovement movementSystem) && movementSystem.enabled)
             {
                 currentMovementSystem = movementSystem;
+                break;
             }
-
-            //if an active bullet system exists, immediately break out to avoid further checks
-            if (currentBulletSystems.Count > 0) break;
         }
+
+        return currentMovementSystem;
     }
 
     protected override void Die()
