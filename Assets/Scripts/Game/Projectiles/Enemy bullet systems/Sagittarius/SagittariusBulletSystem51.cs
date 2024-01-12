@@ -4,19 +4,44 @@ using static CoroutineHelper;
 
 public class SagittariusBulletSystem51 : EnemyShooter<EnemyBullet>
 {
-    const int BulletCount = 0;
+    const int WaveCount = 50;
+    const float WaveSpacing = 7f;
+    const float WaveSpeedModifier = 0.02f;
+    const int BranchCount = 3;
+    const float BranchSpacing = 360f / BranchCount;
+    const int BulletCount = 3;
+    const float BulletSpacing = 10f;
+    const float BulletBaseSpeed = 2f;
+    const float BulletSpeedModifier = 1f;
+    const float BulletSpawnRadius = 0.5f;
 
     protected override IEnumerator Shoot()
     {
-        while (enabled)
+        yield return WaitForSeconds(2f);
+
+        float d = Mathf.Sign(transform.position.x - PlayerPosition.x);
+
+        for (int i = 0; i < WaveCount; i++)
         {
-            for (int i = 0; i < BulletCount; i++)
+            for (int ii = 0; ii < BranchCount; ii++)
             {
-                float z = 0;
-                SpawnProjectile(0, z, Vector3.zero).Fire();
+                for (int iii = 0; iii < BulletCount; iii++)
+                {
+                    float z = d * ((i * WaveSpacing) + (ii * BranchSpacing) + (iii * BulletSpacing) - 90f);
+                    float s = BulletBaseSpeed + (i * WaveSpeedModifier) + (iii + BulletSpeedModifier);
+                    Vector3 pos = BulletSpawnRadius * transform.up.RotateVectorBy(z - (d * BranchSpacing));
+
+                    bulletData.colour = bulletData.gradient.Evaluate((i * BulletCount + iii) / ( BulletCount - 1f));
+
+                    var bullet = SpawnProjectile(2, z, pos);
+                    bullet.MoveSpeed = s;
+                    bullet.StartCoroutine(bullet.LerpSpeed(0f, s, 1f));
+                }
             }
 
             yield return WaitForSeconds(ShootingCooldown);
         }
+
+        enabled = false;
     }
 }

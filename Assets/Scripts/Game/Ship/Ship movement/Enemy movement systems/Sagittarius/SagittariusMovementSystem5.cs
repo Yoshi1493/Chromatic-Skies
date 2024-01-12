@@ -22,6 +22,12 @@ public class SagittariusMovementSystem5 : EnemyMovement
 
         yield return this.MoveTo(p1, s1);
         yield return this.MoveFromTo(p2, p0, s2);
+
         yield return WaitForSeconds(2f);
+
+        for (int i = 0; i < 3; i++)
+        {
+            yield return this.MoveToRandomPosition(1.5f, 1f, 2f);
+        }
     }
 }
