@@ -7,14 +7,13 @@ public class SagittariusBulletSystem5 : EnemyShooter<EnemyBullet>
 {
     [SerializeField] ProjectileObject smallBulletData;
 
-    const int WaveCount = 18;
-    const int BigBulletCount = 12;
-    const float BulletBaseSpeed = 0.5f;
-    const float BulletSpeedModifier = 0.75f;
+    const int WaveCount = 16;
+    const int BigBulletCount = 10;
+    const float BulletBaseSpeed = 1.5f;
+    const float BulletSpeedModifier = 0.8f;
     const int SmallBulletCount = 3;
     const float SmallBulletSpacing = 30f;
-    const float BulletRotationSpeed = 15f;
-    const float BulletRotationDuration = 3f;
+    const float SmallBulletSpeedModifier = 0.25f;
 
     List<EnemyBullet> bullets = new(WaveCount * BigBulletCount);
 
@@ -34,6 +33,8 @@ public class SagittariusBulletSystem5 : EnemyShooter<EnemyBullet>
 
             for (int i = 0; i < WaveCount; i++)
             {
+                yield return WaitForSeconds(ShootingCooldown);
+
                 for (int ii = 0; ii < BigBulletCount; ii++)
                 {
                     float z = d.RotateVectorBy(90f).GetRotationDifference(Vector3.zero);
@@ -43,11 +44,9 @@ public class SagittariusBulletSystem5 : EnemyShooter<EnemyBullet>
                     bulletData.colour = bulletData.gradient.Evaluate(ii / (BigBulletCount - 1f));
 
                     var bullet = SpawnProjectile(0, z, pos);
-                    bullet.StartCoroutine(bullet.LerpSpeed(s, 0, 2f, delay: 0.5f));
+                    bullet.StartCoroutine(bullet.LerpSpeed(s, 0f, 2f));
                     bullets.Add(bullet);
                 }
-
-                yield return WaitForSeconds(ShootingCooldown);
             }
 
             yield return WaitForSeconds(2f);
@@ -60,14 +59,14 @@ public class SagittariusBulletSystem5 : EnemyShooter<EnemyBullet>
 
                     for (int iii = 0; iii < SmallBulletCount; iii++)
                     {
-                        float z = ((i + ii + iii) * SmallBulletSpacing) + bullets[b].transform.eulerAngles.z;
+                        float z = ((i + ii) * SmallBulletSpacing) + bullets[b].transform.eulerAngles.z;
+                        float s = BulletBaseSpeed + (iii * SmallBulletSpeedModifier);
                         Vector3 pos = bullets[b].transform.position;
 
                         smallBulletData.colour = smallBulletData.gradient.Evaluate(iii / (SmallBulletCount - 1f));
 
                         var bullet = SpawnProjectile(1, z, pos, false);
-                        bullet.StartCoroutine(bullet.RotateBy(iii * BulletRotationSpeed, BulletRotationDuration));
-                        bullet.Fire();
+                        bullet.StartCoroutine(bullet.LerpSpeed(0f, s, 2f));
                     }
 
                     bullets[b].Destroy();
@@ -77,7 +76,7 @@ public class SagittariusBulletSystem5 : EnemyShooter<EnemyBullet>
             }
 
             SetSubsystemEnabled(1);
-            yield return WaitForSeconds(10f);
+            yield return WaitForSeconds(8f);
         }
 
     }

@@ -31,10 +31,9 @@ public class SagittariusBulletSystem51 : EnemyShooter<EnemyBullet>
                     float s = BulletBaseSpeed + (i * WaveSpeedModifier) + (iii + BulletSpeedModifier);
                     Vector3 pos = BulletSpawnRadius * transform.up.RotateVectorBy(z - (d * BranchSpacing));
 
-                    bulletData.colour = bulletData.gradient.Evaluate((i * BulletCount + iii) / ( BulletCount - 1f));
+                    bulletData.colour = bulletData.gradient.Evaluate((iii) / (BulletCount - 1f));
 
                     var bullet = SpawnProjectile(2, z, pos);
-                    bullet.MoveSpeed = s;
                     bullet.StartCoroutine(bullet.LerpSpeed(0f, s, 1f));
                 }
             }
