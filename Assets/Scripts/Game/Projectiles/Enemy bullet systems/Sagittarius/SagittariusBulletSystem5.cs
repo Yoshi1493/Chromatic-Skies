@@ -8,11 +8,11 @@ public class SagittariusBulletSystem5 : EnemyShooter<EnemyBullet>
     [SerializeField] ProjectileObject smallBulletData;
 
     const int WaveCount = 16;
-    const int BigBulletCount = 10;
+    const int BigBulletCount = 16;
     const float BulletBaseSpeed = 1.5f;
     const float BulletSpeedModifier = 0.8f;
     const int SmallBulletCount = 3;
-    const float SmallBulletSpacing = 30f;
+    const float SmallBulletSpacing = 15f;
     const float SmallBulletSpeedModifier = 0.25f;
 
     List<EnemyBullet> bullets = new(WaveCount * BigBulletCount);
@@ -44,7 +44,8 @@ public class SagittariusBulletSystem5 : EnemyShooter<EnemyBullet>
                     bulletData.colour = bulletData.gradient.Evaluate(ii / (BigBulletCount - 1f));
 
                     var bullet = SpawnProjectile(0, z, pos);
-                    bullet.StartCoroutine(bullet.LerpSpeed(s, 0f, 2f));
+                    bullet.MoveSpeed = s;
+                    bullet.Fire();
                     bullets.Add(bullet);
                 }
             }
@@ -57,9 +58,10 @@ public class SagittariusBulletSystem5 : EnemyShooter<EnemyBullet>
                 {
                     int b = ii * BigBulletCount + i;
 
+                    float z = (i % 2 * 2 - 1) * (i * SmallBulletSpacing) + bullets[b].transform.eulerAngles.z + 180f;
+
                     for (int iii = 0; iii < SmallBulletCount; iii++)
                     {
-                        float z = ((i + ii) * SmallBulletSpacing) + bullets[b].transform.eulerAngles.z;
                         float s = BulletBaseSpeed + (iii * SmallBulletSpeedModifier);
                         Vector3 pos = bullets[b].transform.position;
 

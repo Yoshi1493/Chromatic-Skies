@@ -5,7 +5,7 @@ using static CoroutineHelper;
 public class SagittariusBulletSystem51 : EnemyShooter<EnemyBullet>
 {
     const int WaveCount = 50;
-    const float WaveSpacing = 7f;
+    const float WaveSpacing = 3f;
     const float WaveSpeedModifier = 0.02f;
     const int BranchCount = 3;
     const float BranchSpacing = 360f / BranchCount;
