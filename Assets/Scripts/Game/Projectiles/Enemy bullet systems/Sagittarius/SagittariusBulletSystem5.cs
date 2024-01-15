@@ -78,7 +78,7 @@ public class SagittariusBulletSystem5 : EnemyShooter<EnemyBullet>
             }
 
             SetSubsystemEnabled(1);
-            yield return WaitForSeconds(8f);
+            yield return WaitForSeconds(9f);
         }
 
     }
