@@ -53,6 +53,12 @@ public class FlashlightEffect : MonoBehaviour
 
     public void SetStengthOverTime(float endStrength, float duration)
     {
+        if (duration <= 0f)
+        {
+            if (duration == 0f) flashlightMat.SetFloat("_Strength", endStrength);
+            return;
+        }
+
         if (strengthCoroutine != null)
         {
             StopCoroutine(strengthCoroutine);
@@ -60,28 +66,6 @@ public class FlashlightEffect : MonoBehaviour
 
         strengthCoroutine = FadeStrength(endStrength, duration);
         StartCoroutine(strengthCoroutine);
-    }
-
-    public void SetRadiusOverTime(float endRadius, float duration)
-    {
-        if (radiusCoroutine != null)
-        {
-            StopCoroutine(radiusCoroutine);
-        }
-
-        radiusCoroutine = FadeRadius(endRadius, duration);
-        StartCoroutine(radiusCoroutine);
-    }
-
-    public void SetHardnessOverTime(float endHardness, float duration)
-    {
-        if (hardnessCoroutine != null)
-        {
-            StopCoroutine(hardnessCoroutine);
-        }
-
-        hardnessCoroutine = FadeHardness(endHardness, duration);
-        StartCoroutine(hardnessCoroutine);
     }
 
     IEnumerator FadeStrength(float endStrength, float fadeDuration)
@@ -102,6 +86,23 @@ public class FlashlightEffect : MonoBehaviour
         flashlightMat.SetFloat("_Strength", endStrength);
     }
 
+    public void SetRadiusOverTime(float endRadius, float duration)
+    {
+        if (duration <= 0f)
+        {
+            if (duration == 0f) flashlightMat.SetFloat("_Strength", endRadius);
+            return;
+        }
+
+        if (radiusCoroutine != null)
+        {
+            StopCoroutine(radiusCoroutine);
+        }
+
+        radiusCoroutine = FadeRadius(endRadius, duration);
+        StartCoroutine(radiusCoroutine);
+    }
+
     IEnumerator FadeRadius(float endRadius, float fadeDuration)
     {
         float currentLerpTime = 0f;
@@ -118,6 +119,23 @@ public class FlashlightEffect : MonoBehaviour
         }
 
         flashlightMat.SetFloat("_Radius", endRadius);
+    }
+
+    public void SetHardnessOverTime(float endHardness, float duration)
+    {
+        if (duration <= 0f)
+        {
+            if (duration == 0f) flashlightMat.SetFloat("_Hardness", endHardness);
+            return;
+        }
+
+        if (hardnessCoroutine != null)
+        {
+            StopCoroutine(hardnessCoroutine);
+        }
+
+        hardnessCoroutine = FadeHardness(endHardness, duration);
+        StartCoroutine(hardnessCoroutine);
     }
 
     IEnumerator FadeHardness(float endHardness, float fadeDuration)
