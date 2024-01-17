@@ -90,7 +90,7 @@ public class FlashlightEffect : MonoBehaviour
     {
         if (duration <= 0f)
         {
-            if (duration == 0f) flashlightMat.SetFloat("_Strength", endRadius);
+            if (duration == 0f) flashlightMat.SetFloat("_Radius", endRadius);
             return;
         }
 
