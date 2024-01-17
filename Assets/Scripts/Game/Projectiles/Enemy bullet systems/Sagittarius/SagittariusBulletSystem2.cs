@@ -23,6 +23,8 @@ public class SagittariusBulletSystem2 : EnemyShooter<EnemyBullet>
         yield return base.Shoot();
 
         flashlightEffect.enabled = true;
+        flashlightEffect.SetStengthOverTime(4f, 8f);
+
         SetSubsystemEnabled(1);
 
         for (int i = 1; enabled; i *= -1)
