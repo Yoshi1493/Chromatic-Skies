@@ -31,11 +31,6 @@ public class FlashlightEffect : MonoBehaviour
         ResetProperties();
     }
 
-    void OnEnable()
-    {
-        SetStengthOverTime(4f, 8f);
-    }
-
     //follow player position
     void Update()
     {
