@@ -140,8 +140,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyProjectiles:
-  - {fileID: -4923015427372009237, guid: 5d1173af3e1ea1c40a8d820f00c47a78, type: 3}
-  bulletData: {fileID: 11400000, guid: f1436b56be6f4ce4abd9871b32d9233b, type: 2}
+  - {fileID: 844582023452507211, guid: 8bf5fe04514f48342b9189da2a3f51d7, type: 3}
+  bulletData: {fileID: 11400000, guid: 5b73275ebefdc06408e74bf716b337d0, type: 2}
 --- !u!1 &6449508947915530734
 GameObject:
   m_ObjectHideFlags: 0
@@ -357,7 +357,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyProjectiles:
   - {fileID: -8086219437507530070, guid: 9aad4d0dbb0be864fbfbce169892ab30, type: 3}
-  bulletData: {fileID: 11400000, guid: 490610dfa5dba7c4ab41fcd26b6b769d, type: 2}
+  - {fileID: -4923015427372009237, guid: 5d1173af3e1ea1c40a8d820f00c47a78, type: 3}
+  bulletData: {fileID: 11400000, guid: f1436b56be6f4ce4abd9871b32d9233b, type: 2}
 --- !u!1 &716324014634893503 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6070284441610636987, guid: d93cb44e21569f545b76560b29579f98, type: 3}
