@@ -4,6 +4,7 @@ using static CoroutineHelper;
 
 public class SagittariusBullet60 : ScriptableEnemyBullet<SagittariusBulletSystem6, EnemyBullet>
 {
+    const float RotationSpeed = 60f;
     const int BranchCount = 12;
     const float BranchSpacing = 360f / BranchCount;
     const float ShootingCooldown = 0.1f;
@@ -17,8 +18,18 @@ public class SagittariusBullet60 : ScriptableEnemyBullet<SagittariusBulletSystem
 
         yield return WaitForSeconds(1f);
 
-        StartCoroutine(this.TransformRotateAround(ownerShip.transform.position, MaxLifetime, 60f));
+        StartCoroutine(this.TransformRotateAround(ownerShip.transform.position, MaxLifetime, RotationSpeed));
+        StartCoroutine(SpawnBullets());
 
+        while (enabled)
+        {
+            spriteRenderer.transform.Rotate(-RotationSpeed * Time.deltaTime * Vector3.forward);
+            yield return EndOfFrame;
+        }
+    }
+
+    IEnumerator SpawnBullets()
+    {
         int i = 0;
 
         for (int ii = 0; enabled; ii++)
