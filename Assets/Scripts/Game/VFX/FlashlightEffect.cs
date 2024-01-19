@@ -41,7 +41,9 @@ public class FlashlightEffect : MonoBehaviour
 
     void OnDisable()
     {
-        SetStengthOverTime(0f, 0.5f);
+        SetStengthOverTime(DefaultStrength, 0.5f);
+        SetRadiusOverTime(DefaultRadius, 0.5f);
+        SetHardnessOverTime(DefaultHardness, 0.5f);
     }
 
     #region Coroutines
