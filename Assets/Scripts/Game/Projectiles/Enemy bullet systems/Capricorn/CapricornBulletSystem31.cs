@@ -5,12 +5,12 @@ using static CoroutineHelper;
 public class CapricornBulletSystem31 : EnemyShooter<EnemyBullet>
 {
     const int WaveCount = 3;
-    const int BranchCount = 7;
-    const float BranchSpacing = 15f;
-    const int MinBulletCount = 1;
+    const int BulletCount = 30;
+    const float BulletSpacing = 360f / BulletCount;
     const float BulletBaseSpeed = 2f;
     const float BulletSpeedModifier = 0.4f;
-    const float BulletSpawnRadius = 0.5f;
+    const float BulletRotationSpeed = 90f;
+    const float BulletRotationDuration = 9f;
 
     protected override float ShootingCooldown => 0.3f;
 
@@ -20,24 +20,17 @@ public class CapricornBulletSystem31 : EnemyShooter<EnemyBullet>
         {
             yield return WaitForSeconds(ShootingCooldown);
 
-            float r = PlayerPosition.GetRotationDifference(transform.position);
-
-            for (int ii = 0; ii < BranchCount; ii++)
+            for (int ii = 0; ii < BulletCount; ii++)
             {
-                int bulletCount = MinBulletCount + ((int)Mathf.PingPong(ii, BranchCount / 2) * 2);
+                float z = ii * BulletSpacing;
+                float s = BulletBaseSpeed + (i * BulletSpeedModifier);
+                Vector3 pos = Vector3.zero;
 
-                for (int iii = 0; iii < bulletCount; iii++)
-                {
-                    float z = ((ii - ((BranchCount - 1) / 2f)) * BranchSpacing) + r;
-                    float s = BulletBaseSpeed + (iii * BulletSpeedModifier);
-                    Vector3 pos = BulletSpawnRadius * transform.up.RotateVectorBy(z);
+                bulletData.colour = bulletData.gradient.Evaluate(i / (WaveCount - 1f));
 
-                    bulletData.colour = bulletData.gradient.Evaluate(i / (WaveCount - 1f));
-
-                    var bullet = SpawnProjectile(1, z, pos);
-                    bullet.MoveSpeed = s;
-                    bullet.StartCoroutine(bullet.LerpSpeed(BulletBaseSpeed, s, 1f));
-                }
+                var bullet = SpawnProjectile(1, z, pos);
+                bullet.StartCoroutine(bullet.LerpSpeed(0f, s, 1f));
+                bullet.StartCoroutine(bullet.RotateBy((i % 2 * 2 - 1) * BulletRotationSpeed, BulletRotationDuration));
             }
         }
 

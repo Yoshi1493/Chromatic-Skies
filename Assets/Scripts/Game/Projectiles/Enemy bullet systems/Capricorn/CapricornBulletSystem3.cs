@@ -10,10 +10,10 @@ public class CapricornBulletSystem3 : EnemyShooter<EnemyBullet>
     const int BranchCount = 2;
     const int BulletCount = 4;
     const float BulletSpacing = 360f / BulletCount;
-    const float BulletBaseSpeed = 5f;
+    const float BulletBaseSpeed = 4f;
     const float BulletSpeedModifier = 0.04f;
-    const float BulletSpawnRadius = 1f;
-    const float SpawnRadiusModifier = 0.01f;
+    const float BulletSpawnRadius = 0.6f;
+    const float SpawnRadiusModifier = -0.01f;
 
     protected override float ShootingCooldown => 0.05f;
 
