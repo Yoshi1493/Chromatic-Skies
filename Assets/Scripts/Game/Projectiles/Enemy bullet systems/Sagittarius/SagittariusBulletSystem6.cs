@@ -18,13 +18,13 @@ public class SagittariusBulletSystem6 : EnemyShooter<EnemyBullet>
     {
         yield return base.Shoot();
 
-        //flashlightEffect.enabled = true;
-        //flashlightEffect.SetStengthOverTime(4f, 0f);
-        //flashlightEffect.SetRadiusOverTime(0f, 0f);
-        //flashlightEffect.SetHardnessOverTime(1f, 0f);
+        flashlightEffect.enabled = true;
+        flashlightEffect.SetStengthOverTime(4f, 0f);
+        flashlightEffect.SetRadiusOverTime(0f, 0f);
+        flashlightEffect.SetHardnessOverTime(1f, 0f);
 
-        //flashlightEffect.SetRadiusOverTime(0f, 6f);
-        //flashlightEffect.SetHardnessOverTime(0.5f, 6f);
+        flashlightEffect.SetRadiusOverTime(0f, 6f);
+        flashlightEffect.SetHardnessOverTime(0.5f, 6f);
 
         SpawnProjectile(0, 0f, Vector3.zero).Fire();
     }
