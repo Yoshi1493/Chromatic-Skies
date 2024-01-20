@@ -10,7 +10,7 @@ public class SagittariusBulletSystem4 : EnemyShooter<EnemyBullet>
     const float WaveSpacing = 16f;
     const int BranchCount = 2;
     const int BulletCount = 4;
-    const float BulletSpacing = 30f;
+    const float BulletSpacing = 360f / BulletCount;
     const float SpawnRadiusModifier = 0.04f;
 
     protected override void Awake()
@@ -39,13 +39,12 @@ public class SagittariusBulletSystem4 : EnemyShooter<EnemyBullet>
             {
                 for (int ii = 0; ii < BranchCount; ii++)
                 {
-                    float r = ii % 2 * 2 - 1;
-                    float t = r * ((i + 0.5f) * WaveSpacing);
+                    float t = (ii % 2 * 2 - 1) * i * WaveSpacing;
                     bulletData.colour = bulletData.gradient.Evaluate(ii);
 
                     for (int iii = 0; iii < BulletCount; iii++)
                     {
-                        float z = (r * i * WaveSpacing) + ((iii - ((BulletCount - 1) / 2f)) * BulletSpacing);
+                        float z = (i * WaveSpacing) + (iii * BulletSpacing);
                         Vector3 pos = i * SpawnRadiusModifier * transform.up.RotateVectorBy(t);
 
                         SpawnProjectile(0, z, pos).Fire();

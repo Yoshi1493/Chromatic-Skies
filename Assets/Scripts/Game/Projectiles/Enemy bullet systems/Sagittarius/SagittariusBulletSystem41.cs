@@ -36,7 +36,7 @@ public class SagittariusBulletSystem41 : EnemyShooter<EnemyBullet>
                 yield return WaitForSeconds(ShootingCooldown);
             }
 
-            yield return WaitForSeconds(2f);
+            yield return WaitForSeconds(1f);
 
             for (int ii = 0; ii < BulletCount; ii++)
             {
