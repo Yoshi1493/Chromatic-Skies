@@ -28,8 +28,8 @@ public class SagittariusBulletSystem4 : EnemyShooter<EnemyBullet>
         flashlightEffect.SetRadiusOverTime(0f, 0f);
         flashlightEffect.SetHardnessOverTime(1f, 0f);
 
-        flashlightEffect.SetRadiusOverTime(0f, 6f);
-        flashlightEffect.SetHardnessOverTime(0.5f, 6f);
+        flashlightEffect.SetRadiusOverTime(0f, 10f);
+        flashlightEffect.SetHardnessOverTime(0.5f, 10f);
 
         SetSubsystemEnabled(1);
 
