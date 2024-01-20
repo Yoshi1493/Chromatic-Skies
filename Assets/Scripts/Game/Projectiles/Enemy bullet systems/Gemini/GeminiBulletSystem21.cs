@@ -11,7 +11,7 @@ public class GeminiBulletSystem21 : EnemyShooter<EnemyBullet>
     const int BulletCount = 2;
     const int BulletClumpCount = 3;
     const float BulletRotationSpeed = 10f;
-    const float BulletRotationDuration = 2f;
+    const float BulletRotationDuration = 1.5f;
 
     protected override float ShootingCooldown => 1f;
 
@@ -28,11 +28,12 @@ public class GeminiBulletSystem21 : EnemyShooter<EnemyBullet>
                     for (int iv = 0; iv < BulletCount; iv++)
                     {
                         int b = (iv % 2) + 2;
+                        float r = (((ii % 2) + iii + iv) % BulletClumpCount - ((BulletClumpCount - 1) / 2f)) * BulletRotationSpeed;
                         float z = (ii * WaveSpacing) + (iii * BranchSpacing);
                         Vector3 pos = Vector3.zero;
 
                         var bullet = SpawnProjectile(b, z, pos);
-                        bullet.StartCoroutine(bullet.RotateBy((((ii % 2) + iii + iv) % BulletClumpCount - ((BulletClumpCount - 1) / 2f)) * BulletRotationSpeed, BulletRotationDuration, delay: 1f));
+                        bullet.StartCoroutine(bullet.RotateBy(r, BulletRotationDuration, delay: 1f));
                         bullet.Fire();
                     }
                 }
