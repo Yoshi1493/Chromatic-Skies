@@ -1,47 +1,77 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using static CoroutineHelper;
+using static MathHelper;
 
 public class GeminiBulletSystem21 : EnemyShooter<EnemyBullet>
 {
-    const int WaveCount = 3;
-    const float WaveSpacing = BranchSpacing / 2f;
-    const int BranchCount = 48;
+    const int WaveCount = 43;
+    const float WaveSpacing = 0.3f;
+    const int BranchCount = 2;
     const float BranchSpacing = 360f / BranchCount;
     const int BulletCount = 2;
-    const int BulletClumpCount = 3;
-    const float BulletRotationSpeed = 10f;
-    const float BulletRotationDuration = 1.5f;
+    const float BulletSpacing = 360f / BulletCount;
+    const float BulletBaseSpeed = 3.5f;
+    const float BulletSpeedModifier = -0.03f;
 
-    protected override float ShootingCooldown => 1f;
+    List<(Vector2 pos, float z)> bulletSpawnData = new(WaveCount * BranchCount);
+
+    protected override float ShootingCooldown => 1f / 60;
 
     protected override IEnumerator Shoot()
     {
-        yield return WaitForSeconds(1f);
+        int d = PositiveOrNegativeOne;
+        bulletSpawnData.Clear();
+        float r = Random.Range(45f, 75f) * d;
 
-        while (enabled)
+        for (int i = 1; i < WaveCount; i++)
         {
-            for (int ii = 0; ii < WaveCount; ii++)
+            Vector3 v1 = i * WaveSpacing * transform.up.RotateVectorBy(r);
+
+            for (int ii = 0; ii < BranchCount; ii++)
             {
-                for (int iii = 0; iii < BranchCount; iii++)
-                {
-                    for (int iv = 0; iv < BulletCount; iv++)
-                    {
-                        int b = (iv % 2) + 2;
-                        float r = (((ii % 2) + iii + iv) % BulletClumpCount - ((BulletClumpCount - 1) / 2f)) * BulletRotationSpeed;
-                        float z = (ii * WaveSpacing) + (iii * BranchSpacing);
-                        Vector3 pos = Vector3.zero;
+                float z = r - 90f * Mathf.Sign(r);
+                Vector3 pos = v1.RotateVectorBy(ii * BranchSpacing) + transform.position;
 
-                        var bullet = SpawnProjectile(b, z, pos);
-                        bullet.StartCoroutine(bullet.RotateBy(r, BulletRotationDuration, delay: 1f));
-                        bullet.Fire();
-                    }
-                }
+                SpawnProjectile(2, z, pos, false);
 
-                yield return WaitForSeconds(ShootingCooldown);
+                pos.x *= -1;
+                z *= -1;
+                bulletSpawnData.Add((pos, z));
             }
 
-            yield return WaitForSeconds(3f);
+            yield return WaitForSeconds(ShootingCooldown);
         }
+
+        yield return WaitForSeconds(1f);
+
+        bulletSpawnData.Randomize();
+
+        for (int i = 1; i < WaveCount; i++)
+        {
+            for (int ii = 0; ii < BranchCount; ii++)
+            {
+                for (int iii = 0; iii < BulletCount; iii++)
+                {
+                    var data = bulletSpawnData[0];
+                    float z = data.z + (iii * BulletSpacing);
+                    float s = BulletBaseSpeed + (i * BulletSpeedModifier);
+                    Vector3 pos = new(data.pos.x, data.pos.y);
+
+                    bulletData.colour = bulletData.gradient.Evaluate(i / (WaveCount - 1f));
+
+                    var bullet = SpawnProjectile(3, z, pos, false);
+                    bullet.MoveSpeed = s;
+                    bullet.Fire();
+                }
+
+                bulletSpawnData.RemoveAt(0);
+            }
+
+            yield return WaitForSeconds(ShootingCooldown * 2f);
+        }
+
+        enabled = false;
     }
 }

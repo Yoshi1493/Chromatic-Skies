@@ -2,17 +2,10 @@ using System.Collections;
 
 public class GeminiBullet20 : EnemyBullet
 {
-    protected override float MaxLifetime => 1f;
+    protected override float MaxLifetime => 9f;
 
     protected override IEnumerator Move()
     {
-        yield break;
-    }
-
-    protected override void Update()
-    {
-        base.Update();
-
-        spriteRenderer.color = projectileData.gradient.Evaluate(currentLifetime);
+        yield return this.LerpSpeed(5f, 2f, 1f);
     }
 }
