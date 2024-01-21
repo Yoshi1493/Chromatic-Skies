@@ -20,7 +20,6 @@ public class CapricornBulletSystem41 : EnemyShooter<EnemyBullet>
 
             for (int ii = 0; ii < BulletCount; ii++) 
             {
-                float r = ii * BulletSpacing;
                 float s = BulletBaseSpeed + (ii * BulletSpeedModifier);
                 Vector3 pos = Vector3.zero;
 
@@ -29,8 +28,6 @@ public class CapricornBulletSystem41 : EnemyShooter<EnemyBullet>
                 var bullet = SpawnProjectile(1, z, pos);
                 bullet.MoveSpeed = s;
                 bullet.Fire();
-
-                bullet.StartCoroutine(bullet.RotateBy(r, 0.5f, delay: 2f));
             }
 
             yield return WaitForSeconds(ShootingCooldown);
