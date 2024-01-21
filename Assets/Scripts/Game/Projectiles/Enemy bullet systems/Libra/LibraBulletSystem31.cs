@@ -7,8 +7,6 @@ public class LibraBulletSystem31 : EnemyShooter<EnemyBullet>
     const int WaveCount = 99;
     const float ArcHalfWidth = LibraBulletSystem3.SafeZone;
 
-    protected override float ShootingCooldown => 0.08f;
-
     protected override IEnumerator Shoot()
     {
         yield return WaitForSeconds(1f);
@@ -21,7 +19,7 @@ public class LibraBulletSystem31 : EnemyShooter<EnemyBullet>
             bulletData.colour = bulletData.gradient.Evaluate(i / (WaveCount - 1f));
             SpawnProjectile(1, z, pos).Fire();
 
-            yield return WaitForSeconds(ShootingCooldown);            
+            yield return WaitForSeconds(ShootingCooldown);
         }
 
         enabled = false;

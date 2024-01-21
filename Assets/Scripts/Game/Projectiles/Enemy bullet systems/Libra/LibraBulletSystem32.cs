@@ -5,7 +5,7 @@ using static CoroutineHelper;
 public class LibraBulletSystem32 : EnemyShooter<Laser>
 {
     const int LaserCount = 7;
-    protected override float ShootingCooldown => 1f;
+    protected override float ShootingCooldown => 1.2f;
 
     protected override IEnumerator Shoot()
     {
@@ -13,11 +13,11 @@ public class LibraBulletSystem32 : EnemyShooter<Laser>
 
         for (int i = 0; i < LaserCount; i++)
         {
-            float z = PlayerPosition.GetRotationDifference(transform.position);
+            float z = transform.position.GetRotationDifference(PlayerPosition);
             Vector3 pos = Vector3.zero;
 
             bulletData.colour = bulletData.gradient.Evaluate(i / (LaserCount - 1f));
-            SpawnProjectile(0, z + 180f, pos).Fire();
+            SpawnProjectile(0, z, pos).Fire();
 
             yield return WaitForSeconds(ShootingCooldown);
         }
