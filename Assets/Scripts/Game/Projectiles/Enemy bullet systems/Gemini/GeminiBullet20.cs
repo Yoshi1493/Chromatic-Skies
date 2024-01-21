@@ -2,7 +2,7 @@ using System.Collections;
 
 public class GeminiBullet20 : EnemyBullet
 {
-    protected override float MaxLifetime => 9f;
+    protected override float MaxLifetime => 8f;
 
     protected override IEnumerator Move()
     {
