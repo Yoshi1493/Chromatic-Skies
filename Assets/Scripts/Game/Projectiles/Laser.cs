@@ -6,7 +6,7 @@ public abstract class Laser : Projectile
 {
     Vector3 HitboxOffset => originalSize.y * 0.5f * transform.up;
     protected override int CollisionMask => 1 << LayerMask.NameToLayer("Player");
-    protected override int NumCollisions => Physics2D.OverlapBoxNonAlloc(transform.position + HitboxOffset, originalSize, transform.eulerAngles.z, collisionResults, CollisionMask);
+    protected override int NumCollisions => Physics2D.OverlapBoxNonAlloc(transform.position + HitboxOffset, activeSize, transform.eulerAngles.z, collisionResults, CollisionMask);
 
     protected bool active;
     protected Vector2 originalSize;
@@ -79,6 +79,8 @@ public abstract class Laser : Projectile
             yield return EndOfFrame;
         }
 
+        active = true;
+
         //determine animation start and end points after delay (in case it collides with something during warning delay)
         Vector2 currentSize = spriteRenderer.size;
         Vector2 endSize = activeSize;
@@ -93,12 +95,12 @@ public abstract class Laser : Projectile
             float height = Mathf.Lerp(currentSize.y, endSize.y, heightInterpolation.Evaluate(lerpProgress));
 
             spriteRenderer.size = new Vector2(width, height);
+            activeSize = spriteRenderer.size;
 
             currentLerpTime += Time.deltaTime;
             yield return EndOfFrame;
         }
 
-        active = true;
         growAnimation = null;
     }
 
