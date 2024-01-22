@@ -5,16 +5,15 @@ using static CoroutineHelper;
 
 public class ScorpioBulletSystem1 : EnemyShooter<EnemyBullet>
 {
-    const int WaveCount = 60;
+    const int WaveCount = 30;
     const int BranchCount = 12;
     const float BranchSpacing = 360f / BranchCount;
+    const int BulletCount = 2;
     const float BulletRotationSpeed = 360f;
     public const float BulletRotationDuration = 3f;
     const float BulletRotationNoise = 15f;
 
     List<EnemyBullet> bullets = new(WaveCount * BranchCount);
-
-    protected override float ShootingCooldown => 0.05f;
 
     protected override IEnumerator Shoot()
     {
@@ -28,13 +27,19 @@ public class ScorpioBulletSystem1 : EnemyShooter<EnemyBullet>
             {
                 for (int ii = 0; ii < BranchCount; ii++)
                 {
-                    float z = (ii + 0.5f) * BranchSpacing;
-                    Vector3 pos = Vector3.zero;
+                    for (int iii = 0; iii < BulletCount; iii++)
+                    {
+                        float z = (ii + 0.5f) * BranchSpacing;
+                        float r = (iii % 2 * -2 + 1) * BulletRotationSpeed;
+                        Vector3 pos = Vector3.zero;
 
-                    var bullet = SpawnProjectile(0, z, pos);
-                    bullet.StartCoroutine(bullet.RotateBy(BulletRotationSpeed, BulletRotationDuration));
-                    bullets.Add(bullet);
-                    bullet.Fire();
+                        bulletData.colour = bulletData.gradient.Evaluate(iii / (BulletCount - 1f));
+
+                        var bullet = SpawnProjectile(0, z, pos);
+                        bullet.StartCoroutine(bullet.RotateBy(r, BulletRotationDuration));
+                        bullets.Add(bullet);
+                        bullet.Fire();
+                    }
                 }
 
                 yield return WaitForSeconds(ShootingCooldown);
@@ -46,8 +51,13 @@ public class ScorpioBulletSystem1 : EnemyShooter<EnemyBullet>
 
                 for (int ii = 0; ii < BranchCount; ii++)
                 {
-                    int b = (i * BranchCount) + ii;
-                    bullets[b].StartCoroutine(bullets[b].RotateBy(r, 0.2f));
+                    for (int iii = 0; iii < BulletCount; iii++)
+                    {
+                        int b = (i * BranchCount * BulletCount) + (ii * BulletCount) + iii;
+                        r *= iii % 2 * -2 + 1;
+
+                        bullets[b].StartCoroutine(bullets[b].RotateBy(r, 0.2f));
+                    }
                 }
 
                 yield return WaitForSeconds(ShootingCooldown);
