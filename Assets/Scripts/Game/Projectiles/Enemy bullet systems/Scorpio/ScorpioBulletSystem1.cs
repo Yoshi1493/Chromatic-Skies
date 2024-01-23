@@ -5,13 +5,16 @@ using static CoroutineHelper;
 
 public class ScorpioBulletSystem1 : EnemyShooter<EnemyBullet>
 {
-    const int WaveCount = 30;
-    const int BranchCount = 12;
+    public const int WaveCount = 40;
+    public const float WaveSpacing = 12f;
+    public const int BranchCount = 12;
     const float BranchSpacing = 360f / BranchCount;
     const int BulletCount = 2;
-    const float BulletRotationSpeed = 360f;
-    public const float BulletRotationDuration = 3f;
-    const float BulletRotationNoise = 15f;
+    const float BulletSpacing = 360f / BulletCount;
+    const float BulletSpawnRadius = 1.5f;
+    const float BulletSpawnRadiusModifier = BulletSpawnRadius * 0.2f;
+    const float BulletBaseSpeed = 2.4f;
+    const float BulletSpeedModifier = 0.02f;
 
     List<EnemyBullet> bullets = new(WaveCount * BranchCount);
 
@@ -23,40 +26,23 @@ public class ScorpioBulletSystem1 : EnemyShooter<EnemyBullet>
         {
             bullets.Clear();
 
+            float r = Random.Range(0f, BranchSpacing);
+
             for (int i = 0; i < WaveCount; i++)
             {
                 for (int ii = 0; ii < BranchCount; ii++)
                 {
                     for (int iii = 0; iii < BulletCount; iii++)
                     {
-                        float z = (ii + 0.5f) * BranchSpacing;
-                        float r = (iii % 2 * -2 + 1) * BulletRotationSpeed;
-                        Vector3 pos = Vector3.zero;
+                        float t = (i * WaveSpacing) + (ii * BranchSpacing);
+                        float s = BulletBaseSpeed + (i * BulletSpeedModifier);
+                        float z = t + (iii * BulletSpacing) + i + r;
+                        Vector3 pos = (Mathf.PingPong(i * BulletSpawnRadiusModifier, BulletSpawnRadius) + 0.5f) * transform.up.RotateVectorBy(t);
 
-                        bulletData.colour = bulletData.gradient.Evaluate(iii / (BulletCount - 1f));
+                        bulletData.colour = bulletData.gradient.Evaluate(i / (WaveCount - 1f));
 
                         var bullet = SpawnProjectile(0, z, pos);
-                        bullet.StartCoroutine(bullet.RotateBy(r, BulletRotationDuration));
-                        bullets.Add(bullet);
-                        bullet.Fire();
-                    }
-                }
-
-                yield return WaitForSeconds(ShootingCooldown);
-            }
-
-            for (int i = 0; i < WaveCount; i++)
-            {
-                float r = (i / (float)WaveCount) * Random.Range(-BulletRotationNoise, BulletRotationNoise);
-
-                for (int ii = 0; ii < BranchCount; ii++)
-                {
-                    for (int iii = 0; iii < BulletCount; iii++)
-                    {
-                        int b = (i * BranchCount * BulletCount) + (ii * BulletCount) + iii;
-                        r *= iii % 2 * -2 + 1;
-
-                        bullets[b].StartCoroutine(bullets[b].RotateBy(r, 0.2f));
+                        bullet.StartCoroutine(bullet.LerpSpeed(s, 2f, 3f));
                     }
                 }
 
@@ -64,7 +50,7 @@ public class ScorpioBulletSystem1 : EnemyShooter<EnemyBullet>
             }
 
             StartMoveAction?.Invoke();
-            yield return WaitForSeconds(5f);
+            yield return WaitForSeconds(15f);
         }
     }
 }
