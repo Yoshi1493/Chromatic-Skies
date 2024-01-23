@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using static CoroutineHelper;
 
@@ -11,12 +10,10 @@ public class ScorpioBulletSystem1 : EnemyShooter<EnemyBullet>
     const float BranchSpacing = 360f / BranchCount;
     const int BulletCount = 2;
     const float BulletSpacing = 360f / BulletCount;
-    const float BulletSpawnRadius = 1.5f;
+    public const float BulletSpawnRadius = 1.5f;
     const float BulletSpawnRadiusModifier = BulletSpawnRadius * 0.2f;
     const float BulletBaseSpeed = 2.4f;
     const float BulletSpeedModifier = 0.02f;
-
-    List<EnemyBullet> bullets = new(WaveCount * BranchCount);
 
     protected override IEnumerator Shoot()
     {
@@ -24,8 +21,6 @@ public class ScorpioBulletSystem1 : EnemyShooter<EnemyBullet>
 
         while (enabled)
         {
-            bullets.Clear();
-
             float r = Random.Range(0f, BranchSpacing);
 
             for (int i = 0; i < WaveCount; i++)
@@ -35,8 +30,8 @@ public class ScorpioBulletSystem1 : EnemyShooter<EnemyBullet>
                     for (int iii = 0; iii < BulletCount; iii++)
                     {
                         float t = (i * WaveSpacing) + (ii * BranchSpacing);
-                        float s = BulletBaseSpeed + (i * BulletSpeedModifier);
                         float z = t + (iii * BulletSpacing) + i + r;
+                        float s = BulletBaseSpeed + (i * BulletSpeedModifier);
                         Vector3 pos = (Mathf.PingPong(i * BulletSpawnRadiusModifier, BulletSpawnRadius) + 0.5f) * transform.up.RotateVectorBy(t);
 
                         bulletData.colour = bulletData.gradient.Evaluate(i / (WaveCount - 1f));
@@ -50,7 +45,9 @@ public class ScorpioBulletSystem1 : EnemyShooter<EnemyBullet>
             }
 
             StartMoveAction?.Invoke();
-            yield return WaitForSeconds(15f);
+            SetSubsystemEnabled(1);
+
+            yield return WaitForSeconds(3f);
         }
     }
 }

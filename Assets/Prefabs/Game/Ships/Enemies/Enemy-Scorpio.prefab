@@ -201,7 +201,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyProjectiles:
   - {fileID: -7800058611083573836, guid: 11ee0e5a5e379c548b279c13815921fb, type: 3}
-  - {fileID: 3837411661454369256, guid: c875e00b29d372f4ebcb00f47a7995e5, type: 3}
   bulletData: {fileID: 11400000, guid: 6cc86bd9a74f91a438fb3515a705ef98, type: 2}
 --- !u!4 &6341278059232048145 stripped
 Transform:
