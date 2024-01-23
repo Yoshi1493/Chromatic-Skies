@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6b79cd0b20b26ac4090b241d65679e69, type: 3}
-  m_Name: '[Scorpio] Bullet 1_0'
+  m_Name: '[Scorpio] Bullet 2_1'
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: aff5ff3003a41f24d892e26e534d2c72, type: 3}
+  sprite: {fileID: 21300000, guid: 75b646d9d53bbbf41b3ceca6730426b5, type: 3}
   useSolidColour: 1
-  colour: {r: 0.86153847, g: 0.61046153, b: 0.17230769, a: 1}
+  colour: {r: 0.84444445, g: 0.6008889, b: 0.16888888, a: 1}
   gradient:
     serializedVersion: 2
     key0: {r: 0.8, g: 0.544, b: 0.16, a: 1}
     key1: {r: 1, g: 0.8, b: 0.2, a: 1}
-    key2: {r: 1, g: 1, b: 1, a: 0}
+    key2: {r: 1, g: 0.875, b: 0.5, a: 0}
     key3: {r: 0, g: 0, b: 0, a: 0}
     key4: {r: 0, g: 0, b: 0, a: 0}
     key5: {r: 0, g: 0, b: 0, a: 0}
@@ -27,7 +27,7 @@ MonoBehaviour:
     key7: {r: 0, g: 0, b: 0, a: 0}
     ctime0: 0
     ctime1: 65535
-    ctime2: 65535
+    ctime2: 55705
     ctime3: 0
     ctime4: 0
     ctime5: 0
@@ -44,6 +44,6 @@ MonoBehaviour:
     m_Mode: 0
     m_NumColorKeys: 2
     m_NumAlphaKeys: 2
-  ID: 0
+  ID: 1
   Power: {fileID: 11400000, guid: 11e72c4c9364c7e48abbd4652ae8b614, type: 2}
-  destructible: 0
+  destructible: 1

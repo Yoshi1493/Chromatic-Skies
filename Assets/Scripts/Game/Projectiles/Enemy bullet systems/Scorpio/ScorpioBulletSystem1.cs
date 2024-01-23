@@ -4,16 +4,10 @@ using static CoroutineHelper;
 
 public class ScorpioBulletSystem1 : EnemyShooter<EnemyBullet>
 {
-    public const int WaveCount = 40;
-    public const float WaveSpacing = 12f;
-    public const int BranchCount = 12;
-    const float BranchSpacing = 360f / BranchCount;
-    const int BulletCount = 2;
-    const float BulletSpacing = 360f / BulletCount;
-    public const float BulletSpawnRadius = 1.5f;
-    const float BulletSpawnRadiusModifier = BulletSpawnRadius * 0.2f;
-    const float BulletBaseSpeed = 2.4f;
-    const float BulletSpeedModifier = 0.02f;
+    const int BulletCount = 8;
+    const float BulletSpacing = 180f / BulletCount;
+    const float BulletRotationSpeed = 90f;
+    public const float BulletRotationDuration = 4f;
 
     protected override IEnumerator Shoot()
     {
@@ -21,33 +15,21 @@ public class ScorpioBulletSystem1 : EnemyShooter<EnemyBullet>
 
         while (enabled)
         {
-            float r = Random.Range(0f, BranchSpacing);
-
-            for (int i = 0; i < WaveCount; i++)
+            for (int i = 0; i <= BulletCount; i++)
             {
-                for (int ii = 0; ii < BranchCount; ii++)
-                {
-                    for (int iii = 0; iii < BulletCount; iii++)
-                    {
-                        float t = (i * WaveSpacing) + (ii * BranchSpacing);
-                        float z = t + (iii * BulletSpacing) + i + r;
-                        float s = BulletBaseSpeed + (i * BulletSpeedModifier);
-                        Vector3 pos = (Mathf.PingPong(i * BulletSpawnRadiusModifier, BulletSpawnRadius) + 0.5f) * transform.up.RotateVectorBy(t);
+                float d = Mathf.Sign(transform.position.x);
+                float z = (i * BulletSpacing) - (90f + (d * 45f));
+                Vector3 pos = Vector3.zero;
 
-                        bulletData.colour = bulletData.gradient.Evaluate(i / (WaveCount - 1f));
-
-                        var bullet = SpawnProjectile(0, z, pos);
-                        bullet.StartCoroutine(bullet.LerpSpeed(s, 2f, 3f));
-                    }
-                }
-
-                yield return WaitForSeconds(ShootingCooldown);
+                var bullet = SpawnProjectile(0, z, pos);
+                bullet.StartCoroutine(bullet.RotateBy(-d * BulletRotationSpeed, BulletRotationDuration));
+                bullet.Fire();
             }
 
-            StartMoveAction?.Invoke();
-            SetSubsystemEnabled(1);
+            yield return WaitForSeconds(5f);
 
-            yield return WaitForSeconds(3f);
+            StartMoveAction?.Invoke();
+            yield return WaitForSeconds(5f);
         }
     }
 }

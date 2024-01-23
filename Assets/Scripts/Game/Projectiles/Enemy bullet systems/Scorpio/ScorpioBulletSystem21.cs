@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using static CoroutineHelper;
 
-public class ScorpioBulletSystem11 : EnemyShooter<EnemyBullet>
+public class ScorpioBulletSystem21 : EnemyShooter<EnemyBullet>
 {
     const int WaveCount = 12;
     const float WaveSpacing = 360f / WaveCount;
@@ -10,7 +10,7 @@ public class ScorpioBulletSystem11 : EnemyShooter<EnemyBullet>
     const float BranchSpacing = 360f / BranchCount;
     const int BulletCount = 12;
     const float BulletSpacing = 360f / BulletCount;
-    const float BulletSpawnRadius = ScorpioBulletSystem1.BulletSpawnRadius;
+    const float BulletSpawnRadius = 0f;
     const float BulletBaseSpeed = 3.6f;
     const float BulletSpeedModifier = 0.1f;
 
