@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6b79cd0b20b26ac4090b241d65679e69, type: 3}
-  m_Name: '[Scorpio] Bullet 2_1'
+  m_Name: '[Scorpio] Bullet 2_0'
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: 75b646d9d53bbbf41b3ceca6730426b5, type: 3}
+  sprite: {fileID: 21300000, guid: 9c44a70d88a58084b91108bd8d02a677, type: 3}
   useSolidColour: 1
   colour: {r: 0.84444445, g: 0.6008889, b: 0.16888888, a: 1}
   gradient:
@@ -44,6 +44,6 @@ MonoBehaviour:
     m_Mode: 0
     m_NumColorKeys: 2
     m_NumAlphaKeys: 2
-  ID: 1
+  ID: 0
   Power: {fileID: 11400000, guid: 11e72c4c9364c7e48abbd4652ae8b614, type: 2}
-  destructible: 1
+  destructible: 0
