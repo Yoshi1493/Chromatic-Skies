@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public interface ITimestoppable
@@ -6,4 +7,6 @@ public interface ITimestoppable
 
     void Stop();
     void Resume();
+
+    IEnumerator ResumeMove();
 }
