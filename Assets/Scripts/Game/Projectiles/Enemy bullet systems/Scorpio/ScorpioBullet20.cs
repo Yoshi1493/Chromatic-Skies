@@ -6,6 +6,8 @@ public class ScorpioBullet20 : EnemyBullet, ITimestoppable
 {
     protected override float MaxLifetime => 20f;
 
+    new CircleCollider2D collider;
+
     #region Interface impl.
 
     public Color OriginalColour { get; set; }
@@ -14,8 +16,9 @@ public class ScorpioBullet20 : EnemyBullet, ITimestoppable
     {
         StopAllCoroutines();
 
-        MoveSpeed = 0f;
         spriteRenderer.color = Color.white;
+        MoveSpeed = 0f;
+        collider.enabled = false;
     }
 
     public void Resume()
@@ -32,10 +35,18 @@ public class ScorpioBullet20 : EnemyBullet, ITimestoppable
 
     #endregion
 
+    protected override void Awake()
+    {
+        base.Awake();
+        collider = GetComponent<CircleCollider2D>();
+    }
+
     protected override void OnEnable()
     {
         base.OnEnable();
+
         OriginalColour = spriteRenderer.color;
+        collider.enabled = true;
     }
 
     protected override IEnumerator Move()

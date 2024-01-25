@@ -32,7 +32,7 @@ public class ScorpioBulletSystem21 : EnemyShooter<EnemyBullet>
                     float s = BulletBaseSpeed + (ii * BulletSpeedModifier);
                     Vector3 pos = Vector3.zero;
 
-                    var bullet = SpawnProjectile(1, z, pos);
+                    var bullet = SpawnProjectile(2, z, pos);
                     bullet.StartCoroutine(bullet.LerpSpeed(s, 0f, 0.5f));
                     bullets.Add(bullet);
                 }
