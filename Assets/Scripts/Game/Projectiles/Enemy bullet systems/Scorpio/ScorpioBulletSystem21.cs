@@ -1,39 +1,46 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using static CoroutineHelper;
 
 public class ScorpioBulletSystem21 : EnemyShooter<EnemyBullet>
 {
-    const int WaveCount = 12;
+    const int WaveCount = 3;
     const float WaveSpacing = 360f / WaveCount;
-    const int BranchCount = 2;
-    const float BranchSpacing = 360f / BranchCount;
-    const int BulletCount = 12;
+    const int RingCount = 8;
+    const float RingSpacing = 15f;
+    const int BulletCount = 8;
     const float BulletSpacing = 360f / BulletCount;
-    const float BulletSpawnRadius = 0f;
-    const float BulletBaseSpeed = 3.6f;
-    const float BulletSpeedModifier = 0.1f;
+    const float BulletBaseSpeed = 1f;
+    const float BulletSpeedModifier = 1f;
+
+    List<EnemyBullet> bullets = new(RingCount * BulletCount);
+
+    protected override float ShootingCooldown => 1f;
 
     protected override IEnumerator Shoot()
     {
         for (int i = 0; i < WaveCount; i++)
         {
-            for (int ii = 0; ii < BranchCount; ii++)
+            bullets.Clear();
+
+            for (int ii = 0; ii < RingCount; ii++)
             {
                 for (int iii = 0; iii < BulletCount; iii++)
                 {
-                    float t = (i * WaveSpacing) + (ii * BranchSpacing);
-                    float z = t + (iii * BulletSpacing);
-                    float s = BulletBaseSpeed + (i * BulletSpeedModifier);
-                    Vector3 pos = BulletSpawnRadius * transform.up.RotateVectorBy(t);
+                    float z = (i % 2 * 2 - 1) * ((ii * RingSpacing) + (iii * BulletSpacing));
+                    float s = BulletBaseSpeed + (ii * BulletSpeedModifier);
+                    Vector3 pos = Vector3.zero;
 
                     var bullet = SpawnProjectile(1, z, pos);
-                    bullet.StartCoroutine(bullet.LerpSpeed(s, s * 0.5f, 2f));
-                    bullet.Fire();
+                    bullet.StartCoroutine(bullet.LerpSpeed(s, 0f, 0.5f));
+                    bullets.Add(bullet);
                 }
             }
 
             yield return WaitForSeconds(ShootingCooldown);
+
+            bullets.ForEach(b => b.Fire());
         }
 
         enabled = false;

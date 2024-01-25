@@ -23,34 +23,35 @@ public class ScorpioBulletSystem2 : EnemyShooter<EnemyBullet>
         while (enabled)
         {
             bullets.Clear();
+            StartMoveAction?.Invoke();
+            SetSubsystemEnabled(1);
+            //for (int i = 0; i < WaveCount; i++)
+            //{
+            //    int bulletCount = Random.Range(BulletMinCount, BulletMaxCount);
 
-            for (int i = 0; i < WaveCount; i++)
-            {
-                int bulletCount = Random.Range(BulletMinCount, BulletMaxCount);
+            //    for (int ii = 0; ii < bulletCount; ii++)
+            //    {
+            //        float z = MathHelper.RandomAngleDeg;
+            //        float r = Random.value;
+            //        float s = Mathf.Lerp(BulletMinSpeed, BulletMaxSpeed, r);
+            //        Vector3 pos = Vector3.zero;
 
-                for (int ii = 0; ii < bulletCount; ii++)
-                {
-                    float z = MathHelper.RandomAngleDeg;
-                    float r = Random.value;
-                    float s = Mathf.Lerp(BulletMinSpeed, BulletMaxSpeed, r);
-                    Vector3 pos = Vector3.zero;
+            //        bulletData.colour = bulletData.gradient.Evaluate(r);
 
-                    bulletData.colour = bulletData.gradient.Evaluate(r);
+            //        var bullet = SpawnProjectile(0, z, pos) as ScorpioBullet20;
+            //        bullet.StartCoroutine(bullet.LerpSpeed(BulletBaseSpeed, s, 1f));
+            //        bullet.Fire();
+            //        bullets.Add(bullet);
+            //    }
 
-                    var bullet = SpawnProjectile(0, z, pos) as ScorpioBullet20;
-                    bullet.StartCoroutine(bullet.LerpSpeed(BulletBaseSpeed, s, 1f));
-                    bullet.Fire();
-                    bullets.Add(bullet);
-                }
+            //    yield return WaitForSeconds(ShootingCooldown);
+            //}
 
-                yield return WaitForSeconds(ShootingCooldown);
-            }
+            //yield return WaitForSeconds(0.5f);
+            //bullets.ForEach(b => b.Stop());
 
-            yield return WaitForSeconds(0.5f);
-            bullets.ForEach(b => b.Stop());
-
-            yield return WaitForSeconds(3f);
-            bullets.ForEach(b => b.Resume());
+            //yield return WaitForSeconds(3f);
+            //bullets.ForEach(b => b.Resume());
 
             yield break;
         }
