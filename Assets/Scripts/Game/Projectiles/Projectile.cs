@@ -64,7 +64,6 @@ public abstract class Projectile : Actor
                 if (collisionResults[i].TryGetComponent(out T _))
                 {
                     HandleCollision<T>(collisionResults[i]);
-                    break;
                 }
             }
         }
