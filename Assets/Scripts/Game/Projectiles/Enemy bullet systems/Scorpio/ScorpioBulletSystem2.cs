@@ -12,7 +12,7 @@ public class ScorpioBulletSystem2 : EnemyShooter<EnemyBullet>
     const float BulletMinSpeed = 2f;
     const float BulletMaxSpeed = 4f;
 
-    List<ITimestoppable> bullets = new(WaveCount * BulletMaxCount);
+    List<EnemyBullet> bullets = new(WaveCount * BulletMaxCount);
 
     protected override float ShootingCooldown => 0.05f;
 
@@ -37,7 +37,7 @@ public class ScorpioBulletSystem2 : EnemyShooter<EnemyBullet>
 
                     bulletData.colour = bulletData.gradient.Evaluate(r);
 
-                    var bullet = SpawnProjectile(1, z, pos) as ScorpioBullet20;
+                    var bullet = SpawnProjectile(1, z, pos);
                     bullet.StartCoroutine(bullet.LerpSpeed(BulletBaseSpeed, s, 1f));
                     bullet.Fire();
                     bullets.Add(bullet);
@@ -56,9 +56,22 @@ public class ScorpioBulletSystem2 : EnemyShooter<EnemyBullet>
             SetSubsystemEnabled(1);
 
             yield return WaitForSeconds(5f);
-            bullets.ForEach(b => b.Resume());
 
-            yield break;
+            for (int i = 0; i < bullets.Count; i++)
+            {
+                var bullet = bullets[i] as ScorpioBullet20;
+
+                if (bullet.transform.position.y > -screenHalfHeight)
+                {
+                    bullet.GetComponent<ITimestoppable>().Resume();
+                }
+                else
+                {
+                    bullet.Destroy();
+                }
+            }
+
+            yield return WaitForSeconds(3f);
         }
     }
 }
