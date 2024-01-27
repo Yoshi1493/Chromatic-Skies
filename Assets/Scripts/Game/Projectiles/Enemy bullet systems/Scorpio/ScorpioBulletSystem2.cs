@@ -38,7 +38,7 @@ public class ScorpioBulletSystem2 : EnemyShooter<EnemyBullet>
                     bulletData.colour = bulletData.gradient.Evaluate(r);
 
                     var bullet = SpawnProjectile(1, z, pos) as ScorpioBullet20;
-                    bullet.StartCoroutine(bullet.LerpSpeed(BulletBaseSpeed, BulletMinSpeed, 1f));
+                    bullet.StartCoroutine(bullet.LerpSpeed(BulletBaseSpeed, s, 1f));
                     bullet.Fire();
                     bullets.Add(bullet);
                 }
@@ -50,13 +50,13 @@ public class ScorpioBulletSystem2 : EnemyShooter<EnemyBullet>
 
             SpawnProjectile(0, 0f, Vector3.zero).Fire();
 
-            //yield return WaitForSeconds(1f);
+            yield return WaitForSeconds(1f);
 
-            //StartMoveAction?.Invoke();
-            //SetSubsystemEnabled(1);
+            StartMoveAction?.Invoke();
+            SetSubsystemEnabled(1);
 
-            //yield return WaitForSeconds(5f);
-            //bullets.ForEach(b => b.Resume());
+            yield return WaitForSeconds(5f);
+            bullets.ForEach(b => b.Resume());
 
             yield break;
         }
