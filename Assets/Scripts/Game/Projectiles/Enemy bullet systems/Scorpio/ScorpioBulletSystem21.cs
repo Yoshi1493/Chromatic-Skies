@@ -7,14 +7,15 @@ public class ScorpioBulletSystem21 : EnemyShooter<EnemyBullet>
 {
     const int WaveCount = 3;
     const float WaveSpacing = 360f / WaveCount;
-    const int RingCount = 8;
-    const float RingSpacing = 15f;
-    const int BulletCount = 8;
+    const int BaseRingCount = 4;
+    const float RingSpacing = 16f;
+    const int BulletCount = 16;
     const float BulletSpacing = 360f / BulletCount;
-    const float BulletBaseSpeed = 1f;
+    const float BulletBaseSpeed = 3f;
     const float BulletSpeedModifier = 1f;
+    const float BulletRotationSpeed = 30f;
 
-    List<EnemyBullet> bullets = new(RingCount * BulletCount);
+    List<EnemyBullet> bullets = new(BaseRingCount * BulletCount);
 
     protected override float ShootingCooldown => 1f;
 
@@ -24,7 +25,9 @@ public class ScorpioBulletSystem21 : EnemyShooter<EnemyBullet>
         {
             bullets.Clear();
 
-            for (int ii = 0; ii < RingCount; ii++)
+            int ringCount = (i + 1) * BaseRingCount;
+
+            for (int ii = 0; ii < ringCount; ii++)
             {
                 for (int iii = 0; iii < BulletCount; iii++)
                 {
@@ -32,15 +35,28 @@ public class ScorpioBulletSystem21 : EnemyShooter<EnemyBullet>
                     float s = BulletBaseSpeed + (ii * BulletSpeedModifier);
                     Vector3 pos = Vector3.zero;
 
+                    bulletData.colour = bulletData.gradient.Evaluate(ii / (ringCount - 1f));
+
                     var bullet = SpawnProjectile(2, z, pos);
                     bullet.StartCoroutine(bullet.LerpSpeed(s, 0f, 0.5f));
+                    
                     bullets.Add(bullet);
                 }
             }
 
             yield return WaitForSeconds(ShootingCooldown);
 
-            bullets.ForEach(b => b.Fire());
+            for (int ii = 0; ii < ringCount; ii++)
+            {
+                for (int iii = 0; iii < BulletCount; iii++)
+                {
+                    int b = (ii * BulletCount) + iii;
+                    float r = (ii % 2 * 2 - 1) * BulletRotationSpeed;
+
+                    bullets[b].Fire();
+                    bullets[b].StartCoroutine(bullets[b].RotateBy(r, 1f));
+                }
+            }
         }
 
         enabled = false;

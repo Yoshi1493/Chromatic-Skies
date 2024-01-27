@@ -5,7 +5,7 @@ using static CoroutineHelper;
 
 public class ScorpioBulletSystem2 : EnemyShooter<EnemyBullet>
 {
-    const int WaveCount = 20;
+    const int WaveCount = 32;
     const int BulletMinCount = 8;
     const int BulletMaxCount = 13;
     const float BulletBaseSpeed = 1f;
