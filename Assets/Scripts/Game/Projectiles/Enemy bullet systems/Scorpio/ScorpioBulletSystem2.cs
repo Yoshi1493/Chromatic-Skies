@@ -8,9 +8,9 @@ public class ScorpioBulletSystem2 : EnemyShooter<EnemyBullet>
     const int WaveCount = 20;
     const int BulletMinCount = 8;
     const int BulletMaxCount = 13;
-    const float BulletBaseSpeed = 2f;
-    const float BulletMinSpeed = 3f;
-    const float BulletMaxSpeed = 5f;
+    const float BulletBaseSpeed = 1f;
+    const float BulletMinSpeed = 2f;
+    const float BulletMaxSpeed = 4f;
 
     List<ITimestoppable> bullets = new(WaveCount * BulletMaxCount);
 
@@ -46,11 +46,11 @@ public class ScorpioBulletSystem2 : EnemyShooter<EnemyBullet>
                 yield return WaitForSeconds(ShootingCooldown);
             }
 
-            yield return WaitForSeconds(0.5f);
+            yield return WaitForSeconds(1f);
 
             SpawnProjectile(0, 0f, Vector3.zero).Fire();
 
-            yield return WaitForSeconds(1f);
+            yield return WaitForSeconds(1.5f);
 
             StartMoveAction?.Invoke();
             SetSubsystemEnabled(1);

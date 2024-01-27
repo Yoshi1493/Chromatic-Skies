@@ -51,6 +51,6 @@ public class ScorpioBullet20 : EnemyBullet, ITimestoppable
 
     protected override IEnumerator Move()
     {
-        yield break;
+        yield return this.RotateBy(Random.Range(-30f, 30f), 3f);
     }
 }
