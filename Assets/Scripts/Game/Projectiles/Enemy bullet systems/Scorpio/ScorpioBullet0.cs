@@ -49,12 +49,12 @@ public class ScorpioBullet0 : EnemyBullet
 
     protected override void Update()
     {
-        CheckCollisionWith<ScorpioBullet20>();
+        CheckCollisionWith<ITimestoppable>();
     }
 
     protected override void HandleCollision<T>(Collider2D coll)
     {
-        if (coll.TryGetComponent(out ScorpioBullet20 bullet))
+        if (coll.TryGetComponent(out ITimestoppable bullet))
         {
             bullet.Stop();
         }
