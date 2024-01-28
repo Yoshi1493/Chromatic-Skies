@@ -2,17 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using static CoroutineHelper;
+using static MathHelper;
 
 public class ScorpioBulletSystem2 : EnemyShooter<EnemyBullet>
 {
-    const int WaveCount = 32;
-    const int BulletMinCount = 8;
-    const int BulletMaxCount = 13;
+    const int WaveCount = 40;
+    const int BulletMinCount = 6;
+    const int BulletMaxCount = 11;
     const float BulletBaseSpeed = 1f;
     const float BulletMinSpeed = 2f;
     const float BulletMaxSpeed = 4f;
+    const float BulletSpawnRadius = 0.8f;
 
-    List<EnemyBullet> bullets = new(WaveCount * BulletMaxCount);
+    List<EnemyBullet> bullets = new(WaveCount * (BulletMaxCount - 1));
 
     protected override float ShootingCooldown => 0.05f;
 
@@ -24,16 +26,18 @@ public class ScorpioBulletSystem2 : EnemyShooter<EnemyBullet>
         {
             bullets.Clear();
 
+            StartMoveAction?.Invoke();
+
             for (int i = 0; i < WaveCount; i++)
             {
                 int bulletCount = Random.Range(BulletMinCount, BulletMaxCount);
 
                 for (int ii = 0; ii < bulletCount; ii++)
                 {
-                    float z = MathHelper.RandomAngleDeg;
+                    float z = RandomAngleDeg;
                     float r = Random.value;
                     float s = Mathf.Lerp(BulletMinSpeed, BulletMaxSpeed, r);
-                    Vector3 pos = Vector3.zero;
+                    Vector3 pos = BulletSpawnRadius * transform.up.RotateVectorBy(z);
 
                     bulletData.colour = bulletData.gradient.Evaluate(r);
 
@@ -49,25 +53,24 @@ public class ScorpioBulletSystem2 : EnemyShooter<EnemyBullet>
             yield return WaitForSeconds(1f);
 
             SpawnProjectile(0, 0f, Vector3.zero).Fire();
-
             yield return WaitForSeconds(1.5f);
 
-            StartMoveAction?.Invoke();
             SetSubsystemEnabled(1);
 
             yield return WaitForSeconds(5f);
 
             for (int i = 0; i < bullets.Count; i++)
             {
-                var bullet = bullets[i] as ScorpioBullet20;
-
-                if (bullet.transform.position.y > -screenHalfHeight)
+                if (bullets[i].isActiveAndEnabled)
                 {
-                    bullet.GetComponent<ITimestoppable>().Resume();
-                }
-                else
-                {
-                    bullet.Destroy();
+                    if (bullets[i].transform.position.y > -screenHalfHeight)
+                    {
+                        bullets[i].GetComponent<ITimestoppable>().Resume();
+                    }
+                    else
+                    {
+                        bullets[i].Destroy();
+                    }
                 }
             }
 

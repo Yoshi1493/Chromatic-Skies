@@ -1,10 +1,15 @@
 using System.Collections;
 using UnityEngine;
+using static CoroutineHelper;
 
 public class ScorpioMovementSystem2 : EnemyMovement
 {
     protected override IEnumerator Move()
     {
+        yield return this.MoveToRandomPosition(2f, 3f, 4f);
+
+        yield return WaitForSeconds(2.5f);
+
         Vector3 p0 = parentShip.transform.position;
         yield return this.MoveToRandomPosition(1f, 2f, 2f);
 
