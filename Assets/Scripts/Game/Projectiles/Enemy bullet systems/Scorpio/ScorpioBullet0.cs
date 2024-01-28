@@ -8,7 +8,7 @@ public class ScorpioBullet0 : EnemyBullet
 
     [SerializeField] AnimationCurve growCurve;
     const float GrowDuration = 1f;
-    const float EndRadius = 20f;
+    const float EndRadius = 27f;
 
     protected override int MaxCollisions => 32;
     protected override int CollisionMask => 1 << LayerMask.NameToLayer("Enemy bullet");
