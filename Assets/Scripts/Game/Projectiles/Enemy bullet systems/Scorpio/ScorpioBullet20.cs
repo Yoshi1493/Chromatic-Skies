@@ -4,9 +4,9 @@ using static MathHelper;
 
 public class ScorpioBullet20 : EnemyBullet, ITimestoppable
 {
-    protected override float MaxLifetime => 20f;
-
     new CircleCollider2D collider;
+
+    protected override float MaxLifetime => 20f;
 
     #region Interface impl.
 
