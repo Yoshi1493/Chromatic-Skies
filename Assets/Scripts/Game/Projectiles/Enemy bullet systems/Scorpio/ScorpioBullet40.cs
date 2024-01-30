@@ -51,7 +51,7 @@ public class ScorpioBullet40 : EnemyBullet, ITimestoppable
 
     protected override IEnumerator Move()
     {
-        StartCoroutine(this.LerpSpeed(1f, 3f, 2f));
+        StartCoroutine(this.LerpSpeed(1f, 2.5f, 2f));
         yield return this.RotateBy(Random.Range(-30f, 30f) + 30f, 3f);
     }
 }
