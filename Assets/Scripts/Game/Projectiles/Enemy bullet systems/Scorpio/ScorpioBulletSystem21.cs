@@ -38,8 +38,7 @@ public class ScorpioBulletSystem21 : EnemyShooter<EnemyBullet>
                     bulletData.colour = bulletData.gradient.Evaluate(ii / (ringCount - 1f));
 
                     var bullet = SpawnProjectile(2, z, pos);
-                    bullet.StartCoroutine(bullet.LerpSpeed(s, 0f, 0.5f));
-                    
+                    bullet.StartCoroutine(bullet.LerpSpeed(s, 0f, 0.5f));                    
                     bullets.Add(bullet);
                 }
             }
