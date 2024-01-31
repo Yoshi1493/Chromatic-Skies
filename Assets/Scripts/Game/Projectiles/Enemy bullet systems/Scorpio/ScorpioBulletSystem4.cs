@@ -50,7 +50,12 @@ public class ScorpioBulletSystem4 : EnemyShooter<EnemyBullet>
             yield return WaitForSeconds(3f);
 
             SpawnProjectile(0, 0f, Vector3.zero).Fire();
-            yield return WaitForSeconds(2.5f);
+            yield return WaitForSeconds(1.5f);
+
+            StartMoveAction?.Invoke();
+            SetSubsystemEnabled(1);
+
+            yield return WaitForSeconds(3f);
 
             for (int i = 0; i < WaveCount; i++)
             {
@@ -70,7 +75,7 @@ public class ScorpioBulletSystem4 : EnemyShooter<EnemyBullet>
                 yield return WaitForSeconds(ShootingCooldown * 2f);
             }
 
-            yield break;
+            yield return WaitForSeconds(4f);
         }
     }
 }
