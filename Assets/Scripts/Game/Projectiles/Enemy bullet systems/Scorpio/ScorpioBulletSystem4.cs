@@ -2,18 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using static CoroutineHelper;
-using static MathHelper;
 
 public class ScorpioBulletSystem4 : EnemyShooter<EnemyBullet>
 {
-    const int WaveCount = 44;
-    const int BulletCount = 8;
-    const float BulletSpawnRadius = 0.8f;
-    const float SpawnRadiusModifier = 0.04f;
+    const int WaveCount = 8;
+    const int BranchCount = 24;
+    const float BranchSpacing = 360f / BranchCount;
+    const int BulletCount = 2;
+    const float BulletSpacing = 3f;
+    const float BulletSpawnRadius = 1.5f;
+    const float BulletBaseSpeed = 6f;
+    const float BulletSpeedModifier = 0.5f;
 
-    List<EnemyBullet> bullets = new(WaveCount * BulletCount);
-
-    protected override float ShootingCooldown => 0.05f;
+    List<EnemyBullet> bullets = new(WaveCount * BranchCount * BulletCount);
 
     protected override IEnumerator Shoot()
     {
@@ -23,37 +24,46 @@ public class ScorpioBulletSystem4 : EnemyShooter<EnemyBullet>
         {
             bullets.Clear();
 
-            Vector3 v1 = PlayerPosition;
-
             for (int i = 0; i < WaveCount; i++)
             {
-                for (int ii = 0; ii < BulletCount; ii++)
-                {
-                    float z = RandomAngleDeg;
-                    Vector3 pos = v1 + ((BulletSpawnRadius + (i * SpawnRadiusModifier)) * transform.up.RotateVectorBy(z));
+                Vector3 pos = BulletSpawnRadius * Random.insideUnitCircle;
 
-                    var bullet = SpawnProjectile(1, z, pos, false);
-                    bullet.Fire();
-                    bullets.Add(bullet);
+                for (int ii = 0; ii < BranchCount; ii++)
+                {
+                    for (int iii = 0; iii < BulletCount; iii++)
+                    {
+                        float z = (ii * BranchSpacing) + (iii * BulletSpacing);
+                        float s = BulletBaseSpeed + (iii * BulletSpeedModifier);
+
+                        bulletData.colour = bulletData.gradient.Evaluate(iii);
+
+                        var bullet = SpawnProjectile(1, z, pos);
+                        bullet.MoveSpeed = s;
+                        bullet.Fire();
+                        bullets.Add(bullet);
+                    }
                 }
 
                 yield return WaitForSeconds(ShootingCooldown);
             }
 
-            yield return WaitForSeconds(1f);
+            yield return WaitForSeconds(3f);
 
             SpawnProjectile(0, 0f, Vector3.zero).Fire();
             yield return WaitForSeconds(2.5f);
 
             for (int i = 0; i < WaveCount; i++)
             {
-                for (int ii = 0; ii < BulletCount; ii++)
+                for (int ii = 0; ii < BranchCount; ii++)
                 {
-                    int b = (i * BulletCount) + ii;
-
-                    if (bullets[b].isActiveAndEnabled)
+                    for (int iii = 0; iii < BulletCount; iii++)
                     {
-                        bullets[b].GetComponent<ITimestoppable>().Resume();
+                        int b = (i * BranchCount * BulletCount) + (ii * BulletCount) + iii;
+
+                        if (bullets[b].isActiveAndEnabled)
+                        {
+                            bullets[b].GetComponent<ITimestoppable>().Resume();
+                        }
                     }
                 }
 

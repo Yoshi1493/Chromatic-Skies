@@ -29,7 +29,7 @@ public class ScorpioBullet40 : EnemyBullet, ITimestoppable
 
     public IEnumerator ResumeMove()
     {
-        moveDirection = this.LookAt(playerShip);
+        moveDirection *= -1;
         yield return this.LerpSpeed(0f, 2f, 2f);
     }
 
@@ -51,7 +51,8 @@ public class ScorpioBullet40 : EnemyBullet, ITimestoppable
 
     protected override IEnumerator Move()
     {
-        StartCoroutine(this.LerpSpeed(1f, 2.5f, 2f));
-        yield return this.RotateBy(Random.Range(-30f, 30f) + 30f, 3f);
+        float startSpeed = MoveSpeed;
+        yield return this.LerpSpeed(startSpeed, 0f, 0.5f);
+        yield return this.LerpSpeed(0f, startSpeed * 0.5f, 3f);
     }
 }
