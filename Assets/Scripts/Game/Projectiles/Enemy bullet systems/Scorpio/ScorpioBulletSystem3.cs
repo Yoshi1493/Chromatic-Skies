@@ -4,15 +4,20 @@ using static CoroutineHelper;
 
 public class ScorpioBulletSystem3 : EnemyShooter<EnemyBullet>
 {
-    const int BulletCount = 0;
+    const int BulletCount = 30;
+    const float BulletSpacing = 360f / BulletCount;
+    const float BulletRotationSpeed = 45f;
+    public const float BulletRotationDuration = 3f;
+
+    protected override float ShootingCooldown => 0.5f;
 
     protected override IEnumerator Shoot()
     {
         yield return base.Shoot();
 
-        while (enabled)
+        for(int i = 1; enabled; i *= -1)
         {
-            for (int i = 0; i < BulletCount; i++)
+            for (int ii = 0; ii < BulletCount; ii++)
             {
                 float z = 0f;
                 Vector3 pos = Vector3.zero;
