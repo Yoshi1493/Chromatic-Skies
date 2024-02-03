@@ -1,6 +1,5 @@
 using System.Collections;
 using UnityEngine;
-using static MathHelper;
 
 public class ScorpioBullet40 : EnemyBullet, ITimestoppable
 {
@@ -23,7 +22,6 @@ public class ScorpioBullet40 : EnemyBullet, ITimestoppable
 
     public void Resume()
     {
-        spriteRenderer.color = OriginalColour;
         StartCoroutine(ResumeMove());
     }
 

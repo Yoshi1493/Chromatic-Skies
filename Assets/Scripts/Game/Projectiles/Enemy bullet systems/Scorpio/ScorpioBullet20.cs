@@ -23,7 +23,6 @@ public class ScorpioBullet20 : EnemyBullet, ITimestoppable
 
     public void Resume()
     {
-        spriteRenderer.color = OriginalColour;
         StartCoroutine(ResumeMove());
     }
 
