@@ -6,7 +6,7 @@ public class ScorpioBullet30 : EnemyBullet
 
     protected override IEnumerator Move()
     {
-        yield return this.LerpSpeed(4f, 2f, MaxLifetime);
+        yield return this.LerpSpeed(5f, 0f, MaxLifetime);
     }
 
     protected override void Update()

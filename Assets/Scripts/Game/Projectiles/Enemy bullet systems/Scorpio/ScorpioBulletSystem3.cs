@@ -14,11 +14,13 @@ public class ScorpioBulletSystem3 : EnemyShooter<EnemyBullet>
 
     Queue<EnemyBullet> bullets = new(BigBulletCount);
 
-    protected override float ShootingCooldown => 0.5f;
+    protected override float ShootingCooldown => 1f;
 
     protected override IEnumerator Shoot()
     {
         yield return base.Shoot();
+
+        SetSubsystemEnabled(1);
 
         bullets.Clear();
 
