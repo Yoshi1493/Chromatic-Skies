@@ -26,8 +26,6 @@ public class ScorpioBulletSystem3 : EnemyShooter<EnemyBullet>
 
         for (int i = 1; enabled; i *= -1)
         {
-            StartCoroutine(BatchDequeue());
-
             for (int ii = 0; ii < BigBulletCount; ii++)
             {
                 float z = ii * BigBulletSpacing;
@@ -40,30 +38,19 @@ public class ScorpioBulletSystem3 : EnemyShooter<EnemyBullet>
             }
 
             yield return WaitForSeconds(ShootingCooldown);
-        }
-    }
 
-    IEnumerator BatchDequeue()
-    {
-        yield return WaitForSeconds(BigBulletRotationDuration);
-
-        for (int i = 0; i < BigBulletCount; i++)
-        {
-            if (bullets.TryDequeue(out EnemyBullet bullet))
+            for (int ii = 0; ii < BigBulletCount; ii++)
             {
-                float r = Random.Range(0f, SmallBulletSpacing);
+                Vector3 pos = bullets.Dequeue().transform.position;
 
-                for (int ii = 0; ii < SmallBulletCount; ii++)
+                for (int iii = 0; iii < SmallBulletCount; iii++)
                 {
-                    float z = ii * SmallBulletSpacing + r;
-                    Vector3 pos = bullet.transform.position;
+                    float z = (ii * BigBulletSpacing) + (iii * SmallBulletSpacing);
 
                     SpawnProjectile(1, z, pos, false).Fire();
                 }
             }
         }
 
-        yield break;
     }
-
 }

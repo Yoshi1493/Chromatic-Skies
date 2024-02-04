@@ -8,7 +8,7 @@ public class ScorpioBulletSystem31 : EnemyShooter<EnemyBullet>
     const int BranchCount = 2;
     const float BranchSpacing = 360f / BranchCount;
     const int BulletCount = 3;
-    const float BulletSpacing = 8f;
+    const float BulletSpacing = 10f;
 
     protected override float ShootingCooldown => 0.5f;
 
