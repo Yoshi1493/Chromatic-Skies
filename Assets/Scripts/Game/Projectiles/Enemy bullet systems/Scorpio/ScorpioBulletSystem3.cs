@@ -1,20 +1,15 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using static CoroutineHelper;
 
 public class ScorpioBulletSystem3 : EnemyShooter<EnemyBullet>
 {
-    const int BigBulletCount = 30;
-    const float BigBulletSpacing = 360f / BigBulletCount;
-    const float BigBulletRotationSpeed = 45f;
-    public const float BigBulletRotationDuration = 1f;
-    const float SmallBulletCount = 3;
-    const float SmallBulletSpacing = 360f / SmallBulletCount;
-
-    Queue<EnemyBullet> bullets = new(BigBulletCount);
-
-    protected override float ShootingCooldown => 1f;
+    const int WaveCount = 5;
+    const float WaveSpacing = 2f;
+    const int BranchCount = 2;
+    const float BranchSpacing = 360f / BranchCount;
+    
+    protected override float ShootingCooldown => 0.5f;
 
     protected override IEnumerator Shoot()
     {
@@ -22,35 +17,20 @@ public class ScorpioBulletSystem3 : EnemyShooter<EnemyBullet>
 
         SetSubsystemEnabled(1);
 
-        bullets.Clear();
-
-        for (int i = 1; enabled; i *= -1)
+        for (int i = 0; i < WaveCount; i++)
         {
-            for (int ii = 0; ii < BigBulletCount; ii++)
+            for (int ii = 0; ii < BranchCount; ii++)
             {
-                float z = ii * BigBulletSpacing;
-                Vector3 pos = Vector3.zero;
+                float x = (ii % 2 * 2 - 1) * (1.1f * screenHalfWidth);
+                float y = (0.9f * screenHalfHeight) - ((i + (ii * 0.5f)) * WaveSpacing);
+                Vector3 pos = new(x, y);
 
-                var bullet = SpawnProjectile(0, z, pos);
-                bullet.StartCoroutine(bullet.RotateBy(i * BigBulletRotationSpeed, BigBulletRotationDuration));
-                bullet.Fire();
-                bullets.Enqueue(bullet);
+                float z = -90f * Mathf.Sign(pos.x);
+
+                SpawnProjectile(0, z, pos, false).Fire();
             }
 
             yield return WaitForSeconds(ShootingCooldown);
-
-            for (int ii = 0; ii < BigBulletCount; ii++)
-            {
-                Vector3 pos = bullets.Dequeue().transform.position;
-
-                for (int iii = 0; iii < SmallBulletCount; iii++)
-                {
-                    float z = (ii * BigBulletSpacing) + (iii * SmallBulletSpacing);
-
-                    SpawnProjectile(1, z, pos, false).Fire();
-                }
-            }
         }
-
     }
 }
