@@ -15,22 +15,28 @@ public class ScorpioBulletSystem3 : EnemyShooter<EnemyBullet>
     {
         yield return base.Shoot();
 
+        StartMoveAction?.Invoke();
         SetSubsystemEnabled(1);
 
-        for (int i = 0; i < WaveCount; i++)
+        while (enabled)
         {
-            for (int ii = 0; ii < BranchCount; ii++)
+            for (int i = 0; i < WaveCount; i++)
             {
-                float x = (ii % 2 * 2 - 1) * (1.1f * screenHalfWidth);
-                float y = (0.9f * screenHalfHeight) - ((i + (ii * 0.5f)) * WaveSpacing);
-                Vector3 pos = new(x, y);
+                for (int ii = 0; ii < BranchCount; ii++)
+                {
+                    float x = (ii % 2 * 2 - 1) * (1.1f * screenHalfWidth);
+                    float y = (0.9f * screenHalfHeight) - ((i + (ii * 0.5f)) * WaveSpacing);
+                    Vector3 pos = new(x, y);
 
-                float z = -90f * Mathf.Sign(pos.x);
+                    float z = -90f * Mathf.Sign(pos.x);
 
-                SpawnProjectile(0, z, pos, false).Fire();
+                    SpawnProjectile(0, z, pos, false).Fire();
+                }
+
+                yield return WaitForSeconds(ShootingCooldown);
             }
 
-            yield return WaitForSeconds(ShootingCooldown);
+            yield return WaitForSeconds(15f);
         }
     }
 }

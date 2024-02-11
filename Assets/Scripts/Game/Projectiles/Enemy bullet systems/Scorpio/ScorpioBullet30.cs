@@ -4,10 +4,10 @@ using static CoroutineHelper;
 
 public class ScorpioBullet30 : ScriptableEnemyBullet<ScorpioBulletSystem3, EnemyBullet>
 {
-    const int WaveCount = 16;
-    const int BulletCount = 4;
+    const int WaveCount = 12;
+    const int BulletCount = 3;
     const float BulletSpacing = 360f / BulletCount;
-    const float ShootingCooldown = 0.4f;
+    const float ShootingCooldown = 0.5f;
 
     protected override float MaxLifetime => 7f;
 
