@@ -14,8 +14,6 @@ public class ScorpioBulletSystem31 : EnemyShooter<EnemyBullet>
 
     protected override IEnumerator Shoot()
     {
-        yield return WaitForSeconds(3f);
-
         for (int i = 0; enabled; i++)
         {
             for (int ii = 0; ii < BranchCount; ii++)
