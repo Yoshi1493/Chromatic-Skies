@@ -3,7 +3,7 @@ using static CoroutineHelper;
 
 public class ScorpioBullet31 : EnemyBullet
 {
-    protected override float MaxLifetime => 15f;
+    protected override float MaxLifetime => 20f;
 
     protected override IEnumerator Move()
     {
