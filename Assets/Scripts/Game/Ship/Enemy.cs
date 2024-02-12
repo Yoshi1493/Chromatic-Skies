@@ -174,20 +174,16 @@ public class Enemy : Ship
 
     public EnemyMovement GetCurrentMovementSystem()
     {
-        EnemyMovement currentMovementSystem = null;
-
-        for (int i = 0; i < movementSystemContainer.childCount; i++)
+        for (int i = 0; i < movementSystems.Count; i++)
         {
-            Transform child = movementSystemContainer.GetChild(i);
-
-            if (child.TryGetComponent(out EnemyMovement movementSystem) && movementSystem.enabled)
+            if (movementSystems[i].enabled)
             {
-                currentMovementSystem = movementSystem;
-                break;
+                return movementSystems[i];
             }
         }
 
-        return currentMovementSystem;
+        //if no movement system is active (somehow)
+        return movementSystems[shipData.MaxLives.Value - currentLives];
     }
 
     protected override void Die()
