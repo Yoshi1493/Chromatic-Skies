@@ -4,9 +4,8 @@ using static CoroutineHelper;
 
 public class LeoBulletSystem31 : EnemyShooter<EnemyBullet>
 {
-    const int BulletCount = 36;
-    const float BulletSpacing = 360f / BulletCount;
-    protected override float ShootingCooldown => 0.7f;
+    const int BulletCount = 2;
+    protected override float ShootingCooldown => 1f;
 
     protected override IEnumerator Shoot()
     {
@@ -14,10 +13,12 @@ public class LeoBulletSystem31 : EnemyShooter<EnemyBullet>
         {
             for (int i = 0; i < BulletCount; i++)
             {
-                float z = i * BulletSpacing;
-                Vector3 pos = Vector3.zero;
+                float x = 0.8f * Random.Range(-screenHalfWidth, screenHalfWidth);
+                float y = screenHalfHeight * Random.Range(1.2f, 1.5f);
+                Vector3 pos = new(x, y);
+                float z = 0f;
 
-                SpawnProjectile(0, z, pos).Fire();
+                SpawnProjectile(1, z, pos, false).Fire();
             }
 
             yield return WaitForSeconds(ShootingCooldown);
