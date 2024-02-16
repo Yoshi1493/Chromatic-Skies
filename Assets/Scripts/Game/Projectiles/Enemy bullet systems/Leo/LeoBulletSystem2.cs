@@ -8,6 +8,8 @@ public class LeoBulletSystem2 : EnemyShooter<EnemyBullet>
     const int BranchCount = 2;
     const float BranchSpacing = 360f / BranchCount;
     const int BulletCount = 8;
+    const float MaxBulletSpawnOffset = 30f;
+
     const float halfPI = 0.5f * Mathf.PI;
 
     List<Vector3> bulletPositions = new(BulletCount * 4 - 1);
@@ -25,23 +27,25 @@ public class LeoBulletSystem2 : EnemyShooter<EnemyBullet>
         //where t = pi / 2
         while (enabled)
         {
-            float randRotation = Random.Range(-180f, 180f);
-            transform.eulerAngles = randRotation * Vector3.forward;
+            //float r = Random.Range(-180f, 180f);
+            //transform.eulerAngles = r * Vector3.forward;
 
-            float step = halfPI / BulletCount;
+            float t = halfPI / BulletCount;
             float x, y;
 
             bulletPositions.Clear();
 
+            //positive sine wave
             for (int i = 1; i < BulletCount; i++)
             {
-                x = i * step;
+                x = i * t;
                 y = Mathf.Sin(x);
                 Vector3 pos = new(x, y);
 
                 bulletPositions.Add(pos);
             }
 
+            //semicircle
             for (int i = 0; i < BulletCount * 2; i++)
             {
                 Vector3 offset = halfPI * Vector3.right;
@@ -51,41 +55,40 @@ public class LeoBulletSystem2 : EnemyShooter<EnemyBullet>
                 bulletPositions.Add(pos);
             }
 
+            //negative sine wave
             for (int i = BulletCount; i > 0; i--)
             {
-                x = i * step;
+                x = i * t;
                 y = -Mathf.Sin(x);
                 Vector3 pos = new(x, y);
 
                 bulletPositions.Add(pos);
             }
 
+            float r = Random.Range(-MaxBulletSpawnOffset, MaxBulletSpawnOffset);
+
             for (int i = 0; i < bulletPositions.Count; i++)
             {
-                SpawnBullets(bulletPositions[i]);
+                Vector3 pos = bulletPositions[i];
+
+                for (int ii = 0; ii < BranchCount; ii++)
+                {
+                    float z = pos.GetRotationDifference(Vector3.zero) + (ii * BranchSpacing) + r;
+
+                    var bullet = SpawnProjectile(0, z, Vector3.zero);
+                    bullet.MoveSpeed = bulletPositions[i].sqrMagnitude;
+                    bullet.Fire();
+                }
+
                 yield return WaitForSeconds(ShootingCooldown);
             }
 
-            yield return WaitForSeconds(1f);
+            yield return WaitForSeconds(2f);
 
             StartMoveAction?.Invoke();
             SetSubsystemEnabled(1);
 
-            yield return WaitForSeconds(3f);
-        }
-    }
-
-    void SpawnBullets(Vector3 pos)
-    {
-        float z = pos.RotateVectorBy(transform.eulerAngles.z).GetRotationDifference(Vector3.zero);
-
-        for (int i = 0; i < BranchCount; i++)
-        {
-            var bullet = SpawnProjectile(0, z, Vector3.zero);
-            bullet.MoveSpeed = pos.sqrMagnitude;
-            bullet.Fire();
-
-            z += BranchSpacing;
+            yield return WaitForSeconds(2f);
         }
     }
 }
