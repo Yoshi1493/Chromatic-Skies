@@ -4,7 +4,7 @@ using static CoroutineHelper;
 
 public class LeoBulletSystem3 : EnemyShooter<EnemyBullet>
 {
-    const int WaveCount = 60;
+    const int WaveCount = 45;
     const float WaveSpacing = 360f / WaveCount;
     const float MaxWaveSpacingOffset = 12f;
     const int BranchCount = 3;
@@ -22,7 +22,7 @@ public class LeoBulletSystem3 : EnemyShooter<EnemyBullet>
 
         for (int i = 0; enabled; i++)
         {
-            float r = Mathf.Clamp01((i - WaveCount) * 0.002f) * Random.Range(-MaxWaveSpacingOffset, MaxWaveSpacingOffset);
+            float r = Mathf.Clamp01((i - WaveCount) * 0.001f) * Random.Range(-MaxWaveSpacingOffset, MaxWaveSpacingOffset);
 
             for (int ii = 0; ii < BranchCount; ii++)
             {

@@ -5,7 +5,7 @@ using static CoroutineHelper;
 public class LeoBulletSystem32 : EnemyShooter<EnemyBullet>
 {
     const int BulletCount = 2;
-    protected override float ShootingCooldown => 1f;
+    protected override float ShootingCooldown => 1.5f;
 
     protected override IEnumerator Shoot()
     {
