@@ -20,7 +20,7 @@ public class LeoBulletSystem31 : EnemyShooter<EnemyBullet>
                 float z = i * BulletSpacing;
                 Vector3 pos = Vector3.zero;
 
-                SpawnProjectile(2, z, pos).Fire();
+                SpawnProjectile(1, z, pos).Fire();
             }
         }
     }
