@@ -35,5 +35,4 @@ public class LeoBulletSystem3 : EnemyShooter<EnemyBullet>
             yield return WaitForSeconds(ShootingCooldown);
         }
     }
-
 }
