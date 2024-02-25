@@ -53,7 +53,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3140064405051798717, guid: 4e06125b108514547b6fc9b6887da3eb, type: 3}
       propertyPath: m_Name
-      value: Leo bullet 4_0
+      value: Leo bullet 4_1
       objectReference: {fileID: 0}
     - target: {fileID: 7943771795135557499, guid: 4e06125b108514547b6fc9b6887da3eb, type: 3}
       propertyPath: power
@@ -79,7 +79,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3140064405051798717, guid: 4e06125b108514547b6fc9b6887da3eb, type: 3}
   m_PrefabInstance: {fileID: 4489721518377228893}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &-8238532047493585308
+--- !u!114 &2010550723806962171
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -88,11 +88,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1575430968703495904}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9aa054b7f40e2e648ab1d5dfa373c827, type: 3}
+  m_Script: {fileID: 11500000, guid: bea75b41ffad0654e8ff34e3d2f687e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   transform: {fileID: 0}
-  projectileData: {fileID: 11400000, guid: 38f346d35a45387459b063207fb519d2, type: 2}
+  projectileData: {fileID: 11400000, guid: d47924d5395d3e24aab898ff4ac671e2, type: 2}
   moveDirection: {x: 0, y: 0, z: 0}
   currentSpeed: 0
-  bulletData: {fileID: 11400000, guid: d47924d5395d3e24aab898ff4ac671e2, type: 2}
