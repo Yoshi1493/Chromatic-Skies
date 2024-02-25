@@ -9,17 +9,22 @@ public class LeoBulletSystem4 : EnemyShooter<EnemyBullet>
 {
     const int BulletCount = 6;
 
+    [HideInInspector] public List<Vector3> bulletSpawnPositions = new(BulletCount);
+
     protected override IEnumerator Shoot()
     {
         yield return base.Shoot();
 
         while (enabled)
         {
+            bulletSpawnPositions.Clear();
+
+            StartMoveAction?.Invoke();
+
             Vector3 v1 = 0.8f * new Vector3(-screenHalfWidth, 1f);
             Vector3 v2 = 0.8f * new Vector3(screenHalfWidth, screenHalfHeight);
 
-            List<Vector3> bulletSpawnPositions = GetRandomPointsWithinBounds(v1, v2, BulletCount);
-            bulletSpawnPositions = bulletSpawnPositions.OrderBy(i => i.x).ToList();
+            bulletSpawnPositions = GetRandomPointsWithinBounds(v1, v2, BulletCount).OrderBy(i => i.x).ToList();
 
             for (int i = 0; i < BulletCount; i++)
             {
