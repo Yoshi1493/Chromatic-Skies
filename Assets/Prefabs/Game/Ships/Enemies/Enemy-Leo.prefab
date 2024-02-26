@@ -455,7 +455,9 @@ MonoBehaviour:
   enemyProjectiles:
   - {fileID: -8238532047493585308, guid: d2d24d6800dbe98418543969badc03dd, type: 3}
   - {fileID: 2010550723806962171, guid: a3abc7764a640a1499764e76f44996cc, type: 3}
-  bulletData: {fileID: 11400000, guid: 38f346d35a45387459b063207fb519d2, type: 2}
+  - {fileID: 4688948729958436596, guid: 73bbde28754b45942a7984460aa988df, type: 3}
+  bulletData: {fileID: 11400000, guid: ed5ae7af9d3d84a4685a7cbd5a301047, type: 2}
+  bulletSpawnPositions: []
 --- !u!1 &7008567321455470459 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4363550108427413887, guid: d93cb44e21569f545b76560b29579f98, type: 3}
