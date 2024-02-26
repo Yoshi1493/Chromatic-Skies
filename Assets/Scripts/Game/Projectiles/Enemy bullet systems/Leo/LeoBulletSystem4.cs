@@ -21,10 +21,14 @@ public class LeoBulletSystem4 : EnemyShooter<EnemyBullet>
 
             StartMoveAction?.Invoke();
 
-            Vector3 v1 = 0.8f * new Vector3(-screenHalfWidth, 1f);
-            Vector3 v2 = 0.8f * new Vector3(screenHalfWidth, screenHalfHeight);
+            for (int i = 0; i < BulletCount; i++)
+            {
+                float x = Mathf.Lerp(-screenHalfWidth, screenHalfWidth, i / (BulletCount - 1f)) + Random.Range(-1f, 1f);
+                float y = Random.Range(1f, screenHalfHeight);
 
-            bulletSpawnPositions = GetRandomPointsWithinBounds(v1, v2, BulletCount).OrderBy(i => i.x).ToList();
+                Vector3 v = 0.8f * new Vector3(x, y);
+                bulletSpawnPositions.Add(v);
+            }
 
             for (int i = 0; i < BulletCount; i++)
             {
