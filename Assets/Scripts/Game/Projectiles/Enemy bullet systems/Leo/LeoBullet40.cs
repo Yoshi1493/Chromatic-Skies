@@ -20,6 +20,8 @@ public class LeoBullet40 : ScriptableEnemyBullet<LeoBulletSystem4, EnemyBullet>
 
     protected override IEnumerator Move()
     {
+        bullets.Clear();
+
         yield return WaitForSeconds(1.5f);
 
         Vector3 v0 = transform.position;
