@@ -20,7 +20,10 @@ public class LeoMovementSystem4 : EnemyMovement
         Vector3 p1 = new(0.8f * Random.Range(-screenHalfWidth, screenHalfWidth), 1.2f * screenHalfHeight);
 
         yield return this.MoveTo(p1, 1f);
+        parentShip.Invincible = true;
+
         yield return WaitForSeconds(2f);
+        parentShip.Invincible = false;
 
         List<Vector3> clonePositions = bulletSystem.bulletSpawnPositions;
         Vector3 p3 = clonePositions[Random.Range(0, clonePositions.Capacity)];
