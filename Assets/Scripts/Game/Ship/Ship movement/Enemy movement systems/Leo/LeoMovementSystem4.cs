@@ -17,7 +17,7 @@ public class LeoMovementSystem4 : EnemyMovement
     {
         yield return WaitForSeconds(0.5f);
 
-        Vector3 p1 = new(transform.position.x, 1.2f * screenHalfHeight);
+        Vector3 p1 = new(0.8f * Random.Range(-screenHalfWidth, screenHalfWidth), 1.2f * screenHalfHeight);
 
         yield return this.MoveTo(p1, 1f);
         yield return WaitForSeconds(2f);
