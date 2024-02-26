@@ -12,7 +12,20 @@ public abstract class Ship : Actor
     [HideInInspector] public int currentLives;
     [HideInInspector] public int currentHealth;
 
-    [HideInInspector] public bool invincible;
+    bool invincible;
+    public bool Invincible
+    {
+        get => invincible;
+        set
+        {
+            if (value != invincible)
+            {
+                invincible = value;
+                InvincibleAction?.Invoke(value);
+            }
+        }
+    }
+
     public const float RespawnTime = 1f;
 
     #endregion
@@ -23,6 +36,8 @@ public abstract class Ship : Actor
     public event Action LoseLifeAction;
     public event Action RespawnAction;
     public event Action DeathAction;
+
+    public event Action<bool> InvincibleAction;
 
     #endregion
 
@@ -107,7 +122,7 @@ public abstract class Ship : Actor
     protected abstract void Die();
 
     //called when enemy transition to next attack pattern, and when player receives damage
-    protected void SetInvincible(float duration)
+    public void SetInvincible(float duration)
     {
         if (invincibilityCoroutine != null)
         {
@@ -120,8 +135,8 @@ public abstract class Ship : Actor
 
     IEnumerator ToggleInvincibility(float duration)
     {
-        invincible = true;
+        Invincible = true;
         yield return WaitForSeconds(duration);
-        invincible = false;
+        Invincible = false;
     }
 }

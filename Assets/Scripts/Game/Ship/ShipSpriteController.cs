@@ -7,26 +7,22 @@ public abstract class ShipSpriteController<TShip> : MonoBehaviour
     protected TShip parentShip;
     SpriteRenderer spriteRenderer;
 
+    const float InvincibleAlpha = 0.25f;
+
     protected virtual void Awake()
     {
         parentShip = GetComponentInParent<TShip>();
         spriteRenderer = GetComponent<SpriteRenderer>();
 
-        parentShip.LoseLifeAction += OnShipLoseLife;
-        parentShip.RespawnAction += OnShipRespawn;
+        parentShip.InvincibleAction += OnSetInvincible;
     }
 
-    void OnShipLoseLife()
+    void OnSetInvincible(bool state)
     {
-        SetSpriteAlpha(0.25f);
+        SetSpriteAlpha(state ? InvincibleAlpha : 1.0f);
     }
 
-    void OnShipRespawn()
-    {
-        SetSpriteAlpha(1.0f);
-    }
-
-    void SetSpriteAlpha(float alpha)
+    protected void SetSpriteAlpha(float alpha)
     {
         Color c = spriteRenderer.color;
         c.a = alpha;

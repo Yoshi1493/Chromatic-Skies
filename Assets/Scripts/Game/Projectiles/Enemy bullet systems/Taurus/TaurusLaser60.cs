@@ -53,7 +53,7 @@ public class TaurusLaser60 : Laser
             Vector3 shipPos = coll.ClosestPoint(transform.position);
             float shipDistance = (shipPos - transform.position).sqrMagnitude;
 
-            if (shipDistance <= closestCollisionDistance && !ship.invincible)
+            if (shipDistance <= closestCollisionDistance && !ship.Invincible)
             {
                 ship.TakeDamage(projectileData.Power.value);
 

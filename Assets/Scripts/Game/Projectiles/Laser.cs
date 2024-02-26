@@ -58,7 +58,7 @@ public abstract class Laser : Projectile
     {
         if (coll.TryGetComponent(out Ship ship))
         {
-            if (!ship.invincible)
+            if (!ship.Invincible)
             {
                 ship.TakeDamage(projectileData.Power.value);
 
