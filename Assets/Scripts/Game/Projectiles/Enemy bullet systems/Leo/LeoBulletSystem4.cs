@@ -66,6 +66,8 @@ public class LeoBulletSystem4 : EnemyShooter<EnemyBullet>
                         bullet.Fire();
                     }
                 }
+
+                yield return WaitForSeconds(ShootingCooldown);
             }
 
             yield return WaitForSeconds(7f);

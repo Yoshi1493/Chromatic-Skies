@@ -22,7 +22,7 @@ public class LeoMovementSystem4 : EnemyMovement
         yield return this.MoveTo(p1, 1f);
         parentShip.Invincible = true;
 
-        yield return WaitForSeconds(2f);
+        yield return WaitForSeconds(3f);
         parentShip.Invincible = false;
 
         List<Vector3> clonePositions = bulletSystem.bulletSpawnPositions;

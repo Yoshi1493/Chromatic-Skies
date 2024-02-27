@@ -13,7 +13,7 @@ public class LeoBullet40 : ScriptableEnemyBullet<LeoBulletSystem4, EnemyBullet>
     const float BulletSpacing = 10f;
     const float BulletSpawnRadius = 1.5f;
     const float BulletBaseSpeed = 2f;
-    const float BulletSpeedModifier = 0.1f;
+    const float BulletSpeedModifier = 0.05f;
     const float ShootingCooldown = 1f / 60;
 
     List<EnemyBullet> bullets = new(BranchCount * BulletCount);
