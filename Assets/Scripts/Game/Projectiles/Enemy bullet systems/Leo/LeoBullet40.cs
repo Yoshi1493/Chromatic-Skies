@@ -10,10 +10,10 @@ public class LeoBullet40 : ScriptableEnemyBullet<LeoBulletSystem4, EnemyBullet>
     const int WaveCount = 5;
     const float WaveSpacing = 360f / WaveCount;
     const int BranchCount = 12;
-    const float BranchSpacing = 5f;
-    const int BulletCount = 2;
+    const float BranchSpacing = 8f;
+    const int BulletCount = 1;
     const float BulletSpawnRadius = 1.5f;
-    const float BulletBaseSpeed = 2f;
+    const float BulletBaseSpeed = 1.5f;
     const float BulletSpeedModifier = 0.05f;
     const float ShootingCooldown = 1f / 60;
 
@@ -39,7 +39,7 @@ public class LeoBullet40 : ScriptableEnemyBullet<LeoBulletSystem4, EnemyBullet>
 
                 for (int iii = 0; iii < BulletCount; iii++)
                 {
-                    float z = (iii % 2 * 2 - 1) * ((i * WaveSpacing) + (ii * BranchSpacing));
+                    float z = (iii % 2 * 2 - 1) * ((i * WaveSpacing) + (ii * BranchSpacing)) + r;
 
                     bulletData.gradient.Evaluate(ii / (BranchCount - 1));
 

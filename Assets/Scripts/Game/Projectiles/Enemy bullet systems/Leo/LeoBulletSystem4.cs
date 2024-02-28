@@ -28,7 +28,7 @@ public class LeoBulletSystem4 : EnemyShooter<EnemyBullet>
                 float x = Mathf.Lerp(-screenHalfWidth, screenHalfWidth, i / (BulletCount - 1f)) + Random.Range(-1f, 1f);
                 float y = Random.Range(1f, screenHalfHeight);
 
-                Vector3 v = 0.8f * new Vector3(x, y);
+                Vector3 v = 0.6f * new Vector3(x, y);
                 bulletSpawnPositions.Add(v);
             }
 
