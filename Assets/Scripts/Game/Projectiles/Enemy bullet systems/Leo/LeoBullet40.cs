@@ -7,16 +7,17 @@ public class LeoBullet40 : ScriptableEnemyBullet<LeoBulletSystem4, EnemyBullet>
 {
     [SerializeField] ProjectileObject bulletData;
 
-    const int BranchCount = 5;
-    const float BranchSpacing = 360f / BranchCount;
-    const int BulletCount = 12;
-    const float BulletSpacing = 10f;
+    const int WaveCount = 5;
+    const float WaveSpacing = 360f / WaveCount;
+    const int BranchCount = 12;
+    const float BranchSpacing = 5f;
+    const int BulletCount = 2;
     const float BulletSpawnRadius = 1.5f;
     const float BulletBaseSpeed = 2f;
     const float BulletSpeedModifier = 0.05f;
     const float ShootingCooldown = 1f / 60;
 
-    List<EnemyBullet> bullets = new(BranchCount * BulletCount);
+    List<EnemyBullet> bullets = new(WaveCount * BranchCount * BulletCount);
 
     protected override IEnumerator Move()
     {
@@ -25,35 +26,43 @@ public class LeoBullet40 : ScriptableEnemyBullet<LeoBulletSystem4, EnemyBullet>
         yield return WaitForSeconds(1.5f);
 
         Vector3 v0 = transform.position;
-        float r = Random.Range(0, BranchSpacing);
+        float r = Random.Range(0, WaveSpacing);
 
-        for (int i = 0; i < BranchCount; i++)
+        for (int i = 0; i < WaveCount; i++)
         {
-            Vector3 v1 = Vector3.up.RotateVectorBy((2 * i * BranchSpacing) + r);
-            Vector3 v2 = Vector3.up.RotateVectorBy((2 * (i + 1) * BranchSpacing) + r);
+            Vector3 v1 = Vector3.up.RotateVectorBy((2 * i * WaveSpacing) + r);
+            Vector3 v2 = Vector3.up.RotateVectorBy((2 * (i + 1) * WaveSpacing) + r);
 
-            for (int ii = 0; ii < BulletCount; ii++)
+            for (int ii = 0; ii < BranchCount; ii++)
             {
-                float z = (i * BranchSpacing) + (ii * BulletSpacing);
-                Vector3 pos = BulletSpawnRadius * Vector3.Lerp(v1, v2, (float)ii / BulletCount) + v0;
+                Vector3 pos = BulletSpawnRadius * Vector3.Lerp(v1, v2, (float)ii / BranchCount) + v0;
 
-                bulletData.gradient.Evaluate(ii / (BulletCount - 1));
+                for (int iii = 0; iii < BulletCount; iii++)
+                {
+                    float z = (iii % 2 * 2 - 1) * ((i * WaveSpacing) + (ii * BranchSpacing));
 
-                bullets.Add(SpawnBullet(1, z, pos, false));
+                    bulletData.gradient.Evaluate(ii / (BranchCount - 1));
+
+                    bullets.Add(SpawnBullet(1, z, pos, false));
+                }
+
                 yield return WaitForSeconds(ShootingCooldown);
             }
         }
 
         yield return WaitForSeconds(0.5f);
 
-        for (int i = 0; i < BranchCount; i++)
+        for (int i = 0; i < WaveCount; i++)
         {
-            for (int ii = 0; ii < BulletCount; ii++)
+            for (int ii = 0; ii < BranchCount; ii++)
             {
-                int b = (i * BulletCount) + ii;
-                float s = BulletBaseSpeed + (ii * BulletSpeedModifier);
+                for (int iii = 0; iii < BulletCount; iii++)
+                {
+                    int b = (i * BranchCount * BulletCount) + (ii * BulletCount) + iii;
+                    float s = BulletBaseSpeed + (ii * BulletSpeedModifier);
 
-                bullets[b].StartCoroutine(bullets[b].LerpSpeed(0f, s, 2f));
+                    bullets[b].StartCoroutine(bullets[b].LerpSpeed(0f, s, 2f));
+                }
             }
         }
     }
