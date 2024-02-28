@@ -5,10 +5,10 @@ using static CoroutineHelper;
 
 public class LeoBulletSystem4 : EnemyShooter<EnemyBullet>
 {
-    const int BranchCount = 8;
-    const float BranchSpacing = 360f / BranchCount;
+    const int BranchCount = 7;
+    const float BranchSpacing = 15f;
     const int BulletCount = 6;
-    const float BulletBaseSpeed = 1.5f;
+    const float BulletBaseSpeed = 1.3f;
     const float BulletSpeedModifier = 0.2f;
 
     [HideInInspector] public List<Vector3> bulletSpawnPositions = new(BulletCount);
@@ -51,12 +51,13 @@ public class LeoBulletSystem4 : EnemyShooter<EnemyBullet>
             for (int i = 0; i < BulletCount; i++)
             {
                 Vector3 pos = bulletSpawnPositions[i];
+                float r = PlayerPosition.GetRotationDifference(pos);
 
                 for (int ii = 0; ii < BranchCount; ii++)
                 {
                     for (int iii = 0; iii < BulletCount; iii++)
                     {
-                        float z = PlayerPosition.GetRotationDifference(pos) + (ii * BranchSpacing);
+                        float z = ((ii - ((BranchCount - 1) / 2f)) * BranchSpacing) + r;
                         float s = BulletBaseSpeed + (iii * BulletSpeedModifier);
 
                         bulletData.colour = bulletData.gradient.Evaluate(iii / (BulletCount - 1f));
@@ -67,10 +68,10 @@ public class LeoBulletSystem4 : EnemyShooter<EnemyBullet>
                     }
                 }
 
-                yield return WaitForSeconds(ShootingCooldown);
+                yield return WaitForSeconds(0.5f);
             }
 
-            yield return WaitForSeconds(7f);
+            yield return WaitForSeconds(5f);
         }
     }
 }
