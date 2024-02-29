@@ -17,6 +17,7 @@ public class LeoBulletSystem3 : EnemyShooter<EnemyBullet>
     {
         yield return base.Shoot();
 
+        StartMoveAction?.Invoke();
         SetSubsystemEnabled(1);
         SetSubsystemEnabled(2);
 
