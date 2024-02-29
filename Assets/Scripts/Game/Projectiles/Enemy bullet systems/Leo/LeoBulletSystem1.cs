@@ -40,10 +40,9 @@ public class LeoBulletSystem1 : EnemyShooter<EnemyBullet>
                 yield return WaitForSeconds(ShootingCooldown);
             }
 
-            SetSubsystemEnabled(1);
-            yield return WaitForSeconds(1f);
-
             StartMoveAction?.Invoke();
+            SetSubsystemEnabled(1);
+
             yield return WaitForSeconds(5f);
         }
     }
