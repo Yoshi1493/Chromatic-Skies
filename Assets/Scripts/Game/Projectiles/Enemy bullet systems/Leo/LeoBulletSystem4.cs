@@ -6,7 +6,7 @@ using static CoroutineHelper;
 public class LeoBulletSystem4 : EnemyShooter<EnemyBullet>
 {
     const int BranchCount = 7;
-    const float BranchSpacing = 15f;
+    const float BranchSpacing = 18f;
     const int BulletCount = 6;
     const float BulletBaseSpeed = 1.3f;
     const float BulletSpeedModifier = 0.2f;

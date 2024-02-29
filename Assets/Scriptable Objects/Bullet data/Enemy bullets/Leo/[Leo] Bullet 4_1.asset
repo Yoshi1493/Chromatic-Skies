@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b79cd0b20b26ac4090b241d65679e69, type: 3}
   m_Name: '[Leo] Bullet 4_1'
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: 9c44a70d88a58084b91108bd8d02a677, type: 3}
+  sprite: {fileID: 21300000, guid: 9b86635f8b1fb5941bb865b3a22f5cf0, type: 3}
   useSolidColour: 1
   colour: {r: 1, g: 0.8, b: 0.19999999, a: 1}
   gradient:
