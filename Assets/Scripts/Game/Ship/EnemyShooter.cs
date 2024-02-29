@@ -32,7 +32,7 @@ public abstract class EnemyShooter<TProjectile> : Shooter<TProjectile>, IEnemyAt
 
     [Space]
 
-    [SerializeField] List<TProjectile> enemyProjectiles = new();
+    [SerializeField] protected List<TProjectile> enemyProjectiles = new();
     [SerializeField] protected ProjectileObject bulletData;
 
     protected override void Awake()
