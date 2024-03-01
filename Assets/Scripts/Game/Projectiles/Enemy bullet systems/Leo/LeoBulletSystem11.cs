@@ -1,31 +1,36 @@
 using System.Collections;
 using UnityEngine;
 using static CoroutineHelper;
-using static MathHelper;
 
 public class LeoBulletSystem11 : EnemyShooter<EnemyBullet>
 {
-    const int WaveCount = 128;
-    const float WaveSpacing = 12f;
-    const int BranchCount = 4;
+    const int BranchCount = 6;
     const float BranchSpacing = 360f / BranchCount;
+    const int BulletCount = 6;
+    const float BulletSpacing = 0.8f;
 
-    protected override float ShootingCooldown => 2f / 60;
+    protected override float ShootingCooldown => 0.5f;
 
     protected override IEnumerator Shoot()
     {
-        float r = Random.Range(0f, BranchSpacing);
-        int d = PositiveOrNegativeOne;
+        float r = PlayerPosition.GetRotationDifference(transform.position);
 
-        for (int i = 0; i < WaveCount; i++)
+        for (int i = 1; i <= BranchCount; i++)
         {
-            for (int ii = 0; ii < BranchCount; ii++)
-            {
-                int b = Random.Range(0, enemyProjectiles.Count) + 1;
-                float z = d * ((i * WaveSpacing) + (ii * BranchSpacing) + r);
-                Vector3 pos = Vector3.up.RotateVectorBy(z * 0.5f);
+            float x = (i - 1) * BulletSpacing * 0.5f;
 
-                SpawnProjectile(b, z, pos).Fire();
+            for (int ii = 0; ii < i; ii++)
+            {
+                Vector3 t = (ii * BulletSpacing - x) * Vector3.right;
+
+                for (int iii = 0; iii < BulletCount; iii++)
+                {
+                    float z = iii * BranchSpacing + r;
+                    Vector3 pos = t.RotateVectorBy(z);
+                    bulletData.colour = bulletData.gradient.Evaluate(i / (float)BranchCount);
+
+                    SpawnProjectile(2, z, pos).Fire();
+                }
             }
 
             yield return WaitForSeconds(ShootingCooldown);
