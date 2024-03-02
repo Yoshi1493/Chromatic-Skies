@@ -4,7 +4,8 @@ using static CoroutineHelper;
 
 public class LeoBulletSystem11 : EnemyShooter<EnemyBullet>
 {
-    const int BranchCount = 6;
+    const int WaveCount = 6;
+    const int BranchCount = 12;
     const float BranchSpacing = 360f / BranchCount;
     const int BulletCount = 6;
     const float BulletSpacing = 0.8f;
@@ -13,21 +14,19 @@ public class LeoBulletSystem11 : EnemyShooter<EnemyBullet>
 
     protected override IEnumerator Shoot()
     {
-        float r = PlayerPosition.GetRotationDifference(transform.position);
-
-        for (int i = 1; i <= BranchCount; i++)
+        for (int i = 0; i < WaveCount; i++)
         {
-            float x = (i - 1) * BulletSpacing * 0.5f;
-
-            for (int ii = 0; ii < i; ii++)
+            float x = i * BulletSpacing * 0.5f;
+            int bulletCount = i + 1;
+            
+            for (int ii = 0; ii < BranchCount; ii++)
             {
-                Vector3 t = (ii * BulletSpacing - x) * Vector3.right;
+                float z = ii * BranchSpacing;
 
-                for (int iii = 0; iii < BulletCount; iii++)
+                for (int iii = 0; iii < bulletCount; iii++)
                 {
-                    float z = iii * BranchSpacing + r;
-                    Vector3 pos = t.RotateVectorBy(z);
-                    bulletData.colour = bulletData.gradient.Evaluate(i / (float)BranchCount);
+                    Vector3 pos = ((iii * BulletSpacing - x) * Vector3.right).RotateVectorBy(z);
+                    bulletData.colour = bulletData.gradient.Evaluate(i / (float)WaveCount);
 
                     SpawnProjectile(2, z, pos).Fire();
                 }

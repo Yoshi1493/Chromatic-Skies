@@ -5,7 +5,7 @@ using static MathHelper;
 
 public class LeoBulletSystem1 : EnemyShooter<EnemyBullet>
 {
-    const int WaveCount = 128;
+    const int WaveCount = 99;
     const float WaveSpacing = 15f;
     const int BranchCount = 4;
     const float BranchSpacing = 360f / BranchCount;
@@ -21,7 +21,7 @@ public class LeoBulletSystem1 : EnemyShooter<EnemyBullet>
             StartMoveAction?.Invoke();
             SetSubsystemEnabled(1);
 
-            yield return WaitForSeconds(3f);
+            yield return WaitForSeconds(4f);
 
             float r = Random.Range(0f, BranchSpacing);
             int d = PositiveOrNegativeOne;
