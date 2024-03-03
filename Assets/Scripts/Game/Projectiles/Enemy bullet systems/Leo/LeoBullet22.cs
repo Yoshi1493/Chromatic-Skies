@@ -5,10 +5,12 @@ public class LeoBullet22 : ScriptableEnemyBullet<LeoBulletSystem21, EnemyBullet>
 {
     [SerializeField] ProjectileObject bulletData;
     
-    const int BulletCount = 8;
+    const int BulletCount = 6;
     const float BulletSpacing = 12f;
+    const float BulletBaseSpeed = 1.5f;
+    const float BulletSpeedModifier = 0.15f;
 
-    protected override float MaxLifetime => 2.5f;
+    protected override float MaxLifetime => 4f;
 
     protected override IEnumerator Move()
     {
@@ -23,10 +25,11 @@ public class LeoBullet22 : ScriptableEnemyBullet<LeoBulletSystem21, EnemyBullet>
         {
             float z = (i * BulletSpacing) + r;
             Vector3 pos = transform.position;
+
             bulletData.colour = bulletData.gradient.Evaluate(i / (BulletCount - 1f));
 
             var bullet = SpawnBullet(3, z, pos, false);
-            bullet.MoveSpeed = i * 0.25f + 1.5f;
+            bullet.MoveSpeed = BulletBaseSpeed + (i * BulletSpeedModifier);
             bullet.Fire();
         }
 
