@@ -5,10 +5,10 @@ using static MathHelper;
 
 public class LeoBulletSystem21 : EnemyShooter<EnemyBullet>
 {
-    const int BulletCount = 40;
+    const int BulletCount = 32;
     const float BulletSpacing = 720f / BulletCount;
 
-    protected override float ShootingCooldown => 2f / BulletCount;
+    protected override float ShootingCooldown => 0.05f;
 
     protected override IEnumerator Shoot()
     {
