@@ -1,4 +1,4 @@
-public class LeoLaser40 : Laser
+public class LeoLaser50 : Laser
 {
     protected override float MaxLifetime => 4.0f;
 }
