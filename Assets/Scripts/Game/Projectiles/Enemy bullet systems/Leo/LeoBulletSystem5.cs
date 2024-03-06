@@ -8,7 +8,7 @@ public class LeoBulletSystem5 : EnemyShooter<EnemyBullet>
     const int BulletCount = 3;
     const float BulletSpacing = 360f / BulletCount;
 
-    protected override float ShootingCooldown => 3f;
+    protected override float ShootingCooldown => 2f;
 
     protected override IEnumerator Shoot()
     {
@@ -16,6 +16,9 @@ public class LeoBulletSystem5 : EnemyShooter<EnemyBullet>
 
 		while (enabled)
 		{
+            SetSubsystemEnabled(1);
+            yield return WaitForSeconds(ShootingCooldown);
+
             float r = RandomAngleDeg;
 
             for (int i = 0; i < BulletCount; i++)
