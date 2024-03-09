@@ -12,11 +12,11 @@ public class LeoBulletSystem5 : EnemyShooter<EnemyBullet>
 
     protected override IEnumerator Shoot()
     {
-		yield return base.Shoot();
+        yield return base.Shoot();
+        SetSubsystemEnabled(1);
 
-		while (enabled)
-		{
-            SetSubsystemEnabled(1);
+        while (enabled)
+        {
             yield return WaitForSeconds(ShootingCooldown);
 
             float r = RandomAngleDeg;
@@ -31,6 +31,6 @@ public class LeoBulletSystem5 : EnemyShooter<EnemyBullet>
 
             StartMoveAction?.Invoke();
             yield return WaitForSeconds(ShootingCooldown);
-        }        
+        }
     }
 }

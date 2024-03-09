@@ -6,7 +6,7 @@ public class LeoBullet52 : ScriptableEnemyBullet<LeoBulletSystem5, EnemyBullet>
 {
     [SerializeField] ProjectileObject bulletData;
 
-    const int BulletCount = 10;
+    const int BulletCount = 6;
     const float BulletSpacing = 360f / BulletCount;
 
     protected override float MaxLifetime => 1f;

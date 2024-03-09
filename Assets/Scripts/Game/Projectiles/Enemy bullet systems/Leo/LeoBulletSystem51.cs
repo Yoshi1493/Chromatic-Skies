@@ -4,30 +4,29 @@ using static CoroutineHelper;
 
 public class LeoBulletSystem51 : EnemyShooter<EnemyBullet>
 {
-    const int WaveCount = 20;
-    const float WaveSpacing = 720f / WaveCount;
+    const float WaveSpacing = 50f;
     const int BulletClumpCount = 5;
     const float BulletSpacing = 5f;
-
-    protected override float ShootingCooldown => 0.05f;
+    const float BulletRotationSpeedModifier = -15f;
 
     protected override IEnumerator Shoot()
     {
-        for (int i = 0; i < WaveCount; i++)
+        for (int i = 0; enabled; i++)
         {
             for (int ii = 0; ii < BulletClumpCount; ii++)
             {
-                float z = (i * WaveSpacing) + (ii * BulletSpacing);
+                float r = ii - ((BulletClumpCount - 1) / 2f);
+                float z = (i * WaveSpacing) + (r * BulletSpacing);
                 Vector3 pos = Vector3.zero;
 
-                bulletData.colour = bulletData.gradient.Evaluate(i / (WaveCount - 1f));
+                bulletData.colour = bulletData.gradient.Evaluate(ii / (BulletClumpCount - 1f));
 
-                SpawnProjectile(4, z, pos).Fire();
+                var bullet = SpawnProjectile(4, z, pos);
+                bullet.StartCoroutine(bullet.RotateBy(r * BulletRotationSpeedModifier, 2f, delay: 1f));
+                bullet.Fire();
             }
 
             yield return WaitForSeconds(ShootingCooldown);
         }
-
-        enabled = false;
     }
 }
