@@ -118,6 +118,32 @@ public static class MathHelper
         return points;
     }
 
+    public static List<Vector3> GetRandomPointsAlongBounds(Vector3 minBoundary, Vector3 maxBoundary, int pointCount)
+    {
+        List<Vector3> points = new(pointCount);
+        if (minBoundary.x > maxBoundary.x || minBoundary.y > maxBoundary.y) return points;
+
+        float x, y;
+
+        for (int i = 0; i < pointCount; i++)
+        {
+            if (Random.value > 0.5f)
+            {
+                x = Random.Range(minBoundary.x, maxBoundary.x);
+                y = Random.value > 0.5f ? maxBoundary.y : minBoundary.y;
+            }
+            else
+            {
+                x = Random.value > 0.5f ? maxBoundary.x : minBoundary.x;
+                y = Random.Range(minBoundary.y, maxBoundary.y);
+            }
+
+            points.Add(new(x, y));
+        }
+
+        return points;
+    }
+
     public static List<Vector3> GetRandomPointsWithinBounds(Vector3 minBoundary, Vector3 maxBoundary, int pointCount)
     {
         List<Vector3> points = new(pointCount);
@@ -135,7 +161,6 @@ public static class MathHelper
 
         return points;
     }
-
 
     public static void Randomize<T>(this List<T> list)
     {
