@@ -1,39 +1,38 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using static CoroutineHelper;
 using static MathHelper;
 
 public class LeoBulletSystem6 : EnemyShooter<EnemyBullet>
 {
-    const int WaveCount = 24;
-    const float WaveSpacing = 360f / WaveCount;
-    const int BranchCount = 15;
-    const float BranchSpacing = 360f / BranchCount;
+    const int BulletMinCount = 3;
+    const int BulletMaxCount = 7;
+    const float BulletSpawnRadius = 1.25f;
+    const float SpawnRadiusModifier = 0.1f;
 
-    protected override float ShootingCooldown => 0.25f;
+    protected override float ShootingCooldown => 2f;
 
     protected override IEnumerator Shoot()
     {
         yield return base.Shoot();
 
+        //SetSubsystemEnabled(1);
+
         while (enabled)
         {
-            float r = RandomAngleDeg;
+            int bulletCount = Random.Range(BulletMinCount, BulletMaxCount);
+            List<Vector3> bulletPositions = GetRandomPointsAlongBounds(new Vector3(-screenHalfWidth, -screenHalfHeight), new Vector3(screenHalfWidth, screenHalfHeight), bulletCount);
 
-            for (int i = 0; i < WaveCount; i++)
+            for (int i = 0; i < bulletPositions.Count; i++)
             {
-                for (int ii = 0; ii < BranchCount; ii++)
-                {
-                    float z = (i * WaveSpacing) + (ii * BranchSpacing);
-                    Vector3 pos = transform.up.RotateVectorBy(-z + r);
+                Vector3 pos = (BulletSpawnRadius + (i * SpawnRadiusModifier)) * bulletPositions[i];
+                float z = transform.position.GetRotationDifference(pos);
 
-                    SpawnProjectile(0, z, pos).Fire();
-                }
-
-                yield return WaitForSeconds(ShootingCooldown);
+                SpawnProjectile(0, z, pos, false).Fire();
             }
 
-            yield return WaitForSeconds(10f);
+            yield return WaitForSeconds(ShootingCooldown);
         }
     }
 }
