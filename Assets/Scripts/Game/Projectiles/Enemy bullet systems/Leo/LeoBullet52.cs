@@ -6,14 +6,14 @@ public class LeoBullet52 : ScriptableEnemyBullet<LeoBulletSystem5, EnemyBullet>
 {
     [SerializeField] ProjectileObject bulletData;
 
-    const int BulletCount = 6;
+    const int BulletCount = 9;
     const float BulletSpacing = 360f / BulletCount;
 
     protected override float MaxLifetime => 1f;
 
     protected override IEnumerator Move()
     {
-        yield return this.LerpSpeed(5f, 0f, MaxLifetime);
+        yield return this.LerpSpeed(4f, 0f, MaxLifetime);
     }
 
     public override void Destroy()

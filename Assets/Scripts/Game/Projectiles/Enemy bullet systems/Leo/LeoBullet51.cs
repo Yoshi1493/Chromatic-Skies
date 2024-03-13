@@ -13,7 +13,7 @@ public class LeoBullet51 : ScriptableEnemyBullet<LeoBulletSystem5, EnemyBullet>
 
     protected override IEnumerator Move()
     {
-        yield return this.LerpSpeed(4f, 0f, MaxLifetime);
+        yield return this.LerpSpeed(3f, 0f, MaxLifetime);
     }
 
     public override void Destroy()

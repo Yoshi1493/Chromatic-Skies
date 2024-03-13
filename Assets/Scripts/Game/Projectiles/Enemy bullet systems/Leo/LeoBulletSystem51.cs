@@ -4,7 +4,7 @@ using static CoroutineHelper;
 
 public class LeoBulletSystem51 : EnemyShooter<EnemyBullet>
 {
-    const float WaveSpacing = 50f;
+    const float WaveSpacing = 100f;
     const int BulletClumpCount = 5;
     const float BulletSpacing = 5f;
     const float BulletRotationSpeedModifier = -15f;
