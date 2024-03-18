@@ -4,13 +4,15 @@ using static CoroutineHelper;
 
 public class LeoBulletSystem62 : EnemyShooter<EnemyBullet>
 {
-    const int BulletCount = 15;
+    const int BulletCount = 20;
     const float BulletSpacing = 360f / BulletCount;
 
     protected override float ShootingCooldown => 3f;
 
     protected override IEnumerator Shoot()
     {
+        yield return WaitForSeconds(ShootingCooldown);
+
         while (enabled)
         {
             yield return WaitForSeconds(ShootingCooldown);
