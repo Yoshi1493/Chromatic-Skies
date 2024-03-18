@@ -4,14 +4,16 @@ using static CoroutineHelper;
 
 public class LeoBullet60 : EnemyBullet
 {
-    protected override float MaxLifetime => 6f;
+    [SerializeField] AnimationCurve sizeInterpolation;
+
+    protected override float MaxLifetime => 8f;
 
     protected override IEnumerator Move()
     {
-        MoveSpeed = 3f;
+        MoveSpeed = 2f;
 
-        yield return WaitUntil(() => (ownerShip.transform.position - transform.position).magnitude <= 3f);
-        yield return this.LerpSpeed(3f, 0f, 2f);
+        yield return WaitUntil(() => (ownerShip.transform.position - transform.position).magnitude <= 2f);
+        yield return this.LerpSpeed(2f, 0f, 2f);
     }
 
     protected override void Update()
@@ -19,7 +21,7 @@ public class LeoBullet60 : EnemyBullet
         base.Update();
 
         float t = currentLifetime / MaxLifetime;
-        transform.localScale = Mathf.Lerp(1f, 0.5f, t) * Vector2.one;
+        transform.localScale = sizeInterpolation.Evaluate(t) * Vector2.one;
         spriteRenderer.color = projectileData.gradient.Evaluate(t);
     }
 }

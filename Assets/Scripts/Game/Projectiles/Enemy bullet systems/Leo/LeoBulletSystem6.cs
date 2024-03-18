@@ -1,37 +1,36 @@
 using System.Collections;
 using UnityEngine;
 using static CoroutineHelper;
-using static MathHelper;
 
 public class LeoBulletSystem6 : EnemyShooter<EnemyBullet>
 {
-    const int BulletMinCount = 3;
-    const int BulletMaxCount = 7;
+    const float WaveSpacing = 16f;
+    const int BranchCount = 2;
+    const float BranchSpacing = 360f / BranchCount;
     const float BulletSpawnRadius = 12f;
 
-    protected override float ShootingCooldown => 0.3f;
+    protected override float ShootingCooldown => 1.2f;
 
     protected override IEnumerator Shoot()
     {
         yield return base.Shoot();
 
-        //SetSubsystemEnabled(1);
+        SetSubsystemEnabled(1);
+        SetSubsystemEnabled(2);
 
-        while (enabled)
+        float r = Random.Range(45f, 135f);
+
+        for (int i = 0; enabled; i++)
         {
-            int bulletCount = Random.Range(BulletMinCount, BulletMaxCount);
-
-            for (int i = 0; i < bulletCount; i++)
+            for (int ii = 0; ii < BranchCount; ii++)
             {
-                float z = RandomAngleDeg;
+                float z = (i * WaveSpacing) + (ii * BranchSpacing) + r;
                 Vector3 pos = BulletSpawnRadius * Vector3.up.RotateVectorBy(z);
 
                 SpawnProjectile(0, z, pos).Fire();
-                yield return WaitForSeconds(ShootingCooldown);
             }
 
-            yield return WaitForSeconds(ShootingCooldown * 2f);
-
+            yield return WaitForSeconds(ShootingCooldown);
         }
     }
 }
