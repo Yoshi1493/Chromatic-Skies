@@ -11,6 +11,7 @@ public class LeoBulletSystem4 : EnemyShooter<EnemyBullet>
     const float BulletBaseSpeed = 1.3f;
     const float BulletSpeedModifier = 0.2f;
 
+    List<EnemyBullet> bullets = new(BulletCount);
     [HideInInspector] public List<Vector3> bulletSpawnPositions = new(BulletCount);
 
     protected override IEnumerator Shoot()
@@ -19,10 +20,12 @@ public class LeoBulletSystem4 : EnemyShooter<EnemyBullet>
 
         while (enabled)
         {
+            bullets.Clear();
             bulletSpawnPositions.Clear();
 
             StartMoveAction?.Invoke();
 
+            //get random positions
             for (int i = 0; i < BulletCount; i++)
             {
                 float x = Mathf.Lerp(-screenHalfWidth, screenHalfWidth, i / (BulletCount - 1f)) + Random.Range(-1f, 1f);
@@ -34,6 +37,7 @@ public class LeoBulletSystem4 : EnemyShooter<EnemyBullet>
 
             bulletSpawnPositions.Randomize();
 
+            //spawn clones
             for (int i = 0; i < BulletCount; i++)
             {
                 float z = 0f;
@@ -46,8 +50,11 @@ public class LeoBulletSystem4 : EnemyShooter<EnemyBullet>
                 yield return WaitForSeconds(ShootingCooldown);
             }
 
-            yield return WaitForSeconds(5f);
+            bulletSpawnPositions.Sort((a, b) => a.x.CompareTo(b.x));
 
+            yield return WaitForSeconds(4.5f);
+
+            //fire bullets from clones
             for (int i = 0; i < BulletCount; i++)
             {
                 Vector3 pos = bulletSpawnPositions[i];

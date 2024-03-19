@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using static CoroutineHelper;
 
@@ -27,7 +26,7 @@ public class LeoMovementSystem4 : EnemyMovement
         yield return WaitForSeconds(3f);
         parentShip.Invincible = false;
 
-        clonePositions = bulletSystem.bulletSpawnPositions.OrderBy(i => i.x).ToList();
+        clonePositions = bulletSystem.bulletSpawnPositions;
 
         Vector3 p2 = new(1.1f * -screenHalfWidth, clonePositions[0].y + Random.Range(-0.5f, 0.5f));
         parentShip.transform.position = p2;
