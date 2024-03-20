@@ -16,7 +16,6 @@ public class LeoBullet40 : ScriptableEnemyBullet<LeoBulletSystem4, EnemyBullet>
     const float BulletSpeedModifier = 0.1f;
     const float BulletRotationSpeed = 120f;
     const float BulletRotationDuration = 1f;
-    const float BulletRotationDurationModifier = 0.4f;
 
     List<EnemyBullet> bullets = new(RingCount * BulletCount);
 
@@ -33,6 +32,8 @@ public class LeoBullet40 : ScriptableEnemyBullet<LeoBulletSystem4, EnemyBullet>
                 float z = (i * RingSpacing) + (ii * BulletSpacing);
                 float s = BulletBaseSpeed + (i * BulletSpeedModifier);
                 Vector3 pos = transform.position;
+
+                bulletData.colour = bulletData.gradient.Evaluate(i / (RingCount - 1f));
 
                 var bullet = SpawnBullet(1, z, pos, false);
                 bullet.StartCoroutine(bullet.LerpSpeed(0f, s, 1f));
