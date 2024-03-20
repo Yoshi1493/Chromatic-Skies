@@ -19,11 +19,10 @@ public class LeoMovementSystem4 : EnemyMovement
         yield return WaitForSeconds(0.5f);
 
         Vector3 p1 = 1.2f * new Vector3(screenHalfWidth, screenHalfHeight);
-        print($"starting movement at {Time.timeSinceLevelLoad}");
         yield return this.MoveTo(p1, 1f);
         parentShip.Invincible = true;
 
-        yield return WaitForSeconds(3f);
+        yield return WaitForSeconds(1.5f);
         parentShip.Invincible = false;
 
         clonePositions = bulletSystem.bulletSpawnPositions;
@@ -34,7 +33,6 @@ public class LeoMovementSystem4 : EnemyMovement
         for (int i = 0; i < clonePositions.Count; i++)
         {
             yield return this.MoveTo(clonePositions[i], 0.5f);
-            print($"[{i}] {Time.timeSinceLevelLoad}");
         }
 
         Vector3 p3 = new(1.1f * screenHalfWidth, clonePositions[^1].y + Random.Range(-0.5f, 0.5f));
@@ -42,7 +40,7 @@ public class LeoMovementSystem4 : EnemyMovement
         yield return this.MoveTo(p3, 0.5f);
 
         Vector3 p4 = new(0.5f * Random.Range(-screenHalfWidth, screenHalfWidth), 1.1f * screenHalfHeight);
-        Vector3 p5 = new(p4.x, p1.y);
+        Vector3 p5 = new(p4.x, 2f);
 
         yield return this.MoveFromTo(p4, p5, 1f);
         clonePositions.Clear();

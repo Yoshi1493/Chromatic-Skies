@@ -11,7 +11,6 @@ public class LeoBulletSystem4 : EnemyShooter<EnemyBullet>
     const float BulletBaseSpeed = 1.3f;
     const float BulletSpeedModifier = 0.2f;
 
-    List<EnemyBullet> bullets = new(BulletCount);
     [HideInInspector] public List<Vector3> bulletSpawnPositions = new(BulletCount);
 
     protected override IEnumerator Shoot()
@@ -20,12 +19,9 @@ public class LeoBulletSystem4 : EnemyShooter<EnemyBullet>
 
         while (enabled)
         {
-            bullets.Clear();
             bulletSpawnPositions.Clear();
-
             StartMoveAction?.Invoke();
 
-            //get random positions
             for (int i = 0; i < BulletCount; i++)
             {
                 float x = Mathf.Lerp(-screenHalfWidth, screenHalfWidth, i / (BulletCount - 1f)) + Random.Range(-1f, 1f);
@@ -37,13 +33,12 @@ public class LeoBulletSystem4 : EnemyShooter<EnemyBullet>
 
             bulletSpawnPositions.Randomize();
 
-            //spawn clones
             for (int i = 0; i < BulletCount; i++)
             {
                 float z = 0f;
                 Vector3 pos = Vector3.zero;
 
-                var bullet = SpawnProjectile(0, z, pos);
+                var bullet = SpawnProjectile(0, z, pos) as LeoBullet40;
                 bullet.StartCoroutine(bullet.MoveTo(bulletSpawnPositions[i], 1f));
                 bullet.Fire();
 
@@ -52,32 +47,12 @@ public class LeoBulletSystem4 : EnemyShooter<EnemyBullet>
 
             bulletSpawnPositions.Sort((a, b) => a.x.CompareTo(b.x));
 
-            yield return WaitForSeconds(4.5f);
+            yield return WaitForSeconds(3f);
 
-            //fire bullets from clones
-            for (int i = 0; i < BulletCount; i++)
-            {
-                Vector3 pos = bulletSpawnPositions[i];
-                float r = PlayerPosition.GetRotationDifference(pos);
+            SetSubsystemEnabled(1);
+            yield return WaitForSeconds(5f);
 
-                for (int ii = 0; ii < BranchCount; ii++)
-                {
-                    for (int iii = 0; iii < BulletCount; iii++)
-                    {
-                        float z = ((ii - ((BranchCount - 1) / 2f)) * BranchSpacing) + r;
-                        float s = BulletBaseSpeed + (iii * BulletSpeedModifier);
-
-                        bulletData.colour = bulletData.gradient.Evaluate(iii / (BulletCount - 1f));
-
-                        var bullet = SpawnProjectile(2, z, pos, false);
-                        bullet.MoveSpeed = s;
-                        bullet.Fire();
-                    }
-                }
-
-                yield return WaitForSeconds(0.5f);
-            }
-
+            SetSubsystemEnabled(2);
             yield return WaitForSeconds(5f);
         }
     }
