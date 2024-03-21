@@ -9,6 +9,9 @@ public abstract class EnemyMovement : ShipMovement<Enemy>
     protected float screenHalfHeight;
     protected float screenHalfWidth;
 
+    protected Player playerShip;
+    protected Vector3 PlayerPosition => playerShip.transform.position;
+
     protected override void Awake()
     {
         base.Awake();
@@ -21,6 +24,12 @@ public abstract class EnemyMovement : ShipMovement<Enemy>
         Camera mainCam = Camera.main;
         screenHalfHeight = mainCam.orthographicSize;
         screenHalfWidth = screenHalfHeight * mainCam.aspect;
+
+        //find player
+        if (playerShip == null)
+        {
+            playerShip = FindObjectOfType<Player>();
+        }
     }
 
     protected virtual void OnEnable()
