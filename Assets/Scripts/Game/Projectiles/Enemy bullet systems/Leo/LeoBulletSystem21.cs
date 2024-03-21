@@ -1,7 +1,6 @@
 using System.Collections;
 using UnityEngine;
 using static CoroutineHelper;
-using static MathHelper;
 
 public class LeoBulletSystem21 : EnemyShooter<EnemyBullet>
 {
@@ -12,7 +11,7 @@ public class LeoBulletSystem21 : EnemyShooter<EnemyBullet>
 
     protected override IEnumerator Shoot()
     {
-        float r = RandomAngleDeg;
+        float r = PlayerPosition.GetRotationDifference(transform.position);
 
         for (int i = 0; i < BulletCount; i++)
         {
