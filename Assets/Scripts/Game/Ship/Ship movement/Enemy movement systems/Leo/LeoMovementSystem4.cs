@@ -39,7 +39,7 @@ public class LeoMovementSystem4 : EnemyMovement
 
         yield return this.MoveTo(p3, 0.5f);
 
-        Vector3 p4 = new(0.5f * Random.Range(-screenHalfWidth, screenHalfWidth), 1.1f * screenHalfHeight);
+        Vector3 p4 = new(PlayerPosition.x + (Random.value * 2 - 1), 1.1f * screenHalfHeight);
         Vector3 p5 = new(p4.x, 2f);
 
         yield return this.MoveFromTo(p4, p5, 1f);
