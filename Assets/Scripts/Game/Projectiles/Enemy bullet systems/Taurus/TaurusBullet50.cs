@@ -19,7 +19,7 @@ public class TaurusBullet50 : ScriptableEnemyBullet<TaurusBulletSystem52, Laser>
         {
             for (int i = 0; i < RepeatCount; i++)
             {
-                float d = i % 2 * 2 - 1;
+                int d = i % 2 * 2 - 1;
                 yield return WaitForSeconds(ShootingCooldown);
 
                 for (int ii = 0; ii < LaserCount; ii++)
