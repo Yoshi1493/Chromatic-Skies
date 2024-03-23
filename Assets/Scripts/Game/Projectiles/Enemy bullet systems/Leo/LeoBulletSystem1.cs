@@ -1,16 +1,17 @@
 using System.Collections;
 using UnityEngine;
 using static CoroutineHelper;
-using static MathHelper;
 
 public class LeoBulletSystem1 : EnemyShooter<EnemyBullet>
 {
-    const int WaveCount = 99;
-    const float WaveSpacing = 15f;
-    const int BranchCount = 4;
+    const int WaveCount = 30;
+    const int BranchCount = 12;
     const float BranchSpacing = 360f / BranchCount;
-
-    protected override float ShootingCooldown => 0.05f;
+    const int BulletCount = 2;
+    const float BulletSpawnRadius = 1f;
+    const float SpawnRadiusModifier = -0.02f;
+    const float BulletRotationSpeed = 60f;
+    const float BulletRotationSpeedModifier = 2f;
 
     protected override IEnumerator Shoot()
     {
@@ -18,27 +19,31 @@ public class LeoBulletSystem1 : EnemyShooter<EnemyBullet>
 
         while (enabled)
         {
-            StartMoveAction?.Invoke();
-            SetSubsystemEnabled(1);
-
-            yield return WaitForSeconds(4f);
-
-            float r = Random.Range(0f, BranchSpacing);
-            int d = PositiveOrNegativeOne;
-
             for (int i = 0; i < WaveCount; i++)
             {
                 for (int ii = 0; ii < BranchCount; ii++)
                 {
-                    int b = Random.Range(0, enemyProjectiles.Count);
-                    float z = d * ((i * WaveSpacing) + (ii * BranchSpacing) + r);
-                    Vector3 pos = Vector3.up.RotateVectorBy(z * 0.5f);
+                    for (int iii = 0; iii < BulletCount; iii++)
+                    {
+                        int d = iii % 2 * 2 - 1;
+                        float z = ii * BranchSpacing;
+                        float r = d * (BulletRotationSpeed + (i * BulletRotationSpeedModifier));
+                        Vector3 pos = (BulletSpawnRadius + (i * SpawnRadiusModifier)) * transform.up.RotateVectorBy(z);
 
-                    SpawnProjectile(b, z, pos).Fire();
+                        bulletData.colour = bulletData.gradient.Evaluate(i / (WaveCount - 1f));
+
+                        var bullet = SpawnProjectile(0, z, pos);
+                        bullet.StartCoroutine(bullet.RotateBy(r, 2f));
+                        bullet.Fire();
+                    }
                 }
 
                 yield return WaitForSeconds(ShootingCooldown);
             }
+
+            SetSubsystemEnabled(1);
+            yield return WaitForSeconds(5f);
         }
+
     }
 }
