@@ -21,21 +21,22 @@ public class LeoBulletSystem11 : EnemyShooter<EnemyBullet>
     {
         for (int i = 0; i < RepeatCount; i++)
         {
+            float r = PlayerPosition.GetRotationDifference(transform.position);
+
             for (int ii = 0; ii < WaveCount; ii++)
             {
                 for (int iii = 0; iii < BranchCount; iii++)
                 {
                     int d = i % 2 * 2 - 1;
-                    float z = d * ((ii * WaveSpacing) + (iii * BranchSpacing));
+                    float z = (d * ((ii * WaveSpacing) + (iii * BranchSpacing))) + r;
                     float s = BulletBaseSpeed + (ii * BulletSpeedModifier);
-                    float r = d * (BulletRotationSpeed + (i * BulletRotationSpeedModifier));
                     Vector3 pos = Vector3.zero;
 
                     bulletData.colour = bulletData.gradient.Evaluate(i % 2);
 
                     var bullet = SpawnProjectile(1, z, pos);
                     bullet.StartCoroutine(bullet.LerpSpeed(0.5f, s, 2f, delay: 1f));
-                    bullet.StartCoroutine(bullet.RotateBy(r, BulletRotationDuration));
+                    bullet.StartCoroutine(bullet.RotateBy(d * (BulletRotationSpeed + (i * BulletRotationSpeedModifier)), BulletRotationDuration));
                     bullet.Fire();
                 }
 
