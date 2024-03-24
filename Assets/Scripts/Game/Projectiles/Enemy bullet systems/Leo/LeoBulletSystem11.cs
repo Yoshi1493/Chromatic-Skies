@@ -7,12 +7,12 @@ public class LeoBulletSystem11 : EnemyShooter<EnemyBullet>
     const int RepeatCount = 3;
     const int WaveCount = 3;
     const float WaveSpacing = BranchSpacing / WaveCount;
-    const int BranchCount = 12;
+    const int BranchCount = 10;
     const float BranchSpacing = 360f / BranchCount;
     const float BulletBaseSpeed = 3f;
     const float BulletSpeedModifier = 1f;
     const float BulletRotationSpeed = 30f;
-    const float BulletRotationSpeedModifier = 15f;
+    const float BulletRotationSpeedModifier = 10f;
     const float BulletRotationDuration = 3f;
 
     protected override float ShootingCooldown => 0.2f;
