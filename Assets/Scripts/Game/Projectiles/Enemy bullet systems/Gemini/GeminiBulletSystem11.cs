@@ -11,8 +11,8 @@ public class GeminiBulletSystem11 : EnemyShooter<EnemyBullet>
     const int BulletCount = 10;
     const float BulletSpacing = 360f / BulletCount;
     const float BulletSpawnRadius = 0.5f;
-    const float BulletBaseSpeed = 1.5f;
-    const float BulletSpeedModifier = 1.5f;
+    const float BulletBaseSpeed = 2f;
+    const float BulletSpeedModifier = 1f;
 
     protected override IEnumerator Shoot()
     {
