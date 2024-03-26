@@ -32,9 +32,9 @@ public class GeminiBulletSystem21 : EnemyShooter<EnemyBullet>
             for (int ii = 0; ii < BranchCount; ii++)
             {
                 float z = r - 90f * Mathf.Sign(r);
-                Vector3 pos = v1.RotateVectorBy(ii * BranchSpacing) + transform.position;
+                Vector3 pos = v1.RotateVectorBy(ii * BranchSpacing);
 
-                SpawnProjectile(2, z, pos, false);
+                SpawnProjectile(2, z, pos);
 
                 pos.x *= -1;
                 z *= -1;
@@ -44,7 +44,7 @@ public class GeminiBulletSystem21 : EnemyShooter<EnemyBullet>
             yield return WaitForSeconds(ShootingCooldown);
         }
 
-        yield return WaitForSeconds(1f);
+        yield return WaitForSeconds(3.5f);
 
         bulletSpawnData.Randomize();
 
@@ -61,7 +61,7 @@ public class GeminiBulletSystem21 : EnemyShooter<EnemyBullet>
 
                     bulletData.colour = bulletData.gradient.Evaluate(i / (WaveCount - 1f));
 
-                    var bullet = SpawnProjectile(3, z, pos, false);
+                    var bullet = SpawnProjectile(3, z, pos);
                     bullet.MoveSpeed = s;
                     bullet.Fire();
                 }

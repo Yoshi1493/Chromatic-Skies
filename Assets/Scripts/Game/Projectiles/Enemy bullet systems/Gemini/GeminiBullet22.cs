@@ -12,7 +12,6 @@ public class GeminiBullet22 : EnemyBullet
     protected override void Update()
     {
         base.Update();
-
         spriteRenderer.color = projectileData.gradient.Evaluate(currentLifetime);
     }
 }

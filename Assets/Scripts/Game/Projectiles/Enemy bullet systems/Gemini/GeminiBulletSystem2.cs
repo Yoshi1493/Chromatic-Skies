@@ -22,7 +22,7 @@ public class GeminiBulletSystem2 : EnemyShooter<EnemyBullet>
         while (enabled)
         {
             SetSubsystemEnabled(1);
-            yield return WaitForSeconds(2f);
+            yield return WaitForSeconds(1f);
 
             for (int i = 0; i < WaveCount; i++)
             {
@@ -46,7 +46,7 @@ public class GeminiBulletSystem2 : EnemyShooter<EnemyBullet>
                 yield return WaitForSeconds(ShootingCooldown);
             }
 
-            yield return WaitForSeconds(1f);
+            yield return WaitForSeconds(3f);
         }
     }
 }
