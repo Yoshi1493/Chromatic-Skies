@@ -43,7 +43,7 @@ public class CapricornBulletSystem1 : EnemyShooter<EnemyBullet>
                 yield return WaitForSeconds(1f);
             }
 
-            //SetSubsystemEnabled(1);
+            SetSubsystemEnabled(1);
             yield return WaitForSeconds(2f);
         }
     }
