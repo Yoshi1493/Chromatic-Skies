@@ -5,8 +5,8 @@ using static CoroutineHelper;
 
 public class PiscesBulletSystem6 : EnemyShooter<EnemyBullet>
 {
-    const int WaveWaveCount = 3;
-    const float WaveWaveSpacing = BranchSpacing / 2;
+    const int RepeatCount = 3;
+    const float RepeatSpacing = BranchSpacing / 2;
     const int WaveCount = 12;
     const float WaveSpacing = 360f / WaveCount;
     const int BranchCount = 6;
@@ -27,11 +27,11 @@ public class PiscesBulletSystem6 : EnemyShooter<EnemyBullet>
         SetSubsystemEnabled(1);
         SetSubsystemEnabled(2);
 
-        List<EnemyBullet> bullets = new(WaveWaveCount * WaveCount * BranchCount * BulletCount);
+        List<EnemyBullet> bullets = new(RepeatCount * WaveCount * BranchCount * BulletCount);
 
         while (enabled)
         {
-            for (int i = 0; i < WaveWaveCount; i++)
+            for (int i = 0; i < RepeatCount; i++)
             {
                 for (int ii = 0; ii < WaveCount; ii++)
                 {
@@ -39,15 +39,15 @@ public class PiscesBulletSystem6 : EnemyShooter<EnemyBullet>
 
                     for (int iii = 0; iii < BranchCount; iii++)
                     {
-                        Vector3 v1 = transform.up.RotateVectorBy((i * WaveWaveSpacing) + (iii * BranchSpacing));
-                        Vector3 v2 = transform.up.RotateVectorBy((i * WaveWaveSpacing) + ((iii + 1) * BranchSpacing));
+                        Vector3 v1 = transform.up.RotateVectorBy((i * RepeatSpacing) + (iii * BranchSpacing));
+                        Vector3 v2 = transform.up.RotateVectorBy((i * RepeatSpacing) + ((iii + 1) * BranchSpacing));
 
                         for (int iv = 0; iv < BulletCount; iv++)
                         {
                             float z = iv * BulletSpacing;
                             Vector3 pos = (BulletSpawnRadius + (i * SpawnRadiusModifier)) * Vector3.Lerp(v1, v2, t);
 
-                            bulletData.colour = bulletData.gradient.Evaluate(i / (WaveWaveCount - 1f));
+                            bulletData.colour = bulletData.gradient.Evaluate(i / (RepeatCount - 1f));
                             bullets.Add(SpawnProjectile(0, z, pos));
                         }
                     }
@@ -56,7 +56,7 @@ public class PiscesBulletSystem6 : EnemyShooter<EnemyBullet>
                 }
             }
 
-            for (int i = WaveWaveCount - 1; i >= 0; i--)
+            for (int i = RepeatCount - 1; i >= 0; i--)
             {
                 for (int ii = 0; ii < WaveCount * BranchCount * BulletCount; ii++)
                 {

@@ -4,7 +4,7 @@ using static CoroutineHelper;
 
 public class CapricornBulletSystem6 : EnemyShooter<EnemyBullet>
 {
-    const int WaveWaveCount = 2;
+    const int RepeatCount = 2;
     const int WaveCount = 12;
     const float WaveSpacing = 10f;
     const int BranchCount = 4;
@@ -24,7 +24,7 @@ public class CapricornBulletSystem6 : EnemyShooter<EnemyBullet>
 
             yield return WaitForSeconds(1.5f);
 
-            for (int i = 0; i < WaveWaveCount; i++)
+            for (int i = 0; i < RepeatCount; i++)
             {
                 for (int ii = 0; ii < WaveCount; ii++)
                 {
