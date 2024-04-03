@@ -5,14 +5,14 @@ using static CoroutineHelper;
 public class CapricornBulletSystem31 : EnemyShooter<EnemyBullet>
 {
     const int WaveCount = 3;
-    const int BulletCount = 30;
+    const int BulletCount = 24;
     const float BulletSpacing = 360f / BulletCount;
     const float BulletBaseSpeed = 2f;
-    const float BulletSpeedModifier = 0.4f;
+    const float BulletSpeedModifier = 0.5f;
     const float BulletRotationSpeed = 90f;
-    const float BulletRotationDuration = 9f;
+    const float BulletRotationDuration = 8f;
 
-    protected override float ShootingCooldown => 0.3f;
+    protected override float ShootingCooldown => 0.5f;
 
     protected override IEnumerator Shoot()
     {

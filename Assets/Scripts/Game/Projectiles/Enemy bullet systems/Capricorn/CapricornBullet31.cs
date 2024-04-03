@@ -6,6 +6,6 @@ public class CapricornBullet31 : EnemyBullet
 
     protected override IEnumerator Move()
     {
-        yield break;
+        yield return null;
     }
 }

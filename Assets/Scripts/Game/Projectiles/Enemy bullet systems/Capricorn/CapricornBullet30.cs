@@ -7,6 +7,6 @@ public class CapricornBullet30 : EnemyBullet
     protected override IEnumerator Move()
     {
         float startSpeed = MoveSpeed;
-        yield return this.LerpSpeed(startSpeed, 2f, 1f);
+        yield return this.LerpSpeed(startSpeed, startSpeed / 2f, 1f);
     }
 }
