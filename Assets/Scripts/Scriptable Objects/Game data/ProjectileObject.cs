@@ -17,4 +17,7 @@ public class ProjectileObject : ScriptableObject
 
     [Header("Properties")]
     public bool destructible = true;
+
+    [Header("Particle system")]
+    public StringObject particleSystemName;
 }

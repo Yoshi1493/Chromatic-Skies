@@ -1989,6 +1989,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad22c8c6ac5632d47995377408a885eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  visualEffects:
+    m_keys:
+    - {fileID: 11400000, guid: 920cea33377f8264fa05fd6bf591f3b3, type: 2}
+    m_values:
+    - {fileID: 4871711780863809610, guid: 72371bdf7ef046347846842dec78b109, type: 3}
   visualEffect: {fileID: 4871711780863809610, guid: 72371bdf7ef046347846842dec78b109, type: 3}
 --- !u!4 &998017424
 Transform:

@@ -74,7 +74,7 @@ public abstract class Projectile : Actor
     protected void SpawnDestructionParticles(Vector3 spawnPos, float spawnRotZ)
     {
         //grab particle obj from pool; get VFX component
-        GameObject destructionParticles = VisualEffectPool.Instance.Get();
+        GameObject destructionParticles = VisualEffectPool.Instance.Get(projectileData.particleSystemName);
         var particleEffect = destructionParticles.GetComponent<ParticleEffect>();
 
         //set spawn pos+rot

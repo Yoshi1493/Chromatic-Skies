@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,7 +7,8 @@ public class VisualEffectPool : MonoBehaviour
     public static VisualEffectPool Instance { get; private set; }
 
     readonly Queue<GameObject> vfxPool = new Queue<GameObject>();
-    [SerializeField] GameObject visualEffect;
+
+    [SerializeField] StringobjectGameobjectDictionary visualEffects;
 
     void Awake()
     {
@@ -18,7 +20,7 @@ public class VisualEffectPool : MonoBehaviour
         vfxPool.Clear();
     }
 
-    public GameObject Get()
+    public GameObject Get(StringObject key)
     {
         if (vfxPool.Count > 0)
         {
@@ -26,7 +28,7 @@ public class VisualEffectPool : MonoBehaviour
         }
         else
         {
-            GameObject newEffect = Instantiate(visualEffect, transform);
+            GameObject newEffect = Instantiate(visualEffects[key], transform);
             Disable(newEffect);
 
             return newEffect;
@@ -44,4 +46,10 @@ public class VisualEffectPool : MonoBehaviour
         go.SetActive(false);
         go.GetComponent<ParticleEffect>().enabled = false;
     }
+}
+
+[Serializable]
+public class StringobjectGameobjectDictionary : SerializableDictionary<StringObject, GameObject>
+{
+
 }
