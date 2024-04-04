@@ -47,3 +47,4 @@ MonoBehaviour:
   ID: 4
   Power: {fileID: 11400000, guid: 2f946bc0b32947f468ba6cc9ee2e3f3c, type: 2}
   destructible: 1
+  particleSystemName: {fileID: 11400000, guid: 920cea33377f8264fa05fd6bf591f3b3, type: 2}

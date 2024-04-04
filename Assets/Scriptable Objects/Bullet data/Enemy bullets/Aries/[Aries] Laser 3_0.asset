@@ -46,3 +46,5 @@ MonoBehaviour:
     m_NumAlphaKeys: 2
   ID: 0
   Power: {fileID: 11400000, guid: 6059f9293aa347b44a73714bea5bfcd3, type: 2}
+  destructible: 1
+  particleSystemName: {fileID: 11400000, guid: 920cea33377f8264fa05fd6bf591f3b3, type: 2}

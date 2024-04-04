@@ -44,5 +44,7 @@ MonoBehaviour:
     m_Mode: 0
     m_NumColorKeys: 2
     m_NumAlphaKeys: 2
-  BulletID: 0
+  ID: 0
   Power: {fileID: 11400000, guid: c9057bec88714fb4b9df3546afd3e41d, type: 2}
+  destructible: 1
+  particleSystemName: {fileID: 11400000, guid: 920cea33377f8264fa05fd6bf591f3b3, type: 2}
