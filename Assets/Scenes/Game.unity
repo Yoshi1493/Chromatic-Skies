@@ -2049,8 +2049,10 @@ MonoBehaviour:
   visualEffects:
     m_keys:
     - {fileID: 11400000, guid: 920cea33377f8264fa05fd6bf591f3b3, type: 2}
+    - {fileID: 11400000, guid: 10e837bf30bc3114c9b8d67f307ce2c0, type: 2}
     m_values:
     - {fileID: 4871711780863809610, guid: 72371bdf7ef046347846842dec78b109, type: 3}
+    - {fileID: 6386439018246168992, guid: 131b7ce96edc2384c800520d6e96088a, type: 3}
 --- !u!4 &998017424
 Transform:
   m_ObjectHideFlags: 0
