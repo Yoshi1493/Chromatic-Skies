@@ -32,8 +32,6 @@ public class ParticleEffect : MonoBehaviour
     protected virtual IEnumerator Play()
     {
         ParticleSystem.SendEvent(OnPlayEventID);
-
-        yield return WaitUntil(() => ParticleSystem.aliveParticleCount == 0);
-        ProjectileDestructionEffectPool.Instance.ReturnToPool(gameObject);
+        yield return null;
     }
 }
