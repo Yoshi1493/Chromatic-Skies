@@ -6,13 +6,15 @@ public class VisualEffectPool : MonoBehaviour
 {
     public static VisualEffectPool Instance { get; private set; }
 
-    readonly Queue<GameObject> vfxPool = new Queue<GameObject>();
+    readonly Queue<GameObject> vfxPool = new();
+    new Transform transform;
 
     [SerializeField] StringobjectGameobjectDictionary visualEffects;
 
     void Awake()
     {
         Instance = this;
+        transform = GetComponent<Transform>();
     }
 
     public void DrainPool()

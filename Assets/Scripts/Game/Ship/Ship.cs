@@ -45,6 +45,7 @@ public abstract class Ship : Actor
 
     IEnumerator loseLifeCoroutine;
     IEnumerator invincibilityCoroutine;
+    IEnumerator deathCoroutine;
 
     protected override void Awake()
     {

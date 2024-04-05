@@ -1,8 +1,9 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.VFX;
+using static CoroutineHelper;
 
-public abstract class ParticleEffect : MonoBehaviour
+public class ParticleEffect : MonoBehaviour
 {
     public VisualEffect ParticleSystem { get; protected set; }
     protected IEnumerator particleAnimation;
@@ -14,6 +15,11 @@ public abstract class ParticleEffect : MonoBehaviour
         ParticleSystem = GetComponent<VisualEffect>();
     }
 
+    protected void OnEnable()
+    {
+        PlayAnimation();
+    }
+
     protected void PlayAnimation()
     {
         if (particleAnimation != null)
@@ -23,5 +29,11 @@ public abstract class ParticleEffect : MonoBehaviour
         StartCoroutine(particleAnimation);
     }
 
-    protected abstract IEnumerator Play();
+    protected virtual IEnumerator Play()
+    {
+        ParticleSystem.SendEvent(OnPlayEventID);
+
+        yield return WaitUntil(() => ParticleSystem.aliveParticleCount == 0);
+        VisualEffectPool.Instance.ReturnToPool(gameObject);
+    }
 }

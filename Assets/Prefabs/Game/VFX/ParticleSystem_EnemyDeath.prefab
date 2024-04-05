@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1751107627802703509}
   - component: {fileID: 5141912974891289393}
   - component: {fileID: 9194908056613383633}
+  - component: {fileID: 4444096429546158947}
   m_Layer: 0
   m_Name: ParticleSystem_EnemyDeath
   m_TagString: Untagged
@@ -110,3 +111,15 @@ VFXRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!114 &4444096429546158947
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6386439018246168992}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 205ee5e8ebf904c46b636bec5e923ef7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

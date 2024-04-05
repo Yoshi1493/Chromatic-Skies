@@ -3,11 +3,6 @@ using static CoroutineHelper;
 
 public class PSProjectileDestruction : ParticleEffect
 {
-    void OnEnable()
-    {
-        PlayAnimation();
-    }
-
     protected override IEnumerator Play()
     {
         ParticleSystem.SendEvent(OnPlayEventID);
