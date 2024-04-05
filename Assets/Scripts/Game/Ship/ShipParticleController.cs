@@ -4,7 +4,7 @@ public class ShipParticleController : MonoBehaviour
 {
     Enemy enemy;
 
-    [SerializeField] StringObject enemyDeathParticleName;
+    [SerializeField] GameObject enemyDeathParticleEffect;
 
     void Awake()
     {
@@ -14,11 +14,10 @@ public class ShipParticleController : MonoBehaviour
 
     void OnEnemyDeath()
     {
-        GameObject enemyDeathParticles = VisualEffectPool.Instance.Get(enemyDeathParticleName);
-        var particleEffect = enemyDeathParticles.GetComponent<ParticleEffect>();
+        var vfx = Instantiate(enemyDeathParticleEffect, enemy.transform);
+        var particleEffect = vfx.GetComponent<ParticleEffect>();
 
-        enemyDeathParticles.transform.position = enemy.transform.position;
-        enemyDeathParticles.SetActive(true);
+        vfx.SetActive(true);
 
         particleEffect.ParticleSystem.SetVector4("ParticleColour", enemy.shipData.UIColour.value);
         particleEffect.enabled = true;

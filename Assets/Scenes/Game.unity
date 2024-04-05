@@ -1989,13 +1989,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad22c8c6ac5632d47995377408a885eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  visualEffects:
-    m_keys:
-    - {fileID: 11400000, guid: 920cea33377f8264fa05fd6bf591f3b3, type: 2}
-    - {fileID: 11400000, guid: 10e837bf30bc3114c9b8d67f307ce2c0, type: 2}
-    m_values:
-    - {fileID: 4871711780863809610, guid: 72371bdf7ef046347846842dec78b109, type: 3}
-    - {fileID: 6386439018246168992, guid: 131b7ce96edc2384c800520d6e96088a, type: 3}
+  vfx: {fileID: 4871711780863809610, guid: 72371bdf7ef046347846842dec78b109, type: 3}
 --- !u!4 &998017424
 Transform:
   m_ObjectHideFlags: 0
@@ -2489,7 +2483,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b06ad9f8fe0f0cb4b902ecef4374b31d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyDeathParticleName: {fileID: 11400000, guid: 10e837bf30bc3114c9b8d67f307ce2c0, type: 2}
+  enemyDeathParticleEffect: {fileID: 6386439018246168992, guid: 131b7ce96edc2384c800520d6e96088a, type: 3}
 --- !u!1 &1111022772
 GameObject:
   m_ObjectHideFlags: 0

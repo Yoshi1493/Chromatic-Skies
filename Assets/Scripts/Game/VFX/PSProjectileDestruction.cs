@@ -14,6 +14,6 @@ public class PSProjectileDestruction : ParticleEffect
         }
 
         yield return WaitUntil(() => ParticleSystem.aliveParticleCount == 0);
-        VisualEffectPool.Instance.ReturnToPool(gameObject);
+        ProjectileDestructionEffectPool.Instance.ReturnToPool(gameObject);
     }
 }
