@@ -1,7 +1,6 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.VFX;
-using static CoroutineHelper;
 
 public class ParticleEffect : MonoBehaviour
 {
