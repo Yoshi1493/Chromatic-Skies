@@ -2483,6 +2483,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b06ad9f8fe0f0cb4b902ecef4374b31d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerLoseLifeParticleEffect: {fileID: 817555664809881051, guid: ac4c96479f7f86e478320abf1ca4fe7d, type: 3}
   enemyDeathParticleEffect: {fileID: 6386439018246168992, guid: 131b7ce96edc2384c800520d6e96088a, type: 3}
 --- !u!1 &1111022772
 GameObject:
