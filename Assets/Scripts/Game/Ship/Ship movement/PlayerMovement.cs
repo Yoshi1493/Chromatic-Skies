@@ -62,12 +62,13 @@ public class PlayerMovement : ShipMovement<Player>
 
     protected override void OnLoseLife()
     {
-        currentSpeed = 0f;
+        MovementSlowAction?.Invoke(false);
+        enabled = false;
     }
 
     protected void OnRespawn()
     {
-        currentSpeed = shipData.MovementSpeed.Value;
+        enabled = true;
     }
 
     void OnGamePaused(bool state)
