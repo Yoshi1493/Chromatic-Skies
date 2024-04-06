@@ -50,9 +50,7 @@ public abstract class Ship : Actor
     protected override void Awake()
     {
         base.Awake();
-
         InitShipData();
-        DeathAction += Die;
     }
 
     void InitShipData()
@@ -101,7 +99,13 @@ public abstract class Ship : Actor
 
         if (currentLives <= 0)
         {
-            DeathAction?.Invoke();
+            if (deathCoroutine != null)
+            {
+                StopCoroutine(deathCoroutine);
+            }
+
+            deathCoroutine = Die();
+            StartCoroutine(deathCoroutine);
         }
         //only perform if ship still has lives
         else
@@ -120,7 +124,14 @@ public abstract class Ship : Actor
         currentHealth = shipData.MaxHealth.Value;
     }
 
-    protected abstract void Die();
+    protected virtual IEnumerator Die()
+    {
+        DeathAction?.Invoke();
+
+        yield return WaitForSeconds(2f);
+
+        spriteRenderer.enabled = false;
+    }
 
     //called when enemy transition to next attack pattern, and when player receives damage
     public void SetInvincible(float duration)

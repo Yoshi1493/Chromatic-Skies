@@ -17,6 +17,8 @@ public class PlayerShooter : Shooter<PlayerBullet>
     {
         base.Awake();
         FindObjectOfType<PauseHandler>().GamePauseAction += OnGamePaused;
+
+        ownerShip.RespawnAction += OnRespawn;
     }
 
     void Start()
@@ -55,5 +57,16 @@ public class PlayerShooter : Shooter<PlayerBullet>
     void OnGamePaused(bool state)
     {
         enabled = !state;
+    }
+
+    protected override void OnLoseLife()
+    {
+        base.OnLoseLife();
+        enabled = false;
+    }
+
+    void OnRespawn()
+    {
+        enabled = true;
     }
 }

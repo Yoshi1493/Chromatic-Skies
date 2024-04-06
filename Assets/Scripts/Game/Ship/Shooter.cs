@@ -13,8 +13,10 @@ public abstract class Shooter<TProjectile> : MonoBehaviour
     protected virtual void Awake()
     {
         transform = GetComponent<Transform>();
+
         ownerShip = GetComponentInParent<Ship>();
         ownerShip.LoseLifeAction += OnLoseLife;
+        ownerShip.DeathAction += OnDie;
     }
 
     protected abstract IEnumerator Shoot();
@@ -47,5 +49,10 @@ public abstract class Shooter<TProjectile> : MonoBehaviour
     protected virtual void OnLoseLife()
     {
         DestroyAllProjectiles();
+    }
+
+    protected virtual void OnDie()
+    {
+        enabled = false;
     }
 }

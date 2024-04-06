@@ -20,10 +20,4 @@ public class Player : Ship
     {
         SetInvincible(1f);
     }
-
-    protected override void Die()
-    {
-        spriteRenderer.enabled = false;
-        enabled = false;
-    }
 }

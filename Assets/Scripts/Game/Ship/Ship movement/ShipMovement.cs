@@ -13,6 +13,7 @@ public abstract class ShipMovement<TShip> : MonoBehaviour
     {
         parentShip = GetComponentInParent<TShip>();
         parentShip.LoseLifeAction += OnLoseLife;
+        parentShip.DeathAction += OnDie;
 
         currentSpeed = shipData.MovementSpeed.Value;
     }
@@ -28,4 +29,9 @@ public abstract class ShipMovement<TShip> : MonoBehaviour
     }
 
     protected abstract void OnLoseLife();
+
+    void OnDie()
+    {
+        enabled = false;
+    }
 }

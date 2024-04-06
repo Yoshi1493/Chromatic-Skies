@@ -186,8 +186,9 @@ public class Enemy : Ship
         return movementSystems[shipData.MaxLives.Value - currentLives];
     }
 
-    protected override void Die()
+    protected override IEnumerator Die()
     {
-        //gameObject.SetActive(false);
+        yield return base.Die();
+        enabled = false;
     }
 }
