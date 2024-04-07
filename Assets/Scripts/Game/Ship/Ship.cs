@@ -128,7 +128,7 @@ public abstract class Ship : Actor
     {
         DeathAction?.Invoke();
 
-        yield return WaitForSeconds(2f);
+        yield return WaitForSeconds(1.5f);
 
         spriteRenderer.enabled = false;
     }
