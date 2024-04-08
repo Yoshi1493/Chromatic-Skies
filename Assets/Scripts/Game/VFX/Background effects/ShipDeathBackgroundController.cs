@@ -6,7 +6,7 @@ public class ShipDeathBackgroundController : MonoBehaviour
 {
     SpriteRenderer backgroundImage;
     IEnumerator backgroundFadeCoroutine;
-    const float FadeAnimation = 2f;
+    const float FadeDuration = 2f;
 
     [SerializeField] AnimationCurve fadeInterpolation;
 
@@ -51,10 +51,10 @@ public class ShipDeathBackgroundController : MonoBehaviour
 
         float currentLerpTime = 0f;
 
-        while (currentLerpTime < FadeAnimation)
+        while (currentLerpTime < FadeDuration)
         {
-            float t = fadeInterpolation.Evaluate(currentLerpTime / FadeAnimation);
-            print(t);
+            float t = fadeInterpolation.Evaluate(currentLerpTime / FadeDuration);
+
             Color c = backgroundImage.color;
             c.a = Mathf.Lerp(0f, 1f, t);
             backgroundImage.color = c;            
