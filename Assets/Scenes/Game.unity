@@ -2678,6 +2678,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerLoseLifeParticleEffect: {fileID: 817555664809881051, guid: ac4c96479f7f86e478320abf1ca4fe7d, type: 3}
+  playerRespawnParticleEffect: {fileID: 4902889002007213085, guid: 49b7547477d5aac488d2f2bbbbc2cc29, type: 3}
   enemyDeathParticleEffect: {fileID: 6386439018246168992, guid: 131b7ce96edc2384c800520d6e96088a, type: 3}
 --- !u!1 &1111022772
 GameObject:

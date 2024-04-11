@@ -6,6 +6,7 @@ public class ShipParticleController : MonoBehaviour
     Enemy enemy;
 
     [SerializeField] GameObject playerLoseLifeParticleEffect;
+    [SerializeField] GameObject playerRespawnParticleEffect;
     [SerializeField] GameObject enemyDeathParticleEffect;
 
     void Awake()
@@ -20,6 +21,21 @@ public class ShipParticleController : MonoBehaviour
     void OnPlayerLoseLife()
     {
         var vfx = Instantiate(playerLoseLifeParticleEffect, transform);
+        vfx.transform.position = player.transform.position;
+
+        var particleEffect = vfx.GetComponent<ParticleEffect>();
+        particleEffect.ParticleSystem.SetVector4("ParticleColour", player.shipData.UIColour.value);
+        particleEffect.enabled = true;
+
+        if (player.currentLives > 0)
+        {
+            OnPlayerRespawn();
+        }
+    }
+
+    void OnPlayerRespawn()
+    {
+        var vfx = Instantiate(playerRespawnParticleEffect, transform);
         vfx.transform.position = player.transform.position;
 
         var particleEffect = vfx.GetComponent<ParticleEffect>();
