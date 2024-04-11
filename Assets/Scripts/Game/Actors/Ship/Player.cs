@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class Player : Ship
 {
+    public override float RespawnTime => 2f;
+
     protected override void Awake()
     {
         base.Awake();

@@ -15,13 +15,17 @@ public class Enemy : Ship
     public event Action<int> StartAttackAction;
     IEnumerator systemResetCoroutine;
 
+    Player player;
+
     protected override void Awake()
     {
         base.Awake();
         spriteRenderer.color = shipData.UIColour.value;                 //debug
 
         ValidateAttackSystems();
-        FindObjectOfType<Player>().LoseLifeAction += OnPlayerLoseLife;
+
+        player = FindObjectOfType<Player>();
+        player.LoseLifeAction += OnPlayerLoseLife;
     }
 
     void ValidateAttackSystems()
@@ -96,7 +100,7 @@ public class Enemy : Ship
     {
         int currentSystemIndex = shipData.MaxLives.Value - currentLives;
 
-        SetInvincible(1f);
+        SetInvincible(player.RespawnTime);
 
         if (systemResetCoroutine != null)
         {
@@ -134,7 +138,7 @@ public class Enemy : Ship
         currentMovementSystem.StopAllCoroutines();
         currentMovementSystem.enabled = false;
 
-        yield return WaitForSeconds(RespawnTime);
+        yield return WaitForSeconds(player.RespawnTime);
 
         nextBulletSystem.SetEnabled(true);
         nextMovementSystem.enabled = true;

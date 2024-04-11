@@ -26,7 +26,7 @@ public abstract class Ship : Actor
         }
     }
 
-    protected const float RespawnTime = 2f;
+    public virtual float RespawnTime => 1f;
 
     #endregion
 
