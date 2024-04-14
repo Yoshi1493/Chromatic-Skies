@@ -59,7 +59,7 @@ public class Enemy : Ship
             StopCoroutine(systemResetCoroutine);
         }
 
-        systemResetCoroutine = RefreshEnemySystems(0);
+        systemResetCoroutine = RefreshEnemySystems(0, RespawnTime);
         StartCoroutine(systemResetCoroutine);
     }
 
@@ -88,7 +88,7 @@ public class Enemy : Ship
                 StopCoroutine(systemResetCoroutine);
             }
 
-            systemResetCoroutine = RefreshEnemySystems(currentSystemIndex);
+            systemResetCoroutine = RefreshEnemySystems(currentSystemIndex, RespawnTime);
             yield return systemResetCoroutine;
 
             Respawn();
@@ -107,11 +107,11 @@ public class Enemy : Ship
             StopCoroutine(systemResetCoroutine);
         }
 
-        systemResetCoroutine = RefreshEnemySystems(currentSystemIndex);
+        systemResetCoroutine = RefreshEnemySystems(currentSystemIndex, player.RespawnTime);
         StartCoroutine(systemResetCoroutine);
     }
 
-    IEnumerator RefreshEnemySystems(int currentSystemIndex)
+    IEnumerator RefreshEnemySystems(int currentSystemIndex, float refreshTime)
     {
         List<IEnemyAttack> currentBulletSystems = GetCurrentBulletSystem();
         EnemyMovement currentMovementSystem = GetCurrentMovementSystem();
@@ -138,7 +138,7 @@ public class Enemy : Ship
         currentMovementSystem.StopAllCoroutines();
         currentMovementSystem.enabled = false;
 
-        yield return WaitForSeconds(player.RespawnTime);
+        yield return WaitForSeconds(refreshTime);
 
         nextBulletSystem.SetEnabled(true);
         nextMovementSystem.enabled = true;
