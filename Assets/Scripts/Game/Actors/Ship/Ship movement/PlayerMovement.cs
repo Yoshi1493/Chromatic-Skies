@@ -69,6 +69,7 @@ public class PlayerMovement : ShipMovement<Player>
     protected void OnRespawn()
     {
         enabled = true;
+        MovementSlowAction?.Invoke(Input.GetButton("Slow"));
     }
 
     void OnGamePaused(bool state)
