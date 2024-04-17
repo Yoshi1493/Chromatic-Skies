@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2174148719222663681}
   - component: {fileID: 2505503086303961681}
   - component: {fileID: 4439435966700346861}
-  - component: {fileID: 367561929272061434}
+  - component: {fileID: 5977817567091468496}
   m_Layer: 0
   m_Name: ParticleSystem_PlayerRespawn
   m_TagString: Untagged
@@ -43,7 +43,7 @@ VisualEffect:
   m_GameObject: {fileID: 4902889002007213085}
   m_Enabled: 1
   m_Asset: {fileID: 8926484042661614526, guid: 41b4e58fe8f7f334fa87b18d0fb2296e, type: 3}
-  m_InitialEventName: OnPlay
+  m_InitialEventName: 
   m_InitialEventNameOverriden: 0
   m_StartSeed: 0
   m_ResetSeedOnPlay: 1
@@ -57,9 +57,9 @@ VisualEffect:
       m_Array: []
     m_Vector4f:
       m_Array:
-      - m_Value: {x: 1, y: 0, z: 1, w: 1}
+      - m_Value: {x: 0, y: 0, z: 0, w: 1}
         m_Name: ParticleColour
-        m_Overridden: 1
+        m_Overridden: 0
     m_Uint:
       m_Array: []
     m_Int:
@@ -114,7 +114,7 @@ VFXRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!114 &367561929272061434
+--- !u!114 &5977817567091468496
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -123,6 +123,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 4902889002007213085}
   m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 205ee5e8ebf904c46b636bec5e923ef7, type: 3}
+  m_Script: {fileID: 11500000, guid: 80fd22c3b067d834da64e19b32a0ca2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

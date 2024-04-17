@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Player : Ship
 {
-    public override float RespawnTime => 2f;
+    public override float RespawnTime => 3f;
 
     protected override void Awake()
     {
