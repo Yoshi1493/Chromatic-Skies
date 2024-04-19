@@ -107,5 +107,13 @@ PrefabInstance:
       propertyPath: shootingSpeed.OriginalValue
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 8270436838194968687, guid: c97d5c4695dca31449990c95a6810900, type: 3}
+      propertyPath: m_Asset
+      value: 
+      objectReference: {fileID: 8926484042661614526, guid: 41b4e58fe8f7f334fa87b18d0fb2296e, type: 3}
+    - target: {fileID: 9176438843307049145, guid: c97d5c4695dca31449990c95a6810900, type: 3}
+      propertyPath: m_Asset
+      value: 
+      objectReference: {fileID: 8926484042661614526, guid: 41b4e58fe8f7f334fa87b18d0fb2296e, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c97d5c4695dca31449990c95a6810900, type: 3}

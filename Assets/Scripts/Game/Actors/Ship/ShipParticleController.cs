@@ -1,55 +1,45 @@
 using UnityEngine;
+using UnityEngine.VFX;
 
 public class ShipParticleController : MonoBehaviour
 {
-    Player player;
-    Enemy enemy;
+    Ship ship;
 
-    [SerializeField] GameObject playerLoseLifeParticleEffect;
-    [SerializeField] GameObject playerRespawnParticleEffect;
-    [SerializeField] GameObject enemyDeathParticleEffect;
+    [SerializeField] VisualEffect loseLifeVFX;
+    [SerializeField] VisualEffect respawnVFX;
+    [SerializeField] VisualEffect deathVFX;
+    [SerializeField] VisualEffect invincibleVFX;
 
     void Awake()
     {
-        player = FindObjectOfType<Player>();
-        player.LoseLifeAction += OnPlayerLoseLife;
+        ship = GetComponentInParent<Ship>();
 
-        enemy = FindObjectOfType<Enemy>();
-        enemy.DeathAction += OnEnemyDeath;
+        ship.LoseLifeAction += OnShipLoseLife;
+        ship.RespawnAction += OnShipRespawn;
+        ship.DeathAction += OnShipDeath;
+        ship.InvincibleAction += OnShipInvincible;
+
+        loseLifeVFX.SetVector4("ParticleColour", ship.shipData.UIColour.value);
+        deathVFX.SetVector4("ParticleColour", ship.shipData.UIColour.value);
     }
 
-    void OnPlayerLoseLife()
+    void OnShipLoseLife()
     {
-        var vfx = Instantiate(playerLoseLifeParticleEffect, transform);
-        vfx.transform.position = player.transform.position;
-
-        var particleEffect = vfx.GetComponent<ParticleEffect>();
-        particleEffect.ParticleSystem.SetVector4("ParticleColour", player.shipData.UIColour.value);
-        particleEffect.enabled = true;
-
-        if (player.currentLives > 0)
-        {
-            OnPlayerRespawn();
-        }
+        loseLifeVFX.SendEvent("OnPlay");
     }
 
-    void OnPlayerRespawn()
+    void OnShipRespawn()
     {
-        var vfx = Instantiate(playerRespawnParticleEffect, transform);
-        vfx.transform.position = player.transform.position;
-
-        var particleEffect = vfx.GetComponent<ParticleEffect>();
-        particleEffect.ParticleSystem.SetVector4("ParticleColour", player.shipData.UIColour.value);
-        particleEffect.enabled = true;
+        respawnVFX.SendEvent("OnPlay");
     }
 
-    void OnEnemyDeath()
+    void OnShipDeath()
     {
-        var vfx = Instantiate(enemyDeathParticleEffect, transform);
-        vfx.transform.position = enemy.transform.position;
+        deathVFX.SendEvent("OnPlay");
+    }
 
-        var particleEffect = vfx.GetComponent<ParticleEffect>();
-        particleEffect.ParticleSystem.SetVector4("ParticleColour", enemy.shipData.UIColour.value);
-        particleEffect.enabled = true;
+    void OnShipInvincible(bool state)
+    {
+        invincibleVFX.SendEvent("OnPlay");
     }
 }

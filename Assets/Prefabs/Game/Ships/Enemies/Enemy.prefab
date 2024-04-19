@@ -457,6 +457,14 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2178705396964388797, guid: 2ad3a7352f03714438318db50497c30d, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6322595668878791970, guid: 2ad3a7352f03714438318db50497c30d, type: 3}
+      propertyPath: m_Asset
+      value: 
+      objectReference: {fileID: 8926484042661614526, guid: 97169f2b5b23a9e4e903a47dfa1f1c5a, type: 3}
     - target: {fileID: 6593195506016961493, guid: 2ad3a7352f03714438318db50497c30d, type: 3}
       propertyPath: m_Name
       value: Enemy
@@ -560,7 +568,6 @@ MonoBehaviour:
   shipData: {fileID: 0}
   currentLives: 0
   currentHealth: 0
-  invincible: 0
   bulletSystemContainer: {fileID: 0}
   movementSystemContainer: {fileID: 0}
 --- !u!114 &8286456681555174493

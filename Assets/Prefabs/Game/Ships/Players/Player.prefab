@@ -238,6 +238,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2178705396964388797, guid: 2ad3a7352f03714438318db50497c30d, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3061824186324127051, guid: 2ad3a7352f03714438318db50497c30d, type: 3}
+      propertyPath: m_Asset
+      value: 
+      objectReference: {fileID: 8926484042661614526, guid: 5415a4c800f84a54387975a54d765db8, type: 3}
     - target: {fileID: 6593195506016961493, guid: 2ad3a7352f03714438318db50497c30d, type: 3}
       propertyPath: m_Name
       value: Player
@@ -376,4 +384,3 @@ MonoBehaviour:
   shipData: {fileID: 0}
   currentLives: 0
   currentHealth: 0
-  invincible: 0
