@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5322e63351506b64582b9fa52242d1a0, type: 3}
   m_Name: '[Red] UI colour'
   m_EditorClassIdentifier: 
-  value: {r: 1, g: 0.16666667, b: 0, a: 1}
+  value: {r: 1, g: 0.10000001, b: 0, a: 1}
