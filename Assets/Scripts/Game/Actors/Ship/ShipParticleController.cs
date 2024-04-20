@@ -15,31 +15,49 @@ public class ShipParticleController : MonoBehaviour
         ship = GetComponentInParent<Ship>();
 
         ship.LoseLifeAction += OnShipLoseLife;
-        ship.RespawnAction += OnShipRespawn;
         ship.DeathAction += OnShipDeath;
         ship.InvincibleAction += OnShipInvincible;
 
-        loseLifeVFX.SetVector4("ParticleColour", ship.shipData.UIColour.value);
-        deathVFX.SetVector4("ParticleColour", ship.shipData.UIColour.value);
+        if (loseLifeVFX.visualEffectAsset != null)
+        {
+            loseLifeVFX.SetVector4("ParticleColour", ship.shipData.UIColour.value);
+        }
+
+        if (deathVFX.visualEffectAsset != null)
+        {
+            deathVFX.SetVector4("ParticleColour", ship.shipData.UIColour.value);
+        }
     }
 
     void OnShipLoseLife()
     {
-        loseLifeVFX.SendEvent("OnPlay");
-    }
+        if (loseLifeVFX.visualEffectAsset != null)
+        {
+            loseLifeVFX.SendEvent("OnPlay");
+        }
 
-    void OnShipRespawn()
-    {
-        respawnVFX.SendEvent("OnPlay");
+        if (ship.currentLives > 0)
+        {
+            if (respawnVFX.visualEffectAsset != null)
+            {
+                respawnVFX.SendEvent("OnPlay");
+            }
+        }
     }
 
     void OnShipDeath()
     {
-        deathVFX.SendEvent("OnPlay");
+        if (deathVFX.visualEffectAsset != null)
+        {
+            deathVFX.SendEvent("OnPlay");
+        }
     }
 
     void OnShipInvincible(bool state)
     {
-        invincibleVFX.SendEvent("OnPlay");
+        if (invincibleVFX.visualEffectAsset != null)
+        {
+            invincibleVFX.SendEvent("OnPlay");
+        }
     }
 }
