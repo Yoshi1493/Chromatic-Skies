@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.VFX;
 
+[RequireComponent(typeof(Ship))]
 public class ShipParticleController : MonoBehaviour
 {
     Ship ship;
