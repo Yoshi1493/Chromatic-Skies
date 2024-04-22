@@ -34,6 +34,7 @@ public class ShipParticleController : MonoBehaviour
     {
         if (loseLifeVFX.visualEffectAsset != null)
         {
+            loseLifeVFX.Reinit();
             loseLifeVFX.SendEvent("OnPlay");
         }
 
@@ -41,6 +42,7 @@ public class ShipParticleController : MonoBehaviour
         {
             if (respawnVFX.visualEffectAsset != null)
             {
+                respawnVFX.Reinit();
                 respawnVFX.SendEvent("OnPlay");
             }
         }
@@ -50,6 +52,7 @@ public class ShipParticleController : MonoBehaviour
     {
         if (deathVFX.visualEffectAsset != null)
         {
+            deathVFX.Reinit();
             deathVFX.SendEvent("OnPlay");
         }
     }
@@ -58,6 +61,7 @@ public class ShipParticleController : MonoBehaviour
     {
         if (invincibleVFX.visualEffectAsset != null)
         {
+            invincibleVFX.Reinit();
             invincibleVFX.SendEvent("OnPlay");
         }
     }
