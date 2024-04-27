@@ -4155,7 +4155,7 @@ MonoBehaviour:
   AlphaComposition: 0
   SampleMode: 0
   Mode: 1
-  ColorMode: 1
+  ColorMode: 3
   channels: 6
 --- !u!114 &8926484042661615587
 MonoBehaviour:
@@ -4262,7 +4262,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: UnityEngine.Gradient, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"colorKeys":[{"color":{"r":0.7999999523162842,"g":4.0,"b":0.7999999523162842,"a":1.0},"time":0.0},{"color":{"r":0.21254903078079225,"g":0.7490196228027344,"b":0.15294116735458375,"a":1.0},"time":1.0}],"alphaKeys":[{"alpha":1.0,"time":0.0},{"alpha":1.0,"time":1.0}],"gradientMode":0}'
+      m_SerializableObject: '{"colorKeys":[{"color":{"r":0.7999999523162842,"g":4.0,"b":0.7999999523162842,"a":1.0},"time":0.0},{"color":{"r":0.6139989495277405,"g":0.7490196228027344,"b":0.5992156863212586,"a":1.0},"time":1.0}],"alphaKeys":[{"alpha":1.0,"time":0.0},{"alpha":1.0,"time":0.07647822052240372},{"alpha":0.0,"time":1.0}],"gradientMode":0}'
     m_Space: 2147483647
   m_Property:
     name: o
@@ -10857,7 +10857,7 @@ MonoBehaviour:
   m_InputSlots:
   - {fileID: 8926484042661616323}
   m_OutputSlots: []
-  m_Disabled: 0
+  m_Disabled: 1
   attribute: alpha
   Composition: 0
   AlphaComposition: 0
