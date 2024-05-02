@@ -6,6 +6,7 @@ public class ShipParticleController : MonoBehaviour
 {
     Ship ship;
 
+    [SerializeField] VisualEffect spawnVFX;
     [SerializeField] VisualEffect loseLifeVFX;
     [SerializeField] VisualEffect respawnVFX;
     [SerializeField] VisualEffect deathVFX;
