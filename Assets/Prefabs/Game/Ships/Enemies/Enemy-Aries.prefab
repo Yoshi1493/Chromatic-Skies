@@ -246,6 +246,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bullet System 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1136252800678040964, guid: d93cb44e21569f545b76560b29579f98, type: 3}
+      propertyPath: m_Asset
+      value: 
+      objectReference: {fileID: 8926484042661614526, guid: dd8173d7beee3eb439c78f619d4e8820, type: 3}
     - target: {fileID: 2164267929168977294, guid: d93cb44e21569f545b76560b29579f98, type: 3}
       propertyPath: shipData
       value: 
