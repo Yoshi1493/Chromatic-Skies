@@ -20,7 +20,7 @@ MonoBehaviour:
     x: 330
     y: -160
     width: 3346
-    height: 2035
+    height: 2002
 --- !u!114 &114350483966674976
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3273,7 +3273,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: UnityEditor.VFX.TArcTorus, Unity.VisualEffectGraph.Editor,
           Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"torus":{"transform":{"position":{"x":0.0,"y":1.0,"z":0.0},"angles":{"x":0.0,"y":0.0,"z":0.0},"scale":{"x":1.0,"y":1.0,"z":1.0}},"majorRadius":1.5,"minorRadius":0.75},"arc":6.2831854820251469}'
+      m_SerializableObject: '{"torus":{"transform":{"position":{"x":0.0,"y":1.0,"z":0.0},"angles":{"x":0.0,"y":0.0,"z":0.0},"scale":{"x":1.0,"y":1.0,"z":1.0}},"majorRadius":1.0,"minorRadius":0.5},"arc":6.2831854820251469}'
     m_Space: 0
   m_Property:
     name: arcTorus
@@ -3945,7 +3945,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
-      m_SerializableObject: 1
+      m_SerializableObject: 0.8
     m_Space: 2147483647
   m_Property:
     name: B
@@ -5390,9 +5390,9 @@ MonoBehaviour:
   m_Parent: {fileID: 114350483966674976}
   m_Children:
   - {fileID: 8926484042661615736}
+  - {fileID: 8926484042661615841}
   - {fileID: 8926484042661615790}
   - {fileID: 8926484042661615755}
-  - {fileID: 8926484042661615841}
   m_UIPosition: {x: 3252, y: 280}
   m_UICollapsed: 0
   m_UISuperCollapsed: 0
@@ -5963,7 +5963,7 @@ MonoBehaviour:
   m_UIIgnoredErrors: []
   m_Parent: {fileID: 114350483966674976}
   m_Children: []
-  m_UIPosition: {x: 3252, y: 1292}
+  m_UIPosition: {x: 3252, y: 1214}
   m_UICollapsed: 0
   m_UISuperCollapsed: 0
   m_InputSlots: []
@@ -6000,7 +6000,7 @@ MonoBehaviour:
   m_Children:
   - {fileID: 8926484042661615744}
   - {fileID: 8926484042661615747}
-  m_UIPosition: {x: 3252, y: 1423}
+  m_UIPosition: {x: 3252, y: 1345}
   m_UICollapsed: 0
   m_UISuperCollapsed: 0
   m_InputSlots:
@@ -6430,7 +6430,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: UnityEditor.VFX.TArcTorus, Unity.VisualEffectGraph.Editor,
           Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"torus":{"transform":{"position":{"x":0.0,"y":0.0,"z":0.0},"angles":{"x":0.0,"y":0.0,"z":0.0},"scale":{"x":1.0,"y":1.0,"z":1.0}},"majorRadius":2.5,"minorRadius":1.0},"arc":2.0}'
+      m_SerializableObject: '{"torus":{"transform":{"position":{"x":0.0,"y":0.0,"z":0.0},"angles":{"x":0.0,"y":0.0,"z":0.0},"scale":{"x":1.0,"y":1.0,"z":1.0}},"majorRadius":1.5,"minorRadius":1.0},"arc":2.0}'
     m_Space: 0
   m_Property:
     name: arcTorus
@@ -7031,7 +7031,7 @@ MonoBehaviour:
   m_UIIgnoredErrors: []
   m_Parent: {fileID: 114350483966674976}
   m_Children: []
-  m_UIPosition: {x: 2346, y: 859}
+  m_UIPosition: {x: 2354, y: 959}
   m_UICollapsed: 0
   m_UISuperCollapsed: 0
   m_InputSlots:
@@ -7160,7 +7160,7 @@ MonoBehaviour:
   m_UIIgnoredErrors: []
   m_Parent: {fileID: 114350483966674976}
   m_Children: []
-  m_UIPosition: {x: 2774, y: 859}
+  m_UIPosition: {x: 2782, y: 959}
   m_UICollapsed: 0
   m_UISuperCollapsed: 0
   m_InputSlots:
@@ -7326,7 +7326,7 @@ MonoBehaviour:
   m_UIIgnoredErrors: []
   m_Parent: {fileID: 114350483966674976}
   m_Children: []
-  m_UIPosition: {x: 2559, y: 859}
+  m_UIPosition: {x: 2567, y: 959}
   m_UICollapsed: 0
   m_UISuperCollapsed: 0
   m_InputSlots:
@@ -7629,7 +7629,7 @@ MonoBehaviour:
   m_UIIgnoredErrors: []
   m_Parent: {fileID: 114350483966674976}
   m_Children: []
-  m_UIPosition: {x: 3025, y: 899}
+  m_UIPosition: {x: 3025, y: 1041}
   m_UICollapsed: 0
   m_UISuperCollapsed: 0
   m_InputSlots:
@@ -7798,7 +7798,7 @@ MonoBehaviour:
     linkedSlots:
     - outputSlot: {fileID: 8926484042661615838}
       inputSlot: {fileID: 8926484042661615835}
-    position: {x: 2768, y: 976}
+    position: {x: 2776, y: 1076}
     expandedSlots: []
     expanded: 0
 --- !u!114 &8926484042661615838
@@ -7916,7 +7916,7 @@ MonoBehaviour:
   - {fileID: 8926484042661615850}
   - {fileID: 8926484042661615851}
   m_UIPosition: {x: 0, y: 0}
-  m_UICollapsed: 0
+  m_UICollapsed: 1
   m_UISuperCollapsed: 0
   m_MasterSlot: {fileID: 8926484042661615849}
   m_MasterData:
@@ -8018,7 +8018,7 @@ MonoBehaviour:
   - {fileID: 8926484042661615853}
   - {fileID: 8926484042661615854}
   m_UIPosition: {x: 0, y: 0}
-  m_UICollapsed: 0
+  m_UICollapsed: 1
   m_UISuperCollapsed: 0
   m_MasterSlot: {fileID: 8926484042661615852}
   m_MasterData:
@@ -8117,7 +8117,7 @@ MonoBehaviour:
   m_UIIgnoredErrors: []
   m_Parent: {fileID: 114350483966674976}
   m_Children: []
-  m_UIPosition: {x: 3025, y: 1037}
+  m_UIPosition: {x: 3025, y: 1179}
   m_UICollapsed: 0
   m_UISuperCollapsed: 0
   m_InputSlots:
@@ -8152,7 +8152,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
-      m_SerializableObject: -2
+      m_SerializableObject: -1.5
     m_Space: 2147483647
   m_Property:
     name: min
@@ -8186,7 +8186,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
-      m_SerializableObject: -5
+      m_SerializableObject: -3
     m_Space: 2147483647
   m_Property:
     name: max
@@ -8245,7 +8245,7 @@ MonoBehaviour:
   m_UIIgnoredErrors: []
   m_Parent: {fileID: 114350483966674976}
   m_Children: []
-  m_UIPosition: {x: 2790, y: 1027}
+  m_UIPosition: {x: 2798, y: 1127}
   m_UICollapsed: 0
   m_UISuperCollapsed: 0
   m_InputSlots:
@@ -8470,7 +8470,7 @@ MonoBehaviour:
     linkedSlots:
     - outputSlot: {fileID: 8926484042661615903}
       inputSlot: {fileID: 8926484042661615748}
-    position: {x: 2987, y: 1789}
+    position: {x: 2987, y: 1711}
     expandedSlots: []
     expanded: 0
 --- !u!114 &8926484042661615903
