@@ -1012,7 +1012,7 @@ MonoBehaviour:
   colorMapping: 0
   uvMode: 0
   useSoftParticle: 0
-  vfxSystemSortPriority: 0
+  vfxSystemSortPriority: 2
   sort: 0
   indirectDraw: 0
   computeCulling: 0
@@ -1562,7 +1562,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: UnityEngine.Color, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"r":2.353926420211792,"g":15.999998092651368,"b":0.8376960158348084,"a":1.0}'
+      m_SerializableObject: '{"r":0.8376960158348084,"g":15.999998092651368,"b":0.8376960158348084,"a":1.0}'
     m_Space: 2147483647
   m_Property:
     name: o
@@ -2449,7 +2449,7 @@ MonoBehaviour:
   - {fileID: 8926484042661616289}
   - {fileID: 8926484042661615586}
   - {fileID: 8926484042661615450}
-  m_UIPosition: {x: 3450, y: 677}
+  m_UIPosition: {x: 3450, y: 697}
   m_UICollapsed: 0
   m_UISuperCollapsed: 0
   m_InputSlots: []
@@ -3234,7 +3234,7 @@ MonoBehaviour:
   colorMapping: 0
   uvMode: 0
   useSoftParticle: 0
-  vfxSystemSortPriority: 1
+  vfxSystemSortPriority: 0
   sort: 0
   indirectDraw: 0
   computeCulling: 0
@@ -3458,7 +3458,7 @@ MonoBehaviour:
   m_UIPosition: {x: 0, y: 0}
   m_UICollapsed: 1
   m_UISuperCollapsed: 0
-  title: Particle Strip
+  title: Spiral (strip)
   m_Owners:
   - {fileID: 8926484042661615456}
   - {fileID: 8926484042661615475}
@@ -3549,7 +3549,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: UnityEngine.Color, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"r":0.2750000059604645,"g":0.5,"b":0.25,"a":1.0}'
+      m_SerializableObject: '{"r":0.375,"g":0.5,"b":0.375,"a":1.0}'
     m_Space: 2147483647
   m_Property:
     name: o
@@ -4233,7 +4233,7 @@ MonoBehaviour:
     linkedSlots:
     - outputSlot: {fileID: 8926484042661615589}
       inputSlot: {fileID: 8926484042661615587}
-    position: {x: 3246, y: 1085}
+    position: {x: 3246, y: 1107}
     expandedSlots: []
     expanded: 0
 --- !u!114 &8926484042661615589
@@ -4261,7 +4261,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: UnityEngine.Gradient, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"colorKeys":[{"color":{"r":0.7999999523162842,"g":4.0,"b":0.7999999523162842,"a":1.0},"time":0.0},{"color":{"r":0.6139989495277405,"g":0.7490196228027344,"b":0.5992156863212586,"a":1.0},"time":1.0}],"alphaKeys":[{"alpha":1.0,"time":0.0},{"alpha":1.0,"time":0.07647822052240372},{"alpha":0.0,"time":1.0}],"gradientMode":0}'
+      m_SerializableObject: '{"colorKeys":[{"color":{"r":0.7999999523162842,"g":4.0,"b":0.7999999523162842,"a":1.0},"time":0.0},{"color":{"r":0.6000000238418579,"g":0.7490196228027344,"b":0.6000000238418579,"a":1.0},"time":1.0}],"alphaKeys":[{"alpha":1.0,"time":0.0},{"alpha":0.0,"time":1.0}],"gradientMode":0}'
     m_Space: 2147483647
   m_Property:
     name: o
@@ -5035,7 +5035,7 @@ MonoBehaviour:
   colorMapping: 0
   uvMode: 0
   useSoftParticle: 0
-  vfxSystemSortPriority: 2
+  vfxSystemSortPriority: 1
   sort: 0
   indirectDraw: 0
   computeCulling: 0
@@ -6172,7 +6172,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
-      m_SerializableObject: 48
+      m_SerializableObject: 64
     m_Space: 2147483647
   m_Property:
     name: Rate
