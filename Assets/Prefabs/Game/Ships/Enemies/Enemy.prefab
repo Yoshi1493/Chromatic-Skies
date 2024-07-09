@@ -545,6 +545,10 @@ PrefabInstance:
       propertyPath: m_Radius
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 7481939071179590773, guid: 2ad3a7352f03714438318db50497c30d, type: 3}
+      propertyPath: m_Asset
+      value: 
+      objectReference: {fileID: 8926484042661614526, guid: 3392860740067674f8d2e1edd7a324f7, type: 3}
     - target: {fileID: 7887617530008348640, guid: 2ad3a7352f03714438318db50497c30d, type: 3}
       propertyPath: m_Name
       value: Bullet System 1
