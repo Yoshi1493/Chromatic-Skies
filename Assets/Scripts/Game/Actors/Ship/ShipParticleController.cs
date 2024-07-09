@@ -17,6 +17,7 @@ public class ShipParticleController : MonoBehaviour
         ship = GetComponentInParent<Ship>();
 
         ship.LoseLifeAction += OnShipLoseLife;
+        ship.RespawnAction += OnShipRespawn;
         ship.DeathAction += OnShipDeath;
         ship.InvincibleAction += OnShipInvincible;
 
@@ -39,11 +40,11 @@ public class ShipParticleController : MonoBehaviour
     void OnShipLoseLife()
     {
         PlayVisualEffect(loseLifeVFX);
+    }
 
-        if (ship.currentLives > 0)
-        {
-            PlayVisualEffect(respawnVFX);
-        }
+    void OnShipRespawn()
+    {
+        PlayVisualEffect(respawnVFX);
     }
 
     void OnShipDeath()
