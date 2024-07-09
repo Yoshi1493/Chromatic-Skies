@@ -31,39 +31,37 @@ public class ShipParticleController : MonoBehaviour
         }
     }
 
+    void Start()
+    {
+        PlayVisualEffect(spawnVFX);
+    }
+
     void OnShipLoseLife()
     {
-        if (loseLifeVFX.visualEffectAsset != null)
-        {
-            loseLifeVFX.Reinit();
-            loseLifeVFX.SendEvent("OnPlay");
-        }
+        PlayVisualEffect(loseLifeVFX);
 
         if (ship.currentLives > 0)
         {
-            if (respawnVFX.visualEffectAsset != null)
-            {
-                respawnVFX.Reinit();
-                respawnVFX.SendEvent("OnPlay");
-            }
+            PlayVisualEffect(respawnVFX);
         }
     }
 
     void OnShipDeath()
     {
-        if (deathVFX.visualEffectAsset != null)
-        {
-            deathVFX.Reinit();
-            deathVFX.SendEvent("OnPlay");
-        }
+        PlayVisualEffect(deathVFX);
     }
 
     void OnShipInvincible(bool state)
     {
-        if (invincibleVFX.visualEffectAsset != null)
+        PlayVisualEffect(invincibleVFX);
+    }
+
+    void PlayVisualEffect(VisualEffect vfx)
+    {
+        if (vfx.visualEffectAsset != null)
         {
-            invincibleVFX.Reinit();
-            invincibleVFX.SendEvent("OnPlay");
+            vfx.Reinit();
+            vfx.SendEvent("OnPlay");
         }
     }
 }
