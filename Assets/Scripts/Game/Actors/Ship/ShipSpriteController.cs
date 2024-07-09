@@ -7,7 +7,7 @@ public abstract class ShipSpriteController<TShip> : MonoBehaviour
     protected TShip parentShip;
     SpriteRenderer spriteRenderer;
 
-    const float InvincibleAlpha = 0.25f;
+    const float InvincibleAlpha = 0.5f;
 
     protected virtual void Awake()
     {
