@@ -52,7 +52,7 @@ public class Enemy : Ship
 
     void OnEnable()
     {
-        SetInvincible(2f);
+        SetInvincible(3f);
 
         if (systemResetCoroutine != null)
         {
@@ -90,8 +90,6 @@ public class Enemy : Ship
 
             systemResetCoroutine = RefreshEnemySystems(currentSystemIndex, RespawnTime);
             yield return systemResetCoroutine;
-
-            Respawn();
         }
     }
 
@@ -138,10 +136,11 @@ public class Enemy : Ship
         currentMovementSystem.StopAllCoroutines();
         currentMovementSystem.enabled = false;
 
+        nextMovementSystem.enabled = true;
+
         yield return WaitForSeconds(refreshTime);
 
         nextBulletSystem.SetEnabled(true);
-        nextMovementSystem.enabled = true;
 
         StartAttackAction?.Invoke(currentSystemIndex);
     }
