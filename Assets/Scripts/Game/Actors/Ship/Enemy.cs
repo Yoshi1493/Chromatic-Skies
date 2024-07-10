@@ -138,7 +138,7 @@ public class Enemy : Ship
 
         nextMovementSystem.enabled = true;
 
-        yield return WaitForSeconds(refreshTime);
+        yield return WaitForSeconds(refreshTime + 1f);
 
         nextBulletSystem.SetEnabled(true);
 

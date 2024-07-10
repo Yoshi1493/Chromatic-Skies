@@ -111,11 +111,9 @@ public abstract class Ship : Actor
         else
         {
             SetInvincible(RespawnTime);
-            yield return WaitForSeconds(1f);
+            yield return WaitForSeconds(RespawnTime);
 
             Respawn();
-            yield return WaitForSeconds(1f);
-
             collider.enabled = true;
         }
     }
