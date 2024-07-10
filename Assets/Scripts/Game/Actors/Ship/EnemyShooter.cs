@@ -74,7 +74,6 @@ public abstract class EnemyShooter<TProjectile> : Shooter<TProjectile>, IEnemyAt
     protected override IEnumerator Shoot()
     {
         yield return WaitForSeconds(2f);
-        ownerShip.Invincible = false;
     }
 
     protected void SetSubsystemEnabled(int subsystemIndex)
