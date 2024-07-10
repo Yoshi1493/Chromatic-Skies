@@ -62,7 +62,15 @@ public class ShipParticleController : MonoBehaviour
         if (vfx.visualEffectAsset != null)
         {
             vfx.Reinit();
-            vfx.SendEvent("OnPlay");
+            vfx.Play();
+        }
+    }
+
+    void StopVisualEffect(VisualEffect vfx)
+    {
+        if (vfx.visualEffectAsset != null)
+        {
+            vfx.Stop();
         }
     }
 }
