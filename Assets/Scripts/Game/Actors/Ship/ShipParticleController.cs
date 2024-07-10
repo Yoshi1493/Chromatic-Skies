@@ -1,10 +1,10 @@
 using UnityEngine;
 using UnityEngine.VFX;
 
-[RequireComponent(typeof(Ship))]
-public class ShipParticleController : MonoBehaviour
+public abstract class ShipParticleController<TShip> : MonoBehaviour
+    where TShip : Ship
 {
-    Ship ship;
+    protected TShip ship;
 
     [SerializeField] VisualEffect spawnVFX;
     [SerializeField] VisualEffect loseLifeVFX;
@@ -12,9 +12,9 @@ public class ShipParticleController : MonoBehaviour
     [SerializeField] VisualEffect deathVFX;
     [SerializeField] VisualEffect invincibleVFX;
 
-    void Awake()
+    protected virtual void Awake()
     {
-        ship = GetComponentInParent<Ship>();
+        ship = GetComponentInParent<TShip>();
 
         ship.LoseLifeAction += OnShipLoseLife;
         ship.RespawnAction += OnShipRespawn;
@@ -57,7 +57,7 @@ public class ShipParticleController : MonoBehaviour
         PlayVisualEffect(invincibleVFX);
     }
 
-    void PlayVisualEffect(VisualEffect vfx)
+    protected void PlayVisualEffect(VisualEffect vfx)
     {
         if (vfx.visualEffectAsset != null)
         {
@@ -66,7 +66,7 @@ public class ShipParticleController : MonoBehaviour
         }
     }
 
-    void StopVisualEffect(VisualEffect vfx)
+    protected void StopVisualEffect(VisualEffect vfx)
     {
         if (vfx.visualEffectAsset != null)
         {
