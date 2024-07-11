@@ -7,8 +7,6 @@ public class ParticleEffect : MonoBehaviour
     public VisualEffect ParticleSystem { get; protected set; }
     protected IEnumerator particleAnimation;
 
-    protected int OnPlayEventID = Shader.PropertyToID("OnPlay");
-
     void Awake()
     {
         ParticleSystem = GetComponent<VisualEffect>();
@@ -30,7 +28,7 @@ public class ParticleEffect : MonoBehaviour
 
     protected virtual IEnumerator Play()
     {
-        ParticleSystem.SendEvent(OnPlayEventID);
+        ParticleSystem.Play();
         yield return null;
     }
 }

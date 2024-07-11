@@ -5,7 +5,7 @@ public class PSProjectileDestruction : ParticleEffect
 {
     protected override IEnumerator Play()
     {
-        ParticleSystem.SendEvent(OnPlayEventID);
+        yield return base.Play();
 
         //necessary to bypass the latency that exists when checking ParticleSystem.aliveParticleCount (wtf??)
         while (ParticleSystem.aliveParticleCount == 0)
