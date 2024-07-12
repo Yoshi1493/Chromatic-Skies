@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using static CoroutineHelper;
 
 public class TaurusBullet50 : ScriptableEnemyBullet<TaurusBulletSystem52, Laser>
 {
