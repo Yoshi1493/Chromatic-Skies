@@ -12,9 +12,11 @@ public class TaurusBulletSystem5 : EnemyShooter<EnemyBullet>
     const float BulletSpacing = 10f;
     const float BulletSpawnRadius = 2f;
     const float SpawnRadiusModifier = 1f;
-    const float BulletRotationSpeed = 36f;
+    const float BulletRotationSpeed = 12f;
 
     List<EnemyBullet> bullets = new(RingCount * BranchCount * BulletCount);
+
+    protected override float ShootingCooldown => 0.05f;
 
     protected override IEnumerator Shoot()
     {
@@ -50,7 +52,7 @@ public class TaurusBulletSystem5 : EnemyShooter<EnemyBullet>
                     int b = (i * BranchCount * BulletCount) + (ii * BulletCount) + iii;
                     int r = i % 2 * 2 - 1;
 
-                    bullets[b].StartCoroutine(bullets[b].RotateAround(EnemyMovementBehaviour.originalPosition, Mathf.Infinity, BulletRotationSpeed));
+                    bullets[b].StartCoroutine(bullets[b].TransformRotateAround(EnemyMovementBehaviour.originalPosition, Mathf.Infinity, r * BulletRotationSpeed));
                 }
             }
         }
