@@ -22,7 +22,7 @@ public class TaurusBulletSystem5 : EnemyShooter<EnemyBullet>
     {
         yield return base.Shoot();
 
-        //StartMoveAction?.Invoke();
+        StartMoveAction?.Invoke();
         SetSubsystemEnabled(1);
         SetSubsystemEnabled(2);
 
