@@ -72,7 +72,19 @@ public abstract class Laser : Projectile
 
     IEnumerator Grow(float warningDuration, float lerpDuration = 0.1f)
     {
-        //continuously update sprite renderer initial size in case laser path changes length during warning delay (usually due to collisions)
+        if (warningDuration <= 0f)
+        {
+            if (warningDuration == 0f)
+            {
+                spriteRenderer.size = originalSize;
+                active = true;
+            }
+
+            growAnimation = null;
+            yield break;
+        }
+
+        //continuously update SpriteRenderer initial size in case laser path changes length during warning delay (usually due to collisions)
         for (float _ = 0; _ < warningDuration; _ += Time.deltaTime)
         {
             spriteRenderer.size = new(WarningSpriteWidth, IsColliding ? activeSize.y : originalSize.y);
