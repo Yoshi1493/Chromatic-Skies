@@ -4,6 +4,8 @@ using static CoroutineHelper;
 
 public class TaurusBullet51 : ScriptableEnemyBullet<TaurusBulletSystem52, Laser>
 {
+    protected override float MaxLifetime => base.MaxLifetime;
+
     protected override IEnumerator Move()
     {
         yield return this.LerpSpeed((TaurusBulletSystem51.BulletSpawnRadius - 2f) * -2f, 0f, 1f);
@@ -13,6 +15,9 @@ public class TaurusBullet51 : ScriptableEnemyBullet<TaurusBulletSystem52, Laser>
         yield return WaitForSeconds(1f);
 
         SpawnLargeLaser();
+        yield return WaitForSeconds(3f);
+
+        yield return this.LerpSpeed(0f, -5f, 5f);
     }
 
     void SpawnSmallLasers()

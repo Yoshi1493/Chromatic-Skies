@@ -6,7 +6,7 @@ public class TaurusBulletSystem51 : EnemyShooter<EnemyBullet>
 {
     public const int BulletCount = 10;
     const float BulletSpacing = 360f / BulletCount;
-    public const float BulletSpawnRadius = 20f;
+    public const float BulletSpawnRadius = 3f;
 
     protected override float ShootingCooldown => 0.05f;
 
