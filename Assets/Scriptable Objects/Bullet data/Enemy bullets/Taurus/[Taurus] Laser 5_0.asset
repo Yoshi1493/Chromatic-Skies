@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b79cd0b20b26ac4090b241d65679e69, type: 3}
   m_Name: '[Taurus] Laser 5_0'
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: a7931915fd0488a4a921fea55c5f6774, type: 3}
+  sprite: {fileID: 21300000, guid: 0c6d96264884c89419486ac939a1f704, type: 3}
   useSolidColour: 1
   colour: {r: 0.45, g: 0.9, b: 0, a: 1}
   gradient:
@@ -47,4 +47,3 @@ MonoBehaviour:
   ID: 0
   Power: {fileID: 11400000, guid: dd06112ae33cd114f9bc53c0c6c70880, type: 2}
   destructible: 1
-  particleSystemName: {fileID: 11400000, guid: 920cea33377f8264fa05fd6bf591f3b3, type: 2}

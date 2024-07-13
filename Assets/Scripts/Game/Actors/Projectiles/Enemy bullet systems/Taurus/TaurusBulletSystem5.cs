@@ -23,6 +23,8 @@ public class TaurusBulletSystem5 : EnemyShooter<EnemyBullet>
         yield return base.Shoot();
 
         //StartMoveAction?.Invoke();
+        SetSubsystemEnabled(1);
+        SetSubsystemEnabled(2);
 
         for (int i = 0; i < RingCount; i++)
         {
@@ -56,5 +58,6 @@ public class TaurusBulletSystem5 : EnemyShooter<EnemyBullet>
                 }
             }
         }
+
     }
 }

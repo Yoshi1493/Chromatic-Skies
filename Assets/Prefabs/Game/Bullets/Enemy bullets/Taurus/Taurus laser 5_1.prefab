@@ -61,7 +61,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3686835066270376111, guid: 39cb8f2312bc7ff4bbbe1e60f953f78c, type: 3}
       propertyPath: m_Name
-      value: Taurus laser 5_0
+      value: Taurus laser 5_1
       objectReference: {fileID: 0}
     - target: {fileID: 6465195367137354287, guid: 39cb8f2312bc7ff4bbbe1e60f953f78c, type: 3}
       propertyPath: power
@@ -78,7 +78,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3686835066270376111, guid: 39cb8f2312bc7ff4bbbe1e60f953f78c, type: 3}
   m_PrefabInstance: {fileID: 1467818893248666573}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &4915468944426603273
+--- !u!114 &-8520813276172769356
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -87,11 +87,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 2843171542073768802}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2d3b8bea84724b4cbe7613e822e1b91, type: 3}
+  m_Script: {fileID: 11500000, guid: 2f09600dfe7da104f8c832e63fbfa4cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   transform: {fileID: 0}
-  projectileData: {fileID: 11400000, guid: 3666b6f1077cfec449ddf20479c69b36, type: 2}
+  projectileData: {fileID: 11400000, guid: e60f6907af13d1e41b2530d7ecef097e, type: 2}
   moveDirection: {x: 0, y: 0, z: 0}
   currentSpeed: 0
   widthInterpolation:
