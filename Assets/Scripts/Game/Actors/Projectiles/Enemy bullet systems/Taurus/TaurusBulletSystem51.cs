@@ -12,20 +12,22 @@ public class TaurusBulletSystem51 : EnemyShooter<EnemyBullet>
 
     protected override IEnumerator Shoot()
     {
-        //yield return WaitForSeconds(0.1f);
         yield return WaitForSeconds(3f);
 
-        Vector3 v = PlayerPosition;
-
-        for (int i = 0; i < BulletCount; i++)
+        while (enabled)
         {
-            float z = i * BulletSpacing;
-            Vector3 pos = (BulletSpawnRadius * transform.up.RotateVectorBy(z)) + v;
+            Vector3 v = PlayerPosition;
 
-            SpawnProjectile(1, z, pos, false).Fire();
-            yield return WaitForSeconds(ShootingCooldown);
+            for (int i = 0; i < BulletCount; i++)
+            {
+                float z = i * BulletSpacing;
+                Vector3 pos = (BulletSpawnRadius * transform.up.RotateVectorBy(z)) + v;
+
+                SpawnProjectile(1, z, pos, false).Fire();
+                yield return WaitForSeconds(ShootingCooldown);
+            }
+
+            yield return WaitForSeconds(12f);
         }
-
-        enabled = false;
     }
 }

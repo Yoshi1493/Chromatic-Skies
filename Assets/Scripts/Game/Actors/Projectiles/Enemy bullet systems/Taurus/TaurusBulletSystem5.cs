@@ -28,14 +28,16 @@ public class TaurusBulletSystem5 : EnemyShooter<EnemyBullet>
 
         for (int i = 0; i < RingCount; i++)
         {
+            float d = (i % 2 * 2 - 1) * 90f;
+
             for (int ii = 0; ii < BranchCount; ii++)
             {
                 float r = ii * BranchSpacing;
 
                 for (int iii = 0; iii < BulletCount; iii++)
                 {
-                    float z = r + ((iii - ((BulletCount - 1) / 2f)) * BulletSpacing) + 180f;
-                    Vector3 pos = (BulletSpawnRadius + (i * SpawnRadiusModifier))* transform.up.RotateVectorBy(z);
+                    float z = r + ((iii - ((BulletCount - 1) / 2f)) * BulletSpacing) + d;
+                    Vector3 pos = (BulletSpawnRadius + (i * SpawnRadiusModifier))* transform.up.RotateVectorBy(z + d);
 
                     bulletData.colour = bulletData.gradient.Evaluate(i % 2);
                     bullets.Add(SpawnProjectile(0, z, pos));
@@ -45,16 +47,19 @@ public class TaurusBulletSystem5 : EnemyShooter<EnemyBullet>
             yield return WaitForSeconds(ShootingCooldown);
         }
 
+        yield return WaitForSeconds(0.5f);
+
         for (int i = 0; i < RingCount; i++)
         {
+            int r = i % 2 * 2 - 1;
+
             for (int ii = 0; ii < BranchCount; ii++)
             {
                 for (int iii = 0; iii < BulletCount; iii++)
                 {
-                    int b = (i * BranchCount * BulletCount) + (ii * BulletCount) + iii;
-                    int r = i % 2 * 2 - 1;
+                    int b = (i * BranchCount * BulletCount) + (ii * BulletCount) + iii;                    
 
-                    bullets[b].StartCoroutine(bullets[b].TransformRotateAround(EnemyMovementBehaviour.originalPosition, Mathf.Infinity, r * BulletRotationSpeed));
+                    bullets[b].StartCoroutine(bullets[b].RotateAround(EnemyMovementBehaviour.originalPosition, Mathf.Infinity, r * BulletRotationSpeed));
                 }
             }
         }
