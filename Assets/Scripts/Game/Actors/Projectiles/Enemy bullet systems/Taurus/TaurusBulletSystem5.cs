@@ -25,6 +25,7 @@ public class TaurusBulletSystem5 : EnemyShooter<EnemyBullet>
         StartMoveAction?.Invoke();
         SetSubsystemEnabled(1);
         SetSubsystemEnabled(2);
+        SetSubsystemEnabled(3);
 
         for (int i = 0; i < RingCount; i++)
         {
