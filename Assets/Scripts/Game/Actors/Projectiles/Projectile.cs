@@ -45,7 +45,7 @@ public abstract class Projectile : Actor
         IncrementLifetime();
     }
 
-    protected virtual void IncrementLifetime()
+    protected void IncrementLifetime()
     {
         currentLifetime += Time.deltaTime;
 
