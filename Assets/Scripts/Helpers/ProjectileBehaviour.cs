@@ -99,14 +99,12 @@ public static class ProjectileBehaviour
         if (delay > 0f) yield return WaitForSeconds(delay);
 
         float currentTime = 0f;
-
-        Vector3 direction = p.transform.position - target.transform.position;
-        float distance = direction.magnitude;
+        int direction = clockwise ? -1 : 1;
 
         while (currentTime < rotateDuration)
         {
-            RotateVectorBy(ref p.moveDirection, degreesPerSecond * (clockwise ? -1 : 1) * Time.deltaTime);
-            p.MoveSpeed = distance * (degreesPerSecond / Mathf.Rad2Deg);
+            p.transform.RotateAround(target.transform.position, Vector3.forward, degreesPerSecond * direction * Time.deltaTime);
+            RotateVectorBy(ref p.moveDirection, degreesPerSecond * direction * Time.deltaTime);
 
             currentTime += Time.deltaTime;
             yield return EndOfFrame;
@@ -122,14 +120,12 @@ public static class ProjectileBehaviour
         if (delay > 0f) yield return WaitForSeconds(delay);
 
         float currentTime = 0f;
-
-        Vector3 direction = p.transform.position - targetPosition;
-        float distance = direction.magnitude;
+        int direction = clockwise ? -1 : 1;
 
         while (currentTime < rotateDuration)
         {
-            RotateVectorBy(ref p.moveDirection, degreesPerSecond * (clockwise ? -1 : 1) * Time.deltaTime);
-            p.MoveSpeed = distance * (degreesPerSecond / Mathf.Rad2Deg);
+            p.transform.RotateAround(targetPosition, Vector3.forward, degreesPerSecond * direction * Time.deltaTime);
+            RotateVectorBy(ref p.moveDirection, degreesPerSecond * direction * Time.deltaTime);
 
             currentTime += Time.deltaTime;
             yield return EndOfFrame;
