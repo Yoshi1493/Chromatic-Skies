@@ -13,10 +13,10 @@ public class TaurusBulletSystem52 : EnemyShooter<EnemyBullet>
 
     protected override IEnumerator Shoot()
     {
+        yield return WaitForSeconds(ShootingCooldown);
+
         while (enabled)
         {
-            yield return WaitForSeconds(ShootingCooldown);
-
             for (int i = 0; i < BranchCount; i++)
             {
                 Vector3 v1 = Vector3.up.RotateVectorBy(i * BranchSpacing);

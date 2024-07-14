@@ -27,7 +27,7 @@ public class TaurusBulletSystem51 : EnemyShooter<EnemyBullet>
                 yield return WaitForSeconds(ShootingCooldown);
             }
 
-            yield return WaitForSeconds(12f);
+            yield return WaitForSeconds(11.5f);
         }
     }
 }
