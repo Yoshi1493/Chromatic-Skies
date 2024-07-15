@@ -58,7 +58,7 @@ public class TaurusBulletSystem5 : EnemyShooter<EnemyBullet>
             {
                 for (int iii = 0; iii < BulletCount; iii++)
                 {
-                    int b = (i * BranchCount * BulletCount) + (ii * BulletCount) + iii;                    
+                    int b = (i * BranchCount * BulletCount) + (ii * BulletCount) + iii;                 
 
                     bullets[b].StartCoroutine(bullets[b].RotateAround(EnemyMovementBehaviour.originalPosition, Mathf.Infinity, r * BulletRotationSpeed));
                 }
