@@ -98,13 +98,16 @@ public static class ProjectileBehaviour
         if (target == null || rotateDuration <= 0f) yield break;
         if (delay > 0f) yield return WaitForSeconds(delay);
 
+        Vector3 direction = p.transform.position - target.transform.position;
+        float distance = direction.magnitude;
+
         float currentTime = 0f;
-        int direction = clockwise ? -1 : 1;
+        int rotationDirection = clockwise ? -1 : 1;
 
         while (currentTime < rotateDuration)
         {
-            p.transform.RotateAround(target.transform.position, Vector3.forward, degreesPerSecond * direction * Time.deltaTime);
-            RotateVectorBy(ref p.moveDirection, degreesPerSecond * direction * Time.deltaTime);
+            RotateVectorBy(ref p.moveDirection, degreesPerSecond * rotationDirection * Time.deltaTime);
+            p.MoveSpeed = distance * (degreesPerSecond / Mathf.Rad2Deg);
 
             currentTime += Time.deltaTime;
             yield return EndOfFrame;
@@ -119,13 +122,16 @@ public static class ProjectileBehaviour
         if (rotateDuration <= 0f) yield break;
         if (delay > 0f) yield return WaitForSeconds(delay);
 
+        Vector3 direction = p.transform.position - targetPosition;
+        float distance = direction.magnitude;
+
         float currentTime = 0f;
-        int direction = clockwise ? -1 : 1;
+        int rotationDirection = clockwise ? -1 : 1;
 
         while (currentTime < rotateDuration)
         {
-            p.transform.RotateAround(targetPosition, Vector3.forward, degreesPerSecond * direction * Time.deltaTime);
-            RotateVectorBy(ref p.moveDirection, degreesPerSecond * direction * Time.deltaTime);
+            RotateVectorBy(ref p.moveDirection, degreesPerSecond * rotationDirection * Time.deltaTime);
+            p.MoveSpeed = distance * (degreesPerSecond / Mathf.Rad2Deg);
 
             currentTime += Time.deltaTime;
             yield return EndOfFrame;
@@ -145,6 +151,7 @@ public static class ProjectileBehaviour
         while (currentTime < rotateDuration)
         {
             p.transform.RotateAround(targetPosition, Vector3.forward, degreesPerSecond * rotationDirection * Time.deltaTime);
+            RotateVectorBy(ref p.moveDirection, degreesPerSecond * rotationDirection * Time.deltaTime);
 
             currentTime += Time.deltaTime;
             yield return EndOfFrame;
