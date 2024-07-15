@@ -6,14 +6,14 @@ using static MathHelper;
 
 public class GeminiBulletSystem21 : EnemyShooter<EnemyBullet>
 {
-    const int WaveCount = 43;
-    const float WaveSpacing = 0.3f;
+    const int WaveCount = 50;
+    const float WaveSpacing = 0.25f;
     const int BranchCount = 2;
     const float BranchSpacing = 360f / BranchCount;
     const int BulletCount = 2;
     const float BulletSpacing = 360f / BulletCount;
-    const float BulletBaseSpeed = 3.5f;
-    const float BulletSpeedModifier = -0.03f;
+    const float BulletBaseSpeed = 2f;
+    const float BulletSpeedModifier = 0.03f;
 
     List<(Vector2 pos, float z)> bulletSpawnData = new(WaveCount * BranchCount);
 
@@ -35,16 +35,13 @@ public class GeminiBulletSystem21 : EnemyShooter<EnemyBullet>
                 Vector3 pos = v1.RotateVectorBy(ii * BranchSpacing);
 
                 SpawnProjectile(2, z, pos);
-
-                pos.x *= -1;
-                z *= -1;
                 bulletSpawnData.Add((pos, z));
             }
 
             yield return WaitForSeconds(ShootingCooldown);
         }
 
-        yield return WaitForSeconds(3.5f);
+        yield return WaitForSeconds(2f);
 
         bulletSpawnData.Randomize();
 

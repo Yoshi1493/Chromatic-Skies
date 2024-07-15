@@ -18,7 +18,7 @@ MonoBehaviour:
   gradient:
     serializedVersion: 2
     key0: {r: 1, g: 0.3, b: 0.65, a: 1}
-    key1: {r: 0.9, g: 0.45, b: 0.67499995, a: 1}
+    key1: {r: 0.9, g: 0.67499995, b: 0.78749996, a: 1}
     key2: {r: 1, g: 0.875, b: 0.5, a: 0}
     key3: {r: 0.75, g: 1, b: 1, a: 0}
     key4: {r: 0.25, g: 1, b: 1, a: 0}
@@ -47,4 +47,3 @@ MonoBehaviour:
   ID: 3
   Power: {fileID: 11400000, guid: 58d06d90130c88c40bb6c2d31e8c8781, type: 2}
   destructible: 1
-  particleSystemName: {fileID: 11400000, guid: 920cea33377f8264fa05fd6bf591f3b3, type: 2}
