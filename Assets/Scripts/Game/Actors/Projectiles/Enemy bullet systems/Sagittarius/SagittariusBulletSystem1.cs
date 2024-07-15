@@ -34,7 +34,7 @@ public class SagittariusBulletSystem1 : EnemyShooter<EnemyBullet>
                 {
                     for (int iii = 0; iii < BranchCount; iii++)
                     {
-                        float r = i % 2 * 2 - 1;
+                        int r = i % 2 * 2 - 1;
                         float z = r * ((SafeZone / 2f) + (ii * WaveSpacing) + (iii * BranchSpacing));
                         Vector3 pos = (BulletSpawnRadius + (iii * SpawnRadiusModifier)) * transform.up.RotateVectorBy(z);
 
