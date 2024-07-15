@@ -6,6 +6,6 @@ public class GeminiBullet20 : EnemyBullet
 
     protected override IEnumerator Move()
     {
-        yield return this.LerpSpeed(5f, 2f, 1f);
+        yield return this.LerpSpeed(5f, 1.5f, 1f);
     }
 }

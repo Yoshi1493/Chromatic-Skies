@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using static CoroutineHelper;
-using static MathHelper;
 
 public class GeminiBulletSystem21 : EnemyShooter<EnemyBullet>
 {
@@ -13,29 +12,32 @@ public class GeminiBulletSystem21 : EnemyShooter<EnemyBullet>
     const int BulletCount = 2;
     const float BulletSpacing = 360f / BulletCount;
     const float BulletBaseSpeed = 2f;
-    const float BulletSpeedModifier = 0.03f;
+    const float BulletSpeedModifier = 0.02f;
 
-    List<(Vector2 pos, float z)> bulletSpawnData = new(WaveCount * BranchCount);
+    List<(Vector2 pos, float z)> bulletSpawnData = new(WaveCount * BranchCount * BulletCount);
 
     protected override float ShootingCooldown => 1f / 60;
 
     protected override IEnumerator Shoot()
     {
-        int d = PositiveOrNegativeOne;
         bulletSpawnData.Clear();
-        float r = Random.Range(45f, 75f) * d;
+        float r = Random.Range(45f, 75f);
 
         for (int i = 1; i < WaveCount; i++)
         {
-            Vector3 v1 = i * WaveSpacing * transform.up.RotateVectorBy(r);
-
             for (int ii = 0; ii < BranchCount; ii++)
             {
-                float z = r - 90f * Mathf.Sign(r);
-                Vector3 pos = v1.RotateVectorBy(ii * BranchSpacing);
+                for (int iii = 0; iii < BulletCount; iii++)
+                {
+                    int d = iii % 2 * 2 - 1;
 
-                SpawnProjectile(2, z, pos);
-                bulletSpawnData.Add((pos, z));
+                    float z = d * (r - 90f);
+                    Vector3 v1 = i * WaveSpacing * transform.up.RotateVectorBy(d * r);
+                    Vector3 pos = v1.RotateVectorBy(ii * BranchSpacing);
+
+                    SpawnProjectile(2, z, pos);
+                    bulletSpawnData.Add((pos, z));
+                }
             }
 
             yield return WaitForSeconds(ShootingCooldown);
@@ -66,7 +68,7 @@ public class GeminiBulletSystem21 : EnemyShooter<EnemyBullet>
                 bulletSpawnData.RemoveAt(0);
             }
 
-            yield return WaitForSeconds(ShootingCooldown * 2f);
+            yield return WaitForSeconds(ShootingCooldown * 3f);
         }
 
         enabled = false;

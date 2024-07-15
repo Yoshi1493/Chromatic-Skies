@@ -6,7 +6,7 @@ public class GeminiBulletSystem2 : EnemyShooter<EnemyBullet>
 {
     const int WaveCount = 6;
     const float WaveSpacing = BranchSpacing / 2f;
-    const int BranchCount = 48;
+    const int BranchCount = 36;
     const float BranchSpacing = 360f / BranchCount;
     const int BulletCount = 2;
     const int BulletClumpCount = 3;
