@@ -5,7 +5,6 @@ using static CoroutineHelper;
 
 public class VirgoBulletSystem2 : EnemyShooter<EnemyBullet>
 {
-    const int RepeatCount = 2;
     const int WaveCount = 12;
     const float WaveModifier = 0.8f;
     readonly float WaveRadius = Mathf.Pow(Mathf.PI, 1 / WaveModifier);
@@ -50,42 +49,40 @@ public class VirgoBulletSystem2 : EnemyShooter<EnemyBullet>
 
         while (enabled)
         {
-            for (int i = 0; i < RepeatCount; i++)
+            bullets.Clear();
+
+            for (int i = 1; i < WaveCount; i++)
             {
-                bullets.Clear();
-
-                for (int ii = 1; ii < WaveCount; ii++)
-                {
-                    for (int iii = 0; iii < BranchCount; iii++)
-                    {
-                        for (int iv = 0; iv < BulletCount; iv++)
-                        {
-                            int b = (ii * BranchCount * BulletCount) + (iii * BulletCount) + iv;
-                            Vector3 data = bulletSpawnData[b];
-
-                            SpawnBullet(data.z, (Vector2)data);
-                        }
-                    }
-
-                    yield return WaitForSeconds(ShootingCooldown);
-                }
-
                 for (int ii = 0; ii < BranchCount; ii++)
                 {
-                    float z = ii * BranchSpacing + 90f;
-                    Vector3 pos = WaveRadius * Vector3.down.RotateVectorBy(z);
+                    for (int iii = 0; iii < BulletCount; iii++)
+                    {
+                        int b = (i * BranchCount * BulletCount) + (ii * BulletCount) + iii;
+                        Vector3 data = bulletSpawnData[b];
 
-                    SpawnBullet(z, pos);
+                        SpawnBullet(data.z, (Vector2)data);
+                    }
                 }
 
-                yield return WaitForSeconds(1f);
-
-                bullets.ForEach(b => b.Fire());
-                yield return WaitForSeconds(2f);
+                yield return WaitForSeconds(ShootingCooldown);
             }
 
-            StartMoveAction?.Invoke();
+            for (int ii = 0; ii < BranchCount; ii++)
+            {
+                float z = ii * BranchSpacing + 90f;
+                Vector3 pos = WaveRadius * Vector3.down.RotateVectorBy(z);
+
+                SpawnBullet(z, pos);
+            }
+
             yield return WaitForSeconds(1f);
+
+            bullets.ForEach(b => b.Fire());
+            yield return WaitForSeconds(2f);
+
+            SetSubsystemEnabled(2);
+            StartMoveAction?.Invoke();
+            yield return WaitForSeconds(5f);
         }
     }
 
@@ -94,6 +91,9 @@ public class VirgoBulletSystem2 : EnemyShooter<EnemyBullet>
         float s = BulletBaseSpeed * pos.magnitude;
         bulletData.colour = bulletData.gradient.Evaluate(s / 2f / WaveRadius);
 
-        bullets.Add(SpawnProjectile(0, z, pos));
+        var bullet = SpawnProjectile(0, z, Vector3.zero);
+        bullet.StartCoroutine(bullet.LerpSpeed(0f, s, 0.5f));
+        bullet.StartCoroutine(bullet.LerpSpeed(s, 0f, 0.5f, delay: 0.5f));
+        bullets.Add(bullet);
     }
 }

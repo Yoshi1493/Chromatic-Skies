@@ -9,8 +9,9 @@ public class VirgoBulletSystem21 : EnemyShooter<EnemyBullet>
     const float BranchSpacing = 360f / BranchCount;
     const int BulletCount = 2;
     const float BulletRotationSpeed = 90f;
+    const float BulletRotationDuration = 6f;
 
-    protected override float ShootingCooldown => 0.8f;
+    protected override float ShootingCooldown => 1.6f;
 
     protected override IEnumerator Shoot()
     {
@@ -30,7 +31,7 @@ public class VirgoBulletSystem21 : EnemyShooter<EnemyBullet>
                     bulletData.colour = bulletData.gradient.Evaluate(iii);
 
                     var bullet = SpawnProjectile(1, z, pos);
-                    bullet.StartCoroutine(bullet.RotateBy((iii % 2 * 2 - 1) * BulletRotationSpeed, 6f));
+                    bullet.StartCoroutine(bullet.RotateBy((iii % 2 * 2 - 1) * BulletRotationSpeed, BulletRotationDuration));
                     bullet.Fire();
                 }
             }
