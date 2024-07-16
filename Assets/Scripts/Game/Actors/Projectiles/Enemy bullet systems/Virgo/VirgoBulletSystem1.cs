@@ -18,7 +18,7 @@ public class VirgoBulletSystem1 : EnemyShooter<EnemyBullet>
 
         for (int i = 0; enabled; i++)
         {
-            float z = Mathf.Repeat(i * BulletSpacing, 360f);
+            float z = (i * BulletSpacing) % 360f;
             Vector3 pos = BulletSpawnRadius * transform.up.RotateVectorBy(z);
 
             SpawnProjectile(0, z, pos).Fire();
