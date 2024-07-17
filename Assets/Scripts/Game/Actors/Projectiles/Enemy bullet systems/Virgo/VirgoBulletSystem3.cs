@@ -26,13 +26,16 @@ public class VirgoBulletSystem3 : EnemyShooter<EnemyBullet>
         //k = angular frequency, expressed in the form n/d
         for (int i = 0; i < WaveCount; i++)
         {
+            int d = i % 2 * 2 - 1;
+
             for (int ii = 0; ii < BranchCount; ii++)
             {
                 float t = i * WaveSpacing;
                 float r = RingRadius * Mathf.Sin(t * AngularFrequency * Mathf.PI);
-                Vector3 pos = (r * transform.up.RotateVectorBy(t * 180f)).RotateVectorBy(ii * BranchSpacing);
 
-                float z = ((i % 2 * 2 - 1) * 90f) + pos.GetRotationDifference(Vector3.zero);
+                Vector3 pos = (r * transform.up.RotateVectorBy(t * 180f)).RotateVectorBy(ii * BranchSpacing);
+                float z = (d * 90f) + pos.GetRotationDifference(Vector3.zero);
+
                 bulletSpawnData.Add(new(pos.x, pos.y, z));
             }
         }
@@ -58,9 +61,10 @@ public class VirgoBulletSystem3 : EnemyShooter<EnemyBullet>
             }
 
             SetSubsystemEnabled(1);
+            SetSubsystemEnabled(2);
             StartMoveAction?.Invoke();
 
-            yield return WaitForSeconds(5f);
+            yield return WaitForSeconds(6f);
         }
     }
 }

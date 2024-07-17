@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6b79cd0b20b26ac4090b241d65679e69, type: 3}
-  m_Name: '[Virgo] Bullet 3_0'
+  m_Name: '[Virgo] Bullet 3_2'
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: baa0acec5cc11d04e9029cbbda9961ea, type: 3}
-  useSolidColour: 0
-  colour: {r: 0.8, g: 0, b: 0, a: 1}
+  sprite: {fileID: 21300000, guid: 955788fd829b613429b1f8461721ea15, type: 3}
+  useSolidColour: 1
+  colour: {r: 0, g: 0.75, b: 0, a: 1}
   gradient:
     serializedVersion: 2
-    key0: {r: 0.9, g: 0.1, b: 0.1, a: 1}
-    key1: {r: 1, g: 0, b: 0.375, a: 1}
-    key2: {r: 1, g: 0.9, b: 1, a: 0}
+    key0: {r: 0.25, g: 0.75, b: 0, a: 0}
+    key1: {r: 0, g: 0.75, b: 0, a: 1}
+    key2: {r: 1, g: 0.9, b: 1, a: 1}
     key3: {r: 1, g: 0.9, b: 1, a: 0}
     key4: {r: 0, g: 0, b: 0, a: 0}
     key5: {r: 0, g: 0, b: 0, a: 0}
@@ -34,8 +34,8 @@ MonoBehaviour:
     ctime6: 0
     ctime7: 0
     atime0: 0
-    atime1: 65535
-    atime2: 0
+    atime1: 13107
+    atime2: 65535
     atime3: 0
     atime4: 0
     atime5: 0
@@ -43,7 +43,7 @@ MonoBehaviour:
     atime7: 0
     m_Mode: 0
     m_NumColorKeys: 2
-    m_NumAlphaKeys: 2
-  ID: 0
+    m_NumAlphaKeys: 3
+  ID: 2
   Power: {fileID: 11400000, guid: c9057bec88714fb4b9df3546afd3e41d, type: 2}
   destructible: 1
