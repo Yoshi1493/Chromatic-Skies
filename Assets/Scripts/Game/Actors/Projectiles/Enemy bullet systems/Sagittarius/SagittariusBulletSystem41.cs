@@ -43,11 +43,12 @@ public class SagittariusBulletSystem41 : EnemyShooter<EnemyBullet>
                 if (bullets[ii].isActiveAndEnabled)
                 {
                     bullets[ii].StartCoroutine(bullets[ii].LerpSpeed(0f, BulletBaseSpeed, 1f));
-                    yield return WaitForSeconds(0.2f);
                 }
+
+                yield return WaitForSeconds(0.2f);
             }
 
-            yield return WaitForSeconds(2f);
+            yield return WaitForSeconds(1.5f);
         }
     }
 }
