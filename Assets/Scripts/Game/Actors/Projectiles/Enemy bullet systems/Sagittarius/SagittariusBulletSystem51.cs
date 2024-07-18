@@ -6,14 +6,15 @@ public class SagittariusBulletSystem51 : EnemyShooter<EnemyBullet>
 {
     const int WaveCount = 50;
     const float WaveSpacing = 5f;
-    const float WaveSpeedModifier = 0.02f;
+    const float WaveSpeedModifier = 0.01f;
     const int BranchCount = 3;
     const float BranchSpacing = 360f / BranchCount;
     const int BulletCount = 3;
     const float BulletSpacing = 10f;
     const float BulletBaseSpeed = 2f;
-    const float BulletSpeedModifier = 1f;
+    const float BulletSpeedModifier = 0.5f;
     const float BulletSpawnRadius = 0.5f;
+    const float SpawnRadiusModifier = -0.01f;
 
     protected override IEnumerator Shoot()
     {
@@ -29,9 +30,10 @@ public class SagittariusBulletSystem51 : EnemyShooter<EnemyBullet>
                 {
                     float z = d * ((i * WaveSpacing) + (ii * BranchSpacing) + (iii * BulletSpacing) - 90f);
                     float s = BulletBaseSpeed + (i * WaveSpeedModifier) + (iii + BulletSpeedModifier);
-                    Vector3 pos = BulletSpawnRadius * transform.up.RotateVectorBy(z - (d * BranchSpacing));
+                    float t = z - (d * BranchSpacing);
+                    Vector3 pos = (BulletSpawnRadius + (i * SpawnRadiusModifier)) * transform.up.RotateVectorBy(t);
 
-                    bulletData.colour = bulletData.gradient.Evaluate((iii) / (BulletCount - 1f));
+                    bulletData.colour = bulletData.gradient.Evaluate(iii / (BulletCount - 1f));
 
                     var bullet = SpawnProjectile(2, z, pos);
                     bullet.StartCoroutine(bullet.LerpSpeed(0f, s, 1f));

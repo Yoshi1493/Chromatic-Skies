@@ -56,7 +56,7 @@ public class SagittariusBulletSystem5 : EnemyShooter<EnemyBullet>
             {
                 for (int ii = 0; ii < WaveCount; ii++)
                 {
-                    int b = ii * BigBulletCount + i;
+                    int b = (ii * BigBulletCount) + i;
 
                     float z = (i % 2 * 2 - 1) * (i * SmallBulletSpacing) + bullets[b].transform.eulerAngles.z + 180f;
 
