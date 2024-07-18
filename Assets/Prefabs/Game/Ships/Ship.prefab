@@ -109,7 +109,7 @@ VFXRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 9
 --- !u!1 &2471660197929985387
 GameObject:
   m_ObjectHideFlags: 0
@@ -219,7 +219,7 @@ VFXRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 9
 --- !u!1 &4382468309798489480
 GameObject:
   m_ObjectHideFlags: 0
@@ -365,7 +365,7 @@ VFXRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 9
 --- !u!1 &5774311133444873101
 GameObject:
   m_ObjectHideFlags: 0
@@ -475,7 +475,7 @@ VFXRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 9
 --- !u!1 &6593195506016961493
 GameObject:
   m_ObjectHideFlags: 0
@@ -687,4 +687,4 @@ VFXRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 9
