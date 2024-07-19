@@ -1,34 +1,11 @@
 using System.Collections;
-using UnityEngine;
-using static MathHelper;
 
-public class LibraBullet22 : ScriptableEnemyBullet<LibraBulletSystem2, EnemyBullet>
+public class LibraBullet22 : EnemyBullet
 {
-    [SerializeField] ProjectileObject bulletData;
-
-    const int BulletCount = 12;
-    const float BulletSpacing = 360f / BulletCount;
-
-    protected override float MaxLifetime => 1f;
-
     protected override IEnumerator Move()
     {
-        yield return this.LerpSpeed(3f, 0f, MaxLifetime);
-    }
-
-    public override void Destroy()
-    {
-        float r = RandomAngleDeg;
-
-        for (int i = 0; i < BulletCount; i++)
-        {
-            float z = i * BulletSpacing + r;
-            Vector3 pos = transform.position;
-
-            bulletData.colour = spriteRenderer.color;
-            SpawnBullet(3, z, pos, false).Fire();
-        }
-
-        base.Destroy();
+        yield return this.LerpSpeed(0.5f, 0f, 1f);
+        StartCoroutine(this.RotateBy(60f, 4f, false));
+        yield return this.LerpSpeed(0f, 2.5f, 1f);
     }
 }
