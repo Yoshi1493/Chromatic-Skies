@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: a7931915fd0488a4a921fea55c5f6774, type: 3}
   useSolidColour: 1
-  colour: {r: 1, g: 1, b: 0.4, a: 1}
+  colour: {r: 1, g: 0.96000004, b: 0.6, a: 1}
   gradient:
     serializedVersion: 2
-    key0: {r: 1, g: 0.94, b: 0.39999998, a: 1}
-    key1: {r: 1, g: 0.96000004, b: 0.6, a: 1}
+    key0: {r: 0.9, g: 0.9, b: 0.9, a: 1}
+    key1: {r: 1, g: 1, b: 1, a: 1}
     key2: {r: 1, g: 1, b: 0.6, a: 0}
     key3: {r: 1, g: 0.8, b: 0.6, a: 0}
     key4: {r: 0.5625, g: 0.45, b: 0.9, a: 0}
@@ -47,4 +47,3 @@ MonoBehaviour:
   ID: 0
   Power: {fileID: 11400000, guid: 0c14504957821df41849a919e1aa2cdb, type: 2}
   destructible: 1
-  particleSystemName: {fileID: 11400000, guid: 920cea33377f8264fa05fd6bf591f3b3, type: 2}
