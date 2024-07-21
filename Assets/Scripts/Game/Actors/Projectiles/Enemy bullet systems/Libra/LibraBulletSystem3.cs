@@ -4,11 +4,16 @@ using static CoroutineHelper;
 
 public class LibraBulletSystem3 : EnemyShooter<EnemyBullet>
 {
-    public const float SafeZone = 30f;
-    const int WaveCount = 111;
-    const float WaveSpacing = 360f / (WaveCount - 1);
-    const int BranchCount = ((int)(360f - SafeZone) / (int)BranchSpacing) + 1;
-    const float BranchSpacing = 5f;
+    const int WaveCount = 150;
+    const float WaveSpacing = 10f;
+    const int BulletCount = 3;
+    const float BulletSpacing = 360f / BulletCount;
+    const float BulletRotationSpeed = 10f;
+    const float BulletRotationDuration = 2f;
+    const float BulletSpawnOffset = 0.2f;
+    const float BulletSpawnRadius = 0.1f;
+
+    protected override float ShootingCooldown => 0.05f;
 
     protected override IEnumerator Shoot()
     {
@@ -19,16 +24,17 @@ public class LibraBulletSystem3 : EnemyShooter<EnemyBullet>
             SetSubsystemEnabled(1);
             SetSubsystemEnabled(2);
 
+            float r = Random.Range(0, 4) * 90f;
+
             for (int i = 0; i < WaveCount; i++)
             {
-                float t = Mathf.Sin(i * WaveSpacing * Mathf.Deg2Rad) * (SafeZone / 4f);
-
-                for (int ii = 0; ii < BranchCount; ii++)
+                for (int ii = 0; ii < BulletCount; ii++)
                 {
-                    float z = (SafeZone * 0.5f) + (ii * BranchSpacing) + t;
-                    Vector3 pos = Vector3.zero;
+                    float z = (i * WaveSpacing) + r;
+                    float t = (ii - 1) * BulletSpacing;
+                    Vector3 v = (ii - ((BulletCount - 1) / 2f)) * BulletSpawnOffset * Vector3.right;
+                    Vector3 pos = BulletSpawnRadius * transform.up.RotateVectorBy(z + t) + v.RotateVectorBy(z);
 
-                    bulletData.colour = bulletData.gradient.Evaluate(i / (WaveCount - 1f));
                     SpawnProjectile(0, z, pos).Fire();
                 }
 
@@ -36,7 +42,7 @@ public class LibraBulletSystem3 : EnemyShooter<EnemyBullet>
             }
 
             StartMoveAction?.Invoke();
-            yield return WaitForSeconds(1f);
+            yield return WaitForSeconds(2f);
         }
     }
 }

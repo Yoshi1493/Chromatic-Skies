@@ -1,6 +1,6 @@
 using System.Collections;
 
-public class LibraBullet23 : EnemyBullet
+public class LibraBullet33 : EnemyBullet
 {
     protected override float MaxLifetime => 8f;
 

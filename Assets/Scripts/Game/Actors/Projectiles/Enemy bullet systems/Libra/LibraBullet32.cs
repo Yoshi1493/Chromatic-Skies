@@ -1,6 +1,6 @@
 using System.Collections;
 
-public class LibraBullet22 : EnemyBullet
+public class LibraBullet32 : EnemyBullet
 {
     protected override IEnumerator Move()
     {
