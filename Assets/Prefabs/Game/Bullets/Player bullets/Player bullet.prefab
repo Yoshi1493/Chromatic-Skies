@@ -83,6 +83,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   transform: {fileID: 0}
-  moveDirection: {x: 0, y: 0, z: 0}
   projectileData: {fileID: 0}
-  moveSpeed: 20
+  moveDirection: {x: 0, y: 0, z: 0}
+  currentSpeed: 0

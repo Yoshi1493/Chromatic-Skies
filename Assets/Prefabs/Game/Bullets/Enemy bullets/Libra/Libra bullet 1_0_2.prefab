@@ -14,7 +14,7 @@ PrefabInstance:
     - target: {fileID: -2101597772348799702, guid: 7189a8e88d8106f4396b77049b1d05f3, type: 3}
       propertyPath: projectileData
       value: 
-      objectReference: {fileID: 11400000, guid: d705d45541b16dc4e80690ad2645ddd3, type: 2}
+      objectReference: {fileID: 11400000, guid: a877157ea62a8d0419f6a5581ec8831a, type: 2}
     - target: {fileID: 1575430968703495904, guid: 7189a8e88d8106f4396b77049b1d05f3, type: 3}
       propertyPath: m_Name
       value: Libra bullet 1_0_2

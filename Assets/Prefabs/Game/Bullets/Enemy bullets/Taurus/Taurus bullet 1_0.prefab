@@ -69,7 +69,7 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 6059f9293aa347b44a73714bea5bfcd3, type: 2}
     - target: {fileID: 9211992883209170045, guid: 4e06125b108514547b6fc9b6887da3eb, type: 3}
       propertyPath: m_SortingOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 9211992883209170045, guid: 4e06125b108514547b6fc9b6887da3eb, type: 3}
       propertyPath: m_WasSpriteAssigned
@@ -96,6 +96,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   transform: {fileID: 0}
+  projectileData: {fileID: 11400000, guid: fad07d0aa2e2d0a4a904d13df602ca61, type: 2}
   moveDirection: {x: 0, y: 0, z: 0}
-  projectileData: {fileID: 11400000, guid: 3b3d09faaf02c0c4392721d1af121e89, type: 2}
-  moveSpeed: 0
+  currentSpeed: 0

@@ -20,7 +20,7 @@ MonoBehaviour:
   ShipName: {fileID: 11400000, guid: 7e1080e308aadde44b76d2eaa9d0c9ee, type: 2}
   MaxLives:
     useConstant: 1
-    ConstantValue: 6
+    ConstantValue: 5
     Variable: {fileID: 0}
   MaxHealth:
     useConstant: 1
@@ -42,13 +42,3 @@ MonoBehaviour:
     useConstant: 0
     ConstantValue: 0
     Variable: {fileID: 11400000, guid: e04dabb841369cb40a380b2ddc81b811, type: 2}
-  CurrentLives:
-    useConstant: 0
-    ConstantValue: 0
-    Variable: {fileID: 11400000, guid: 71fd3a25c53c4234290c740969c2d1de, type: 2}
-  CurrentHealth:
-    useConstant: 0
-    ConstantValue: 0
-    Variable: {fileID: 11400000, guid: 4fecabb322c57584c997e44400643fb9, type: 2}
-  CurrentSpeed: 0
-  Invincible: 0

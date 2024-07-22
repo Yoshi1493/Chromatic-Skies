@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using static CoroutineHelper;
 
-public class HealthBar<TShip> : HUDComponent<TShip>
+public class HealthBar<TShip> : ShipHUDComponent<TShip>
     where TShip : Ship
 {
     Image healthBarImage;

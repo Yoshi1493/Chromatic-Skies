@@ -1,0 +1,84 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &5439199463603466788
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 245957615140351866, guid: 4e06125b108514547b6fc9b6887da3eb, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 245957615140351866, guid: 4e06125b108514547b6fc9b6887da3eb, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 245957615140351866, guid: 4e06125b108514547b6fc9b6887da3eb, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 245957615140351866, guid: 4e06125b108514547b6fc9b6887da3eb, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 245957615140351866, guid: 4e06125b108514547b6fc9b6887da3eb, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 245957615140351866, guid: 4e06125b108514547b6fc9b6887da3eb, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 245957615140351866, guid: 4e06125b108514547b6fc9b6887da3eb, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 245957615140351866, guid: 4e06125b108514547b6fc9b6887da3eb, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 245957615140351866, guid: 4e06125b108514547b6fc9b6887da3eb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 245957615140351866, guid: 4e06125b108514547b6fc9b6887da3eb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 245957615140351866, guid: 4e06125b108514547b6fc9b6887da3eb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3140064405051798717, guid: 4e06125b108514547b6fc9b6887da3eb, type: 3}
+      propertyPath: m_Name
+      value: Gemini bullet 2_1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9211992883209170045, guid: 4e06125b108514547b6fc9b6887da3eb, type: 3}
+      propertyPath: m_SortingOrder
+      value: 4
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4e06125b108514547b6fc9b6887da3eb, type: 3}
+--- !u!1 &6982924580203628185 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3140064405051798717, guid: 4e06125b108514547b6fc9b6887da3eb, type: 3}
+  m_PrefabInstance: {fileID: 5439199463603466788}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5107987264863941301
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6982924580203628185}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4a311f022aba124b945765b0122a0de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  transform: {fileID: 0}
+  projectileData: {fileID: 11400000, guid: 9e677f23ae9e486449c4bc5d5b77d796, type: 2}
+  moveDirection: {x: 0, y: 0, z: 0}
+  currentSpeed: 0

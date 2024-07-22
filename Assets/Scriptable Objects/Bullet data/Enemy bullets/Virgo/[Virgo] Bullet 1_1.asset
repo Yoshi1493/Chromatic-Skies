@@ -17,9 +17,9 @@ MonoBehaviour:
   colour: {r: 0, g: 0, b: 0, a: 0}
   gradient:
     serializedVersion: 2
-    key0: {r: 0.9, g: 0.8, b: 0.7, a: 1}
+    key0: {r: 0.9, g: 0.75, b: 0.6, a: 1}
     key1: {r: 0.75, g: 0.6, b: 0.45, a: 1}
-    key2: {r: 0, g: 0, b: 0, a: 0}
+    key2: {r: 0.9, g: 0.75, b: 0.6, a: 0}
     key3: {r: 0, g: 0, b: 0, a: 0}
     key4: {r: 0, g: 0, b: 0, a: 0}
     key5: {r: 0, g: 0, b: 0, a: 0}
@@ -27,7 +27,7 @@ MonoBehaviour:
     key7: {r: 0, g: 0, b: 0, a: 0}
     ctime0: 0
     ctime1: 65535
-    ctime2: 0
+    ctime2: 65535
     ctime3: 0
     ctime4: 0
     ctime5: 0
@@ -46,3 +46,5 @@ MonoBehaviour:
     m_NumAlphaKeys: 2
   ID: 1
   Power: {fileID: 11400000, guid: c9057bec88714fb4b9df3546afd3e41d, type: 2}
+  destructible: 1
+  particleSystemName: {fileID: 11400000, guid: 920cea33377f8264fa05fd6bf591f3b3, type: 2}

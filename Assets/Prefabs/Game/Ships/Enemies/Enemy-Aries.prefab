@@ -140,7 +140,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyProjectiles:
   - {fileID: -537335154739979936, guid: 69b8f9a5f7014d444b0fc9dbd2eae5eb, type: 3}
-  - {fileID: 4477512428396088053, guid: 8128d28458d1b904b8a1d5b69ce7da78, type: 3}
   bulletData: {fileID: 11400000, guid: b5ee0d1b90ab1234187ec2bfe16c0a80, type: 2}
 --- !u!1 &7542289076040636616
 GameObject:
@@ -235,7 +234,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyProjectiles:
   - {fileID: 4949795630923884701, guid: 1319c36f669ff60419fbc335f58c2201, type: 3}
-  - {fileID: 7709791543220653141, guid: 5511fb93ae03f0d42bf5b9c8732b716d, type: 3}
   bulletData: {fileID: 11400000, guid: 96f79adf99b59244ba563168b59f548e, type: 2}
 --- !u!1001 &5337197869581096772
 PrefabInstance:
@@ -248,6 +246,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bullet System 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1136252800678040964, guid: d93cb44e21569f545b76560b29579f98, type: 3}
+      propertyPath: m_Asset
+      value: 
+      objectReference: {fileID: 8926484042661614526, guid: dd8173d7beee3eb439c78f619d4e8820, type: 3}
     - target: {fileID: 2164267929168977294, guid: d93cb44e21569f545b76560b29579f98, type: 3}
       propertyPath: shipData
       value: 
@@ -385,7 +387,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyProjectiles:
   - {fileID: 0}
-  bulletData: {fileID: 0}
+  bulletData: {fileID: 11400000, guid: d1186cd608e764f4a900bc4d2cd36ae0, type: 2}
 --- !u!1 &2571762796076018676 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7611423722439146672, guid: d93cb44e21569f545b76560b29579f98, type: 3}
@@ -425,7 +427,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyProjectiles:
   - {fileID: 8117216779145276408, guid: 59000994238888d44adb292da0f1f538, type: 3}
-  - {fileID: 8781896715182399989, guid: 3f52c64afa9e5444eb4a44f38a0e82e2, type: 3}
   bulletData: {fileID: 11400000, guid: e6cda41d15a90774896b40859f567406, type: 2}
 --- !u!1 &3773574035635707974 stripped
 GameObject:
@@ -469,7 +470,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5229022407275218308}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 42c0d7a08d3a18041a566aeddec3f751, type: 3}
   m_Name: 
@@ -489,7 +490,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5694548166714613761}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 94c854e697f0a294e88b5ae35a6404e5, type: 3}
   m_Name: 

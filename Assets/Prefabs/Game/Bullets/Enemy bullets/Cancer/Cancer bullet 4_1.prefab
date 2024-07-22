@@ -68,6 +68,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 6059f9293aa347b44a73714bea5bfcd3, type: 2}
     - target: {fileID: 9211992883209170045, guid: 4e06125b108514547b6fc9b6887da3eb, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9211992883209170045, guid: 4e06125b108514547b6fc9b6887da3eb, type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 0
       objectReference: {fileID: 0}
@@ -79,7 +83,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3140064405051798717, guid: 4e06125b108514547b6fc9b6887da3eb, type: 3}
   m_PrefabInstance: {fileID: 4489721518377228893}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &-4699469376002808121
+--- !u!114 &6592160437565326592
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -88,7 +92,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1575430968703495904}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a628944cda4ce5f4db11a643a10d43e6, type: 3}
+  m_Script: {fileID: 11500000, guid: d25753f1770c1a04ebfa628c009ef5c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   transform: {fileID: 0}
