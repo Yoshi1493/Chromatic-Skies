@@ -3,10 +3,13 @@ using UnityEngine;
 
 public class LibraBullet51 : EnemyBullet
 {
+    protected override float MaxLifetime => 8f;
+
     protected override IEnumerator Move()
     {
-        float startSpeed = MoveSpeed;
-        StartCoroutine(this.LerpSpeed(startSpeed, startSpeed * 2f, 2f));
-        yield return this.RotateBy(60f, 5f, Random.value > 0.5f);
+        yield return this.LerpSpeed(3f, 0f, 1f);
+
+        StartCoroutine(this.RotateBy(Random.Range(-30f, 30f), 3f));
+        yield return this.LerpSpeed(0f, Random.Range(2f, 3f), 1f);
     }
 }

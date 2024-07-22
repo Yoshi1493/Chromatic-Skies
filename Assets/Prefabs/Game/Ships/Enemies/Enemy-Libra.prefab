@@ -280,8 +280,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyProjectiles:
-  - {fileID: -5812110832272785267, guid: a2850671f117c994c82be749c93f7b6a, type: 3}
-  bulletData: {fileID: 11400000, guid: be4ffe3caa593744896ab79a6b3b5917, type: 2}
+  - {fileID: -8845955839168189736, guid: 29211928d410e87439ce36e0b5d176fb, type: 3}
+  bulletData: {fileID: 11400000, guid: a4782589cd30c2d47b9bfe0107400a9d, type: 2}
 --- !u!1001 &6759093168088370692
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -384,7 +384,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyProjectiles:
   - {fileID: -2175276123791770478, guid: c3dd8906b09c2a541b5d63f4f1437ba9, type: 3}
-  - {fileID: -8845955839168189736, guid: 29211928d410e87439ce36e0b5d176fb, type: 3}
   bulletData: {fileID: 11400000, guid: 383b27470e546e74c8625062fb127645, type: 2}
 --- !u!4 &1279859028084179535 stripped
 Transform:
