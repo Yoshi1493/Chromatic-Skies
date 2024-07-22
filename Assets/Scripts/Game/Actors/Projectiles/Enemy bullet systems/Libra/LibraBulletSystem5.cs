@@ -4,47 +4,41 @@ using static CoroutineHelper;
 
 public class LibraBulletSystem5 : EnemyShooter<EnemyBullet>
 {
-    const int WaveCount = 9;
-    const int BranchCount = 24;
+    const int WaveCount = 20;
+    const int BranchCount = 36;
     const float BranchSpacing = 360f / BranchCount;
-    const float BulletBaseSpeed = 1f;
-    const float BulletSpeedModifier = 0.1f;
-    const float MaxShootingCooldown = 0.5f;
-
-    protected override float ShootingCooldown => 4f;
+    const float BulletSpawnRadius = 0.5f;
+    const float BulletRotationSpeed = 90f;
+    const float BulletRotationDuration = 2f;
 
     protected override IEnumerator Shoot()
     {
         yield return base.Shoot();
+        Application.targetFrameRate = 60;
 
         while (enabled)
         {
-            float sc = MaxShootingCooldown;
-
             for (int i = 0; i < WaveCount; i++)
             {
-                float s = BulletBaseSpeed + (i * BulletSpeedModifier);
-                Vector3 pos = Random.insideUnitCircle;
-
-                bulletData.colour = bulletData.gradient.Evaluate(i / (WaveCount - 1f));
+                int d = i % 2 * 2 - 1;
 
                 for (int ii = 0; ii < BranchCount; ii++)
                 {
                     float z = ii * BranchSpacing;
+                    Vector3 pos = BulletSpawnRadius * transform.up.RotateVectorBy(z);
+
+                    bulletData.colour = bulletData.gradient.Evaluate(ii / (BranchCount - 1f));
 
                     var bullet = SpawnProjectile(0, z, pos);
-                    bullet.MoveSpeed = s;
+                    bullet.StartCoroutine(bullet.RotateBy(d * BulletRotationSpeed, BulletRotationDuration, delay: 1f));
                     bullet.Fire();
                 }
 
-                yield return WaitForSeconds(sc);
-                sc -= MaxShootingCooldown * 0.1f;
+                yield return WaitForSeconds(0.05f);
             }
 
-            StartMoveAction?.Invoke();
-            SetSubsystemEnabled(1);
 
-            yield return WaitForSeconds(ShootingCooldown);
+            yield return WaitForSeconds(10f);
         }
     }
 }
