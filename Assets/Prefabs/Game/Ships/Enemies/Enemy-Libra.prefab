@@ -377,7 +377,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 716324014634893503}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 09434483e2cdb8c468b82fbf48b06adb, type: 3}
   m_Name: 
@@ -484,7 +484,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6402868668855187777}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 52fc551702c1d694fa8f99ef8bbd15e4, type: 3}
   m_Name: 
@@ -505,15 +505,16 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6867336800114154692}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 54c9319ce8204244fa9dba22f4b0fefe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   enemyProjectiles:
   - {fileID: -5684432240969465421, guid: e031284ed1730794bbd08168b3073a11, type: 3}
-  - {fileID: -3568084756992768584, guid: 9376abdb38a83c349b68ce85475e15a4, type: 3}
-  bulletData: {fileID: 11400000, guid: a71a17d0a4f9cd345857c8cd943048a5, type: 2}
+  - {fileID: -8221490392136308903, guid: 27af2df2af7eca9459b2a41362a57259, type: 3}
+  - {fileID: -820036964270747387, guid: 9376abdb38a83c349b68ce85475e15a4, type: 3}
+  bulletData: {fileID: 11400000, guid: 79c686c085039124ebce98bb0f01d1a0, type: 2}
 --- !u!1 &7008567321455470459 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4363550108427413887, guid: d93cb44e21569f545b76560b29579f98, type: 3}
@@ -526,7 +527,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7008567321455470459}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a64a3be9b4191f14cb29a669ed174660, type: 3}
   m_Name: 

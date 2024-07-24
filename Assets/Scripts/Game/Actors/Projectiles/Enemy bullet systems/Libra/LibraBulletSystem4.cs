@@ -14,6 +14,8 @@ public class LibraBulletSystem4 : EnemyShooter<EnemyBullet>
     protected override IEnumerator Shoot()
     {
         yield return base.Shoot();
+        
+        SetSubsystemEnabled(1);
 
         while (enabled)
         {
@@ -26,10 +28,10 @@ public class LibraBulletSystem4 : EnemyShooter<EnemyBullet>
                 float z = Random.Range(SpawnMinAngle, SpawnMaxAngle) * PositiveOrNegativeOne + 180f;
                 Vector3 pos = Vector3.zero;
                 SpawnProjectile(0, z, pos).Fire();
+                SpawnProjectile(1, z, pos).Fire();
             }
 
-            SetSubsystemEnabled(1);
-            yield return WaitForSeconds(10f);
+            yield return WaitForSeconds(100f);
         }
     }
 }
