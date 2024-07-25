@@ -4,8 +4,8 @@ using static CoroutineHelper;
 
 public class LibraBullet41 : ScriptableEnemyBullet<LibraBulletSystem4, EnemyBullet>
 {
-    const int WaveCount = 30;
-    const float WaveSpacing = 0.4f;
+    const int WaveCount = 40;
+    const float WaveSpacing = 0.3f;
     const int BulletCount = 2;
     const float BulletSpacing = 15f;
     const float ShootingCooldown = 0.05f;
