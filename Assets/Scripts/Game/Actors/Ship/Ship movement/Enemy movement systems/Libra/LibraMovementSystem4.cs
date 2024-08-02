@@ -22,11 +22,9 @@ public class LibraMovementSystem4 : EnemyMovement
 
         yield return this.MoveTo(p1, s1);
         yield return this.MoveFromTo(p2, p0, s2);
-        yield return WaitForSeconds(2f);
 
-        for (int i = 0; i < 3; i++)
-        {
-            yield return this.MoveToRandomPosition(1f, 1f, 2f);
-        }
+        yield return WaitForSeconds(3f);
+
+        yield return this.MoveToRandomPosition(2f, 2f, 5f);
     }
 }

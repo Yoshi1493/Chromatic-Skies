@@ -31,7 +31,10 @@ public class LibraBulletSystem4 : EnemyShooter<EnemyBullet>
                 SpawnProjectile(1, z, pos).Fire();
             }
 
-            yield return WaitForSeconds(100f);
+            yield return WaitForSeconds(3f);
+
+            SetSubsystemEnabled(2);
+            yield return WaitForSeconds(10f);
         }
     }
 }
