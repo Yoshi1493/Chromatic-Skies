@@ -41,7 +41,6 @@ public class LibraBullet10 : ScriptableEnemyBullet<LibraBulletSystem1, EnemyBull
 
                 var bullet = SpawnBullet(bulletID, z, pos, false);
                 bullet.MoveSpeed = s;
-                bullet.Fire();
             }
 
             yield return WaitForSeconds(ShootingCooldown);

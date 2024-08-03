@@ -6,6 +6,6 @@ public class LibraBullet11 : EnemyBullet
 
     protected override IEnumerator Move()
     {
-        yield return null;
+        yield break;
     }
 }
