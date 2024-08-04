@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6b79cd0b20b26ac4090b241d65679e69, type: 3}
-  m_Name: '[Libra] Bullet 6_4'
+  m_Name: '[Libra] Bullet 6_11'
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: c0fa7cd631364f940a5f0fc54128b6f7, type: 3}
+  sprite: {fileID: 21300000, guid: b99510b934b0b0940a6de46eb972c2b9, type: 3}
   useSolidColour: 1
-  colour: {r: 1, g: 0.6, b: 0, a: 1}
+  colour: {r: 0.7, g: 0, b: 1, a: 1}
   gradient:
     serializedVersion: 2
-    key0: {r: 1, g: 0.8, b: 0.5, a: 1}
-    key1: {r: 1, g: 0.6, b: 0, a: 1}
-    key2: {r: 1, g: 0.8333334, b: 0, a: 0}
+    key0: {r: 0.85, g: 0.5, b: 1, a: 1}
+    key1: {r: 0.7, g: 0, b: 1, a: 1}
+    key2: {r: 0.5, g: 0.75, b: 1, a: 0}
     key3: {r: 0, g: 0.5, b: 1, a: 0}
     key4: {r: 0, g: 0, b: 0, a: 0}
     key5: {r: 0, g: 0, b: 0, a: 0}
@@ -27,7 +27,7 @@ MonoBehaviour:
     key7: {r: 0, g: 0, b: 0, a: 0}
     ctime0: 0
     ctime1: 65535
-    ctime2: 49151
+    ctime2: 65535
     ctime3: 65535
     ctime4: 0
     ctime5: 0
@@ -44,6 +44,6 @@ MonoBehaviour:
     m_Mode: 0
     m_NumColorKeys: 2
     m_NumAlphaKeys: 2
-  ID: 4
+  ID: 11
   Power: {fileID: 11400000, guid: 0c14504957821df41849a919e1aa2cdb, type: 2}
   destructible: 1

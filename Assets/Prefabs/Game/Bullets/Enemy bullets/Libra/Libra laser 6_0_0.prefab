@@ -52,16 +52,12 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3686835066270376110, guid: 39cb8f2312bc7ff4bbbe1e60f953f78c, type: 3}
-      propertyPath: m_SortingOrder
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3686835066270376110, guid: 39cb8f2312bc7ff4bbbe1e60f953f78c, type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3686835066270376111, guid: 39cb8f2312bc7ff4bbbe1e60f953f78c, type: 3}
       propertyPath: m_Name
-      value: Libra laser 4_0
+      value: Libra laser 6_0
       objectReference: {fileID: 0}
     - target: {fileID: 6465195367137354287, guid: 39cb8f2312bc7ff4bbbe1e60f953f78c, type: 3}
       propertyPath: power
@@ -78,7 +74,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3686835066270376111, guid: 39cb8f2312bc7ff4bbbe1e60f953f78c, type: 3}
   m_PrefabInstance: {fileID: 1467818893248666573}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &7663586704502610405
+--- !u!114 &-4757474662362156754
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -87,11 +83,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 2843171542073768802}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9645cc9c7b4ae8a419905c41d5321857, type: 3}
+  m_Script: {fileID: 11500000, guid: e797c8659b0c3344aa5191abc48de17b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   transform: {fileID: 0}
-  projectileData: {fileID: 11400000, guid: bc964db6a838b8d489f5641df8a03fc4, type: 2}
+  projectileData: {fileID: 11400000, guid: 89e3c5a90710a034d9ea021c254b1327, type: 2}
   moveDirection: {x: 0, y: 0, z: 0}
   currentSpeed: 0
   widthInterpolation:

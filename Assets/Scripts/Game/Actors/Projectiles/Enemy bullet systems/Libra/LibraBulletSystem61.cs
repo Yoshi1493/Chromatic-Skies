@@ -5,26 +5,49 @@ using static CoroutineHelper;
 
 public class LibraBulletSystem61 : EnemyShooter<EnemyBullet>
 {
-    const int BulletCount = 6;
-    const float BulletSpacing = 360f / BulletCount;
+    const int ParentBulletCount = 6;
+    const float BulletSpacing = 360f / ParentBulletCount;
+    const int WaveCount = 20;
+    const float WaveSpacing = 15f;
+    const int ChildBulletCount = 6;
+    const float ChildBulletSpacing = 360f / ChildBulletCount;
 
-    List<EnemyBullet> bullets = new(BulletCount);
+    List<EnemyBullet> bullets = new(ParentBulletCount);
+
+    protected override float ShootingCooldown => 0.5f;
 
     protected override IEnumerator Shoot()
     {
-        while (enabled)
+        for (int i = 0; i < ParentBulletCount; i++)
         {
-            for (int i = 0; i < BulletCount; i++)
-            {
-                float z = i * BulletSpacing;
-                Vector3 pos = Vector3.zero;
+            float z = i * BulletSpacing;
+            Vector3 pos = Vector3.zero;
 
-                var bullet = SpawnProjectile(1, z, pos);
-                bullet.Fire();
-                bullets.Add(bullet);
+            var bullet = SpawnProjectile(1, z, pos);
+            bullet.Fire();
+            bullets.Add(bullet);
+        }
+
+        yield return WaitForSeconds(1f);
+
+        for (int i = 0; i < WaveCount; i++)
+        {
+            bulletData.colour = bulletData.gradient.Evaluate(i / (WaveCount - 1f));
+
+            for (int ii = 0; ii < bullets.Count; ii++)
+            {
+                for (int iii = 0; iii < ChildBulletCount; iii++)
+                {
+                    float z = (i * WaveSpacing) + (iii * ChildBulletSpacing);
+                    Vector3 pos = bullets[ii].transform.position;
+
+                    SpawnProjectile(2, z, pos, false).Fire();
+                }
             }
 
-            yield return WaitForSeconds(100f);
+            yield return WaitForSeconds(ShootingCooldown);
         }
+
+        enabled = false;
     }
 }

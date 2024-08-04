@@ -5,7 +5,7 @@ public class LibraBulletSystem6 : EnemyShooter<EnemyBullet>
 {
     const int WaveCount = 6;
 
-    protected override float ShootingCooldown => 5f;
+    protected override float ShootingCooldown => 10f;
 
     protected override IEnumerator Shoot()
     {
@@ -13,11 +13,13 @@ public class LibraBulletSystem6 : EnemyShooter<EnemyBullet>
 
         while (enabled)
         {
-            for (int i = 1; i <= WaveCount; i++)
-            {
-                SetSubsystemEnabled(i);
-                yield return WaitForSeconds(ShootingCooldown);
-            }
+            SetSubsystemEnabled(1);
+
+            //for (int i = 1; i <= WaveCount; i++)
+            //{
+            //    SetSubsystemEnabled(i);
+            //    yield return WaitForSeconds(ShootingCooldown);
+            //}
 
             yield return WaitForSeconds(1f);
         }

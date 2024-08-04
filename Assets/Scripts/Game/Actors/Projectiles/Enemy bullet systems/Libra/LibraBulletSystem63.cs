@@ -13,7 +13,7 @@ public class LibraBulletSystem63 : EnemyShooter<Projectile>
             float z = 0;
             Vector3 pos = Vector3.zero;
 
-            var bullet = SpawnProjectile(3, z, pos);
+            var bullet = SpawnProjectile(5, z, pos);
         }
 
         yield return WaitForSeconds(ShootingCooldown);

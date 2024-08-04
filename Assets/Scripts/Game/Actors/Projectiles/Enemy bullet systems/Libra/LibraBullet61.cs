@@ -6,5 +6,7 @@ public class LibraBullet61 : EnemyBullet
     {
         StartCoroutine(this.LerpSpeed(4f, 0f, 1f));
         yield return this.RotateBy(90f, 1f);
+
+        yield return this.RotateAround(ownerShip, 9f, 60f);
     }
 }
