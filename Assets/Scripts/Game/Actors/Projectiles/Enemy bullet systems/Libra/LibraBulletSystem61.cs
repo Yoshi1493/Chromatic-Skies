@@ -6,7 +6,7 @@ using static CoroutineHelper;
 public class LibraBulletSystem61 : EnemyShooter<EnemyBullet>
 {
     const int ParentBulletCount = 6;
-    const float BulletSpacing = 360f / ParentBulletCount;
+    const float ParentBulletSpacing = 360f / ParentBulletCount;
     const int WaveCount = 20;
     const float WaveSpacing = 15f;
     const int ChildBulletCount = 6;
@@ -18,9 +18,14 @@ public class LibraBulletSystem61 : EnemyShooter<EnemyBullet>
 
     protected override IEnumerator Shoot()
     {
+        enabled = false;
+        yield break;
+
+        bullets.Clear();
+
         for (int i = 0; i < ParentBulletCount; i++)
         {
-            float z = i * BulletSpacing;
+            float z = i * ParentBulletSpacing;
             Vector3 pos = Vector3.zero;
 
             var bullet = SpawnProjectile(1, z, pos);

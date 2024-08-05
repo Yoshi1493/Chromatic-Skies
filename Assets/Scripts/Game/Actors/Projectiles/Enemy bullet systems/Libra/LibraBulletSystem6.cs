@@ -14,6 +14,7 @@ public class LibraBulletSystem6 : EnemyShooter<EnemyBullet>
         while (enabled)
         {
             SetSubsystemEnabled(1);
+            SetSubsystemEnabled(2);
 
             //for (int i = 1; i <= WaveCount; i++)
             //{
@@ -21,7 +22,7 @@ public class LibraBulletSystem6 : EnemyShooter<EnemyBullet>
             //    yield return WaitForSeconds(ShootingCooldown);
             //}
 
-            yield return WaitForSeconds(1f);
+            yield return WaitForSeconds(100f);
         }
     }
 }
