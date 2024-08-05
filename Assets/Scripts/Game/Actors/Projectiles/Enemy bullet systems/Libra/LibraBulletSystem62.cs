@@ -6,14 +6,13 @@ using static CoroutineHelper;
 public class LibraBulletSystem62 : EnemyShooter<EnemyBullet>
 {
     const int RepeatCount = 2;
-    const int ParentBulletCount = 4;
+    const int ParentBulletCount = 6;
     const float ParentBulletSpacing = 360f / ParentBulletCount;
     const int WaveCount = 3;
     const int ChildBulletCount = 4;
     const float ChildBulletSpacing = 360f / ChildBulletCount;
-    const float BulletRotationSpeed = 90f;
-    const float BulletRotationDuration = 2f;
-    const float BulletRotationDurationModifier = 1f;
+    const float BulletRotationSpeed = 60f;
+    const float BulletRotationDuration = 4f;
 
     List<EnemyBullet> bullets = new(ParentBulletCount);
     List<EnemyBullet> childBullets = new(ParentBulletCount * (int)Mathf.Pow(ChildBulletCount, WaveCount));
@@ -22,6 +21,9 @@ public class LibraBulletSystem62 : EnemyShooter<EnemyBullet>
 
     protected override IEnumerator Shoot()
     {
+        enabled = false;
+        yield break;
+
         bullets.Clear();
 
         for (int i = 0; i < ParentBulletCount; i++)
@@ -78,11 +80,12 @@ public class LibraBulletSystem62 : EnemyShooter<EnemyBullet>
                     for (int iv = 0; iv < ChildBulletCount; iv++)
                     {
                         float z = (iv * ChildBulletSpacing) + t.eulerAngles.z;
+                        float s = BulletRotationSpeed * Random.Range(1f, 2f);
                         Vector3 pos = t.position;
 
                         var bullet = SpawnProjectile(4, z, pos, false);
-                        bullet.StartCoroutine(bullet.RotateBy(d * BulletRotationSpeed, 1f));
-                        bullet.StartCoroutine(bullet.RotateBy(-d * BulletRotationSpeed, BulletRotationDuration + (ii * BulletRotationDurationModifier), delay: ShootingCooldown * (WaveCount - 1f)));
+                        bullet.StartCoroutine(bullet.RotateBy(d * s, 1f));
+                        bullet.StartCoroutine(bullet.RotateBy(-d * s, BulletRotationDuration, delay: ShootingCooldown * (WaveCount - 1f)));
                         bullet.Fire();
                         bs.Add(bullet);
                     }
