@@ -4,16 +4,21 @@ using static CoroutineHelper;
 
 public class LibraBulletSystem63 : EnemyShooter<Projectile>
 {
-    const int BulletCount = 0;
+    const int ParentBulletCount = 8;
+    const float ParentBulletSpacing = 360f / ParentBulletCount;
 
     protected override IEnumerator Shoot()
     {
-        for (int i = 0; i < BulletCount; i++)
+        enabled = false;
+        yield break;
+
+        for (int i = 0; i < ParentBulletCount; i++)
         {
-            float z = 0;
+            float z = i * ParentBulletSpacing;
             Vector3 pos = Vector3.zero;
 
-            var bullet = SpawnProjectile(5, z, pos);
+            var bullet = SpawnProjectile(5, z, pos) as EnemyBullet;
+            bullet.Fire();
         }
 
         yield return WaitForSeconds(ShootingCooldown);
