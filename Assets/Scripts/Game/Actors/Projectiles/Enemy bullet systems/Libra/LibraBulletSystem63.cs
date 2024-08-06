@@ -7,7 +7,6 @@ public class LibraBulletSystem63 : EnemyShooter<EnemyBullet>
 {
     public const int ParentBulletCount = 8;
     public const float ParentBulletSpacing = 360f / ParentBulletCount;
-    const int LaserCount = 15;
 
     List<EnemyBullet> bullets = new(ParentBulletCount);
 
@@ -18,7 +17,7 @@ public class LibraBulletSystem63 : EnemyShooter<EnemyBullet>
 
         for (int i = 0; i < ParentBulletCount; i++)
         {
-            float z = i * ParentBulletSpacing;
+            float z = (i + 0.5f) * ParentBulletSpacing;
             Vector3 pos = Vector3.zero;
 
             var bullet = SpawnProjectile(5, z, pos);
@@ -26,7 +25,7 @@ public class LibraBulletSystem63 : EnemyShooter<EnemyBullet>
             bullets.Add(bullet);
         }
 
-        yield return WaitForSeconds(2f);
+        yield return WaitForSeconds(1f);
         SetSubsystemEnabled(1);
 
         enabled = false;
