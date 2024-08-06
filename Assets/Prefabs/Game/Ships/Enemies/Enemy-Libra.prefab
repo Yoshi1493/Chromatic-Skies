@@ -1,5 +1,53 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &513663409998631502
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 577100644562597940}
+  - component: {fileID: 6804405700294111059}
+  m_Layer: 0
+  m_Name: Bullet Sub-subsystem 1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &577100644562597940
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 513663409998631502}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 933838187212008607}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6804405700294111059
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 513663409998631502}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe5930d781c0c1849bc79e443217d565, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyProjectiles:
+  - {fileID: -4757474662362156754, guid: 6578656c19b557a42adc7eccdbde0ad1, type: 3}
+  - {fileID: 6516375893544324728, guid: 2e0c763127c83794e91bf57247f1d657, type: 3}
+  bulletData: {fileID: 0}
 --- !u!1 &1715583913292806967
 GameObject:
   m_ObjectHideFlags: 0
@@ -503,7 +551,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 577100644562597940}
   m_Father: {fileID: 6153433117319852303}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -521,9 +570,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyProjectiles:
   - {fileID: -5530406166805670724, guid: e726ab1913414db44bce34c89660aa94, type: 3}
-  - {fileID: -4757474662362156754, guid: 6578656c19b557a42adc7eccdbde0ad1, type: 3}
-  - {fileID: 4697784845729680866, guid: 9c68c3d67895ae441a0ce036f70eecca, type: 3}
-  bulletData: {fileID: 0}
+  bulletData: {fileID: 11400000, guid: 1743f9d3ea7c2a848949f2d9ae12fae6, type: 2}
 --- !u!1 &8612193535997503818
 GameObject:
   m_ObjectHideFlags: 0

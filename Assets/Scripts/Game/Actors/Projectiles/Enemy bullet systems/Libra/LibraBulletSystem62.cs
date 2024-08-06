@@ -22,8 +22,8 @@ public class LibraBulletSystem62 : EnemyShooter<EnemyBullet>
 
     protected override IEnumerator Shoot()
     {
-        //enabled = false;
-        //yield break;
+        enabled = false;
+        yield break;
 
         bullets.Clear();
 
@@ -37,7 +37,7 @@ public class LibraBulletSystem62 : EnemyShooter<EnemyBullet>
             bullets.Add(bullet);
         }
 
-        yield return WaitForSeconds(ShootingCooldown);
+        yield return WaitForSeconds(1f);
 
         for (int i = 0; i < RepeatCount; i++)
         {
