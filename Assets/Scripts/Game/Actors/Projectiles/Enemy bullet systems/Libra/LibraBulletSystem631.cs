@@ -18,15 +18,17 @@ public class LibraBulletSystem631 : EnemyShooter<Laser>
 
     protected override IEnumerator Shoot()
     {
+        LibraBulletSystem63 parentSystem = GetComponentInParent<LibraBulletSystem63>();
+
         lasers.Clear();
         childLasers.Clear();
 
-        for (int i = 0; i < ParentBulletCount; i++)
+        for (int i = 0; i < LibraBulletSystem63.ParentBulletCount; i++)
         {
-            float z = (i + 0.5f) * LibraBulletSystem63.ParentBulletSpacing;
-            Vector3 pos = LaserSpawnRadius * transform.up.RotateVectorBy(z + 180f);
+            float z = parentSystem.bullets[i].transform.eulerAngles.z;
+            Vector3 pos = parentSystem.bullets[i].transform.position;
 
-            var laser = SpawnProjectile(0, z, pos);
+            var laser = SpawnProjectile(0, z, pos, false);
             laser.Fire(1f);
             lasers.Add(laser);
         }
@@ -61,7 +63,7 @@ public class LibraBulletSystem631 : EnemyShooter<Laser>
             for (int ii = 0; ii < ParentBulletCount; ii++)
             {
                 Transform l = childLasers[(i * ParentBulletCount) + ii].transform;
-                float r = Random.Range(1f, 10f);
+                float r = Random.Range(2f, 10f);
 
                 for (int iii = 0; iii < ChildLaserCount; iii++)
                 {
@@ -74,7 +76,6 @@ public class LibraBulletSystem631 : EnemyShooter<Laser>
 
             yield return WaitForSeconds(ShootingCooldown);
         }
-
 
         enabled = false;
     }

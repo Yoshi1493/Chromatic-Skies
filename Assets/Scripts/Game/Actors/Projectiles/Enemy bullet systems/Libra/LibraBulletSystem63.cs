@@ -7,15 +7,15 @@ public class LibraBulletSystem63 : EnemyShooter<EnemyBullet>
 {
     public const int ParentBulletCount = 8;
     public const float ParentBulletSpacing = 360f / ParentBulletCount;
-    const int WaveCount = 80;
-    const int BulletCount = 3;
-    const float BulletSpacing = 15f;
-    const float BulletBaseSpeed = 8f;
-    const float BulletSpeedModifier = -0.05f;
+    const int RepeatCount = 2;
+    const int WaveCount = 16;
+    const int BulletCount = 40;
+    const float BulletSpacing = 360f / BulletCount;
+    const float BulletBaseSpeed = 5f;
+    const float BulletSpeedModifier = -0.1f;
+    const float BulletRotationSpeed = 90f;
 
-    List<EnemyBullet> bullets = new(ParentBulletCount);
-
-    protected override float ShootingCooldown => 0.05f;
+    [HideInInspector] public List<EnemyBullet> bullets = new(ParentBulletCount);
 
     protected override IEnumerator Shoot()
     {
@@ -33,28 +33,33 @@ public class LibraBulletSystem63 : EnemyShooter<EnemyBullet>
         }
 
         yield return WaitForSeconds(1f);
-        SetSubsystemEnabled(1);
 
-        yield return WaitForSeconds(3f);
-
-        for (int i = 0; i < WaveCount; i++)
+        for (int i = 0; i < RepeatCount; i++)
         {
-            float r = PlayerPosition.GetRotationDifference(transform.position) + Random.Range(-1f, 1f);
+            SetSubsystemEnabled(1);
+            yield return WaitForSeconds(4f);
 
-            for (int ii = 0; ii < BulletCount; ii++)
+            for (int ii = 0; ii < WaveCount; ii++)
             {
-                float t = (ii - ((BulletCount - 1) / 2f)) * BulletSpacing;
-                float z = t + r;
-                float s = BulletBaseSpeed + (i * BulletSpeedModifier);
-                Vector3 pos = Vector3.zero;
+                for (int iii = 0; iii < BulletCount; iii++)
+                {
+                    int d = iii % 2 * 2 - 1;
+                    float z = iii * BulletSpacing;
+                    float s = BulletBaseSpeed + (ii * BulletSpeedModifier);
+                    Vector3 pos = Vector3.zero;
 
-                var bullet = SpawnProjectile(6, z, pos);
-                bullet.StartCoroutine(bullet.LerpSpeed(s, 0f, 1f));
-                bullet.StartCoroutine(bullet.RotateBy(t * 2f, 0f, delay: 2f));
-                bullet.Fire();
+                    bulletData.colour = bulletData.gradient.Evaluate(ii / (WaveCount - 1f));
+
+                    var bullet = SpawnProjectile(6, z, pos);
+                    bullet.StartCoroutine(bullet.RotateBy(d * BulletRotationSpeed, 2f, delay: 1f));
+                    bullet.StartCoroutine(bullet.LerpSpeed(0f, s, 1f, delay: 1f));
+                    bullet.Fire();
+                }
+
+                yield return WaitForSeconds(ShootingCooldown);
             }
 
-            yield return WaitForSeconds(ShootingCooldown);
+            yield return WaitForSeconds(1f);
         }
 
         enabled = false;
