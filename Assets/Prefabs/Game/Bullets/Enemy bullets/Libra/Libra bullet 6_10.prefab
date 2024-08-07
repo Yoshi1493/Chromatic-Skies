@@ -96,6 +96,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   transform: {fileID: 0}
-  projectileData: {fileID: 11400000, guid: 1395b71f07ef68a478063c712a3941dd, type: 2}
+  projectileData: {fileID: 11400000, guid: d31beac3a4402b84388ac606020dfcd1, type: 2}
   moveDirection: {x: 0, y: 0, z: 0}
   currentSpeed: 0

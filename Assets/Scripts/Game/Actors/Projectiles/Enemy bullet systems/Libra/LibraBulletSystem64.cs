@@ -13,7 +13,7 @@ public class LibraBulletSystem64 : EnemyShooter<EnemyBullet>
             float z = 0;
             Vector3 pos = Vector3.zero;
 
-            SpawnProjectile(6, z, pos).Fire();
+            SpawnProjectile(7, z, pos).Fire();
         }
 
         yield return WaitForSeconds(ShootingCooldown);
