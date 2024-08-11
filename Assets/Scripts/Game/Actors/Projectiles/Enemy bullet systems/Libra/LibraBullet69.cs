@@ -1,10 +1,11 @@
 using System.Collections;
-using UnityEngine;
 
 public class LibraBullet69 : EnemyBullet
 {
+    protected override float MaxLifetime => 12f;
+
     protected override IEnumerator Move()
     {
-        yield return null;
+        yield break;
     }
 }

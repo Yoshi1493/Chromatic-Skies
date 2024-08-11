@@ -23,8 +23,8 @@ public class LibraBulletSystem64 : EnemyShooter<EnemyBullet>
 
     protected override IEnumerator Shoot()
     {
-        //enabled = false;
-        //yield break;
+        enabled = false;
+        yield break;
 
         bullets.Clear();
 
