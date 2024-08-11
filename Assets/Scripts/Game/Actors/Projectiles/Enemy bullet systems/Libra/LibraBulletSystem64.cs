@@ -9,10 +9,12 @@ public class LibraBulletSystem64 : EnemyShooter<EnemyBullet>
     const float ParentBulletSpacing = 360f / ParentBulletCount;
     const int RepeatCount = 2;
     const int WaveCount = 24;
-    const float WaveSpacing = 15f;
+    const float WaveSpacing = 10f;
     const int BranchCount = 3;
     const float BranchSpacing = 360f / BranchCount;
     const int ChildBulletCount = 2;
+    const float BulletBaseSpeed = 1f;
+    const float BulletSpeedModifier = 0.05f;
     const float BulletRotationSpeed = 60f;
 
     List<EnemyBullet> bullets = new(ParentBulletCount);
@@ -40,6 +42,8 @@ public class LibraBulletSystem64 : EnemyShooter<EnemyBullet>
 
         for (int i = 0; i < RepeatCount; i++)
         {
+            float r = Random.Range(0f, ParentBulletSpacing);
+
             for (int ii = 0; ii < WaveCount; ii++)
             {
                 for (int iii = 0; iii < ParentBulletCount; iii++)
@@ -50,12 +54,12 @@ public class LibraBulletSystem64 : EnemyShooter<EnemyBullet>
                     {
                         for (int v = 0; v < ChildBulletCount; v++)
                         {
-                            float z = (ii * WaveSpacing) + (iv * BranchSpacing) + b.eulerAngles.z;
+                            float z = (ii * WaveSpacing) + (iv * BranchSpacing) + r;
                             Vector3 pos = b.position;
 
                             var bullet = SpawnProjectile(8, z, pos, false);
-                            bullet.StartCoroutine(bullet.RotateBy((v % 2 * 2 - 1) * BulletRotationSpeed, 3f));
-                            bullet.StartCoroutine(bullet.RotateBy((ii % 2 * 2 - 1) * BulletRotationSpeed, 0f, delay: 2f));
+                            bullet.StartCoroutine(bullet.RotateBy((v % 2 * 2 - 1) * BulletRotationSpeed, 2f));
+                            bullet.StartCoroutine(bullet.RotateBy((ii % 2 * 2 - 1) * BulletRotationSpeed, 0f, delay: 2.1f));
                             bullet.Fire();
                         }
                     }
@@ -64,7 +68,7 @@ public class LibraBulletSystem64 : EnemyShooter<EnemyBullet>
                 yield return WaitForSeconds(ShootingCooldown);
             }
 
-            yield return WaitForSeconds(3.8f);
+            yield return WaitForSeconds(5f - (WaveCount * ShootingCooldown));
         }
 
         enabled = false;
