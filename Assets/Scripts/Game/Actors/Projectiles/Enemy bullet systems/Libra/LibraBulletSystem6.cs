@@ -18,7 +18,7 @@ public class LibraBulletSystem6 : EnemyShooter<EnemyBullet>
             SetSubsystemEnabled(3);
             SetSubsystemEnabled(4);
             SetSubsystemEnabled(5);
-            //SetSubsystemEnabled(6);
+            SetSubsystemEnabled(6);
 
             //for (int i = 1; i <= WaveCount; i++)
             //{
