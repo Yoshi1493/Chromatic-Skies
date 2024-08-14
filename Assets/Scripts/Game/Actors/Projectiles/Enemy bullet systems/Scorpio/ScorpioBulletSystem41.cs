@@ -10,7 +10,7 @@ public class ScorpioBulletSystem41 : EnemyShooter<EnemyBullet>
     const int BulletCount = 4;
     const float BulletSpacing = 5f;
     const float BulletBaseSpeed = 1.6f;
-    const float BulletSpeedModifier = 0.4f;
+    const float BulletSpeedModifier = 0.2f;
     const float BulletRotationSpeed = 12f;
     const float BulletRotationDuration = 2.5f;
 
