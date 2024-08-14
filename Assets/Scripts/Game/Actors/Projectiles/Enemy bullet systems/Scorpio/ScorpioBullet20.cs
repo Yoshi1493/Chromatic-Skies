@@ -6,7 +6,7 @@ public class ScorpioBullet20 : EnemyBullet, ITimestoppable
 {
     new CircleCollider2D collider;
 
-    protected override float MaxLifetime => 20f;
+    protected override float MaxLifetime => 25f;
 
     #region Interface impl.
 
@@ -29,7 +29,7 @@ public class ScorpioBullet20 : EnemyBullet, ITimestoppable
     public IEnumerator ResumeMove()
     {
         moveDirection = transform.up.RotateVectorBy(RandomAngleDeg);
-        yield return this.LerpSpeed(0f, 2f, 2f);
+        yield return this.LerpSpeed(0f, 2f, 4f);
     }
 
     #endregion
