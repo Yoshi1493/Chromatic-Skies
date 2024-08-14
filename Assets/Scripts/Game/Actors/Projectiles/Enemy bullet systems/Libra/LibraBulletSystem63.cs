@@ -19,8 +19,8 @@ public class LibraBulletSystem63 : EnemyShooter<EnemyBullet>
 
     protected override IEnumerator Shoot()
     {
-        enabled = false;
-        yield break;
+        //enabled = false;
+        //yield break;
 
         for (int i = 0; i < ParentBulletCount; i++)
         {
