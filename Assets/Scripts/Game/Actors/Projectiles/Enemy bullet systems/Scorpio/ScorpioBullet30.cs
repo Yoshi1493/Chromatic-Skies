@@ -7,13 +7,13 @@ public class ScorpioBullet30 : ScriptableEnemyBullet<ScorpioBulletSystem3, Enemy
     const int WaveCount = 12;
     const int BulletCount = 3;
     const float BulletSpacing = 360f / BulletCount;
-    const float ShootingCooldown = 0.5f;
+    const float ShootingCooldown = 0.8f;
 
-    protected override float MaxLifetime => 7f;
+    protected override float MaxLifetime => 9f;
 
     protected override IEnumerator Move()
     {
-        MoveSpeed = 3f;
+        MoveSpeed = 2.5f;
         StartCoroutine(SpawnBullets());
 
         yield return this.RotateBy(45f, 0.5f);
