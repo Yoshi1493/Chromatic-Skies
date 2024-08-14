@@ -6,7 +6,7 @@ using static CoroutineHelper;
 public class ScorpioBulletSystem4 : EnemyShooter<EnemyBullet>
 {
     const int WaveCount = 8;
-    const int BranchCount = 24;
+    const int BranchCount = 20;
     const float BranchSpacing = 360f / BranchCount;
     const int BulletCount = 2;
     const float BulletSpacing = 3f;
