@@ -4,12 +4,11 @@ using static CoroutineHelper;
 
 public class ScorpioBulletSystem5 : EnemyShooter<EnemyBullet>
 {
-    const int BranchCount = 2;
-    const int BulletCount = 4;
-    const float BulletSpacing = 1.2f;
-    const float BulletRotationSpeed = 90f;
-    const float BulletRotationDuration = 1f;
-    const float BulletRotationDurationModifier = 1f;
+    const int BulletCount = 12;
+    const float BulletSpacing = 360f / BulletCount;
+    const float BulletSpawnRadius = 0.5f;
+    const float BulletRotationSpeed = 60f;
+    const float BulletRotationDuration = 3f;
 
     protected override float ShootingCooldown => 15f;
 
@@ -17,26 +16,22 @@ public class ScorpioBulletSystem5 : EnemyShooter<EnemyBullet>
     {
         yield return base.Shoot();
 
+        int r = 1;
+
         while (enabled)
         {
-            for (int i = 0; i < BranchCount; i++)
+            for (int i = 0; i < BulletCount; i++)
             {
-                int d = i % 2 * 2 - 1;
+                float z = i * BulletSpacing;
+                Vector3 pos = PlayerPosition + (BulletSpawnRadius * transform.up.RotateVectorBy(z));
 
-                for (int ii = 0; ii < BulletCount; ii++)
-                {
-                    float x = d * (1f + (ii * BulletSpacing));
-                    float y = 1.1f * screenHalfHeight;
-                    Vector3 pos = new(x, y);
-                    float z = 0f;
-
-                    var bullet = SpawnProjectile(0, z, pos, false);
-                    bullet.StartCoroutine(bullet.RotateBy(d * BulletRotationSpeed, BulletRotationDuration, delay: 1f));
-                    bullet.Fire();
-                }
+                var bullet = SpawnProjectile(0, z, pos, false);
+                bullet.StartCoroutine(bullet.RotateBy(r * BulletRotationSpeed, BulletRotationDuration));
+                bullet.Fire();
             }
 
             yield return WaitForSeconds(ShootingCooldown);
+            r *= -1;
         }
     }
 }
