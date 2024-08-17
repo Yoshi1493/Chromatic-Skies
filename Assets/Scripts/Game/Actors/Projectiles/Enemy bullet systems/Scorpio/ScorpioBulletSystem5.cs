@@ -16,10 +16,14 @@ public class ScorpioBulletSystem5 : EnemyShooter<EnemyBullet>
     {
         yield return base.Shoot();
 
+        SetSubsystemEnabled(1);
+
         int r = 1;
 
         while (enabled)
         {
+            StartMoveAction?.Invoke();
+
             for (int i = 0; i < BulletCount; i++)
             {
                 float z = i * BulletSpacing;
@@ -31,6 +35,7 @@ public class ScorpioBulletSystem5 : EnemyShooter<EnemyBullet>
             }
 
             yield return WaitForSeconds(ShootingCooldown);
+
             r *= -1;
         }
     }
