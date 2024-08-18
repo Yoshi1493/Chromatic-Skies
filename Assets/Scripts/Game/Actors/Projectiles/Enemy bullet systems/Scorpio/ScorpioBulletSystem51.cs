@@ -7,7 +7,7 @@ public class ScorpioBulletSystem51 : EnemyShooter<EnemyBullet>
 {
     const int WaveCount = 20;
     const float WaveSpacing = 3f;
-    const int BranchCount = 18;
+    const int BranchCount = 16;
     const float BranchSpacing = 360f / BranchCount;
     const float SpawnRadiusModifier = 0.25f;
     const float BulletBaseSpeed = -1f;
