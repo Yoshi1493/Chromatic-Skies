@@ -4484,6 +4484,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1178239951583610070, guid: fd256c5442364f84da6382825eead91d, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6381079683723611148, guid: fd256c5442364f84da6382825eead91d, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7016900565653542119, guid: fd256c5442364f84da6382825eead91d, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7052788978182325129, guid: fd256c5442364f84da6382825eead91d, type: 3}
       propertyPath: m_Name
       value: Enemy-Scorpio
@@ -4531,6 +4543,18 @@ PrefabInstance:
     - target: {fileID: 7052788978182325131, guid: fd256c5442364f84da6382825eead91d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 7391300855955191363, guid: fd256c5442364f84da6382825eead91d, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8171605003580123281, guid: fd256c5442364f84da6382825eead91d, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9205262972405674450, guid: fd256c5442364f84da6382825eead91d, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fd256c5442364f84da6382825eead91d, type: 3}

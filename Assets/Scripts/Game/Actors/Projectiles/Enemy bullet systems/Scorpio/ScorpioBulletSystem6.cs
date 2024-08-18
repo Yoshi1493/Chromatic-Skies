@@ -10,16 +10,11 @@ public class ScorpioBulletSystem6 : EnemyShooter<EnemyBullet>
     {
         yield return base.Shoot();
 
-        while (enabled)
-        {
-            for (int i = 0; i < BulletCount; i++)
-            {
-                float z = 0f;
-                Vector3 pos = Vector3.zero;
+        SetSubsystemEnabled(1);
 
-                SpawnProjectile(0, z, pos).Fire();
-                yield return WaitForSeconds(ShootingCooldown);
-            }
-        }
+        //while (enabled)
+        //{
+        //    yield return null;
+        //}
     }
 }
