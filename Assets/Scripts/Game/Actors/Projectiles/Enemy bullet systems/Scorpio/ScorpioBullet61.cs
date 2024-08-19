@@ -1,12 +1,54 @@
 using System.Collections;
 using UnityEngine;
 
-public class ScorpioBullet61 : EnemyBullet
+public class ScorpioBullet61 : EnemyBullet, ITimestoppable
 {
-    protected override float MaxLifetime => Mathf.Infinity;
+    new CircleCollider2D collider;
+
+    protected override float MaxLifetime => 20f;
+
+    #region Interface impl.
+
+    public Color OriginalColour { get; set; }
+
+    public void Stop()
+    {
+        StopAllCoroutines();
+
+        spriteRenderer.color = Color.white;
+        MoveSpeed = 0f;
+        collider.enabled = false;
+    }
+
+    public void Resume()
+    {
+        StartCoroutine(ResumeMove());
+    }
+
+    public IEnumerator ResumeMove()
+    {
+        yield return null;
+        //implement
+    }
+
+    #endregion
+
+    protected override void Awake()
+    {
+        base.Awake();
+        collider = GetComponent<CircleCollider2D>();
+    }
+
+    protected override void OnEnable()
+    {
+        base.OnEnable();
+
+        OriginalColour = spriteRenderer.color;
+        collider.enabled = true;
+    }
 
     protected override IEnumerator Move()
-    {        
-        yield return this.TransformRotateAround(EnemyMovementBehaviour.originalPosition, MaxLifetime, 6f);
+    {
+        yield return this.LerpSpeed(1f, 2f, 1f);
     }
 }

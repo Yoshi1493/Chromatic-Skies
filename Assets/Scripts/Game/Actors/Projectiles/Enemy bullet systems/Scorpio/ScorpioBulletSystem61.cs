@@ -8,10 +8,12 @@ public class ScorpioBulletSystem61 : EnemyShooter<EnemyBullet>
     const int RingCount = 12;
     const int BulletCount = 12;
     const int BulletCountModifier = 6;
-    const float BulletSpawnRadius = 0.5f;
+    const float BulletSpawnRadius = 0.1f;
     const float SpawnRadiusModifier = 1f;
 
     List<EnemyBullet> bullets = new(RingCount * BulletCount);
+
+    protected override float ShootingCooldown => 0.25f;
 
     protected override IEnumerator Shoot()
     {
@@ -27,7 +29,7 @@ public class ScorpioBulletSystem61 : EnemyShooter<EnemyBullet>
 
                 bulletData.colour = bulletData.gradient.Evaluate(i / (RingCount - 1f));
 
-                var bullet = SpawnProjectile(2, z, pos);
+                var bullet = SpawnProjectile(3, z, pos);
                 bullets.Add(bullet);
             }
 
