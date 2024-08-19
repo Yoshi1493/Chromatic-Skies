@@ -27,8 +27,7 @@ public class ScorpioBullet61 : EnemyBullet, ITimestoppable
 
     public IEnumerator ResumeMove()
     {
-        yield return null;
-        //implement
+        yield return this.LerpSpeed(0f, -2f, 2f);
     }
 
     #endregion
