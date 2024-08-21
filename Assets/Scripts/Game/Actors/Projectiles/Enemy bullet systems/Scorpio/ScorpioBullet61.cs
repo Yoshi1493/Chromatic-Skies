@@ -4,6 +4,7 @@ using UnityEngine;
 public class ScorpioBullet61 : EnemyBullet, ITimestoppable
 {
     new CircleCollider2D collider;
+    bool hasStopped;
 
     protected override float MaxLifetime => 20f;
 
@@ -13,11 +14,15 @@ public class ScorpioBullet61 : EnemyBullet, ITimestoppable
 
     public void Stop()
     {
-        StopAllCoroutines();
+        if (!hasStopped)
+        {
+            StopAllCoroutines();
 
-        spriteRenderer.color = Color.white;
-        MoveSpeed = 0f;
-        collider.enabled = false;
+            spriteRenderer.color = Color.white;
+            MoveSpeed = 0f;
+            collider.enabled = false;
+            hasStopped = true;
+        }
     }
 
     public void Resume()
@@ -28,6 +33,7 @@ public class ScorpioBullet61 : EnemyBullet, ITimestoppable
     public IEnumerator ResumeMove()
     {
         yield return this.LerpSpeed(0f, -2f, 2f);
+        collider.enabled = true;
     }
 
     #endregion
@@ -44,6 +50,19 @@ public class ScorpioBullet61 : EnemyBullet, ITimestoppable
 
         OriginalColour = spriteRenderer.color;
         collider.enabled = true;
+        hasStopped = false;
+    }
+
+    protected override void Update()
+    {
+        base.Update();
+
+        if (currentLifetime <= 0.5f)
+        {
+            Color c = spriteRenderer.color;
+            c.a = Mathf.Clamp01(currentLifetime * 2f);
+            spriteRenderer.color = c;
+        }
     }
 
     protected override IEnumerator Move()

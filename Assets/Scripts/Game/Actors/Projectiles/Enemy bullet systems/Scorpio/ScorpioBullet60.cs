@@ -1,55 +1,36 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using static CoroutineHelper;
 using static MathHelper;
 
 public class ScorpioBullet60 : ScriptableEnemyBullet<ScorpioBulletSystem6, EnemyBullet>
 {
-    const int BulletCount = 6;
-    const float ShootingCooldown = 0.1f;
-
-    List<EnemyBullet> bullets = new(BulletCount);
-
     protected override float MaxLifetime => Mathf.Infinity;
+    protected override int CollisionMask => base.CollisionMask | 1 << LayerMask.NameToLayer("Enemy bullet");
 
     protected override IEnumerator Move()
     {
         Vector3 v = transform.position - (3f * transform.up.RotateVectorBy(PositiveOrNegativeOne * Random.Range(60f, 80f)));
         yield return this.MoveTo(v, 1f);
+    }
 
-        while (enabled)
+    protected override void Update()
+    {
+        base.Update();
+        CheckCollisionWith<EnemyBullet>();
+    }
+
+    protected override void HandleCollision<T>(Collider2D coll)
+    {
+        base.HandleCollision<T>(coll);
+
+        if (coll.TryGetComponent(out ScorpioBullet61 bullet))
         {
-            bullets.Clear();
+            Vector3 v = transform.position - Vector3.Scale(bullet.spriteRenderer.size * 0.5f, bullet.moveDirection);
 
-            yield return WaitForSeconds(1f);
-
-            for (int i = 0; i < BulletCount; i++)
+            if (coll.OverlapPoint(v))
             {
-                float z = playerShip.transform.position.GetRotationDifference(transform.position);
-                Vector3 pos = transform.position;
-
-                var bullet = SpawnBullet(2, z, pos, false);
-                bullets.Add(bullet);
-                bullet.Fire();
-
-                yield return WaitForSeconds(ShootingCooldown);
+                bullet.Destroy();
             }
-
-            yield return WaitForSeconds(2f);
-
-            SpawnBullet(0, 0f, Vector3.zero).Fire();
-            yield return WaitForSeconds(2f);
-
-            for (int i = 0; i < bullets.Count; i++)
-            {
-                if (bullets[i].isActiveAndEnabled)
-                {
-                    bullets[i].GetComponent<ITimestoppable>().Resume();
-                }
-            }
-
-            bullets.Clear();
         }
     }
 }
