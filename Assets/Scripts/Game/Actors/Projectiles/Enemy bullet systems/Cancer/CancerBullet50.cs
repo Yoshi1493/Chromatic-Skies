@@ -30,7 +30,7 @@ public class CancerBullet50 : EnemyBullet
         while (currentLerpTime < totalLerpTime)
         {
             float t = Mathf.Lerp(0f, Mathf.Min(1f, 0.5f / homingStrength), currentLerpTime / totalLerpTime);
-            spriteRenderer.color = projectileData.gradient.Evaluate(t);
+            SpriteRenderer.color = projectileData.gradient.Evaluate(t);
 
             yield return EndOfFrame;
             currentLerpTime += Time.deltaTime;

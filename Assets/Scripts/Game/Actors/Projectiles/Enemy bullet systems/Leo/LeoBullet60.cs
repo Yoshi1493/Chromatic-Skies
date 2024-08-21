@@ -22,6 +22,6 @@ public class LeoBullet60 : EnemyBullet
 
         float t = currentLifetime / MaxLifetime;
         transform.localScale = sizeInterpolation.Evaluate(t) * Vector2.one;
-        spriteRenderer.color = projectileData.gradient.Evaluate(t);
+        SpriteRenderer.color = projectileData.gradient.Evaluate(t);
     }
 }

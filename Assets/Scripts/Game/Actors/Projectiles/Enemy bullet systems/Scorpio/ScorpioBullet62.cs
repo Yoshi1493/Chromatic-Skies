@@ -25,9 +25,9 @@ public class ScorpioBullet62 : EnemyBullet
 
         if (currentLifetime <= 0.5f)
         {
-            Color c = spriteRenderer.color;
+            Color c = SpriteRenderer.color;
             c.a = Mathf.Clamp01(currentLifetime * 2f);
-            spriteRenderer.color = c;
+            SpriteRenderer.color = c;
         }
     }
 }

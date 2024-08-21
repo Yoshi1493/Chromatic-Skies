@@ -4,7 +4,7 @@ using static CoroutineHelper;
 
 public class CancerBullet33 : EnemyBullet
 {
-    protected override int NumCollisions => Physics2D.OverlapBoxNonAlloc(transform.position, spriteRenderer.size, transform.eulerAngles.z, collisionResults, CollisionMask);
+    protected override int NumCollisions => Physics2D.OverlapBoxNonAlloc(transform.position, SpriteRenderer.size, transform.eulerAngles.z, collisionResults, CollisionMask);
 
     protected override float MaxLifetime => 8f;
 

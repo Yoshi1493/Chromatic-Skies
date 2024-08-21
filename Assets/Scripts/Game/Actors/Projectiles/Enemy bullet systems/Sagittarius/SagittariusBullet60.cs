@@ -23,7 +23,7 @@ public class SagittariusBullet60 : ScriptableEnemyBullet<SagittariusBulletSystem
 
         while (enabled)
         {
-            spriteRenderer.transform.Rotate(-RotationSpeed * Time.deltaTime * Vector3.forward);
+            SpriteRenderer.transform.Rotate(-RotationSpeed * Time.deltaTime * Vector3.forward);
             yield return EndOfFrame;
         }
     }

@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class AquariusBullet41 : EnemyBullet
 {
-    protected override int NumCollisions => Physics2D.OverlapBoxNonAlloc(transform.position, spriteRenderer.size, transform.eulerAngles.z, collisionResults, CollisionMask);
+    protected override int NumCollisions => Physics2D.OverlapBoxNonAlloc(transform.position, SpriteRenderer.size, transform.eulerAngles.z, collisionResults, CollisionMask);
 
     protected override float MaxLifetime => 4f;
 
@@ -14,6 +14,6 @@ public class AquariusBullet41 : EnemyBullet
 
     protected override void OnDrawGizmos()
     {
-        Gizmos.DrawCube(transform.position, spriteRenderer.size);
+        Gizmos.DrawCube(transform.position, SpriteRenderer.size);
     }
 }

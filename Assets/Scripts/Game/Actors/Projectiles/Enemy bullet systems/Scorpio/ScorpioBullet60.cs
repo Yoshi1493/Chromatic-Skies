@@ -25,7 +25,7 @@ public class ScorpioBullet60 : ScriptableEnemyBullet<ScorpioBulletSystem6, Enemy
 
         if (coll.TryGetComponent(out ScorpioBullet61 bullet))
         {
-            Vector3 v = transform.position - Vector3.Scale(bullet.spriteRenderer.size * 0.5f, bullet.moveDirection);
+            Vector3 v = transform.position - Vector3.Scale(bullet.SpriteRenderer.size * 0.5f, bullet.moveDirection);
 
             if (coll.OverlapPoint(v))
             {

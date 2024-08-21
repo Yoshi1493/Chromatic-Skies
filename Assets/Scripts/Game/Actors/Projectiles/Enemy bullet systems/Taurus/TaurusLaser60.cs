@@ -27,7 +27,7 @@ public class TaurusLaser60 : Laser
                 activeSize = originalSize;
             }
 
-            spriteRenderer.size = activeSize;
+            SpriteRenderer.size = activeSize;
         }
     }
 

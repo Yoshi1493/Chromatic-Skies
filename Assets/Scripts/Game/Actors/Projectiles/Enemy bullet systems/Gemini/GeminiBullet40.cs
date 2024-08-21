@@ -14,6 +14,6 @@ public class GeminiBullet40 : EnemyBullet
         base.Update();
 
         float t = currentLifetime / MaxLifetime;
-        spriteRenderer.color = projectileData.gradient.Evaluate(t);
+        SpriteRenderer.color = projectileData.gradient.Evaluate(t);
     }
 }

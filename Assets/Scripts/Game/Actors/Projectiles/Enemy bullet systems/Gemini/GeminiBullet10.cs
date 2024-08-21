@@ -16,6 +16,6 @@ public class GeminiBullet10 : ReflectiveEnemyBullet
         base.HandleReflection(coll);
 
         MoveSpeed = 1.5f;
-        spriteRenderer.color = projectileData.gradient.Evaluate(1f);
+        SpriteRenderer.color = projectileData.gradient.Evaluate(1f);
     }
 }

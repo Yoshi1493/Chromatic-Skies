@@ -25,7 +25,7 @@ public class ScorpioBullet0 : EnemyBullet
     protected override void OnEnable()
     {
         base.OnEnable();
-        spriteRenderer.size = Vector2.zero;
+        SpriteRenderer.size = Vector2.zero;
     }
 
     protected override IEnumerator Move()
@@ -36,7 +36,7 @@ public class ScorpioBullet0 : EnemyBullet
         {
             float t = growCurve.Evaluate(currentLerpTime / GrowDuration);
 
-            spriteRenderer.size = Vector2.Lerp(Vector2.zero, 2f * EndRadius * Vector3.one, t);
+            SpriteRenderer.size = Vector2.Lerp(Vector2.zero, 2f * EndRadius * Vector3.one, t);
             collider.radius = Mathf.Lerp(0f, EndRadius, t);
 
             yield return EndOfFrame;

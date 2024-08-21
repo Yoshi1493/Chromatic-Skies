@@ -56,7 +56,7 @@ public abstract class Ship : Actor
     void InitShipData()
     {
         //appearance
-        spriteRenderer.sprite = shipData.Sprite;
+        SpriteRenderer.sprite = shipData.Sprite;
 
         //stats
         currentLives = shipData.MaxLives.Value;
@@ -130,7 +130,7 @@ public abstract class Ship : Actor
 
         yield return WaitForSeconds(1.5f);
 
-        spriteRenderer.enabled = false;
+        SpriteRenderer.enabled = false;
     }
 
     //called when enemy transition to next attack pattern, and when player receives damage

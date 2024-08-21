@@ -24,7 +24,7 @@ public class CancerBullet51 : EnemyBullet
         while (currentLerpTime < totalLerpTime)
         {
             float t = currentLerpTime / totalLerpTime;
-            spriteRenderer.color = projectileData.gradient.Evaluate(t);
+            SpriteRenderer.color = projectileData.gradient.Evaluate(t);
 
             yield return EndOfFrame;
             currentLerpTime += Time.deltaTime;

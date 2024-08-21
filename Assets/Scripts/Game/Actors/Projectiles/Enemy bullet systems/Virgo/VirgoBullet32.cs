@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class VirgoBullet32 : EnemyBullet
 {
-    protected override int NumCollisions => Physics2D.OverlapBoxNonAlloc(transform.position, spriteRenderer.size * 0.8f, transform.eulerAngles.z, collisionResults, CollisionMask);
+    protected override int NumCollisions => Physics2D.OverlapBoxNonAlloc(transform.position, SpriteRenderer.size * 0.8f, transform.eulerAngles.z, collisionResults, CollisionMask);
 
     protected override IEnumerator Move()
     {
@@ -13,7 +13,7 @@ public class VirgoBullet32 : EnemyBullet
     protected override void Update()
     {
         base.Update();
-        spriteRenderer.color = projectileData.gradient.Evaluate(Mathf.Clamp01(currentLifetime));
+        SpriteRenderer.color = projectileData.gradient.Evaluate(Mathf.Clamp01(currentLifetime));
     }
 
 #if UNITY_EDITOR
@@ -22,7 +22,7 @@ public class VirgoBullet32 : EnemyBullet
         if (UnityEditor.EditorApplication.isPlaying)
         {
             Gizmos.matrix = transform.localToWorldMatrix;
-            Gizmos.DrawCube(Vector3.zero, spriteRenderer.size * 0.8f);
+            Gizmos.DrawCube(Vector3.zero, SpriteRenderer.size * 0.8f);
         }
     }
 #endif

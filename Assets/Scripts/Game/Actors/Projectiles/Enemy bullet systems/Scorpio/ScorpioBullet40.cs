@@ -15,7 +15,7 @@ public class ScorpioBullet40 : EnemyBullet, ITimestoppable
     {
         StopAllCoroutines();
 
-        spriteRenderer.color = Color.white;
+        SpriteRenderer.color = Color.white;
         MoveSpeed = 0f;
         collider.enabled = false;
     }
@@ -43,7 +43,7 @@ public class ScorpioBullet40 : EnemyBullet, ITimestoppable
     {
         base.OnEnable();
 
-        OriginalColour = spriteRenderer.color;
+        OriginalColour = SpriteRenderer.color;
         collider.enabled = true;
     }
 

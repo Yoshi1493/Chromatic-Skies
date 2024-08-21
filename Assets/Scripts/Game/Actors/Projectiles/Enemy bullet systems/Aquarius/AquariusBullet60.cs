@@ -19,7 +19,7 @@ public class AquariusBullet60 : ScriptableEnemyBullet<AquariusBulletSystem6, Ene
         yield return this.LerpSpeed(4f, 1f, 1f);
         yield return this.LerpSpeed(1f, 10f, 3f);
 
-        yield return WaitUntil(() => transform.position.y < (-5f - spriteRenderer.size.y));
+        yield return WaitUntil(() => transform.position.y < (-5f - SpriteRenderer.size.y));
         MoveSpeed = 0f;
     }
 

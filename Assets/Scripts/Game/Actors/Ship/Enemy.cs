@@ -20,7 +20,7 @@ public class Enemy : Ship
     protected override void Awake()
     {
         base.Awake();
-        spriteRenderer.color = shipData.UIColour.value;                 //debug
+        SpriteRenderer.color = shipData.UIColour.value;                 //debug
 
         ValidateAttackSystems();
 

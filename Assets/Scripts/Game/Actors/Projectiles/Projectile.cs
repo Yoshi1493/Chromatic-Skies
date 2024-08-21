@@ -24,12 +24,12 @@ public abstract class Projectile : Actor
         base.Awake();
 
         collisionResults = new Collider2D[MaxCollisions];
-        spriteRenderer.sprite = projectileData.sprite;
+        SpriteRenderer.sprite = projectileData.sprite;
     }
 
     protected virtual void OnEnable()
     {
-        spriteRenderer.color = projectileData.useSolidColour ? projectileData.colour : projectileData.gradient.Evaluate(Random.value);
+        SpriteRenderer.color = projectileData.useSolidColour ? projectileData.colour : projectileData.gradient.Evaluate(Random.value);
 
         moveDirection = new Vector2
         (
@@ -82,7 +82,7 @@ public abstract class Projectile : Actor
         destructionParticles.SetActive(true);
 
         //set colour based on sprite colour
-        particleEffect.ParticleSystem.SetVector4("ParticleColour", spriteRenderer.color);
+        particleEffect.ParticleSystem.SetVector4("ParticleColour", SpriteRenderer.color);
         particleEffect.enabled = true;
     }
 

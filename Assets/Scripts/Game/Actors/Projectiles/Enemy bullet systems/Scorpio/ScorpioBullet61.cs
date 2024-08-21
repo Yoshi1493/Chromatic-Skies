@@ -18,7 +18,7 @@ public class ScorpioBullet61 : EnemyBullet, ITimestoppable
         {
             StopAllCoroutines();
 
-            spriteRenderer.color = Color.white;
+            SpriteRenderer.color = Color.white;
             MoveSpeed = 0f;
             collider.enabled = false;
             hasStopped = true;
@@ -48,7 +48,7 @@ public class ScorpioBullet61 : EnemyBullet, ITimestoppable
     {
         base.OnEnable();
 
-        OriginalColour = spriteRenderer.color;
+        OriginalColour = SpriteRenderer.color;
         collider.enabled = true;
         hasStopped = false;
     }
@@ -59,9 +59,9 @@ public class ScorpioBullet61 : EnemyBullet, ITimestoppable
 
         if (currentLifetime <= 0.5f)
         {
-            Color c = spriteRenderer.color;
+            Color c = SpriteRenderer.color;
             c.a = Mathf.Clamp01(currentLifetime * 2f);
-            spriteRenderer.color = c;
+            SpriteRenderer.color = c;
         }
     }
 

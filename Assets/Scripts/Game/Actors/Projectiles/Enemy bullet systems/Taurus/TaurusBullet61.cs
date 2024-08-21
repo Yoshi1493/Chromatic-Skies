@@ -3,14 +3,14 @@ using UnityEngine;
 
 public class TaurusBullet61 : EnemyBullet
 {
-    protected override int NumCollisions => Physics2D.OverlapBoxNonAlloc(transform.position, spriteRenderer.size, 0f, collisionResults, CollisionMask);
+    protected override int NumCollisions => Physics2D.OverlapBoxNonAlloc(transform.position, SpriteRenderer.size, 0f, collisionResults, CollisionMask);
 
     protected override float MaxLifetime => 6f;
 
     protected override void Awake()
     {
         base.Awake();
-        GetComponent<BoxCollider2D>().size = spriteRenderer.size;
+        GetComponent<BoxCollider2D>().size = SpriteRenderer.size;
     }
 
     protected override IEnumerator Move()
@@ -23,7 +23,7 @@ public class TaurusBullet61 : EnemyBullet
     {
         if (UnityEditor.EditorApplication.isPlaying)
         {
-            Gizmos.DrawCube(transform.position, spriteRenderer.size);
+            Gizmos.DrawCube(transform.position, SpriteRenderer.size);
         }
     }
 #endif

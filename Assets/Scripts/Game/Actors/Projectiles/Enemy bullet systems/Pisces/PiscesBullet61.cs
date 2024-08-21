@@ -15,7 +15,7 @@ public class PiscesBullet61 : ScriptableEnemyBullet<PiscesBulletSystem62, Laser>
         float z = 45f * Mathf.Sign(-transform.position.x) + 180f;
         Vector3 pos = transform.position;
 
-        laserData.colour = spriteRenderer.color;
+        laserData.colour = SpriteRenderer.color;
         SpawnBullet(0, z, pos, false).Fire(1f);
         yield return null;
     }

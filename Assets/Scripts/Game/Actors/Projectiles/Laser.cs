@@ -23,7 +23,7 @@ public abstract class Laser : Projectile
     {
         base.Awake();
 
-        originalSize = spriteRenderer.size;
+        originalSize = SpriteRenderer.size;
         activeSize = originalSize;
     }
 
@@ -76,7 +76,7 @@ public abstract class Laser : Projectile
         {
             if (warningDuration == 0f)
             {
-                spriteRenderer.size = originalSize;
+                SpriteRenderer.size = originalSize;
                 active = true;
             }
 
@@ -87,27 +87,27 @@ public abstract class Laser : Projectile
         //continuously update SpriteRenderer initial size in case laser path changes length during warning delay (usually due to collisions)
         for (float _ = 0; _ < warningDuration; _ += Time.deltaTime)
         {
-            spriteRenderer.size = new(WarningSpriteWidth, IsColliding ? activeSize.y : originalSize.y);
+            SpriteRenderer.size = new(WarningSpriteWidth, IsColliding ? activeSize.y : originalSize.y);
             yield return EndOfFrame;
         }
 
         active = true;
 
         //determine animation start and end points after delay (in case it collides with something during warning delay)
-        Vector2 currentSize = spriteRenderer.size;
+        Vector2 currentSize = SpriteRenderer.size;
         Vector2 endSize = activeSize;
         float currentLerpTime = 0f;
 
         //animate laser from warning size to active size
-        while (spriteRenderer.size != endSize)
+        while (SpriteRenderer.size != endSize)
         {
             float lerpProgress = currentLerpTime / lerpDuration;
 
             float width = Mathf.Lerp(currentSize.x, endSize.x, widthInterpolation.Evaluate(lerpProgress / 2f));
             float height = Mathf.Lerp(currentSize.y, endSize.y, heightInterpolation.Evaluate(lerpProgress));
 
-            spriteRenderer.size = new Vector2(width, height);
-            activeSize = spriteRenderer.size;
+            SpriteRenderer.size = new Vector2(width, height);
+            activeSize = SpriteRenderer.size;
 
             currentLerpTime += Time.deltaTime;
             yield return EndOfFrame;
@@ -127,7 +127,7 @@ public abstract class Laser : Projectile
 
             float width = Mathf.Lerp(startWidth, 0f, lerpProgress);
             float height = activeSize.y;
-            spriteRenderer.size = new Vector2(width, height);
+            SpriteRenderer.size = new Vector2(width, height);
 
             currentLerpTime += Time.deltaTime;
             yield return EndOfFrame;
@@ -163,7 +163,7 @@ public abstract class Laser : Projectile
         if (UnityEditor.EditorApplication.isPlaying)
         {
             Gizmos.matrix = transform.localToWorldMatrix;
-            Gizmos.DrawCube(0.5f * spriteRenderer.size.y * Vector3.up, spriteRenderer.size);
+            Gizmos.DrawCube(0.5f * SpriteRenderer.size.y * Vector3.up, SpriteRenderer.size);
         }
     }
 #endif

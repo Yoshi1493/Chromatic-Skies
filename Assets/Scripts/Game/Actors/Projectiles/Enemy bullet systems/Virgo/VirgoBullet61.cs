@@ -38,7 +38,7 @@ public class VirgoBullet61 : ScriptableEnemyBullet<VirgoBulletSystem61, EnemyBul
                 float s = BulletBaseSpeed + (i * BulletSpeedModifier);
                 Vector3 pos = transform.position;
 
-                bulletData.colour = spriteRenderer.color;
+                bulletData.colour = SpriteRenderer.color;
                 var bullet = SpawnBullet(4, z, pos, false);
                 bullet.MoveSpeed = s;
                 bullet.Fire();

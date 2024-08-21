@@ -69,6 +69,6 @@ public class LeoBullet40 : ScriptableEnemyBullet<LeoBulletSystem4, EnemyBullet>
         base.Update();
 
         float t = currentLifetime / MaxLifetime;
-        spriteRenderer.color = projectileData.gradient.Evaluate(t);
+        SpriteRenderer.color = projectileData.gradient.Evaluate(t);
     }
 }

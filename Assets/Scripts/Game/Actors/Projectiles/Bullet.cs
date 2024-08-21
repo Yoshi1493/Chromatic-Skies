@@ -2,7 +2,7 @@ using UnityEngine;
 
 public abstract class Bullet : Projectile
 {
-    protected float HitboxSize => 0.8f * Mathf.Min(spriteRenderer.size.x, spriteRenderer.size.y) / 2f;
+    protected float HitboxSize => 0.8f * Mathf.Min(SpriteRenderer.size.x, SpriteRenderer.size.y) / 2f;
     protected override int NumCollisions => Physics2D.OverlapCircleNonAlloc(transform.position, HitboxSize, collisionResults, CollisionMask);
 
     public float MoveSpeed { get; set; }

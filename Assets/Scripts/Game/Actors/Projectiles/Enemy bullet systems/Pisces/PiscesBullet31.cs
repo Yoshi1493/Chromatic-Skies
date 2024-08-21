@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class PiscesBullet31 : EnemyBullet
 {
-    protected override int NumCollisions => Physics2D.OverlapBoxNonAlloc(transform.position, spriteRenderer.size * 0.8f, transform.eulerAngles.z, collisionResults, CollisionMask);
+    protected override int NumCollisions => Physics2D.OverlapBoxNonAlloc(transform.position, SpriteRenderer.size * 0.8f, transform.eulerAngles.z, collisionResults, CollisionMask);
 
     protected override float MaxLifetime => 6f;
 
@@ -19,7 +19,7 @@ public class PiscesBullet31 : EnemyBullet
         if (UnityEditor.EditorApplication.isPlaying)
         {
             Gizmos.matrix = transform.localToWorldMatrix;
-            Gizmos.DrawCube(Vector3.zero, spriteRenderer.size * 0.8f);
+            Gizmos.DrawCube(Vector3.zero, SpriteRenderer.size * 0.8f);
         }
     }
 #endif

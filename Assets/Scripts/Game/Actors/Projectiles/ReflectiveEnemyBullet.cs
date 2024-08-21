@@ -14,7 +14,7 @@ public abstract class ReflectiveEnemyBullet : EnemyBullet
         base.OnEnable();
 
         currentReflectCount = MaxReflectCount;
-        spriteRenderer.color = projectileData.gradient.Evaluate(0f);
+        SpriteRenderer.color = projectileData.gradient.Evaluate(0f);
     }
 
     protected override void Update()
