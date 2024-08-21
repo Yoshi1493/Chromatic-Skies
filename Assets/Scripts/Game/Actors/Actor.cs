@@ -3,7 +3,7 @@ using UnityEngine;
 public abstract class Actor : MonoBehaviour
 {
     [HideInInspector] new public Transform transform;
-    protected SpriteRenderer spriteRenderer;
+    public SpriteRenderer spriteRenderer { get; protected set; }
 
     protected virtual void Awake()
     {
