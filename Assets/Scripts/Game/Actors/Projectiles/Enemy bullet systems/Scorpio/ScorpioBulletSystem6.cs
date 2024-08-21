@@ -5,11 +5,14 @@ using static CoroutineHelper;
 
 public class ScorpioBulletSystem6 : EnemyShooter<EnemyBullet>
 {
-    const int BulletCount = 6;
+    const int WaveCount = 12;
+    const float WaveSpacing = 15f;
+    const int BranchCount = 6;
+    const float BranchSpacing = 360f / BranchCount;
     const float BulletSpawnRadius = 0.5f;
 
     EnemyBullet specialBullet;
-    List<EnemyBullet> bullets = new(BulletCount);
+    List<EnemyBullet> bullets = new(WaveCount * BranchCount);
 
     protected override IEnumerator Shoot()
     {
@@ -26,14 +29,19 @@ public class ScorpioBulletSystem6 : EnemyShooter<EnemyBullet>
 
         while (enabled)
         {
-            for (int i = 0; i < BulletCount; i++)
+            for (int i = 0; i < WaveCount; i++)
             {
-                float z = PlayerPosition.GetRotationDifference(specialBullet.transform.position);
-                Vector3 pos = specialBullet.transform.position + (BulletSpawnRadius * specialBullet.transform.up.RotateVectorBy(z));
+                float r = PlayerPosition.GetRotationDifference(specialBullet.transform.position);
 
-                var bullet = SpawnProjectile(2, z, pos, false);
-                bullets.Add(bullet);
-                bullet.Fire();
+                for (int ii = 0; ii < BranchCount; ii++)
+                {
+                    float z = (i * WaveSpacing) + (ii * BranchSpacing) + r;
+                    Vector3 pos = specialBullet.transform.position + (BulletSpawnRadius * specialBullet.transform.up.RotateVectorBy(z));
+
+                    var bullet = SpawnProjectile(2, z, pos, false);
+                    bullets.Add(bullet);
+                    bullet.Fire();
+                }
 
                 yield return WaitForSeconds(ShootingCooldown);
             }
