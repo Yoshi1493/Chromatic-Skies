@@ -4,8 +4,10 @@ using static MathHelper;
 
 public class ScorpioBullet60 : ScriptableEnemyBullet<ScorpioBulletSystem6, EnemyBullet>
 {
-    protected override float MaxLifetime => Mathf.Infinity;
+    protected override int MaxCollisions => 16;
     protected override int CollisionMask => base.CollisionMask | 1 << LayerMask.NameToLayer("Enemy bullet");
+
+    protected override float MaxLifetime => Mathf.Infinity;
 
     protected override IEnumerator Move()
     {
