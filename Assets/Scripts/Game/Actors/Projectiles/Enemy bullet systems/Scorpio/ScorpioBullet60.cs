@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using static MathHelper;
 
-public class ScorpioBullet60 : ScriptableEnemyBullet<ScorpioBulletSystem6, EnemyBullet>
+public class ScorpioBullet60 : EnemyBullet
 {
     protected override int MaxCollisions => 16;
     protected override int CollisionMask => base.CollisionMask | 1 << LayerMask.NameToLayer("Enemy bullet");
