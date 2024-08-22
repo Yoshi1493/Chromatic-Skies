@@ -32,8 +32,8 @@ public class ScorpioBullet61 : EnemyBullet, ITimestoppable
 
     public IEnumerator ResumeMove()
     {
-        yield return this.LerpSpeed(0f, -2f, 2f);
         collider.enabled = true;
+        yield return this.LerpSpeed(0f, -2f, 2f);
     }
 
     #endregion
@@ -41,7 +41,9 @@ public class ScorpioBullet61 : EnemyBullet, ITimestoppable
     protected override void Awake()
     {
         base.Awake();
+
         collider = GetComponent<CircleCollider2D>();
+        collider.enabled = false;
     }
 
     protected override void OnEnable()
@@ -68,5 +70,11 @@ public class ScorpioBullet61 : EnemyBullet, ITimestoppable
     protected override IEnumerator Move()
     {
         yield return this.LerpSpeed(1f, 2f, 1f);
+    }
+
+    public override void Destroy()
+    {
+        collider.enabled = false;
+        base.Destroy();
     }
 }

@@ -9,7 +9,7 @@ public class ScorpioBulletSystem6 : EnemyShooter<EnemyBullet>
     const float WaveSpacing = 15f;
     const int BranchCount = 6;
     const float BranchSpacing = 360f / BranchCount;
-    const float BulletSpawnRadius = 0.5f;
+    const float BulletSpawnRadius = 0.6f;
 
     EnemyBullet specialBullet;
     List<EnemyBullet> bullets = new(WaveCount * BranchCount);
@@ -38,6 +38,8 @@ public class ScorpioBulletSystem6 : EnemyShooter<EnemyBullet>
                     float z = (i * WaveSpacing) + (ii * BranchSpacing) + r;
                     Vector3 pos = specialBullet.transform.position + (BulletSpawnRadius * specialBullet.transform.up.RotateVectorBy(z));
 
+                    bulletData.colour = bulletData.gradient.Evaluate((i * BranchCount + ii) / (WaveCount * BranchCount - 1f));
+
                     var bullet = SpawnProjectile(2, z, pos, false);
                     bullets.Add(bullet);
                     bullet.Fire();
@@ -65,7 +67,7 @@ public class ScorpioBulletSystem6 : EnemyShooter<EnemyBullet>
 
             bullets.Clear();
 
-            yield return WaitForSeconds(5f);
+            yield return WaitForSeconds(8f);
         }
     }
 
