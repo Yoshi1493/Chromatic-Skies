@@ -15,8 +15,8 @@ public static class FileHandler
         {
             try
             {
-                using FileStream fs = new FileStream(settingsFilePath, FileMode.Open);
-                using StreamReader sr = new StreamReader(fs);
+                using FileStream fs = new(settingsFilePath, FileMode.Open);
+                using StreamReader sr = new(fs);
                 string data = sr.ReadToEnd();
 
                 JsonUtility.FromJsonOverwrite(data, userSettings);
@@ -36,8 +36,8 @@ public static class FileHandler
 
             var json = JsonUtility.ToJson(userSettings, true);
 
-            using FileStream fs = new FileStream(settingsFilePath, FileMode.Create);
-            using StreamWriter sw = new StreamWriter(fs);
+            using FileStream fs = new(settingsFilePath, FileMode.Create);
+            using StreamWriter sw = new(fs);
             sw.Write(json);
         }
         catch (Exception e)
