@@ -69,7 +69,7 @@ public class ScorpioBullet61 : EnemyBullet, ITimestoppable
 
     protected override IEnumerator Move()
     {
-        yield return this.LerpSpeed(1f, 2f, 1f);
+        yield return this.LerpSpeed(3f, 0.5f, 0.5f);
     }
 
     public override void Destroy()

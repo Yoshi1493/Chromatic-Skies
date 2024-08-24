@@ -6,7 +6,7 @@ using static CoroutineHelper;
 public class ScorpioBulletSystem61 : EnemyShooter<EnemyBullet>
 {
     const int RingCount = 12;
-    const int BulletCount = 12;
+    const int BulletCount = 6;
     const int BulletCountModifier = 6;
     const float BulletSpawnRadius = 0.1f;
     const float SpawnRadiusModifier = 1f;

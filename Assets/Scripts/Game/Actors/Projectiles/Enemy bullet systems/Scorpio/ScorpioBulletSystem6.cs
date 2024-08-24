@@ -5,14 +5,17 @@ using static CoroutineHelper;
 
 public class ScorpioBulletSystem6 : EnemyShooter<EnemyBullet>
 {
-    const int WaveCount = 12;
-    const float WaveSpacing = 15f;
+    const int RingCount = 3;
     const int BranchCount = 6;
     const float BranchSpacing = 360f / BranchCount;
+    const int BulletCount = 15;
+    const float BulletSpacing = 5f;
     const float BulletSpawnRadius = 0.6f;
+    const float BulletBaseSpeed = 1f;
+    const float BulletSpeedModifier = 0.5f;
 
     EnemyBullet specialBullet;
-    List<EnemyBullet> bullets = new(WaveCount * BranchCount);
+    List<EnemyBullet> bullets = new(RingCount * BranchCount * BulletCount);
 
     protected override IEnumerator Shoot()
     {
@@ -26,29 +29,34 @@ public class ScorpioBulletSystem6 : EnemyShooter<EnemyBullet>
         specialBullet.Fire();
 
         yield return WaitForSeconds(1f);
-
+        
         while (enabled)
         {
-            for (int i = 0; i < WaveCount; i++)
-            {
-                float r = PlayerPosition.GetRotationDifference(specialBullet.transform.position);
+            float r = PlayerPosition.GetRotationDifference(specialBullet.transform.position);
 
+            for (int i = 0; i < RingCount; i++)
+            {
                 for (int ii = 0; ii < BranchCount; ii++)
                 {
-                    float z = (i * WaveSpacing) + (ii * BranchSpacing) + r;
-                    Vector3 pos = specialBullet.transform.position + (BulletSpawnRadius * specialBullet.transform.up.RotateVectorBy(z));
+                    for (int iii = 0; iii < BulletCount; iii++)
+                    {
+                        float z = (ii * BranchSpacing) + r;
+                        float s = BulletBaseSpeed + (i * BulletSpeedModifier);
+                        float t = ((iii - ((BulletCount - 1) / 2f)) * BulletSpacing);
+                        Vector3 pos = specialBullet.transform.position + (BulletSpawnRadius * specialBullet.transform.up.RotateVectorBy(z));
 
-                    bulletData.colour = bulletData.gradient.Evaluate((i * BranchCount + ii) / (WaveCount * BranchCount - 1f));
+                        bulletData.colour = bulletData.gradient.Evaluate(Mathf.InverseLerp(0f, 360f, z));
 
-                    var bullet = SpawnProjectile(2, z, pos, false);
-                    bullets.Add(bullet);
-                    bullet.Fire();
+                        var bullet = SpawnProjectile(2, z, pos, false);
+                        bullet.Fire();
+                        bullet.StartCoroutine(bullet.LerpSpeed(0.5f, s, 1f, delay: 1f));
+                        bullet.StartCoroutine(bullet.RotateBy(t, 1f, delay: 1f));
+                        bullets.Add(bullet);
+                    }
                 }
-
-                yield return WaitForSeconds(ShootingCooldown);
             }
 
-            yield return WaitForSeconds(2f);
+            yield return WaitForSeconds(4f);
 
             SpawnProjectile(0, 0f, Vector3.zero).Fire();
             yield return WaitForSeconds(1f);
@@ -65,9 +73,10 @@ public class ScorpioBulletSystem6 : EnemyShooter<EnemyBullet>
                 }
             }
 
-            bullets.Clear();
+            yield return WaitUntil(() => bullets.TrueForAll(b => !b.isActiveAndEnabled));
 
-            yield return WaitForSeconds(8f);
+            bullets.Clear();
+            yield return WaitForSeconds(1f);
         }
     }
 
