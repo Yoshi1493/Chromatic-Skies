@@ -10,7 +10,7 @@ public class ScorpioBullet0 : EnemyBullet
     const float GrowDuration = 1f;
     const float EndRadius = 27f;
 
-    protected override int MaxCollisions => 32;
+    protected override int MaxCollisions => 64;
     protected override int CollisionMask => 1 << LayerMask.NameToLayer("Enemy bullet");
     protected override int NumCollisions => Physics2D.OverlapCircleNonAlloc(transform.position, HitboxSize, collisionResults, CollisionMask);
 

@@ -73,8 +73,6 @@ public class ScorpioBulletSystem6 : EnemyShooter<EnemyBullet>
                 }
             }
 
-            yield return WaitUntil(() => bullets.TrueForAll(b => !b.isActiveAndEnabled));
-
             bullets.Clear();
             yield return WaitForSeconds(1f);
         }
