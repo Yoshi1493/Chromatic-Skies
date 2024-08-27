@@ -59,7 +59,7 @@ public class ScorpioBulletSystem6 : EnemyShooter<EnemyBullet>
             yield return WaitForSeconds(4f);
 
             SpawnProjectile(0, 0f, Vector3.zero).Fire();
-            yield return WaitForSeconds(1f);
+            yield return WaitForSeconds(2f);
 
             specialBullet.StartCoroutine(specialBullet.MoveTo(GetRandomPosition(), 1f));
             yield return WaitForSeconds(1f);
@@ -74,7 +74,7 @@ public class ScorpioBulletSystem6 : EnemyShooter<EnemyBullet>
             }
 
             bullets.Clear();
-            yield return WaitForSeconds(1f);
+            yield return WaitForSeconds(2f);
         }
     }
 
@@ -85,7 +85,7 @@ public class ScorpioBulletSystem6 : EnemyShooter<EnemyBullet>
         do
         {
             x = 0.6f * Random.Range(-screenHalfWidth, screenHalfWidth);
-            y = Random.Range(0f, screenHalfHeight);
+            y = 0.6f * Random.Range(0f, screenHalfHeight);
         }
         while (Mathf.Abs(specialBullet.transform.position.x - x) > 1f && Mathf.Abs(specialBullet.transform.position.y - y) > 1);
 
