@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using static CoroutineHelper;
 
+[RequireComponent(typeof(Image))]
 public class HealthBar<TShip> : ShipHUDComponent<TShip>
     where TShip : Ship
 {
@@ -18,10 +19,14 @@ public class HealthBar<TShip> : ShipHUDComponent<TShip>
         base.Awake();
 
         healthBarImage = GetComponent<Image>();
-        healthBarImage.color = ship.shipData.UIColour.value;
 
-        ship.TakeDamageAction += OnTakeDamage;
-        ship.RespawnAction += OnRespawn;
+        if (ship != null)
+        {
+            ship.TakeDamageAction += OnTakeDamage;
+            ship.RespawnAction += OnRespawn;
+
+            healthBarImage.color = ship.shipData.UIColour.value;
+        }
     }
 
     void Start()

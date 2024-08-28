@@ -11,8 +11,12 @@ public class LivesDisplay<TShip> : ShipHUDComponent<TShip>
     {
         base.Awake();
 
-        ship.LoseLifeAction += OnLoseLife;
         lifeIcons = GetComponentsInChildren<Image>();
+
+        if (ship != null)
+        {
+            ship.LoseLifeAction += OnLoseLife;
+        }
     }
 
     protected virtual void Start()

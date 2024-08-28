@@ -9,7 +9,16 @@ public class EnemyPositionDisplay : ShipHUDComponent<Enemy>
         base.Awake();
 
         transform = GetComponent<Transform>();
-        ship.DeathAction += () => SetActive(false);
+
+        if (ship != null)
+        {
+            ship.DeathAction += () => SetActive(false);
+        }
+        else
+        {
+            enabled = false;
+            SetActive(false);
+        }
     }
 
     void Update()

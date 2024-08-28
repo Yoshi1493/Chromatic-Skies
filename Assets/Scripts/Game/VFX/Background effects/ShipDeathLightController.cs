@@ -17,7 +17,15 @@ public class ShipDeathLightController : MonoBehaviour
         globalLight = GetComponent<Light2D>();
 
         Enemy enemy = FindObjectOfType<Enemy>();
-        enemy.DeathAction += OnEnemyDie;
+
+        if (enemy != null)
+        {
+            enemy.DeathAction += OnEnemyDie;
+        }
+        else
+        {
+            //Debug.LogError("No Enemy object found.");
+        }
     }
 
     void OnEnemyDie()

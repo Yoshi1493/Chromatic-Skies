@@ -15,10 +15,16 @@ public class ShipDeathBackgroundController : MonoBehaviour
         backgroundImage = GetComponent<SpriteRenderer>();
 
         Player player = FindObjectOfType<Player>();
-        player.DeathAction += OnPlayerDie;
+        if (player != null)
+        {
+            player.DeathAction += OnPlayerDie;
+        }
 
         Enemy enemy = FindObjectOfType<Enemy>();
-        enemy.DeathAction += OnEnemyDie;
+        if (enemy != null)
+        {
+            enemy.DeathAction += OnEnemyDie;
+        }
     }
 
     void OnEnemyDie()
@@ -57,7 +63,7 @@ public class ShipDeathBackgroundController : MonoBehaviour
 
             Color c = backgroundImage.color;
             c.a = Mathf.Lerp(0f, 1f, t);
-            backgroundImage.color = c;            
+            backgroundImage.color = c;
 
             yield return EndOfFrame;
             currentLerpTime += Time.deltaTime;
