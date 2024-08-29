@@ -50,7 +50,7 @@ public class LeoBulletSystem4 : EnemyShooter<EnemyBullet>
             yield return WaitForSeconds(3f);
 
             SetSubsystemEnabled(1);
-            yield return WaitForSeconds(5f);
+            yield return WaitForSeconds(7f);
 
             SetSubsystemEnabled(2);
             yield return WaitForSeconds(5f);

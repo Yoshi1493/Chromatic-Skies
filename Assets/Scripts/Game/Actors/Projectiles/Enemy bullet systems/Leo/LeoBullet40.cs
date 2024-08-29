@@ -9,13 +9,14 @@ public class LeoBullet40 : ScriptableEnemyBullet<LeoBulletSystem4, EnemyBullet>
     [SerializeField] ProjectileObject bulletData;
 
     const int RingCount = 5;
-    const float RingSpacing = 5f;
-    const int BulletCount = 18;
+    const float RingSpacing = 10f;
+    const int BulletCount = 16;
     const float BulletSpacing = 360f / BulletCount;
     const float BulletBaseSpeed = 1.5f;
     const float BulletSpeedModifier = 0.1f;
     const float BulletRotationSpeed = 120f;
     const float BulletRotationDuration = 1f;
+    const float ShootingCooldown = 0.1f;
 
     List<EnemyBullet> bullets = new(RingCount * BulletCount);
 
@@ -42,6 +43,8 @@ public class LeoBullet40 : ScriptableEnemyBullet<LeoBulletSystem4, EnemyBullet>
 
                 bullets.Add(bullet);
             }
+
+            yield return WaitForSeconds(ShootingCooldown);
         }
 
         yield return WaitForSeconds(1f);
@@ -57,7 +60,7 @@ public class LeoBullet40 : ScriptableEnemyBullet<LeoBulletSystem4, EnemyBullet>
             {
                 int b = (i * BulletCount) + ii;
                 var bullet = bullets[b];
-                float s = BulletBaseSpeed + (i * BulletSpeedModifier * 2f);
+                float s = BulletBaseSpeed + (i * BulletSpeedModifier);
 
                 bullet.StartCoroutine(bullet.LerpSpeed(bullet.MoveSpeed, s, 1.5f));
             }

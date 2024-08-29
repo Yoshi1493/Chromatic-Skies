@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b79cd0b20b26ac4090b241d65679e69, type: 3}
   m_Name: '[Leo] Bullet 4_1'
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: 9c44a70d88a58084b91108bd8d02a677, type: 3}
+  sprite: {fileID: 21300000, guid: aff5ff3003a41f24d892e26e534d2c72, type: 3}
   useSolidColour: 1
-  colour: {r: 1, g: 0.8, b: 0.19999999, a: 1}
+  colour: {r: 1, g: 1, b: 0.39999998, a: 1}
   gradient:
     serializedVersion: 2
     key0: {r: 1, g: 0.6, b: 0, a: 1}
-    key1: {r: 1, g: 1, b: 0.39999998, a: 1}
+    key1: {r: 1, g: 0.94, b: 0.39999998, a: 1}
     key2: {r: 1, g: 0.8, b: 0.2, a: 0}
     key3: {r: 0, g: 0, b: 0, a: 0}
     key4: {r: 0, g: 0, b: 0, a: 0}
@@ -47,4 +47,3 @@ MonoBehaviour:
   ID: 1
   Power: {fileID: 11400000, guid: 2f946bc0b32947f468ba6cc9ee2e3f3c, type: 2}
   destructible: 1
-  particleSystemName: {fileID: 11400000, guid: 920cea33377f8264fa05fd6bf591f3b3, type: 2}

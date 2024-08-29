@@ -1,4 +1,5 @@
 using System.Collections;
+using static CoroutineHelper;
 
 public class LeoBullet42 : EnemyBullet
 {
@@ -6,6 +7,9 @@ public class LeoBullet42 : EnemyBullet
 
     protected override IEnumerator Move()
     {
-        yield return null;
+        yield return WaitForSeconds(1f);
+
+        float startSpeed = MoveSpeed;
+        yield return this.LerpSpeed(startSpeed, 2f, 2f);
     }
 }
