@@ -1,12 +1,28 @@
 using System.Collections;
+using UnityEngine;
 
 public class LeoBullet61 : EnemyBullet
 {
-    protected override float MaxLifetime => 12f;
+    [HideInInspector] public Vector3 rotationAxis;
+    const float RotationSpeed = 180f;
+    public const float FireDelay = 6f;
+
+    protected override float MaxLifetime => 6f;
 
     protected override IEnumerator Move()
     {
-        float endSpeed = MoveSpeed;
-        yield return this.LerpSpeed(-endSpeed * 2f, endSpeed, 2f);
+        yield return null;
+    }
+
+    protected override void Update()
+    {
+        base.Update();
+
+        SpriteRenderer.color = projectileData.gradient.Evaluate(currentLifetime / MaxLifetime);
+
+        if (currentLifetime < FireDelay)
+        {
+            transform.RotateAround(ownerShip.transform.position, rotationAxis, RotationSpeed * Time.deltaTime);
+        }
     }
 }

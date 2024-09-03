@@ -16,21 +16,22 @@ public class LeoBulletSystem6 : EnemyShooter<EnemyBullet>
         yield return base.Shoot();
 
         SetSubsystemEnabled(1);
-        SetSubsystemEnabled(2);
+        //SetSubsystemEnabled(2);
 
-        float r = Random.Range(45f, 135f);
+        //float r = Random.Range(45f, 135f);
 
-        for (int i = 0; enabled; i++)
-        {
-            for (int ii = 0; ii < BranchCount; ii++)
-            {
-                float z = (i * WaveSpacing) + (ii * BranchSpacing) + r;
-                Vector3 pos = BulletSpawnRadius * Vector3.up.RotateVectorBy(z);
+        //for (int i = 0; enabled; i++)
+        //{
+        //    for (int ii = 0; ii < BranchCount; ii++)
+        //    {
+        //        float z = (i * WaveSpacing) + (ii * BranchSpacing) + r;
+        //        Vector3 pos = BulletSpawnRadius * Vector3.up.RotateVectorBy(z);
 
-                SpawnProjectile(0, z, pos).Fire();
-            }
+        //        SpawnProjectile(0, z, pos).Fire();
+        //    }
 
-            yield return WaitForSeconds(ShootingCooldown);
-        }
+        //    yield return WaitForSeconds(ShootingCooldown);
+        //}
     }
+
 }

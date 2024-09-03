@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: 7f7bb1b6e8cdb55478119a55c426fb79, type: 3}
   useSolidColour: 1
-  colour: {r: 0.45000303, g: 0.3999985, b: 1, a: 1}
+  colour: {r: 0.25, g: 0.5, b: 1, a: 1}
   gradient:
     serializedVersion: 2
     key0: {r: 1, g: 0.28, b: 0.19999999, a: 1}
@@ -35,7 +35,7 @@ MonoBehaviour:
     ctime7: 0
     atime0: 0
     atime1: 65535
-    atime2: 0
+    atime2: 65535
     atime3: 0
     atime4: 0
     atime5: 0
