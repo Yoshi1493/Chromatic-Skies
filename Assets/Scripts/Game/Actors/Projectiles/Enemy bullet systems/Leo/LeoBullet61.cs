@@ -5,13 +5,21 @@ public class LeoBullet61 : EnemyBullet
 {
     [HideInInspector] public Vector3 rotationAxis;
     const float RotationSpeed = 180f;
-    public const float FireDelay = 6f;
+    bool preFire = false;
 
-    protected override float MaxLifetime => 6f;
+    protected override float MaxLifetime => 12f;
+
+    protected override void OnEnable()
+    {
+        base.OnEnable();
+        preFire = false;
+    }
 
     protected override IEnumerator Move()
     {
-        yield return null;
+        preFire = true;
+        float startSpeed = MoveSpeed;
+        yield return this.LerpSpeed(startSpeed, 2.5f, 1f);
     }
 
     protected override void Update()
@@ -20,9 +28,15 @@ public class LeoBullet61 : EnemyBullet
 
         SpriteRenderer.color = projectileData.gradient.Evaluate(currentLifetime / MaxLifetime);
 
-        if (currentLifetime < FireDelay)
+        if (!preFire)
         {
             transform.RotateAround(ownerShip.transform.position, rotationAxis, RotationSpeed * Time.deltaTime);
         }
+    }
+
+    public override void Destroy()
+    {
+        preFire = false;
+        base.Destroy();
     }
 }

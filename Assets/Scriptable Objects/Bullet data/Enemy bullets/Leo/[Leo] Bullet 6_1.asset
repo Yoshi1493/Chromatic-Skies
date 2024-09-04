@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b79cd0b20b26ac4090b241d65679e69, type: 3}
   m_Name: '[Leo] Bullet 6_1'
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: 9b86635f8b1fb5941bb865b3a22f5cf0, type: 3}
+  sprite: {fileID: 21300000, guid: baa0acec5cc11d04e9029cbbda9961ea, type: 3}
   useSolidColour: 1
   colour: {r: 0.2, g: 0.84, b: 1, a: 0}
   gradient:
@@ -34,7 +34,7 @@ MonoBehaviour:
     ctime6: 0
     ctime7: 0
     atime0: 0
-    atime1: 6554
+    atime1: 3277
     atime2: 65535
     atime3: 0
     atime4: 0
