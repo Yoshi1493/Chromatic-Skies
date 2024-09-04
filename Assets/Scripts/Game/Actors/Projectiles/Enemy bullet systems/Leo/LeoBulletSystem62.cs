@@ -26,7 +26,7 @@ public class LeoBulletSystem62 : EnemyShooter<EnemyBullet>
 
                 bulletData.colour = bulletData.gradient.Evaluate(ii / (BulletCount - 1f));
 
-                var bullet = SpawnProjectile(2, z, pos);
+                var bullet = SpawnProjectile(3, z, pos);
                 bullet.StartCoroutine(bullet.RotateBy((i % 2 * 2 - 1) * BulletRotationSpeed, BulletRotationDuration));
                 bullet.Fire();
             }

@@ -1,9 +1,13 @@
 using System.Collections;
+using UnityEngine;
 
-public class LeoBullet62 : ScriptableEnemyBullet<LeoBulletSystem62, EnemyBullet>
+public class LeoBullet62 : EnemyBullet
 {
+    protected override float MaxLifetime => 12f;
+
     protected override IEnumerator Move()
     {
-        yield return this.LerpSpeed(0f, 2f, 2f);
+        yield return this.LerpSpeed(3f, 1.5f, 1f);
+        yield return this.RotateBy(Random.Range(-90f, 90f), 3f);
     }
 }
