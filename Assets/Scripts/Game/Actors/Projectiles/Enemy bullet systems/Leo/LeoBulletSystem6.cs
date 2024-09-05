@@ -67,8 +67,9 @@ public class LeoBulletSystem6 : EnemyShooter<EnemyBullet>
                             bulletData.colour = bullets[b].SpriteRenderer.color;
 
                             SpawnProjectile(1, z, pos, false).Fire();
-                            bullets[b].Destroy();
                         }
+
+                        bullets[b].Destroy();
                     }
                 }
 
