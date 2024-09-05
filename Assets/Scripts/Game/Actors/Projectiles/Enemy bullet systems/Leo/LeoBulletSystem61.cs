@@ -20,7 +20,7 @@ public class LeoBulletSystem61 : EnemyShooter<EnemyBullet>
                 float z = (i * WaveSpacing) + (ii * BranchSpacing) + 180f;
                 Vector3 pos = BulletSpawnRadius * Vector3.up.RotateVectorBy(z);
 
-                SpawnProjectile(0, z, pos).Fire();
+                SpawnProjectile(2, z, pos).Fire();
                 yield return WaitForSeconds(ShootingCooldown);
             }
         }

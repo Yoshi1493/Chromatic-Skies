@@ -14,7 +14,7 @@ public class LeoBulletSystem6 : EnemyShooter<EnemyBullet>
     const int BulletCount = 2;
     const float BulletSpacing = 30f;
 
-    [SerializeField] List<EnemyBullet> bullets = new(WaveCount * BranchCount);
+    List<EnemyBullet> bullets = new(WaveCount * BranchCount);
 
     protected override IEnumerator Shoot()
     {
@@ -40,7 +40,7 @@ public class LeoBulletSystem6 : EnemyShooter<EnemyBullet>
                     float x = Mathf.Sqrt((r * r) - (y * y));
                     Vector3 pos = r * new Vector3(x, y).RotateVectorBy(t);
 
-                    var bullet = SpawnProjectile(1, z, pos) as LeoBullet60;
+                    var bullet = SpawnProjectile(0, z, pos) as LeoBullet60;
                     bullet.MoveSpeed = r;
                     bullet.rotationAxis = v;
                     bullets.Add(bullet);
@@ -66,7 +66,7 @@ public class LeoBulletSystem6 : EnemyShooter<EnemyBullet>
 
                             bulletData.colour = bullets[b].SpriteRenderer.color;
 
-                            SpawnProjectile(2, z, pos, false).Fire();
+                            SpawnProjectile(1, z, pos, false).Fire();
                             bullets[b].Destroy();
                         }
                     }
