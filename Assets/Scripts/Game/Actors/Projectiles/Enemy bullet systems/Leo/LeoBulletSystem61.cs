@@ -4,7 +4,7 @@ using static CoroutineHelper;
 
 public class LeoBulletSystem61 : EnemyShooter<EnemyBullet>
 {
-    const float WaveSpacing = 36f;
+    const float WaveSpacing = 16f;
     const int BranchCount = 3;
     const float BranchSpacing = 360f / BranchCount;
     const float BulletSpawnRadius = 12f;

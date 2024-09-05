@@ -63,6 +63,11 @@ public class LeoBulletSystem6 : EnemyShooter<EnemyBullet>
                         {
                             Vector3 pos = bullets[b].transform.position;
                             float z = pos.GetRotationDifference(ownerShip.transform.position) + ((iii % 2 * 2 - 1) * BulletSpacing);
+                            
+                            if (pos.z > 0f)
+                            {
+                                z += 180f;
+                            }
 
                             bulletData.colour = bullets[b].SpriteRenderer.color;
 
