@@ -1,13 +1,27 @@
 using System.Collections;
 using UnityEngine;
+using static CoroutineHelper;
 
 public class LeoBullet62 : EnemyBullet
 {
-    protected override float MaxLifetime => 12f;
+    [SerializeField] AnimationCurve sizeInterpolation;
+
+    protected override float MaxLifetime => 8f;
 
     protected override IEnumerator Move()
     {
-        yield return this.LerpSpeed(3f, 1.5f, 1f);
-        yield return this.RotateBy(Random.Range(-90f, 90f), 3f);
+        MoveSpeed = 2f;
+
+        yield return WaitUntil(() => (ownerShip.transform.position - transform.position).magnitude <= 2f);
+        yield return this.LerpSpeed(2f, 0f, 2f);
+    }
+
+    protected override void Update()
+    {
+        base.Update();
+
+        float t = currentLifetime / MaxLifetime;
+        transform.localScale = sizeInterpolation.Evaluate(t) * Vector2.one;
+        SpriteRenderer.color = projectileData.gradient.Evaluate(t);
     }
 }
