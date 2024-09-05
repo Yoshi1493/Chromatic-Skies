@@ -76,7 +76,8 @@ public class LeoBulletSystem6 : EnemyShooter<EnemyBullet>
                 yield return WaitForSeconds(ShootingCooldown * 5f);
             }
 
-            yield return WaitForSeconds(8f);
+            SetSubsystemEnabled(2);
+            yield return WaitForSeconds(12f);
         }
     }
 }
