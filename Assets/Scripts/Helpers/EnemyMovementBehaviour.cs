@@ -106,6 +106,15 @@ public static class EnemyMovementBehaviour
         if (minSqrMagDelta > maxSqrMagDelta) yield break;
         if (delay > 0) yield return WaitForSeconds(delay);
 
+        Vector3 endPosition = enemy.transform.position.GetRandomPositionWithinBounds(enemy.shipData.boundaryLayer);
+        yield return enemy.MoveTo(endPosition, moveDuration);
+    }
+
+    /// <summary>
+    /// returns a random position that is <minSqrMagDelta> to <maxSqrMagDelta> units away from <currentPostion>, within <bounds>
+    /// </summary>
+    public static Vector3 GetRandomPositionWithinBounds(this Vector3 currentPosition, LayerMask bounds, float minSqrMagDelta = 2f, float maxSqrMagDelta = 4f)
+    {
         float randMagnitude;
         Vector3 randDirection;
 
@@ -114,17 +123,15 @@ public static class EnemyMovementBehaviour
             randMagnitude = Random.Range(minSqrMagDelta, maxSqrMagDelta);
             randDirection = Random.insideUnitCircle.normalized;
         }
-        while (Physics2D.Raycast(enemy.transform.position, randDirection, randMagnitude, enemy.shipData.boundaryLayer).collider != null);
+        while (Physics2D.Raycast(currentPosition, randDirection, randMagnitude, bounds).collider != null);
 
-        Vector3 endPosition = enemy.transform.position + (randMagnitude * randDirection);
-        yield return enemy.MoveTo(endPosition, moveDuration);
+        return currentPosition + (randMagnitude * randDirection);
     }
 
     public static IEnumerator ReturnToOriginalPosition(this EnemyMovement enemy, float moveDuration = 1f, float delay = 0f)
     {
         yield return enemy.MoveTo(originalPosition, moveDuration, delay);
     }
-
     #endregion
 
     #region Helpers/Extensions
