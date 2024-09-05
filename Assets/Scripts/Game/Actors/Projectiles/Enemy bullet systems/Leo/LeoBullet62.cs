@@ -5,6 +5,7 @@ using static CoroutineHelper;
 public class LeoBullet62 : EnemyBullet
 {
     [SerializeField] AnimationCurve sizeInterpolation;
+    Vector2 originalSpriteSize;
 
     protected override float MaxLifetime => 8f;
 
@@ -16,12 +17,18 @@ public class LeoBullet62 : EnemyBullet
         yield return this.LerpSpeed(2f, 0f, 2f);
     }
 
+    protected override void Awake()
+    {
+        base.Awake();
+        originalSpriteSize = SpriteRenderer.size;
+    }
+
     protected override void Update()
     {
         base.Update();
 
         float t = currentLifetime / MaxLifetime;
-        transform.localScale = sizeInterpolation.Evaluate(t) * Vector2.one;
+        SpriteRenderer.size = sizeInterpolation.Evaluate(t) * originalSpriteSize;
         SpriteRenderer.color = projectileData.gradient.Evaluate(t);
     }
 }
