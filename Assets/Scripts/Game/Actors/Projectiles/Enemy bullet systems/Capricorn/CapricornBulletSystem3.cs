@@ -5,13 +5,13 @@ using static MathHelper;
 
 public class CapricornBulletSystem3 : EnemyShooter<EnemyBullet>
 {
-    const int WaveCount = 60;
+    const int WaveCount = 50;
     const float WaveSpacing = 10f;
     const int BranchCount = 2;
     const int BulletCount = 4;
     const float BulletSpacing = 360f / BulletCount;
-    const float BulletBaseSpeed = 3f;
-    const float BulletSpeedModifier = 0.03f;
+    const float BulletBaseSpeed = 3.5f;
+    const float BulletSpeedModifier = -0.03f;
     const float BulletSpawnRadius = 0.6f;
     const float SpawnRadiusModifier = -0.01f;
 
@@ -23,6 +23,11 @@ public class CapricornBulletSystem3 : EnemyShooter<EnemyBullet>
 
         while (enabled)
         {
+            StartMoveAction?.Invoke();
+            SetSubsystemEnabled(1);
+
+            yield return WaitForSeconds(4f);
+
             for (int i = 0; i < WaveCount; i++)
             {
                 float s = BulletBaseSpeed + (i * BulletSpeedModifier);
@@ -30,6 +35,7 @@ public class CapricornBulletSystem3 : EnemyShooter<EnemyBullet>
                 for (int ii = 0; ii < BranchCount; ii++)
                 {
                     float r = RandomAngleDeg;
+
                     float t = (ii % 2 * 2 - 1) * i * WaveSpacing;
 
                     for (int iii = 0; iii < BulletCount; iii++)
@@ -48,10 +54,7 @@ public class CapricornBulletSystem3 : EnemyShooter<EnemyBullet>
                 yield return WaitForSeconds(ShootingCooldown);
             }
 
-            StartMoveAction?.Invoke();
-            SetSubsystemEnabled(1);
-
-            yield return WaitForSeconds(3f);
+            yield return WaitForSeconds(5f);
         }
     }
 }
