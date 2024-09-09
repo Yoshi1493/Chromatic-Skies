@@ -4,6 +4,6 @@ public class SagittariusMovementSystem3 : EnemyMovement
 {
     protected override IEnumerator Move()
     {
-        yield return this.MoveToRandomPosition(0.8f, 1f, 2f);
+        yield return this.MoveToRandomPosition(1f, 1f, 2f);
     }
 }

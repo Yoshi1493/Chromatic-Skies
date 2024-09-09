@@ -10,8 +10,8 @@ public class SagittariusBulletSystem31 : EnemyShooter<EnemyBullet>
     const float BranchSpacing = 360f / BranchCount;
     const int BulletCount = 7;
     const float BulletSpacing = 10f;
-    const float BulletBaseSpeed = 3f;
-    const float BulletSpeedModifier = 0.25f;
+    const float BulletBaseSpeed = 2.4f;
+    const float BulletSpeedModifier = 0.2f;
 
     protected override float ShootingCooldown => 0.08f;
 
@@ -31,7 +31,6 @@ public class SagittariusBulletSystem31 : EnemyShooter<EnemyBullet>
 
                     var bullet = SpawnProjectile(1, z, pos);
                     bullet.MoveSpeed = s;
-                    bullet.Fire();
                 }
             }
 

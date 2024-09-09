@@ -63,7 +63,7 @@ public class SagittariusBulletSystem3 : EnemyShooter<EnemyBullet>
 
             for (int i = 0; i < 3; i++)
             {
-                yield return WaitForSeconds(1f);
+                yield return WaitForSeconds(1.5f);
 
                 StartMoveAction?.Invoke();
                 SetSubsystemEnabled(1);
