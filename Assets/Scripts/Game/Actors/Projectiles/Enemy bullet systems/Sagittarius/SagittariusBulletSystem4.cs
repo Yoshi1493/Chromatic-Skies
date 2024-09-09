@@ -23,29 +23,28 @@ public class SagittariusBulletSystem4 : EnemyShooter<EnemyBullet>
     {
         yield return base.Shoot();
 
-        //flashlightEffect.enabled = true;
-        //flashlightEffect.SetStengthOverTime(4f, 0f);
-        //flashlightEffect.SetRadiusOverTime(0f, 0f);
-        //flashlightEffect.SetHardnessOverTime(1f, 0f);
+        flashlightEffect.enabled = true;
+        flashlightEffect.SetStengthOverTime(6f, 0f);
+        flashlightEffect.SetRadiusOverTime(0f, 0f);
+        flashlightEffect.SetHardnessOverTime(1f, 0f);
 
-        //flashlightEffect.SetRadiusOverTime(0f, 10f);
-        //flashlightEffect.SetHardnessOverTime(0.5f, 10f);
+        flashlightEffect.SetHardnessOverTime(0.5f, 10f);
 
         SetSubsystemEnabled(1);
 
-        while (enabled)
+        for (int i = 1; enabled; i *= -1)
         {
-            for (int i = 0; i < WaveCount; i++)
+            for (int ii = 0; ii < WaveCount; ii++)
             {
-                for (int ii = 0; ii < BranchCount; ii++)
+                for (int iii = 0; iii < BranchCount; iii++)
                 {
-                    float t = (ii % 2 * 2 - 1) * i * WaveSpacing;
-                    bulletData.colour = bulletData.gradient.Evaluate(ii);
+                    float t = (iii % 2 * 2 - 1) * ii * WaveSpacing;
+                    bulletData.colour = bulletData.gradient.Evaluate(iii);
 
-                    for (int iii = 0; iii < BulletCount; iii++)
+                    for (int iv = 0; iv < BulletCount; iv++)
                     {
-                        float z = (i * WaveSpacing) + (iii * BulletSpacing);
-                        Vector3 pos = i * SpawnRadiusModifier * transform.up.RotateVectorBy(t);
+                        float z = i * ((ii * WaveSpacing) + (iv * BulletSpacing));
+                        Vector3 pos = ii * SpawnRadiusModifier * transform.up.RotateVectorBy(t);
 
                         SpawnProjectile(0, z, pos).Fire();
                     }
