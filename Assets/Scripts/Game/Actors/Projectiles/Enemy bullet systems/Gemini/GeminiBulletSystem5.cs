@@ -35,7 +35,7 @@ public class GeminiBulletSystem5 : EnemyShooter<EnemyBullet>
                     SpawnProjectile(2, z, pos).Fire();
                 }
 
-                i = (i + (ii * 0.1f)) % 360;
+                i = (i + (ii * 0.1f)) % 360f;
                 yield return WaitForSeconds(ShootingCooldown);
             }
 
