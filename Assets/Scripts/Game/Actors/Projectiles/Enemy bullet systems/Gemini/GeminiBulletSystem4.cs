@@ -23,8 +23,8 @@ public class GeminiBulletSystem4 : EnemyShooter<EnemyBullet>
     {
         yield return base.Shoot();
 
-        SetSubsystemEnabled(1);
         StartMoveAction?.Invoke();
+        SetSubsystemEnabled(1);
 
         while (enabled)
         {

@@ -80,8 +80,8 @@ public class VirgoBulletSystem2 : EnemyShooter<EnemyBullet>
             bullets.ForEach(b => b.Fire());
             yield return WaitForSeconds(2f);
 
-            SetSubsystemEnabled(2);
             StartMoveAction?.Invoke();
+            SetSubsystemEnabled(2);
             yield return WaitForSeconds(5f);
         }
     }

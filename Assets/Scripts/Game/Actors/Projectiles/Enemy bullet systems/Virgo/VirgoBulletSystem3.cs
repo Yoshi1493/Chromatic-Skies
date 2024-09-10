@@ -60,9 +60,9 @@ public class VirgoBulletSystem3 : EnemyShooter<EnemyBullet>
                 yield return WaitForSeconds(ShootingCooldown);
             }
 
+            StartMoveAction?.Invoke();
             SetSubsystemEnabled(1);
             SetSubsystemEnabled(2);
-            StartMoveAction?.Invoke();
 
             yield return WaitForSeconds(6f);
         }
