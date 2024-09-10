@@ -9,6 +9,7 @@ public class SagittariusBulletSystem2 : EnemyShooter<EnemyBullet>
     const int WaveCount = 240;
     const float WaveSpacing = 360f / WaveCount;
     const float BulletRotationSpeed = 90f;
+    const float BulletRotationDuration = 5f;
 
     protected override float ShootingCooldown => 1f / 60;
 
@@ -23,8 +24,9 @@ public class SagittariusBulletSystem2 : EnemyShooter<EnemyBullet>
         yield return base.Shoot();
 
         flashlightEffect.enabled = true;
-        flashlightEffect.SetStengthOverTime(4f, 8f);
+        flashlightEffect.SetStengthOverTime(4f, 15f);
 
+        StartMoveAction?.Invoke();
         SetSubsystemEnabled(1);
 
         for (int i = 1; enabled; i *= -1)
@@ -39,14 +41,13 @@ public class SagittariusBulletSystem2 : EnemyShooter<EnemyBullet>
                 bulletData.colour = bulletData.gradient.Evaluate(ii % 2);
 
                 var bullet = SpawnProjectile(0, z, pos);
-                bullet.StartCoroutine(bullet.RotateBy((ii % 2 * 2 - 1) * BulletRotationSpeed, 5f, delay: 0.5f));
+                bullet.StartCoroutine(bullet.RotateBy((ii % 2 * 2 - 1) * BulletRotationSpeed, BulletRotationDuration, delay: 0.5f));
                 bullet.Fire();
 
                 yield return WaitForSeconds(ShootingCooldown);
-                t += 5f;
+                t = (t + 5f) % 360f;
             }
 
-            StartMoveAction?.Invoke();
             yield return WaitForSeconds(2f);
         }
     }
