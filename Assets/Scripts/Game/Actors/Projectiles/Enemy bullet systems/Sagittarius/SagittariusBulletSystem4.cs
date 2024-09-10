@@ -56,6 +56,11 @@ public class SagittariusBulletSystem4 : EnemyShooter<EnemyBullet>
             StartMoveAction?.Invoke();
             yield return WaitForSeconds(2f);
         }
+    }
 
+    protected override void OnLoseLife()
+    {
+        base.OnLoseLife();
+        flashlightEffect.enabled = false;
     }
 }
