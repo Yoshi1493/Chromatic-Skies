@@ -188,6 +188,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyProjectiles:
   - {fileID: -2637174073448488968, guid: 856c484e6d14bb447bc3a1d1fd4c902f, type: 3}
+  - {fileID: -801724050480395990, guid: f537792ec58abb7478e8ba6c339ba1d3, type: 3}
   bulletData: {fileID: 11400000, guid: 8de03bc4a13e4be41b35b0272f67d587, type: 2}
 --- !u!1 &6468354894256876969
 GameObject:

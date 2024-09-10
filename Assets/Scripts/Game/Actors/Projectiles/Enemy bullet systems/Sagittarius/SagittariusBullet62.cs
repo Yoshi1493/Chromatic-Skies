@@ -4,6 +4,6 @@ public class SagittariusBullet62 : EnemyBullet
 {
     protected override IEnumerator Move()
     {
-        yield break;
+        yield return null;
     }
 }

@@ -7,7 +7,7 @@ public class SagittariusBulletSystem41 : EnemyShooter<EnemyBullet>
 {
     const int BulletCount = 30;
     const float BulletSpacing = 360f / BulletCount;
-    const float BulletSpawnRadius = 1.6f;
+    public const float BulletSpawnRadius = 1.6f;
     const float BulletBaseSpeed = 1f;
 
     List<EnemyBullet> bullets = new(BulletCount);
@@ -42,7 +42,7 @@ public class SagittariusBulletSystem41 : EnemyShooter<EnemyBullet>
             {
                 if (bullets[ii].isActiveAndEnabled)
                 {
-                    bullets[ii].StartCoroutine(bullets[ii].LerpSpeed(0f, BulletBaseSpeed, 1f));
+                    bullets[ii].Fire();
                 }
 
                 yield return WaitForSeconds(0.2f);
