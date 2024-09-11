@@ -1,54 +1,26 @@
 using System.Collections;
 using UnityEngine;
-using static CoroutineHelper;
 
-public class SagittariusBullet60 : ScriptableEnemyBullet<SagittariusBulletSystem6, EnemyBullet>
+public class SagittariusBullet60 : EnemyBullet
 {
-    const float RotationSpeed = 60f;
-    const int BranchCount = 12;
-    const float BranchSpacing = 360f / BranchCount;
-    const float ShootingCooldown = 0.1f;
+    const float BulletSpawnRadius = 0.5f;
 
-    protected override float MaxLifetime => Mathf.Infinity;
+    protected override float MaxLifetime => 6f;
 
     protected override IEnumerator Move()
     {
-        transform.parent = ownerShip.transform;
-        yield return this.LerpSpeed(3f, 0f, 1f);
-
-        yield return WaitForSeconds(1f);
-
-        StartCoroutine(this.TransformRotateAround(ownerShip.transform.position, MaxLifetime, RotationSpeed));
-        StartCoroutine(SpawnBullets());
-
-        while (enabled)
-        {
-            SpriteRenderer.transform.Rotate(-RotationSpeed * Time.deltaTime * Vector3.forward);
-            yield return EndOfFrame;
-        }
+        yield return this.LerpSpeed(3f, 2f, 1f);
     }
 
-    IEnumerator SpawnBullets()
+    protected override void Update()
     {
-        int i = 0;
+        base.Update();
 
-        for (int ii = 0; enabled; ii++)
+        if (currentLifetime - 1f <= 4f)
         {
-            for (int iii = 0; iii < BranchCount; iii++)
-            {
-                float z = i + (iii * BranchSpacing);
-                Vector3 pos = transform.position;
-
-                var bullet = SpawnBullet(1, z, pos, false) as SagittariusBullet61;
-                if (bullet.parentBullet != this)
-                {
-                    bullet.parentBullet = this;
-                }
-                bullet.Fire();
-            }
-
-            yield return WaitForSeconds(ShootingCooldown);
-            i += ii;
+            Color c = SpriteRenderer.color;
+            c.a = 1f - ((currentLifetime - 1f) / 4f);
+            SpriteRenderer.color = c;
         }
     }
 }
