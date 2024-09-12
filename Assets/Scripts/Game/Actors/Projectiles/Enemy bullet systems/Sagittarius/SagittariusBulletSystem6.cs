@@ -10,7 +10,7 @@ public class SagittariusBulletSystem6 : EnemyShooter<EnemyBullet>
 
     EnemyPositionDisplay enemyPositionDisplay;
 
-    const int WaveCount = 24;
+    const int WaveCount = 20;
     const float WaveSpacing = 7f;
     const int BranchCount = 6;
     const float BranchSpacing = 360f / BranchCount;
@@ -74,7 +74,10 @@ public class SagittariusBulletSystem6 : EnemyShooter<EnemyBullet>
             yield return WaitForSeconds(6f);
 
             StartMoveAction?.Invoke();
-            yield return WaitForSeconds(2f);
+            yield return WaitForSeconds(1f);
+
+            SetSubsystemEnabled(1);
+            yield return WaitForSeconds(1f);
         }
     }
 
