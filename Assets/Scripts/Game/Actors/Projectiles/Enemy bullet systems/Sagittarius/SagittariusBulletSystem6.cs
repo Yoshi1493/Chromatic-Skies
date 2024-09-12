@@ -1,13 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Rendering.Universal;
 using static CoroutineHelper;
 
 public class SagittariusBulletSystem6 : EnemyShooter<EnemyBullet>
 {
     GlobalLightController globalLight;
     AnimationCurve lightFadeInterpolation = AnimationCurve.EaseInOut(0f, 0f, 1f, 1f);
+
+    EnemyPositionDisplay enemyPositionDisplay;
 
     const int WaveCount = 24;
     const float WaveSpacing = 7f;
@@ -25,7 +26,9 @@ public class SagittariusBulletSystem6 : EnemyShooter<EnemyBullet>
     protected override void Awake()
     {
         base.Awake();
+
         globalLight = FindObjectOfType<GlobalLightController>();
+        enemyPositionDisplay = FindObjectOfType<EnemyPositionDisplay>();
     }
 
     protected override IEnumerator Shoot()
@@ -33,6 +36,8 @@ public class SagittariusBulletSystem6 : EnemyShooter<EnemyBullet>
         yield return base.Shoot();
 
         globalLight.FadeIntensity(0f, 2f, lightFadeInterpolation);
+        enemyPositionDisplay.SetActive(false);
+
         bullets.Clear();
 
         for (int i = 1; enabled; i *= -1)
@@ -71,5 +76,10 @@ public class SagittariusBulletSystem6 : EnemyShooter<EnemyBullet>
             StartMoveAction?.Invoke();
             yield return WaitForSeconds(2f);
         }
+    }
+
+    void OnDisable()
+    {
+        enemyPositionDisplay.SetActive(true);
     }
 }

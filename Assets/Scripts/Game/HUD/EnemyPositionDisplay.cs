@@ -28,7 +28,7 @@ public class EnemyPositionDisplay : ShipHUDComponent<Enemy>
         transform.position = pos;
     }
 
-    void SetActive(bool state)
+    public void SetActive(bool state)
     {
         gameObject.SetActive(state);
     }
