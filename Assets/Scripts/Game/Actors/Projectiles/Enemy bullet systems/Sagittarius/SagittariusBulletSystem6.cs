@@ -6,8 +6,8 @@ using static CoroutineHelper;
 
 public class SagittariusBulletSystem6 : EnemyShooter<EnemyBullet>
 {
-    Light2D globalLight;
-    FlashlightEffect flashlightEffect;
+    GlobalLightController globalLight;
+    AnimationCurve lightFadeInterpolation = AnimationCurve.EaseInOut(0f, 0f, 1f, 1f);
 
     const int WaveCount = 24;
     const float WaveSpacing = 7f;
@@ -25,19 +25,15 @@ public class SagittariusBulletSystem6 : EnemyShooter<EnemyBullet>
     protected override void Awake()
     {
         base.Awake();
-
-        globalLight = FindObjectOfType<Light2D>();
-        flashlightEffect = FindObjectOfType<FlashlightEffect>();
+        globalLight = FindObjectOfType<GlobalLightController>();
     }
 
     protected override IEnumerator Shoot()
     {
         yield return base.Shoot();
 
-        //flashlightEffect.enabled = true;
-        //flashlightEffect.SetStengthOverTime(4f, 10f);
-        //flashlightEffect.SetRadiusOverTime(0.4f, 10f);
-        //flashlightEffect.SetHardnessOverTime(1.01f, 10f);
+        globalLight.FadeIntensity(0f, 2f, lightFadeInterpolation);
+        bullets.Clear();
 
         for (int i = 1; enabled; i *= -1)
         {
