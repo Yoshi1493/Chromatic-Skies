@@ -48,7 +48,7 @@ public class FlashlightEffect : MonoBehaviour
 
     #region Coroutines
 
-    public void SetStengthOverTime(float endStrength, float duration)
+    public void SetStengthOverTime(float endStrength, float duration = 0f)
     {
         if (duration <= 0f)
         {
@@ -83,7 +83,7 @@ public class FlashlightEffect : MonoBehaviour
         flashlightMat.SetFloat("_Strength", endStrength);
     }
 
-    public void SetRadiusOverTime(float endRadius, float duration)
+    public void SetRadiusOverTime(float endRadius, float duration = 0f)
     {
         if (duration <= 0f)
         {
@@ -118,7 +118,7 @@ public class FlashlightEffect : MonoBehaviour
         flashlightMat.SetFloat("_Radius", endRadius);
     }
 
-    public void SetHardnessOverTime(float endHardness, float duration)
+    public void SetHardnessOverTime(float endHardness, float duration = 0f)
     {
         if (duration <= 0f)
         {
