@@ -24,11 +24,8 @@ public class SagittariusBulletSystem4 : EnemyShooter<EnemyBullet>
         yield return base.Shoot();
 
         flashlightEffect.enabled = true;
-        flashlightEffect.SetStengthOverTime(6f, 0f);
-        flashlightEffect.SetRadiusOverTime(0f, 0f);
-        flashlightEffect.SetHardnessOverTime(1f, 0f);
-
-        flashlightEffect.SetHardnessOverTime(0.5f, 10f);
+        flashlightEffect.SetStengthOverTime(5f, 12f);
+        flashlightEffect.SetHardnessOverTime(1.1f, 10f);
 
         SetSubsystemEnabled(1);
 
@@ -39,7 +36,7 @@ public class SagittariusBulletSystem4 : EnemyShooter<EnemyBullet>
                 for (int iii = 0; iii < BranchCount; iii++)
                 {
                     float t = (iii % 2 * 2 - 1) * ii * WaveSpacing;
-                    bulletData.colour = bulletData.gradient.Evaluate(iii);
+                    bulletData.colour = bulletData.gradient.Evaluate(iii); 
 
                     for (int iv = 0; iv < BulletCount; iv++)
                     {
