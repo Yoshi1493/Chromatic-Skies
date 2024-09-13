@@ -10,33 +10,28 @@ public class ScorpioBulletSystem5 : EnemyShooter<EnemyBullet>
     const float BulletRotationSpeed = 60f;
     const float BulletRotationDuration = 3f;
 
-    protected override float ShootingCooldown => 15f;
+    protected override float ShootingCooldown => 12f;
 
     protected override IEnumerator Shoot()
     {
         yield return base.Shoot();
 
-        SetSubsystemEnabled(1);
-
-        int r = 1;
-
-        while (enabled)
+        for (int i = 1; enabled; i *= -1)
         {
             StartMoveAction?.Invoke();
+            SetSubsystemEnabled(1);
 
-            for (int i = 0; i < BulletCount; i++)
+            for (int ii = 0; ii < BulletCount; ii++)
             {
-                float z = i * BulletSpacing;
+                float z = ii * BulletSpacing;
                 Vector3 pos = PlayerPosition + (BulletSpawnRadius * transform.up.RotateVectorBy(z));
 
                 var bullet = SpawnProjectile(0, z, pos, false);
-                bullet.StartCoroutine(bullet.RotateBy(r * BulletRotationSpeed, BulletRotationDuration));
+                bullet.StartCoroutine(bullet.RotateBy(i * BulletRotationSpeed, BulletRotationDuration));
                 bullet.Fire();
             }
 
             yield return WaitForSeconds(ShootingCooldown);
-
-            r *= -1;
         }
     }
 }
