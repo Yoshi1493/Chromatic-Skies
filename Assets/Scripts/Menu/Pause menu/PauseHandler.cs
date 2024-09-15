@@ -6,9 +6,14 @@ public class PauseHandler : MonoBehaviour
     public bool IsPaused { get; private set; }
     public event Action<bool> GamePauseAction;
 
+    ResultsScreen resultsScreen;
+
     void Awake()
     {
         GamePauseAction += OnGamePaused;
+
+        resultsScreen = FindObjectOfType<ResultsScreen>();
+        resultsScreen.ResultsPopupAction += () => enabled = false;
     }
 
     void Update()
