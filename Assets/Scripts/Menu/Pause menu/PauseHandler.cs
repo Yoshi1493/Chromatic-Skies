@@ -6,20 +6,22 @@ public class PauseHandler : MonoBehaviour
     public bool IsPaused { get; private set; }
     public event Action<bool> GamePauseAction;
 
-    ResultsScreen resultsScreen;
+    Enemy enemy;
 
     void Awake()
     {
         GamePauseAction += OnGamePaused;
 
-        resultsScreen = FindObjectOfType<ResultsScreen>();
-        resultsScreen.ResultsPopupAction += () => enabled = false;
+        enemy = FindObjectOfType<Enemy>();
+        enemy.DeathAction += () => enabled = false;
     }
 
     void Update()
     {
-        if (Input.GetButtonDown("Pause"))        
-            SetGamePaused(!IsPaused);        
+        if (Input.GetButtonDown("Pause"))
+        {
+            SetGamePaused(!IsPaused);
+        }
     }
 
     public void SetGamePaused(bool pauseState)
