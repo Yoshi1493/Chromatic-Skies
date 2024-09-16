@@ -1,31 +1,29 @@
 using UnityEngine;
+using TMPro;
 
 public class ResultsConfirmPrompt : MonoBehaviour
 {
-    float timeSinceEnabled = 0f;
+    [SerializeField] TextMeshProUGUI confirmText;
 
     void Awake()
     {
         ResultsScreen resultsScreen = GetComponentInParent<ResultsScreen>();
         resultsScreen.ResultsFinishDisplayAction += () => enabled = true;
+
+        confirmText.enabled = false;
     }
 
     void OnEnable()
     {
-        timeSinceEnabled = 0f;
+        confirmText.enabled = true;
     }
 
     void Update()
     {
-        timeSinceEnabled += Time.deltaTime;
-
-        if (timeSinceEnabled > 1f)
+        if (Input.GetButtonDown("Shoot"))
         {
-            if (Input.GetButtonDown("Shoot"))
-            {
-                //to-do: replace
-                UnityEngine.SceneManagement.SceneManager.LoadScene(0);
-            }
+            //to-do: replace
+            UnityEngine.SceneManagement.SceneManager.LoadScene(0);
         }
     }
 }

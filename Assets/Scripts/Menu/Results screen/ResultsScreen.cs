@@ -6,11 +6,9 @@ using static CoroutineHelper;
 
 public class ResultsScreen : MonoBehaviour
 {
-    float timeSinceEnabled = 0f;
-
     IEnumerator popupCoroutine;
     public event Action ResultsFinishDisplayAction;
-         
+
     Canvas canvas;
     CanvasGroup canvasGroup;
 
@@ -44,11 +42,6 @@ public class ResultsScreen : MonoBehaviour
         }
 
         enabled = false;
-    }
-
-    void OnEnable()
-    {
-        timeSinceEnabled = 0f;
     }
 
     void OnEnemyDie()
@@ -97,20 +90,20 @@ public class ResultsScreen : MonoBehaviour
             resultsValues[i].enabled = true;
         }
 
+        yield return WaitForSeconds(1f);
+
         ResultsFinishDisplayAction?.Invoke();
     }
 
     void Update()
     {
-        timeSinceEnabled += Time.deltaTime;
-
-        if (timeSinceEnabled > 5f)
+        if (Input.GetButtonDown("Shoot"))
         {
-            if (Input.GetButtonDown("Shoot") && !resultsValues[^1].enabled)
+            //if results are in the process of being displayed, immediately display all results
+            if (resultsValues[0].enabled && !resultsValues[^1].enabled)
             {
                 StopAllCoroutines();
 
-                //immediately display all results
                 foreach (var item in resultsTexts)
                 {
                     item.enabled = true;
