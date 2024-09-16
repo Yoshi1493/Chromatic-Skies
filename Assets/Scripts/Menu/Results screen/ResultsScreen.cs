@@ -1,15 +1,20 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using TMPro;
 using static CoroutineHelper;
 
 public class ResultsScreen : MonoBehaviour
 {
     IEnumerator popupCoroutine;
     public event Action ResultsPopupAction;
-
+    public event Action ResultsFinishDisplayAction;
+         
     Canvas canvas;
     CanvasGroup canvasGroup;
+
+    [SerializeField] TextMeshProUGUI[] resultsTexts;
+    [SerializeField] TextMeshProUGUI[] resultsValues;
 
     void Awake()
     {
@@ -28,7 +33,9 @@ public class ResultsScreen : MonoBehaviour
     void OnEnemyDie()
     {
         enabled = true;
+
         canvas.enabled = true;
+        canvasGroup.alpha = 0f;
 
         if (popupCoroutine != null)
         {
@@ -41,7 +48,7 @@ public class ResultsScreen : MonoBehaviour
 
     IEnumerator DisplayResults()
     {
-        yield return WaitForSeconds(5f);
+        yield return WaitForSeconds(4f);
 
         float currentLerpTime = 0f;
         float totalLerpTime = 0.25f;
@@ -55,5 +62,9 @@ public class ResultsScreen : MonoBehaviour
         }
 
         canvasGroup.alpha = 1f;
+
+
+
+        ResultsFinishDisplayAction?.Invoke();
     }
 }
