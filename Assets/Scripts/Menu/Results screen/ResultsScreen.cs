@@ -6,8 +6,9 @@ using static CoroutineHelper;
 
 public class ResultsScreen : MonoBehaviour
 {
+    float timeSinceEnabled = 0f;
+
     IEnumerator popupCoroutine;
-    public event Action ResultsPopupAction;
     public event Action ResultsFinishDisplayAction;
          
     Canvas canvas;
@@ -23,11 +24,31 @@ public class ResultsScreen : MonoBehaviour
 
         Enemy enemy = FindObjectOfType<Enemy>();
         enemy.DeathAction += OnEnemyDie;
+
+        InitializeCanvasElements();
+    }
+
+    void InitializeCanvasElements()
+    {
+        canvas.enabled = false;
+        canvasGroup.alpha = 0f;
+
+        foreach (var item in resultsTexts)
+        {
+            item.enabled = false;
+        }
+
+        foreach (var item in resultsValues)
+        {
+            item.enabled = false;
+        }
+
+        enabled = false;
     }
 
     void OnEnable()
     {
-        ResultsPopupAction?.Invoke();
+        timeSinceEnabled = 0f;
     }
 
     void OnEnemyDie()
@@ -63,8 +84,45 @@ public class ResultsScreen : MonoBehaviour
 
         canvasGroup.alpha = 1f;
 
+        yield return WaitForSeconds(1f);
 
+        for (int i = 0; i < resultsTexts.Length; i++)
+        {
+            resultsTexts[i].enabled = true;
+        }
+
+        for (int i = 0; i < resultsValues.Length; i++)
+        {
+            yield return WaitForSeconds(0.5f);
+            resultsValues[i].enabled = true;
+        }
 
         ResultsFinishDisplayAction?.Invoke();
+    }
+
+    void Update()
+    {
+        timeSinceEnabled += Time.deltaTime;
+
+        if (timeSinceEnabled > 5f)
+        {
+            if (Input.GetButtonDown("Shoot") && !resultsValues[^1].enabled)
+            {
+                StopAllCoroutines();
+
+                //immediately display all results
+                foreach (var item in resultsTexts)
+                {
+                    item.enabled = true;
+                }
+
+                foreach (var item in resultsValues)
+                {
+                    item.enabled = true;
+                }
+
+                ResultsFinishDisplayAction?.Invoke();
+            }
+        }
     }
 }
