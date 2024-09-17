@@ -60,8 +60,10 @@ public class ScorpioBullet0 : EnemyBullet
         }
     }
 
+#if UNITY_EDITOR
     protected override void OnDrawGizmos()
     {
         return;
     }
+#endif
 }

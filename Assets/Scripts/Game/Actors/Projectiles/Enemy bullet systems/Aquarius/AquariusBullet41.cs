@@ -12,8 +12,10 @@ public class AquariusBullet41 : EnemyBullet
         yield return null;
     }
 
+#if UNITY_EDITOR
     protected override void OnDrawGizmos()
     {
         Gizmos.DrawCube(transform.position, SpriteRenderer.size);
     }
+#endif
 }
