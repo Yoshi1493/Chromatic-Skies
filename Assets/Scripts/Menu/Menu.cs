@@ -53,4 +53,13 @@ public abstract class Menu : MonoBehaviour
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene(sceneIndex);
     }
+
+    public void Quit()
+    {
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+        Application.Quit();        
+#endif
+    }
 }
