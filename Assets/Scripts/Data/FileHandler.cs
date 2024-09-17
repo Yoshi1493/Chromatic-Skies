@@ -7,7 +7,9 @@ public static class FileHandler
     static readonly string settingsDirectoryPath = Path.Combine(Application.persistentDataPath, "Data");
     static readonly string settingsFilePath = Path.Combine(settingsDirectoryPath, "usersettings.json");
 
-    public static void Load(this UserSettings userSettings)
+    static readonly string encryptionString = "jCqJU7DBqNbDtxFtWsrmaWyyjyjO9xb";
+
+    public static void Load(this UserSettings userSettings, bool useEncryption)
     {
         Directory.CreateDirectory(settingsDirectoryPath);
 
@@ -15,9 +17,20 @@ public static class FileHandler
         {
             try
             {
+                string data = "";
+
                 using FileStream fs = new(settingsFilePath, FileMode.Open);
-                using StreamReader sr = new(fs);
-                string data = sr.ReadToEnd();
+                {
+                    using StreamReader sr = new(fs);
+                    {
+                        data = sr.ReadToEnd();
+                    }
+                }
+
+                if (useEncryption)
+                {
+                    data = EncryptDecrypt(data);
+                }
 
                 JsonUtility.FromJsonOverwrite(data, userSettings);
             }
@@ -28,7 +41,7 @@ public static class FileHandler
         }
     }
 
-    public static void Save(this UserSettings userSettings)
+    public static void Save(this UserSettings userSettings, bool useEncryption)
     {
         try
         {
@@ -36,13 +49,34 @@ public static class FileHandler
 
             var json = JsonUtility.ToJson(userSettings, true);
 
+            if (useEncryption)
+            {
+                json = EncryptDecrypt(json);
+            }
+
             using FileStream fs = new(settingsFilePath, FileMode.Create);
-            using StreamWriter sw = new(fs);
-            sw.Write(json);
+            {
+                using StreamWriter sw = new(fs);
+                {
+                    sw.Write(json);
+                }
+            }
         }
         catch (Exception e)
         {
             Debug.LogError($"Error occurred when trying to save data to file \n{e}");
         }
+    }
+
+    static string EncryptDecrypt(string s)
+    {
+        string modifiedData = "";
+
+        for (int i = 0; i < s.Length; i++)
+        {
+            modifiedData += (char)(s[i] ^ encryptionString[i % encryptionString.Length]);
+        }
+
+        return modifiedData;
     }
 }

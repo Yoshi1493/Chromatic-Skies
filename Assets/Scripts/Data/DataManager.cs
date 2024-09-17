@@ -11,12 +11,12 @@ public class DataManager : MonoBehaviour
 
     public void LoadData()
     {
-        userSettings.Load();
+        userSettings.Load(false);
     }
 
     public void SaveData()
     {
-        userSettings.Save();
+        userSettings.Save(false);
     }
 
     void OnApplicationQuit()
