@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a7c3f1896c9b0a4c966cfa6d513243c, type: 3}
   m_Name: Sound volume
   m_EditorClassIdentifier: 
-  value: 8
+  value: 0.8
