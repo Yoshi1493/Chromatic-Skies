@@ -17,7 +17,9 @@ public class PauseMenu : Menu
     void OnGamePaused(bool state)
     {
         if (state)
+        {
             Open(resumeButton);
+        }
 
         else
         {
