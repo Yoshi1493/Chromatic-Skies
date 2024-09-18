@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 public abstract class Menu : MonoBehaviour
 {
     protected Canvas thisMenu;
-    protected PointerEventData eventData = new PointerEventData(EventSystem.current);
+    protected PointerEventData eventData = new(EventSystem.current);
 
     protected virtual void Awake()
     {
