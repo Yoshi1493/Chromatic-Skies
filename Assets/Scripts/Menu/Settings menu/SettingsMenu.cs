@@ -29,12 +29,6 @@ public class SettingsMenu : Menu, ISavable
         tmp.text = soundSlider.value.ToString();
     }
 
-    void OnGameLoaded(UserData data)
-    {
-        musicSlider.value = data.MusicVolume;
-        soundSlider.value = data.SoundVolume;
-    }
-
     #region Interface impl.
 
     void ISavable.LoadData(UserData data)
