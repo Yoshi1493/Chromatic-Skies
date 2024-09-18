@@ -2,10 +2,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class SettingsMenu : Menu
+public class SettingsMenu : Menu, ISavable
 {
-    [SerializeField] UserSettings userSettings;
-
     [SerializeField] Button backButton;
 
     [Header("Settings elements")]
@@ -13,33 +11,43 @@ public class SettingsMenu : Menu
     [SerializeField] Slider musicSlider;
     [SerializeField] Slider soundSlider;
 
-    protected override void Awake()
-    {
-        base.Awake();
-        InitSettings();
-    }
-
-    void InitSettings()
-    {
-        musicSlider.value = userSettings.MusicVolume * 10f;
-        soundSlider.value = userSettings.SoundVolume * 10f;
-    }
-
     void Update()
     {
         if (Input.GetButtonDown("Cancel"))
+        {
             backButton.OnPointerClick(eventData);
+        }
     }
 
     public void OnChangeMusicVolume(TextMeshProUGUI tmp)
     {
-        userSettings.MusicVolume = musicSlider.value * 0.1f;
         tmp.text = musicSlider.value.ToString();
     }
 
     public void OnChangeSoundVolume(TextMeshProUGUI tmp)
     {
-        userSettings.SoundVolume = soundSlider.value * 0.1f;
         tmp.text = soundSlider.value.ToString();
     }
+
+    void OnGameLoaded(UserData data)
+    {
+        musicSlider.value = data.MusicVolume;
+        soundSlider.value = data.SoundVolume;
+    }
+
+    #region Interface impl.
+
+    void ISavable.LoadData(UserData data)
+    {
+        musicSlider.value = data.MusicVolume * 10f;
+        soundSlider.value = data.SoundVolume * 10f;
+    }
+
+    void ISavable.SaveData(UserData data)
+    {
+        data.MusicVolume = musicSlider.value * 0.1f;
+        data.SoundVolume = soundSlider.value * 0.1f;
+    }
+
+    #endregion
 }

@@ -2308,7 +2308,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4f5022113b263340bb5c23eab362bdb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  userSettings: {fileID: 11400000, guid: 8c59a60a6620c2347b20b6ffaf6ff929, type: 2}
   backButton: {fileID: 2140478988}
 --- !u!114 &1378753257
 MonoBehaviour:
@@ -2631,7 +2630,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25d852ce1b44fd144841e78c91a019f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  userSettings: {fileID: 11400000, guid: 8c59a60a6620c2347b20b6ffaf6ff929, type: 2}
   backButton: {fileID: 685158901}
   musicSlider: {fileID: 1789294427}
   soundSlider: {fileID: 1335895389}
@@ -3249,7 +3247,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5be972a484230d49a90607fef0b085b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  userSettings: {fileID: 11400000, guid: 8c59a60a6620c2347b20b6ffaf6ff929, type: 2}
   persistentDataPath: {fileID: 1995461166}
 --- !u!4 &1939706871
 Transform:
@@ -3573,7 +3570,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 32
-  m_HorizontalAlignment: 2
+  m_HorizontalAlignment: 1
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 2
@@ -3645,11 +3642,11 @@ RectTransform:
   m_Father: {fileID: 764460772}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0}
-  m_AnchorMax: {x: 1, y: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 1, y: 0}
+  m_Pivot: {x: 0, y: 0}
 --- !u!1001 &2028792005
 PrefabInstance:
   m_ObjectHideFlags: 0

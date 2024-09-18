@@ -9,9 +9,9 @@ public static class FileHandler
 
     static readonly string encryptionString = "jCqJU7DBqNbDtxFtWsrmaWyyjyjO9xb";
 
-    public static void Load(this UserSettings userSettings, bool useEncryption)
+    public static UserData Load(bool useEncryption)
     {
-        Directory.CreateDirectory(settingsDirectoryPath);
+        UserData loadedData = null;
 
         if (File.Exists(settingsFilePath))
         {
@@ -32,22 +32,25 @@ public static class FileHandler
                     data = EncryptDecrypt(data);
                 }
 
-                JsonUtility.FromJsonOverwrite(data, userSettings);
+                loadedData = JsonUtility.FromJson<UserData>(data);
+                JsonUtility.FromJsonOverwrite(data, loadedData);
             }
             catch (Exception e)
             {
                 Debug.LogError($"Error occurred when trying to load data from file \n{e}");
             }
         }
+
+        return loadedData;
     }
 
-    public static void Save(this UserSettings userSettings, bool useEncryption)
+    public static void Save(this UserData userData, bool useEncryption)
     {
         try
         {
             Directory.CreateDirectory(Path.GetDirectoryName(settingsFilePath));
 
-            var json = JsonUtility.ToJson(userSettings, true);
+            var json = JsonUtility.ToJson(userData, true);
 
             if (useEncryption)
             {
