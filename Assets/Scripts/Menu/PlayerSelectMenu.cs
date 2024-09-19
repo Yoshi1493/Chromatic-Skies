@@ -13,7 +13,6 @@ public class PlayerSelectMenu : Menu
     public void SelectPlayer(int playerIndex)
     {
         selectedPlayerIndex.value = playerIndex;
-        LoadScene(1);
     }
 
     void Update()
@@ -22,5 +21,11 @@ public class PlayerSelectMenu : Menu
         {
             backButton.OnPointerClick(eventData);
         }
+    }
+
+    public override void Enable(GameObject newSelectedGameObject)
+    {
+        newSelectedGameObject = shipButtonParent.GetComponentsInChildren<Button>()[selectedPlayerIndex.value].gameObject;
+        base.Enable(newSelectedGameObject);
     }
 }

@@ -18,7 +18,7 @@ public class StatBarController : MonoBehaviour
     {
         for (int i = 0; i < statBars.Length; i++)
         {
-            statBars[i].SetStatBar(fillAmounts[i, 0], players[0].UIColour.value);
+            statBars[i].SetStatBar(fillAmounts[i, selectedPlayerIndex.value], players[selectedPlayerIndex.value].UIColour.value);
         }
     }
 
