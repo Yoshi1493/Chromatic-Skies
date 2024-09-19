@@ -4,10 +4,10 @@ using UnityEngine;
 
 public static class CoroutineHelper
 {
-    static WaitForEndOfFrame _endOfFrame = new WaitForEndOfFrame();
-    public static WaitForEndOfFrame EndOfFrame { get; }
+    static WaitForEndOfFrame _endOfFrame = new();
+    public static WaitForEndOfFrame EndOfFrame { get => _endOfFrame; }
 
-    static Dictionary<float, WaitForSeconds> _waitForSeconds = new Dictionary<float, WaitForSeconds>();
+    static Dictionary<float, WaitForSeconds> _waitForSeconds = new();
     public static WaitForSeconds WaitForSeconds(float seconds)
     {
         if (!_waitForSeconds.ContainsKey(seconds))
@@ -17,7 +17,7 @@ public static class CoroutineHelper
         return _waitForSeconds[seconds];
     }
 
-    static Dictionary<Func<bool>, WaitUntil> _waitUntil = new Dictionary<Func<bool>, WaitUntil>();
+    static Dictionary<Func<bool>, WaitUntil> _waitUntil = new();
     public static WaitUntil WaitUntil(Func<bool> predicate)
     {
         if (!_waitUntil.ContainsKey(predicate))
