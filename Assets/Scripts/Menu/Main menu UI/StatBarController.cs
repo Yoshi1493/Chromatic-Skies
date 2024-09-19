@@ -1,11 +1,8 @@
 using System.Linq;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 public class StatBarController : MonoBehaviour
 {
-    EventSystem currentEventSystem;
-
     [SerializeField] ShipObject[] players;
     [SerializeField] PlayerStatBar[] statBars;
     float[,] fillAmounts;
@@ -14,7 +11,6 @@ public class StatBarController : MonoBehaviour
 
     void Awake()
     {
-        currentEventSystem = EventSystem.current;
         InitializeStatBars();
     }
 
@@ -58,20 +54,11 @@ public class StatBarController : MonoBehaviour
         }
     }
 
-    void AnimateStatBars(int selectedPlayerIndex)
+    public void AnimateStatBars(int selectedPlayerIndex)
     {
         for (int i = 0; i < statBars.Length; i++)
         {
             statBars[i].AnimateStatBar(fillAmounts[i, selectedPlayerIndex], players[selectedPlayerIndex].UIColour.value);
-        }
-    }
-
-    void Update()
-    {
-        if (selectedPlayerIndex.value != currentEventSystem.currentSelectedGameObject.transform.GetSiblingIndex())
-        {
-            selectedPlayerIndex.value = currentEventSystem.currentSelectedGameObject.transform.GetSiblingIndex();
-            AnimateStatBars(selectedPlayerIndex.value);
         }
     }
 }
