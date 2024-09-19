@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using static CoroutineHelper;
 
 [RequireComponent(typeof(Image))]
 public class PlayerStatBar : MonoBehaviour
@@ -14,6 +15,18 @@ public class PlayerStatBar : MonoBehaviour
     void Awake()
     {
         statBarImage = GetComponent<Image>();
+    }
+
+    //called upon initialization in StatBarController and end of AnimateStatBar coroutine
+    public void SetStatBar(float amount, Color colour)
+    {
+        if (statBarAnimation != null)
+        {
+            StopCoroutine(statBarAnimation);
+        }
+
+        statBarImage.fillAmount = amount;
+        statBarImage.color = colour;
     }
 
     public void AnimateStatBar(float endFillAmount, Color endColour)
@@ -42,8 +55,10 @@ public class PlayerStatBar : MonoBehaviour
             statBarImage.color = Color.Lerp(startColour, endColour, animationProgress);
 
             currentLerpTime += Time.deltaTime;
-            yield return CoroutineHelper.EndOfFrame;
+            yield return EndOfFrame;
         }
+
+        SetStatBar(endFillAmount, endColour);
 
         statBarAnimation = null;
     }

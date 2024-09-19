@@ -15,13 +15,19 @@ public class StatBarController : MonoBehaviour
     void Awake()
     {
         currentEventSystem = EventSystem.current;
+        InitializeStatBars();
+    }
 
-        SetFillAmounts();
-        AnimateStatBars(selectedPlayerIndex.value);
+    void Start()
+    {
+        for (int i = 0; i < statBars.Length; i++)
+        {
+            statBars[i].SetStatBar(fillAmounts[i, 0], players[0].UIColour.value);
+        }
     }
 
     //initialize values in statBarFillAmounts
-    void SetFillAmounts()
+    void InitializeStatBars()
     {
         //find max <stat> among all player ships
         float[] maxStatValues = new float[]

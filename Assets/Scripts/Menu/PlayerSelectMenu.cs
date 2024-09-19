@@ -23,10 +23,4 @@ public class PlayerSelectMenu : Menu
             backButton.OnPointerClick(eventData);
         }
     }
-
-    public override void Enable(GameObject newSelectedGameObject)
-    {
-        newSelectedGameObject = shipButtonParent.GetChild(selectedPlayerIndex.value).gameObject;
-        base.Enable(newSelectedGameObject);
-    }
 }
