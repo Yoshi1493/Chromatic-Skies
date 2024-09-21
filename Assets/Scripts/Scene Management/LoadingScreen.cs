@@ -1,14 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class LoadingScreen : MonoBehaviour
 {
     public static LoadingScreen Instance { get; private set; }
 
-    List<AsyncOperation> operations = new();
+    [SerializeField] Canvas loadingScreen;
+
+    List<AsyncOperation> loadSceneOperations = new();
+    IEnumerator loadSceneProgressCheck;
 
     void Awake()
     {
@@ -24,7 +26,31 @@ public class LoadingScreen : MonoBehaviour
 
     public void LoadGame()
     {
-        SceneManager.UnloadSceneAsync((int)SceneIndexes.Menu);
-        SceneManager.LoadSceneAsync((int)SceneIndexes.Game, LoadSceneMode.Additive);
+        loadingScreen.enabled = true;
+
+        loadSceneOperations.Add(SceneManager.UnloadSceneAsync((int)SceneIndexes.Menu));
+        loadSceneOperations.Add(SceneManager.LoadSceneAsync((int)SceneIndexes.Game, LoadSceneMode.Additive));
+
+        if (loadSceneProgressCheck != null)
+        {
+            StopCoroutine(loadSceneProgressCheck);
+        }
+
+        loadSceneProgressCheck = GetSceneLoadProgress();
+        StartCoroutine(loadSceneProgressCheck);
+    }
+
+    IEnumerator GetSceneLoadProgress()
+    {
+        for (int i = 0; i < loadSceneOperations.Count; i++)
+        {
+            while (!loadSceneOperations[i].isDone)
+            {
+                yield return null;
+            }
+        }
+
+        loadingScreen.enabled = false;
+        loadSceneProgressCheck = null;
     }
 }
