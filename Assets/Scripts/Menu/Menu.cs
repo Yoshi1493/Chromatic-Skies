@@ -54,6 +54,11 @@ public abstract class Menu : MonoBehaviour
         UnityEngine.SceneManagement.SceneManager.LoadScene(sceneIndex);
     }
 
+    public void LoadGame()
+    {
+        LoadingScreen.Instance.LoadGame();
+    }
+
     public void Quit()
     {
 #if UNITY_EDITOR

@@ -539,12 +539,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1486660023}
     - target: {fileID: 4601496182266051671, guid: e8441de41b7ec514980a4dbf0079a537, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4601496182266051671, guid: e8441de41b7ec514980a4dbf0079a537, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1525450754}
     - target: {fileID: 4601496182266051671, guid: e8441de41b7ec514980a4dbf0079a537, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: LoadScene
+      value: LoadGame
       objectReference: {fileID: 0}
     - target: {fileID: 4601496182266051671, guid: e8441de41b7ec514980a4dbf0079a537, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
@@ -742,12 +746,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1719952963}
     - target: {fileID: 4601496182266051671, guid: e8441de41b7ec514980a4dbf0079a537, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4601496182266051671, guid: e8441de41b7ec514980a4dbf0079a537, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1525450754}
     - target: {fileID: 4601496182266051671, guid: e8441de41b7ec514980a4dbf0079a537, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: LoadScene
+      value: LoadGame
       objectReference: {fileID: 0}
     - target: {fileID: 4601496182266051671, guid: e8441de41b7ec514980a4dbf0079a537, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
@@ -1216,12 +1224,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1182995713}
     - target: {fileID: 4601496182266051671, guid: e8441de41b7ec514980a4dbf0079a537, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4601496182266051671, guid: e8441de41b7ec514980a4dbf0079a537, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1525450754}
     - target: {fileID: 4601496182266051671, guid: e8441de41b7ec514980a4dbf0079a537, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: LoadScene
+      value: LoadGame
       objectReference: {fileID: 0}
     - target: {fileID: 4601496182266051671, guid: e8441de41b7ec514980a4dbf0079a537, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
@@ -1912,12 +1924,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2011650192}
     - target: {fileID: 4601496182266051671, guid: e8441de41b7ec514980a4dbf0079a537, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4601496182266051671, guid: e8441de41b7ec514980a4dbf0079a537, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1525450754}
     - target: {fileID: 4601496182266051671, guid: e8441de41b7ec514980a4dbf0079a537, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: LoadScene
+      value: LoadGame
       objectReference: {fileID: 0}
     - target: {fileID: 4601496182266051671, guid: e8441de41b7ec514980a4dbf0079a537, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
@@ -2267,12 +2283,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1486660023}
     - target: {fileID: 4601496182266051671, guid: e8441de41b7ec514980a4dbf0079a537, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4601496182266051671, guid: e8441de41b7ec514980a4dbf0079a537, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1525450754}
     - target: {fileID: 4601496182266051671, guid: e8441de41b7ec514980a4dbf0079a537, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: LoadScene
+      value: LoadGame
       objectReference: {fileID: 0}
     - target: {fileID: 4601496182266051671, guid: e8441de41b7ec514980a4dbf0079a537, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
@@ -2835,12 +2855,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 4350518411301670298}
     - target: {fileID: 4601496182266051671, guid: e8441de41b7ec514980a4dbf0079a537, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4601496182266051671, guid: e8441de41b7ec514980a4dbf0079a537, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1525450754}
     - target: {fileID: 4601496182266051671, guid: e8441de41b7ec514980a4dbf0079a537, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: LoadScene
+      value: LoadGame
       objectReference: {fileID: 0}
     - target: {fileID: 4601496182266051671, guid: e8441de41b7ec514980a4dbf0079a537, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
@@ -3019,12 +3043,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 484851015}
     - target: {fileID: 4601496182266051671, guid: e8441de41b7ec514980a4dbf0079a537, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4601496182266051671, guid: e8441de41b7ec514980a4dbf0079a537, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1525450754}
     - target: {fileID: 4601496182266051671, guid: e8441de41b7ec514980a4dbf0079a537, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: LoadScene
+      value: LoadGame
       objectReference: {fileID: 0}
     - target: {fileID: 4601496182266051671, guid: e8441de41b7ec514980a4dbf0079a537, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
@@ -3430,12 +3458,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1773436601}
     - target: {fileID: 4601496182266051671, guid: e8441de41b7ec514980a4dbf0079a537, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4601496182266051671, guid: e8441de41b7ec514980a4dbf0079a537, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1525450754}
     - target: {fileID: 4601496182266051671, guid: e8441de41b7ec514980a4dbf0079a537, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: LoadScene
+      value: LoadGame
       objectReference: {fileID: 0}
     - target: {fileID: 4601496182266051671, guid: e8441de41b7ec514980a4dbf0079a537, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
@@ -4004,12 +4036,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1116932867}
     - target: {fileID: 4601496182266051671, guid: e8441de41b7ec514980a4dbf0079a537, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4601496182266051671, guid: e8441de41b7ec514980a4dbf0079a537, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1525450754}
     - target: {fileID: 4601496182266051671, guid: e8441de41b7ec514980a4dbf0079a537, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: LoadScene
+      value: LoadGame
       objectReference: {fileID: 0}
     - target: {fileID: 4601496182266051671, guid: e8441de41b7ec514980a4dbf0079a537, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
@@ -5787,12 +5823,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 866492610}
     - target: {fileID: 4601496182266051671, guid: e8441de41b7ec514980a4dbf0079a537, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4601496182266051671, guid: e8441de41b7ec514980a4dbf0079a537, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1525450754}
     - target: {fileID: 4601496182266051671, guid: e8441de41b7ec514980a4dbf0079a537, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: LoadScene
+      value: LoadGame
       objectReference: {fileID: 0}
     - target: {fileID: 4601496182266051671, guid: e8441de41b7ec514980a4dbf0079a537, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
@@ -7037,12 +7077,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 484851015}
     - target: {fileID: 4601496182266051671, guid: e8441de41b7ec514980a4dbf0079a537, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4601496182266051671, guid: e8441de41b7ec514980a4dbf0079a537, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1525450754}
     - target: {fileID: 4601496182266051671, guid: e8441de41b7ec514980a4dbf0079a537, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: LoadScene
+      value: LoadGame
       objectReference: {fileID: 0}
     - target: {fileID: 4601496182266051671, guid: e8441de41b7ec514980a4dbf0079a537, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
@@ -8226,12 +8270,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1158140676}
     - target: {fileID: 4601496182266051671, guid: e8441de41b7ec514980a4dbf0079a537, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4601496182266051671, guid: e8441de41b7ec514980a4dbf0079a537, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1525450754}
     - target: {fileID: 4601496182266051671, guid: e8441de41b7ec514980a4dbf0079a537, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: LoadScene
+      value: LoadGame
       objectReference: {fileID: 0}
     - target: {fileID: 4601496182266051671, guid: e8441de41b7ec514980a4dbf0079a537, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
