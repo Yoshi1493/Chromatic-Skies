@@ -110,7 +110,7 @@ public abstract class Ship : Actor
         //only perform if ship still has lives
         else
         {
-            SetInvincible(RespawnTime);
+            SetInvincible(RespawnTime + 2f);
             yield return WaitForSeconds(RespawnTime);
 
             Respawn();
@@ -147,8 +147,11 @@ public abstract class Ship : Actor
 
     IEnumerator ToggleInvincibility(float duration)
     {
+        yield return null;
         Invincible = true;
         yield return WaitForSeconds(duration);
+
         Invincible = false;
+        invincibilityCoroutine = null;
     }
 }

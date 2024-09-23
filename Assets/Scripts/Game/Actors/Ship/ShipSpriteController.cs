@@ -12,9 +12,9 @@ public abstract class ShipSpriteController<TShip> : MonoBehaviour
     protected virtual void Awake()
     {
         parentShip = GetComponentInParent<TShip>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
-
         parentShip.InvincibleAction += OnSetInvincible;
+
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     void OnSetInvincible(bool state)
