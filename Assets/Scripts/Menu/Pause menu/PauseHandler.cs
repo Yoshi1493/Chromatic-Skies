@@ -6,14 +6,15 @@ public class PauseHandler : MonoBehaviour
     public bool IsPaused { get; private set; }
     public event Action<bool> GamePauseAction;
 
-    Enemy enemy;
-
     void Awake()
     {
         GamePauseAction += OnGamePaused;
 
-        enemy = FindObjectOfType<Enemy>();
-        enemy.DeathAction += () => enabled = false;
+        var ships = FindObjectsOfType<Ship>();
+        foreach (var ship in ships)
+        {
+            ship.DeathAction += () => enabled = false;
+        }
     }
 
     void Update()

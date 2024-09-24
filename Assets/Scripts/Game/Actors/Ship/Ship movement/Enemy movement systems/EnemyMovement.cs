@@ -29,6 +29,7 @@ public abstract class EnemyMovement : ShipMovement<Enemy>
         if (playerShip == null)
         {
             playerShip = FindObjectOfType<Player>();
+            playerShip.DeathAction += OnPlayerDie;
         }
     }
 
@@ -40,6 +41,13 @@ public abstract class EnemyMovement : ShipMovement<Enemy>
     protected override void OnLoseLife()
     {
         StopAllCoroutines();
+    }
+
+    void OnPlayerDie()
+    {
+        StopAllCoroutines();
+        currentSpeed = 0f;
+        enabled = false;
     }
 
     protected virtual void StartMove()

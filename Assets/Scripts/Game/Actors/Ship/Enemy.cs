@@ -96,17 +96,20 @@ public class Enemy : Ship
     //disable and re-enable current systems upon player losing life
     void OnPlayerLoseLife()
     {
-        int currentSystemIndex = shipData.MaxLives.Value - currentLives;
-
-        SetInvincible(player.RespawnTime);
-
-        if (systemResetCoroutine != null)
+        if (player.currentLives > 0)
         {
-            StopCoroutine(systemResetCoroutine);
-        }
+            int currentSystemIndex = shipData.MaxLives.Value - currentLives;
 
-        systemResetCoroutine = RefreshEnemySystems(currentSystemIndex, player.RespawnTime);
-        StartCoroutine(systemResetCoroutine);
+            SetInvincible(player.RespawnTime + 2f);
+
+            if (systemResetCoroutine != null)
+            {
+                StopCoroutine(systemResetCoroutine);
+            }
+
+            systemResetCoroutine = RefreshEnemySystems(currentSystemIndex, player.RespawnTime);
+            StartCoroutine(systemResetCoroutine);
+        }
     }
 
     IEnumerator RefreshEnemySystems(int currentSystemIndex, float refreshTime)
