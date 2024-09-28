@@ -420,16 +420,20 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5209862728190538070, guid: f716140df312e6a498900c8687602f4f, type: 3}
       propertyPath: m_text
-      value: 8
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 7839850982193172612, guid: f716140df312e6a498900c8687602f4f, type: 3}
+      propertyPath: m_Value
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 7839850982193172612, guid: f716140df312e6a498900c8687602f4f, type: 3}
       propertyPath: m_MaxValue
-      value: 10
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 7839850982193172612, guid: f716140df312e6a498900c8687602f4f, type: 3}
       propertyPath: m_Navigation.m_SelectOnUp
       value: 
-      objectReference: {fileID: 1789294427}
+      objectReference: {fileID: 1335895389}
     - target: {fileID: 7839850982193172612, guid: f716140df312e6a498900c8687602f4f, type: 3}
       propertyPath: m_Navigation.m_SelectOnDown
       value: 
@@ -464,7 +468,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7839850982193172612, guid: f716140df312e6a498900c8687602f4f, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: OnChangeSoundVolume
+      value: OnChangeBackgroundDim
       objectReference: {fileID: 0}
     - target: {fileID: 7839850982193172612, guid: f716140df312e6a498900c8687602f4f, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
@@ -630,6 +634,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &440576355 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7839850982193172612, guid: f716140df312e6a498900c8687602f4f, type: 3}
+  m_PrefabInstance: {fileID: 440576352}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &484851014
@@ -1949,7 +1964,7 @@ Canvas:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 764460768}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 0
   m_Camera: {fileID: 0}
@@ -3644,7 +3659,7 @@ PrefabInstance:
     - target: {fileID: 7839850982193172612, guid: f716140df312e6a498900c8687602f4f, type: 3}
       propertyPath: m_Navigation.m_SelectOnDown
       value: 
-      objectReference: {fileID: 1789294427}
+      objectReference: {fileID: 440576355}
     - target: {fileID: 7839850982193172612, guid: f716140df312e6a498900c8687602f4f, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.size
       value: 1
@@ -6774,6 +6789,7 @@ MonoBehaviour:
   backButton: {fileID: 685158901}
   musicSlider: {fileID: 1789294427}
   soundSlider: {fileID: 1335895389}
+  backgroundDimSlider: {fileID: 440576355}
 --- !u!114 &1550824266
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6821,7 +6837,7 @@ Canvas:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1550824264}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_RenderMode: 0
   m_Camera: {fileID: 0}
@@ -11279,7 +11295,7 @@ PrefabInstance:
     - target: {fileID: 7839850982193172612, guid: f716140df312e6a498900c8687602f4f, type: 3}
       propertyPath: m_Navigation.m_SelectOnUp
       value: 
-      objectReference: {fileID: 1335895389}
+      objectReference: {fileID: 440576355}
     - target: {fileID: 7839850982193172612, guid: f716140df312e6a498900c8687602f4f, type: 3}
       propertyPath: m_Navigation.m_SelectOnDown
       value: 
