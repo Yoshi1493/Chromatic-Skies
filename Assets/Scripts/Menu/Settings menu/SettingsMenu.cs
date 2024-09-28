@@ -1,5 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 using TMPro;
 
 public class SettingsMenu : Menu, ISavable
@@ -11,6 +13,19 @@ public class SettingsMenu : Menu, ISavable
     [SerializeField] Slider musicSlider;
     [SerializeField] Slider soundSlider;
     [SerializeField] Slider backgroundDimSlider;
+
+    PauseHandler pauseHandler;
+
+    protected override void Awake()
+    {
+        base.Awake();
+
+        if (SceneManager.GetActiveScene().buildIndex == (int)SceneIndexes.Game)
+        {
+            pauseHandler = FindObjectOfType<PauseHandler>();
+            pauseHandler.GamePauseAction += OnGamePaused;
+        }
+    }
 
     void Update()
     {
@@ -52,4 +67,13 @@ public class SettingsMenu : Menu, ISavable
     }
 
     #endregion
+
+    void OnGamePaused(bool state)
+    {
+        if (!state)
+        {
+            Close();
+            EventSystem.current.SetSelectedGameObject(null);
+        }
+    }
 }
