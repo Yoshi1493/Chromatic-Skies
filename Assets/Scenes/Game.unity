@@ -6103,6 +6103,10 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2788009785613274152, guid: cf5107c964c958e45aa9d446d012ff62, type: 3}
+      propertyPath: m_text
+      value: 30%
+      objectReference: {fileID: 0}
     - target: {fileID: 5250073777098988535, guid: cf5107c964c958e45aa9d446d012ff62, type: 3}
       propertyPath: m_SizeDelta.x
       value: 0

@@ -47,7 +47,7 @@ public class SettingsMenu : Menu, ISavable
 
     public void OnChangeBackgroundDim(TextMeshProUGUI tmp)
     {
-        tmp.text = backgroundDimSlider.value.ToString();
+        tmp.text = $"{backgroundDimSlider.value}%";
     }
 
     #region Interface impl.
