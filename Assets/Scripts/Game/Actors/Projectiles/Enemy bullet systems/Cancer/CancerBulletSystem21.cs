@@ -15,6 +15,7 @@ public class CancerBulletSystem21 : EnemyShooter<EnemyBullet>
 
     protected override IEnumerator Shoot()
     {
+        bullets.Clear();
         yield return WaitForSeconds(1.2f);
 
         for (int i = 0; i < WaveCount; i++)
