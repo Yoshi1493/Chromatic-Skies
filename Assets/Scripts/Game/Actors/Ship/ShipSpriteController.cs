@@ -4,17 +4,18 @@ using UnityEngine;
 public abstract class ShipSpriteController<TShip> : MonoBehaviour
     where TShip : Ship
 {
-    protected TShip parentShip;
-    SpriteRenderer spriteRenderer;
+    protected TShip ship;
+    protected SpriteRenderer spriteRenderer;
 
     const float InvincibleAlpha = 0.5f;
 
     protected virtual void Awake()
     {
-        parentShip = GetComponentInParent<TShip>();
-        parentShip.InvincibleAction += OnSetInvincible;
+        ship = GetComponentInParent<TShip>();
+        ship.InvincibleAction += OnSetInvincible;
 
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer = ship.SpriteRenderer;
+        SetSpriteAlpha(0f);
     }
 
     void OnSetInvincible(bool state)
@@ -27,5 +28,6 @@ public abstract class ShipSpriteController<TShip> : MonoBehaviour
         Color c = spriteRenderer.color;
         c.a = alpha;
         spriteRenderer.color = c;
+        print(spriteRenderer.color.a);
     }
 }
