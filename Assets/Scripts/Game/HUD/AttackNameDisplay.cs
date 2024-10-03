@@ -17,12 +17,12 @@ public class AttackNameDisplay : ShipHUDComponent<Enemy>
 
         if (ship != null)
         {
-            ship.StartAttackAction += OnEnemyAttackStart;
+            ship.StartAttackAction += OnAttackStart;
             ship.LoseLifeAction += OnEnemyLoseLife;
         }
     }
 
-    void OnEnemyAttackStart(int attackIndex)
+    void OnAttackStart(int attackIndex)
     {
         if (attackNames[attackIndex] != null)
         {

@@ -9,6 +9,7 @@ public interface IEnemyAttack
     bool Enabled { get; }
     void SetEnabled(bool state);
 
+    Action StartAttackLoopAction { get; set; }
     Action StartMoveAction { get; set; }
 }
 
@@ -20,6 +21,7 @@ public abstract class EnemyShooter<TProjectile> : Shooter<TProjectile>, IEnemyAt
     bool IEnemyAttack.Enabled => enabled;
     void IEnemyAttack.SetEnabled(bool state) { enabled = state; }
 
+    public Action StartAttackLoopAction { get; set; }
     public Action StartMoveAction { get; set; }
 
     #endregion
@@ -73,6 +75,7 @@ public abstract class EnemyShooter<TProjectile> : Shooter<TProjectile>, IEnemyAt
 
     protected override IEnumerator Shoot()
     {
+        StartAttackLoopAction?.Invoke();
         yield return WaitForSeconds(2f);
     }
 

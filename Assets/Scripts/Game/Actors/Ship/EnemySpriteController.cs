@@ -7,8 +7,7 @@ public class EnemySpriteController : ShipSpriteController<Enemy>
     protected override void Awake()
     {
         base.Awake();
-
-        ship.StartAttackAction += FadeInSprite;        
+        ship.StartAttackAction += FadeInSprite;
     }
 
     void FadeInSprite(int attackIndex)

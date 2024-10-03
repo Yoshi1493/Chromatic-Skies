@@ -6,11 +6,11 @@ public abstract class ShipParticleController<TShip> : MonoBehaviour
 {
     protected TShip ship;
 
-    [SerializeField] VisualEffect spawnVFX;
-    [SerializeField] VisualEffect loseLifeVFX;
-    [SerializeField] VisualEffect respawnVFX;
-    [SerializeField] VisualEffect deathVFX;
-    [SerializeField] VisualEffect invincibleVFX;
+    [SerializeField] protected VisualEffect spawnVFX;
+    [SerializeField] protected VisualEffect loseLifeVFX;
+    [SerializeField] protected VisualEffect respawnVFX;
+    [SerializeField] protected VisualEffect deathVFX;
+    [SerializeField] protected VisualEffect invincibleVFX;
 
     protected virtual void Awake()
     {
@@ -30,11 +30,6 @@ public abstract class ShipParticleController<TShip> : MonoBehaviour
         {
             deathVFX.SetVector4("ParticleColour", ship.shipData.UIColour.value);
         }
-    }
-
-    void Start()
-    {
-        PlayVisualEffect(spawnVFX);
     }
 
     void OnShipLoseLife()

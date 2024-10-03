@@ -15,7 +15,6 @@ public abstract class ShipSpriteController<TShip> : MonoBehaviour
         ship.InvincibleAction += OnSetInvincible;
 
         spriteRenderer = ship.SpriteRenderer;
-        SetSpriteAlpha(0f);
     }
 
     void OnSetInvincible(bool state)
@@ -28,6 +27,5 @@ public abstract class ShipSpriteController<TShip> : MonoBehaviour
         Color c = spriteRenderer.color;
         c.a = alpha;
         spriteRenderer.color = c;
-        print(spriteRenderer.color.a);
     }
 }

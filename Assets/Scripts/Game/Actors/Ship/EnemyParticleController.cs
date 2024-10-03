@@ -8,10 +8,21 @@ public class EnemyParticleController : ShipParticleController<Enemy>
     protected override void Awake()
     {
         base.Awake();
+
         ship.StartAttackAction += OnAttackStart;
+
+        for (int i = 0; i < ship.bulletSystems.Count; i++)
+        {
+            ship.bulletSystems[i].StartAttackLoopAction += OnAttackLoopStart;
+        }
     }
 
     void OnAttackStart(int _)
+    {
+        PlayVisualEffect(spawnVFX);
+    }
+
+    void OnAttackLoopStart()
     {
         PlayVisualEffect(attackStartVFX);
     }

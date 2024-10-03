@@ -140,12 +140,13 @@ public class Enemy : Ship
         currentMovementSystem.enabled = false;
 
         nextMovementSystem.enabled = true;
+        yield return null;
 
+        StartAttackAction?.Invoke(currentSystemIndex);
         yield return WaitForSeconds(refreshTime);
 
         nextBulletSystem.SetEnabled(true);
 
-        StartAttackAction?.Invoke(currentSystemIndex);
     }
 
     public List<IEnemyAttack> GetCurrentBulletSystem()
