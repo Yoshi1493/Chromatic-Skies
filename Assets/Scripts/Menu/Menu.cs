@@ -49,16 +49,6 @@ public abstract class Menu : MonoBehaviour
         enabled = false;
     }
 
-    public void LoadScene(int sceneIndex)
-    {
-        UnityEngine.SceneManagement.SceneManager.LoadScene(sceneIndex);
-    }
-
-    public void LoadGame()
-    {
-        LoadingScreen.Instance.LoadGame();
-    }
-
     public void Quit()
     {
 #if UNITY_EDITOR
