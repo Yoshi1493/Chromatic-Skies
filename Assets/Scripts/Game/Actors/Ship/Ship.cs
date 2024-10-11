@@ -41,7 +41,9 @@ public abstract class Ship : Actor
 
     #endregion
 
-    new protected Collider2D collider;
+    new protected CircleCollider2D collider;
+    protected virtual float OriginalColliderRadius => 0.5f;
+    protected virtual float InvincibleColliderRadius => 1.5f;
 
     IEnumerator loseLifeCoroutine;
     IEnumerator invincibilityCoroutine;
@@ -63,7 +65,8 @@ public abstract class Ship : Actor
         currentHealth = shipData.MaxHealth.Value;
 
         //collision
-        collider = GetComponent<Collider2D>();
+        collider = GetComponent<CircleCollider2D>();
+        collider.radius = OriginalColliderRadius;
 
         //debug
         name = shipData.ShipName.value;
@@ -148,10 +151,14 @@ public abstract class Ship : Actor
     IEnumerator ToggleInvincibility(float duration)
     {
         yield return null;
+
         Invincible = true;
+        collider.radius = InvincibleColliderRadius;
         yield return WaitForSeconds(duration);
 
         Invincible = false;
+        collider.radius = OriginalColliderRadius;
+
         invincibilityCoroutine = null;
     }
 
