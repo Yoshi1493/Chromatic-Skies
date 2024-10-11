@@ -1,6 +1,5 @@
 enum SceneIndexes
 {
-    Manager = 0,
-    Menu = 1,
-    Game = 2
+    Menu = 0,
+    Game = 1
 }
