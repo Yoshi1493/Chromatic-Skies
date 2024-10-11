@@ -13,7 +13,7 @@ public abstract class Bullet : Projectile
         Move(moveDirection.normalized, MoveSpeed);
     }
 
-    protected override void HandleCollision<T>(Collider2D coll)
+    protected override void HandleCollision(Collider2D coll)
     {
         if (coll.TryGetComponent(out Ship ship))
         {

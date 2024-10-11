@@ -52,7 +52,7 @@ public class ScorpioBullet0 : EnemyBullet
         CheckCollisionWith<ITimestoppable>();
     }
 
-    protected override void HandleCollision<T>(Collider2D coll)
+    protected override void HandleCollision(Collider2D coll)
     {
         if (coll.TryGetComponent(out ITimestoppable bullet))
         {

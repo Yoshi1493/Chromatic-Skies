@@ -63,13 +63,13 @@ public abstract class Projectile : Actor
             {
                 if (collisionResults[i].TryGetComponent(out T _))
                 {
-                    HandleCollision<T>(collisionResults[i]);
+                    HandleCollision(collisionResults[i]);
                 }
             }
         }
     }
 
-    protected abstract void HandleCollision<T>(Collider2D coll);
+    protected abstract void HandleCollision(Collider2D coll);
 
     protected void SpawnDestructionParticles(Vector3 spawnPos, float spawnRotZ)
     {

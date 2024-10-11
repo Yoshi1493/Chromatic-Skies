@@ -31,7 +31,7 @@ public class TaurusLaser60 : Laser
         }
     }
 
-    protected override void HandleCollision<T>(Collider2D coll)
+    protected override void HandleCollision(Collider2D coll)
     {
         float closestCollisionDistance = (coll.ClosestPoint(transform.position) - (Vector2)transform.position).sqrMagnitude;
 

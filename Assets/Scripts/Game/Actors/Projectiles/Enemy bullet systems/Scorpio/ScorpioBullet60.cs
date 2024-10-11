@@ -21,9 +21,9 @@ public class ScorpioBullet60 : EnemyBullet
         CheckCollisionWith<EnemyBullet>();
     }
 
-    protected override void HandleCollision<T>(Collider2D coll)
+    protected override void HandleCollision(Collider2D coll)
     {
-        base.HandleCollision<T>(coll);
+        base.HandleCollision(coll);
 
         if (coll.TryGetComponent(out ScorpioBullet61 bullet))
         {

@@ -54,7 +54,7 @@ public abstract class Laser : Projectile
         }
     }
 
-    protected override void HandleCollision<T>(Collider2D coll)
+    protected override void HandleCollision(Collider2D coll)
     {
         if (coll.TryGetComponent(out Ship ship))
         {

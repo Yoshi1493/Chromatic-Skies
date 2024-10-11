@@ -23,9 +23,9 @@ public abstract class ReflectiveEnemyBullet : EnemyBullet
         CheckCollisionWith<EdgeCollider2D>();
     }
 
-    protected override void HandleCollision<T>(Collider2D coll)
+    protected override void HandleCollision(Collider2D coll)
     {
-        base.HandleCollision<T>(coll);
+        base.HandleCollision(coll);
 
         if (coll.TryGetComponent(out EdgeCollider2D _) && currentReflectCount > 0)
         {
