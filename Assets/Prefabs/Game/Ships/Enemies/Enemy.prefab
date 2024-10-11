@@ -569,7 +569,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2178705396964388797, guid: 2ad3a7352f03714438318db50497c30d, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2178705396964388797, guid: 2ad3a7352f03714438318db50497c30d, type: 3}
       propertyPath: m_LocalRotation.w
@@ -699,6 +699,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bullet System 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8950450420066682159, guid: 2ad3a7352f03714438318db50497c30d, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9027579049831766120, guid: 2ad3a7352f03714438318db50497c30d, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2ad3a7352f03714438318db50497c30d, type: 3}
 --- !u!2083052967 &38006583588094509 stripped
@@ -714,6 +722,11 @@ VisualEffect:
 --- !u!2083052967 &1136252800678040964 stripped
 VisualEffect:
   m_CorrespondingSourceObject: {fileID: 7536473663807593436, guid: 2ad3a7352f03714438318db50497c30d, type: 3}
+  m_PrefabInstance: {fileID: 7445058458403180120}
+  m_PrefabAsset: {fileID: 0}
+--- !u!58 &3312266814935397251 stripped
+CircleCollider2D:
+  m_CorrespondingSourceObject: {fileID: 5378881417460219355, guid: 2ad3a7352f03714438318db50497c30d, type: 3}
   m_PrefabInstance: {fileID: 7445058458403180120}
   m_PrefabAsset: {fileID: 0}
 --- !u!2083052967 &3525322882413632378 stripped
@@ -742,6 +755,7 @@ MonoBehaviour:
   shipData: {fileID: 0}
   currentLives: 0
   currentHealth: 0
+  invincibleCollider: {fileID: 3312266814935397251}
   bulletSystemContainer: {fileID: 0}
   movementSystemContainer: {fileID: 0}
 --- !u!114 &8286456681555174493

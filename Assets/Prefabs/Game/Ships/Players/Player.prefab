@@ -240,7 +240,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2178705396964388797, guid: 2ad3a7352f03714438318db50497c30d, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3061824186324127051, guid: 2ad3a7352f03714438318db50497c30d, type: 3}
       propertyPath: m_Asset
@@ -366,6 +366,14 @@ PrefabInstance:
       propertyPath: m_SortingLayerID
       value: -511607797
       objectReference: {fileID: 0}
+    - target: {fileID: 8950450420066682159, guid: 2ad3a7352f03714438318db50497c30d, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9027579049831766120, guid: 2ad3a7352f03714438318db50497c30d, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2ad3a7352f03714438318db50497c30d, type: 3}
 --- !u!1 &3009238224399694226 stripped
@@ -456,6 +464,12 @@ MonoBehaviour:
   shipData: {fileID: 0}
   currentLives: 0
   currentHealth: 0
+  invincibleCollider: {fileID: 6896965598212164033}
+--- !u!58 &6896965598212164033 stripped
+CircleCollider2D:
+  m_CorrespondingSourceObject: {fileID: 5378881417460219355, guid: 2ad3a7352f03714438318db50497c30d, type: 3}
+  m_PrefabInstance: {fileID: 1518647169365373978}
+  m_PrefabAsset: {fileID: 0}
 --- !u!2083052967 &8270436838194968687 stripped
 VisualEffect:
   m_CorrespondingSourceObject: {fileID: 7481939071179590773, guid: 2ad3a7352f03714438318db50497c30d, type: 3}

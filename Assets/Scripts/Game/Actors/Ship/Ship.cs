@@ -154,4 +154,9 @@ public abstract class Ship : Actor
         Invincible = false;
         invincibilityCoroutine = null;
     }
+
+    public void DisplayInvincibleShield(Vector3 pos)
+    {
+        
+    }
 }

@@ -6,6 +6,7 @@ using static CoroutineHelper;
 
 public class Enemy : Ship
 {
+    [Space]
     [SerializeField] Transform bulletSystemContainer;
     [SerializeField] Transform movementSystemContainer;
 

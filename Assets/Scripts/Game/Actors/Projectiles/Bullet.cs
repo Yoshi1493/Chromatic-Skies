@@ -17,19 +17,23 @@ public abstract class Bullet : Projectile
     {
         if (coll.TryGetComponent(out Ship ship))
         {
-            if (!ship.Invincible)
+            //get particle spawn position+rotation
+            Vector3 pos = coll.ClosestPoint(transform.position);
+            float rot = coll.transform.position.GetRotationDifference(transform.position);
+            SpawnDestructionParticles(pos, rot);
+
+            if (ship.Invincible)
+            {
+                ship.DisplayInvincibleShield(pos);
+            }
+            else
             {
                 ship.TakeDamage(projectileData.Power.value);
+            }
 
-                //get particle spawn position+rotation
-                Vector3 pos = coll.ClosestPoint(transform.position);
-                float rot = coll.transform.position.GetRotationDifference(transform.position);
-                SpawnDestructionParticles(pos, rot);
-
-                if (projectileData.destructible)
-                {
-                    Destroy();
-                }
+            if (projectileData.destructible)
+            {
+                Destroy();
             }
         }
     }
