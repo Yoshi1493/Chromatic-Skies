@@ -19,11 +19,11 @@ public class EnemyParticleController : ShipParticleController<Enemy>
 
     void OnAttackStart(int _)
     {
-        PlayVisualEffect(spawnVFX);
+        //PlayVisualEffect(spawnVFX);
     }
 
     void OnAttackLoopStart()
     {
-        PlayVisualEffect(attackStartVFX);
+        //PlayVisualEffect(attackStartVFX);
     }
 }

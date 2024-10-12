@@ -1,10 +1,15 @@
 using System.Collections;
-using UnityEngine;
+using static CoroutineHelper;
 
-public class PSInvincibleShield : MonoBehaviour
+public class PSInvincibleShield : ParticleEffect
 {
-    void Awake()
+    protected override IEnumerator Play()
     {
-        
+        yield return base.Play();
+
+        float particleLifetime = ParticleSystem.GetFloat("ParticleLifetime");
+        yield return WaitForSeconds(particleLifetime);
+
+        VFXObjectPool.Instance.ReturnToPool(gameObject, VFXType.InvincibleShield);
     }
 }

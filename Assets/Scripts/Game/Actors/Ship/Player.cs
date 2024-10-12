@@ -25,4 +25,18 @@ public class Player : Ship
     {
         SetInvincible(1f);
     }
+
+    public override void DisplayInvincibleShield(Vector3 spawnPos)
+    {
+        GameObject vfx = VFXObjectPool.Instance.Get(VFXType.InvincibleShield);
+        var particleSystem = vfx.GetComponent<ParticleEffect>();
+
+        particleSystem.transform.position = transform.position;
+        vfx.SetActive(true);
+
+        particleSystem.ParticleSystem.SetVector4("ParticleColour", shipData.UIColour.value);
+        particleSystem.ParticleSystem.SetFloat("ParticleSize", InvincibleColliderRadius);
+
+        particleSystem.enabled = true;
+    }
 }
