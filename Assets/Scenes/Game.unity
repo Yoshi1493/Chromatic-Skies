@@ -3942,7 +3942,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad22c8c6ac5632d47995377408a885eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vfx: {fileID: 4871711780863809610, guid: 72371bdf7ef046347846842dec78b109, type: 3}
+  visualEffects:
+  - {fileID: 4871711780863809610, guid: 72371bdf7ef046347846842dec78b109, type: 3}
+  - {fileID: 4871711780863809610, guid: d18c172536affe840890be2c5d44f4aa, type: 3}
 --- !u!4 &998017424
 Transform:
   m_ObjectHideFlags: 0

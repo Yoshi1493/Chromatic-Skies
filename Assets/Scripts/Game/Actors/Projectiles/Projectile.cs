@@ -74,7 +74,7 @@ public abstract class Projectile : Actor
     protected void SpawnDestructionParticles(Vector3 spawnPos, float spawnRotZ)
     {
         //grab particle obj from pool; get VFX component
-        GameObject destructionParticles = ProjectileDestructionEffectPool.Instance.Get();
+        GameObject destructionParticles = VFXObjectPool.Instance.Get(VFXType.ProjectileDestruction);
         var particleEffect = destructionParticles.GetComponent<ParticleEffect>();
 
         //set spawn pos+rot
@@ -84,6 +84,11 @@ public abstract class Projectile : Actor
         //set colour based on sprite colour
         particleEffect.ParticleSystem.SetVector4("ParticleColour", SpriteRenderer.color);
         particleEffect.enabled = true;
+    }
+
+    protected void DisplayInvincibleShield(Vector3 spawnPos)
+    {
+
     }
 
     public abstract void Destroy();

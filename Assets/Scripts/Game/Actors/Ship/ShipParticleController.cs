@@ -30,6 +30,11 @@ public abstract class ShipParticleController<TShip> : MonoBehaviour
         {
             deathVFX.SetVector4("ParticleColour", ship.shipData.UIColour.value);
         }
+
+        if (invincibleVFX.visualEffectAsset != null)
+        {
+            invincibleVFX.SetVector4("ParticleColour", ship.shipData.UIColour.value);
+        }
     }
 
     void OnShipLoseLife()
@@ -49,7 +54,7 @@ public abstract class ShipParticleController<TShip> : MonoBehaviour
 
     void OnShipInvincible(bool state)
     {
-        PlayVisualEffect(invincibleVFX);
+        //PlayVisualEffect(invincibleVFX);
     }
 
     protected void PlayVisualEffect(VisualEffect vfx)
