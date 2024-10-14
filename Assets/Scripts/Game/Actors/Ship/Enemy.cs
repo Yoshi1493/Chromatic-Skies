@@ -197,15 +197,18 @@ public class Enemy : Ship
     public override void DisplayInvincibleShield(Vector3 spawnPos)
     {
         GameObject vfx = VFXObjectPool.Instance.Get(VFXType.InvincibleShield);
-        var particleSystem = vfx.GetComponent<ParticleEffect>();
+        var particleEffect = vfx.GetComponent<ParticleEffect>();
 
-        particleSystem.transform.position = transform.position;
+        particleEffect.transform.position = transform.position;
         vfx.SetActive(true);
 
-        particleSystem.ParticleSystem.SetVector4("ParticleColour", shipData.UIColour.value);
-        particleSystem.ParticleSystem.SetFloat("ParticleSize", InvincibleColliderRadius);
+        Vector2 highlightOffset = (spawnPos - transform.position).normalized;
 
-        particleSystem.enabled = true;
+        particleEffect.ParticleSystem.SetFloat("ParticleSize", InvincibleColliderRadius);
+        particleEffect.ParticleSystem.SetVector4("ParticleColour", shipData.UIColour.value);
+        particleEffect.ParticleSystem.SetVector2("HighlightOffset", highlightOffset);
+
+        particleEffect.enabled = true;
     }
 
     protected override IEnumerator Die()
