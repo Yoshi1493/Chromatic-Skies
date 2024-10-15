@@ -1,7 +1,7 @@
 using System.Collections;
 using static CoroutineHelper;
 
-public class PSInvincibleShield : ParticleEffect
+public class PSInvincibleEnemyShield : ParticleEffect
 {
     protected override IEnumerator Play()
     {
@@ -10,6 +10,6 @@ public class PSInvincibleShield : ParticleEffect
         float particleLifetime = ParticleSystem.GetFloat("ParticleLifetime");
         yield return WaitForSeconds(particleLifetime);
 
-        VFXObjectPool.Instance.ReturnToPool(gameObject, VFXType.InvincibleShield);
+        VFXObjectPool.Instance.ReturnToPool(gameObject, VFXType.InvincibleEnemyShield);
     }
 }

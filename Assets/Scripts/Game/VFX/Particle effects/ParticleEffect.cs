@@ -7,12 +7,12 @@ public class ParticleEffect : MonoBehaviour
     public VisualEffect ParticleSystem { get; protected set; }
     protected IEnumerator particleAnimation;
 
-    void Awake()
+    protected virtual void Awake()
     {
         ParticleSystem = GetComponent<VisualEffect>();
     }
 
-    protected void OnEnable()
+    void OnEnable()
     {
         PlayAnimation();
     }

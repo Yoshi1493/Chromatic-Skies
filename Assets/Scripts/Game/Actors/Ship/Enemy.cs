@@ -196,7 +196,7 @@ public class Enemy : Ship
 
     public override void DisplayInvincibleShield(Vector3 spawnPos)
     {
-        GameObject vfx = VFXObjectPool.Instance.Get(VFXType.InvincibleShield);
+        GameObject vfx = VFXObjectPool.Instance.Get(VFXType.InvincibleEnemyShield);
         var particleEffect = vfx.GetComponent<ParticleEffect>();
 
         particleEffect.transform.position = transform.position;

@@ -12,7 +12,8 @@ public class Player : Ship
         base.Awake();
 
         TakeDamageAction += OnTakeDamage;
-        FindObjectOfType<PauseHandler>().GamePauseAction += (bool state) => collider.enabled = !state;
+        InvincibleAction += OnInvincible;
+        FindObjectOfType<PauseHandler>().GamePauseAction += OnGamePaused;
     }
 
     void Update()
@@ -28,9 +29,24 @@ public class Player : Ship
         SetInvincible(1f);
     }
 
-    public override void DisplayInvincibleShield(Vector3 spawnPos)
+    void OnInvincible(bool state)
     {
-        GameObject vfx = VFXObjectPool.Instance.Get(VFXType.InvincibleShield);
+        collider.enabled = !state;
+
+        if (state)
+        {
+            DisplayInvincibleShield(transform.position);
+        }
+    }
+
+    void OnGamePaused(bool state)
+    {
+        collider.enabled = !state;
+    }
+
+    public override void DisplayInvincibleShield(Vector3 _)
+    {
+        GameObject vfx = VFXObjectPool.Instance.Get(VFXType.InvinciblePlayerShield);
         var particleEffect = vfx.GetComponent<ParticleEffect>();
 
         particleEffect.transform.position = transform.position;

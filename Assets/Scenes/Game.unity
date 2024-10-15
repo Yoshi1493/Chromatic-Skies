@@ -3944,6 +3944,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   visualEffects:
   - {fileID: 4871711780863809610, guid: 72371bdf7ef046347846842dec78b109, type: 3}
+  - {fileID: 4871711780863809610, guid: 5b6277fd622c5a64aa79543a318031be, type: 3}
   - {fileID: 4871711780863809610, guid: d18c172536affe840890be2c5d44f4aa, type: 3}
 --- !u!4 &998017424
 Transform:

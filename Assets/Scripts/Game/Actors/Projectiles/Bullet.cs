@@ -24,7 +24,10 @@ public abstract class Bullet : Projectile
 
             if (ship.Invincible)
             {
-                ship.DisplayInvincibleShield(pos);
+                if (ship is Enemy)
+                {
+                    ship.DisplayInvincibleShield(pos);
+                }
             }
             else
             {

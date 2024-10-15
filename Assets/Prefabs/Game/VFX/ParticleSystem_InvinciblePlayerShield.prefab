@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 4871711780863809605}
   - component: {fileID: 4871711780863809604}
   - component: {fileID: 4871711780863809611}
-  - component: {fileID: 2702299432644973644}
+  - component: {fileID: 576310900981194365}
   m_Layer: 0
-  m_Name: ParticleSystem_InvincibleShield
+  m_Name: ParticleSystem_InvinciblePlayerShield
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -42,7 +42,7 @@ VisualEffect:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4871711780863809610}
   m_Enabled: 1
-  m_Asset: {fileID: 8926484042661614526, guid: f77f0ef9ccbe6a649a4c262ccc5102f8, type: 3}
+  m_Asset: {fileID: 8926484042661614526, guid: b7e12efe55583774bbe8251bccd61a78, type: 3}
   m_InitialEventName: OnPlay
   m_InitialEventNameOverriden: 0
   m_StartSeed: 0
@@ -117,7 +117,7 @@ VFXRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 9
---- !u!114 &2702299432644973644
+--- !u!114 &576310900981194365
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -126,6 +126,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 4871711780863809610}
   m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 80579ae3611d01746ae32a8a16a44400, type: 3}
+  m_Script: {fileID: 11500000, guid: 0eedfeae4fd0e07468447edb003b93ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

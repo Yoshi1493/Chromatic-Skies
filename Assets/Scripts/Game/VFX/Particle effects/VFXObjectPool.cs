@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -55,8 +56,10 @@ public class VFXObjectPool : MonoBehaviour
     }
 }
 
+[Serializable]
 public enum VFXType
 {
     ProjectileDestruction = 0,
-    InvincibleShield = 1
+    InvinciblePlayerShield = 1,
+    InvincibleEnemyShield = 2
 }
