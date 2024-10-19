@@ -26,6 +26,10 @@ public class Enemy : Ship
         ValidateAttackSystems();
 
         player = FindObjectOfType<Player>();
+    }
+
+    void Start()
+    {
         player.LoseLifeAction += OnPlayerLoseLife;
     }
 

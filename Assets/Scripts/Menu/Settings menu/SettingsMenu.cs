@@ -23,6 +23,13 @@ public class SettingsMenu : Menu, ISavable
         if (SceneManager.GetActiveScene().buildIndex == (int)SceneIndexes.Game)
         {
             pauseHandler = FindObjectOfType<PauseHandler>();
+        }
+    }
+
+    void Start ()
+    {
+        if (pauseHandler != null)
+        {
             pauseHandler.GamePauseAction += OnGamePaused;
         }
     }

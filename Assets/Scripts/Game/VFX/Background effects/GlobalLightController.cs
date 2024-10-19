@@ -13,22 +13,23 @@ public class GlobalLightController : MonoBehaviour
 
     [SerializeField] AnimationCurve lightIntensityInterpolation;
 
+    Player player;
+    Enemy enemy;
+
     void Awake()
     {
         globalLight = GetComponent<Light2D>();
 
-        Player player = FindObjectOfType<Player>();
-        Enemy enemy = FindObjectOfType<Enemy>();
+        player = FindObjectOfType<Player>();
+        enemy = FindObjectOfType<Enemy>();
+    }
 
-        if (player != null)
-        {
-            player.LoseLifeAction += ResetIntensity;
-        }
-        if (enemy != null)
-        {
-            enemy.LoseLifeAction += ResetIntensity;
-            enemy.DeathAction += OnEnemyDie;
-        }
+    void Start()
+    {
+        player.LoseLifeAction += ResetIntensity;
+
+        enemy.LoseLifeAction += ResetIntensity;
+        enemy.DeathAction += OnEnemyDie;
     }
 
     void OnEnemyDie()

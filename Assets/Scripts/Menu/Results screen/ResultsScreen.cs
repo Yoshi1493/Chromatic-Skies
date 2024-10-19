@@ -15,15 +15,24 @@ public class ResultsScreen : MonoBehaviour
     [SerializeField] TextMeshProUGUI[] resultsTexts;
     [SerializeField] TextMeshProUGUI[] resultsValues;
 
+    Enemy enemy;
+
     void Awake()
     {
         canvas = GetComponent<Canvas>();
         canvasGroup = GetComponent<CanvasGroup>();
 
-        Enemy enemy = FindObjectOfType<Enemy>();
-        enemy.DeathAction += OnEnemyDie;
+        enemy = FindObjectOfType<Enemy>();
 
         InitializeCanvasElements();
+    }
+
+    void Start()
+    {
+        if (enemy != null)
+        {
+            enemy.DeathAction += OnEnemyDie;
+        }
     }
 
     void InitializeCanvasElements()

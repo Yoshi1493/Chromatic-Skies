@@ -42,10 +42,7 @@ public abstract class EnemyShooter<TProjectile> : Shooter<TProjectile>, IEnemyAt
         base.Awake();
 
         //find player
-        if (playerShip == null)
-        {
-            playerShip = FindObjectOfType<Player>();
-        }
+        playerShip = FindObjectOfType<Player>();
 
         //set screen dimensions
         Camera mainCam = Camera.main;
@@ -53,7 +50,7 @@ public abstract class EnemyShooter<TProjectile> : Shooter<TProjectile>, IEnemyAt
         screenHalfWidth = screenHalfHeight * mainCam.aspect;
     }
 
-    void Start()
+    protected override void Start()
     {
         playerShip.LoseLifeAction += OnPlayerLoseLife;
     }

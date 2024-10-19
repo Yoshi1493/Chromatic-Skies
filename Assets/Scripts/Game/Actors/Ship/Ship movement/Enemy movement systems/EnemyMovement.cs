@@ -20,17 +20,19 @@ public abstract class EnemyMovement : ShipMovement<Enemy>
         int siblingIndex = transform.GetSiblingIndex();
         parentShip.bulletSystems[siblingIndex].StartMoveAction += StartMove;
 
+        //find player
+        playerShip = FindObjectOfType<Player>();
+
         //set screen dimensions
         Camera mainCam = Camera.main;
         screenHalfHeight = mainCam.orthographicSize;
         screenHalfWidth = screenHalfHeight * mainCam.aspect;
+    }
 
-        //find player
-        if (playerShip == null)
-        {
-            playerShip = FindObjectOfType<Player>();
-            playerShip.DeathAction += OnPlayerDie;
-        }
+    protected override void Start()
+    {
+        base.Start();
+        playerShip.DeathAction += OnPlayerDie;
     }
 
     protected virtual void OnEnable()

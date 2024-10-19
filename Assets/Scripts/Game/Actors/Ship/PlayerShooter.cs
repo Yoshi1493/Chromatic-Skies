@@ -13,16 +13,19 @@ public class PlayerShooter : Shooter<PlayerBullet>
 
     [SerializeField] List<Transform> bulletSpawnPositions = new();
 
+    PauseHandler pauseHandler;
+
     protected override void Awake()
     {
         base.Awake();
-        FindObjectOfType<PauseHandler>().GamePauseAction += OnGamePaused;
-
-        ownerShip.RespawnAction += OnRespawn;
+        pauseHandler = FindObjectOfType<PauseHandler>();
     }
 
-    void Start()
+    protected override void Start()
     {
+        pauseHandler.GamePauseAction += OnGamePaused;
+        ownerShip.RespawnAction += OnRespawn;
+
         PlayerBulletPool.Instance.UpdatePoolableObjects(playerBullets);
     }
 

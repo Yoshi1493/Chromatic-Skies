@@ -4,9 +4,9 @@ using static CoroutineHelper;
 
 public class EnemySpriteController : ShipSpriteController<Enemy>
 {
-    protected override void Awake()
+    protected override void Start()
     {
-        base.Awake();
+        base.Start();
         ship.StartAttackAction += FadeInSprite;
     }
 

@@ -7,14 +7,19 @@ public class PlayerMovement : ShipMovement<Player>
 
     public event Action<bool> MovementSlowAction;
 
+    PauseHandler pauseHandler;
+
     protected override void Awake()
     {
         base.Awake();
+        pauseHandler = FindObjectOfType<PauseHandler>();
+    }
 
+    protected override void Start()
+    {
         parentShip.RespawnAction += OnRespawn;
         MovementSlowAction += SetSlowState;
-
-        FindObjectOfType<PauseHandler>().GamePauseAction += OnGamePaused;
+        pauseHandler.GamePauseAction += OnGamePaused;
     }
 
     protected override void Update()

@@ -22,13 +22,12 @@ public class FlashlightEffect : MonoBehaviour
         flashlightMat = GetComponent<SpriteRenderer>().material;
 
         playerShip = FindObjectOfType<Player>();
-
-        if (playerShip != null)
-        {
-            playerShip.LoseLifeAction += () => enabled = false;
-        }
-
         ResetProperties();
+    }
+
+    void Start()
+    {
+        playerShip.LoseLifeAction += () => enabled = false;
     }
 
     //follow player position

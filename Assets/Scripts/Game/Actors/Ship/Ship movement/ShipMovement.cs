@@ -12,6 +12,10 @@ public abstract class ShipMovement<TShip> : MonoBehaviour
     protected virtual void Awake()
     {
         parentShip = GetComponentInParent<TShip>();
+    }
+
+    protected virtual void Start()
+    {
         parentShip.LoseLifeAction += OnLoseLife;
         parentShip.DeathAction += OnDie;
 

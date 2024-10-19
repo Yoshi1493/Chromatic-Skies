@@ -5,10 +5,17 @@ public class MainMenuConfirm : Menu
 {
     [SerializeField] Button backButton;
 
+    PauseHandler pauseHandler;
+
     protected override void Awake()
     {
         base.Awake();
-        FindObjectOfType<PauseHandler>().GamePauseAction += OnGamePaused;
+        pauseHandler = FindObjectOfType<PauseHandler>();
+    }
+
+    void Start()
+    {
+        pauseHandler.GamePauseAction += OnGamePaused;
     }
 
     void OnGamePaused(bool state)

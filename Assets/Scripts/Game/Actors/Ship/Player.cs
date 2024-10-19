@@ -7,13 +7,20 @@ public class Player : Ship
     protected override float OriginalColliderRadius => 0.025f;
     protected override float InvincibleColliderRadius => 1f;
 
+    PauseHandler pauseHandler;
+
     protected override void Awake()
     {
         base.Awake();
+        pauseHandler = FindObjectOfType<PauseHandler>();
+    }
 
+    void Start()
+    {
         TakeDamageAction += OnTakeDamage;
         InvincibleAction += OnInvincible;
-        FindObjectOfType<PauseHandler>().GamePauseAction += OnGamePaused;
+
+        pauseHandler.GamePauseAction += OnGamePaused;
     }
 
     void Update()

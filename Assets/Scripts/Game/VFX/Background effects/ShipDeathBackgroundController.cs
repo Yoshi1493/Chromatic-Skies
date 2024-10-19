@@ -10,17 +10,24 @@ public class ShipDeathBackgroundController : MonoBehaviour
 
     [SerializeField] AnimationCurve fadeInterpolation;
 
+    Player player;
+    Enemy enemy;
+
     void Awake()
     {
         backgroundImage = GetComponent<SpriteRenderer>();
 
-        Player player = FindObjectOfType<Player>();
+        player = FindObjectOfType<Player>();
+        enemy = FindObjectOfType<Enemy>();
+    }
+
+    void Start()
+    {
         if (player != null)
         {
             player.DeathAction += OnPlayerDie;
         }
 
-        Enemy enemy = FindObjectOfType<Enemy>();
         if (enemy != null)
         {
             enemy.DeathAction += OnEnemyDie;

@@ -14,20 +14,25 @@ public class GameOverMenu : Menu
 
     [SerializeField] TextMeshProUGUI[] continueButtons;
 
+    Player player;
+
     protected override void Awake()
     {
         base.Awake();
 
-        canvasGroup = GetComponent<CanvasGroup>();
-
-        Player player = FindObjectOfType<Player>();
-        player.DeathAction += OnPlayerDie;
-
+        player = FindObjectOfType<Player>();
         InitializeCanvasElements();
+    }
+
+    void Start()
+    {
+        player.DeathAction += OnPlayerDie;
     }
 
     void InitializeCanvasElements()
     {
+        canvasGroup = GetComponent<CanvasGroup>();
+
         thisMenu.enabled = false;
         canvasGroup.alpha = 0f;
 
