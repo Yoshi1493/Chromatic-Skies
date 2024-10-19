@@ -3064,7 +3064,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: UnityEngine.Gradient, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"colorKeys":[{"color":{"r":3.7960784435272219,"g":0.5490196347236633,"b":0.1882352977991104,"a":1.0},"time":0.0},{"color":{"r":7.623529434204102,"g":5.866666793823242,"b":0.40784314274787905,"a":1.0},"time":1.0}],"alphaKeys":[{"alpha":1.0,"time":0.0},{"alpha":1.0,"time":1.0}],"gradientMode":0}'
+      m_SerializableObject: '{"colorKeys":[{"color":{"r":3.200000047683716,"g":0.909473717212677,"b":0.6399999856948853,"a":1.0},"time":0.0},{"color":{"r":2.9960784912109377,"g":2.43137264251709,"b":0.6117647290229797,"a":1.0},"time":0.6000000238418579},{"color":{"r":2.0,"g":2.0,"b":2.0,"a":1.0},"time":0.8500038385391235},{"color":{"r":0.7999999523162842,"g":2.410595655441284,"b":4.0,"a":1.0},"time":1.0}],"alphaKeys":[{"alpha":1.0,"time":0.0},{"alpha":1.0,"time":1.0}],"gradientMode":0}'
     m_Space: 2147483647
   m_Property:
     name: o
@@ -3995,7 +3995,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
-      m_SerializableObject: 0.4
+      m_SerializableObject: 0.5
     m_Space: 2147483647
   m_Property:
     name: o
