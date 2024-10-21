@@ -2263,18 +2263,18 @@ PrefabInstance:
     - target: {fileID: 9113669927874555424, guid: 43808b15fa4047946ae6ee640412c78f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1492382365}
+      objectReference: {fileID: 2092189159}
     - target: {fileID: 9113669927874555424, guid: 43808b15fa4047946ae6ee640412c78f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: LoadScene
       objectReference: {fileID: 0}
     - target: {fileID: 9113669927874555424, guid: 43808b15fa4047946ae6ee640412c78f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: Menu, Assembly-CSharp
+      value: LevelLoader, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 9113669927874555424, guid: 43808b15fa4047946ae6ee640412c78f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9113669927874555424, guid: 43808b15fa4047946ae6ee640412c78f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -6755,18 +6755,18 @@ PrefabInstance:
     - target: {fileID: 9113669927874555424, guid: 43808b15fa4047946ae6ee640412c78f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1492382365}
+      objectReference: {fileID: 2092189159}
     - target: {fileID: 9113669927874555424, guid: 43808b15fa4047946ae6ee640412c78f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: LoadScene
       objectReference: {fileID: 0}
     - target: {fileID: 9113669927874555424, guid: 43808b15fa4047946ae6ee640412c78f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: Menu, Assembly-CSharp
+      value: LevelLoader, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 9113669927874555424, guid: 43808b15fa4047946ae6ee640412c78f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9113669927874555424, guid: 43808b15fa4047946ae6ee640412c78f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName

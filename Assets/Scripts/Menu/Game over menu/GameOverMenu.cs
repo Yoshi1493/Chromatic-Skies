@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
 using static CoroutineHelper;
 
@@ -26,7 +25,12 @@ public class GameOverMenu : Menu
 
     void Start()
     {
-        player.DeathAction += OnPlayerDie;
+        if (player != null)
+        {
+            player.DeathAction += OnPlayerDie;
+        }
+
+        enabled = false;
     }
 
     void InitializeCanvasElements()
@@ -40,8 +44,6 @@ public class GameOverMenu : Menu
         {
             item.enabled = false;
         }
-
-        enabled = false;
     }
 
     void OnPlayerDie()
