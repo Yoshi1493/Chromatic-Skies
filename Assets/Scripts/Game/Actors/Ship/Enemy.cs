@@ -218,6 +218,8 @@ public class Enemy : Ship
     protected override IEnumerator Die()
     {
         yield return base.Die();
+
         enabled = false;
+        collider.enabled = false;
     }
 }
