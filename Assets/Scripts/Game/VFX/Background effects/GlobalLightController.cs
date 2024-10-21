@@ -9,7 +9,7 @@ public class GlobalLightController : MonoBehaviour
     Light2D globalLight;
 
     IEnumerator intensityCoroutine;
-    const float LightIntensityAnimationDuration = 3.5f;
+    const float LightIntensityAnimationDuration = 2f;
 
     [SerializeField] AnimationCurve lightIntensityInterpolation;
 
@@ -34,7 +34,7 @@ public class GlobalLightController : MonoBehaviour
 
     void OnEnemyDie()
     {
-        FadeIntensity(4f, 3.5f, lightIntensityInterpolation);
+        FadeIntensity(3f, LightIntensityAnimationDuration, lightIntensityInterpolation);
     }
 
     void ResetIntensity()
@@ -67,8 +67,6 @@ public class GlobalLightController : MonoBehaviour
             yield return EndOfFrame;
             currentLerpTime += Time.deltaTime;
         }
-
-        globalLight.intensity = endIntensity;
     }
 
     void OnApplicationQuit()
