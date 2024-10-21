@@ -17,6 +17,8 @@ public class PlayerMovement : ShipMovement<Player>
 
     protected override void Start()
     {
+        base.Start();
+
         parentShip.RespawnAction += OnRespawn;
         MovementSlowAction += SetSlowState;
         pauseHandler.GamePauseAction += OnGamePaused;
