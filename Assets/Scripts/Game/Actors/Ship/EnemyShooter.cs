@@ -52,6 +52,7 @@ public abstract class EnemyShooter<TProjectile> : Shooter<TProjectile>, IEnemyAt
 
     protected override void Start()
     {
+        base.Start();
         playerShip.LoseLifeAction += OnPlayerLoseLife;
     }
 

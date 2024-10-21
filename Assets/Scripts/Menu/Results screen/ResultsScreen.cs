@@ -33,6 +33,8 @@ public class ResultsScreen : MonoBehaviour
         {
             enemy.DeathAction += OnEnemyDie;
         }
+
+        enabled = false;
     }
 
     void InitializeCanvasElements()
@@ -49,8 +51,6 @@ public class ResultsScreen : MonoBehaviour
         {
             item.enabled = false;
         }
-
-        enabled = false;
     }
 
     void OnEnemyDie()

@@ -23,6 +23,8 @@ public class PlayerShooter : Shooter<PlayerBullet>
 
     protected override void Start()
     {
+        base.Start();
+
         pauseHandler.GamePauseAction += OnGamePaused;
         ownerShip.RespawnAction += OnRespawn;
 
