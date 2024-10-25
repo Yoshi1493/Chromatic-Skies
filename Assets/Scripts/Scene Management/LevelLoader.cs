@@ -32,6 +32,17 @@ public class LevelLoader : MonoBehaviour
         yield return null;
         yield return WaitUntil(() => animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f);
 
-        SceneManager.LoadScene(sceneIndex);
+        if (sceneIndex >= 0)
+        {
+            SceneManager.LoadScene(sceneIndex);
+        }
+        else if (sceneIndex == -1)
+        {
+#if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+#else
+            Application.Quit();        
+#endif
+        }
     }
 }
