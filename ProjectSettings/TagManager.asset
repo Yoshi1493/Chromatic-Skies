@@ -47,3 +47,6 @@ TagManager:
   - name: Enemy
     uniqueID: 4052964861
     locked: 0
+  - name: VFX
+    uniqueID: 2241273139
+    locked: 0
