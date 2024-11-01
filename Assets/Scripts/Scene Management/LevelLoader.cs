@@ -14,6 +14,12 @@ public class LevelLoader : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
+    void Start()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+    }
+
     public void LoadScene(int sceneIndex)
     {
         if (sceneTransitionCoroutine != null)
