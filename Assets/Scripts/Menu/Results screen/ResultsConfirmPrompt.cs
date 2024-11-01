@@ -3,6 +3,7 @@ using TMPro;
 
 public class ResultsConfirmPrompt : MonoBehaviour
 {
+    [SerializeField] LevelLoader levelLoader;
     [SerializeField] TextMeshProUGUI confirmText;
 
     void Awake()
@@ -22,8 +23,7 @@ public class ResultsConfirmPrompt : MonoBehaviour
     {
         if (Input.GetButtonDown("Shoot"))
         {
-            //to-do: replace
-            UnityEngine.SceneManagement.SceneManager.LoadScene(0);
+            levelLoader.LoadScene(0);
         }
     }
 }
