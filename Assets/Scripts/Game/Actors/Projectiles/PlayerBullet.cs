@@ -7,7 +7,7 @@ public class PlayerBullet : Bullet
     protected override void Awake()
     {
         base.Awake();
-        MoveSpeed = 20f;
+        MoveSpeed = projectileData.Speed.Value;
     }
 
     protected override void OnEnable()

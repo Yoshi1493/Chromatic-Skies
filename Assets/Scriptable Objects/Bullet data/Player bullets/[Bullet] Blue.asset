@@ -46,5 +46,8 @@ MonoBehaviour:
     m_NumAlphaKeys: 2
   ID: 0
   Power: {fileID: 11400000, guid: 10d68685c57f50549a63258d82075c0c, type: 2}
+  Speed:
+    useConstant: 1
+    ConstantValue: 20
+    Variable: {fileID: 0}
   destructible: 1
-  particleSystemName: {fileID: 11400000, guid: 920cea33377f8264fa05fd6bf591f3b3, type: 2}
