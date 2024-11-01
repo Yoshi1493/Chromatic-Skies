@@ -51,11 +51,14 @@ VisualEffect:
   m_PropertySheet:
     m_Float:
       m_Array:
-      - m_Value: 0.5
+      - m_Value: 1
         m_Name: ParticleLifetime
         m_Overridden: 0
     m_Vector2f:
-      m_Array: []
+      m_Array:
+      - m_Value: {x: 0, y: 0}
+        m_Name: HighlightOffset
+        m_Overridden: 0
     m_Vector3f:
       m_Array: []
     m_Vector4f:
@@ -129,4 +132,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80579ae3611d01746ae32a8a16a44400, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vfxType: 2
