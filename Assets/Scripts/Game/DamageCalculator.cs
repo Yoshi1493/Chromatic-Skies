@@ -7,7 +7,7 @@ public static class DamageCalculator
         float trueAtk = Mathf.Abs(atk * speed);
         float trueDef = 100f / (100f + def);
         float dmg = trueAtk * trueDef;
-        Debug.Log($"({atk} * {speed}) * (100 / (100 + {def}))");
+        //Debug.Log($"({atk} * {speed}) * (100 / (100 + {def}))");
         int trueDmg = Mathf.Max(1, Mathf.CeilToInt(dmg));
         return trueDmg;
     }
