@@ -31,7 +31,8 @@ public abstract class Bullet : Projectile
             }
             else
             {
-                ship.TakeDamage(projectileData.Power.value);
+                int damage = DamageCalculator.CalculateDamage(projectileData.Power.value, ship.shipData.Defense.Value, MoveSpeed);
+                ship.TakeDamage(damage);
             }
 
             if (projectileData.destructible)

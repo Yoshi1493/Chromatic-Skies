@@ -72,11 +72,10 @@ public abstract class Ship : Actor
         name = shipData.ShipName.value;
     }
 
-    //to-do: take shipData.Defense into account for damage calculations
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
-        //print($"{name} took {damage} damage.");
+        print($"{name} took {damage} damage.");
 
         TakeDamageAction?.Invoke();
 
