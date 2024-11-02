@@ -28,7 +28,7 @@ public static class EnemyMovementBehaviour
             enemy.currentSpeed = Mathf.Lerp(0, newMoveSpeed, moveInterpolation.Evaluate(2f * currentTime / moveDuration));
 
             currentTime += Time.deltaTime;
-            yield return EndOfFrame;
+            yield return null;
         }
 
         currentTime = 0f;
@@ -38,7 +38,7 @@ public static class EnemyMovementBehaviour
             enemy.currentSpeed = Mathf.Lerp(newMoveSpeed, 0, moveInterpolation.Evaluate(2f * currentTime / moveDuration));
 
             currentTime += Time.deltaTime;
-            yield return EndOfFrame;
+            yield return null;
         }
 
         enemy.parentShip.transform.position = endPosition;
@@ -62,7 +62,7 @@ public static class EnemyMovementBehaviour
             enemy.currentSpeed = Mathf.Lerp(0, newMoveSpeed, moveInterpolation.Evaluate(2f * currentTime / moveDuration));
 
             currentTime += Time.deltaTime;
-            yield return EndOfFrame;
+            yield return null;
         }
 
         currentTime = 0f;
@@ -72,7 +72,7 @@ public static class EnemyMovementBehaviour
             enemy.currentSpeed = Mathf.Lerp(newMoveSpeed, 0, moveInterpolation.Evaluate(2f * currentTime / moveDuration));
 
             currentTime += Time.deltaTime;
-            yield return EndOfFrame;
+            yield return null;
         }
 
         enemy.parentShip.transform.position = endPosition;

@@ -27,7 +27,7 @@ public class EnemySpriteController : ShipSpriteController<Enemy>
         {
             SetSpriteAlpha(currentLerpTime);
 
-            yield return EndOfFrame;
+            yield return null;
             currentLerpTime += Time.deltaTime;
         }
 

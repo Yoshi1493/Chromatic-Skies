@@ -9,7 +9,7 @@ public class TaurusBullet60 : ScriptableEnemyBullet<TaurusBulletSystem61, Laser>
     protected override IEnumerator Move()
     {
         MoveSpeed = 0f;
-        yield return EndOfFrame;
+        yield return null;
 
         float z = 90f * Mathf.Sign(transform.position.x);
         Vector3 pos = transform.position;

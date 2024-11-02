@@ -66,7 +66,7 @@ public class HealthBar<TShip> : ShipHUDComponent<TShip>
             healthBarImage.fillAmount = Mathf.Lerp(0f, HealthPercent, fillInterpolation.Evaluate(lerpProgress));
 
             currentLerpTime += Time.deltaTime;
-            yield return EndOfFrame;
+            yield return null;
         }
 
         healthBarImage.fillAmount = HealthPercent;

@@ -39,7 +39,7 @@ public class ScorpioBullet0 : EnemyBullet
             SpriteRenderer.size = Vector2.Lerp(Vector2.zero, 2f * EndRadius * Vector3.one, t);
             collider.radius = Mathf.Lerp(0f, EndRadius, t);
 
-            yield return EndOfFrame;
+            yield return null;
             currentLerpTime += Time.deltaTime;
         }
 

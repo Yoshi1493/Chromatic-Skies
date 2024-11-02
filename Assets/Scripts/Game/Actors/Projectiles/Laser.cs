@@ -89,7 +89,7 @@ public abstract class Laser : Projectile
         for (float _ = 0; _ < warningDuration; _ += Time.deltaTime)
         {
             SpriteRenderer.size = new(WarningSpriteWidth, IsColliding ? activeSize.y : originalSize.y);
-            yield return EndOfFrame;
+            yield return null;
         }
 
         active = true;
@@ -111,7 +111,7 @@ public abstract class Laser : Projectile
             activeSize = SpriteRenderer.size;
 
             currentLerpTime += Time.deltaTime;
-            yield return EndOfFrame;
+            yield return null;
         }
 
         growAnimation = null;
@@ -131,7 +131,7 @@ public abstract class Laser : Projectile
             SpriteRenderer.size = new Vector2(width, height);
 
             currentLerpTime += Time.deltaTime;
-            yield return EndOfFrame;
+            yield return null;
         }
 
         active = false;

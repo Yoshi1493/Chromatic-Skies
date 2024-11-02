@@ -59,7 +59,7 @@ public class ShipDeathBackgroundController : MonoBehaviour
             c.a = Mathf.Lerp(0f, 1f, t);
             backgroundImage.color = c;
 
-            yield return EndOfFrame;
+            yield return null;
             currentLerpTime += Time.deltaTime;
         }
     }

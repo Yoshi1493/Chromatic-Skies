@@ -30,7 +30,7 @@ public class CapricornMovementSystem3 : EnemyMovement
             float t = movementCurve.Evaluate(currentLerpTime / totalLerpTime);
             parentShip.transform.position = EvaluateQuadratic(p0, p1, p2, t);
 
-            yield return EndOfFrame;
+            yield return null;
             currentLerpTime += Time.deltaTime;
         }
 

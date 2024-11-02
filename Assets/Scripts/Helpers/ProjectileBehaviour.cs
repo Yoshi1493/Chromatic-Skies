@@ -23,7 +23,7 @@ public static class ProjectileBehaviour
                 p.MoveSpeed = Mathf.Lerp(startSpeed, endSpeed, currentLerpTime / lerpTime);
 
                 currentLerpTime += Time.deltaTime;
-                yield return EndOfFrame;
+                yield return null;
             }
         }
 
@@ -44,7 +44,7 @@ public static class ProjectileBehaviour
             while (p.moveDirection != endDirection)
             {
                 p.moveDirection = Vector3.SmoothDamp(p.moveDirection, endDirection, ref vel, lerpTime);
-                yield return EndOfFrame;
+                yield return null;
             }
         }
 
@@ -83,7 +83,7 @@ public static class ProjectileBehaviour
             }
 
             currentTime += Time.deltaTime;
-            yield return EndOfFrame;
+            yield return null;
         }
 
         p.moveDirection = originalDirection.RotateVectorBy(degrees * directionMultiplier);
@@ -110,7 +110,7 @@ public static class ProjectileBehaviour
             p.MoveSpeed = distance * (degreesPerSecond / Mathf.Rad2Deg);
 
             currentTime += Time.deltaTime;
-            yield return EndOfFrame;
+            yield return null;
         }
     }
 
@@ -134,7 +134,7 @@ public static class ProjectileBehaviour
             p.MoveSpeed = distance * (degreesPerSecond / Mathf.Rad2Deg);
 
             currentTime += Time.deltaTime;
-            yield return EndOfFrame;
+            yield return null;
         }
     }
 
@@ -154,7 +154,7 @@ public static class ProjectileBehaviour
             RotateVectorBy(ref p.moveDirection, degreesPerSecond * rotationDirection * Time.deltaTime);
 
             currentTime += Time.deltaTime;
-            yield return EndOfFrame;
+            yield return null;
         }
 
         p.transform.position = direction.RotateVectorBy(degreesPerSecond * rotateDuration * rotationDirection) + targetPosition;
@@ -180,7 +180,7 @@ public static class ProjectileBehaviour
 
             p.transform.position = targetPos + difference;
             currentTime += Time.deltaTime;
-            yield return EndOfFrame;
+            yield return null;
         }
     }
 
@@ -242,7 +242,7 @@ public static class ProjectileBehaviour
             p.moveDirection = Vector3.SmoothDamp(p.moveDirection, difference, ref vel, smoothTime);
 
             currentTime += Time.deltaTime;
-            yield return EndOfFrame;
+            yield return null;
         }
     }
 
@@ -267,7 +267,7 @@ public static class ProjectileBehaviour
             p.moveDirection = newDirection;
 
             currentTime += Time.deltaTime;
-            yield return EndOfFrame;
+            yield return null;
         }
     }
 
@@ -289,7 +289,7 @@ public static class ProjectileBehaviour
             p.transform.position = Vector3.Lerp(startPosition, endPosition, lerpProgress);
 
             currentTime += Time.deltaTime;
-            yield return EndOfFrame;
+            yield return null;
         }
 
         p.transform.position = endPosition;

@@ -64,7 +64,7 @@ public class GlobalLightController : MonoBehaviour
 
             globalLight.intensity = Mathf.Lerp(startIntensity, endIntensity, t);
 
-            yield return EndOfFrame;
+            yield return null;
             currentLerpTime += Time.deltaTime;
         }
     }

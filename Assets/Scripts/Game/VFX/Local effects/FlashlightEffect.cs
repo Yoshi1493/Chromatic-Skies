@@ -75,7 +75,7 @@ public class FlashlightEffect : MonoBehaviour
             float strength = Mathf.Lerp(startStrength, endStrength, lerpProgress);
             flashlightMat.SetFloat("_Strength", strength);
 
-            yield return EndOfFrame;
+            yield return null;
             currentLerpTime += Time.deltaTime;
         }
 
@@ -110,7 +110,7 @@ public class FlashlightEffect : MonoBehaviour
             float radius = Mathf.Lerp(startRadius, endRadius, lerpProgress);
             flashlightMat.SetFloat("_Radius", radius);
 
-            yield return EndOfFrame;
+            yield return null;
             currentLerpTime += Time.deltaTime;
         }
 
@@ -145,7 +145,7 @@ public class FlashlightEffect : MonoBehaviour
             float hardness = Mathf.Lerp(startHardness, endHardness, lerpProgress);
             flashlightMat.SetFloat("_Hardness", hardness);
 
-            yield return EndOfFrame;
+            yield return null;
             currentLerpTime += Time.deltaTime;
         }
 

@@ -70,7 +70,7 @@ public class GameOverMenu : Menu
         {
             canvasGroup.alpha = currentLerpTime / totalLerpTime;
 
-            yield return EndOfFrame;
+            yield return null;
             currentLerpTime += Time.deltaTime;
         }
 

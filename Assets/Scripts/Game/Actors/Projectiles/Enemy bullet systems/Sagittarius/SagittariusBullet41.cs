@@ -20,7 +20,7 @@ public class SagittariusBullet41 : ScriptableEnemyBullet<SagittariusBulletSystem
             c.a = 1f - (currentLerpTime / totalLerpTime);
             SpriteRenderer.color = c;
 
-            yield return EndOfFrame;
+            yield return null;
             currentLerpTime += Time.deltaTime;
         }
 
