@@ -1,7 +1,6 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
-using static CoroutineHelper;
 
 [RequireComponent(typeof(Image))]
 public class PlayerStatBar : MonoBehaviour
@@ -55,7 +54,7 @@ public class PlayerStatBar : MonoBehaviour
             statBarImage.color = Color.Lerp(startColour, endColour, animationProgress);
 
             currentLerpTime += Time.deltaTime;
-            yield return EndOfFrame;
+            yield return null;
         }
 
         SetStatBar(endFillAmount, endColour);
