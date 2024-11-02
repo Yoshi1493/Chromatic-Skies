@@ -19,9 +19,11 @@ public class AriesBulletSystem31 : EnemyShooter<EnemyBullet>
 
     protected override IEnumerator Shoot()
     {
+        bullets.Clear();
+
         yield return WaitForSeconds(2f);
 
-        Vector3 v1 = 2f * Vector3.down;
+        Vector3 v1 = 3f * Vector3.down;
 
         for (int i = 0; i < RingCount; i++)
         {
@@ -53,7 +55,7 @@ public class AriesBulletSystem31 : EnemyShooter<EnemyBullet>
             for (int ii = 0; ii < bulletCount; ii++)
             {
                 float s = BulletRotationSpeed + (i * BulletRotationSpeedModifier);
-                bullets[0].StartCoroutine(bullets[0].RotateAround(2f * Vector3.down, Mathf.Infinity, s, i % 2 == 0));
+                bullets[0].StartCoroutine(bullets[0].RotateAround(v1, Mathf.Infinity, s, i % 2 == 0));
                 bullets.RemoveAt(0);
             }
         }
