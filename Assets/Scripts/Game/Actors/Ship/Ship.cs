@@ -149,9 +149,9 @@ public abstract class Ship : Actor
 
     IEnumerator ToggleInvincibility(float duration)
     {
+        Invincible = true;
         yield return null;
 
-        Invincible = true;
         collider.radius = InvincibleColliderRadius;
         yield return WaitForSeconds(duration);
 
