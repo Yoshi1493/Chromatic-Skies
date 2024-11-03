@@ -1,9 +1,21 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
 
 public class InputForcer : MonoBehaviour
 {
     GameObject lastSelectedGameObject;
+
+    PauseHandler pauseHandler;
+
+    void Awake()
+    {
+        if (SceneManager.GetActiveScene().buildIndex == (int)SceneIndexes.Game)
+        {
+            pauseHandler = FindObjectOfType<PauseHandler>();
+            pauseHandler.GamePauseAction += OnGamePaused;
+        }
+    }
 
     void Update()
     {
@@ -17,5 +29,10 @@ public class InputForcer : MonoBehaviour
         {
             EventSystem.current.SetSelectedGameObject(lastSelectedGameObject);
         }
+    }
+
+    void OnGamePaused(bool state)
+    {
+        enabled = state;
     }
 }
