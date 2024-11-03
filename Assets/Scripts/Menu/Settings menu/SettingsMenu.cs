@@ -26,12 +26,22 @@ public class SettingsMenu : Menu, ISavable
         }
     }
 
-    void Start ()
+    void OnEnable()
     {
         if (pauseHandler != null)
         {
             pauseHandler.GamePauseAction += OnGamePaused;
         }
+    }
+
+    public override void Disable()
+    {
+        if (pauseHandler != null)
+        {
+            pauseHandler.GamePauseAction -= OnGamePaused;
+        }
+
+        base.Disable();
     }
 
     void Update()
@@ -79,6 +89,8 @@ public class SettingsMenu : Menu, ISavable
     {
         if (!state)
         {
+            DataManager.Instance.SaveData();
+
             Close();
             EventSystem.current.SetSelectedGameObject(null);
         }

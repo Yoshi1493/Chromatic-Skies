@@ -1006,6 +1006,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3676706101089365232, guid: 1518c7b9ae29a2241a71c31fab364de7, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3676706101089365232, guid: 1518c7b9ae29a2241a71c31fab364de7, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3676706102516327585, guid: 1518c7b9ae29a2241a71c31fab364de7, type: 3}
       propertyPath: m_Name
       value: FPS Display
