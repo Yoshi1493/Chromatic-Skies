@@ -3193,6 +3193,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f26660ac4a09df418d62a3716a92ffc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerGraze: {fileID: 11400000, guid: 31627b9bb9d90bd45acad73349fbb8ad, type: 2}
   resultsTexts:
   - {fileID: 1729939303}
   - {fileID: 573822239}

@@ -12,6 +12,10 @@ public class ResultsScreen : MonoBehaviour
     Canvas canvas;
     CanvasGroup canvasGroup;
 
+    [SerializeField] IntObject playerGraze;
+
+    [Space]
+
     [SerializeField] TextMeshProUGUI[] resultsTexts;
     [SerializeField] TextMeshProUGUI[] resultsValues;
 
@@ -71,6 +75,8 @@ public class ResultsScreen : MonoBehaviour
 
     IEnumerator DisplayResults()
     {
+        InitializeResults();
+
         yield return WaitForSeconds(4f);
 
         float currentLerpTime = 0f;
@@ -102,6 +108,11 @@ public class ResultsScreen : MonoBehaviour
         yield return WaitForSeconds(1f);
 
         ResultsFinishDisplayAction?.Invoke();
+    }
+
+    void InitializeResults()
+    {
+        resultsValues[2].text = playerGraze.value.ToString();
     }
 
     void Update()
