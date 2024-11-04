@@ -427,6 +427,10 @@ PrefabInstance:
       propertyPath: m_SortingLayerID
       value: -511607797
       objectReference: {fileID: 0}
+    - target: {fileID: 7123696092644366309, guid: 2ad3a7352f03714438318db50497c30d, type: 3}
+      propertyPath: m_Asset
+      value: 
+      objectReference: {fileID: 8926484042661614526, guid: b7e12efe55583774bbe8251bccd61a78, type: 3}
     - target: {fileID: 8950450420066682159, guid: 2ad3a7352f03714438318db50497c30d, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -437,38 +441,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2ad3a7352f03714438318db50497c30d, type: 3}
---- !u!1 &3009238224399694226 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4382468309798489480, guid: 2ad3a7352f03714438318db50497c30d, type: 3}
-  m_PrefabInstance: {fileID: 1518647169365373978}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &5882308719391009405
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3009238224399694226}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 764dd0ad54dce7b489c814ea83ab47e0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spawnVFX: {fileID: 9044845793797369798}
-  loseLifeVFX: {fileID: 4570759369077061969}
-  respawnVFX: {fileID: 8270436838194968687}
-  deathVFX: {fileID: 4804512658770190648}
-  invincibleVFX: {fileID: 8633156770380588031}
---- !u!2083052967 &4570759369077061969 stripped
-VisualEffect:
-  m_CorrespondingSourceObject: {fileID: 3061824186324127051, guid: 2ad3a7352f03714438318db50497c30d, type: 3}
-  m_PrefabInstance: {fileID: 1518647169365373978}
-  m_PrefabAsset: {fileID: 0}
---- !u!2083052967 &4804512658770190648 stripped
-VisualEffect:
-  m_CorrespondingSourceObject: {fileID: 6322595668878791970, guid: 2ad3a7352f03714438318db50497c30d, type: 3}
-  m_PrefabInstance: {fileID: 1518647169365373978}
-  m_PrefabAsset: {fileID: 0}
 --- !u!58 &5651153232659691459 stripped
 CircleCollider2D:
   m_CorrespondingSourceObject: {fileID: 6593195506016961497, guid: 2ad3a7352f03714438318db50497c30d, type: 3}
@@ -532,18 +504,3 @@ MonoBehaviour:
   currentHealth: 0
   collider: {fileID: 5651153232659691459}
   grazeCollider: {fileID: 3332484142188375113}
---- !u!2083052967 &8270436838194968687 stripped
-VisualEffect:
-  m_CorrespondingSourceObject: {fileID: 7481939071179590773, guid: 2ad3a7352f03714438318db50497c30d, type: 3}
-  m_PrefabInstance: {fileID: 1518647169365373978}
-  m_PrefabAsset: {fileID: 0}
---- !u!2083052967 &8633156770380588031 stripped
-VisualEffect:
-  m_CorrespondingSourceObject: {fileID: 7123696092644366309, guid: 2ad3a7352f03714438318db50497c30d, type: 3}
-  m_PrefabInstance: {fileID: 1518647169365373978}
-  m_PrefabAsset: {fileID: 0}
---- !u!2083052967 &9044845793797369798 stripped
-VisualEffect:
-  m_CorrespondingSourceObject: {fileID: 7536473663807593436, guid: 2ad3a7352f03714438318db50497c30d, type: 3}
-  m_PrefabInstance: {fileID: 1518647169365373978}
-  m_PrefabAsset: {fileID: 0}
