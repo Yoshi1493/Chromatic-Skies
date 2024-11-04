@@ -262,7 +262,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5651153232659691469}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!58 &3332484142188375113
 CircleCollider2D:
@@ -299,6 +299,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 104331862723848863, guid: 2ad3a7352f03714438318db50497c30d, type: 3}
+      propertyPath: m_SortingLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 104331862723848863, guid: 2ad3a7352f03714438318db50497c30d, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -511607797
+      objectReference: {fileID: 0}
+    - target: {fileID: 108755716071087923, guid: 2ad3a7352f03714438318db50497c30d, type: 3}
+      propertyPath: m_SortingLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 108755716071087923, guid: 2ad3a7352f03714438318db50497c30d, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -511607797
+      objectReference: {fileID: 0}
     - target: {fileID: 2178705396964388797, guid: 2ad3a7352f03714438318db50497c30d, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -315,11 +331,23 @@ PrefabInstance:
       propertyPath: m_SortingLayerID
       value: -511607797
       objectReference: {fileID: 0}
+    - target: {fileID: 3519887163948529419, guid: 2ad3a7352f03714438318db50497c30d, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4981156778495783310, guid: 2ad3a7352f03714438318db50497c30d, type: 3}
       propertyPath: m_SortingLayer
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4981156778495783310, guid: 2ad3a7352f03714438318db50497c30d, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -511607797
+      objectReference: {fileID: 0}
+    - target: {fileID: 4994990584446008394, guid: 2ad3a7352f03714438318db50497c30d, type: 3}
+      propertyPath: m_SortingLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4994990584446008394, guid: 2ad3a7352f03714438318db50497c30d, type: 3}
       propertyPath: m_SortingLayerID
       value: -511607797
       objectReference: {fileID: 0}
@@ -431,6 +459,26 @@ PrefabInstance:
       propertyPath: m_Asset
       value: 
       objectReference: {fileID: 8926484042661614526, guid: b7e12efe55583774bbe8251bccd61a78, type: 3}
+    - target: {fileID: 7190794213350323950, guid: 2ad3a7352f03714438318db50497c30d, type: 3}
+      propertyPath: m_SortingLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7190794213350323950, guid: 2ad3a7352f03714438318db50497c30d, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -511607797
+      objectReference: {fileID: 0}
+    - target: {fileID: 7347556927076555700, guid: 2ad3a7352f03714438318db50497c30d, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7618538199050012063, guid: 2ad3a7352f03714438318db50497c30d, type: 3}
+      propertyPath: m_SortingLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7618538199050012063, guid: 2ad3a7352f03714438318db50497c30d, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -511607797
+      objectReference: {fileID: 0}
     - target: {fileID: 8950450420066682159, guid: 2ad3a7352f03714438318db50497c30d, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -441,6 +489,43 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2ad3a7352f03714438318db50497c30d, type: 3}
+--- !u!2083052967 &57301656798559122 stripped
+VisualEffect:
+  m_CorrespondingSourceObject: {fileID: 1574221376358190984, guid: 2ad3a7352f03714438318db50497c30d, type: 3}
+  m_PrefabInstance: {fileID: 1518647169365373978}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &437525132826705860 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1369436542587374558, guid: 2ad3a7352f03714438318db50497c30d, type: 3}
+  m_PrefabInstance: {fileID: 1518647169365373978}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5189626732567058617
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 437525132826705860}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 764dd0ad54dce7b489c814ea83ab47e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnVFX: {fileID: 8756575071442392629}
+  loseLifeVFX: {fileID: 5657540649791410560}
+  respawnVFX: {fileID: 5293363878213508360}
+  deathVFX: {fileID: 57301656798559122}
+  invincibleVFX: {fileID: 4355584601540776489}
+--- !u!2083052967 &4355584601540776489 stripped
+VisualEffect:
+  m_CorrespondingSourceObject: {fileID: 2981792605938066995, guid: 2ad3a7352f03714438318db50497c30d, type: 3}
+  m_PrefabInstance: {fileID: 1518647169365373978}
+  m_PrefabAsset: {fileID: 0}
+--- !u!2083052967 &5293363878213508360 stripped
+VisualEffect:
+  m_CorrespondingSourceObject: {fileID: 6658184931700648210, guid: 2ad3a7352f03714438318db50497c30d, type: 3}
+  m_PrefabInstance: {fileID: 1518647169365373978}
+  m_PrefabAsset: {fileID: 0}
 --- !u!58 &5651153232659691459 stripped
 CircleCollider2D:
   m_CorrespondingSourceObject: {fileID: 6593195506016961497, guid: 2ad3a7352f03714438318db50497c30d, type: 3}
@@ -504,3 +589,13 @@ MonoBehaviour:
   currentHealth: 0
   collider: {fileID: 5651153232659691459}
   grazeCollider: {fileID: 3332484142188375113}
+--- !u!2083052967 &5657540649791410560 stripped
+VisualEffect:
+  m_CorrespondingSourceObject: {fileID: 6598000722561377690, guid: 2ad3a7352f03714438318db50497c30d, type: 3}
+  m_PrefabInstance: {fileID: 1518647169365373978}
+  m_PrefabAsset: {fileID: 0}
+--- !u!2083052967 &8756575071442392629 stripped
+VisualEffect:
+  m_CorrespondingSourceObject: {fileID: 7824664809545245231, guid: 2ad3a7352f03714438318db50497c30d, type: 3}
+  m_PrefabInstance: {fileID: 1518647169365373978}
+  m_PrefabAsset: {fileID: 0}
