@@ -729,6 +729,11 @@ VisualEffect:
   m_CorrespondingSourceObject: {fileID: 6322595668878791970, guid: 2ad3a7352f03714438318db50497c30d, type: 3}
   m_PrefabInstance: {fileID: 7445058458403180120}
   m_PrefabAsset: {fileID: 0}
+--- !u!58 &4336286228127436161 stripped
+CircleCollider2D:
+  m_CorrespondingSourceObject: {fileID: 6593195506016961497, guid: 2ad3a7352f03714438318db50497c30d, type: 3}
+  m_PrefabInstance: {fileID: 7445058458403180120}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &4336286228127436173 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6593195506016961493, guid: 2ad3a7352f03714438318db50497c30d, type: 3}
@@ -750,6 +755,7 @@ MonoBehaviour:
   shipData: {fileID: 0}
   currentLives: 0
   currentHealth: 0
+  collider: {fileID: 4336286228127436161}
   bulletSystemContainer: {fileID: 0}
   movementSystemContainer: {fileID: 0}
 --- !u!114 &8286456681555174493

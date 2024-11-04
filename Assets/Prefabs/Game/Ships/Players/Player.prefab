@@ -231,6 +231,67 @@ Transform:
   m_Father: {fileID: 5924897159275947292}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7881536117398306872
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1964142400879518584}
+  - component: {fileID: 3332484142188375113}
+  - component: {fileID: 9166743536271704712}
+  m_Layer: 6
+  m_Name: Graze collider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1964142400879518584
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7881536117398306872}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5651153232659691469}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &3332484142188375113
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7881536117398306872}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.4
+--- !u!114 &9166743536271704712
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7881536117398306872}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f1de1279a8868246856d1e92c7253fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1518647169365373978
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -240,7 +301,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2178705396964388797, guid: 2ad3a7352f03714438318db50497c30d, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3061824186324127051, guid: 2ad3a7352f03714438318db50497c30d, type: 3}
       propertyPath: m_Asset
@@ -408,6 +469,11 @@ VisualEffect:
   m_CorrespondingSourceObject: {fileID: 6322595668878791970, guid: 2ad3a7352f03714438318db50497c30d, type: 3}
   m_PrefabInstance: {fileID: 1518647169365373978}
   m_PrefabAsset: {fileID: 0}
+--- !u!58 &5651153232659691459 stripped
+CircleCollider2D:
+  m_CorrespondingSourceObject: {fileID: 6593195506016961497, guid: 2ad3a7352f03714438318db50497c30d, type: 3}
+  m_PrefabInstance: {fileID: 1518647169365373978}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5651153232659691469 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6593195506016961495, guid: 2ad3a7352f03714438318db50497c30d, type: 3}
@@ -464,12 +530,8 @@ MonoBehaviour:
   shipData: {fileID: 0}
   currentLives: 0
   currentHealth: 0
-  invincibleCollider: {fileID: 6896965598212164033}
---- !u!58 &6896965598212164033 stripped
-CircleCollider2D:
-  m_CorrespondingSourceObject: {fileID: 5378881417460219355, guid: 2ad3a7352f03714438318db50497c30d, type: 3}
-  m_PrefabInstance: {fileID: 1518647169365373978}
-  m_PrefabAsset: {fileID: 0}
+  collider: {fileID: 5651153232659691459}
+  grazeCollider: {fileID: 3332484142188375113}
 --- !u!2083052967 &8270436838194968687 stripped
 VisualEffect:
   m_CorrespondingSourceObject: {fileID: 7481939071179590773, guid: 2ad3a7352f03714438318db50497c30d, type: 3}

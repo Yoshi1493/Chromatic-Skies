@@ -41,7 +41,7 @@ public abstract class Ship : Actor
 
     #endregion
 
-    new protected CircleCollider2D collider;
+    [SerializeField] new protected CircleCollider2D collider;
     protected virtual float OriginalColliderRadius => 0.5f;
     protected virtual float InvincibleColliderRadius => 1.5f;
 
@@ -65,7 +65,6 @@ public abstract class Ship : Actor
         currentHealth = shipData.MaxHealth.Value;
 
         //collision
-        collider = GetComponent<CircleCollider2D>();
         collider.radius = OriginalColliderRadius;
 
         //debug
