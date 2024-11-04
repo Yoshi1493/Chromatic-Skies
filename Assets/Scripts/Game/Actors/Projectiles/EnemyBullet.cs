@@ -33,7 +33,9 @@ public abstract class EnemyBullet : Bullet
     protected override void Update()
     {
         base.Update();
+
         CheckCollisionWith<Player>();
+        CheckCollisionWith<PlayerGraze>();
     }
 
     public override void Destroy()

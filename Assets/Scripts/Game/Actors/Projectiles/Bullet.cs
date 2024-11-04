@@ -15,13 +15,12 @@ public abstract class Bullet : Projectile
 
     protected override void HandleCollision(Collider2D coll)
     {
+        //get particle spawn position+rotation
+        Vector3 pos = coll.ClosestPoint(transform.position);
+        float rot = coll.transform.position.GetRotationDifference(transform.position);
+
         if (coll.TryGetComponent(out Ship ship))
         {
-            //get particle spawn position+rotation
-            Vector3 pos = coll.ClosestPoint(transform.position);
-            float rot = coll.transform.position.GetRotationDifference(transform.position);
-            SpawnDestructionParticles(pos, rot);
-
             if (ship.Invincible)
             {
                 if (ship is Enemy)
@@ -38,6 +37,18 @@ public abstract class Bullet : Projectile
             if (projectileData.destructible)
             {
                 Destroy();
+            }
+
+            SpawnDestructionParticles(pos, rot);
+        }
+        else if (coll.TryGetComponent(out PlayerGraze playerGraze))
+        {
+            if (!hasGrazed)
+            {
+                playerGraze.GrazePlayer();
+                SpawnDestructionParticles(pos, rot);
+
+                hasGrazed = true;
             }
         }
     }

@@ -16,8 +16,11 @@ public abstract class Projectile : Actor
     protected abstract int NumCollisions { get; }
     protected bool IsColliding => NumCollisions > 0;
 
+    protected bool hasGrazed;
+
     [HideInInspector] public Vector3 moveDirection;
     [HideInInspector] public float currentSpeed;
+
 
     protected override void Awake()
     {
@@ -38,6 +41,7 @@ public abstract class Projectile : Actor
         );
 
         currentLifetime = 0f;
+        hasGrazed = false;
     }
 
     protected virtual void Update()

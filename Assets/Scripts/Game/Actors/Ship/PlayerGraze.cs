@@ -7,8 +7,14 @@ public class PlayerGraze : MonoBehaviour
 
     [SerializeField] IntObject playerGraze;
 
-    void Awake()
+    void Start()
     {
-        
+        playerGraze.value = 0;
+    }
+
+    public void GrazePlayer()
+    {
+        playerGraze.value++;
+        GrazeAction?.Invoke();
     }
 }
