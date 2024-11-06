@@ -76,18 +76,21 @@ public abstract class Ship : Actor
         currentHealth -= damage;
         print($"{name} took {damage} damage.");
 
-        TakeDamageAction?.Invoke();
-
-        //check if LoseLife methods should be called
-        if (currentHealth <= 0)
+        if (damage > 0)
         {
-            if (loseLifeCoroutine != null)
-            {
-                StopCoroutine(loseLifeCoroutine);
-            }
+            TakeDamageAction?.Invoke();
 
-            loseLifeCoroutine = LoseLife();
-            StartCoroutine(loseLifeCoroutine);
+            //check if LoseLife methods should be called
+            if (currentHealth <= 0)
+            {
+                if (loseLifeCoroutine != null)
+                {
+                    StopCoroutine(loseLifeCoroutine);
+                }
+
+                loseLifeCoroutine = LoseLife();
+                StartCoroutine(loseLifeCoroutine);
+            }
         }
     }
 

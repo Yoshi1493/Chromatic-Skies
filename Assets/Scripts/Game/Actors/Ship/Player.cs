@@ -8,6 +8,7 @@ public class Player : Ship
     protected override float InvincibleColliderRadius => 1f;
 
     [SerializeField] CircleCollider2D grazeCollider;
+    [SerializeField] IntObject hitsTaken;
 
     PauseHandler pauseHandler;
 
@@ -23,6 +24,7 @@ public class Player : Ship
         InvincibleAction += OnInvincible;
 
         pauseHandler.GamePauseAction += OnGamePaused;
+        hitsTaken.value = 0;
     }
 
     void Update()
@@ -30,11 +32,14 @@ public class Player : Ship
 #if UNITY_EDITOR
         if (Input.GetKeyDown(KeyCode.L))
             TakeDamage(currentHealth);
+
+        print(hitsTaken.value);
 #endif
     }
 
     void OnTakeDamage()
     {
+        hitsTaken.value++;
         SetInvincible(1f);
     }
 

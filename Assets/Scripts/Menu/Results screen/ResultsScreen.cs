@@ -15,6 +15,7 @@ public class ResultsScreen : MonoBehaviour
     [SerializeField] FloatObject elapsedTime;
     float totalTime;
     [SerializeField] IntObject playerGraze;
+    [SerializeField] IntObject hitsTaken;
 
     [Space]
 
@@ -122,6 +123,7 @@ public class ResultsScreen : MonoBehaviour
     {
         resultsValues[0].text = TimeSpan.FromSeconds(totalTime).ToString(Clock.StringFormat);
         resultsValues[2].text = playerGraze.value.ToString();
+        resultsValues[3].text = hitsTaken.value.ToString();
     }
 
     void Update()

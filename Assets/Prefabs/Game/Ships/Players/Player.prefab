@@ -590,6 +590,7 @@ MonoBehaviour:
   currentHealth: 0
   collider: {fileID: 5651153232659691459}
   grazeCollider: {fileID: 3332484142188375113}
+  hitsTaken: {fileID: 11400000, guid: bd04de29583d03942aa9b1d6f8ce6035, type: 2}
 --- !u!2083052967 &5657540649791410560 stripped
 VisualEffect:
   m_CorrespondingSourceObject: {fileID: 6598000722561377690, guid: 2ad3a7352f03714438318db50497c30d, type: 3}
