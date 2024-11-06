@@ -3295,6 +3295,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f26660ac4a09df418d62a3716a92ffc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  elapsedTime: {fileID: 11400000, guid: 7564dd3007503304aa59e09756250b88, type: 2}
   playerGraze: {fileID: 11400000, guid: 31627b9bb9d90bd45acad73349fbb8ad, type: 2}
   resultsTexts:
   - {fileID: 1729939303}
@@ -6788,6 +6789,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce1b1110d3b73e543bdd4dd3f8ca0746, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentTime: {fileID: 11400000, guid: 7564dd3007503304aa59e09756250b88, type: 2}
 --- !u!114 &1736981275
 MonoBehaviour:
   m_ObjectHideFlags: 0

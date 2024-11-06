@@ -2,18 +2,17 @@ using System;
 using System.Collections;
 using UnityEngine;
 using TMPro;
-using static CoroutineHelper;
 
 public class Clock : MonoBehaviour
 {
     IEnumerator clock;
     IEnumerator blinkCoroutine;
 
-    public float CurrentTime { get; private set; }
+    [SerializeField] FloatObject currentTime;
     public bool IsPaused { get; private set; }
 
     TextMeshProUGUI clockText;
-    const string StringFormat = "m':'ss'.'ff";
+    public const string StringFormat = "m':'ss'.'ff";
 
     Enemy enemy;
     PauseHandler pauseHandler;
@@ -29,14 +28,15 @@ public class Clock : MonoBehaviour
     void Start()
     {
         pauseHandler.GamePauseAction += SetPaused;
-
         enemy.StartAttackAction += RestartClock;
         enemy.DeathAction += StopClock;
+
+        currentTime.value = 0f;
     }
 
     void Update()
     {
-        clockText.text = TimeSpan.FromSeconds(CurrentTime).ToString(StringFormat);
+        clockText.text = TimeSpan.FromSeconds(currentTime.value).ToString(StringFormat);
     }
 
     #region Clock functions
@@ -49,7 +49,7 @@ public class Clock : MonoBehaviour
             yield return Blink(delay);
         }
 
-        CurrentTime = 0f;
+        currentTime.value = 0f;
         IsPaused = false;
 
         while (true)
@@ -58,7 +58,7 @@ public class Clock : MonoBehaviour
 
             if (!IsPaused)
             {
-                CurrentTime += Time.deltaTime;
+                currentTime.value += Time.deltaTime;
             }
         }
     }

@@ -12,6 +12,8 @@ public class ResultsScreen : MonoBehaviour
     Canvas canvas;
     CanvasGroup canvasGroup;
 
+    [SerializeField] FloatObject elapsedTime;
+    float totalTime;
     [SerializeField] IntObject playerGraze;
 
     [Space]
@@ -35,6 +37,7 @@ public class ResultsScreen : MonoBehaviour
     {
         if (enemy != null)
         {
+            enemy.LoseLifeAction += OnEnemyLoseLife;
             enemy.DeathAction += OnEnemyDie;
         }
 
@@ -55,6 +58,11 @@ public class ResultsScreen : MonoBehaviour
         {
             item.enabled = false;
         }
+    }
+
+    void OnEnemyLoseLife()
+    {
+        totalTime += elapsedTime.value;
     }
 
     void OnEnemyDie()
@@ -112,6 +120,7 @@ public class ResultsScreen : MonoBehaviour
 
     void InitializeResults()
     {
+        resultsValues[0].text = TimeSpan.FromSeconds(totalTime).ToString(Clock.StringFormat);
         resultsValues[2].text = playerGraze.value.ToString();
     }
 
