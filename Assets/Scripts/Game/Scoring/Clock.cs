@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 using TMPro;
+using static CoroutineHelper;
 
 public class Clock : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class Clock : MonoBehaviour
     TextMeshProUGUI clockText;
     public const string StringFormat = "m':'ss'.'ff";
 
+    Player player;
     Enemy enemy;
     PauseHandler pauseHandler;
 
@@ -21,17 +23,23 @@ public class Clock : MonoBehaviour
     {
         clockText = GetComponent<TextMeshProUGUI>();
 
-        pauseHandler = FindObjectOfType<PauseHandler>();
+        player = FindObjectOfType<Player>();
         enemy = FindObjectOfType<Enemy>();
+        pauseHandler = FindObjectOfType<PauseHandler>();
     }
 
     void Start()
     {
-        pauseHandler.GamePauseAction += SetPaused;
-        enemy.StartAttackAction += RestartClock;
+        player.LoseLifeAction += () => Blink(player.RespawnTime + 2f);
+        player.DeathAction += StopClock;
+
+        enemy.LoseLifeAction += () => RestartClock(enemy.RespawnTime + 2f);
         enemy.DeathAction += StopClock;
 
+        pauseHandler.GamePauseAction += SetPaused;
+
         currentTime.value = 0f;
+        RestartClock(enemy.RespawnTime + 2f);
     }
 
     void Update()
@@ -45,12 +53,11 @@ public class Clock : MonoBehaviour
     {
         if (delay > 0f)
         {
-            IsPaused = true;
-            yield return Blink(delay);
+            Blink(delay);
         }
 
+        yield return WaitUntil(() => blinkCoroutine == null);
         currentTime.value = 0f;
-        IsPaused = false;
 
         while (true)
         {
@@ -63,11 +70,24 @@ public class Clock : MonoBehaviour
         }
     }
 
-    IEnumerator Blink(float blinkDuration)
+    void Blink(float duration = Mathf.Infinity)
     {
+        if (blinkCoroutine != null)
+        {
+            StopCoroutine(blinkCoroutine);
+        }
+
+        blinkCoroutine = _Blink(duration);
+        StartCoroutine(blinkCoroutine);
+    }
+
+    IEnumerator _Blink(float duration)
+    {
+        SetPaused(true);
+
         float currentTime = 0f;
 
-        while (currentTime < blinkDuration)
+        while (currentTime < duration)
         {
             float a = Mathf.Cos(currentTime * Mathf.PI * 2f) * 0.5f + 0.5f;
             SetTextAlpha(a);
@@ -77,12 +97,9 @@ public class Clock : MonoBehaviour
         }
 
         SetTextAlpha(1f);
-    }
 
-    void StartClock()
-    {
-        clock = Run(4f);
-        StartCoroutine(clock);
+        SetPaused(false);
+        blinkCoroutine = null;
     }
 
     void StopClock()
@@ -90,13 +107,16 @@ public class Clock : MonoBehaviour
         if (clock != null)
         {
             StopCoroutine(clock);
+            clock = null;
         }
     }
 
-    void RestartClock(int _)
+    void RestartClock(float delay = 0f)
     {
         StopClock();
-        StartClock();
+
+        clock = Run(delay);
+        StartCoroutine(clock);
     }
 
     void SetPaused(bool state)
@@ -105,7 +125,7 @@ public class Clock : MonoBehaviour
     }
 
     #endregion
- 
+
     void SetTextAlpha(float alpha)
     {
         Color c = clockText.color;
