@@ -19,6 +19,8 @@ public class GameOverMenu : Menu
     {
         base.Awake();
 
+        canvasGroup = GetComponent<CanvasGroup>();
+
         player = FindObjectOfType<Player>();
         InitializeCanvasElements();
     }
@@ -35,8 +37,6 @@ public class GameOverMenu : Menu
 
     void InitializeCanvasElements()
     {
-        canvasGroup = GetComponent<CanvasGroup>();
-
         thisMenu.enabled = false;
         canvasGroup.alpha = 0f;
 

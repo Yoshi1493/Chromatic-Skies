@@ -1019,6 +1019,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: FPS Display (Canvas)
       objectReference: {fileID: 0}
+    - target: {fileID: 3676706102516327586, guid: 1518c7b9ae29a2241a71c31fab364de7, type: 3}
+      propertyPath: m_Interactable
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3676706102516327588, guid: 1518c7b9ae29a2241a71c31fab364de7, type: 3}
       propertyPath: m_AdditionalShaderChannelsFlag
       value: 25
