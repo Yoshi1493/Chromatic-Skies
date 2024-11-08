@@ -7,7 +7,7 @@ using static CoroutineHelper;
 public class Clock : MonoBehaviour
 {
     IEnumerator clock;
-    IEnumerator blinkCoroutine;
+    IEnumerator pauseCoroutine;
 
     [SerializeField] FloatObject currentTime;
     public bool IsPaused { get; private set; }
@@ -30,7 +30,7 @@ public class Clock : MonoBehaviour
 
     void Start()
     {
-        player.LoseLifeAction += () => Blink(player.RespawnTime + 2f);
+        player.LoseLifeAction += () => PauseClock(false, player.RespawnTime + 2f);
         player.DeathAction += StopClock;
 
         enemy.LoseLifeAction += () => RestartClock(enemy.RespawnTime + 2f);
@@ -53,10 +53,10 @@ public class Clock : MonoBehaviour
     {
         if (delay > 0f)
         {
-            Blink(delay);
+            PauseClock(true, delay);
         }
 
-        yield return WaitUntil(() => blinkCoroutine == null);
+        yield return WaitUntil(() => pauseCoroutine == null);
         currentTime.value = 0f;
 
         while (true)
@@ -70,36 +70,43 @@ public class Clock : MonoBehaviour
         }
     }
 
-    void Blink(float duration = Mathf.Infinity)
-    {
-        if (blinkCoroutine != null)
-        {
-            StopCoroutine(blinkCoroutine);
-        }
-
-        blinkCoroutine = _Blink(duration);
-        StartCoroutine(blinkCoroutine);
-    }
-
-    IEnumerator _Blink(float duration)
+    void PauseClock(bool blink, float duration = Mathf.Infinity)
     {
         SetPaused(true);
 
-        float currentTime = 0f;
-
-        while (currentTime < duration)
+        if (pauseCoroutine != null)
         {
-            float a = Mathf.Cos(currentTime * Mathf.PI * 2f) * 0.5f + 0.5f;
-            SetTextAlpha(a);
-
-            yield return null;
-            currentTime += Time.deltaTime;
+            StopCoroutine(pauseCoroutine);
         }
 
-        SetTextAlpha(1f);
+        pauseCoroutine = _Pause(blink, duration);
+        StartCoroutine(pauseCoroutine);
+    }
+
+    IEnumerator _Pause(bool blink, float duration)
+    {
+        if (blink)
+        {
+            float currentTime = 0f;
+
+            while (currentTime < duration)
+            {
+                float a = Mathf.Cos(currentTime * Mathf.PI * 2f) * 0.5f + 0.5f;
+                SetTextAlpha(a);
+
+                yield return null;
+                currentTime += Time.deltaTime;
+            }
+
+            SetTextAlpha(1f);
+        }
+        else
+        {
+            yield return WaitForSeconds(duration);
+        }
 
         SetPaused(false);
-        blinkCoroutine = null;
+        pauseCoroutine = null;
     }
 
     void StopClock()
