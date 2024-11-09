@@ -41,7 +41,9 @@ public class PlayerShooter : Shooter<PlayerBullet>
         if (Input.GetButton("Shoot") && canShoot)
         {
             if (shootCoroutine != null)
+            {
                 StopCoroutine(shootCoroutine);
+            }
 
             shootCoroutine = Shoot();
             StartCoroutine(shootCoroutine);
