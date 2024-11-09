@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using static CoroutineHelper;
@@ -5,14 +6,32 @@ using static CoroutineHelper;
 public class PlayerSpecialShooter : Shooter<PlayerBullet>
 {
     [SerializeField] FloatObject specialMeter;
+    const float MaxSpecialMeter = 300f;
+    const float SpecialThreshold = 100f;
+
+    public event Action SpecialAction;
+    public event Action SpecialReadyAction;
+    public event Action SpecialMeterUpdateAction;
     bool canShoot = true;
 
+    Enemy enemy;
+
     protected override float ShootingCooldown => 5f;
+
+    protected override void Awake()
+    {
+        base.Awake();
+
+        enemy = FindObjectOfType<Enemy>();
+    }
 
     protected override void Start()
     {
         base.Start();
-        specialMeter.value = 100;
+
+        ownerShip.TakeDamageAction += OnPlayerTakeDamage;
+        enemy.TakeDamageAction += OnEnemyTakeDamage;
+        specialMeter.value = SpecialThreshold;
     }
 
     void Update()
@@ -24,7 +43,7 @@ public class PlayerSpecialShooter : Shooter<PlayerBullet>
     {
         if (Input.GetButtonDown("Special"))
         {
-            if (canShoot && specialMeter.value >= 100)
+            if (canShoot && specialMeter.value >= SpecialThreshold)
             {
                 if (shootCoroutine != null)
                 {
@@ -39,11 +58,32 @@ public class PlayerSpecialShooter : Shooter<PlayerBullet>
 
     protected override IEnumerator Shoot()
     {
+        SpecialAction?.Invoke();
+        yield return WaitForSeconds(1f);
+
         SpawnProjectile(0, 0f, transform.position, false);
+        GainSpecialMeter(-SpecialThreshold);
 
         canShoot = false;
         yield return WaitForSeconds(ShootingCooldown);
 
         canShoot = true;
     }
+
+    void GainSpecialMeter(float amount)
+    {
+        specialMeter.value = Mathf.Clamp(specialMeter.value + amount, 0f, MaxSpecialMeter);
+        SpecialMeterUpdateAction?.Invoke();
+    }
+
+    void OnPlayerTakeDamage()
+    {
+        GainSpecialMeter(2f);
+    }
+
+    void OnEnemyTakeDamage()
+    {
+        GainSpecialMeter(0.5f);
+    }
+
 }
