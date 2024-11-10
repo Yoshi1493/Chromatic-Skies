@@ -94,7 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5924897159275947292}
   - component: {fileID: 4768422070276441097}
-  - component: {fileID: 8295403542263136420}
+  - component: {fileID: 6144929791114761972}
   m_Layer: 6
   m_Name: Shooter
   m_TagString: Untagged
@@ -139,7 +139,7 @@ MonoBehaviour:
   - {fileID: 7154113708728588945}
   - {fileID: 5585003488721888684}
   - {fileID: 5439702352310573363}
---- !u!114 &8295403542263136420
+--- !u!114 &6144929791114761972
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

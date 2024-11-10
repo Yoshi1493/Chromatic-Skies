@@ -18,16 +18,12 @@ public class PlayerSpecialShooter : Shooter<PlayerBullet>
 
     protected override float ShootingCooldown => 5f;
 
-    protected override void Awake()
-    {
-        base.Awake();
-
-        enemy = FindObjectOfType<Enemy>();
-    }
-
     protected override void Start()
     {
         base.Start();
+
+        //put in Start instead of Awake due to script execution order conditions
+        enemy = FindObjectOfType<Enemy>();
 
         ownerShip.TakeDamageAction += OnPlayerTakeDamage;
         enemy.TakeDamageAction += OnEnemyTakeDamage;
