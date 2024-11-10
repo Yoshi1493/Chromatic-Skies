@@ -6,8 +6,10 @@ using static CoroutineHelper;
 public class PlayerSpecialShooter : Shooter<PlayerBullet>
 {
     [SerializeField] FloatObject specialMeter;
-    const float MaxSpecialMeter = 300f;
-    const float SpecialThreshold = 100f;
+    const float MaxSpecialMeter = 3f;
+    const float SpecialCost = 1f;
+    const float MeterGainPerEnemyHit = 0.005f;
+    const float MeterGainPerHit = 0.02f;
 
     public event Action SpecialAction;
     public event Action SpecialReadyAction;
@@ -27,7 +29,7 @@ public class PlayerSpecialShooter : Shooter<PlayerBullet>
 
         ownerShip.TakeDamageAction += OnPlayerTakeDamage;
         enemy.TakeDamageAction += OnEnemyTakeDamage;
-        specialMeter.value = SpecialThreshold;
+        specialMeter.value = SpecialCost;
     }
 
     void Update()
@@ -39,7 +41,7 @@ public class PlayerSpecialShooter : Shooter<PlayerBullet>
     {
         if (Input.GetButtonDown("Special"))
         {
-            if (canShoot && specialMeter.value >= SpecialThreshold)
+            if (canShoot && specialMeter.value >= SpecialCost)
             {
                 if (shootCoroutine != null)
                 {
@@ -55,10 +57,10 @@ public class PlayerSpecialShooter : Shooter<PlayerBullet>
     protected override IEnumerator Shoot()
     {
         SpecialAction?.Invoke();
-        yield return WaitForSeconds(1f);
+        //yield return WaitForSeconds(1f);
 
         SpawnProjectile(0, 0f, transform.position, false);
-        GainSpecialMeter(-SpecialThreshold);
+        GainSpecialMeter(-SpecialCost);
 
         canShoot = false;
         yield return WaitForSeconds(ShootingCooldown);
@@ -74,12 +76,11 @@ public class PlayerSpecialShooter : Shooter<PlayerBullet>
 
     void OnPlayerTakeDamage()
     {
-        GainSpecialMeter(2f);
+        GainSpecialMeter(MeterGainPerHit);
     }
 
     void OnEnemyTakeDamage()
     {
-        GainSpecialMeter(0.5f);
+        GainSpecialMeter(MeterGainPerEnemyHit);
     }
-
 }
