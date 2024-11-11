@@ -32,7 +32,10 @@ public class PlayerSpecialBar : ShipHUDComponent<Player>
             specialBarImages[i].fillAmount = 1f;
         }
 
-        specialBarImages[trunc].fillAmount = dec;
+        if (trunc < PlayerSpecialShooter.MaxSpecialMeter)
+        {
+            specialBarImages[trunc].fillAmount = dec;
+        }
 
         for (int i = trunc + 1; i < specialBarImages.Length; i++)
         {
