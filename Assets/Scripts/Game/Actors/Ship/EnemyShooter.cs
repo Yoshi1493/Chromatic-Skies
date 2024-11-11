@@ -34,7 +34,6 @@ public abstract class EnemyShooter<TProjectile> : Shooter<TProjectile>, IEnemyAt
 
     [Space]
 
-    [SerializeField] protected List<TProjectile> enemyProjectiles = new();
     [SerializeField] protected ProjectileObject bulletData;
 
     protected override void Awake()
@@ -56,12 +55,10 @@ public abstract class EnemyShooter<TProjectile> : Shooter<TProjectile>, IEnemyAt
         playerShip.LoseLifeAction += OnPlayerLoseLife;
     }
 
-    protected virtual void OnEnable()
+    protected override void OnEnable()
     {
-        //update object pool
-        GenericObjectPool<TProjectile>.Instance.UpdatePoolableObjects(enemyProjectiles);
+        base.OnEnable();
 
-        //start attack pattern
         if (shootCoroutine != null)
         {
             StopCoroutine(shootCoroutine);

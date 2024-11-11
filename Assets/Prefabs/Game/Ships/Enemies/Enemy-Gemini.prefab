@@ -44,6 +44,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06410c76ea0ca314ab08a01003c06410, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  projectiles:
+  - {fileID: -292663564390533424, guid: f1fe21832b460f147923df4574af0420, type: 3}
+  - {fileID: 8594783004110617819, guid: 1b29b78c6d189a34a9bdfe54130b64ae, type: 3}
   enemyProjectiles:
   - {fileID: -292663564390533424, guid: f1fe21832b460f147923df4574af0420, type: 3}
   - {fileID: 8594783004110617819, guid: 1b29b78c6d189a34a9bdfe54130b64ae, type: 3}
@@ -92,6 +95,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fc0cedaf0a0799428445efb7dd6644e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  projectiles:
+  - {fileID: -2208052612011020488, guid: f503b9c5dbba5654181fcd0e6280d6a1, type: 3}
   enemyProjectiles:
   - {fileID: -2208052612011020488, guid: f503b9c5dbba5654181fcd0e6280d6a1, type: 3}
   bulletData: {fileID: 11400000, guid: 1343275bfe1e07f408f01aba0b6f1928, type: 2}
@@ -139,6 +144,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d020aadeb15c1a54cb316d8a6ccad756, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  projectiles:
+  - {fileID: 8584366735179878045, guid: 3653aa24e2d830d4aaf6738a8bf77c4f, type: 3}
   enemyProjectiles:
   - {fileID: 8584366735179878045, guid: 3653aa24e2d830d4aaf6738a8bf77c4f, type: 3}
   bulletData: {fileID: 11400000, guid: 722214c839bc76e4f96e604cd36b45e2, type: 2}
@@ -186,6 +193,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a1f14cfd245039418455f621ea711fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  projectiles:
+  - {fileID: -4454948538927573851, guid: efff3cdb6e277334dab78753a23b3b30, type: 3}
   enemyProjectiles:
   - {fileID: -4454948538927573851, guid: efff3cdb6e277334dab78753a23b3b30, type: 3}
   bulletData: {fileID: 11400000, guid: da601ed399997414db83044cae746848, type: 2}
@@ -269,6 +278,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f65e2803ccabdc34d8b423340813c62e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  projectiles: []
   enemyProjectiles:
   - {fileID: 0}
   bulletData: {fileID: 0}
@@ -289,6 +299,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b8ce535c2b7d9a4da1f8247b684481c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  projectiles:
+  - {fileID: -8966807862870356710, guid: 5a320779c1a4e0141903e4df3620b569, type: 3}
+  - {fileID: -1407703252138461011, guid: 2d2f88c6cfa02264c81df6a75a16ee60, type: 3}
+  - {fileID: -4412134388810875047, guid: 144a5b976e7564848b151fd6cdfe6302, type: 3}
   enemyProjectiles:
   - {fileID: -8966807862870356710, guid: 5a320779c1a4e0141903e4df3620b569, type: 3}
   - {fileID: -1407703252138461011, guid: 2d2f88c6cfa02264c81df6a75a16ee60, type: 3}
@@ -326,6 +340,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3704936551647e448b9f0fb0af5cb2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  projectiles:
+  - {fileID: -6069405352066448985, guid: 161fb24947f8935449f40c13fe7d620d, type: 3}
   enemyProjectiles:
   - {fileID: -6069405352066448985, guid: 161fb24947f8935449f40c13fe7d620d, type: 3}
   bulletData: {fileID: 11400000, guid: 4abeb107d383ff945997cad23ba9d6cf, type: 2}
@@ -346,6 +362,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff159401453539f40814cb09cbf48736, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  projectiles:
+  - {fileID: 244569200683147484, guid: cbd6dd124b883e24bac90ce3074f3e7c, type: 3}
+  - {fileID: 5107987264863941301, guid: b99a6da1ceb8c034a9bcfb0cadb6eebc, type: 3}
   enemyProjectiles:
   - {fileID: 244569200683147484, guid: cbd6dd124b883e24bac90ce3074f3e7c, type: 3}
   - {fileID: 5107987264863941301, guid: b99a6da1ceb8c034a9bcfb0cadb6eebc, type: 3}
@@ -367,6 +386,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e720c0b2cddc02438528f5bda2dab4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  projectiles:
+  - {fileID: -4818011105883717915, guid: bf7cd609788f5f141bce8abaa7710eb4, type: 3}
   enemyProjectiles:
   - {fileID: -4818011105883717915, guid: bf7cd609788f5f141bce8abaa7710eb4, type: 3}
   bulletData: {fileID: 11400000, guid: f979f0f4097a078418bd19a5288abcb1, type: 2}
@@ -413,6 +434,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 050cd797f8e2eec41b091c78ed8107be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  projectiles:
+  - {fileID: -8291542348747598439, guid: e8b2026c34eebaa43a0af156e4e25576, type: 3}
+  - {fileID: -5335513487551369433, guid: afb77e59e648848409ea94b272178557, type: 3}
   enemyProjectiles:
   - {fileID: -8291542348747598439, guid: e8b2026c34eebaa43a0af156e4e25576, type: 3}
   - {fileID: -5335513487551369433, guid: afb77e59e648848409ea94b272178557, type: 3}

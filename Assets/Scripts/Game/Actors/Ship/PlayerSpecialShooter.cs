@@ -5,8 +5,6 @@ using static CoroutineHelper;
 
 public class PlayerSpecialShooter : Shooter<PlayerBullet>
 {
-    [SerializeField] SpecialBullet[] bullets;
-
     [Space]
 
     [SerializeField] FloatObject specialMeter;

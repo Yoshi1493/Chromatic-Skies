@@ -8,7 +8,6 @@ public class PlayerShooter : Shooter<PlayerBullet>
     [SerializeField] protected FloatObject shootingSpeed;
     protected override float ShootingCooldown => 1 / shootingSpeed.value;
 
-    [SerializeField] List<PlayerBullet> playerBullets = new();
     bool canShoot = true;
 
     [SerializeField] List<Transform> bulletSpawnPositions = new();
@@ -27,8 +26,6 @@ public class PlayerShooter : Shooter<PlayerBullet>
 
         pauseHandler.GamePauseAction += OnGamePaused;
         ownerShip.RespawnAction += OnRespawn;
-
-        PlayerBulletPool.Instance.UpdatePoolableObjects(playerBullets);
     }
 
     void Update()

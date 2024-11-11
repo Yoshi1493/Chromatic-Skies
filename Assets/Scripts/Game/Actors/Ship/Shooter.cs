@@ -1,9 +1,12 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class Shooter<TProjectile> : MonoBehaviour
     where TProjectile : Projectile
 {
+    [SerializeField] List<TProjectile> projectiles;
+
     new protected Transform transform;
     protected Ship ownerShip;
 
@@ -14,6 +17,11 @@ public abstract class Shooter<TProjectile> : MonoBehaviour
     {
         transform = GetComponent<Transform>();
         ownerShip = GetComponentInParent<Ship>();
+    }
+
+    protected virtual void OnEnable()
+    {
+        GenericObjectPool<TProjectile>.Instance.UpdatePoolableObjects(projectiles);
     }
 
     protected virtual void Start()
