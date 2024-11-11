@@ -5,6 +5,10 @@ using static CoroutineHelper;
 
 public class PlayerSpecialShooter : Shooter<PlayerBullet>
 {
+    [SerializeField] SpecialBullet[] bullets;
+
+    [Space]
+
     [SerializeField] FloatObject specialMeter;
     const float MaxSpecialMeter = 3f;
     const float SpecialCost = 1f;
