@@ -12,6 +12,7 @@ public class PlayerSpecialShooter : Shooter<PlayerBullet>
     const float SpecialCost = 1f;
     const float MeterGainPerEnemyHit = 0.005f;
     const float MeterGainPerHit = 0.02f;
+    const float MeterGainPerGraze = 0.002f;
 
     public event Action SpecialAction;
     public event Action SpecialReadyAction;
@@ -28,9 +29,11 @@ public class PlayerSpecialShooter : Shooter<PlayerBullet>
 
         //put in Start instead of Awake due to script execution order conditions
         enemy = FindObjectOfType<Enemy>();
+        enemy.TakeDamageAction += OnEnemyTakeDamage;
 
         ownerShip.TakeDamageAction += OnPlayerTakeDamage;
-        enemy.TakeDamageAction += OnEnemyTakeDamage;
+        ownerShip.GetComponentInChildren<PlayerGraze>().GrazeAction += OnPlayerGraze;
+
         specialMeter.value = SpecialCost;
     }
 
@@ -84,5 +87,10 @@ public class PlayerSpecialShooter : Shooter<PlayerBullet>
     void OnEnemyTakeDamage()
     {
         GainSpecialMeter(MeterGainPerEnemyHit);
+    }
+
+    void OnPlayerGraze()
+    {
+        GainSpecialMeter(MeterGainPerGraze);
     }
 }

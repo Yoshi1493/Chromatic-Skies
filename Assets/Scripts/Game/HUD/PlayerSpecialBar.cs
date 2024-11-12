@@ -27,19 +27,21 @@ public class PlayerSpecialBar : ShipHUDComponent<Player>
         int trunc = (int)specialMeter.value;
         float dec = specialMeter.value % 1f;
 
-        for (int i = 0; i < trunc; i++)
+        for (int i = 0; i < specialBarImages.Length; i++)
         {
-            specialBarImages[i].fillAmount = 1f;
+            if (i < trunc)
+            {
+                specialBarImages[i].fillAmount = 1f;
+            }
+            else
+            {
+                specialBarImages[i].fillAmount = 0f;
+            }
         }
 
         if (trunc < PlayerSpecialShooter.MaxSpecialMeter)
         {
             specialBarImages[trunc].fillAmount = dec;
-        }
-
-        for (int i = trunc + 1; i < specialBarImages.Length; i++)
-        {
-            specialBarImages[i].fillAmount = 0f;
         }
     }
 }
