@@ -64,7 +64,7 @@ public class PlayerSpecialShooter : Shooter<PlayerBullet>
         SpecialAction?.Invoke();
         //yield return WaitForSeconds(1f);
 
-        SpawnProjectile(0, 0f, transform.position, false);
+        SpawnProjectile(1, 0f, transform.position, false);
         GainSpecialMeter(-SpecialCost);
 
         canShoot = false;

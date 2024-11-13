@@ -87,6 +87,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player-Yellow
       objectReference: {fileID: 0}
+    - target: {fileID: 6144929791114761972, guid: c97d5c4695dca31449990c95a6810900, type: 3}
+      propertyPath: projectiles.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6144929791114761972, guid: c97d5c4695dca31449990c95a6810900, type: 3}
+      propertyPath: projectiles.Array.data[0]
+      value: 
+      objectReference: {fileID: 45403701925836536, guid: 6c07471f6985b0e46855850adc5e69e3, type: 3}
     - target: {fileID: 7467897710815529108, guid: c97d5c4695dca31449990c95a6810900, type: 3}
       propertyPath: shipData
       value: 
