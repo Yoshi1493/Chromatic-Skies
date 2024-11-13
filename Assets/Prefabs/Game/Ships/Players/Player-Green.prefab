@@ -84,6 +84,10 @@ PrefabInstance:
       value: Player-Green
       objectReference: {fileID: 0}
     - target: {fileID: 6144929791114761972, guid: c97d5c4695dca31449990c95a6810900, type: 3}
+      propertyPath: shootingSpeed
+      value: 
+      objectReference: {fileID: 11400000, guid: b3f3eb2177105454f91d594030b80695, type: 2}
+    - target: {fileID: 6144929791114761972, guid: c97d5c4695dca31449990c95a6810900, type: 3}
       propertyPath: projectiles.Array.size
       value: 1
       objectReference: {fileID: 0}

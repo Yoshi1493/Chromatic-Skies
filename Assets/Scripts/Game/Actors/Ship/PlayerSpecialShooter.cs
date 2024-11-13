@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine;
 using static CoroutineHelper;
 
-public class PlayerSpecialShooter : Shooter<PlayerBullet>
+public class PlayerSpecialShooter : PlayerShooter
 {
     [Space]
 
@@ -17,7 +17,6 @@ public class PlayerSpecialShooter : Shooter<PlayerBullet>
     public event Action SpecialAction;
     public event Action SpecialReadyAction;
     public event Action SpecialMeterUpdateAction;
-    bool canShoot = true;
 
     Enemy enemy;
 

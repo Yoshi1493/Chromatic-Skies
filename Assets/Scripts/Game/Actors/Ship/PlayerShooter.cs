@@ -8,9 +8,8 @@ public class PlayerShooter : Shooter<PlayerBullet>
     [SerializeField] protected FloatObject shootingSpeed;
     protected override float ShootingCooldown => 1 / shootingSpeed.value;
 
-    bool canShoot = true;
-
     [SerializeField] List<Transform> bulletSpawnPositions = new();
+    protected bool canShoot = true;
 
     PauseHandler pauseHandler;
 
