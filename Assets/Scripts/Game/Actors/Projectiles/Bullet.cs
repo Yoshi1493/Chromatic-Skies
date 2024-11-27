@@ -41,16 +41,6 @@ public abstract class Bullet : Projectile
 
             SpawnDestructionParticles(pos, rot);
         }
-        else if (coll.TryGetComponent(out PlayerGraze playerGraze))
-        {
-            if (!hasGrazed)
-            {
-                playerGraze.GrazePlayer();
-                SpawnDestructionParticles(pos, rot);
-
-                hasGrazed = true;
-            }
-        }
     }
 
     protected void Move(Vector3 direction, float speed)

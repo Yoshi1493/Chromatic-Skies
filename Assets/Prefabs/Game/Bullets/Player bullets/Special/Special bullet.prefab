@@ -8,10 +8,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 845275059315836675, guid: 3d84f4836dc1d5e4ba2123950d014abc, type: 3}
-      propertyPath: m_Size.x
-      value: 0.08
-      objectReference: {fileID: 0}
-    - target: {fileID: 845275059315836675, guid: 3d84f4836dc1d5e4ba2123950d014abc, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 0}
@@ -29,7 +25,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6917292052819124163, guid: 3d84f4836dc1d5e4ba2123950d014abc, type: 3}
       propertyPath: m_Layer
-      value: 8
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 8576338777144902660, guid: 3d84f4836dc1d5e4ba2123950d014abc, type: 3}
       propertyPath: m_RootOrder
@@ -82,6 +78,22 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6917292052819124163, guid: 3d84f4836dc1d5e4ba2123950d014abc, type: 3}
   m_PrefabInstance: {fileID: 7233728185905104890}
   m_PrefabAsset: {fileID: 0}
+--- !u!58 &3159780139199306296
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4295436845269932089}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 1.28
 --- !u!114 &-5493352659583467413
 MonoBehaviour:
   m_ObjectHideFlags: 0
