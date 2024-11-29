@@ -36,7 +36,7 @@ public abstract class EnemyBullet : Bullet
 
         CheckCollisionWith<Player>();
         CheckCollisionWith<PlayerGraze>();
-        CheckCollisionWith<ISpecialBullet>();
+        CheckCollisionWith<SpecialBullet>();
     }
 
     protected override void HandleCollision(Collider2D coll)
@@ -56,7 +56,7 @@ public abstract class EnemyBullet : Bullet
                 hasGrazed = true;
             }
         }
-        if (coll.TryGetComponent(out ISpecialBullet specialBullet))
+        if (coll.TryGetComponent(out SpecialBullet specialBullet))
         {
             Destroy();
         }

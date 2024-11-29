@@ -2,9 +2,9 @@ using System.Collections;
 using UnityEngine;
 using static CoroutineHelper;
 
-public class SpecialYellow : PlayerBullet, ISpecialBullet
+public class SpecialYellow : SpecialBullet
 {
-    IEnumerator ISpecialBullet.Move()
+    protected override IEnumerator Move()
     {
         yield return null;
     }
