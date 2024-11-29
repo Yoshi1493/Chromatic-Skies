@@ -25,6 +25,9 @@ public class PlayerShooter : Shooter<PlayerBullet>
 
         pauseHandler.GamePauseAction += OnGamePaused;
         ownerShip.RespawnAction += OnRespawn;
+
+        //manually enable to avoid script execution order conflicts
+        GetComponent<PlayerSpecialShooter>().enabled = true;
     }
 
     void Update()

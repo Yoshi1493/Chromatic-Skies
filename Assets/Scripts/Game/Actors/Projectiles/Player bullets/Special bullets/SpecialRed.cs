@@ -6,6 +6,7 @@ public class SpecialRed : PlayerBullet, ISpecialBullet
 {
     IEnumerator ISpecialBullet.Move()
     {
+        MoveSpeed = 2f;
         yield return null;
     }
 }

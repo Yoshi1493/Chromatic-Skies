@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using UnityEngine;
-using static CoroutineHelper;
 
 public abstract class PlayerSpecialShooter : PlayerShooter
 {
@@ -63,13 +62,10 @@ public abstract class PlayerSpecialShooter : PlayerShooter
         SpecialAction?.Invoke();
         //yield return WaitForSeconds(1f);
 
-        SpawnProjectile(1, 0f, transform.position, false);
         GainSpecialMeter(-SpecialCost);
 
         canShoot = false;
-        yield return WaitForSeconds(ShootingCooldown);
-
-        canShoot = true;
+        yield return null;
     }
 
     void GainSpecialMeter(float amount)
