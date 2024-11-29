@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine;
 using static CoroutineHelper;
 
-public class PlayerSpecialShooter : PlayerShooter
+public abstract class PlayerSpecialShooter : PlayerShooter
 {
     [Space]
 

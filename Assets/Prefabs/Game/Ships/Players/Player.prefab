@@ -94,7 +94,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5924897159275947292}
   - component: {fileID: 4768422070276441097}
-  - component: {fileID: 6144929791114761972}
   m_Layer: 6
   m_Name: Shooter
   m_TagString: Untagged
@@ -132,26 +131,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c3d16f70c360974396762d9dfc9a631, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  projectiles: []
   shootingSpeed: {fileID: 0}
-  playerBullets:
-  - {fileID: 0}
   bulletSpawnPositions:
   - {fileID: 7154113708728588945}
   - {fileID: 5585003488721888684}
   - {fileID: 5439702352310573363}
---- !u!114 &6144929791114761972
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2347510902937991941}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d93aab677811be34291c09a10850be0e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  specialMeter: {fileID: 11400000, guid: eb81c5868f0d20b48b29013b6aef286c, type: 2}
 --- !u!1 &2606016538419240603
 GameObject:
   m_ObjectHideFlags: 0

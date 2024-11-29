@@ -123,5 +123,28 @@ PrefabInstance:
       propertyPath: shootingSpeed.OriginalValue
       value: 6
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6144929791114761972, guid: c97d5c4695dca31449990c95a6810900, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: c97d5c4695dca31449990c95a6810900, type: 3}
+--- !u!1 &4055950977403439310 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2347510902937991941, guid: c97d5c4695dca31449990c95a6810900, type: 3}
+  m_PrefabInstance: {fileID: 1791774414425977803}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8356039804782161620
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4055950977403439310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 320b44adc96bb5444912d754f87d72cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectiles:
+  - {fileID: 1479085872879964356, guid: a0c79cc02cbb13f4e910ed309dfdfbfd, type: 3}
+  shootingSpeed: {fileID: 11400000, guid: c2344765f51fb2c4a976145958f22145, type: 2}
+  bulletSpawnPositions: []
+  specialMeter: {fileID: 11400000, guid: eb81c5868f0d20b48b29013b6aef286c, type: 2}
