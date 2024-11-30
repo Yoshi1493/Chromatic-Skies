@@ -4,8 +4,12 @@ using static CoroutineHelper;
 
 public class SpecialShooterRed : PlayerSpecialShooter
 {
-    const int BranchCount = 5;
+    const int BranchCount = 2;
     const float BranchSpacing = 360f / BranchCount;
+    const int BulletCount = 8;
+    const float BulletSpacing = 360f / BulletCount;
+    const float BulletRotationSpeed = 540f;
+    const float BulletRotationDuration = 4f;
 
     protected override IEnumerator Shoot()
     {
@@ -13,10 +17,17 @@ public class SpecialShooterRed : PlayerSpecialShooter
 
         for (int i = 0; i < BranchCount; i++)
         {
-            float z = i * BranchSpacing;
-            Vector3 pos = transform.position;
+            for (int ii = 0; ii < BulletCount; ii++)
+            {
+                float z = ii * BulletSpacing;
+                Vector3 pos = transform.position;
 
-            SpawnProjectile(1, z, pos, false).Fire();
+                var bullet = SpawnProjectile(1, z, pos, false);
+                bullet.StartCoroutine(bullet.RotateBy((i % 2 * 2 - 1) * BulletRotationSpeed, BulletRotationDuration));
+                bullet.Fire();
+            }
+
+            yield return WaitForSeconds(0.5f);
         }
 
         yield return WaitForSeconds(ShootingCooldown);
