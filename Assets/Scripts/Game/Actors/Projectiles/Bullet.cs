@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public abstract class Bullet : Projectile
@@ -7,10 +8,28 @@ public abstract class Bullet : Projectile
 
     public float MoveSpeed { get; set; }
 
+    protected IEnumerator movementBehaviour;
+    protected abstract IEnumerator Move();
+
+    public void Fire()
+    {
+        if (movementBehaviour != null)
+        {
+            StopCoroutine(movementBehaviour);
+        }
+
+        movementBehaviour = Move();
+        StartCoroutine(movementBehaviour);
+    }
+
     protected override void Update()
     {
         base.Update();
-        Move(moveDirection.normalized, MoveSpeed);
+
+        transform.Translate(Time.deltaTime * MoveSpeed * moveDirection.normalized, Space.World);
+
+        //update z-rotation based on moveDirection
+        transform.eulerAngles = Mathf.Atan2(-moveDirection.x, moveDirection.y) * Mathf.Rad2Deg * Vector3.forward;
     }
 
     protected override void HandleCollision(Collider2D coll)
@@ -41,14 +60,6 @@ public abstract class Bullet : Projectile
 
             SpawnDestructionParticles(pos, rot);
         }
-    }
-
-    protected void Move(Vector3 direction, float speed)
-    {
-        transform.Translate(Time.deltaTime * speed * direction, Space.World);
-
-        //update z-rotation based on moveDirection
-        transform.eulerAngles = Mathf.Atan2(-moveDirection.x, moveDirection.y) * Mathf.Rad2Deg * Vector3.forward;
     }
 
     public override void Destroy()

@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class PlayerBullet : Bullet
@@ -25,5 +26,10 @@ public class PlayerBullet : Bullet
     public override void Destroy()
     {
         PlayerBulletPool.Instance.ReturnToPool(this);
+    }
+
+    protected override IEnumerator Move()
+    {
+        yield break;
     }
 }

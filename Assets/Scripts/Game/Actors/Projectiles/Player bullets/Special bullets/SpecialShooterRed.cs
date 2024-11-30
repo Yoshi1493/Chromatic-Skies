@@ -16,7 +16,7 @@ public class SpecialShooterRed : PlayerSpecialShooter
             float z = i * BranchSpacing;
             Vector3 pos = transform.position;
 
-            SpawnProjectile(1, z, pos, false);
+            SpawnProjectile(1, z, pos, false).Fire();
         }
 
         yield return WaitForSeconds(ShootingCooldown);

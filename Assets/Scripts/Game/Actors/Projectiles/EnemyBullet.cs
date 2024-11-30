@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine;
 
 public abstract class EnemyBullet : Bullet
@@ -8,26 +7,12 @@ public abstract class EnemyBullet : Bullet
 
     protected override int CollisionMask => 1 << LayerMask.NameToLayer("Player") | 1 << LayerMask.NameToLayer("Special bullet");
 
-    protected IEnumerator movementBehaviour;
-    protected abstract IEnumerator Move();
-
     protected override void Awake()
     {
         base.Awake();
 
         ownerShip = FindObjectOfType<Enemy>();
         playerShip = FindObjectOfType<Player>();
-    }
-
-    public void Fire()
-    {
-        if (movementBehaviour != null)
-        {
-            StopCoroutine(movementBehaviour);
-        }
-
-        movementBehaviour = Move();
-        StartCoroutine(movementBehaviour);
     }
 
     protected override void Update()
