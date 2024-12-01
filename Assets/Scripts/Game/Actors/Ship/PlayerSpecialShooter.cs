@@ -8,6 +8,7 @@ public abstract class PlayerSpecialShooter : PlayerShooter
 
     [SerializeField] FloatObject specialMeter;
     public const float MaxSpecialMeter = 3f;
+    const float InitialSpecialMeter = 3f;
     const float SpecialCost = 1f;
     const float MeterGainPerEnemyHit = 0.005f;
     const float MeterGainPerHit = 0.02f;
@@ -32,7 +33,7 @@ public abstract class PlayerSpecialShooter : PlayerShooter
         ownerShip.TakeDamageAction += OnPlayerTakeDamage;
         ownerShip.GetComponentInChildren<PlayerGraze>().GrazeAction += OnPlayerGraze;
 
-        specialMeter.value = SpecialCost;
+        specialMeter.value = InitialSpecialMeter;
     }
 
     void Update()
