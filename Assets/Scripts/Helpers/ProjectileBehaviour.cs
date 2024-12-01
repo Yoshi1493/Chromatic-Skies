@@ -52,6 +52,30 @@ public static class ProjectileBehaviour
     }
 
     /// <summary>
+    /// lerps <p.SpriteRenderer.size> from current size to <endSize>, in <lerpTime> seconds.
+    /// </summary>
+    public static IEnumerator LerpSize(this Projectile p, Vector2 endSize, float lerpTime, float delay = 0f)
+    {
+        if (delay > 0f) yield return WaitForSeconds(delay);
+
+        if (lerpTime > 0f)
+        {
+            Vector2 startSize = p.SpriteRenderer.size;
+            float currentLerpTime = 0f;
+
+            while (p.SpriteRenderer.size != endSize)
+            {
+                p.SpriteRenderer.size = Vector2.Lerp(startSize, endSize, currentLerpTime / lerpTime);
+
+                currentLerpTime += Time.deltaTime;
+                yield return null;
+            }
+        }
+
+        p.SpriteRenderer.size = endSize;
+    }
+
+    /// <summary>
     /// rotates <p.moveDirection> upon the x-y plane by <degrees> degrees, over <rotateDuration> seconds.
     /// </summary>
     public static IEnumerator RotateBy(this Projectile p, float degrees, float rotateDuration, bool clockwise = true, float delay = 0f)
