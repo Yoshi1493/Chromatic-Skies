@@ -1823,9 +1823,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selectedPlayerIndex: {fileID: 11400000, guid: dd5a45833c5fb2f41a90cdc643cd1f40, type: 2}
   playerPrefabs:
+  - {fileID: 6246849726923490308, guid: 33bd6ed512fd7654fbad7af3917b8aab, type: 3}
   - {fileID: 6246849726923490308, guid: 26b5fb5102f37bf408b7ec336e0661a8, type: 3}
   - {fileID: 6246849726923490308, guid: f4b77ff3cb9354646a38902fa9179c82, type: 3}
-  - {fileID: 6246849726923490308, guid: 33bd6ed512fd7654fbad7af3917b8aab, type: 3}
   - {fileID: 6246849726923490308, guid: 694d7bce483a80248b16c360e33a5364, type: 3}
 --- !u!1 &400887716
 GameObject:
