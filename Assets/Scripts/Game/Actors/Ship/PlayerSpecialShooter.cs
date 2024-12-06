@@ -20,7 +20,7 @@ public abstract class PlayerSpecialShooter : PlayerShooter
 
     Enemy enemy;
 
-    protected override float ShootingCooldown => 5f;
+    protected virtual float SpecialCooldown => 5f;
 
     protected override void Start()
     {
