@@ -10,7 +10,7 @@ public class SpecialShooterGreen : PlayerSpecialShooter
     {
         yield return base.Shoot();
 
-        yield return WaitForSeconds(ShootingCooldown);
+        yield return WaitForSeconds(SpecialCooldown);
         canShoot = true;
     }
 }
