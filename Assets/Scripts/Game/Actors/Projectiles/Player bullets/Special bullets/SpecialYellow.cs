@@ -1,6 +1,5 @@
 using System.Collections;
 using UnityEngine;
-using static CoroutineHelper;
 
 public class SpecialYellow : SpecialBullet
 {
@@ -9,19 +8,7 @@ public class SpecialYellow : SpecialBullet
 
     protected override IEnumerator Move()
     {
-        moveDirection *= -1;
-
-        yield return this.LerpSpeed(0f, 2.5f, 0.5f);
-        yield return WaitForSeconds(0.75f);
-
+        yield return this.LerpSize(Vector2.zero, 0.5f);
         Destroy();
     }
-
-#if UNITY_EDITOR
-    protected override void OnDrawGizmos()
-    {
-        Gizmos.matrix = collider.transform.localToWorldMatrix;
-        Gizmos.DrawCube(transform.position, SpriteRenderer.size);
-    }
-#endif
 }
