@@ -3,16 +3,8 @@ using UnityEngine;
 
 public class SpecialRed : SpecialBullet
 {
-    new CircleCollider2D collider;
-
     protected override float MaxLifetime => 4f;
     protected override int MaxCollisions => 64;
-
-    protected override void Awake()
-    {
-        base.Awake();
-        collider = GetComponent<CircleCollider2D>();
-    }
 
     protected override IEnumerator Move()
     {
@@ -25,8 +17,6 @@ public class SpecialRed : SpecialBullet
     protected override void Update()
     {
         base.Update();
-
-        //[special bullet <-> enemy bullet] collision detection requires a collider in at least one party
-        collider.radius = HitboxSize;
+        ((CircleCollider2D)collider).radius = HitboxSize;
     }
 }
