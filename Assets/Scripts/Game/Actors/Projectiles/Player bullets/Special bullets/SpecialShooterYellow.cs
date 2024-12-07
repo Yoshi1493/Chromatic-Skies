@@ -37,7 +37,7 @@ public class SpecialShooterYellow : PlayerSpecialShooter
         }
 
         bullets.Randomize();
-        yield return WaitForSeconds(0.5f);
+        yield return WaitForSeconds(1f);
 
         for (int i = 0; i < WaveCount; i++)
         {
