@@ -3,16 +3,13 @@ using UnityEngine;
 public abstract class EnemyBullet : Bullet
 {
     protected Enemy ownerShip;
-    protected Player playerShip;
 
     protected override int CollisionMask => 1 << LayerMask.NameToLayer("Player") | 1 << LayerMask.NameToLayer("Special bullet");
 
     protected override void Awake()
     {
         base.Awake();
-
         ownerShip = FindObjectOfType<Enemy>();
-        playerShip = FindObjectOfType<Player>();
     }
 
     protected override void Update()

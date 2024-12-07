@@ -11,6 +11,14 @@ public abstract class Bullet : Projectile
     protected IEnumerator movementBehaviour;
     protected abstract IEnumerator Move();
 
+    protected Player playerShip;
+
+    protected override void Awake()
+    {
+        base.Awake();
+        playerShip = FindObjectOfType<Player>();
+    }
+
     public void Fire()
     {
         if (movementBehaviour != null)
