@@ -17,8 +17,9 @@ public class SpecialShooterYellow : PlayerSpecialShooter
     protected override IEnumerator Shoot()
     {
         bullets.Clear();
-
         yield return base.Shoot();
+
+        Vector3 pos = transform.position;
 
         for (int i = 0; i < WaveCount; i++)
         {
@@ -26,9 +27,8 @@ public class SpecialShooterYellow : PlayerSpecialShooter
             {
                 float z = (i * WaveSpacing) + (ii * BulletSpacing);
                 float s = Random.Range(0.2f, 1f) * BulletBaseSpeed;
-                Vector3 pos = Vector3.zero;
 
-                var bullet = SpawnProjectile(1, z, pos) as SpecialBullet;
+                var bullet = SpawnProjectile(1, z, pos, false) as SpecialBullet;
                 bullet.StartCoroutine(bullet.LerpSpeed(s, 0.1f, 1f));
                 bullets.Add(bullet);
             }
@@ -37,16 +37,18 @@ public class SpecialShooterYellow : PlayerSpecialShooter
         }
 
         bullets.Randomize();
-        yield return WaitForSeconds(1f);
+        yield return WaitForSeconds(0.5f);
 
         for (int i = 0; i < WaveCount; i++)
         {
             for (int ii = 0; ii < BulletCount; ii++)
             {
                 int b = (i * BulletCount) + ii;
-                bullets[b].Fire();
 
-                yield return null;
+                if (bullets[b].isActiveAndEnabled)
+                {
+                    bullets[b].Fire();
+                }
             }
         }
 
