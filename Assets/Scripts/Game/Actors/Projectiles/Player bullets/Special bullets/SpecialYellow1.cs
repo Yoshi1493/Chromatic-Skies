@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class SpecialYellow : SpecialBullet
+public class SpecialYellow1 : SpecialBullet
 {
     protected override int MaxCollisions => 8;
 

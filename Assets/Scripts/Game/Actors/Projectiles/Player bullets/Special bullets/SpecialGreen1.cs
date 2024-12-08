@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using static CoroutineHelper;
 
-public class SpecialBlue : SpecialBullet
+public class SpecialGreen1 : SpecialBullet
 {
     protected override IEnumerator Move()
     {

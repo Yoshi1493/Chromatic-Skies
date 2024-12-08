@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class SpecialRed : SpecialBullet
+public class SpecialRed1 : SpecialBullet
 {
     protected override float MaxLifetime => 4f;
     protected override int MaxCollisions => 64;
