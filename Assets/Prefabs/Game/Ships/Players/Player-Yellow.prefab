@@ -153,6 +153,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectiles:
   - {fileID: 2811906577215254381, guid: 6c07471f6985b0e46855850adc5e69e3, type: 3}
+  - {fileID: -8173979873442653261, guid: 3d655be0b1ac4cb42b25d2406e252fb2, type: 3}
   shootingSpeed: {fileID: 11400000, guid: 689716c0b1df46f42896f1fc25b462bd, type: 2}
   bulletSpawnPositions: []
   specialMeter: {fileID: 11400000, guid: eb81c5868f0d20b48b29013b6aef286c, type: 2}

@@ -10,6 +10,8 @@ public class SpecialShooterYellow : PlayerSpecialShooter
     const int BulletCount = 24;
     const float BulletSpacing = 360f / BulletCount;
     const float BulletBaseSpeed = 5f;
+    const int LaserCount = 13;
+    const float LaserSpacing = 360f / (LaserCount - 1);
     protected override float ShootingCooldown => 12f / 60;
 
     List<SpecialBullet> bullets = new(WaveCount * BulletCount);
@@ -50,6 +52,16 @@ public class SpecialShooterYellow : PlayerSpecialShooter
                     bullets[b].Fire();
                 }
             }
+        }
+
+        yield return WaitForSeconds(1.2f);
+
+        for (int i = 0; i < LaserCount; i++)
+        {
+            float z = i * LaserSpacing - 90f;
+            pos = transform.up.RotateVectorBy(z);
+
+            SpawnProjectile(2, z, pos).Fire();
         }
 
         yield return WaitForSeconds(SpecialCooldown);

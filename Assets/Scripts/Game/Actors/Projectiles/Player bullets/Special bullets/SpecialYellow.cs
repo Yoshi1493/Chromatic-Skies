@@ -4,14 +4,21 @@ using UnityEngine;
 public class SpecialYellow : SpecialBullet
 {
     protected override int MaxCollisions => 8;
-    protected override int NumCollisions => Physics2D.OverlapBoxNonAlloc(transform.position, SpriteRenderer.size, transform.eulerAngles.z, collisionResults, CollisionMask);
 
     [SerializeField] AnimationCurve homingInterpolation;
+
+    Vector2 originalSize;
+
+    protected override void Awake()
+    {
+        base.Awake();
+        originalSize = SpriteRenderer.size;
+    }
 
     protected override void OnEnable()
     {
         base.OnEnable();
-        collider.enabled = true;
+        SpriteRenderer.size = originalSize;
     }
 
     protected override IEnumerator Move()
