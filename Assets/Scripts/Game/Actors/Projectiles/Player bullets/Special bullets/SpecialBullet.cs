@@ -10,4 +10,16 @@ public abstract class SpecialBullet : PlayerBullet
         base.Awake();
         collider = GetComponent<Collider2D>();
     }
+
+    protected override void OnEnable()
+    {
+        base.OnEnable();
+        collider.enabled = true;
+    }
+
+    public override void Destroy()
+    {
+        base.Destroy();
+        collider.enabled = false;
+    }
 }
