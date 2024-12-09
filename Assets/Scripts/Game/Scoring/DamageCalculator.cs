@@ -17,13 +17,13 @@ public static class DamageCalculator
 
     public static int CalculateHealing(int maxHealth, int redundancy)
     {
-        float redundancyFactor = (Mathf.Min(redundancy, 100) - 100) / 10;
+        float redundancyFactor = (Mathf.Min(redundancy, 100) - 100) / 10f;
         float sqrRedundancyFactor = redundancyFactor * redundancyFactor;
-        float healing = maxHealth * 0.01f * sqrRedundancyFactor;
+        float healing = maxHealth * sqrRedundancyFactor * 0.0001f;              //1% max hp * redundancy factor as percent
 
-        Debug.Log($"{maxHealth} * 0.01 * {redundancyFactor} * {redundancyFactor} = {healing}");
+        //Debug.Log($"{maxHealth} * 0.01 * {redundancyFactor:f2} * {redundancyFactor:f2} = {healing}");
         int trueHealing = Mathf.Max(Mathf.CeilToInt(healing), 1);
 
-        return trueHealing;
+        return -trueHealing;
     }
 }

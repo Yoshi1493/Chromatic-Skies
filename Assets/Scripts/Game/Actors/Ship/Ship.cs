@@ -74,6 +74,7 @@ public abstract class Ship : Actor
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
+        currentHealth = Mathf.Clamp(currentHealth, 0, shipData.MaxHealth.Value);
         print($"{name} took {damage} damage.");
 
         TakeDamageAction?.Invoke();
