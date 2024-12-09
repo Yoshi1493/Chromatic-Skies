@@ -76,10 +76,10 @@ public abstract class Ship : Actor
         currentHealth -= damage;
         print($"{name} took {damage} damage.");
 
+        TakeDamageAction?.Invoke();
+
         if (damage > 0)
         {
-            TakeDamageAction?.Invoke();
-
             //check if LoseLife methods should be called
             if (currentHealth <= 0)
             {

@@ -40,6 +40,11 @@ public abstract class EnemyBullet : Bullet
         }
         if (coll.TryGetComponent(out SpecialBullet specialBullet))
         {
+            if (specialBullet is SpecialBlue1)
+            {
+                //temp hardcoded value
+                playerShip.TakeDamage(-75);
+            }
             Destroy();
         }
     }
