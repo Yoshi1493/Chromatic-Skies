@@ -10,6 +10,11 @@ public class SpecialShooterBlue : PlayerSpecialShooter
     {
         yield return base.Shoot();
 
+        float z = 0f;
+        Vector3 pos = Vector3.zero;
+
+        SpawnProjectile(1, z, pos).Fire();
+
         yield return WaitForSeconds(SpecialCooldown);
         canShoot = true;
     }
