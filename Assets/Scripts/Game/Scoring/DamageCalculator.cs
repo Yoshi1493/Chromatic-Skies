@@ -7,9 +7,23 @@ public static class DamageCalculator
         float trueSpd = Mathf.Max(Mathf.Abs(speed), 1f);
         float trueAtk = atk * trueSpd;
         float trueDef = 100f / (100f + def);
+
         float dmg = trueAtk * trueDef;
         //Debug.Log($"({atk} * {trueSpd}) * (100 / (100 + {def}))");
         int trueDmg = Mathf.Max(Mathf.CeilToInt(dmg), 1);
+
         return trueDmg;
+    }
+
+    public static int CalculateHealing(int maxHealth, int redundancy)
+    {
+        float redundancyFactor = (Mathf.Min(redundancy, 100) - 100) / 10;
+        float sqrRedundancyFactor = redundancyFactor * redundancyFactor;
+        float healing = maxHealth * 0.01f * sqrRedundancyFactor;
+
+        Debug.Log($"{maxHealth} * 0.01 * {redundancyFactor} * {redundancyFactor} = {healing}");
+        int trueHealing = Mathf.Max(Mathf.CeilToInt(healing), 1);
+
+        return trueHealing;
     }
 }
