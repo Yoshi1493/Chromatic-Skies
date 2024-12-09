@@ -7,15 +7,6 @@ public class SpecialBlue1 : SpecialBullet
     Vector2 maxSize = 2.56f * Vector2.one;
     Vector2 minSize = 0.32f * Vector2.one;
 
-    [SerializeField] IntObject playerMaxHealth;
-    int healAmount;
-
-    protected override void Awake()
-    {
-        base.Awake();
-        healAmount = Mathf.RoundToInt(playerMaxHealth.value * -0.01f);
-    }
-
     protected override void OnEnable()
     {
         base.OnEnable();
