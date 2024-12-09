@@ -7,10 +7,15 @@ public class SpecialBlue1 : SpecialBullet
     Vector2 maxSize = 2.56f * Vector2.one;
     Vector2 minSize = 0.32f * Vector2.one;
 
+    public int HitCount { get; private set; }
+    public void RegisterHit() => HitCount++;
+
     protected override void OnEnable()
     {
         base.OnEnable();
+
         SpriteRenderer.size = minSize;
+        HitCount = 0;
     }
 
     protected override IEnumerator Move()
