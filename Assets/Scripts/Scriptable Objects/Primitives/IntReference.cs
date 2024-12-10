@@ -7,11 +7,21 @@ public class IntReference
     [SerializeField] bool useConstant;
 
     [SerializeField] int ConstantValue;
-    [SerializeField] IntObject Variable;
+    public IntObject Variable;
 
     public int Value
     {
         get => useConstant ? ConstantValue : Variable.value;
-        set { Variable.value = value; }
+        set
+        {
+            if (useConstant)
+            {
+                ConstantValue = value;
+            }
+            else
+            {
+                Variable.value = value;
+            }
+        }
     }
 }

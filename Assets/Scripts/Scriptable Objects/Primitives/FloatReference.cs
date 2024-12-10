@@ -7,11 +7,21 @@ public class FloatReference
     [SerializeField] bool useConstant;
 
     [SerializeField] float ConstantValue;
-    [SerializeField] FloatObject Variable;
+    public FloatObject Variable;
 
     public float Value
     {
         get => useConstant ? ConstantValue : Variable.value;
-        set { ConstantValue = value; }
+        set
+        {
+            if (useConstant)
+            {
+                ConstantValue = value;
+            }
+            else
+            {
+                Variable.value = value;
+            }
+        }
     }
 }
