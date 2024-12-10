@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Player : Ship
+public abstract class Player : Ship
 {
     public override float RespawnTime => 3f;
 
@@ -10,11 +10,14 @@ public class Player : Ship
     [SerializeField] CircleCollider2D grazeCollider;
     [SerializeField] IntObject hitsTaken;
 
+    protected PlayerSpecialShooter specialShooter;
     PauseHandler pauseHandler;
 
     protected override void Awake()
     {
         base.Awake();
+
+        specialShooter = GetComponentInChildren<PlayerSpecialShooter>();
         pauseHandler = FindObjectOfType<PauseHandler>();
     }
 
@@ -22,8 +25,9 @@ public class Player : Ship
     {
         TakeDamageAction += OnTakeDamage;
         InvincibleAction += OnInvincible;
-
+        specialShooter.SpecialAction += OnSpecialActivated;
         pauseHandler.GamePauseAction += OnGamePaused;
+
         hitsTaken.value = 0;
     }
 
@@ -51,10 +55,7 @@ public class Player : Ship
         }
     }
 
-    void OnGamePaused(bool state)
-    {
-        collider.enabled = !state;
-    }
+    protected abstract void OnSpecialActivated();
 
     public override void DisplayInvincibleShield(Vector3 _)
     {
@@ -68,5 +69,10 @@ public class Player : Ship
         particleEffect.ParticleSystem.SetVector4("ParticleColour", shipData.UIColour.value);
 
         particleEffect.enabled = true;
+    }
+
+    void OnGamePaused(bool state)
+    {
+        collider.enabled = !state;
     }
 }
