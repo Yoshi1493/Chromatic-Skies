@@ -178,6 +178,8 @@ MonoBehaviour:
   collider: {fileID: 6246849726923490312}
   grazeCollider: {fileID: 3954993893983707010}
   hitsTaken: {fileID: 11400000, guid: bd04de29583d03942aa9b1d6f8ce6035, type: 2}
+  originalShootingSpeed: {fileID: 11400000, guid: b3f3eb2177105454f91d594030b80695, type: 2}
+  rapidfireShootingSpeed: {fileID: 11400000, guid: 08703e8d233ee514281dcaf77684c4a5, type: 2}
 --- !u!58 &6246849726923490312 stripped
 CircleCollider2D:
   m_CorrespondingSourceObject: {fileID: 5651153232659691459, guid: c97d5c4695dca31449990c95a6810900, type: 3}
