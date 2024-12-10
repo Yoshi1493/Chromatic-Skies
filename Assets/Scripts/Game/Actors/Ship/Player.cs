@@ -7,6 +7,8 @@ public abstract class Player : Ship
     protected override float OriginalColliderRadius => 0.025f;
     protected override float InvincibleColliderRadius => 1f;
 
+    [Space]
+
     [SerializeField] CircleCollider2D grazeCollider;
     [SerializeField] IntObject hitsTaken;
 
