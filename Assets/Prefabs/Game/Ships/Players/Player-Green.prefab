@@ -125,7 +125,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 6144929791114761972, guid: c97d5c4695dca31449990c95a6810900, type: 3}
+    - {fileID: 7467897710815529108, guid: c97d5c4695dca31449990c95a6810900, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: c97d5c4695dca31449990c95a6810900, type: 3}
+--- !u!58 &3954993893983707010 stripped
+CircleCollider2D:
+  m_CorrespondingSourceObject: {fileID: 3332484142188375113, guid: c97d5c4695dca31449990c95a6810900, type: 3}
+  m_PrefabInstance: {fileID: 1791774414425977803}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &4055950977403439310 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2347510902937991941, guid: c97d5c4695dca31449990c95a6810900, type: 3}
@@ -148,3 +154,32 @@ MonoBehaviour:
   shootingSpeed: {fileID: 11400000, guid: b3f3eb2177105454f91d594030b80695, type: 2}
   bulletSpawnPositions: []
   specialMeter: {fileID: 11400000, guid: eb81c5868f0d20b48b29013b6aef286c, type: 2}
+--- !u!1 &6246849726923490308 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5651153232659691471, guid: c97d5c4695dca31449990c95a6810900, type: 3}
+  m_PrefabInstance: {fileID: 1791774414425977803}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7025537684407825383
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6246849726923490308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6099138050bd09545b9e04cf1309eeb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  transform: {fileID: 0}
+  shipData: {fileID: 11400000, guid: db3323bf61bf7c048965801703f5126b, type: 2}
+  currentLives: 0
+  currentHealth: 0
+  collider: {fileID: 6246849726923490312}
+  grazeCollider: {fileID: 3954993893983707010}
+  hitsTaken: {fileID: 11400000, guid: bd04de29583d03942aa9b1d6f8ce6035, type: 2}
+--- !u!58 &6246849726923490312 stripped
+CircleCollider2D:
+  m_CorrespondingSourceObject: {fileID: 5651153232659691459, guid: c97d5c4695dca31449990c95a6810900, type: 3}
+  m_PrefabInstance: {fileID: 1791774414425977803}
+  m_PrefabAsset: {fileID: 0}

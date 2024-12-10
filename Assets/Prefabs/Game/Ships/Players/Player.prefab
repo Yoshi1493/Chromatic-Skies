@@ -526,11 +526,6 @@ VisualEffect:
   m_CorrespondingSourceObject: {fileID: 6658184931700648210, guid: 2ad3a7352f03714438318db50497c30d, type: 3}
   m_PrefabInstance: {fileID: 1518647169365373978}
   m_PrefabAsset: {fileID: 0}
---- !u!58 &5651153232659691459 stripped
-CircleCollider2D:
-  m_CorrespondingSourceObject: {fileID: 6593195506016961497, guid: 2ad3a7352f03714438318db50497c30d, type: 3}
-  m_PrefabInstance: {fileID: 1518647169365373978}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5651153232659691469 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6593195506016961495, guid: 2ad3a7352f03714438318db50497c30d, type: 3}
@@ -571,25 +566,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitboxVisualizer: {fileID: 2423900889455833876}
---- !u!114 &7467897710815529108
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5651153232659691471}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a4d63c07c327634da71d58a8e22035c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  transform: {fileID: 0}
-  shipData: {fileID: 0}
-  currentLives: 0
-  currentHealth: 0
-  collider: {fileID: 5651153232659691459}
-  grazeCollider: {fileID: 3332484142188375113}
-  hitsTaken: {fileID: 11400000, guid: bd04de29583d03942aa9b1d6f8ce6035, type: 2}
 --- !u!2083052967 &5657540649791410560 stripped
 VisualEffect:
   m_CorrespondingSourceObject: {fileID: 6598000722561377690, guid: 2ad3a7352f03714438318db50497c30d, type: 3}
