@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class SpecialRed1 : SpecialBullet
 {
+    Vector2 maxSize = 5f * Vector2.one;
+
     protected override float MaxLifetime => 4f;
     protected override int MaxCollisions => 64;
 
@@ -10,7 +12,7 @@ public class SpecialRed1 : SpecialBullet
     {
         StartCoroutine(this.LerpSpeed(2f, 7f, 2f));
 
-        yield return this.LerpSize(5f * Vector2.one, 1.5f);
+        yield return this.LerpSize(maxSize, 1.5f);
         yield return this.LerpSize(Vector2.zero, 2.5f);
 
         Destroy();
