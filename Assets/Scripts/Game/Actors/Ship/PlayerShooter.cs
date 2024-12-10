@@ -5,8 +5,8 @@ using static CoroutineHelper;
 
 public class PlayerShooter : Shooter<PlayerBullet>
 {
-    [SerializeField] protected FloatObject shootingSpeed;
-    protected override float ShootingCooldown => 1 / shootingSpeed.value;
+    ShipObject parentShip;
+    protected override float ShootingCooldown => 1 / parentShip.ShootingSpeed.Value;
 
     [SerializeField] List<Transform> bulletSpawnPositions = new();
     protected bool canShoot = true;
@@ -16,6 +16,8 @@ public class PlayerShooter : Shooter<PlayerBullet>
     protected override void Awake()
     {
         base.Awake();
+
+        parentShip = GetComponentInParent<Player>().shipData;
         pauseHandler = FindObjectOfType<PauseHandler>();
     }
 
