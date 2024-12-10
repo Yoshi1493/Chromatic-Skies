@@ -6,12 +6,12 @@ public class FloatReference
 {
     [SerializeField] bool useConstant;
 
-    [SerializeField] int ConstantValue;
+    [SerializeField] float ConstantValue;
     [SerializeField] FloatObject Variable;
 
     public float Value
     {
         get => useConstant ? ConstantValue : Variable.value;
-        set { Variable.value = value; }
+        set { ConstantValue = value; }
     }
 }
