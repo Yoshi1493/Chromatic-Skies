@@ -135,6 +135,44 @@ PrefabInstance:
     - {fileID: 6144929791114761972, guid: c97d5c4695dca31449990c95a6810900, type: 3}
     - {fileID: 7467897710815529108, guid: c97d5c4695dca31449990c95a6810900, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: c97d5c4695dca31449990c95a6810900, type: 3}
+--- !u!2083052967 &843966693069970543 stripped
+VisualEffect:
+  m_CorrespondingSourceObject: {fileID: 1399483046231289764, guid: c97d5c4695dca31449990c95a6810900, type: 3}
+  m_PrefabInstance: {fileID: 1791774414425977803}
+  m_PrefabAsset: {fileID: 0}
+--- !u!2083052967 &1735639421152823385 stripped
+VisualEffect:
+  m_CorrespondingSourceObject: {fileID: 57301656798559122, guid: c97d5c4695dca31449990c95a6810900, type: 3}
+  m_PrefabInstance: {fileID: 1791774414425977803}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2220221412303342607 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 437525132826705860, guid: c97d5c4695dca31449990c95a6810900, type: 3}
+  m_PrefabInstance: {fileID: 1791774414425977803}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &585966697520880975
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2220221412303342607}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bbc0d653ff6c0343bee21715b115a78, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnVFX: {fileID: 7014413543351199230}
+  loseLifeVFX: {fileID: 6223471558805430859}
+  respawnVFX: {fileID: 5884066372953222851}
+  deathVFX: {fileID: 1735639421152823385}
+  invincibleVFX: {fileID: 2643485749076402658}
+  specialVFX: {fileID: 843966693069970543}
+--- !u!2083052967 &2643485749076402658 stripped
+VisualEffect:
+  m_CorrespondingSourceObject: {fileID: 4355584601540776489, guid: c97d5c4695dca31449990c95a6810900, type: 3}
+  m_PrefabInstance: {fileID: 1791774414425977803}
+  m_PrefabAsset: {fileID: 0}
 --- !u!58 &3954993893983707010 stripped
 CircleCollider2D:
   m_CorrespondingSourceObject: {fileID: 3332484142188375113, guid: c97d5c4695dca31449990c95a6810900, type: 3}
@@ -160,9 +198,18 @@ MonoBehaviour:
   projectiles:
   - {fileID: 2811906577215254381, guid: 6c07471f6985b0e46855850adc5e69e3, type: 3}
   - {fileID: -8173979873442653261, guid: 3d655be0b1ac4cb42b25d2406e252fb2, type: 3}
-  shootingSpeed: {fileID: 11400000, guid: 689716c0b1df46f42896f1fc25b462bd, type: 2}
   bulletSpawnPositions: []
   specialMeter: {fileID: 11400000, guid: eb81c5868f0d20b48b29013b6aef286c, type: 2}
+--- !u!2083052967 &5884066372953222851 stripped
+VisualEffect:
+  m_CorrespondingSourceObject: {fileID: 5293363878213508360, guid: c97d5c4695dca31449990c95a6810900, type: 3}
+  m_PrefabInstance: {fileID: 1791774414425977803}
+  m_PrefabAsset: {fileID: 0}
+--- !u!2083052967 &6223471558805430859 stripped
+VisualEffect:
+  m_CorrespondingSourceObject: {fileID: 5657540649791410560, guid: c97d5c4695dca31449990c95a6810900, type: 3}
+  m_PrefabInstance: {fileID: 1791774414425977803}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &6246849726923490308 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5651153232659691471, guid: c97d5c4695dca31449990c95a6810900, type: 3}
@@ -190,5 +237,10 @@ MonoBehaviour:
 --- !u!58 &6246849726923490312 stripped
 CircleCollider2D:
   m_CorrespondingSourceObject: {fileID: 5651153232659691459, guid: c97d5c4695dca31449990c95a6810900, type: 3}
+  m_PrefabInstance: {fileID: 1791774414425977803}
+  m_PrefabAsset: {fileID: 0}
+--- !u!2083052967 &7014413543351199230 stripped
+VisualEffect:
+  m_CorrespondingSourceObject: {fileID: 8756575071442392629, guid: c97d5c4695dca31449990c95a6810900, type: 3}
   m_PrefabInstance: {fileID: 1791774414425977803}
   m_PrefabAsset: {fileID: 0}

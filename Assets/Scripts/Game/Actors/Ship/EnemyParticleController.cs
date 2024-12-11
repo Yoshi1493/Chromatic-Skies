@@ -9,11 +9,11 @@ public class EnemyParticleController : ShipParticleController<Enemy>
     {
         base.Awake();
 
-        ship.StartAttackAction += OnAttackStart;
+        parentShip.StartAttackAction += OnAttackStart;
 
-        for (int i = 0; i < ship.bulletSystems.Count; i++)
+        for (int i = 0; i < parentShip.bulletSystems.Count; i++)
         {
-            ship.bulletSystems[i].StartAttackLoopAction += OnAttackLoopStart;
+            parentShip.bulletSystems[i].StartAttackLoopAction += OnAttackLoopStart;
         }
     }
 

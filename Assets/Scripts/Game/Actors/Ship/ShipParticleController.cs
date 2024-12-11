@@ -4,7 +4,7 @@ using UnityEngine.VFX;
 public abstract class ShipParticleController<TShip> : MonoBehaviour
     where TShip : Ship
 {
-    protected TShip ship;
+    protected TShip parentShip;
 
     [SerializeField] protected VisualEffect spawnVFX;
     [SerializeField] protected VisualEffect loseLifeVFX;
@@ -14,26 +14,26 @@ public abstract class ShipParticleController<TShip> : MonoBehaviour
 
     protected virtual void Awake()
     {
-        ship = GetComponentInParent<TShip>();
+        parentShip = GetComponentInParent<TShip>();
 
-        ship.LoseLifeAction += OnShipLoseLife;
-        ship.RespawnAction += OnShipRespawn;
-        ship.DeathAction += OnShipDeath;
-        ship.InvincibleAction += OnShipInvincible;
+        parentShip.LoseLifeAction += OnShipLoseLife;
+        parentShip.RespawnAction += OnShipRespawn;
+        parentShip.DeathAction += OnShipDeath;
+        parentShip.InvincibleAction += OnShipInvincible;
 
         if (loseLifeVFX.visualEffectAsset != null)
         {
-            loseLifeVFX.SetVector4("ParticleColour", ship.shipData.UIColour.value);
+            loseLifeVFX.SetVector4("ParticleColour", parentShip.shipData.UIColour.value);
         }
 
         if (deathVFX.visualEffectAsset != null)
         {
-            deathVFX.SetVector4("ParticleColour", ship.shipData.UIColour.value);
+            deathVFX.SetVector4("ParticleColour", parentShip.shipData.UIColour.value);
         }
 
         if (invincibleVFX.visualEffectAsset != null)
         {
-            invincibleVFX.SetVector4("ParticleColour", ship.shipData.UIColour.value);
+            invincibleVFX.SetVector4("ParticleColour", parentShip.shipData.UIColour.value);
         }
     }
 

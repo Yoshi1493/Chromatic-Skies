@@ -9,6 +9,8 @@ public class PlayerGreen : Player
     [SerializeField] FloatObject originalShootingSpeed;
     [SerializeField] FloatObject rapidfireShootingSpeed;
 
+    [SerializeField] SpriteRenderer afterimageSheet;
+
     IEnumerator rapidfireCoroutine;
     IEnumerator afterimageCoroutine;
 
@@ -49,7 +51,14 @@ public class PlayerGreen : Player
 
     IEnumerator DisplayAfterimageTrail()
     {
-        //SpriteRenderer
-        yield return WaitForSeconds(4.5f);
+        float currentTime = 0f;
+        float totalDisplayTime = 4.5f;
+        float displayInterval = 0.1f;
+
+        while (currentTime < totalDisplayTime)
+        {
+            yield return WaitForSeconds(displayInterval);
+            currentTime += displayInterval;
+        }
     }
 }
