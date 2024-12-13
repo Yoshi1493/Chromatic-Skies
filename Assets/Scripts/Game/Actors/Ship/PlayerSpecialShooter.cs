@@ -8,7 +8,7 @@ public abstract class PlayerSpecialShooter : PlayerShooter
 
     [SerializeField] FloatObject specialMeter;
     public const float MaxSpecialMeter = 3f;
-    const float InitialSpecialMeter = 3f;
+    const float InitialSpecialMeter = 1f;
     const float SpecialCost = 1f;
     const float MeterGainPerEnemyHit = 0.005f;
     const float MeterGainPerHit = 0.02f;
