@@ -15,6 +15,8 @@ public class AquariusBulletSystem11 : EnemyShooter<EnemyBullet>
 
     protected override IEnumerator Shoot()
     {
+        bullets.Clear();
+
         float r = Random.Range(0f, BranchSpacing);
 
         for (int i = 0; i < WaveCount; i++)
@@ -27,7 +29,6 @@ public class AquariusBulletSystem11 : EnemyShooter<EnemyBullet>
                 bulletData.colour = bulletData.gradient.Evaluate(i / (WaveCount - 1f));
 
                 var bullet = SpawnProjectile(1, z, pos) as AquariusBullet11;
-                bullet.DestroyAction += OnSpawnedBulletDestroy;
                 bullet.StartCoroutine(bullet.LerpSpeed(WaveCount - i, 0f, 1f));
                 bullets.Add(bullet);
             }
@@ -40,18 +41,16 @@ public class AquariusBulletSystem11 : EnemyShooter<EnemyBullet>
             for (int ii = 0; ii < BranchCount; ii++)
             {
                 int b = (i * BranchCount) + ii;
-                bullets[b].Fire();
+
+                if (bullets[b].isActiveAndEnabled)
+                {
+                    bullets[b].Fire();
+                }
             }
 
             yield return WaitForSeconds(ShootingCooldown);
         }
 
-        bullets.Clear();
         enabled = false;
-    }
-
-    void OnSpawnedBulletDestroy(EnemyBullet bullet)
-    {
-        bullets.Remove(bullet);
     }
 }
