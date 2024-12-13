@@ -48,6 +48,7 @@ public class PlayerGreenVFXController : PlayerParticleController
 
         yield return WaitUntil(() => specialVFX.aliveParticleCount == 0);
         transform.parent = parentShip.transform;
+        transform.localPosition = Vector3.zero;
 
         StopVisualEffect(specialVFX);
     }
