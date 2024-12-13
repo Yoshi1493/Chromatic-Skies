@@ -4,6 +4,10 @@ using static CoroutineHelper;
 
 public class SpecialGreen1 : SpecialBullet
 {
+    [Space]
+
+    [SerializeField] TrailRenderer trail;
+
     protected override float MaxLifetime => 4f;
     protected override int MaxCollisions => 8;
     
@@ -18,7 +22,9 @@ public class SpecialGreen1 : SpecialBullet
     protected override void OnEnable()
     {
         base.OnEnable();
+
         SpriteRenderer.size = originalSize;
+        trail.time = 1f;
     }
 
     protected override IEnumerator Move()
@@ -32,6 +38,8 @@ public class SpecialGreen1 : SpecialBullet
     protected override void Update()
     {
         base.Update();
+
         ((CircleCollider2D)collider).radius = HitboxSize;
+        trail.time = 1 - (currentLifetime / MaxLifetime);
     }
 }
