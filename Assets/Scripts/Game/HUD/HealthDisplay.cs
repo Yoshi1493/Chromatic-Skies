@@ -13,13 +13,18 @@ public class HealthDisplay<TShip> : ShipHUDComponent<TShip>
         base.Awake();
 
         healthText = GetComponent<TextMeshProUGUI>();
-        ship.TakeDamageAction += UpdateDisplay;
+        ship.TakeDamageAction += OnTakeDamage;
         ship.RespawnAction += OnShipRespawn;
     }
 
     void Start()
     {
         maxHealth = ship.shipData.MaxHealth.Value;
+        UpdateDisplay();
+    }
+
+    void OnTakeDamage(int _)
+    {
         UpdateDisplay();
     }
 

@@ -32,7 +32,7 @@ public abstract class Ship : Actor
 
     #region Actions
 
-    public event Action TakeDamageAction;
+    public event Action<int> TakeDamageAction;
     public event Action LoseLifeAction;
     public event Action RespawnAction;
     public event Action DeathAction;
@@ -77,7 +77,7 @@ public abstract class Ship : Actor
         currentHealth = Mathf.Clamp(currentHealth, 0, shipData.MaxHealth.Value);
         print($"{name} took {damage} damage.");
 
-        TakeDamageAction?.Invoke();
+        TakeDamageAction?.Invoke(damage);
 
         if (damage > 0)
         {

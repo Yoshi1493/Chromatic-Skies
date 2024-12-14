@@ -41,10 +41,13 @@ public abstract class Player : Ship
 #endif
     }
 
-    void OnTakeDamage()
+    void OnTakeDamage(int damage)
     {
-        hitsTaken.value++;
-        SetInvincible(1f);
+        if (damage > 0)
+        {
+            hitsTaken.value++;
+            SetInvincible(1f);
+        }
     }
 
     void OnInvincible(bool state)

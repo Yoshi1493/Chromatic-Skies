@@ -75,12 +75,12 @@ public abstract class PlayerSpecialShooter : PlayerShooter
         SpecialMeterUpdateAction?.Invoke();
     }
 
-    void OnPlayerTakeDamage()
+    void OnPlayerTakeDamage(int _)
     {
         GainSpecialMeter(MeterGainPerHit);
     }
 
-    void OnEnemyTakeDamage()
+    void OnEnemyTakeDamage(int _)
     {
         GainSpecialMeter(MeterGainPerEnemyHit);
     }

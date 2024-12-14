@@ -42,7 +42,6 @@ public abstract class EnemyBullet : Bullet
         {
             if (specialBullet is SpecialBlue1 blue)
             {
-                //temp hardcoded value
                 int healAmount = DamageCalculator.CalculateHealing(playerShip.shipData.MaxHealth.Value, blue.HitCount);
                 playerShip.TakeDamage(healAmount);
 

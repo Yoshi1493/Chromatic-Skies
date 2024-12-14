@@ -35,7 +35,7 @@ public class HealthBar<TShip> : ShipHUDComponent<TShip>
         StartCoroutine(fillCoroutine);
     }
 
-    void OnTakeDamage()
+    void OnTakeDamage(int _)
     {
         if (fillCoroutine == null)
         {
