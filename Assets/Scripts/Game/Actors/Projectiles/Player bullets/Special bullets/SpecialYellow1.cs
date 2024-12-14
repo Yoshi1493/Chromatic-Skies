@@ -4,6 +4,7 @@ using UnityEngine;
 public class SpecialYellow1 : SpecialBullet
 {
     protected override int MaxCollisions => 8;
+    protected override float HitboxSize => 0.5f * Mathf.Min(SpriteRenderer.size.x, SpriteRenderer.size.y) / 2f;
 
     [SerializeField] AnimationCurve homingInterpolation;
 
@@ -40,5 +41,11 @@ public class SpecialYellow1 : SpecialBullet
         }
 
         Destroy();
+    }
+
+    protected override void Update()
+    {
+        base.Update();
+        ((CircleCollider2D)collider).radius = HitboxSize;
     }
 }

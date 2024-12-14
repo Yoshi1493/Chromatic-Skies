@@ -55,6 +55,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3159780139199306296, guid: f43530a85f96e1c4dbc307f1aa39d119, type: 3}
+      propertyPath: m_Radius
+      value: 0.16
+      objectReference: {fileID: 0}
     - target: {fileID: 3896970343590141465, guid: f43530a85f96e1c4dbc307f1aa39d119, type: 3}
       propertyPath: projectileData
       value: 
@@ -62,14 +66,6 @@ PrefabInstance:
     - target: {fileID: 4295436845269932089, guid: f43530a85f96e1c4dbc307f1aa39d119, type: 3}
       propertyPath: m_Name
       value: Special bullet (Blue) 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8059288589417988345, guid: f43530a85f96e1c4dbc307f1aa39d119, type: 3}
-      propertyPath: m_Size.x
-      value: 0.32
-      objectReference: {fileID: 0}
-    - target: {fileID: 8059288589417988345, guid: f43530a85f96e1c4dbc307f1aa39d119, type: 3}
-      propertyPath: m_Size.y
-      value: 0.32
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f43530a85f96e1c4dbc307f1aa39d119, type: 3}
@@ -94,4 +90,3 @@ MonoBehaviour:
   projectileData: {fileID: 11400000, guid: ada5b9b434b9b6c40ad74bcbdeadf162, type: 2}
   moveDirection: {x: 0, y: 0, z: 0}
   currentSpeed: 0
-  playerMaxHealth: {fileID: 11400000, guid: 62bfe7bba6f3e4f46ba3c865a14a2c38, type: 2}
