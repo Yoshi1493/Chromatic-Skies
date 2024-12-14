@@ -55,13 +55,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3159780139199306296, guid: f43530a85f96e1c4dbc307f1aa39d119, type: 3}
+      propertyPath: m_Radius
+      value: 1.28
+      objectReference: {fileID: 0}
     - target: {fileID: 3896970343590141465, guid: f43530a85f96e1c4dbc307f1aa39d119, type: 3}
       propertyPath: projectileData
       value: 
       objectReference: {fileID: 11400000, guid: 3f2a3bf78de945a4281cf4e69eec465c, type: 2}
     - target: {fileID: 4295436845269932089, guid: f43530a85f96e1c4dbc307f1aa39d119, type: 3}
       propertyPath: m_Name
-      value: Special bullet (Red)
+      value: Special bullet (Red) 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f43530a85f96e1c4dbc307f1aa39d119, type: 3}
