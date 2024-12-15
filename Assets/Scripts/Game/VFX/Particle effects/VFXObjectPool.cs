@@ -21,7 +21,7 @@ public class VFXObjectPool : MonoBehaviour
     {
         for (int i = 0; i < visualEffects.Count; i++)
         {
-            if (System.Enum.IsDefined(typeof(VFXType), i))
+            if (Enum.IsDefined(typeof(VFXType), i))
             {
                 vfxPool.Add((VFXType)i, new Queue<GameObject>());
             }
@@ -60,6 +60,7 @@ public class VFXObjectPool : MonoBehaviour
 public enum VFXType
 {
     ProjectileDestruction = 0,
-    InvinciblePlayerShield = 1,
-    InvincibleEnemyShield = 2
+    PlayerGraze = 1,
+    InvinciblePlayerShield = 2,
+    InvincibleEnemyShield = 3
 }

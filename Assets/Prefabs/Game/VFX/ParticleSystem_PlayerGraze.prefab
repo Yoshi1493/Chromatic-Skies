@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 4871711780863809605}
   - component: {fileID: 4871711780863809604}
   - component: {fileID: 4871711780863809611}
-  - component: {fileID: -2606283796481003783}
+  - component: {fileID: 4437816253839199438}
   m_Layer: 0
-  m_Name: ParticleSystem_ProjectileDestruction
+  m_Name: ParticleSystem_PlayerGraze
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -42,7 +42,7 @@ VisualEffect:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4871711780863809610}
   m_Enabled: 1
-  m_Asset: {fileID: 8926484042661614526, guid: 332e9fa1680df2f4d86b5829e93ae1fc, type: 3}
+  m_Asset: {fileID: 8926484042661614526, guid: ab376fd9117c74f4598b01728ada82e9, type: 3}
   m_InitialEventName: 
   m_InitialEventNameOverriden: 0
   m_StartSeed: 0
@@ -114,15 +114,15 @@ VFXRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 9
---- !u!114 &-2606283796481003783
+--- !u!114 &4437816253839199438
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4871711780863809610}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2aabfedfdc7f7e440adf3bf4769b1963, type: 3}
+  m_Script: {fileID: 11500000, guid: ad99c25cfdc5ec74ab7e131baed227db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

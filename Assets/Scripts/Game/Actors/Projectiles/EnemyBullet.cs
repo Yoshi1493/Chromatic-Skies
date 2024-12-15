@@ -33,7 +33,7 @@ public abstract class EnemyBullet : Bullet
             if (!hasGrazed)
             {
                 playerGraze.GrazePlayer();
-                SpawnDestructionParticles(pos, rot);
+                SpawnGrazeParticles(pos);
 
                 hasGrazed = true;
             }

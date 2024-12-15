@@ -90,5 +90,17 @@ public abstract class Projectile : Actor
         particleEffect.enabled = true;
     }
 
+    protected void SpawnGrazeParticles(Vector3 spawnPos)
+    {
+        GameObject vfx = VFXObjectPool.Instance.Get(VFXType.PlayerGraze);
+        var particleEffect = vfx.GetComponent<ParticleEffect>();
+
+        vfx.transform.position = spawnPos;
+        vfx.SetActive(true);
+
+        particleEffect.ParticleSystem.SetVector4("ParticleColour", SpriteRenderer.color);
+        particleEffect.enabled = true;
+    }
+
     public abstract void Destroy();
 }
