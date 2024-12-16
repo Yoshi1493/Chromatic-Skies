@@ -59,7 +59,7 @@ public class TaurusLaser60 : Laser
 
                 //get particle spawn rotation
                 float rot = coll.transform.position.GetRotationDifference(transform.position);
-                SpawnDestructionParticles(shipPos, rot);
+                SpawnDestructionParticles(shipPos);
             }
         }
 

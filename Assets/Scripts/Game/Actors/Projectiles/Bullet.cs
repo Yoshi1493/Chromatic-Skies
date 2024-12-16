@@ -42,9 +42,7 @@ public abstract class Bullet : Projectile
 
     protected override void HandleCollision(Collider2D coll)
     {
-        //get particle spawn position+rotation
         Vector3 pos = coll.ClosestPoint(transform.position);
-        float rot = coll.transform.position.GetRotationDifference(transform.position);
 
         if (coll.TryGetComponent(out Ship ship))
         {
@@ -66,7 +64,7 @@ public abstract class Bullet : Projectile
                 Destroy();
             }
 
-            SpawnDestructionParticles(pos, rot);
+            SpawnDestructionParticles(pos);
         }
     }
 

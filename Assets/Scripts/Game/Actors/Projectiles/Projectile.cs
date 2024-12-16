@@ -75,29 +75,29 @@ public abstract class Projectile : Actor
 
     protected abstract void HandleCollision(Collider2D coll);
 
-    protected void SpawnDestructionParticles(Vector3 spawnPos, float spawnRotZ)
+    protected void SpawnGrazeParticles(Vector3 spawnPos, float spawnRotZ)
     {
-        //grab particle obj from pool; get VFX component
-        GameObject vfx = VFXObjectPool.Instance.Get(VFXType.ProjectileDestruction);
+        GameObject vfx = VFXObjectPool.Instance.Get(VFXType.PlayerGraze);
         var particleEffect = vfx.GetComponent<ParticleEffect>();
 
         //set spawn pos+rot
         vfx.transform.SetPositionAndRotation(spawnPos, Quaternion.Euler(0f, 0f, spawnRotZ));
         vfx.SetActive(true);
 
-        //set colour based on sprite colour
         particleEffect.ParticleSystem.SetVector4("ParticleColour", SpriteRenderer.color);
         particleEffect.enabled = true;
     }
 
-    protected void SpawnGrazeParticles(Vector3 spawnPos)
+    protected void SpawnDestructionParticles(Vector3 spawnPos)
     {
-        GameObject vfx = VFXObjectPool.Instance.Get(VFXType.PlayerGraze);
+        //grab particle obj from pool; get VFX component
+        GameObject vfx = VFXObjectPool.Instance.Get(VFXType.ProjectileDestruction);
         var particleEffect = vfx.GetComponent<ParticleEffect>();
 
         vfx.transform.position = spawnPos;
         vfx.SetActive(true);
 
+        //set colour based on sprite colour
         particleEffect.ParticleSystem.SetVector4("ParticleColour", SpriteRenderer.color);
         particleEffect.enabled = true;
     }

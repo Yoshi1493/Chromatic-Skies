@@ -67,8 +67,6 @@ public abstract class Laser : Projectile
             {
                 int damage = DamageCalculator.CalculateDamage(projectileData.Power.value, ship.shipData.Defense.Value, 10f);
                 ship.TakeDamage(damage);
-
-                SpawnDestructionParticles(pos, rot);
             }
         }
         else if (coll.TryGetComponent(out PlayerGraze playerGraze))
@@ -76,7 +74,7 @@ public abstract class Laser : Projectile
             if (!hasGrazed)
             {
                 playerGraze.GrazePlayer();
-                SpawnDestructionParticles(pos, rot);
+                SpawnGrazeParticles(pos, rot);
 
                 hasGrazed = true;
             }
