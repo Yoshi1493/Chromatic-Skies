@@ -41,7 +41,7 @@ public abstract class Shooter<TProjectile> : MonoBehaviour
         newProjectile.enabled = true;
 
         if (!char.IsNumber(newProjectile.name[^1]))                                     //debug
-        newProjectile.name += $" {newProjectile.transform.GetSiblingIndex()}";
+            newProjectile.name += $" {newProjectile.transform.GetSiblingIndex()}";
 
         return newProjectile;
     }
@@ -54,6 +54,12 @@ public abstract class Shooter<TProjectile> : MonoBehaviour
         for (int i = 0; i < projectiles.Length; i++)
         {
             projectiles[i].Destroy();
+
+            if (projectiles[i] is Bullet)
+            {
+                Vector3 pos = projectiles[i].transform.position;
+                projectiles[i].SpawnDestructionParticles(pos);
+            }
         }
     }
 
