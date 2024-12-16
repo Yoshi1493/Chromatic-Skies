@@ -1,6 +1,3 @@
-using System.Collections;
-using static CoroutineHelper;
-
 public class PSInvinciblePlayerShield : ParticleEffect
 {
     Player playerShip;
@@ -11,18 +8,14 @@ public class PSInvinciblePlayerShield : ParticleEffect
         playerShip = FindObjectOfType<Player>();
     }
 
-    protected override IEnumerator Play()
+    protected override void ReturnToPool()
     {
-        yield return base.Play();
-
-        float particleLifetime = ParticleSystem.GetFloat("ParticleLifetime");
-        yield return WaitForSeconds(particleLifetime);
-
         VFXObjectPool.Instance.ReturnToPool(gameObject, VFXType.InvinciblePlayerShield);
     }
 
-    void Update()
+    protected override void Update()
     {
+        base.Update();
         transform.position = playerShip.transform.position;
     }
 }

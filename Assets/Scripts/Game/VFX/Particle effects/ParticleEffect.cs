@@ -2,10 +2,12 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.VFX;
 
-public class ParticleEffect : MonoBehaviour
+public abstract class ParticleEffect : MonoBehaviour
 {
     public VisualEffect ParticleSystem { get; protected set; }
     protected IEnumerator particleAnimation;
+
+    protected bool hasPlayed;
 
     protected virtual void Awake()
     {
@@ -14,21 +16,24 @@ public class ParticleEffect : MonoBehaviour
 
     void OnEnable()
     {
-        PlayAnimation();
-    }
-
-    protected void PlayAnimation()
-    {
-        if (particleAnimation != null)
-            StopCoroutine(particleAnimation);
-
-        particleAnimation = Play();
-        StartCoroutine(particleAnimation);
-    }
-
-    protected virtual IEnumerator Play()
-    {
         ParticleSystem.Play();
-        yield return null;
     }
+
+    protected virtual void Update()
+    {
+        if (ParticleSystem.aliveParticleCount > 0)
+        {
+            hasPlayed = true;
+        }
+
+        if (ParticleSystem.aliveParticleCount == 0 && hasPlayed)
+        {
+            ReturnToPool();
+
+            hasPlayed = false;
+            return;
+        }
+    }
+
+    protected abstract void ReturnToPool();
 }
