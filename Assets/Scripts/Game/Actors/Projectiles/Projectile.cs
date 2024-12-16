@@ -91,7 +91,7 @@ public abstract class Projectile : Actor
     public void SpawnDestructionParticles(Vector3 spawnPos)
     {
         //grab particle obj from pool; get VFX component
-        GameObject vfx = VFXObjectPool.Instance.Get(VFXType.ProjectileDestruction);
+        GameObject vfx = VFXObjectPool.Instance.Get(VFXType.BulletDestruction);
         var particleEffect = vfx.GetComponent<ParticleEffect>();
 
         vfx.transform.position = spawnPos;

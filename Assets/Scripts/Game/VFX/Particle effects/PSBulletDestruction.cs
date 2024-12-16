@@ -1,7 +1,7 @@
 using System.Collections;
 using static CoroutineHelper;
 
-public class PSProjectileDestruction : ParticleEffect
+public class PSBulletDestruction : ParticleEffect
 {
     protected override IEnumerator Play()
     {
@@ -14,6 +14,6 @@ public class PSProjectileDestruction : ParticleEffect
         }
 
         yield return WaitUntil(() => ParticleSystem.aliveParticleCount == 0);
-        VFXObjectPool.Instance.ReturnToPool(gameObject, VFXType.ProjectileDestruction);
+        VFXObjectPool.Instance.ReturnToPool(gameObject, VFXType.BulletDestruction);
     }
 }
