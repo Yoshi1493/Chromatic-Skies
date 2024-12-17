@@ -6,7 +6,7 @@ public abstract class GenericObjectPool<TProjectile> : MonoBehaviour where TProj
     public static GenericObjectPool<TProjectile> Instance { get; private set; }
 
     readonly List<(TProjectile projectile, Queue<TProjectile> queue)> objectPool = new();
-    new Transform transform;
+    public new Transform transform;
 
     void Awake()
     {

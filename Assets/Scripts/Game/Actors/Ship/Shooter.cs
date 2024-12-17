@@ -46,23 +46,6 @@ public abstract class Shooter<TProjectile> : MonoBehaviour
         return newProjectile;
     }
 
-    //to-do: optimize?
-    protected void DestroyAllProjectiles()
-    {
-        TProjectile[] projectiles = FindObjectsOfType<TProjectile>();
-
-        for (int i = 0; i < projectiles.Length; i++)
-        {
-            projectiles[i].Destroy();
-
-            if (projectiles[i] is Bullet)
-            {
-                Vector3 pos = projectiles[i].transform.position;
-                projectiles[i].SpawnDestructionParticles(pos);
-            }
-        }
-    }
-
     protected virtual void OnLoseLife()
     {
         DestroyAllProjectiles();
@@ -72,4 +55,6 @@ public abstract class Shooter<TProjectile> : MonoBehaviour
     {
         enabled = false;
     }
+
+    protected abstract void DestroyAllProjectiles();
 }

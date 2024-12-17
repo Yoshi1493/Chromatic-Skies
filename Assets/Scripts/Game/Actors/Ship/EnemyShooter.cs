@@ -100,4 +100,26 @@ public abstract class EnemyShooter<TProjectile> : Shooter<TProjectile>, IEnemyAt
         StopAllCoroutines();
         DestroyAllProjectiles();
     }
+
+    protected override void DestroyAllProjectiles()
+    {
+        foreach (EnemyBullet projectile in EnemyBulletPool.Instance.transform.GetComponentsInChildren<Projectile>())
+        {
+            if (projectile.isActiveAndEnabled)
+            {
+                projectile.Destroy();
+
+                Vector3 pos = projectile.transform.position;
+                projectile.SpawnDestructionParticles(pos);
+            }
+        }
+
+        foreach (Laser projectile in EnemyLaserPool.Instance.transform.GetComponentsInChildren<Projectile>())
+        {
+            if (projectile.isActiveAndEnabled)
+            {
+                projectile.Destroy();
+            }
+        }
+    }
 }
