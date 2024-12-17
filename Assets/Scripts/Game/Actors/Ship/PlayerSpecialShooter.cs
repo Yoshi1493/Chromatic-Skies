@@ -29,6 +29,7 @@ public abstract class PlayerSpecialShooter : PlayerShooter
         //put in Start instead of Awake due to script execution order conditions
         enemy = FindObjectOfType<Enemy>();
         enemy.TakeDamageAction += OnEnemyTakeDamage;
+        enemy.DeathAction += OnEnemyDie;
 
         ownerShip.TakeDamageAction += OnPlayerTakeDamage;
         ownerShip.GetComponentInChildren<PlayerGraze>().GrazeAction += OnPlayerGraze;
@@ -83,6 +84,11 @@ public abstract class PlayerSpecialShooter : PlayerShooter
     void OnEnemyTakeDamage(int _)
     {
         GainSpecialMeter(MeterGainPerEnemyHit);
+    }
+
+    void OnEnemyDie()
+    {
+        enabled = false;
     }
 
     void OnPlayerGraze()
