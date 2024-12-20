@@ -15,6 +15,11 @@ public class EnemyParticleController : ShipParticleController<Enemy>
         {
             parentShip.bulletSystems[i].StartAttackLoopAction += OnAttackLoopStart;
         }
+
+        if (attackStartVFX.visualEffectAsset != null)
+        {
+            attackStartVFX.SetVector4("ParticleColour", parentShip.shipData.UIColour.value);
+        }
     }
 
     void OnAttackStart(int _)

@@ -26,6 +26,11 @@ public abstract class ShipParticleController<TShip> : MonoBehaviour
             loseLifeVFX.SetVector4("ParticleColour", parentShip.shipData.UIColour.value);
         }
 
+        if (respawnVFX.visualEffectAsset != null)
+        {
+            respawnVFX.SetVector4("ParticleColour", parentShip.shipData.UIColour.value);
+        }
+
         if (deathVFX.visualEffectAsset != null)
         {
             deathVFX.SetVector4("ParticleColour", parentShip.shipData.UIColour.value);
