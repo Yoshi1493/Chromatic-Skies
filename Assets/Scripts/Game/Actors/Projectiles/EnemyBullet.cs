@@ -48,7 +48,10 @@ public abstract class EnemyBullet : Bullet
                 blue.RegisterHit();
             }
 
-            Destroy();
+            if (projectileData.destructible)
+            {
+                Destroy();
+            }
         }
     }
 
