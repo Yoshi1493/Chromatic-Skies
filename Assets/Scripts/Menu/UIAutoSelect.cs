@@ -1,9 +1,7 @@
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-[RequireComponent(typeof(Button))]
-public class ButtonAutoSelect : MonoBehaviour, IPointerEnterHandler
+public class UIAutoSelect : MonoBehaviour, IPointerEnterHandler
 {
     public void OnPointerEnter(PointerEventData pointerEventData)
     {
