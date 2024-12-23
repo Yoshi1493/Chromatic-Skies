@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
 
-public class InputForcer : MonoBehaviour
+public class InputHandler : MonoBehaviour
 {
     GameObject lastSelectedGameObject;
 
