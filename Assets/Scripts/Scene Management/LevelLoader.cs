@@ -17,8 +17,6 @@ public class LevelLoader : MonoBehaviour
     void Start()
     {
         Application.targetFrameRate = 60;
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
     }
 
     public void LoadScene(int sceneIndex)
