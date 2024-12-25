@@ -4587,8 +4587,12 @@ PrefabInstance:
       value: Quit
       objectReference: {fileID: 0}
     - target: {fileID: 9113669927874555426, guid: 43808b15fa4047946ae6ee640412c78f, type: 3}
+      propertyPath: m_fontSize
+      value: 48
+      objectReference: {fileID: 0}
+    - target: {fileID: 9113669927874555426, guid: 43808b15fa4047946ae6ee640412c78f, type: 3}
       propertyPath: m_fontSizeBase
-      value: 64
+      value: 48
       objectReference: {fileID: 0}
     - target: {fileID: 9113669927874555428, guid: 43808b15fa4047946ae6ee640412c78f, type: 3}
       propertyPath: m_Pivot.x
