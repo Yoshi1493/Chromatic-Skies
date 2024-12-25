@@ -5415,6 +5415,14 @@ PrefabInstance:
       propertyPath: shipName
       value: 
       objectReference: {fileID: 11400000, guid: 3794480b64b37f44bb1b6b61023175f7, type: 2}
+    - target: {fileID: 8255019248078897927, guid: a23c09bf4dcd9d640b45a1eff6ea3b2a, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8255019248078897927, guid: a23c09bf4dcd9d640b45a1eff6ea3b2a, type: 3}
+      propertyPath: m_Color.r
+      value: 0.100000024
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a23c09bf4dcd9d640b45a1eff6ea3b2a, type: 3}
 --- !u!224 &1189252215 stripped
@@ -5749,7 +5757,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 400, y: 0}
+  m_AnchoredPosition: {x: 300, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1297935505
@@ -6495,6 +6503,14 @@ PrefabInstance:
       propertyPath: shipName
       value: 
       objectReference: {fileID: 11400000, guid: bc45a3978b8853e4a8122e45001fd4ed, type: 2}
+    - target: {fileID: 8255019248078897927, guid: a23c09bf4dcd9d640b45a1eff6ea3b2a, type: 3}
+      propertyPath: m_Color.g
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8255019248078897927, guid: a23c09bf4dcd9d640b45a1eff6ea3b2a, type: 3}
+      propertyPath: m_Color.r
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a23c09bf4dcd9d640b45a1eff6ea3b2a, type: 3}
 --- !u!224 &1408981524 stripped
@@ -8443,6 +8459,14 @@ PrefabInstance:
       propertyPath: shipName
       value: 
       objectReference: {fileID: 11400000, guid: 11f933d0bc0be4e479e717a3ab9cd50f, type: 2}
+    - target: {fileID: 8255019248078897927, guid: a23c09bf4dcd9d640b45a1eff6ea3b2a, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8255019248078897927, guid: a23c09bf4dcd9d640b45a1eff6ea3b2a, type: 3}
+      propertyPath: m_Color.g
+      value: 0.10000001
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a23c09bf4dcd9d640b45a1eff6ea3b2a, type: 3}
 --- !u!224 &1806309881 stripped
@@ -10417,6 +10441,14 @@ PrefabInstance:
       propertyPath: shipName
       value: 
       objectReference: {fileID: 11400000, guid: a1a8736001c50bb499bf10ea9431f479, type: 2}
+    - target: {fileID: 8255019248078897927, guid: a23c09bf4dcd9d640b45a1eff6ea3b2a, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8255019248078897927, guid: a23c09bf4dcd9d640b45a1eff6ea3b2a, type: 3}
+      propertyPath: m_Color.g
+      value: 0.9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a23c09bf4dcd9d640b45a1eff6ea3b2a, type: 3}
 --- !u!224 &2044158634 stripped
