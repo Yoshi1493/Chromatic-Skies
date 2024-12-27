@@ -5,7 +5,7 @@ public class AquariusBullet41 : EnemyBullet
 {
     protected override int NumCollisions => Physics2D.OverlapBoxNonAlloc(transform.position, SpriteRenderer.size, transform.eulerAngles.z, collisionResults, CollisionMask);
 
-    protected override float MaxLifetime => 4f;
+    protected override float MaxLifetime => 6f;
 
     protected override IEnumerator Move()
     {
