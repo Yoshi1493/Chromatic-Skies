@@ -27,7 +27,7 @@ public class InputHandler : MonoBehaviour
     {
         GameObject currentSelectedGameObject = EventSystem.current.currentSelectedGameObject;
 
-        if (currentSelectedGameObject != null && lastSelectedGameObject.activeSelf)
+        if (currentSelectedGameObject != null)
         {
             if (lastSelectedGameObject != currentSelectedGameObject)
             {
