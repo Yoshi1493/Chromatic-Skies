@@ -30,6 +30,11 @@ public class PlayerStatBar : MonoBehaviour
 
     public void AnimateStatBar(float endFillAmount, Color endColour)
     {
+        if (statBarImage.fillAmount == endFillAmount)
+        {
+            return;
+        }
+
         if (statBarAnimation != null)
         {
             StopCoroutine(statBarAnimation);
