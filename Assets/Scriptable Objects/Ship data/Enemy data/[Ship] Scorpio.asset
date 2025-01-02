@@ -24,7 +24,7 @@ MonoBehaviour:
     Variable: {fileID: 0}
   MaxHealth:
     useConstant: 1
-    ConstantValue: 180000
+    ConstantValue: 165000
     Variable: {fileID: 11400000, guid: 0f4336b9377353c499ee6e6a36259832, type: 2}
   Power:
     useConstant: 0
