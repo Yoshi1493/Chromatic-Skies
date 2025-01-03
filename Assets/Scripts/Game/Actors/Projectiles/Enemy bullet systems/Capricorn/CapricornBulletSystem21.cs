@@ -5,7 +5,7 @@ using static MathHelper;
 
 public class CapricornBulletSystem21 : EnemyShooter<EnemyBullet>
 {
-    const int BranchCount = 12;
+    const int BranchCount = 10;
     const float BranchSpacing = 360f / BranchCount;
     const int BulletCount = 8;
     const float BulletSpacing = 12f;
