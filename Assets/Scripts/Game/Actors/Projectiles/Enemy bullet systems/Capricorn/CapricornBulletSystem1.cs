@@ -5,12 +5,16 @@ using static CoroutineHelper;
 public class CapricornBulletSystem1 : EnemyShooter<EnemyBullet>
 {
     const int RepeatCount = 2;
-    const int WaveCount = 10;
-    const float WaveSpacing = 360f / BranchCount / WaveCount;
-    const int BranchCount = 2;
-    const float BranchSpacing = 360f / BranchCount;
-    const int BulletCount = 8;
+    const int WaveCount = 3;
+    const float WaveSpacing = 8f;
+    const int BulletCount = 60;
     const float BulletSpacing = 360f / BulletCount;
+    const int BulletClumpCount = 3;
+    const float BulletClumpSpacing = 3f;
+    const float BulletRotationSpeed = 15f;
+    const float BulletRotationDuration = 6f;
+
+    protected override float ShootingCooldown => 0.4f;
 
     protected override IEnumerator Shoot()
     {
@@ -19,22 +23,22 @@ public class CapricornBulletSystem1 : EnemyShooter<EnemyBullet>
         while (enabled)
         {
             StartMoveAction?.Invoke();
+            SetSubsystemEnabled(1);
 
             for (int i = 0; i < RepeatCount; i++)
             {
                 for (int ii = 0; ii < WaveCount; ii++)
                 {
-                    for (int iii = 0; iii < BranchCount; iii++)
+                    for (int iii = 0; iii < BulletCount; iii++)
                     {
-                        for (int iv = 0; iv < BulletCount; iv++)
-                        {
-                            float t = (i % 2 * 2 - 1) * ((ii * WaveSpacing) + (iii * BranchSpacing));
-                            float z = t + (iv * BulletSpacing);
-                            Vector3 pos = transform.up.RotateVectorBy(t);
+                        float z = (i % 2 * 2 - 1) * ((ii * WaveSpacing) + (iii * (BulletSpacing - BulletClumpSpacing)) + (iii - (iii % BulletClumpCount)) * BulletClumpSpacing);
+                        Vector3 pos = Vector3.zero;
 
-                            bulletData.colour = bulletData.gradient.Evaluate(iii);
-                            SpawnProjectile(0, z, pos).Fire();
-                        }
+                        bulletData.colour = bulletData.gradient.Evaluate(i);
+
+                        var bullet = SpawnProjectile(0, z, pos);
+                        bullet.StartCoroutine(bullet.RotateBy(i * BulletRotationSpeed, BulletRotationDuration));
+                        bullet.Fire();
                     }
 
                     yield return WaitForSeconds(ShootingCooldown);
@@ -43,8 +47,7 @@ public class CapricornBulletSystem1 : EnemyShooter<EnemyBullet>
                 yield return WaitForSeconds(1f);
             }
 
-            SetSubsystemEnabled(1);
-            yield return WaitForSeconds(2f);
+            yield return WaitForSeconds(3f);
         }
     }
 }
