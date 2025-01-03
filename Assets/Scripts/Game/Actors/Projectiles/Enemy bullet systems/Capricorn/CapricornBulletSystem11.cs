@@ -6,7 +6,7 @@ public class CapricornBulletSystem11 : EnemyShooter<EnemyBullet>
 {
     const int WaveCount = 18;
     const float WaveSpacing = -180f / WaveCount;
-    const int BulletCount = 5;
+    const int BulletCount = 4;
     const float BulletBaseSpeed = 2f;
     const float BulletSpeedModifier = 0.25f;
 
