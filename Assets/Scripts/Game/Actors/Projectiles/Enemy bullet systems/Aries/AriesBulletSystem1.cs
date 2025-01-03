@@ -12,7 +12,8 @@ public class AriesBulletSystem1 : EnemyShooter<EnemyBullet>
     const float BulletSpacing = 360f / BulletCount;
     const float BulletBaseSpeed = 4.8f;
     const float BulletSpeedModifier = -0.2f;
-    const float BulletRotationSpeed = 90f;
+    const float BulletRotationSpeed = 60f;
+    const float BulletRotationDuration = 4f;
 
     protected override IEnumerator Shoot()
     {
@@ -38,7 +39,7 @@ public class AriesBulletSystem1 : EnemyShooter<EnemyBullet>
 
                         var bullet = SpawnProjectile(0, z, pos);
                         bullet.StartCoroutine(bullet.LerpSpeed(s, s * 0.5f, 0.5f));
-                        bullet.StartCoroutine(bullet.RotateBy((ii % 2 * 2 - 1) * BulletRotationSpeed, 4f));
+                        bullet.StartCoroutine(bullet.RotateBy((ii % 2 * 2 - 1) * BulletRotationSpeed, BulletRotationDuration));
                         bullet.Fire();
                     }
 

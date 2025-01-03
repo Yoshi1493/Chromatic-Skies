@@ -21,8 +21,6 @@ public class AriesBulletSystem31 : EnemyShooter<EnemyBullet>
     {
         bullets.Clear();
 
-        yield return WaitForSeconds(2f);
-
         Vector3 v1 = 3f * Vector3.down;
 
         for (int i = 0; i < RingCount; i++)

@@ -1,54 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &2342033901494072360
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 3473190385846629425}
-  - component: {fileID: 4352274028860432285}
-  m_Layer: 0
-  m_Name: Bullet Subsystem 2
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &3473190385846629425
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2342033901494072360}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1374020381087676007}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4352274028860432285
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2342033901494072360}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 27e34d5e03308b444b807a2b8033208a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  projectiles:
-  - {fileID: 2562767536430038447, guid: 5d797c0017d837a4fa2500bffc74ccd1, type: 3}
-  enemyProjectiles:
-  - {fileID: 2562767536430038447, guid: 5d797c0017d837a4fa2500bffc74ccd1, type: 3}
-  bulletData: {fileID: 11400000, guid: bee2f1b3ea5c59e488aeaab658fbea3e, type: 2}
 --- !u!1 &2589376011441138682
 GameObject:
   m_ObjectHideFlags: 0
@@ -94,8 +45,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectiles:
-  - {fileID: 2981126790056077132, guid: b61f7fc888def7f45a7d53a9c6ff2605, type: 3}
-  enemyProjectiles:
   - {fileID: 2981126790056077132, guid: b61f7fc888def7f45a7d53a9c6ff2605, type: 3}
   bulletData: {fileID: 11400000, guid: 7c34ef2f1f7107b47afc9424dfdf8be3, type: 2}
 --- !u!1 &5038592034943205865
@@ -144,8 +93,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectiles:
   - {fileID: -537335154739979936, guid: 69b8f9a5f7014d444b0fc9dbd2eae5eb, type: 3}
-  enemyProjectiles:
-  - {fileID: -537335154739979936, guid: 69b8f9a5f7014d444b0fc9dbd2eae5eb, type: 3}
   bulletData: {fileID: 11400000, guid: b5ee0d1b90ab1234187ec2bfe16c0a80, type: 2}
 --- !u!1 &7542289076040636616
 GameObject:
@@ -193,8 +140,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectiles:
   - {fileID: 6939719341445698013, guid: 23f5c05bc5f30cc469a64286d15fc396, type: 3}
-  enemyProjectiles:
-  - {fileID: 6939719341445698013, guid: 23f5c05bc5f30cc469a64286d15fc396, type: 3}
   bulletData: {fileID: 11400000, guid: 8ca1d4ccce03d4045bbb26e7f8d5ee7e, type: 2}
 --- !u!1 &8862351184864980527
 GameObject:
@@ -241,8 +186,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectiles:
-  - {fileID: 4949795630923884701, guid: 1319c36f669ff60419fbc335f58c2201, type: 3}
-  enemyProjectiles:
   - {fileID: 4949795630923884701, guid: 1319c36f669ff60419fbc335f58c2201, type: 3}
   bulletData: {fileID: 11400000, guid: 96f79adf99b59244ba563168b59f548e, type: 2}
 --- !u!1001 &5337197869581096772
@@ -380,8 +323,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectiles: []
-  enemyProjectiles:
-  - {fileID: 0}
   bulletData: {fileID: 0}
 --- !u!1 &2224027399763678176 stripped
 GameObject:
@@ -401,8 +342,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectiles: []
-  enemyProjectiles:
-  - {fileID: 0}
   bulletData: {fileID: 0}
 --- !u!1 &2571762796076018676 stripped
 GameObject:
@@ -422,8 +361,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectiles:
-  - {fileID: -17074376929910479, guid: 8e9ffeb01425de14283a7aa6979dd0b2, type: 3}
-  enemyProjectiles:
   - {fileID: -17074376929910479, guid: 8e9ffeb01425de14283a7aa6979dd0b2, type: 3}
   bulletData: {fileID: 11400000, guid: 5270db6e406250949a5e490cf8967a9c, type: 2}
 --- !u!1 &3405388045636645001 stripped
@@ -445,8 +382,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectiles:
   - {fileID: 8117216779145276408, guid: 59000994238888d44adb292da0f1f538, type: 3}
-  enemyProjectiles:
-  - {fileID: 8117216779145276408, guid: 59000994238888d44adb292da0f1f538, type: 3}
   bulletData: {fileID: 11400000, guid: e6cda41d15a90774896b40859f567406, type: 2}
 --- !u!1 &3773574035635707974 stripped
 GameObject:
@@ -466,8 +401,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectiles:
-  - {fileID: 7757716064999866988, guid: 535302be54a65244f81c3a5b0c4e004a, type: 3}
-  enemyProjectiles:
   - {fileID: 7757716064999866988, guid: 535302be54a65244f81c3a5b0c4e004a, type: 3}
   bulletData: {fileID: 11400000, guid: 8a5e4febf0feec84a96efb0add1d06ff, type: 2}
 --- !u!4 &3927816813634689536 stripped
@@ -498,8 +431,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectiles:
-  - {fileID: 983179094530019093, guid: b7b239d2a87064b45951b29ed6e0af31, type: 3}
-  enemyProjectiles:
   - {fileID: 983179094530019093, guid: b7b239d2a87064b45951b29ed6e0af31, type: 3}
   bulletData: {fileID: 11400000, guid: a1671e4c4f6007a46803526567020a57, type: 2}
 --- !u!1 &5694548166714613761 stripped

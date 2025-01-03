@@ -28,7 +28,7 @@ public class AriesBulletSystem4 : EnemyShooter<EnemyBullet>
                 float z = iii * BranchSpacing + i + r;
                 Vector3 pos = Vector3.zero;
 
-                bulletData.colour = bulletData.gradient.Evaluate(Mathf.PingPong(ii, WaveCount) / (WaveCount - 1));
+                bulletData.colour = bulletData.gradient.Evaluate(Mathf.PingPong(ii, WaveCount * 2) / (WaveCount * 2 - 1));
                 SpawnProjectile(0, z, pos).Fire();
             }
 
