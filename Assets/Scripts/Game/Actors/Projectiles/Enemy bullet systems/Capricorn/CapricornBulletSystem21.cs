@@ -5,32 +5,46 @@ using static MathHelper;
 
 public class CapricornBulletSystem21 : EnemyShooter<EnemyBullet>
 {
-    const int BranchCount = 10;
+    const int WaveCount = 5;
+    const int BranchCount = 12;
     const float BranchSpacing = 360f / BranchCount;
-    const int BulletCount = 8;
-    const float BulletSpacing = 12f;
+    const int BulletCount = 5;
     const float BulletBaseSpeed = 2f;
     const float BulletSpeedModifier = 0.2f;
 
-    protected override float ShootingCooldown => 5 / 60f;
+    protected override float ShootingCooldown => 0.3f;
 
     protected override IEnumerator Shoot()
     {
-        float r = RandomAngleDeg;
-
-        for (int i = 0; i <= BranchCount; i++)
+        for (int i = 0; i < WaveCount; i++)
         {
-            for (int ii = 0; ii < BulletCount; ii++)
+            for (int ii = 0; ii < BranchCount; ii++)
             {
-                float z = (i * BranchSpacing) - (ii * BulletSpacing) + r;
-                float s = BulletBaseSpeed + (ii * BulletSpeedModifier);
-                Vector3 pos = Vector3.zero;
+                float r = RandomAngleDeg;
 
-                bulletData.colour = bulletData.gradient.Evaluate(ii / (BulletCount - 1f));
+                for (int iii = 0; iii < BulletCount; iii++)
+                {
+                    float z = ii * BranchSpacing;
+                    float s = BulletBaseSpeed + (iii * BulletSpeedModifier);
+                    Vector3 pos = Vector3.zero;
 
-                var bullet = SpawnProjectile(2, z, pos);
-                bullet.MoveSpeed = s;
-                bullet.Fire();
+                    bulletData.colour = bulletData.gradient.Evaluate(iii / (BulletCount - 1f));
+
+                    var bullet = SpawnProjectile(2, z, pos);
+
+                    if (ii == 0)
+                    {
+                        bullet.StartCoroutine(bullet.GraduallyLookAt(PlayerPosition, 0.1f, delay: 1.2f));
+                    }
+                    else
+                    {
+                        bullet.StartCoroutine(bullet.RotateBy(r, 0f, delay: 1.2f));
+                    }
+
+                    bullet.MoveSpeed = s;
+                    bullet.Fire();
+                }
+
             }
 
             yield return WaitForSeconds(ShootingCooldown);
