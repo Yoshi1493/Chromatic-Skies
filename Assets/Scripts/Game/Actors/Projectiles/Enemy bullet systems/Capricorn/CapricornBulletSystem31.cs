@@ -5,60 +5,44 @@ using static CoroutineHelper;
 
 public class CapricornBulletSystem31 : EnemyShooter<EnemyBullet>
 {
-    const int WaveCount = 3;
-    const int BulletCount = 12;
-    const float BulletBaseSpeed = 1f;
-    const float BulletRotationSpeed = 90f;
-    const float BulletRotationSpeedModifier = -15f;
-    const float BulletRotationDuration = 2f;
-    const float BulletRotationDurationModifier = 0.1f;
+    const int WaveCount = 9;
+    const float WaveSpacing = 12f;
+    const int BranchCount = 2;
+    const int BulletCount = 6;
+    const float BulletBaseSpeed = 2f;
+    const float BulletSpeedModifier = 0.3f;
 
-    List<EnemyBullet> bullets = new(WaveCount * BulletCount);
-
-    protected override float ShootingCooldown => 1f;
+    protected override float ShootingCooldown => 0.2f;
 
     protected override IEnumerator Shoot()
     {
-        bullets.Clear();
-
-        for (int i = 0; i < WaveCount; i++)
+        while (enabled)
         {
-            yield return WaitForSeconds(ShootingCooldown);
+            yield return WaitForSeconds(4f);
 
-            Vector3 v = PlayerPosition - transform.position;
+            float r = PlayerPosition.GetRotationDifference(transform.position);
 
-            for (int ii = 0; ii < BulletCount; ii++)
+            for (int i = 0; i < WaveCount; i++)
             {
-                float z = v.GetRotationDifference(Vector3.zero);
-                float s = Mathf.Lerp(BulletBaseSpeed, v.magnitude, ii / (BulletCount - 1f));
-                Vector3 pos = Vector3.zero;
+                for (int ii = 0; ii < BranchCount; ii++)
+                {
+                    for (int iii = 0; iii < BulletCount; iii++)
+                    {
+                        float z = (ii % 2 * 2 - 1) * (i * WaveSpacing) + r;
+                        float s = BulletBaseSpeed + (iii * BulletSpeedModifier);
+                        Vector3 pos = Vector3.zero;
 
-                bulletData.colour = bulletData.gradient.Evaluate(i / (WaveCount - 1f));
+                        bulletData.colour = bulletData.gradient.Evaluate(iii / (BulletCount - 1f));
 
-                var bullet = SpawnProjectile(1, z, pos);
-                bullet.MoveSpeed = s;
-                bullet.Fire();
-                bullets.Add(bullet);
+                        var bullet = SpawnProjectile(1, z, pos);
+                        bullet.MoveSpeed = s;
+                        bullet.Fire();
+                    }
+                }
+
+                yield return WaitForSeconds(ShootingCooldown);
             }
         }
-
-        yield return WaitForSeconds(2f);
-
-        for (int i = 0; i < WaveCount; i++)
-        {
-            for (int ii = 0; ii < BulletCount; ii++)
-            {
-                int b = i * BulletCount + ii;
-                float r = (ii % 2 * 2 - 1) * (BulletRotationSpeed + (ii / 2 * BulletRotationSpeedModifier));
-                float d = BulletRotationDuration + (ii / 2 * BulletRotationDurationModifier);
-
-                bullets[b].StartCoroutine(bullets[b].RotateBy(r, d));
-                bullets[b].StartCoroutine(bullets[b].LerpSpeed(0f, 2f, 1f));
-
-                yield return WaitForSeconds(ShootingCooldown * 0.1f);
-            }
-        }
-
-        enabled = false;
     }
+
 }
