@@ -61,26 +61,26 @@ public static class EnemyMovementBehaviour
     /// <summary>
     /// translates <ship> to <GetRandomPosition()> over <moveDuration> seconds.
     /// </summary>
-    public static IEnumerator MoveToRandomPosition(this EnemyMovement enemy, float moveDuration, float minSqrMagDelta = 2f, float maxSqrMagDelta = 4f, float delay = 0f)
+    public static IEnumerator MoveToRandomPosition(this EnemyMovement enemy, float moveDuration, float minDeltaMagnitude = 2f, float maxDeltaMagnitude = 4f, float delay = 0f)
     {
-        if (minSqrMagDelta > maxSqrMagDelta) yield break;
+        if (minDeltaMagnitude > maxDeltaMagnitude) yield break;
         if (delay > 0) yield return WaitForSeconds(delay);
 
-        Vector3 endPosition = enemy.transform.position.GetRandomPositionWithinBounds(enemy.shipData.boundaryLayer);
+        Vector3 endPosition = enemy.transform.position.GetRandomPositionWithinBounds(enemy.shipData.boundaryLayer, minDeltaMagnitude, maxDeltaMagnitude);
         yield return enemy.MoveTo(endPosition, moveDuration);
     }
 
     /// <summary>
     /// returns a random position that is <minSqrMagDelta> to <maxSqrMagDelta> units away from <currentPostion>, within <bounds>
     /// </summary>
-    public static Vector3 GetRandomPositionWithinBounds(this Vector3 currentPosition, LayerMask bounds, float minSqrMagDelta = 2f, float maxSqrMagDelta = 4f)
+    public static Vector3 GetRandomPositionWithinBounds(this Vector3 currentPosition, LayerMask bounds, float minDeltaMagnitude, float maxDeltaMagnitude)
     {
         float randMagnitude;
         Vector3 randDirection;
 
         do
         {
-            randMagnitude = Random.Range(minSqrMagDelta, maxSqrMagDelta);
+            randMagnitude = Random.Range(minDeltaMagnitude, maxDeltaMagnitude);
             randDirection = Random.insideUnitCircle.normalized;
         }
         while (Physics2D.Raycast(currentPosition, randDirection, randMagnitude, bounds).collider != null);
