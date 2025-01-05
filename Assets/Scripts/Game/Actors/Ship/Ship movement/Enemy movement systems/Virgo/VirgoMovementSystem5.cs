@@ -7,8 +7,8 @@ public class VirgoMovementSystem5 : EnemyMovement
     {
         while (enabled)
         {
-            yield return WaitForSeconds(1f);
-            yield return this.MoveToRandomPosition(1f, 1f, 2f);
+            yield return WaitForSeconds(6f);
+            yield return this.MoveToRandomPosition(1.2f, 2f, 2f);
         }
     }
 }

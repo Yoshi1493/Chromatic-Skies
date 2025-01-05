@@ -14,7 +14,7 @@ public class VirgoBulletSystem51 : EnemyShooter<EnemyBullet>
         {
             float x = PlayerPosition.x;
             float y = screenHalfHeight + 1f;
-            float z = 0;
+            float z = 0f;
             Vector3 pos = new(x, y);
 
             SpawnProjectile(2, z, pos, false).Fire();

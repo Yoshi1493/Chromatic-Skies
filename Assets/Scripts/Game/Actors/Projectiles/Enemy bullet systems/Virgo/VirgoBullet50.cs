@@ -15,6 +15,6 @@ public class VirgoBullet50 : EnemyBullet
         yield return this.LerpSpeed(4f, 0f, 1f);
 
         yield return this.RotateBy(90f, 0f, rotatesClockwise);
-        MoveSpeed = 3f;
+        MoveSpeed = 2.5f;
     }
 }
