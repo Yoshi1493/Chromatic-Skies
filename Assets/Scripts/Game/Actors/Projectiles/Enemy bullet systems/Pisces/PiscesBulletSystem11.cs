@@ -1,37 +1,39 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using static CoroutineHelper;
 
 public class PiscesBulletSystem11 : EnemyShooter<EnemyBullet>
 {
-    const int WaveCount = 4;
-    const float WaveSpacing = BulletSpacing / WaveCount;
-    const int BulletCount = 48;
-    const float BulletSpacing = 360f / BulletCount;
-    const float BulletBaseSpeed = 1.5f;
-    const float BulletSpeedModifier = 2f;
+    const int WaveCount = 6;
+    const int BulletCount = 6;
+    const float SpawnMaxAngle = 75f;
 
-    protected override float ShootingCooldown => 0.5f;
+    List<float> bulletSpawnData = new(WaveCount);
+
+    protected override float ShootingCooldown => 0.25f;
+
+    protected override void Awake()
+    {
+        base.Awake();
+
+        for (int i = 0; i < WaveCount; i++)
+        {
+            float z = -SpawnMaxAngle + (i * (SpawnMaxAngle * 2) / (WaveCount - 1));
+            bulletSpawnData.Add(z);
+        }
+    }
 
     protected override IEnumerator Shoot()
     {
+        bulletSpawnData.Randomize();
+
         for (int i = 0; i < WaveCount; i++)
         {
-            for (int ii = 0; ii < BulletCount; ii++)
-            {
-                float r = Random.value;
+            float z = bulletSpawnData[i];
+            Vector3 pos = Vector3.zero;
 
-                int b = Mathf.RoundToInt(Random.value) + 1;
-                float z = (i * WaveSpacing) + (ii * BulletSpacing);
-                float s = BulletBaseSpeed + (r * BulletSpeedModifier);
-
-                bulletData.colour = bulletData.gradient.Evaluate(r);
-
-                var bullet = SpawnProjectile(b, z, Vector3.zero);
-                bullet.MoveSpeed = s;
-                bullet.Fire();
-            }
-
+            SpawnProjectile(1, z, pos).Fire();
             yield return WaitForSeconds(ShootingCooldown);
         }
 
