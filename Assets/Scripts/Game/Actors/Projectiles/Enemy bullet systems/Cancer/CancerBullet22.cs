@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using static CoroutineHelper;
 
 public class CancerBullet22 : EnemyBullet
 {
@@ -9,6 +10,9 @@ public class CancerBullet22 : EnemyBullet
 
     protected override IEnumerator Move()
     {
-        yield return this.LerpSpeed(5f, 3f, 1f);
+        yield return this.LerpSpeed(5f, 0f, 1f);
+        yield return WaitForSeconds(0.5f);
+
+        yield return this.LerpSpeed(0f, 3f, 0.5f);
     }
 }

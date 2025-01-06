@@ -5,10 +5,8 @@ using static CoroutineHelper;
 
 public class CancerBulletSystem21 : EnemyShooter<EnemyBullet>
 {
-    const int WaveCount = 32;
-    const float WaveSpacing = 360f / WaveCount / BranchCount;
-    const int BranchCount = 2;
-    const float BranchSpacing = 360f / BranchCount;
+    const int WaveCount = 36;
+    const float WaveSpacing = 360f / WaveCount;
     const float BulletBaseSpeed = 4f;
 
     List<EnemyBullet> bullets = new(WaveCount);
@@ -20,15 +18,12 @@ public class CancerBulletSystem21 : EnemyShooter<EnemyBullet>
 
         for (int i = 0; i < WaveCount; i++)
         {
-            for (int ii = 0; ii < BranchCount; ii++)
-            {
-                float z = -(i * WaveSpacing) - (ii * BranchSpacing);
-                Vector3 pos = Vector3.zero;
+            float z = i * WaveSpacing;
+            Vector3 pos = Vector3.zero;
 
-                var bullet = SpawnProjectile(1, z, pos);
-                bullet.StartCoroutine(bullet.LerpSpeed(BulletBaseSpeed, 0f, 0.5f));
-                bullets.Add(bullet);
-            }
+            var bullet = SpawnProjectile(1, z, pos);
+            bullet.StartCoroutine(bullet.LerpSpeed(BulletBaseSpeed, 0f, 0.5f));
+            bullets.Add(bullet);
         }
 
         bullets.Randomize();
