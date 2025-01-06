@@ -7,7 +7,7 @@ public class CancerBullet10 : ScriptableEnemyBullet<CancerBulletSystem1, EnemyBu
     const int BulletCount = 3;
     const float BulletSpacing = 360f / BulletCount;
     const float BulletBaseSpeed = 2f;
-    const float BulletSpeedModifier = 0.6f;
+    const float BulletSpeedModifier = 0.4f;
 
     [Space]
     [SerializeField] ProjectileObject bulletData;

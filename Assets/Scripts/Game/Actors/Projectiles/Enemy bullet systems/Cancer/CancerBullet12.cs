@@ -14,6 +14,7 @@ public class CancerBullet12 : EnemyBullet
         yield return WaitForSeconds(0.5f);
 
         moveDirection *= -1;
+        StartCoroutine(this.GraduallyLookAt(playerShip.transform.position, 1f));
         StartCoroutine(this.LerpSpeed(0f, Random.Range(3f, 5f), 1f));
     }
 }

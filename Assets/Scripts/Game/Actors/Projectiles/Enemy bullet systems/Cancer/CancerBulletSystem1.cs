@@ -11,10 +11,11 @@ public class CancerBulletSystem1 : EnemyShooter<EnemyBullet>
     const int BulletCount = 15;
     const float BulletSpacing = 360f / BulletCount;
     const float BulletBaseSpeed = 5f;
+    const float BulletSpeedModifier = -1f;
 
-    Stack<EnemyBullet> bullets = new(BulletCount);
+    List<EnemyBullet> bullets = new(BulletCount);
 
-    protected override float ShootingCooldown => 0.2f;
+    protected override float ShootingCooldown => 0.4f;
 
     protected override IEnumerator Shoot()
     {
@@ -22,6 +23,8 @@ public class CancerBulletSystem1 : EnemyShooter<EnemyBullet>
 
         while (enabled)
         {
+            bullets.Clear();
+
             float r = RandomAngleDeg;
 
             for (int i = 0; i < WaveCount; i++)
@@ -29,11 +32,12 @@ public class CancerBulletSystem1 : EnemyShooter<EnemyBullet>
                 for (int ii = 0; ii < BulletCount; ii++)
                 {
                     float z = (i * WaveSpacing) + (ii * -BulletSpacing) + r;
+                    float s = BulletBaseSpeed + (i * BulletSpeedModifier);
                     Vector3 pos = Vector3.zero;
 
                     var bullet = SpawnProjectile(0, z, pos);
-                    bullet.StartCoroutine(bullet.LerpSpeed(BulletBaseSpeed - i, 0f, 1f));
-                    bullets.Push(bullet);
+                    bullet.StartCoroutine(bullet.LerpSpeed(s, 0f, 1f));
+                    bullets.Add(bullet);
                 }
 
                 yield return WaitForSeconds(ShootingCooldown);
@@ -47,8 +51,14 @@ public class CancerBulletSystem1 : EnemyShooter<EnemyBullet>
             {
                 for (int ii = 0; ii < BulletCount; ii++)
                 {
-                    bullets.Pop().Destroy();
-                    yield return WaitForSeconds(ShootingCooldown * 0.25f);
+                    int b = (i * BulletCount) + ii;
+
+                    if (bullets[b].isActiveAndEnabled)
+                    {
+                        bullets[b].Destroy();
+                    }
+
+                    yield return WaitForSeconds(0.05f);
                 }
             }
 
