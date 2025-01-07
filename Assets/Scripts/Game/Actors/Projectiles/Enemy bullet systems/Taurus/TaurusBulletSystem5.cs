@@ -5,7 +5,7 @@ using static CoroutineHelper;
 
 public class TaurusBulletSystem5 : EnemyShooter<EnemyBullet>
 {
-    const int RingCount = 12;
+    const int WaveCount = 12;
     const int BranchCount = 5;
     const float BranchSpacing = 360f / BranchCount;
     const int BulletCount = 5;
@@ -14,7 +14,7 @@ public class TaurusBulletSystem5 : EnemyShooter<EnemyBullet>
     const float SpawnRadiusModifier = 1f;
     const float BulletRotationSpeed = 12f;
 
-    List<EnemyBullet> bullets = new(RingCount * BranchCount * BulletCount);
+    List<EnemyBullet> bullets = new(WaveCount * BranchCount * BulletCount);
 
     protected override float ShootingCooldown => 0.05f;
 
@@ -22,12 +22,14 @@ public class TaurusBulletSystem5 : EnemyShooter<EnemyBullet>
     {
         yield return base.Shoot();
 
+        bullets.Clear();
+
         StartMoveAction?.Invoke();
         SetSubsystemEnabled(1);
         SetSubsystemEnabled(2);
         SetSubsystemEnabled(3);
 
-        for (int i = 0; i < RingCount; i++)
+        for (int i = 0; i < WaveCount; i++)
         {
             float d = (i % 2 * 2 - 1) * 90f;
 
@@ -50,7 +52,7 @@ public class TaurusBulletSystem5 : EnemyShooter<EnemyBullet>
 
         yield return WaitForSeconds(0.5f);
 
-        for (int i = 0; i < RingCount; i++)
+        for (int i = 0; i < WaveCount; i++)
         {
             int r = i % 2 * 2 - 1;
 
