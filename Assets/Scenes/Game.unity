@@ -4479,8 +4479,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   visualEffects:
-  - {fileID: 4871711780863809610, guid: 72371bdf7ef046347846842dec78b109, type: 3}
   - {fileID: 4871711780863809610, guid: f794920e30a60b5429b2a1801a551914, type: 3}
+  - {fileID: 4871711780863809610, guid: 72371bdf7ef046347846842dec78b109, type: 3}
+  - {fileID: 286062114865654520, guid: 06567bf95d7e4044c8428d7f79c15796, type: 3}
   - {fileID: 4871711780863809610, guid: 5b6277fd622c5a64aa79543a318031be, type: 3}
   - {fileID: 4871711780863809610, guid: d18c172536affe840890be2c5d44f4aa, type: 3}
 --- !u!4 &998017424

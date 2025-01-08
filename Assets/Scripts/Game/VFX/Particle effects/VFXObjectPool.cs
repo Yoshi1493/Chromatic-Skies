@@ -59,8 +59,9 @@ public class VFXObjectPool : MonoBehaviour
 [Serializable]
 public enum VFXType
 {
-    BulletDestruction = 0,
-    PlayerGraze = 1,
-    InvinciblePlayerShield = 2,
-    InvincibleEnemyShield = 3
+    PlayerGraze = 0,
+    BulletDestruction = 1,
+    BulletReflection = 2,
+    InvinciblePlayerShield = 3,
+    InvincibleEnemyShield = 4
 }
