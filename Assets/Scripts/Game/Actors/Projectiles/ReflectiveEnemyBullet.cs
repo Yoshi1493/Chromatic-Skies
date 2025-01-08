@@ -5,7 +5,7 @@ public abstract class ReflectiveEnemyBullet : EnemyBullet
     protected virtual int MaxReflectCount => 1;
     int currentReflectCount;
 
-    const float ReflectCollisionThreshold = 0.1f;
+    const float ReflectCollisionThreshold = 0.01f;
 
     protected override int CollisionMask => base.CollisionMask | 1 << LayerMask.NameToLayer("Bullet bounds");
 
@@ -45,9 +45,23 @@ public abstract class ReflectiveEnemyBullet : EnemyBullet
         }
         if (Mathf.Abs(p.y - transform.position.y) < ReflectCollisionThreshold)
         {
+            SpawnReflectionParticles(p);
             d.x *= -1;
         }
 
         moveDirection = d;
+    }
+
+    void SpawnReflectionParticles(Vector3 spawnPos)
+    {
+        GameObject vfx = VFXObjectPool.Instance.Get(VFXType.BulletReflection);
+        var particleEffect = vfx.GetComponent<ParticleEffect>();
+
+        vfx.transform.position = spawnPos;
+        vfx.SetActive(true);
+
+        particleEffect.ParticleSystem.SetVector4("ParticleColour", SpriteRenderer.color);
+        particleEffect.ParticleSystem.SetFloat("ParticleRotation", Mathf.Sign(moveDirection.x) * 90f);
+        particleEffect.enabled = true;
     }
 }
