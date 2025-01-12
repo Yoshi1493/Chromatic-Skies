@@ -5,8 +5,8 @@ using static CoroutineHelper;
 public class AquariusBulletSystem21 : EnemyShooter<EnemyBullet>
 {
     const int WaveCount = 5;
-    const int BranchCount = 3;
-    const float BranchSpacing = 20f;
+    const int BranchCount = 5;
+    const float BranchSpacing = 10f;
 
     protected override float ShootingCooldown => 0.2f;
 
@@ -22,7 +22,7 @@ public class AquariusBulletSystem21 : EnemyShooter<EnemyBullet>
 
                 for (int ii = 0; ii < BranchCount; ii++)
                 {
-                    float z = ((ii - 1) / 2f * BranchSpacing) + r;
+                    float z = ((ii - ((BranchCount - 1) / 2f)) * BranchSpacing) + r;
                     Vector3 pos = Vector3.zero;
 
                     SpawnProjectile(1, z, pos).Fire();
