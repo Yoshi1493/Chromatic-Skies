@@ -6,7 +6,7 @@ public class GeminiBullet22 : EnemyBullet
 
     protected override IEnumerator Move()
     {
-        yield break;
+        yield return null;
     }
 
     protected override void Update()
