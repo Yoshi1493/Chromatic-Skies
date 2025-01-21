@@ -5,16 +5,16 @@ using static CoroutineHelper;
 
 public class GeminiBulletSystem21 : EnemyShooter<EnemyBullet>
 {
-    const int WaveCount = 50;
+    const int WaveCount = 48;
     const float WaveSpacing = 0.25f;
     const int BranchCount = 2;
     const float BranchSpacing = 360f / BranchCount;
-    const int BulletCount = 2;
+    const int BulletCount = 3;
     const float BulletSpacing = 360f / BulletCount;
     const float BulletBaseSpeed = 2f;
-    const float BulletSpeedModifier = 0.02f;
+    const float BulletSpeedModifier = 0.2f;
 
-    List<(Vector2 pos, float z)> bulletSpawnData = new(WaveCount * BranchCount * BulletCount);
+    List<(Vector2 pos, float z)> bulletSpawnData = new(WaveCount * BranchCount);
 
     protected override float ShootingCooldown => 1f / 60;
 
@@ -26,17 +26,11 @@ public class GeminiBulletSystem21 : EnemyShooter<EnemyBullet>
         {
             for (int ii = 0; ii < BranchCount; ii++)
             {
-                for (int iii = 0; iii < BulletCount; iii++)
-                {
-                    int d = iii % 2 * 2 - 1;
+                float z = 0f;
+                Vector3 pos = i * WaveSpacing * transform.up.RotateVectorBy(ii * BranchSpacing + 90f);
 
-                    float z = 0f;
-                    Vector3 v1 = i * WaveSpacing * transform.up.RotateVectorBy(d * 90);
-                    Vector3 pos = v1.RotateVectorBy(ii * BranchSpacing);
-
-                    SpawnProjectile(2, z, pos);
-                    bulletSpawnData.Add((pos, z));
-                }
+                SpawnProjectile(2, z, pos).Fire();
+                bulletSpawnData.Add((pos, z));
             }
 
             yield return WaitForSeconds(ShootingCooldown);
@@ -50,21 +44,19 @@ public class GeminiBulletSystem21 : EnemyShooter<EnemyBullet>
         {
             for (int ii = 0; ii < BranchCount; ii++)
             {
+                int b = BranchCount * (i - 1) + ii;
+
                 for (int iii = 0; iii < BulletCount; iii++)
                 {
-                    var data = bulletSpawnData[0];
-                    float z = data.z + (iii * BulletSpacing);
-                    float s = BulletBaseSpeed + (i * BulletSpeedModifier);
-                    Vector3 pos = new(data.pos.x, data.pos.y);
+                    var (pos, z) = bulletSpawnData[b];
+                    float s = BulletBaseSpeed + (iii * BulletSpeedModifier);
 
-                    bulletData.colour = bulletData.gradient.Evaluate(i / (WaveCount - 1f));
+                    bulletData.colour = bulletData.gradient.Evaluate(iii / (BulletCount - 1f));
 
                     var bullet = SpawnProjectile(3, z, pos);
                     bullet.MoveSpeed = s;
                     bullet.Fire();
                 }
-
-                bulletSpawnData.RemoveAt(0);
             }
 
             yield return WaitForSeconds(ShootingCooldown * 3f);
