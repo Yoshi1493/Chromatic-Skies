@@ -21,7 +21,6 @@ public class GeminiBulletSystem21 : EnemyShooter<EnemyBullet>
     protected override IEnumerator Shoot()
     {
         bulletSpawnData.Clear();
-        float r = Random.Range(45f, 75f);
 
         for (int i = 1; i < WaveCount; i++)
         {
@@ -31,8 +30,8 @@ public class GeminiBulletSystem21 : EnemyShooter<EnemyBullet>
                 {
                     int d = iii % 2 * 2 - 1;
 
-                    float z = d * (r - 90f);
-                    Vector3 v1 = i * WaveSpacing * transform.up.RotateVectorBy(d * r);
+                    float z = 0f;
+                    Vector3 v1 = i * WaveSpacing * transform.up.RotateVectorBy(d * 90);
                     Vector3 pos = v1.RotateVectorBy(ii * BranchSpacing);
 
                     SpawnProjectile(2, z, pos);
