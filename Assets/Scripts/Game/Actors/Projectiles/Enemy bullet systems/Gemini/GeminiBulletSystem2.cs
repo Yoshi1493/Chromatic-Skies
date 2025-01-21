@@ -4,7 +4,7 @@ using static CoroutineHelper;
 
 public class GeminiBulletSystem2 : EnemyShooter<EnemyBullet>
 {
-    const int WaveCount = 6;
+    const int WaveCount = 4;
     const float WaveSpacing = BranchSpacing / 2f;
     const int BranchCount = 36;
     const float BranchSpacing = 360f / BranchCount;
@@ -22,7 +22,7 @@ public class GeminiBulletSystem2 : EnemyShooter<EnemyBullet>
         while (enabled)
         {
             SetSubsystemEnabled(1);
-            yield return WaitForSeconds(1f);
+            yield return WaitForSeconds(1.5f);
 
             for (int i = 0; i < WaveCount; i++)
             {
@@ -46,7 +46,7 @@ public class GeminiBulletSystem2 : EnemyShooter<EnemyBullet>
                 yield return WaitForSeconds(ShootingCooldown);
             }
 
-            yield return WaitForSeconds(1f);
+            yield return WaitForSeconds(2.5f);
         }
     }
 }

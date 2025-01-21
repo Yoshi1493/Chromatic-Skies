@@ -6,13 +6,13 @@ using static CoroutineHelper;
 public class GeminiBulletSystem21 : EnemyShooter<EnemyBullet>
 {
     const int WaveCount = 48;
-    const float WaveSpacing = 0.25f;
+    const float WaveSpacing = -10f;
     const int BranchCount = 2;
     const float BranchSpacing = 360f / BranchCount;
+    const float BulletSpawnOffset = 0.25f;
     const int BulletCount = 3;
-    const float BulletSpacing = 360f / BulletCount;
-    const float BulletBaseSpeed = 2f;
-    const float BulletSpeedModifier = 0.2f;
+    const float BulletRotationSpeed = 4f;
+    const float BulletRotationDuration = 1f;
 
     List<(Vector2 pos, float z)> bulletSpawnData = new(WaveCount * BranchCount);
 
@@ -26,8 +26,11 @@ public class GeminiBulletSystem21 : EnemyShooter<EnemyBullet>
         {
             for (int ii = 0; ii < BranchCount; ii++)
             {
-                float z = 0f;
-                Vector3 pos = i * WaveSpacing * transform.up.RotateVectorBy(ii * BranchSpacing + 90f);
+                int d = ii % 2 * 2 - 1;
+                float z = d * i * WaveSpacing;
+                float x = d * i * BulletSpawnOffset;
+                float y = 0f;
+                Vector3 pos = new(x, y);
 
                 SpawnProjectile(2, z, pos).Fire();
                 bulletSpawnData.Add((pos, z));
@@ -38,23 +41,21 @@ public class GeminiBulletSystem21 : EnemyShooter<EnemyBullet>
 
         yield return WaitForSeconds(2f);
 
-        bulletSpawnData.Randomize();
-
         for (int i = 1; i < WaveCount; i++)
         {
             for (int ii = 0; ii < BranchCount; ii++)
             {
                 int b = BranchCount * (i - 1) + ii;
+                var (pos, z) = bulletSpawnData[b];
 
                 for (int iii = 0; iii < BulletCount; iii++)
                 {
-                    var (pos, z) = bulletSpawnData[b];
-                    float s = BulletBaseSpeed + (iii * BulletSpeedModifier);
+                    float r = (iii - ((BulletCount - 1) / 2f)) * BulletRotationSpeed;
 
                     bulletData.colour = bulletData.gradient.Evaluate(iii / (BulletCount - 1f));
 
                     var bullet = SpawnProjectile(3, z, pos);
-                    bullet.MoveSpeed = s;
+                    bullet.StartCoroutine(bullet.RotateBy(r, BulletRotationDuration, delay: 1f));
                     bullet.Fire();
                 }
             }
