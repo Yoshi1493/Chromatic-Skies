@@ -17,7 +17,7 @@ public class GeminiBulletSystem31 : EnemyShooter<EnemyBullet>
         {
             for (int i = 0; enabled; i++)
             {
-                float x = screenHalfWidth * (0.6f + Mathf.PingPong(i * WaveSpacing, 0.25f));
+                float x = screenHalfWidth * (0.6f + Mathf.PingPong(i * WaveSpacing, 0.15f));
                 float y = screenHalfHeight;
 
                 for (int ii = 0; ii < BranchCount; ii++)

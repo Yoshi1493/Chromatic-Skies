@@ -25,10 +25,9 @@ public class GeminiBulletSystem3 : EnemyShooter<EnemyBullet>
 
         while (enabled)
         {
-            StartMoveAction?.Invoke();
-
             for (int i = 0; i < RepeatCount; i++)
             {
+                StartMoveAction?.Invoke();
                 float r = Random.Range(0f, BranchSpacing);
 
                 for (int ii = 0; ii < WaveCount; ii++)
@@ -50,6 +49,7 @@ public class GeminiBulletSystem3 : EnemyShooter<EnemyBullet>
                 yield return WaitForSeconds(1f);
             }
 
+            SetSubsystemEnabled(2);
             yield return WaitForSeconds(3f);
         }
 
