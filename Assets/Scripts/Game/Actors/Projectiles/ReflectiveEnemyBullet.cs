@@ -3,7 +3,7 @@ using UnityEngine;
 public abstract class ReflectiveEnemyBullet : EnemyBullet
 {
     protected virtual int MaxReflectCount => 1;
-    int currentReflectCount;
+    protected int currentReflectCount;
 
     const float ReflectCollisionThreshold = 0.01f;
 
@@ -14,7 +14,7 @@ public abstract class ReflectiveEnemyBullet : EnemyBullet
         base.OnEnable();
 
         currentReflectCount = MaxReflectCount;
-        SpriteRenderer.color = projectileData.gradient.Evaluate(0f);
+        SpriteRenderer.color = projectileData.gradient.Evaluate(1f);
     }
 
     protected override void Update()
