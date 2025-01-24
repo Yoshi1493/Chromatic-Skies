@@ -4,10 +4,18 @@ using static CoroutineHelper;
 
 public class GeminiBullet50 : ScriptableEnemyBullet<GeminiBulletSystem5, EnemyBullet>
 {
-    const float WaveSpacing = 15f;
+    [Space]
+    [SerializeField] ProjectileObject bulletData;
+
+    const float SpriteAlpha = 0.5f;
+
+    const float WaveSpacing = BranchSpacing / 3f;
     const int BranchCount = 5;
     const float BranchSpacing = 360f / BranchCount;
-    const float ShootingCooldown = 0.4f;
+    const int BulletCount = 2;
+    const float BulletSpacing = 5f;
+    const float BulletRotationSpeed = -90f;
+    const float ShootingCooldown = 0.2f;
 
     protected override int NumCollisions => 0;
     protected override float MaxLifetime => Mathf.Infinity;
@@ -20,10 +28,17 @@ public class GeminiBullet50 : ScriptableEnemyBullet<GeminiBulletSystem5, EnemyBu
         {
             for (int ii = 0; ii < BranchCount; ii++)
             {
-                float z = (i * WaveSpacing) + (ii * BranchSpacing);
-                Vector3 pos = transform.position;
+                for (int iii = 0; iii < BulletCount; iii++)
+                {
+                    float z = (i * WaveSpacing) + (ii * BranchSpacing) + ((iii - ((BulletCount - 1) / 2f)) * BulletSpacing);
+                    Vector3 pos = transform.position;
 
-                SpawnBullet(1, z, pos, false).Fire();
+                    bulletData.colour = bulletData.gradient.Evaluate(iii);
+
+                    var bullet = SpawnBullet(1, z, pos, false);
+                    bullet.StartCoroutine(bullet.RotateBy((iii % 2 * 2 - 1) * BulletRotationSpeed, 0f, delay: 1f));
+                    bullet.Fire();
+                }
             }
 
             yield return WaitForSeconds(ShootingCooldown);
@@ -34,6 +49,13 @@ public class GeminiBullet50 : ScriptableEnemyBullet<GeminiBulletSystem5, EnemyBu
     {
         base.Update();
         UpdatePosition();
+
+        if (currentLifetime < SpriteAlpha)
+        {
+            Color c = SpriteRenderer.color;
+            c.a = currentLifetime;
+            SpriteRenderer.color = c;
+        }
     }
 
     void UpdatePosition()

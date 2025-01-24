@@ -339,7 +339,7 @@ MonoBehaviour:
   - {fileID: -8966807862870356710, guid: 5a320779c1a4e0141903e4df3620b569, type: 3}
   - {fileID: -1407703252138461011, guid: 2d2f88c6cfa02264c81df6a75a16ee60, type: 3}
   - {fileID: -4412134388810875047, guid: 144a5b976e7564848b151fd6cdfe6302, type: 3}
-  bulletData: {fileID: 11400000, guid: d969a77271184934aae978e102af390a, type: 2}
+  bulletData: {fileID: 11400000, guid: fd64dd2eae46f2342bf6f7e6901f6792, type: 2}
 --- !u!4 &1683642109594022218 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5372900977354538830, guid: d93cb44e21569f545b76560b29579f98, type: 3}
