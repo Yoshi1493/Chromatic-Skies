@@ -4,15 +4,14 @@ using static CoroutineHelper;
 
 public class GeminiBulletSystem5 : EnemyShooter<EnemyBullet>
 {
-    const int WaveCount = 24;
-    const float WaveSpacing = 720f / WaveCount;
+    const float WaveSpacing = 30f;
     const int BranchCount = 2;
     const float BranchSpacing = (360f / BranchCount) - (WaveSpacing / 2f);
     const int BulletCount = 10;
     const float BulletSpacing = 360f / BulletCount;
     const float BulletSpawnRadius = 0.5f;
 
-    protected override float ShootingCooldown => 0.2f;
+    protected override float ShootingCooldown => 0.4f;
 
     protected override IEnumerator Shoot()
     {
@@ -24,32 +23,23 @@ public class GeminiBulletSystem5 : EnemyShooter<EnemyBullet>
         StartMoveAction?.Invoke();
         yield return WaitForSeconds(2f);
 
-        while (enabled)
+        for (int i = 0; enabled; i++)
         {
-            for (int i = 0; i < WaveCount; i++)
+            for (int ii = 0; ii < BranchCount; ii++)
             {
-                for (int ii = 0; ii < BranchCount; ii++)
+                for (int iii = 0; iii < BulletCount; iii++)
                 {
-                    for (int iii = 0; iii < BulletCount; iii++)
-                    {
-                        float z = (i * WaveSpacing) + ((ii + 0.5f) * BranchSpacing);
-                        float r = iii * BulletSpacing;
-                        Vector3 pos = BulletSpawnRadius * transform.up.RotateVectorBy(r);
+                    float z = (i * WaveSpacing) + ((ii + 0.5f) * BranchSpacing);
+                    float r = iii * BulletSpacing;
+                    Vector3 pos = BulletSpawnRadius * transform.up.RotateVectorBy(r);
 
-                        bulletData.colour = bulletData.gradient.Evaluate(ii);
+                    bulletData.colour = bulletData.gradient.Evaluate(ii);
 
-                        SpawnProjectile(2, z, pos).Fire();
-                    }
+                    SpawnProjectile(2, z, pos).Fire();
                 }
-
-                yield return WaitForSeconds(ShootingCooldown);
             }
 
-            yield return WaitForSeconds(3f);
-
-            movementSystem.Teleport();
-            yield return WaitForSeconds(2f);
+            yield return WaitForSeconds(ShootingCooldown);
         }
-
     }
 }

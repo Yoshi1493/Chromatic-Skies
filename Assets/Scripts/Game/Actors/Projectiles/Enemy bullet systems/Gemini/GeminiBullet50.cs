@@ -9,13 +9,13 @@ public class GeminiBullet50 : ScriptableEnemyBullet<GeminiBulletSystem5, EnemyBu
 
     const float SpriteAlpha = 0.5f;
 
-    const float WaveSpacing = BranchSpacing / 3f;
-    const int BranchCount = 5;
+    const float WaveSpacing = -30f;
+    const int BranchCount = 2;
     const float BranchSpacing = 360f / BranchCount;
     const int BulletCount = 2;
     const float BulletSpacing = 5f;
     const float BulletRotationSpeed = -90f;
-    const float ShootingCooldown = 0.2f;
+    const float ShootingCooldown = 0.4f;
 
     protected override int NumCollisions => 0;
     protected override float MaxLifetime => Mathf.Infinity;
