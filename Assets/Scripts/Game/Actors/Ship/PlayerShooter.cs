@@ -34,7 +34,10 @@ public class PlayerShooter : Shooter<PlayerBullet>
 
     void Update()
     {
-        GetShootingInput();
+        if (!pauseHandler.IsPaused)
+        {
+            GetShootingInput();
+        }
     }
 
     void GetShootingInput()
