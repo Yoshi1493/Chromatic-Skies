@@ -8,13 +8,23 @@ public static class CoroutineHelper
     public static WaitForEndOfFrame EndOfFrame { get => _endOfFrame; }
 
     static Dictionary<float, WaitForSeconds> _waitForSeconds = new();
-    public static WaitForSeconds WaitForSeconds(float seconds)
+    public static WaitForSeconds WaitForSeconds(float time)
     {
-        if (!_waitForSeconds.ContainsKey(seconds))
+        if (!_waitForSeconds.ContainsKey(time))
         {
-            _waitForSeconds.Add(seconds, new WaitForSeconds(seconds));
+            _waitForSeconds.Add(time, new WaitForSeconds(time));
         }
-        return _waitForSeconds[seconds];
+        return _waitForSeconds[time];
+    }
+
+    static Dictionary<float, WaitForSecondsRealtime> _waitForSecondsRealtime = new();
+    public static WaitForSecondsRealtime WaitForSecondsRealtime(float realTime)
+    {
+        if (!_waitForSecondsRealtime.ContainsKey(realTime))
+        {
+            _waitForSecondsRealtime.Add(realTime, new WaitForSecondsRealtime(realTime));
+        }
+        return _waitForSecondsRealtime[realTime];
     }
 
     static Dictionary<Func<bool>, WaitUntil> _waitUntil = new();
