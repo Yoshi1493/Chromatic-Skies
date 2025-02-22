@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class PauseHandler : MonoBehaviour
 {
-    public bool IsPaused { get; private set; }
+    public static bool IsPaused { get; private set; }
     public event Action<bool> GamePauseAction;
 
     void Awake()

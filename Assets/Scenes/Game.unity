@@ -6723,7 +6723,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7997309562669492054, guid: cf5107c964c958e45aa9d446d012ff62, type: 3}
       propertyPath: m_Name
-      value: Settings menu
+      value: Settings menu (Canvas)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cf5107c964c958e45aa9d446d012ff62, type: 3}

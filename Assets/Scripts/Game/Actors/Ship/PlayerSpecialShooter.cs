@@ -39,7 +39,10 @@ public abstract class PlayerSpecialShooter : PlayerShooter
 
     void Update()
     {
-        GetShootingInput();
+        if (!PauseHandler.IsPaused)
+        {
+            GetShootingInput();
+        }
     }
 
     void GetShootingInput()

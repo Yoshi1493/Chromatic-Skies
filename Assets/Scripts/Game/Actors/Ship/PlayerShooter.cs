@@ -11,21 +11,16 @@ public class PlayerShooter : Shooter<PlayerBullet>
     [SerializeField] List<Transform> bulletSpawnPositions = new();
     protected bool canShoot = true;
 
-    PauseHandler pauseHandler;
-
     protected override void Awake()
     {
         base.Awake();
-
         parentShip = GetComponentInParent<Player>().shipData;
-        pauseHandler = FindObjectOfType<PauseHandler>();
     }
 
     protected override void Start()
     {
         base.Start();
 
-        pauseHandler.GamePauseAction += OnGamePaused;
         ownerShip.RespawnAction += OnRespawn;
 
         //manually enable to avoid script execution order conflicts
@@ -34,7 +29,7 @@ public class PlayerShooter : Shooter<PlayerBullet>
 
     void Update()
     {
-        if (!pauseHandler.IsPaused)
+        if (!PauseHandler.IsPaused)
         {
             GetShootingInput();
         }
@@ -65,10 +60,10 @@ public class PlayerShooter : Shooter<PlayerBullet>
         canShoot = true;
     }
 
-    void OnGamePaused(bool state)
-    {
-        enabled = !state;
-    }
+    //void OnGamePaused(bool state)
+    //{
+    //    enabled = !state;
+    //}
 
     protected override void OnLoseLife()
     {
