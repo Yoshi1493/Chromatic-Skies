@@ -26,10 +26,16 @@ public class ScorpioBullet10 : ScriptableEnemyBullet<ScorpioBulletSystem1, Enemy
                 float z = (ii * BulletSpacing) + transform.eulerAngles.z;
                 Vector3 pos = transform.position;
 
-                bulletData.colour = bulletData.gradient.Evaluate(i / (WaveCount - 1f));
+                bulletData.colour = SpriteRenderer.color;
 
                 SpawnBullet(1, z, pos, false).Fire();
             }
         }
+    }
+
+    protected override void Update()
+    {
+        base.Update();
+        SpriteRenderer.color = projectileData.gradient.Evaluate(currentLifetime / MaxLifetime);
     }
 }

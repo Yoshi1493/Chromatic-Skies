@@ -99,3 +99,4 @@ MonoBehaviour:
   projectileData: {fileID: 11400000, guid: 68f600c80d71aa349b3fd7dbfac3289a, type: 2}
   moveDirection: {x: 0, y: 0, z: 0}
   currentSpeed: 0
+  bulletData: {fileID: 11400000, guid: d4c53cd604961914c89d2b7c20bf7f94, type: 2}

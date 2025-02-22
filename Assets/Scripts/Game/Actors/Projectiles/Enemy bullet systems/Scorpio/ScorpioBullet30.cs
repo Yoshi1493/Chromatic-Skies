@@ -4,6 +4,8 @@ using static CoroutineHelper;
 
 public class ScorpioBullet30 : ScriptableEnemyBullet<ScorpioBulletSystem3, EnemyBullet>
 {
+    [SerializeField] ProjectileObject bulletData;
+
     const int WaveCount = 12;
     const int BulletCount = 3;
     const float BulletSpacing = 360f / BulletCount;
@@ -36,8 +38,16 @@ public class ScorpioBullet30 : ScriptableEnemyBullet<ScorpioBulletSystem3, Enemy
                 float z = (ii * BulletSpacing) + transform.eulerAngles.z;
                 Vector3 pos = transform.position;
 
+                bulletData.colour = SpriteRenderer.color;
+
                 SpawnBullet(1, z, pos, false).Fire();
             }
         }
+    }
+
+    protected override void Update()
+    {
+        base.Update();
+        SpriteRenderer.color = projectileData.gradient.Evaluate(currentLifetime / MaxLifetime);
     }
 }
