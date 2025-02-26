@@ -7,7 +7,7 @@ public class DataManager : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI persistentDataPath;
 
-    UserData userData;
+    public UserData UserData {get; private set;}
     List<ISavable> savableObjects;
 
     public static DataManager Instance { get; private set; }
@@ -33,21 +33,21 @@ public class DataManager : MonoBehaviour
 
     void NewData()
     {
-        userData = new UserData();
+        UserData = new UserData();
     }
 
     public void LoadData()
     {
-        userData = FileHandler.Load(false);
+        UserData = FileHandler.Load(false);
 
-        if (userData == null)
+        if (UserData == null)
         {
             NewData();
         }
 
         foreach (var item in savableObjects)
         {
-            item.LoadData(userData);
+            item.LoadData(UserData);
         }
     }
 
@@ -55,10 +55,10 @@ public class DataManager : MonoBehaviour
     {
         foreach (var item in savableObjects)
         {
-            item.SaveData(userData);
+            item.SaveData(UserData);
         }
 
-        userData.Save(false);
+        UserData.Save(false);
     }
 
     void OnApplicationQuit()

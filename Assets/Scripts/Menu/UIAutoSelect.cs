@@ -7,4 +7,9 @@ public class UIAutoSelect : MonoBehaviour, IPointerEnterHandler
     {
         EventSystem.current.SetSelectedGameObject(gameObject);
     }
+
+    public void PlayAudio(AudioClip clip)
+    {
+        AudioManager.Instance.PlaySound(clip, true);
+    }
 }

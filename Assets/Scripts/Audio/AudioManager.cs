@@ -1,5 +1,7 @@
 using System;
+using System.Collections;
 using UnityEngine;
+using static CoroutineHelper;
 
 enum AudioType
 {
@@ -38,6 +40,11 @@ public class AudioManager : MonoBehaviour
 
     [SerializeField] Transform bgmParent;
     [SerializeField] Transform sfxParent;
+
+    [SerializeField] AnimationCurve audioFadeInCurve;
+    float audioFadeInMultiplier = 0f;
+
+    UserData userData;
 
     void Awake()
     {
@@ -83,7 +90,22 @@ public class AudioManager : MonoBehaviour
 
         if (!sound.source.isPlaying || allowOverlap)
         {
+            sound.source.volume = userData.SoundVolume * audioFadeInMultiplier;
             sound.source.Play();
         }
+    }
+
+    IEnumerator Start()
+    {
+        userData = DataManager.Instance.UserData;
+
+        while (audioFadeInMultiplier < 1f)
+        {
+            float udt = Time.unscaledDeltaTime;
+            yield return WaitForSecondsRealtime(udt);
+            audioFadeInMultiplier += udt;
+        }
+
+        audioFadeInMultiplier = 1f;
     }
 }
