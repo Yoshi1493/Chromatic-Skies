@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3267785592901888992}
   - component: {fileID: 8213039898814022750}
   - component: {fileID: 2788502043776274232}
-  - component: {fileID: 7632010372067975569}
+  - component: {fileID: 747203011520705160}
   m_Layer: 5
   m_Name: Player select button
   m_TagString: Untagged
@@ -169,7 +169,7 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
---- !u!114 &7632010372067975569
+--- !u!114 &747203011520705160
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -178,7 +178,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4350518409587046107}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d3e0c64d68bee940a7f2bea73d6346a, type: 3}
+  m_Script: {fileID: 11500000, guid: f9a92b8f513829746bfaaf78b488f28e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &5573941600858817160
