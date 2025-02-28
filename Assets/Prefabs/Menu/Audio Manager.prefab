@@ -108,17 +108,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f2439f1c9f30064f8b8baf057fda689, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  backgroundMusic: []
-  soundEffects:
-  - clip: {fileID: 0}
-    source: {fileID: 0}
-    name: 
-  bgmParent: {fileID: 1551216911993274743}
-  sfxParent: {fileID: 1551216912420857332}
-  userData:
-    MusicVolume: 0.8
-    SoundVolume: 0.8
-    BackgroundDim: 0.3
+  audioDictionary:
+    m_keys: 0000000001000000
+    m_values:
+    - data: []
+    - data: []
   audioFadeInCurve:
     serializedVersion: 2
     m_Curve:

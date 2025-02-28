@@ -1,111 +1,146 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 using static CoroutineHelper;
 
-enum AudioType
+[Serializable]
+public enum AudioType
 {
     Music = 0,
     Sound = 1
 }
 
 [Serializable]
-public class MusicTrack
+public class AudioObject
 {
     public AudioClip clip;
 
     [HideInInspector] public AudioSource source;
     [HideInInspector] public string name;
-
-    readonly AudioType audioType = AudioType.Music;
 }
 
 [Serializable]
-public class SoundEffect
-{
-    public AudioClip clip;
+public class AudioArrayStorage : SerializableDictionary.Storage<AudioObject[]>
+{ }
 
-    [HideInInspector] public AudioSource source;
-    [HideInInspector] public string name;
-
-    readonly AudioType audioType = AudioType.Sound;
-}
+[Serializable]
+public class AudioDictionary : SerializableDictionary<AudioType, AudioObject[], AudioArrayStorage>
+{ }
 
 public class AudioManager : MonoBehaviour
 {
     public static AudioManager Instance { get; private set; }
 
-    [SerializeField] MusicTrack[] backgroundMusic;
-    [SerializeField] SoundEffect[] soundEffects;
-
-    [SerializeField] Transform bgmParent;
-    [SerializeField] Transform sfxParent;
+    [SerializeField] AudioDictionary audioDictionary;
 
     [SerializeField] AnimationCurve audioFadeInCurve;
-    float audioFadeInMultiplier = 0f;
+    float masterAudioMultiplier = 0f;
 
-    UserData userData;
+    [SerializeField] Slider[] volumeSliders;
+
+    PauseHandler pauseHandler;
+    const float AudioMultiplierWhilePaused = 0.5f;
 
     void Awake()
     {
         if (Instance == null) Instance = this;
         InitAudio();
+
+        pauseHandler = FindObjectOfType<PauseHandler>();
+        if (pauseHandler != null)
+        {
+            pauseHandler.GamePauseAction += OnGamePaused;
+        }
     }
 
     //create bgm and sfx gameobjects
     void InitAudio()
     {
-        foreach (var bgm in backgroundMusic)
+        foreach (var (audioType, audioList) in audioDictionary)
         {
-            bgm.source = bgmParent.gameObject.AddComponent<AudioSource>();
-            bgm.source.clip = bgm.clip;
-            bgm.name = bgm.source.clip.name;
-        }
-
-        foreach (var sfx in soundEffects)
-        {
-            sfx.source = sfxParent.gameObject.AddComponent<AudioSource>();
-            sfx.source.clip = sfx.clip;
-            sfx.name = sfx.source.clip.name;
+            for (int i = 0; i < audioList.Length; i++)
+            {
+                audioList[i].source = transform.GetChild((int)audioType).gameObject.AddComponent<AudioSource>();
+                audioList[i].source.clip = audioList[i].clip;
+                audioList[i].name = audioList[i].source.clip.name;
+            }
         }
     }
 
-    //play sfx by passing SoundEffect name
-    public void PlaySound(string name, bool allowOverlap = false)
+    public void PlayAudio(AudioClip clip, AudioType audioType, bool allowOverlap = false)
     {
-        SoundEffect sound = Array.Find(soundEffects, s => s.name == name);
-        _PlaySound(sound, allowOverlap);
+        var audio = Array.Find(audioDictionary[audioType], a => a.clip = clip);
+
+        if (audio == null) return;
+
+        if (!audio.source.isPlaying || allowOverlap)
+        {
+            if (audioType == AudioType.Music)
+            {
+                PlayMusic(audio);
+            }
+            else if (audioType == AudioType.Sound)
+            {
+                PlaySound(audio, allowOverlap);
+            }
+        }
     }
 
-    //overload; play sfx by passing AudioClip object
-    public void PlaySound(AudioClip clip, bool allowOverlap = false)
+    void PlayMusic(AudioObject music)
     {
-        SoundEffect sound = Array.Find(soundEffects, s => s.clip = clip);
-        _PlaySound(sound, allowOverlap);
+        if (!music.source.isPlaying)
+        {
+            music.source.volume = volumeSliders[(int)AudioType.Music].normalizedValue * masterAudioMultiplier;
+            music.source.Play();
+        }
     }
 
-    void _PlaySound(SoundEffect sound, bool allowOverlap)
+    void PlaySound(AudioObject sound, bool allowOverlap)
     {
-        if (sound == null) return;
-
         if (!sound.source.isPlaying || allowOverlap)
         {
-            sound.source.volume = userData.SoundVolume * audioFadeInMultiplier;
+            sound.source.volume = volumeSliders[(int)AudioType.Sound].normalizedValue * masterAudioMultiplier;
             sound.source.Play();
         }
     }
 
+    //fade-in audio
     IEnumerator Start()
     {
-        userData = DataManager.Instance.UserData;
+        PlayAudio(audioDictionary[AudioType.Music][0].clip, AudioType.Music);
 
-        while (audioFadeInMultiplier < 1f)
+        float currentLerpTime = 0f;
+        float totalLerpTime = 2f;
+
+        while (currentLerpTime < totalLerpTime)
         {
             float udt = Time.unscaledDeltaTime;
             yield return WaitForSecondsRealtime(udt);
-            audioFadeInMultiplier += udt;
+
+            currentLerpTime += udt;
+            masterAudioMultiplier = audioFadeInCurve.Evaluate(currentLerpTime / totalLerpTime);
+            UpdateMusicVolume();
         }
 
-        audioFadeInMultiplier = 1f;
+        masterAudioMultiplier = 1f;
+    }
+
+    void UpdateAudioVolume(AudioType audioType)
+    {
+        //to-do: update audio volume multiplier
+        for (int i = 0; i < audioDictionary[audioType].Length; i++)
+        {
+            audioDictionary[audioType][i].source.volume = volumeSliders[(int)audioType].normalizedValue * masterAudioMultiplier;
+        }
+    }
+
+    //public Slider OnChange methods
+    public void UpdateMusicVolume() => UpdateAudioVolume(AudioType.Music);
+    public void UpdateSoundVolume() => UpdateAudioVolume(AudioType.Sound);
+
+    void OnGamePaused(bool state)
+    {
+        masterAudioMultiplier = state ? AudioMultiplierWhilePaused : 1f;
     }
 }

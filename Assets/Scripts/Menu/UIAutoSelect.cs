@@ -10,6 +10,6 @@ public class UIAutoSelect : MonoBehaviour, IPointerEnterHandler
 
     public void PlayAudio(AudioClip clip)
     {
-        AudioManager.Instance.PlaySound(clip, true);
+        AudioManager.Instance.PlayAudio(clip, AudioType.Sound, true);
     }
 }
