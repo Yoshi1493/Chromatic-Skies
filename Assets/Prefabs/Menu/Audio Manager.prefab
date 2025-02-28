@@ -122,7 +122,7 @@ MonoBehaviour:
       - clip: {fileID: 8300000, guid: d23c843b1b180814eaedce96f051a089, type: 3}
         source: {fileID: 0}
         name: 
-  audioFadeInCurve:
+  audioFadeCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3

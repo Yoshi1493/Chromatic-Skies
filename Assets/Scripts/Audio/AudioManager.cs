@@ -34,13 +34,15 @@ public class AudioManager : MonoBehaviour
 
     [SerializeField] AudioDictionary audioDictionary;
 
-    [SerializeField] AnimationCurve audioFadeInCurve;
+    [SerializeField] AnimationCurve audioFadeCurve;
     float masterAudioMultiplier = 0f;
 
     [SerializeField] Slider[] volumeSliders;
 
     PauseHandler pauseHandler;
     const float AudioMultiplierWhilePaused = 0.5f;
+
+    IEnumerator fadeCoroutine;
 
     void Awake()
     {
@@ -112,25 +114,42 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    //fade-in audio
-    IEnumerator Start()
+    void Start()
     {
         PlayAudio(audioDictionary[AudioType.Music][0].clip, AudioType.Music);
 
-        float currentLerpTime = 0f;
-        float totalLerpTime = 2f;
+        masterAudioMultiplier = 0f;
+        FadeAudio(1f, 2f);
+    }
 
-        while (currentLerpTime < totalLerpTime)
+    void FadeAudio(float endVolume, float fadeDuration)
+    {
+        if (fadeCoroutine != null)
         {
-            float udt = Time.unscaledDeltaTime;
-            yield return WaitForSecondsRealtime(udt);
-
-            currentLerpTime += udt;
-            masterAudioMultiplier = audioFadeInCurve.Evaluate(currentLerpTime / totalLerpTime);
-            UpdateMusicVolume();
+            StopCoroutine(fadeCoroutine);
         }
 
-        masterAudioMultiplier = 1f;
+        fadeCoroutine = _FadeAudio(endVolume, fadeDuration);
+        StartCoroutine(fadeCoroutine);
+    }
+
+    IEnumerator _FadeAudio(float endVolume, float fadeDuration)
+    {
+        float startVolume = masterAudioMultiplier;
+        float currentLerpTime = 0f;
+
+        while (currentLerpTime < fadeDuration)
+        {
+            yield return null;
+
+            currentLerpTime += Time.unscaledDeltaTime;
+            masterAudioMultiplier = Mathf.Lerp(startVolume, endVolume, audioFadeCurve.Evaluate(currentLerpTime / fadeDuration));
+            UpdateMusicVolume();
+
+            print(masterAudioMultiplier);
+        }
+
+        masterAudioMultiplier = endVolume;
     }
 
     void UpdateAudioVolume(AudioType audioType)
@@ -141,9 +160,10 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    //public Slider OnChange methods
+    //Button and Slider callbacks
     public void UpdateMusicVolume() => UpdateAudioVolume(AudioType.Music);
     public void UpdateSoundVolume() => UpdateAudioVolume(AudioType.Sound);
+    public void OnQuit() => FadeAudio(0f, 0.5f);
 
     void OnGamePaused(bool state)
     {
