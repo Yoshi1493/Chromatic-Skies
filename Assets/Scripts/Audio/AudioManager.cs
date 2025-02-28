@@ -135,7 +135,6 @@ public class AudioManager : MonoBehaviour
 
     void UpdateAudioVolume(AudioType audioType)
     {
-        //to-do: update audio volume multiplier
         for (int i = 0; i < audioDictionary[audioType].Length; i++)
         {
             audioDictionary[audioType][i].source.volume = volumeSliders[(int)audioType].normalizedValue * masterAudioMultiplier;
