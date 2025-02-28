@@ -70,7 +70,7 @@ public class AudioManager : MonoBehaviour
 
     public void PlayAudio(AudioClip clip, AudioType audioType, bool allowOverlap = false)
     {
-        var audio = Array.Find(audioDictionary[audioType], a => a.clip = clip);
+        var audio = Array.Find(audioDictionary[audioType], a => a.clip == clip);
 
         if (audio == null) return;
 
@@ -85,6 +85,13 @@ public class AudioManager : MonoBehaviour
                 PlaySound(audio, allowOverlap);
             }
         }
+    }
+
+    //overload that takes in clip name (and passes it onto original PlayAudio method)
+    public void PlayAudio(string clipName, AudioType audioType, bool allowOverlap = false)
+    {
+        var audioClip = Array.Find(audioDictionary[audioType], a => a.name == clipName).clip;
+        PlayAudio(audioClip, audioType, allowOverlap);
     }
 
     void PlayMusic(AudioObject music)

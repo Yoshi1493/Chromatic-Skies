@@ -112,7 +112,16 @@ MonoBehaviour:
     m_keys: 0000000001000000
     m_values:
     - data: []
-    - data: []
+    - data:
+      - clip: {fileID: 8300000, guid: e9cb2cc3314247a4d845fb8616c53409, type: 3}
+        source: {fileID: 0}
+        name: 
+      - clip: {fileID: 8300000, guid: 2968a27a165ab77448669f61bcca4b94, type: 3}
+        source: {fileID: 0}
+        name: 
+      - clip: {fileID: 8300000, guid: d23c843b1b180814eaedce96f051a089, type: 3}
+        source: {fileID: 0}
+        name: 
   audioFadeInCurve:
     serializedVersion: 2
     m_Curve:
@@ -137,3 +146,4 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  volumeSliders: []
