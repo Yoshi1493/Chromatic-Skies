@@ -152,6 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9a92b8f513829746bfaaf78b488f28e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onSelectSoundEffect: {fileID: 8300000, guid: 2968a27a165ab77448669f61bcca4b94, type: 3}
 --- !u!114 &2788502043776274232
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -145,8 +145,6 @@ public class AudioManager : MonoBehaviour
             currentLerpTime += Time.unscaledDeltaTime;
             masterAudioMultiplier = Mathf.Lerp(startVolume, endVolume, audioFadeCurve.Evaluate(currentLerpTime / fadeDuration));
             UpdateMusicVolume();
-
-            print(masterAudioMultiplier);
         }
 
         masterAudioMultiplier = endVolume;

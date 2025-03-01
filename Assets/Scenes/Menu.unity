@@ -3122,6 +3122,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1525450758}
     m_Modifications:
+    - target: {fileID: 8566581822316071187, guid: 43808b15fa4047946ae6ee640412c78f, type: 3}
+      propertyPath: onSelectSoundEffect
+      value: 
+      objectReference: {fileID: 8300000, guid: d23c843b1b180814eaedce96f051a089, type: 3}
     - target: {fileID: 9113669927874555424, guid: 43808b15fa4047946ae6ee640412c78f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 4
@@ -10364,6 +10368,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1360048060}
     m_Modifications:
+    - target: {fileID: 8566581822316071187, guid: 43808b15fa4047946ae6ee640412c78f, type: 3}
+      propertyPath: onSelectSoundEffect
+      value: 
+      objectReference: {fileID: 8300000, guid: d23c843b1b180814eaedce96f051a089, type: 3}
     - target: {fileID: 9113669927874555424, guid: 43808b15fa4047946ae6ee640412c78f, type: 3}
       propertyPath: m_TargetGraphic
       value: 
@@ -11390,6 +11398,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1019170209}
     m_Modifications:
+    - target: {fileID: 8566581822316071187, guid: 43808b15fa4047946ae6ee640412c78f, type: 3}
+      propertyPath: onSelectSoundEffect
+      value: 
+      objectReference: {fileID: 8300000, guid: d23c843b1b180814eaedce96f051a089, type: 3}
     - target: {fileID: 9113669927874555424, guid: 43808b15fa4047946ae6ee640412c78f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 6
@@ -12676,6 +12688,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1378753260}
     m_Modifications:
+    - target: {fileID: 8566581822316071187, guid: 43808b15fa4047946ae6ee640412c78f, type: 3}
+      propertyPath: onSelectSoundEffect
+      value: 
+      objectReference: {fileID: 8300000, guid: d23c843b1b180814eaedce96f051a089, type: 3}
     - target: {fileID: 9113669927874555424, guid: 43808b15fa4047946ae6ee640412c78f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 3
@@ -13722,6 +13738,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -360
       objectReference: {fileID: 0}
+    - target: {fileID: 1738031476910204008, guid: cf5107c964c958e45aa9d446d012ff62, type: 3}
+      propertyPath: onSelectSoundEffect
+      value: 
+      objectReference: {fileID: 8300000, guid: d23c843b1b180814eaedce96f051a089, type: 3}
     - target: {fileID: 2565548258384017128, guid: cf5107c964c958e45aa9d446d012ff62, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 4

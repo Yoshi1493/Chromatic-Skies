@@ -6,6 +6,8 @@ public class MenuButton : MonoBehaviour
 {
     Button button;
 
+    [SerializeField] AudioClip onSelectSoundEffect;
+
     void Awake()
     {
         button = GetComponent<Button>();
@@ -14,7 +16,7 @@ public class MenuButton : MonoBehaviour
 
     void OnButtonClick()
     {
-        AudioManager.Instance.PlayAudio("menu_select", AudioType.Sound, true);
+        AudioManager.Instance.PlayAudio(onSelectSoundEffect, AudioType.Sound, true);
     }
 
     void OnDestroy()
