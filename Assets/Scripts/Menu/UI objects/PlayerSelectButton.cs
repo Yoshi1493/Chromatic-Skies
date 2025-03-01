@@ -4,6 +4,9 @@ public class PlayerSelectButton : MenuButton, ISelectHandler
 {
     public void OnSelect(BaseEventData eventData)
     {
-        AudioManager.Instance.PlayAudio("menu_hover", AudioType.Sound);
+        if (InputHandler.lastSelectedGameObject != gameObject)
+        {
+            AudioManager.Instance.PlayAudio("menu_hover", AudioType.Sound);
+        }
     }
 }

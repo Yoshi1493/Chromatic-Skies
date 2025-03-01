@@ -4,7 +4,7 @@ using UnityEngine.EventSystems;
 
 public class InputHandler : MonoBehaviour
 {
-    GameObject lastSelectedGameObject;
+    public static GameObject lastSelectedGameObject;
 
     PauseHandler pauseHandler;
 
