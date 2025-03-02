@@ -1,8 +1,9 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 [RequireComponent(typeof(Slider))]
-public class MenuSlider : MonoBehaviour
+public class MenuSlider : MonoBehaviour, IPointerEnterHandler, ISelectHandler
 {
     Slider slider;
 
@@ -20,5 +21,21 @@ public class MenuSlider : MonoBehaviour
     void OnDestroy()
     {
         slider.onValueChanged.RemoveAllListeners();
+    }
+
+    public void OnPointerEnter(PointerEventData pointerEventData)
+    {
+        if (InputHandler.lastSelectedGameObject != gameObject)
+        {
+            AudioManager.Instance.PlayAudio("menu_hover", AudioType.Sound, true);
+        }
+    }
+
+    public void OnSelect(BaseEventData eventData)
+    {
+        if (InputHandler.lastSelectedGameObject != gameObject)
+        {
+            AudioManager.Instance.PlayAudio("menu_hover", AudioType.Sound, true);
+        }
     }
 }
