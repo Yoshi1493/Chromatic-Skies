@@ -4,12 +4,11 @@ using UnityEngine;
 using TMPro;
 using static CoroutineHelper;
 
-public class ResultsScreen : MonoBehaviour
+public class ResultsScreen : Menu
 {
     IEnumerator popupCoroutine;
     public event Action ResultsFinishDisplayAction;
 
-    Canvas canvas;
     CanvasGroup canvasGroup;
 
     [SerializeField] FloatObject elapsedTime;
@@ -21,12 +20,14 @@ public class ResultsScreen : MonoBehaviour
 
     [SerializeField] TextMeshProUGUI[] resultsTexts;
     [SerializeField] TextMeshProUGUI[] resultsValues;
+    [SerializeField] GameObject confirmButton;
 
     Enemy enemy;
 
-    void Awake()
+    protected override void Awake()
     {
-        canvas = GetComponent<Canvas>();
+        base.Awake();
+
         canvasGroup = GetComponent<CanvasGroup>();
 
         enemy = FindObjectOfType<Enemy>();
@@ -34,20 +35,8 @@ public class ResultsScreen : MonoBehaviour
         InitializeCanvasElements();
     }
 
-    void Start()
-    {
-        if (enemy != null)
-        {
-            enemy.LoseLifeAction += OnEnemyLoseLife;
-            enemy.DeathAction += OnEnemyDie;
-        }
-
-        enabled = false;
-    }
-
     void InitializeCanvasElements()
     {
-        canvas.enabled = false;
         canvasGroup.alpha = 0f;
 
         foreach (var item in resultsTexts)
@@ -61,6 +50,17 @@ public class ResultsScreen : MonoBehaviour
         }
     }
 
+    void Start()
+    {
+        if (enemy != null)
+        {
+            enemy.LoseLifeAction += OnEnemyLoseLife;
+            enemy.DeathAction += OnEnemyDie;
+        }
+
+        Close();
+    }
+
     void OnEnemyLoseLife()
     {
         totalTime += elapsedTime.value;
@@ -68,9 +68,8 @@ public class ResultsScreen : MonoBehaviour
 
     void OnEnemyDie()
     {
-        enabled = true;
+        Open(confirmButton);
 
-        canvas.enabled = true;
         canvasGroup.alpha = 0f;
 
         if (popupCoroutine != null)

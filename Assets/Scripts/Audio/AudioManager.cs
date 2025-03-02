@@ -161,6 +161,7 @@ public class AudioManager : MonoBehaviour
     //Button and Slider callbacks
     public void UpdateMusicVolume() => UpdateAudioVolume(AudioType.Music);
     public void UpdateSoundVolume() => UpdateAudioVolume(AudioType.Sound);
+    public void OnTransitionScene() => FadeAudio(0f, 0.8f);
     public void OnQuit() => FadeAudio(0f, 0.5f);
 
     void OnGamePaused(bool state)

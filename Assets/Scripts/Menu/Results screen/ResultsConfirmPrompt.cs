@@ -1,29 +1,21 @@
 using UnityEngine;
-using TMPro;
+using UnityEngine.EventSystems;
 
 public class ResultsConfirmPrompt : MonoBehaviour
 {
-    [SerializeField] LevelLoader levelLoader;
-    [SerializeField] TextMeshProUGUI confirmText;
+    [SerializeField] GameObject confirmButton;
 
     void Awake()
     {
         ResultsScreen resultsScreen = GetComponentInParent<ResultsScreen>();
         resultsScreen.ResultsFinishDisplayAction += () => enabled = true;
 
-        confirmText.enabled = false;
+        confirmButton.SetActive(false);
     }
 
     void OnEnable()
     {
-        confirmText.enabled = true;
-    }
-
-    void Update()
-    {
-        if (Input.GetButtonDown("Shoot"))
-        {
-            levelLoader.LoadScene(0);
-        }
+        print(EventSystem.current.currentSelectedGameObject.name);
+        confirmButton.SetActive(true);
     }
 }
