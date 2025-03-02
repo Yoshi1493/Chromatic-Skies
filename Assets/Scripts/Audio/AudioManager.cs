@@ -154,7 +154,7 @@ public class AudioManager : MonoBehaviour
     {
         for (int i = 0; i < audioDictionary[audioType].Length; i++)
         {
-            audioDictionary[audioType][i].source.volume = volumeSliders[(int)audioType].normalizedValue * masterAudioMultiplier;
+            audioDictionary[audioType][i].source.volume = Mathf.Pow(volumeSliders[(int)audioType].normalizedValue, 1.5f) * masterAudioMultiplier;
         }
     }
 
