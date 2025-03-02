@@ -1106,6 +1106,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7997309562669492051}
     m_Modifications:
+    - target: {fileID: 8566581822316071187, guid: 43808b15fa4047946ae6ee640412c78f, type: 3}
+      propertyPath: onSelectSoundEffect
+      value: 
+      objectReference: {fileID: 8300000, guid: d23c843b1b180814eaedce96f051a089, type: 3}
     - target: {fileID: 9113669927874555424, guid: 43808b15fa4047946ae6ee640412c78f, type: 3}
       propertyPath: m_Navigation.m_Mode
       value: 4
