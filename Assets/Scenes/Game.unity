@@ -549,9 +549,21 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1551216913506170305, guid: 34395c8b735b6074aa16b730b885c19f, type: 3}
+      propertyPath: audioDictionary.m_values.Array.data[1].data.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1551216913506170305, guid: 34395c8b735b6074aa16b730b885c19f, type: 3}
       propertyPath: audioDictionary.m_values.Array.data[0].data.Array.data[0].clip
       value: 
       objectReference: {fileID: 8300000, guid: 5165238d76cfafc428ef5dff702a251d, type: 3}
+    - target: {fileID: 1551216913506170305, guid: 34395c8b735b6074aa16b730b885c19f, type: 3}
+      propertyPath: audioDictionary.m_values.Array.data[1].data.Array.data[3].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: b40e83b622112a34696bf5fcb8b1e4bd, type: 3}
+    - target: {fileID: 1551216913506170305, guid: 34395c8b735b6074aa16b730b885c19f, type: 3}
+      propertyPath: audioDictionary.m_values.Array.data[1].data.Array.data[4].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 8f4a30a073d99ae4c80578eeecc1fabd, type: 3}
     - target: {fileID: 1551216913506170306, guid: 34395c8b735b6074aa16b730b885c19f, type: 3}
       propertyPath: m_Name
       value: Audio Manager

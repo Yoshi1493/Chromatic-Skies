@@ -55,15 +55,12 @@ public class PlayerShooter : Shooter<PlayerBullet>
         //SpawnProjectile(0, 0f, bulletSpawnPositions[1].position, false);
         //SpawnProjectile(0, 0f, bulletSpawnPositions[2].position, false);
 
+        AudioManager.Instance.PlayAudio("player_shoot-default", AudioType.Sound);
+
         canShoot = false;
         yield return WaitForSeconds(ShootingCooldown);
         canShoot = true;
     }
-
-    //void OnGamePaused(bool state)
-    //{
-    //    enabled = !state;
-    //}
 
     protected override void OnLoseLife()
     {
