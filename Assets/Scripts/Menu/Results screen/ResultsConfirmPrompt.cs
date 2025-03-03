@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 public class ResultsConfirmPrompt : MonoBehaviour
 {
@@ -15,7 +14,6 @@ public class ResultsConfirmPrompt : MonoBehaviour
 
     void OnEnable()
     {
-        print(EventSystem.current.currentSelectedGameObject.name);
         confirmButton.SetActive(true);
     }
 }
