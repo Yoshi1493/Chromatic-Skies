@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
-using static CoroutineHelper;
 
 [Serializable]
 public enum AudioType
@@ -70,7 +69,7 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    public void PlayAudio(AudioClip clip, AudioType audioType, bool allowOverlap = false)
+    public void PlayAudio(AudioClip clip, AudioType audioType, bool allowOverlap = false, int pitchVariance = 0)
     {
         var audio = Array.Find(audioDictionary[audioType], a => a.clip == clip);
 
@@ -84,16 +83,16 @@ public class AudioManager : MonoBehaviour
             }
             else if (audioType == AudioType.Sound)
             {
-                PlaySound(audio, allowOverlap);
+                PlaySound(audio, allowOverlap, pitchVariance);
             }
         }
     }
 
     //overload that takes in clip name (and passes it onto original PlayAudio method)
-    public void PlayAudio(string clipName, AudioType audioType, bool allowOverlap = false)
+    public void PlayAudio(string clipName, AudioType audioType, bool allowOverlap = false, int pitchVariance = 0)
     {
         var audioClip = Array.Find(audioDictionary[audioType], a => a.name == clipName).clip;
-        PlayAudio(audioClip, audioType, allowOverlap);
+        PlayAudio(audioClip, audioType, allowOverlap, pitchVariance);
     }
 
     void PlayMusic(AudioObject music)
@@ -105,11 +104,12 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    void PlaySound(AudioObject sound, bool allowOverlap)
+    void PlaySound(AudioObject sound, bool allowOverlap, int pitchVariance)
     {
         if (!sound.source.isPlaying || allowOverlap)
         {
             sound.source.volume = volumeSliders[(int)AudioType.Sound].normalizedValue * masterAudioMultiplier;
+            sound.source.pitch = 1f + (0.059463f * UnityEngine.Random.Range(-pitchVariance, pitchVariance + 1));
             sound.source.Play();
         }
     }

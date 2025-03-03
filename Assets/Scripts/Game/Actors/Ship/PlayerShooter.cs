@@ -55,7 +55,7 @@ public class PlayerShooter : Shooter<PlayerBullet>
         //SpawnProjectile(0, 0f, bulletSpawnPositions[1].position, false);
         //SpawnProjectile(0, 0f, bulletSpawnPositions[2].position, false);
 
-        AudioManager.Instance.PlayAudio("player_shoot-default", AudioType.Sound);
+        AudioManager.Instance.PlayAudio("player_shoot-default", AudioType.Sound, true, 3);
 
         canShoot = false;
         yield return WaitForSeconds(ShootingCooldown);
