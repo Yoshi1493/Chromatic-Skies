@@ -7,9 +7,11 @@ using static CoroutineHelper;
 public class ResultsScreen : Menu
 {
     IEnumerator popupCoroutine;
-    public event Action ResultsFinishDisplayAction;
 
-    CanvasGroup canvasGroup;
+    [SerializeField] CanvasGroup canvasGroup;
+    [SerializeField] InputHandler inputHandler;
+
+    [Space]
 
     [SerializeField] FloatObject elapsedTime;
     float totalTime;
@@ -20,6 +22,7 @@ public class ResultsScreen : Menu
 
     [SerializeField] TextMeshProUGUI[] resultsTexts;
     [SerializeField] TextMeshProUGUI[] resultsValues;
+
     [SerializeField] GameObject confirmButton;
 
     Enemy enemy;
@@ -28,11 +31,8 @@ public class ResultsScreen : Menu
     {
         base.Awake();
 
-        canvasGroup = GetComponent<CanvasGroup>();
-
-        enemy = FindObjectOfType<Enemy>();
-
         InitializeCanvasElements();
+        enemy = FindObjectOfType<Enemy>();
     }
 
     void InitializeCanvasElements()
@@ -69,6 +69,7 @@ public class ResultsScreen : Menu
     void OnEnemyDie()
     {
         Open(confirmButton);
+        inputHandler.enabled = true;
 
         canvasGroup.alpha = 0f;
 
@@ -115,7 +116,7 @@ public class ResultsScreen : Menu
 
         yield return WaitForSeconds(1f);
 
-        ResultsFinishDisplayAction?.Invoke();
+        confirmButton.SetActive(true);
     }
 
     void InitializeResults()
@@ -144,8 +145,9 @@ public class ResultsScreen : Menu
                     item.enabled = true;
                 }
 
-                ResultsFinishDisplayAction?.Invoke();
+                confirmButton.SetActive(true);
             }
         }
     }
+
 }
