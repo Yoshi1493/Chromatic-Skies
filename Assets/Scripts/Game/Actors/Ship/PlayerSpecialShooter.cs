@@ -49,7 +49,7 @@ public abstract class PlayerSpecialShooter : PlayerShooter
     {
         if (Input.GetButtonDown("Special"))
         {
-            if (canShoot && specialMeter.value >= SpecialCost)
+            if (CanShoot && specialMeter.value >= SpecialCost)
             {
                 if (shootCoroutine != null)
                 {
@@ -69,7 +69,7 @@ public abstract class PlayerSpecialShooter : PlayerShooter
 
         GainSpecialMeter(-SpecialCost);
 
-        canShoot = false;
+        CanShoot = false;
         yield return null;
     }
 

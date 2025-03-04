@@ -11,6 +11,10 @@ PrefabInstance:
       propertyPath: shipData
       value: 
       objectReference: {fileID: 11400000, guid: f38ea00f8dc589b4d92154f38d3b8138, type: 2}
+    - target: {fileID: 2730886809458261436, guid: c97d5c4695dca31449990c95a6810900, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 8427381692004939548}
     - target: {fileID: 4768422070276441097, guid: c97d5c4695dca31449990c95a6810900, type: 3}
       propertyPath: shootingSpeed
       value: 

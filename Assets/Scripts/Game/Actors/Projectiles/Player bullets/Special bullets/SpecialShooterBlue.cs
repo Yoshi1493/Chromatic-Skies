@@ -16,6 +16,6 @@ public class SpecialShooterBlue : PlayerSpecialShooter
         SpawnProjectile(1, z, pos).Fire();
 
         yield return WaitForSeconds(SpecialCooldown);
-        canShoot = true;
+        CanShoot = true;
     }
 }

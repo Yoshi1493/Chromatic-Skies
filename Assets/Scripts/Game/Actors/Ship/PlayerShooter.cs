@@ -9,7 +9,7 @@ public class PlayerShooter : Shooter<PlayerBullet>
     protected override float ShootingCooldown => 1 / parentShip.ShootingSpeed.Value;
 
     [SerializeField] List<Transform> bulletSpawnPositions = new();
-    protected bool canShoot = true;
+    public bool CanShoot { get; protected set; }
 
     protected override void Awake()
     {
@@ -22,6 +22,7 @@ public class PlayerShooter : Shooter<PlayerBullet>
         base.Start();
 
         ownerShip.RespawnAction += OnRespawn;
+        CanShoot = true;
 
         //manually enable to avoid script execution order conflicts
         GetComponent<PlayerSpecialShooter>().enabled = true;
@@ -37,7 +38,7 @@ public class PlayerShooter : Shooter<PlayerBullet>
 
     void GetShootingInput()
     {
-        if (Input.GetButton("Shoot") && canShoot)
+        if (Input.GetButton("Shoot") && CanShoot)
         {
             if (shootCoroutine != null)
             {
@@ -55,11 +56,9 @@ public class PlayerShooter : Shooter<PlayerBullet>
         //SpawnProjectile(0, 0f, bulletSpawnPositions[1].position, false);
         //SpawnProjectile(0, 0f, bulletSpawnPositions[2].position, false);
 
-        AudioManager.Instance.PlayAudio("player_shoot-default", AudioType.Sound, true, 3);
-
-        canShoot = false;
+        CanShoot = false;
         yield return WaitForSeconds(ShootingCooldown);
-        canShoot = true;
+        CanShoot = true;
     }
 
     protected override void OnLoseLife()

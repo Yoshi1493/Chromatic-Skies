@@ -35,6 +35,6 @@ public class SpecialShooterGreen : PlayerSpecialShooter
         }
 
         yield return WaitForSeconds(SpecialCooldown);
-        canShoot = true;
+        CanShoot = true;
     }
 }
