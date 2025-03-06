@@ -528,6 +528,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6394838267030557459}
+  - component: {fileID: 3178483209321332462}
   m_Layer: 0
   m_Name: Bullet Systems
   m_TagString: Untagged
@@ -556,6 +557,19 @@ Transform:
   m_Father: {fileID: 4336286228127436175}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3178483209321332462
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9218394905347341282}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e038f3affa3310c489738493d6f7294b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemy: {fileID: 3922465162775491505}
 --- !u!1001 &7445058458403180120
 PrefabInstance:
   m_ObjectHideFlags: 0

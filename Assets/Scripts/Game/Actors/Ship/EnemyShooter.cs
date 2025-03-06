@@ -70,6 +70,8 @@ public abstract class EnemyShooter<TProjectile> : Shooter<TProjectile>, IEnemyAt
     protected override IEnumerator Shoot()
     {
         StartAttackLoopAction?.Invoke();
+        AudioManager.Instance.PlaySound("enemy_attack-charge");
+
         yield return WaitForSeconds(2f);
     }
 
