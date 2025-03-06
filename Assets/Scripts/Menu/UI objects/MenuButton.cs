@@ -17,7 +17,7 @@ public class MenuButton : MonoBehaviour, IPointerEnterHandler, ISelectHandler
 
     void OnButtonClick()
     {
-        AudioManager.Instance.PlayAudio(onSelectSoundEffect, AudioType.Sound, true);
+        AudioManager.Instance.PlaySound(onSelectSoundEffect, true);
     }
 
     void OnDestroy()
@@ -29,7 +29,7 @@ public class MenuButton : MonoBehaviour, IPointerEnterHandler, ISelectHandler
     {
         if (InputHandler.lastSelectedGameObject != gameObject)
         {
-            AudioManager.Instance.PlayAudio("menu_hover", AudioType.Sound, true);
+            AudioManager.Instance.PlaySound("menu_hover", true);
         }
     }
 
@@ -37,7 +37,7 @@ public class MenuButton : MonoBehaviour, IPointerEnterHandler, ISelectHandler
     {
         if (InputHandler.lastSelectedGameObject != gameObject)
         {
-            AudioManager.Instance.PlayAudio("menu_hover", AudioType.Sound, true);
+            AudioManager.Instance.PlaySound("menu_hover", true);
         }
     }
 }

@@ -28,6 +28,7 @@ public class PauseHandler : MonoBehaviour
     public void SetGamePaused(bool pauseState)
     {
         GamePauseAction?.Invoke(pauseState);
+        AudioManager.Instance.PlaySound("game_pause");
     }
 
     void OnGamePaused(bool state)

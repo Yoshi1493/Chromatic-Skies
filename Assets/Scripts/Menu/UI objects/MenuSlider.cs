@@ -15,7 +15,7 @@ public class MenuSlider : MonoBehaviour, IPointerEnterHandler, ISelectHandler
 
     void OnSliderValueChange()
     {
-        AudioManager.Instance.PlayAudio("menu_hover", AudioType.Sound, true);
+        AudioManager.Instance.PlaySound("menu_hover", true);
     }
 
     void OnDestroy()
@@ -27,7 +27,7 @@ public class MenuSlider : MonoBehaviour, IPointerEnterHandler, ISelectHandler
     {
         if (InputHandler.lastSelectedGameObject != gameObject)
         {
-            AudioManager.Instance.PlayAudio("menu_hover", AudioType.Sound, true);
+            AudioManager.Instance.PlaySound("menu_hover", true);
         }
     }
 
@@ -35,7 +35,7 @@ public class MenuSlider : MonoBehaviour, IPointerEnterHandler, ISelectHandler
     {
         if (InputHandler.lastSelectedGameObject != gameObject)
         {
-            AudioManager.Instance.PlayAudio("menu_hover", AudioType.Sound, true);
+            AudioManager.Instance.PlaySound("menu_hover", true);
         }
     }
 }

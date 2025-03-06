@@ -20,12 +20,10 @@ public class AudioObject
 }
 
 [Serializable]
-public class AudioArrayStorage : SerializableDictionary.Storage<AudioObject[]>
-{ }
+public class AudioArrayStorage : SerializableDictionary.Storage<AudioObject[]> { }
 
 [Serializable]
-public class AudioDictionary : SerializableDictionary<AudioType, AudioObject[], AudioArrayStorage>
-{ }
+public class AudioDictionary : SerializableDictionary<AudioType, AudioObject[], AudioArrayStorage> { }
 
 public class AudioManager : MonoBehaviour
 {
@@ -34,14 +32,12 @@ public class AudioManager : MonoBehaviour
     [SerializeField] AudioDictionary audioDictionary;
 
     [SerializeField] AnimationCurve audioFadeCurve;
-    float masterAudioMultiplier = 0f;
+    IEnumerator fadeCoroutine;
+    float musicAudioMultiplier = 0f;
 
     [SerializeField] Slider[] volumeSliders;
 
     PauseHandler pauseHandler;
-    const float AudioMultiplierWhilePaused = 0.5f;
-
-    IEnumerator fadeCoroutine;
 
     void Awake()
     {
@@ -69,56 +65,50 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    public void PlayAudio(AudioClip clip, AudioType audioType, bool allowOverlap = false, int pitchVariance = 0)
+    void PlayMusic(AudioClip clip)
     {
-        var audio = Array.Find(audioDictionary[audioType], a => a.clip == clip);
+        var audio = Array.Find(audioDictionary[AudioType.Music], a => a.clip == clip);
+        if (audio == null) return;
 
+        if (!audio.source.isPlaying)
+        {
+            audio.source.volume = volumeSliders[(int)AudioType.Music].normalizedValue * musicAudioMultiplier;
+            audio.source.Play();
+        }
+    }
+
+    public void PlaySound(AudioClip clip, bool allowOverlap = false, uint pitchVariance = 0)
+    {
+        var audio = Array.Find(audioDictionary[AudioType.Sound], a => a.clip == clip);
         if (audio == null) return;
 
         if (!audio.source.isPlaying || allowOverlap)
         {
-            if (audioType == AudioType.Music)
+            audio.source.volume = volumeSliders[(int)AudioType.Sound].normalizedValue;
+
+            audio.source.pitch = 1f;
+            if (pitchVariance > 0)
             {
-                PlayMusic(audio);
+                //the difference from one semitone to the next = 2^(1/12) = 1.059463(...). take away 1 since it is the default pitch value
+                audio.source.pitch += 0.059463f * UnityEngine.Random.Range(-pitchVariance, pitchVariance + 1);
             }
-            else if (audioType == AudioType.Sound)
-            {
-                PlaySound(audio, allowOverlap, pitchVariance);
-            }
+
+            audio.source.Play();
         }
     }
 
-    //overload that takes in clip name (and passes it onto original PlayAudio method)
-    public void PlayAudio(string clipName, AudioType audioType, bool allowOverlap = false, int pitchVariance = 0)
+    //overload that checks Audio
+    public void PlaySound(string clipName, bool allowOverlap = false, uint pitchVariance = 0)
     {
-        var audioClip = Array.Find(audioDictionary[audioType], a => a.name == clipName).clip;
-        PlayAudio(audioClip, audioType, allowOverlap, pitchVariance);
-    }
-
-    void PlayMusic(AudioObject music)
-    {
-        if (!music.source.isPlaying)
-        {
-            music.source.volume = volumeSliders[(int)AudioType.Music].normalizedValue * masterAudioMultiplier;
-            music.source.Play();
-        }
-    }
-
-    void PlaySound(AudioObject sound, bool allowOverlap, int pitchVariance)
-    {
-        if (!sound.source.isPlaying || allowOverlap)
-        {
-            sound.source.volume = volumeSliders[(int)AudioType.Sound].normalizedValue * masterAudioMultiplier;
-            sound.source.pitch = 1f + (0.059463f * UnityEngine.Random.Range(-pitchVariance, pitchVariance + 1));
-            sound.source.Play();
-        }
+        var audioClip = Array.Find(audioDictionary[AudioType.Sound], a => a.name == clipName).clip;
+        PlaySound(audioClip, allowOverlap, pitchVariance);
     }
 
     void Start()
     {
-        PlayAudio(audioDictionary[AudioType.Music][0].clip, AudioType.Music);
+        PlayMusic(audioDictionary[AudioType.Music][0].clip);
 
-        masterAudioMultiplier = 0f;
+        musicAudioMultiplier = 0f;
         FadeAudio(1f, 2f);
     }
 
@@ -135,7 +125,7 @@ public class AudioManager : MonoBehaviour
 
     IEnumerator _FadeAudio(float endVolume, float fadeDuration)
     {
-        float startVolume = masterAudioMultiplier;
+        float startVolume = musicAudioMultiplier;
         float currentLerpTime = 0f;
 
         while (currentLerpTime < fadeDuration)
@@ -143,22 +133,22 @@ public class AudioManager : MonoBehaviour
             yield return null;
 
             currentLerpTime += Time.unscaledDeltaTime;
-            masterAudioMultiplier = Mathf.Lerp(startVolume, endVolume, audioFadeCurve.Evaluate(currentLerpTime / fadeDuration));
+            musicAudioMultiplier = Mathf.Lerp(startVolume, endVolume, audioFadeCurve.Evaluate(currentLerpTime / fadeDuration));
             UpdateMusicVolume();
         }
 
-        masterAudioMultiplier = endVolume;
+        musicAudioMultiplier = endVolume;
     }
 
     void UpdateAudioVolume(AudioType audioType)
     {
         for (int i = 0; i < audioDictionary[audioType].Length; i++)
         {
-            audioDictionary[audioType][i].source.volume = Mathf.Pow(volumeSliders[(int)audioType].normalizedValue, 1.5f) * masterAudioMultiplier;
+            audioDictionary[audioType][i].source.volume = Mathf.Pow(volumeSliders[(int)audioType].normalizedValue, 1.5f) * musicAudioMultiplier;
         }
     }
 
-    //Button and Slider callbacks
+    //Button and Slider methods
     public void UpdateMusicVolume() => UpdateAudioVolume(AudioType.Music);
     public void UpdateSoundVolume() => UpdateAudioVolume(AudioType.Sound);
     public void OnTransitionScene() => FadeAudio(0f, 0.8f);
@@ -166,6 +156,7 @@ public class AudioManager : MonoBehaviour
 
     void OnGamePaused(bool state)
     {
-        masterAudioMultiplier = state ? AudioMultiplierWhilePaused : 1f;
+        FadeAudio(state ? 0.2f : 1f, 0.25f);
+        //masterAudioMultiplier = state ? 0.5f : 1f;
     }
 }

@@ -25,7 +25,7 @@ public class PlayerAudioManager : MonoBehaviour
     {
         if (Input.GetButton("Shoot") && shooter.CanShoot)
         {
-            AudioManager.Instance.PlayAudio("player_shoot-default", AudioType.Sound, true, 3);
+            AudioManager.Instance.PlaySound("player_shoot-default", true, 3);
         }
     }
 
