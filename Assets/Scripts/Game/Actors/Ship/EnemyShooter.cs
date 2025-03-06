@@ -1,6 +1,5 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using static CoroutineHelper;
 
@@ -43,7 +42,7 @@ public abstract class EnemyShooter<TProjectile> : Shooter<TProjectile>, IEnemyAt
         //find player
         playerShip = FindObjectOfType<Player>();
 
-        //set screen dimensions
+        //determine screen dimensions
         Camera mainCam = Camera.main;
         screenHalfHeight = mainCam.orthographicSize;
         screenHalfWidth = screenHalfHeight * mainCam.aspect;
