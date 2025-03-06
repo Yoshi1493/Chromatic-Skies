@@ -97,11 +97,23 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    //overload that checks Audio
     public void PlaySound(string clipName, bool allowOverlap = false, uint pitchVariance = 0)
     {
-        var audioClip = Array.Find(audioDictionary[AudioType.Sound], a => a.name == clipName).clip;
-        PlaySound(audioClip, allowOverlap, pitchVariance);
+        var audio = Array.Find(audioDictionary[AudioType.Sound], a => a.name == clipName);
+        if (audio == null) return;
+
+        if (!audio.source.isPlaying || allowOverlap)
+        {
+            audio.source.volume = volumeSliders[(int)AudioType.Sound].normalizedValue;
+
+            audio.source.pitch = 1f;
+            if (pitchVariance > 0)
+            {
+                audio.source.pitch += 0.059463f * UnityEngine.Random.Range(-pitchVariance, pitchVariance + 1);
+            }
+
+            audio.source.Play();
+        }
     }
 
     void Start()
