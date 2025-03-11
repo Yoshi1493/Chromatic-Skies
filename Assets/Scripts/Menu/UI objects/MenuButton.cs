@@ -3,7 +3,7 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
 [RequireComponent(typeof(Button))]
-public class MenuButton : MonoBehaviour, IPointerEnterHandler, ISelectHandler
+public class MenuButton : MonoBehaviour, ISelectHandler
 {
     Button button;
 
@@ -23,14 +23,6 @@ public class MenuButton : MonoBehaviour, IPointerEnterHandler, ISelectHandler
     void OnDestroy()
     {
         button.onClick.RemoveAllListeners();
-    }
-
-    public void OnPointerEnter(PointerEventData pointerEventData)
-    {
-        if (InputHandler.lastSelectedGameObject != gameObject)
-        {
-            AudioManager.Instance.PlaySound("menu_hover", true);
-        }
     }
 
     public void OnSelect(BaseEventData eventData)
