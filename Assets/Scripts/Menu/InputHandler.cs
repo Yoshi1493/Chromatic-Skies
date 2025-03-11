@@ -21,6 +21,8 @@ public class InputHandler : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
+
+        lastSelectedGameObject = EventSystem.current.firstSelectedGameObject;
     }
 
     void Update()
