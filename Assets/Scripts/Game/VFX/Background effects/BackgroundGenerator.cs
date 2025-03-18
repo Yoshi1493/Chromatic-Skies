@@ -1,10 +1,12 @@
 using UnityEngine;
 using static MathHelper;
 
-public class BackgroundRandomizer : MonoBehaviour
+public class BackgroundGenerator : MonoBehaviour
 {
     [SerializeField] Gradient[] colourPalettes;
     [SerializeField] SpriteRenderer[] backgroundTiles;
+
+    [SerializeField] IntObject selectedEnemyIndex;
 
     void Awake()
     {
@@ -13,7 +15,7 @@ public class BackgroundRandomizer : MonoBehaviour
         float screenHalfWidth = screenHalfHeight * mainCam.aspect;
 
         int gradientIndex = Random.Range(0, colourPalettes.Length);
-        int gradientLen = colourPalettes[gradientIndex].colorKeys.Length;
+        int gradientLen = colourPalettes[selectedEnemyIndex.value].colorKeys.Length;
 
         //set active, set colour
         for (int i = 0; i < backgroundTiles.Length; i++)
@@ -21,7 +23,10 @@ public class BackgroundRandomizer : MonoBehaviour
             if (i < gradientLen)
             {
                 backgroundTiles[i].gameObject.SetActive(true);
-                backgroundTiles[i].color = colourPalettes[gradientIndex].colorKeys[i].color;
+
+                Color c = colourPalettes[selectedEnemyIndex.value].colorKeys[i].color;
+                c.a = 0.5f;
+                backgroundTiles[i].color = c;
             }
             else
             {
@@ -32,13 +37,13 @@ public class BackgroundRandomizer : MonoBehaviour
         //get random rotation first
         float rotZ = Random.Range(10f, 25f) * PositiveOrNegativeOne;
 
-        //set transform
+        //set pos + rot + scale
         for (int i = 0; i < backgroundTiles.Length; i++)
         {
             if (!backgroundTiles[i].gameObject.activeSelf) break;
 
             float posX = Mathf.Lerp(-screenHalfWidth, screenHalfWidth, i / (gradientLen - 1f));
-            float scaleX = screenHalfWidth * 2f / (gradientLen - 1);
+            float scaleX = (screenHalfWidth * 2f / (gradientLen - 1)) * Mathf.Cos(rotZ * Mathf.Deg2Rad);
             float scaleY = ((screenHalfHeight * 2) / Mathf.Sin((90f - Mathf.Abs(rotZ)) * Mathf.Deg2Rad)) + (scaleX / Mathf.Tan((90f - Mathf.Abs(rotZ)) * Mathf.Deg2Rad));            
 
             backgroundTiles[i].transform.position = posX * Vector3.right;
