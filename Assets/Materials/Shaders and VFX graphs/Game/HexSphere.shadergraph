@@ -2375,10 +2375,10 @@
     "m_Guid": {
         "m_GuidSerialized": "97c2dd2b-dd47-4102-9529-73210822aaac"
     },
-    "m_Name": "HightlightOffset",
+    "m_Name": "HighlightOffset",
     "m_DefaultRefNameVersion": 1,
-    "m_RefNameGeneratedByDisplayName": "HightlightOffset",
-    "m_DefaultReferenceName": "_HightlightOffset",
+    "m_RefNameGeneratedByDisplayName": "HighlightOffset",
+    "m_DefaultReferenceName": "_HighlightOffset",
     "m_OverrideReferenceName": "",
     "m_GeneratePropertyBlock": true,
     "m_UseCustomSlotLabel": false,
@@ -3084,7 +3084,7 @@
     "m_ShaderOutputName": "B",
     "m_StageCapability": 3,
     "m_Value": {
-        "e00": 0.10000000149011612,
+        "e00": 0.019999999552965165,
         "e01": 2.0,
         "e02": 2.0,
         "e03": 2.0,
@@ -3685,7 +3685,7 @@
     "m_Type": "UnityEditor.ShaderGraph.Vector2MaterialSlot",
     "m_ObjectId": "e6084a431a364e3cae9acc8c7df9f0a3",
     "m_Id": 0,
-    "m_DisplayName": "HightlightOffset",
+    "m_DisplayName": "HighlightOffset",
     "m_SlotType": 1,
     "m_Hidden": false,
     "m_ShaderOutputName": "Out",
@@ -3873,7 +3873,7 @@
     "m_Hidden": false,
     "m_ShaderOutputName": "Power",
     "m_StageCapability": 3,
-    "m_Value": 1.5,
+    "m_Value": 2.0,
     "m_DefaultValue": 1.0,
     "m_Labels": []
 }
