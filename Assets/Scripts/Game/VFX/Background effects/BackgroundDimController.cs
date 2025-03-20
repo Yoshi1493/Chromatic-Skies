@@ -10,6 +10,8 @@ public class BackgroundDimController : MonoBehaviour
     void Awake()
     {
         backgroundSprite = GetComponent<SpriteRenderer>();
+        backgroundSprite.enabled = true;
+
         OnChangeBackgroundDim();
     }
 
@@ -17,7 +19,8 @@ public class BackgroundDimController : MonoBehaviour
     //called from Awake as well as changing slider value in Settings menu
     public void OnChangeBackgroundDim()
     {
-        float sliderValue = 1f - (backgroundDimSlider.value * 0.01f);
-        backgroundSprite.color = new Color(sliderValue, sliderValue, sliderValue);
+        Color c = backgroundSprite.color;
+        c.a = backgroundDimSlider.value * 0.01f;
+        backgroundSprite.color = c;
     }
 }
