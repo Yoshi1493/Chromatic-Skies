@@ -1,4 +1,4 @@
-public class EnemyBulletPool : GenericObjectPool<EnemyBullet>
+public class EnemyBulletPool : ProjectileObjectPool<EnemyBullet>
 {
 
 }
