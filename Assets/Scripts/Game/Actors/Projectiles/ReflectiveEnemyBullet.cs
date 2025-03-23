@@ -54,7 +54,7 @@ public abstract class ReflectiveEnemyBullet : EnemyBullet
 
     void SpawnReflectionParticles(Vector3 spawnPos)
     {
-        GameObject vfx = VFXObjectPool.Instance.Get(VFXType.BulletReflection);
+        GameObject vfx = VFXObjectPool.Instance.Get((int)VFXType.BulletReflection);
         var particleEffect = vfx.GetComponent<ParticleEffect>();
 
         vfx.transform.position = spawnPos;

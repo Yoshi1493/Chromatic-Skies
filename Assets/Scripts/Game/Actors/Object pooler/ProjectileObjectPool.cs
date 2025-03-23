@@ -1,8 +1,20 @@
 using System.Collections.Generic;
+using UnityEngine;
 
-public class ProjectileObjectPool<TProjectile> : GenericObjectPool<TProjectile> where TProjectile : Projectile
+public class ProjectileObjectPool<TProjectile> : MonoBehaviour where TProjectile : Projectile 
 {
-    public override void UpdatePoolableObjects(List<TProjectile> projectiles)
+    public static ProjectileObjectPool<TProjectile> Instance { get; private set; }
+    [HideInInspector] public new Transform transform;
+
+    protected readonly List<(TProjectile projectile, Queue<TProjectile> queue)> objectPool = new();
+
+    void Awake()
+    {
+        Instance = this;
+        transform = GetComponent<Transform>();
+    }
+
+    public void UpdatePoolableObjects(List<TProjectile> projectiles)
     {
         for (int i = 0; i < projectiles.Count; i++)
         {
@@ -15,7 +27,7 @@ public class ProjectileObjectPool<TProjectile> : GenericObjectPool<TProjectile> 
         }
     }
 
-    public override TProjectile Get(int ID)
+    public TProjectile Get(int ID)
     {
         if (objectPool[ID].queue.Count > 0)
         {
@@ -30,12 +42,22 @@ public class ProjectileObjectPool<TProjectile> : GenericObjectPool<TProjectile> 
         }
     }
 
-    public override void ReturnToPool(TProjectile returningObject)
+    public void ReturnToPool(TProjectile returningObject)
     {
         returningObject.transform.parent = transform;
         returningObject.gameObject.SetActive(false);
         returningObject.enabled = false;
 
         objectPool[returningObject.ProjectileID].queue.Enqueue(returningObject);
+    }
+
+    public void DrainPool()
+    {
+        foreach (Transform child in transform)
+        {
+            Destroy(child.gameObject);
+        }
+
+        objectPool.Clear();
     }
 }

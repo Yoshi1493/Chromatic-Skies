@@ -77,7 +77,7 @@ public abstract class Projectile : Actor
 
     protected void SpawnGrazeParticles(Vector3 spawnPos, float spawnRotZ)
     {
-        GameObject vfx = VFXObjectPool.Instance.Get(VFXType.PlayerGraze);
+        GameObject vfx = VFXObjectPool.Instance.Get((int)VFXType.PlayerGraze);
         var particleEffect = vfx.GetComponent<ParticleEffect>();
 
         //set spawn pos+rot
@@ -91,7 +91,7 @@ public abstract class Projectile : Actor
     public void SpawnDestructionParticles(Vector3 spawnPos)
     {
         //grab particle obj from pool; get VFX component
-        GameObject vfx = VFXObjectPool.Instance.Get(VFXType.BulletDestruction);
+        GameObject vfx = VFXObjectPool.Instance.Get((int)VFXType.BulletDestruction);
         var particleEffect = vfx.GetComponent<ParticleEffect>();
 
         vfx.transform.position = spawnPos;

@@ -1,11 +1,9 @@
-using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class GenericObjectPool<T> : MonoBehaviour
+public abstract class GenericObjectPool : MonoBehaviour
 {
-    public static GenericObjectPool<T> Instance { get; private set; }
+    public static GenericObjectPool Instance { get; private set; }
 
-    protected readonly List<(T projectile, Queue<T> queue)> objectPool = new();
     [HideInInspector] public new Transform transform;
 
     void Awake()
@@ -14,19 +12,27 @@ public abstract class GenericObjectPool<T> : MonoBehaviour
         transform = GetComponent<Transform>();
     }
 
-    public abstract void UpdatePoolableObjects(List<T> projectiles);
+    void Start()
+    {
+        UpdatePoolableObjects();
+    }
 
-    public abstract T Get(int ID);
+    public abstract void UpdatePoolableObjects();
 
-    public abstract void ReturnToPool(T returningObject);
+    public abstract GameObject Get(int ID);
 
-    public void DrainPool()
+    public abstract void ReturnToPool(GameObject returningObject, int ID);
+
+    protected virtual void Disable(GameObject go)
+    {
+        go.SetActive(false);
+    }
+
+    public virtual void DrainPool()
     {
         foreach (Transform child in transform)
         {
             Destroy(child.gameObject);
         }
-
-        objectPool.Clear();
     }
 }

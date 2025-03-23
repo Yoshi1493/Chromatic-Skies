@@ -64,7 +64,7 @@ public abstract class Player : Ship
 
     public override void DisplayInvincibleShield(Vector3 _)
     {
-        GameObject vfx = VFXObjectPool.Instance.Get(VFXType.InvinciblePlayerShield);
+        GameObject vfx = VFXObjectPool.Instance.Get((int)VFXType.InvinciblePlayerShield);
         var particleEffect = vfx.GetComponent<ParticleEffect>();
 
         particleEffect.transform.position = transform.position;

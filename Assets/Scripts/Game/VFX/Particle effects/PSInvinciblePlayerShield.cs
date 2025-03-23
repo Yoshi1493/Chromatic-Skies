@@ -10,7 +10,7 @@ public class PSInvinciblePlayerShield : ParticleEffect
 
     protected override void ReturnToPool()
     {
-        VFXObjectPool.Instance.ReturnToPool(gameObject, VFXType.InvinciblePlayerShield);
+        VFXObjectPool.Instance.ReturnToPool(gameObject, (int)VFXType.InvinciblePlayerShield);
     }
 
     protected override void Update()
