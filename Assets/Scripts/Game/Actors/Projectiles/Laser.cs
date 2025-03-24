@@ -5,8 +5,10 @@ using static CoroutineHelper;
 public abstract class Laser : Projectile
 {
     Vector3 HitboxOffset => originalSize.y * 0.5f * transform.up;
+
     protected override int CollisionMask => 1 << LayerMask.NameToLayer("Player");
     protected override int NumCollisions => Physics2D.OverlapBoxNonAlloc(transform.position + HitboxOffset, activeSize, transform.eulerAngles.z, collisionResults, CollisionMask);
+    protected bool IsColliding => NumCollisions > 0;
 
     protected bool active;
     protected Vector2 originalSize;

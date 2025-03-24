@@ -14,7 +14,6 @@ public abstract class Projectile : Actor
 
     protected abstract int CollisionMask { get; }
     protected abstract int NumCollisions { get; }
-    protected bool IsColliding => NumCollisions > 0;
 
     protected bool hasGrazed;
 
