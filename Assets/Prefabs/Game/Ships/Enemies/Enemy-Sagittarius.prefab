@@ -46,8 +46,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectiles:
   - {fileID: -256275180114982411, guid: 24472e0bd700d834d819e173ba68b878, type: 3}
-  enemyProjectiles:
-  - {fileID: -256275180114982411, guid: 24472e0bd700d834d819e173ba68b878, type: 3}
   bulletData: {fileID: 11400000, guid: f96bde73adbd588458cae182ee468a5b, type: 2}
 --- !u!1 &4073927765301320585
 GameObject:
@@ -94,9 +92,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectiles:
-  - {fileID: 7022277565874008877, guid: 482edaf94fc6d6c43b986dd85783d21d, type: 3}
-  - {fileID: 1640302091464258007, guid: 364d7bf5413737247a2d3dc2ab0c728a, type: 3}
-  enemyProjectiles:
   - {fileID: 7022277565874008877, guid: 482edaf94fc6d6c43b986dd85783d21d, type: 3}
   - {fileID: 1640302091464258007, guid: 364d7bf5413737247a2d3dc2ab0c728a, type: 3}
   bulletData: {fileID: 11400000, guid: 28cf869de51999f4cb8885bb69f70ada, type: 2}
@@ -146,8 +141,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectiles:
   - {fileID: 844582023452507211, guid: 8bf5fe04514f48342b9189da2a3f51d7, type: 3}
-  enemyProjectiles:
-  - {fileID: 844582023452507211, guid: 8bf5fe04514f48342b9189da2a3f51d7, type: 3}
   bulletData: {fileID: 11400000, guid: 5b73275ebefdc06408e74bf716b337d0, type: 2}
 --- !u!1 &6449508947915530734
 GameObject:
@@ -194,9 +187,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectiles:
-  - {fileID: -2637174073448488968, guid: 856c484e6d14bb447bc3a1d1fd4c902f, type: 3}
-  - {fileID: -801724050480395990, guid: f537792ec58abb7478e8ba6c339ba1d3, type: 3}
-  enemyProjectiles:
   - {fileID: -2637174073448488968, guid: 856c484e6d14bb447bc3a1d1fd4c902f, type: 3}
   - {fileID: -801724050480395990, guid: f537792ec58abb7478e8ba6c339ba1d3, type: 3}
   bulletData: {fileID: 11400000, guid: 8de03bc4a13e4be41b35b0272f67d587, type: 2}
@@ -246,8 +236,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectiles:
   - {fileID: 1166776370798592386, guid: 1eb68fdc4f34ed144b32f858c839ae23, type: 3}
-  enemyProjectiles:
-  - {fileID: 1166776370798592386, guid: 1eb68fdc4f34ed144b32f858c839ae23, type: 3}
   bulletData: {fileID: 11400000, guid: f504ab2d0104356419571468a16d34af, type: 2}
 --- !u!1 &7779785721346765185
 GameObject:
@@ -295,8 +283,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectiles:
   - {fileID: 7620109740968609390, guid: 3becfc862bb6c844a8de3bf3aaae07ab, type: 3}
-  enemyProjectiles:
-  - {fileID: 7620109740968609390, guid: 3becfc862bb6c844a8de3bf3aaae07ab, type: 3}
   bulletData: {fileID: 11400000, guid: ce68414b76f0cc04098447abed7d9ebb, type: 2}
 --- !u!1001 &6759093168088370692
 PrefabInstance:
@@ -310,6 +296,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8926484042661614526, guid: c53eae5ffac1b6e4ca550a48a30aab91, type: 3}
     - target: {fileID: 1136252800678040964, guid: d93cb44e21569f545b76560b29579f98, type: 3}
+      propertyPath: m_Asset
+      value: 
+      objectReference: {fileID: 8926484042661614526, guid: c53eae5ffac1b6e4ca550a48a30aab91, type: 3}
+    - target: {fileID: 1927756382310016080, guid: d93cb44e21569f545b76560b29579f98, type: 3}
       propertyPath: m_Asset
       value: 
       objectReference: {fileID: 8926484042661614526, guid: c53eae5ffac1b6e4ca550a48a30aab91, type: 3}
@@ -381,9 +371,6 @@ MonoBehaviour:
   projectiles:
   - {fileID: -8086219437507530070, guid: 9aad4d0dbb0be864fbfbce169892ab30, type: 3}
   - {fileID: -4923015427372009237, guid: 5d1173af3e1ea1c40a8d820f00c47a78, type: 3}
-  enemyProjectiles:
-  - {fileID: -8086219437507530070, guid: 9aad4d0dbb0be864fbfbce169892ab30, type: 3}
-  - {fileID: -4923015427372009237, guid: 5d1173af3e1ea1c40a8d820f00c47a78, type: 3}
   bulletData: {fileID: 11400000, guid: f1436b56be6f4ce4abd9871b32d9233b, type: 2}
 --- !u!1 &716324014634893503 stripped
 GameObject:
@@ -403,9 +390,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectiles:
-  - {fileID: -774088008264615156, guid: 351ce921491a22149bcebd7f372041c4, type: 3}
-  - {fileID: -4128703706240102648, guid: 1536abe3baf1e8644a6636f20f65caa0, type: 3}
-  enemyProjectiles:
   - {fileID: -774088008264615156, guid: 351ce921491a22149bcebd7f372041c4, type: 3}
   - {fileID: -4128703706240102648, guid: 1536abe3baf1e8644a6636f20f65caa0, type: 3}
   bulletData: {fileID: 11400000, guid: a23cb94b95f49644ebc68145fdf7ffca, type: 2}
@@ -448,8 +432,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectiles:
   - {fileID: -1889071661153187647, guid: b7526c964124e0d489271b718c9ab1c5, type: 3}
-  enemyProjectiles:
-  - {fileID: -1889071661153187647, guid: b7526c964124e0d489271b718c9ab1c5, type: 3}
   bulletData: {fileID: 11400000, guid: 1c5b058f49f107644946ce30a6af07b6, type: 2}
 --- !u!1 &3777441332194849460 stripped
 GameObject:
@@ -470,8 +452,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectiles:
   - {fileID: -191954356025762465, guid: c9e9397de0a411e4badd898e39fc4757, type: 3}
-  enemyProjectiles:
-  - {fileID: -191954356025762465, guid: c9e9397de0a411e4badd898e39fc4757, type: 3}
   bulletData: {fileID: 11400000, guid: a55988a07b8f09a4685a6ac534e7cb40, type: 2}
 --- !u!1 &4079918356797303241 stripped
 GameObject:
@@ -491,8 +471,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectiles:
-  - {fileID: 7526023493051601331, guid: f2a9fdc27f92b23418533582f6a48dfe, type: 3}
-  enemyProjectiles:
   - {fileID: 7526023493051601331, guid: f2a9fdc27f92b23418533582f6a48dfe, type: 3}
   bulletData: {fileID: 11400000, guid: 4fd2825296a5e574c97921c5491c6e1b, type: 2}
 --- !u!4 &6153433117319852303 stripped
@@ -544,8 +522,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectiles:
-  - {fileID: -2824826901227992871, guid: 6161546a79521914a8df0c7fc8c187e1, type: 3}
-  enemyProjectiles:
   - {fileID: -2824826901227992871, guid: 6161546a79521914a8df0c7fc8c187e1, type: 3}
   bulletData: {fileID: 11400000, guid: 977cbb44a1078234b82635a8c381d704, type: 2}
 --- !u!1 &7008567321455470459 stripped

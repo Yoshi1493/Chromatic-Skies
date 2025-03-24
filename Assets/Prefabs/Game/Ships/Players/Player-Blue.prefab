@@ -15,6 +15,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 4840031759866785450}
+    - target: {fileID: 4752881839023206143, guid: c97d5c4695dca31449990c95a6810900, type: 3}
+      propertyPath: m_Asset
+      value: 
+      objectReference: {fileID: 8926484042661614526, guid: b7e12efe55583774bbe8251bccd61a78, type: 3}
     - target: {fileID: 4768422070276441097, guid: c97d5c4695dca31449990c95a6810900, type: 3}
       propertyPath: shootingSpeed
       value: 
@@ -127,46 +131,21 @@ PrefabInstance:
       propertyPath: shootingSpeed.OriginalValue
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 8509931830159876781, guid: c97d5c4695dca31449990c95a6810900, type: 3}
+      propertyPath: m_Asset
+      value: 
+      objectReference: {fileID: 8926484042661614526, guid: b80edae2489c35e49a5baa43fde33b95, type: 3}
+    - target: {fileID: 9199843559269796313, guid: c97d5c4695dca31449990c95a6810900, type: 3}
+      propertyPath: m_Asset
+      value: 
+      objectReference: {fileID: 8926484042661614526, guid: 5415a4c800f84a54387975a54d765db8, type: 3}
     m_RemovedComponents:
     - {fileID: 6144929791114761972, guid: c97d5c4695dca31449990c95a6810900, type: 3}
     - {fileID: 7467897710815529108, guid: c97d5c4695dca31449990c95a6810900, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: c97d5c4695dca31449990c95a6810900, type: 3}
---- !u!2083052967 &843966693069970543 stripped
+--- !u!2083052967 &495582409412869140 stripped
 VisualEffect:
-  m_CorrespondingSourceObject: {fileID: 1399483046231289764, guid: c97d5c4695dca31449990c95a6810900, type: 3}
-  m_PrefabInstance: {fileID: 1791774414425977803}
-  m_PrefabAsset: {fileID: 0}
---- !u!2083052967 &1735639421152823385 stripped
-VisualEffect:
-  m_CorrespondingSourceObject: {fileID: 57301656798559122, guid: c97d5c4695dca31449990c95a6810900, type: 3}
-  m_PrefabInstance: {fileID: 1791774414425977803}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &2220221412303342607 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 437525132826705860, guid: c97d5c4695dca31449990c95a6810900, type: 3}
-  m_PrefabInstance: {fileID: 1791774414425977803}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &3007715195177754340
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2220221412303342607}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 55762062c82c526478f74e78e793d8d4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spawnVFX: {fileID: 7014413543351199230}
-  loseLifeVFX: {fileID: 6223471558805430859}
-  respawnVFX: {fileID: 5884066372953222851}
-  deathVFX: {fileID: 1735639421152823385}
-  invincibleVFX: {fileID: 2643485749076402658}
-  specialVFX: {fileID: 843966693069970543}
---- !u!2083052967 &2643485749076402658 stripped
-VisualEffect:
-  m_CorrespondingSourceObject: {fileID: 4355584601540776489, guid: c97d5c4695dca31449990c95a6810900, type: 3}
+  m_CorrespondingSourceObject: {fileID: 2178898642646208479, guid: c97d5c4695dca31449990c95a6810900, type: 3}
   m_PrefabInstance: {fileID: 1791774414425977803}
   m_PrefabAsset: {fileID: 0}
 --- !u!58 &3954993893983707010 stripped
@@ -195,16 +174,29 @@ MonoBehaviour:
   - {fileID: 1479085872879964356, guid: a0c79cc02cbb13f4e910ed309dfdfbfd, type: 3}
   bulletSpawnPositions: []
   specialMeter: {fileID: 11400000, guid: eb81c5868f0d20b48b29013b6aef286c, type: 2}
---- !u!2083052967 &5884066372953222851 stripped
-VisualEffect:
-  m_CorrespondingSourceObject: {fileID: 5293363878213508360, guid: c97d5c4695dca31449990c95a6810900, type: 3}
+--- !u!1 &6160247425745410587 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5593524832398453200, guid: c97d5c4695dca31449990c95a6810900, type: 3}
   m_PrefabInstance: {fileID: 1791774414425977803}
   m_PrefabAsset: {fileID: 0}
---- !u!2083052967 &6223471558805430859 stripped
-VisualEffect:
-  m_CorrespondingSourceObject: {fileID: 5657540649791410560, guid: c97d5c4695dca31449990c95a6810900, type: 3}
-  m_PrefabInstance: {fileID: 1791774414425977803}
+--- !u!114 &6827362681263775588
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6160247425745410587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55762062c82c526478f74e78e793d8d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnVFX: {fileID: 8096370232402488793}
+  loseLifeVFX: {fileID: 7453951817149282834}
+  respawnVFX: {fileID: 7981769143911600486}
+  deathVFX: {fileID: 495582409412869140}
+  invincibleVFX: {fileID: 6424395382441925940}
+  specialVFX: {fileID: 7237821892820515311}
 --- !u!1 &6246849726923490308 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5651153232659691471, guid: c97d5c4695dca31449990c95a6810900, type: 3}
@@ -234,8 +226,28 @@ CircleCollider2D:
   m_CorrespondingSourceObject: {fileID: 5651153232659691459, guid: c97d5c4695dca31449990c95a6810900, type: 3}
   m_PrefabInstance: {fileID: 1791774414425977803}
   m_PrefabAsset: {fileID: 0}
---- !u!2083052967 &7014413543351199230 stripped
+--- !u!2083052967 &6424395382441925940 stripped
 VisualEffect:
-  m_CorrespondingSourceObject: {fileID: 8756575071442392629, guid: c97d5c4695dca31449990c95a6810900, type: 3}
+  m_CorrespondingSourceObject: {fileID: 4752881839023206143, guid: c97d5c4695dca31449990c95a6810900, type: 3}
+  m_PrefabInstance: {fileID: 1791774414425977803}
+  m_PrefabAsset: {fileID: 0}
+--- !u!2083052967 &7237821892820515311 stripped
+VisualEffect:
+  m_CorrespondingSourceObject: {fileID: 8983627923464571428, guid: c97d5c4695dca31449990c95a6810900, type: 3}
+  m_PrefabInstance: {fileID: 1791774414425977803}
+  m_PrefabAsset: {fileID: 0}
+--- !u!2083052967 &7453951817149282834 stripped
+VisualEffect:
+  m_CorrespondingSourceObject: {fileID: 9199843559269796313, guid: c97d5c4695dca31449990c95a6810900, type: 3}
+  m_PrefabInstance: {fileID: 1791774414425977803}
+  m_PrefabAsset: {fileID: 0}
+--- !u!2083052967 &7981769143911600486 stripped
+VisualEffect:
+  m_CorrespondingSourceObject: {fileID: 8509931830159876781, guid: c97d5c4695dca31449990c95a6810900, type: 3}
+  m_PrefabInstance: {fileID: 1791774414425977803}
+  m_PrefabAsset: {fileID: 0}
+--- !u!2083052967 &8096370232402488793 stripped
+VisualEffect:
+  m_CorrespondingSourceObject: {fileID: 7530507319698513426, guid: c97d5c4695dca31449990c95a6810900, type: 3}
   m_PrefabInstance: {fileID: 1791774414425977803}
   m_PrefabAsset: {fileID: 0}
