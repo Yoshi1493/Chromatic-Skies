@@ -1,12 +1,4 @@
-using System.Collections;
-using UnityEngine;
-
-public class ScoreObject : MonoBehaviour
+public class ScoreObject : Collectible
 {
-    Player player;
 
-    void Awake()
-    {
-        player = FindObjectOfType<Player>();
-    }
 }
