@@ -3,7 +3,6 @@ using UnityEngine;
 public abstract class Projectile : Actor
 {
     [SerializeField] protected ProjectileObject projectileData;
-
     public int ProjectileID => projectileData.ID;
 
     protected virtual float MaxLifetime => 10f;
