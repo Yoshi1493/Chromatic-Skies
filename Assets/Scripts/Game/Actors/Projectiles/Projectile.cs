@@ -21,7 +21,6 @@ public abstract class Projectile : Actor
     [HideInInspector] public Vector3 moveDirection;
     [HideInInspector] public float currentSpeed;
 
-
     protected override void Awake()
     {
         base.Awake();
