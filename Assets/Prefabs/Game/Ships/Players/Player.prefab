@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8840549044310091621}
   - component: {fileID: 2423900889455833876}
   m_Layer: 6
-  m_Name: Hitbox (sprite)
+  m_Name: Hitbox (Sprite)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -366,7 +366,7 @@ GameObject:
   - component: {fileID: 3332484142188375113}
   - component: {fileID: 9166743536271704712}
   m_Layer: 6
-  m_Name: Graze collider
+  m_Name: Graze (Collider)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
