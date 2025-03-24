@@ -12,10 +12,10 @@ public enum VFXType
     InvincibleEnemyShield = 4
 }
 
-public class VFXObjectPool : GenericObjectPool
+public class VFXObjectPool : GenericObjectPool<ParticleEffect>
 {
-    readonly Dictionary<VFXType, Queue<GameObject>> vfxPool = new();
-    [SerializeField] List<GameObject> visualEffects;
+    readonly Dictionary<VFXType, Queue<ParticleEffect>> vfxPool = new();
+    [SerializeField] List<ParticleEffect> visualEffects;
 
     public override void UpdatePoolableObjects()
     {
@@ -23,12 +23,12 @@ public class VFXObjectPool : GenericObjectPool
         {
             if (Enum.IsDefined(typeof(VFXType), i))
             {
-                vfxPool.Add((VFXType)i, new Queue<GameObject>());
+                vfxPool.Add((VFXType)i, new Queue<ParticleEffect>());
             }
         }
     }
 
-    public override GameObject Get(int vfxID)
+    public override ParticleEffect Get(int vfxID)
     {
         if (vfxPool[(VFXType)vfxID].Count > 0)
         {
@@ -36,23 +36,23 @@ public class VFXObjectPool : GenericObjectPool
         }
         else
         {
-            GameObject newEffect = Instantiate(visualEffects[vfxID], transform);
+            ParticleEffect newEffect = Instantiate(visualEffects[vfxID], transform);
             Disable(newEffect);
 
             return newEffect;
         }
     }
 
-    public override void ReturnToPool(GameObject returningEffect, int vfxID)
+    public override void ReturnToPool(ParticleEffect returningEffect, int vfxID)
     {
         Disable(returningEffect);
         vfxPool[(VFXType)vfxID].Enqueue(returningEffect);
     }
 
-    protected override void Disable(GameObject go)
+    protected override void Disable(ParticleEffect effect)
     {
-        base.Disable(go);
-        go.GetComponent<ParticleEffect>().enabled = false;
+        effect.gameObject.SetActive(false);
+        effect.enabled = false;
     }
 
     public override void DrainPool()

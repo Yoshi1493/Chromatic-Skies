@@ -64,11 +64,10 @@ public abstract class Player : Ship
 
     public override void DisplayInvincibleShield(Vector3 _)
     {
-        GameObject vfx = VFXObjectPool.Instance.Get((int)VFXType.InvinciblePlayerShield);
-        var particleEffect = vfx.GetComponent<ParticleEffect>();
+        var particleEffect = VFXObjectPool.Instance.Get((int)VFXType.InvinciblePlayerShield);
 
         particleEffect.transform.position = transform.position;
-        vfx.SetActive(true);
+        particleEffect.gameObject.SetActive(true);
 
         particleEffect.ParticleSystem.SetFloat("ParticleSize", InvincibleColliderRadius);
         particleEffect.ParticleSystem.SetVector4("ParticleColour", shipData.UIColour.value);

@@ -54,14 +54,14 @@ public abstract class ReflectiveEnemyBullet : EnemyBullet
 
     void SpawnReflectionParticles(Vector3 spawnPos)
     {
-        GameObject vfx = VFXObjectPool.Instance.Get((int)VFXType.BulletReflection);
-        var particleEffect = vfx.GetComponent<ParticleEffect>();
+        var particleEffect = VFXObjectPool.Instance.Get((int)VFXType.BulletReflection);
 
-        vfx.transform.position = spawnPos;
-        vfx.SetActive(true);
+        particleEffect.transform.position = spawnPos;
+        particleEffect.gameObject.SetActive(true);
 
         particleEffect.ParticleSystem.SetVector4("ParticleColour", SpriteRenderer.color);
         particleEffect.ParticleSystem.SetFloat("ParticleRotation", Mathf.Sign(moveDirection.x) * 90f);
+
         particleEffect.enabled = true;
     }
 }

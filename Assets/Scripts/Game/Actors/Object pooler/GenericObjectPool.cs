@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public abstract class GenericObjectPool : MonoBehaviour
+public abstract class GenericObjectPool<T> : MonoBehaviour
 {
-    public static GenericObjectPool Instance { get; private set; }
+    public static GenericObjectPool<T> Instance { get; private set; }
 
     [HideInInspector] public new Transform transform;
 
@@ -19,14 +19,11 @@ public abstract class GenericObjectPool : MonoBehaviour
 
     public abstract void UpdatePoolableObjects();
 
-    public abstract GameObject Get(int ID);
+    public abstract T Get(int ID);
 
-    public abstract void ReturnToPool(GameObject returningObject, int ID);
+    public abstract void ReturnToPool(T returningObject, int ID);
 
-    protected virtual void Disable(GameObject go)
-    {
-        go.SetActive(false);
-    }
+    protected abstract void Disable(T go);
 
     public virtual void DrainPool()
     {

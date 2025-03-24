@@ -9,10 +9,10 @@ public enum CollectibleType
     Health = 1,
 }
 
-public class CollectibleObjectPool : GenericObjectPool
+public class CollectibleObjectPool : GenericObjectPool<Collectible>
 {
-    readonly Dictionary<CollectibleType, Queue<GameObject>> collectiblesPool = new();
-    [SerializeField] List<GameObject> collectibles;
+    readonly Dictionary<CollectibleType, Queue<Collectible>> collectiblesPool = new();
+    [SerializeField] List<Collectible> collectibles;
 
     public override void UpdatePoolableObjects()
     {
@@ -20,12 +20,12 @@ public class CollectibleObjectPool : GenericObjectPool
         {
             if (Enum.IsDefined(typeof(CollectibleType), i))
             {
-                collectiblesPool.Add((CollectibleType)i, new Queue<GameObject>());
+                collectiblesPool.Add((CollectibleType)i, new Queue<Collectible>());
             }
         }
     }
 
-    public override GameObject Get(int collectibleID)
+    public override Collectible Get(int collectibleID)
     {
         if (collectiblesPool[(CollectibleType)collectibleID].Count > 0)
         {
@@ -33,23 +33,23 @@ public class CollectibleObjectPool : GenericObjectPool
         }
         else
         {
-            GameObject newCollectible = Instantiate(collectibles[collectibleID], transform);
+            Collectible newCollectible = Instantiate(collectibles[collectibleID], transform);
             Disable(newCollectible);
 
             return newCollectible;
         }
     }
 
-    public override void ReturnToPool(GameObject returningCollectible, int collectibleID)
+    public override void ReturnToPool(Collectible returningCollectible, int collectibleID)
     {
         Disable(returningCollectible);
         collectiblesPool[(CollectibleType)collectibleID].Enqueue(returningCollectible);
     }
 
-    protected override void Disable(GameObject go)
+    protected override void Disable(Collectible collectible)
     {
-        base.Disable(go);
-        go.GetComponent<Collectible>().enabled = false;
+        collectible.gameObject.SetActive(false);
+        collectible.enabled = false;
     }
 
     public override void DrainPool()

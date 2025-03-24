@@ -74,12 +74,11 @@ public abstract class Projectile : Actor
 
     protected void SpawnGrazeParticles(Vector3 spawnPos, float spawnRotZ)
     {
-        GameObject vfx = VFXObjectPool.Instance.Get((int)VFXType.PlayerGraze);
-        var particleEffect = vfx.GetComponent<ParticleEffect>();
+        var particleEffect = VFXObjectPool.Instance.Get((int)VFXType.PlayerGraze);
 
         //set spawn pos+rot
-        vfx.transform.SetPositionAndRotation(spawnPos, Quaternion.Euler(0f, 0f, spawnRotZ));
-        vfx.SetActive(true);
+        particleEffect.transform.SetPositionAndRotation(spawnPos, Quaternion.Euler(0f, 0f, spawnRotZ));
+        particleEffect.gameObject.SetActive(true);
 
         particleEffect.ParticleSystem.SetVector4("ParticleColour", SpriteRenderer.color);
         particleEffect.enabled = true;
@@ -88,11 +87,10 @@ public abstract class Projectile : Actor
     public void SpawnDestructionParticles(Vector3 spawnPos)
     {
         //grab particle obj from pool; get VFX component
-        GameObject vfx = VFXObjectPool.Instance.Get((int)VFXType.BulletDestruction);
-        var particleEffect = vfx.GetComponent<ParticleEffect>();
+        var particleEffect = VFXObjectPool.Instance.Get((int)VFXType.BulletDestruction);
 
-        vfx.transform.position = spawnPos;
-        vfx.SetActive(true);
+        particleEffect.transform.position = spawnPos;
+        particleEffect.gameObject.SetActive(true);
 
         //set colour based on sprite colour
         particleEffect.ParticleSystem.SetVector4("ParticleColour", SpriteRenderer.color);
