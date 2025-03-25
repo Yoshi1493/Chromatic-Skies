@@ -6,15 +6,19 @@ public class PauseHandler : MonoBehaviour
     public static bool IsPaused { get; private set; }
     public event Action<bool> GamePauseAction;
 
+    Ship[] ships;
+
     void Awake()
     {
         GamePauseAction += OnGamePaused;
 
-        var ships = FindObjectsOfType<Ship>();
+        ships = FindObjectsOfType<Ship>();
         foreach (var ship in ships)
         {
-            ship.DeathAction += () => enabled = false;
+            ship.DeathAction += OnShipDie;
         }
+
+        IsPaused = false;
     }
 
     void Update()
@@ -35,5 +39,17 @@ public class PauseHandler : MonoBehaviour
     {
         IsPaused = state;
         Time.timeScale = state ? 0 : 1;
+    }
+
+    void OnShipDie() => enabled = false;
+
+    void OnDestroy()
+    {
+        foreach (var ship in ships)
+        {
+            ship.DeathAction -= OnShipDie;
+        }
+
+        IsPaused = false;
     }
 }
