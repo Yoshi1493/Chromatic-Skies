@@ -67,7 +67,7 @@ public abstract class Collectible : Actor
         }
     }
 
-    protected virtual void Destroy()
+    public virtual void Destroy()
     {
         moveDirection = Vector3.zero;
         MoveSpeed = 0f;
