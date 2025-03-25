@@ -6,6 +6,9 @@ public abstract class Collectible : Actor
     Collider2D[] collisionResults = new Collider2D[1];
     float hitboxSize;
 
+    const float BounceLerpDuration = 1.5f;
+    float currentLifetime;
+
     Player player;
     bool foundPlayer;
 
@@ -17,8 +20,10 @@ public abstract class Collectible : Actor
 
     protected virtual void OnEnable()
     {
-        moveDirection = Vector3.down;
+        moveDirection = Vector3.up;
         MoveSpeed = 2f;
+
+        currentLifetime = 0f;
 
         foundPlayer = false;
     }
@@ -30,25 +35,36 @@ public abstract class Collectible : Actor
 
     void Update()
     {
-        transform.Translate(Time.deltaTime * MoveSpeed * moveDirection.normalized, Space.World);
+        currentLifetime += Time.deltaTime;
 
-        if (!foundPlayer)
+        Move();
+        CheckCollisionWithPlayer();
+    }
+
+    void Move()
+    {
+        if (currentLifetime < BounceLerpDuration && !foundPlayer)
         {
-            CheckCollisionWithPlayer();
+            moveDirection = Vector3.Lerp(Vector3.up, Vector3.down, currentLifetime / BounceLerpDuration);
         }
-        else
-        {
-            HomeInOnPlayer();
-        }
+
+        transform.Translate(Time.deltaTime * MoveSpeed * moveDirection, Space.World);
     }
 
     void CheckCollisionWithPlayer()
     {
-        var collisions = Physics2D.OverlapCircleNonAlloc(transform.position, hitboxSize, collisionResults, CollisionMask);
-
-        if (collisions > 0)
+        if (!foundPlayer)
         {
-            foundPlayer = true;
+            var collisions = Physics2D.OverlapCircleNonAlloc(transform.position, hitboxSize, collisionResults, CollisionMask);
+
+            if (collisions > 0)
+            {
+                foundPlayer = true;
+            }
+        }
+        else
+        {
+            HomeInOnPlayer();
         }
     }
 
