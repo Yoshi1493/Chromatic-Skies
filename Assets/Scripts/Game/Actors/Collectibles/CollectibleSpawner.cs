@@ -21,12 +21,6 @@ public class CollectibleSpawner : MonoBehaviour
     void Start()
     {
         enemy.LoseLifeAction += OnEnemyLoseLife;
-
-        //pre-warm object pool
-        for (int i = 0; i < PrewarmCount; i++)
-        {
-            SpawnCollectible(CollectibleType.Score, new Vector3(screenHalfWidth, screenHalfHeight));
-        }
     }
 
     Collectible SpawnCollectible(CollectibleType collectibleType, Vector3 spawnPos)

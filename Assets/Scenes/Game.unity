@@ -4100,6 +4100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   transform: {fileID: 0}
+  prewarmCount: 500
   collectibles:
   - {fileID: 1921282877794899759, guid: 9c990ba014009334688301f217830346, type: 3}
 --- !u!1 &952196236

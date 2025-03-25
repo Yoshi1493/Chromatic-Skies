@@ -12,7 +12,23 @@ public enum CollectibleType
 public class CollectibleObjectPool : GenericObjectPool<Collectible>
 {
     readonly Dictionary<CollectibleType, Queue<Collectible>> collectiblesPool = new();
+
+    [SerializeField] int prewarmCount;
     [SerializeField] List<Collectible> collectibles;
+
+    void Start()
+    {
+        Queue<Collectible> tmp = new(prewarmCount);
+
+        for (int i = 0; i < prewarmCount; i++)
+        {
+            tmp.Enqueue(Get((int)CollectibleType.Score));
+        }
+        for (int i = 0; i < prewarmCount; i++)
+        {
+            ReturnToPool(tmp.Dequeue(), (int)CollectibleType.Score);
+        }
+    }
 
     public override void UpdatePoolableObjects()
     {
