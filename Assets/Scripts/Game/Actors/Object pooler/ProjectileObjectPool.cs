@@ -1,12 +1,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ProjectileObjectPool<TProjectile> : MonoBehaviour where TProjectile : Projectile 
+public class ProjectileObjectPool<TProjectile> : MonoBehaviour where TProjectile : Projectile
 {
     public static ProjectileObjectPool<TProjectile> Instance { get; private set; }
     [HideInInspector] public new Transform transform;
 
     protected readonly List<(TProjectile projectile, Queue<TProjectile> queue)> objectPool = new();
+    List<TProjectile> activeObjects = new();
 
     void Awake()
     {
@@ -59,5 +60,20 @@ public class ProjectileObjectPool<TProjectile> : MonoBehaviour where TProjectile
         }
 
         objectPool.Clear();
+    }
+
+    public List<TProjectile> GetAllActiveObjects()
+    {
+        activeObjects.Clear();
+
+        foreach (Transform child in transform)
+        {
+            if (child.gameObject.activeSelf)
+            {
+                activeObjects.Add(child.GetComponent<TProjectile>());
+            }
+        }
+
+        return activeObjects;
     }
 }

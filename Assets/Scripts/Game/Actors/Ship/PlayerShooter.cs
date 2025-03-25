@@ -74,15 +74,12 @@ public class PlayerShooter : Shooter<PlayerBullet>
 
     protected override void DestroyAllProjectiles()
     {
-        foreach (var projectile in PlayerBulletPool.Instance.transform.GetComponentsInChildren<Projectile>())
+        foreach (var bullet in PlayerBulletPool.Instance.GetAllActiveObjects())
         {
-            if (projectile.isActiveAndEnabled)
-            {
-                projectile.Destroy();
+            Vector3 pos = bullet.transform.position;
 
-                Vector3 pos = projectile.transform.position;
-                projectile.SpawnDestructionParticles(pos);
-            }
+            bullet.Destroy();
+            bullet.SpawnDestructionParticles(pos);
         }
     }
 }

@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using static CoroutineHelper;
 
@@ -104,23 +105,20 @@ public abstract class EnemyShooter<TProjectile> : Shooter<TProjectile>, IEnemyAt
 
     protected override void DestroyAllProjectiles()
     {
-        foreach (EnemyBullet projectile in EnemyBulletPool.Instance.transform.GetComponentsInChildren<Projectile>())
+        foreach (var bullet in EnemyBulletPool.Instance.GetAllActiveObjects())
         {
-            if (projectile.isActiveAndEnabled)
-            {
-                projectile.Destroy();
+            Vector3 pos = bullet.transform.position;
 
-                Vector3 pos = projectile.transform.position;
-                projectile.SpawnDestructionParticles(pos);
+            if (bullet.isActiveAndEnabled)
+            {
+                bullet.Destroy();
+                bullet.SpawnDestructionParticles(pos);
             }
         }
 
-        foreach (Laser projectile in EnemyLaserPool.Instance.transform.GetComponentsInChildren<Projectile>())
+        foreach (var laser in EnemyLaserPool.Instance.GetAllActiveObjects())
         {
-            if (projectile.isActiveAndEnabled)
-            {
-                projectile.Destroy();
-            }
+            laser.Destroy();
         }
     }
 }
