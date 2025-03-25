@@ -6,9 +6,6 @@ public abstract class Collectible : Actor
     Collider2D[] collisionResults = new Collider2D[1];
     float hitboxSize;
 
-    [HideInInspector] public Vector3 moveDirection;
-    public float MoveSpeed { get; protected set; }
-
     Player player;
     bool foundPlayer;
 

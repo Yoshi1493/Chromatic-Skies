@@ -6,8 +6,6 @@ public abstract class Bullet : Projectile
     protected virtual float HitboxSize => 0.8f * Mathf.Min(SpriteRenderer.size.x, SpriteRenderer.size.y) / 2f;
     protected override int NumCollisions => Physics2D.OverlapCircleNonAlloc(transform.position, HitboxSize, collisionResults, CollisionMask);
 
-    public float MoveSpeed { get; set; }
-
     protected IEnumerator movementBehaviour;
     protected abstract IEnumerator Move();
 

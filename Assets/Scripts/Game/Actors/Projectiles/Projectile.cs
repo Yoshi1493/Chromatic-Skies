@@ -16,9 +16,6 @@ public abstract class Projectile : Actor
 
     protected bool hasGrazed;
 
-    [HideInInspector] public Vector3 moveDirection;
-    [HideInInspector] public float currentSpeed;
-
     protected override void Awake()
     {
         base.Awake();
