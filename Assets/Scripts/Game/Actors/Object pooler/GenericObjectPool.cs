@@ -10,10 +10,7 @@ public abstract class GenericObjectPool<T> : MonoBehaviour
     {
         Instance = this;
         transform = GetComponent<Transform>();
-    }
 
-    void Start()
-    {
         UpdatePoolableObjects();
     }
 
