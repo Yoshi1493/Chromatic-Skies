@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class PlayerBullet : Bullet
 {
-    protected override int CollisionMask => 1 << LayerMask.NameToLayer("Enemy");
+    protected override int CollisionMask => 1 << LayerMask.NameToLayer("Boss");
 
     protected override void Awake()
     {
@@ -20,7 +20,7 @@ public class PlayerBullet : Bullet
     protected override void Update()
     {
         base.Update();
-        CheckCollisionWith<Enemy>();
+        CheckCollisionWith<Boss>();
     }
 
     public override void Destroy()

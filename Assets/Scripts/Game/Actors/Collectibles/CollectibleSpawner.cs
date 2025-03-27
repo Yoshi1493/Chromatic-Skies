@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class CollectibleSpawner : MonoBehaviour
 {
-    Enemy enemy;
+    Boss boss;
 
     protected float screenHalfHeight;
     protected float screenHalfWidth;
@@ -11,7 +11,7 @@ public class CollectibleSpawner : MonoBehaviour
 
     void Awake()
     {
-        enemy = FindObjectOfType<Enemy>();
+        boss = FindObjectOfType<Boss>();
 
         Camera mainCam = Camera.main;
         screenHalfHeight = mainCam.orthographicSize;
@@ -20,7 +20,7 @@ public class CollectibleSpawner : MonoBehaviour
 
     void Start()
     {
-        enemy.LoseLifeAction += OnEnemyLoseLife;
+        boss.LoseLifeAction += OnBossLoseLife;
     }
 
     Collectible SpawnCollectible(CollectibleType collectibleType, Vector3 spawnPos)
@@ -31,9 +31,9 @@ public class CollectibleSpawner : MonoBehaviour
         return newCollectible;
     }
 
-    void OnEnemyLoseLife()
+    void OnBossLoseLife()
     {
-        foreach (var bullet in EnemyBulletPool.Instance.GetAllActiveObjects())
+        foreach (var bullet in BossBulletPool.Instance.GetAllActiveObjects())
         {
             Vector3 pos = bullet.transform.position;
 
@@ -48,6 +48,6 @@ public class CollectibleSpawner : MonoBehaviour
 
     void OnDestroy()
     {
-        enemy.LoseLifeAction -= OnEnemyLoseLife;
+        boss.LoseLifeAction -= OnBossLoseLife;
     }
 }

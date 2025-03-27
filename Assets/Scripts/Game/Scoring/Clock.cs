@@ -16,7 +16,7 @@ public class Clock : MonoBehaviour
     public const string StringFormat = "m':'ss'.'ff";
 
     Player player;
-    Enemy enemy;
+    Boss boss;
     PauseHandler pauseHandler;
 
     void Awake()
@@ -24,7 +24,7 @@ public class Clock : MonoBehaviour
         clockText = GetComponent<TextMeshProUGUI>();
 
         player = FindObjectOfType<Player>();
-        enemy = FindObjectOfType<Enemy>();
+        boss = FindObjectOfType<Boss>();
         pauseHandler = FindObjectOfType<PauseHandler>();
     }
 
@@ -33,13 +33,13 @@ public class Clock : MonoBehaviour
         player.LoseLifeAction += () => PauseClock(false, player.RespawnTime + 2f);
         player.DeathAction += StopClock;
 
-        enemy.LoseLifeAction += () => RestartClock(enemy.RespawnTime + 2f);
-        enemy.DeathAction += StopClock;
+        boss.LoseLifeAction += () => RestartClock(boss.RespawnTime + 2f);
+        boss.DeathAction += StopClock;
 
         pauseHandler.GamePauseAction += SetPaused;
 
         currentTime.value = 0f;
-        RestartClock(enemy.RespawnTime + 2f);
+        RestartClock(boss.RespawnTime + 2f);
     }
 
     void Update()

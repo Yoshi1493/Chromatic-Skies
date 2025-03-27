@@ -10,7 +10,7 @@ public abstract class PlayerSpecialShooter : PlayerShooter
     public const float MaxSpecialMeter = 3f;
     const float InitialSpecialMeter = 1f;
     const float SpecialCost = 1f;
-    const float MeterGainPerEnemyHit = 0.005f;
+    const float MeterGainPerBossHit = 0.005f;
     const float MeterGainPerHit = 0.02f;
     const float MeterGainPerGraze = 0.002f;
 
@@ -18,7 +18,7 @@ public abstract class PlayerSpecialShooter : PlayerShooter
     public event Action SpecialReadyAction;
     public event Action SpecialMeterUpdateAction;
 
-    Enemy enemy;
+    Boss boss;
 
     protected virtual float SpecialCooldown => 5f;
 
@@ -27,9 +27,9 @@ public abstract class PlayerSpecialShooter : PlayerShooter
         base.Start();
 
         //put in Start instead of Awake due to script execution order conditions
-        enemy = FindObjectOfType<Enemy>();
-        enemy.TakeDamageAction += OnEnemyTakeDamage;
-        enemy.DeathAction += OnEnemyDie;
+        boss = FindObjectOfType<Boss>();
+        boss.TakeDamageAction += OnBossTakeDamage;
+        boss.DeathAction += OnBossDie;
 
         ownerShip.TakeDamageAction += OnPlayerTakeDamage;
         ownerShip.GetComponentInChildren<PlayerGraze>().GrazeAction += OnPlayerGraze;
@@ -87,12 +87,12 @@ public abstract class PlayerSpecialShooter : PlayerShooter
         }
     }
 
-    void OnEnemyTakeDamage(int _)
+    void OnBossTakeDamage(int _)
     {
-        GainSpecialMeter(MeterGainPerEnemyHit);
+        GainSpecialMeter(MeterGainPerBossHit);
     }
 
-    void OnEnemyDie()
+    void OnBossDie()
     {
         enabled = false;
     }

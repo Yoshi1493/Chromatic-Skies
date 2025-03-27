@@ -147,7 +147,7 @@ public abstract class Laser : Projectile
         }
 
         active = false;
-        EnemyLaserPool.Instance.ReturnToPool(this);
+        BossLaserPool.Instance.ReturnToPool(this);
         shrinkAnimation = null;
     }
 

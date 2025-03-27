@@ -6,7 +6,7 @@ public class BackgroundGenerator : MonoBehaviour
     [SerializeField] Gradient[] colourPalettes;
     [SerializeField] SpriteRenderer[] backgroundTiles;
 
-    [SerializeField] IntObject selectedEnemyIndex;
+    [SerializeField] IntObject selectedBossIndex;
 
     void Awake()
     {
@@ -15,7 +15,7 @@ public class BackgroundGenerator : MonoBehaviour
         float screenHalfWidth = screenHalfHeight * mainCam.aspect;
 
         int gradientIndex = Random.Range(0, colourPalettes.Length);
-        int gradientLen = colourPalettes[selectedEnemyIndex.value].colorKeys.Length;
+        int gradientLen = colourPalettes[selectedBossIndex.value].colorKeys.Length;
 
         //set active, set colour
         for (int i = 0; i < backgroundTiles.Length; i++)
@@ -24,7 +24,7 @@ public class BackgroundGenerator : MonoBehaviour
             {
                 backgroundTiles[i].gameObject.SetActive(true);
 
-                Color c = colourPalettes[selectedEnemyIndex.value].colorKeys[i].color;
+                Color c = colourPalettes[selectedBossIndex.value].colorKeys[i].color;
                 c.a = 0.5f;
                 backgroundTiles[i].color = c;
             }

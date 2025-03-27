@@ -9,7 +9,7 @@ public enum VFXType
     BulletDestruction = 1,
     BulletReflection = 2,
     InvinciblePlayerShield = 3,
-    InvincibleEnemyShield = 4
+    InvincibleBossShield = 4
 }
 
 public class VFXObjectPool : GenericObjectPool<ParticleEffect>

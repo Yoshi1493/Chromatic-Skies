@@ -1,0 +1,21 @@
+using System.Collections;
+using UnityEngine;
+
+public class GeminiBullet30 : ReflectiveBossBullet
+{
+    protected override float MaxLifetime => 15f;
+
+    protected override IEnumerator Move()
+    {
+        MoveSpeed = 2.5f;
+        yield return null;
+    }
+
+    protected override void HandleReflection(Collider2D coll)
+    {
+        base.HandleReflection(coll);
+
+        MoveSpeed *= 0.5f;
+        SpriteRenderer.color = projectileData.gradient.Evaluate(0f);
+    }
+}

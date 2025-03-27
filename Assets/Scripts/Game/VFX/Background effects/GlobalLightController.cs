@@ -14,25 +14,25 @@ public class GlobalLightController : MonoBehaviour
     [SerializeField] AnimationCurve lightIntensityInterpolation;
 
     Player player;
-    Enemy enemy;
+    Boss boss;
 
     void Awake()
     {
         globalLight = GetComponent<Light2D>();
 
         player = FindObjectOfType<Player>();
-        enemy = FindObjectOfType<Enemy>();
+        boss = FindObjectOfType<Boss>();
     }
 
     void Start()
     {
         player.LoseLifeAction += ResetIntensity;
 
-        enemy.LoseLifeAction += ResetIntensity;
-        enemy.DeathAction += OnEnemyDie;
+        boss.LoseLifeAction += ResetIntensity;
+        boss.DeathAction += OnBossDie;
     }
 
-    void OnEnemyDie()
+    void OnBossDie()
     {
         FadeIntensity(2f, LightIntensityAnimationDuration, lightIntensityInterpolation);
     }

@@ -378,7 +378,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9113669927874555428, guid: 43808b15fa4047946ae6ee640412c78f, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 158.23
       objectReference: {fileID: 0}
     - target: {fileID: 9113669927874555428, guid: 43808b15fa4047946ae6ee640412c78f, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -1048,19 +1048,19 @@ PrefabInstance:
       objectReference: {fileID: 1525450754}
     - target: {fileID: 825442718250811664, guid: e8441de41b7ec514980a4dbf0079a537, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SelectEnemy
+      value: SelectBoss
       objectReference: {fileID: 0}
     - target: {fileID: 825442718250811664, guid: e8441de41b7ec514980a4dbf0079a537, type: 3}
       propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SelectEnemy
+      value: SelectBoss
       objectReference: {fileID: 0}
     - target: {fileID: 825442718250811664, guid: e8441de41b7ec514980a4dbf0079a537, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: EnemySelectMenu, Assembly-CSharp
+      value: BossSelectMenu, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 825442718250811664, guid: e8441de41b7ec514980a4dbf0079a537, type: 3}
       propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: EnemySelectMenu, Assembly-CSharp
+      value: BossSelectMenu, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 825442718250811664, guid: e8441de41b7ec514980a4dbf0079a537, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
@@ -1523,7 +1523,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -74.115, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &506311087
@@ -1683,19 +1683,19 @@ PrefabInstance:
       objectReference: {fileID: 1525450754}
     - target: {fileID: 825442718250811664, guid: e8441de41b7ec514980a4dbf0079a537, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SelectEnemy
+      value: SelectBoss
       objectReference: {fileID: 0}
     - target: {fileID: 825442718250811664, guid: e8441de41b7ec514980a4dbf0079a537, type: 3}
       propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SelectEnemy
+      value: SelectBoss
       objectReference: {fileID: 0}
     - target: {fileID: 825442718250811664, guid: e8441de41b7ec514980a4dbf0079a537, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: EnemySelectMenu, Assembly-CSharp
+      value: BossSelectMenu, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 825442718250811664, guid: e8441de41b7ec514980a4dbf0079a537, type: 3}
       propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: EnemySelectMenu, Assembly-CSharp
+      value: BossSelectMenu, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 825442718250811664, guid: e8441de41b7ec514980a4dbf0079a537, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
@@ -1988,7 +1988,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9113669927874555428, guid: 43808b15fa4047946ae6ee640412c78f, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 56.02
       objectReference: {fileID: 0}
     - target: {fileID: 9113669927874555428, guid: 43808b15fa4047946ae6ee640412c78f, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -2158,7 +2158,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9113669927874555428, guid: 43808b15fa4047946ae6ee640412c78f, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 130.695
       objectReference: {fileID: 0}
     - target: {fileID: 9113669927874555428, guid: 43808b15fa4047946ae6ee640412c78f, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -2459,19 +2459,19 @@ PrefabInstance:
       objectReference: {fileID: 1525450754}
     - target: {fileID: 825442718250811664, guid: e8441de41b7ec514980a4dbf0079a537, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SelectEnemy
+      value: SelectBoss
       objectReference: {fileID: 0}
     - target: {fileID: 825442718250811664, guid: e8441de41b7ec514980a4dbf0079a537, type: 3}
       propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SelectEnemy
+      value: SelectBoss
       objectReference: {fileID: 0}
     - target: {fileID: 825442718250811664, guid: e8441de41b7ec514980a4dbf0079a537, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: EnemySelectMenu, Assembly-CSharp
+      value: BossSelectMenu, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 825442718250811664, guid: e8441de41b7ec514980a4dbf0079a537, type: 3}
       propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: EnemySelectMenu, Assembly-CSharp
+      value: BossSelectMenu, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 825442718250811664, guid: e8441de41b7ec514980a4dbf0079a537, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
@@ -3505,7 +3505,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -27.005, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &847469031
@@ -3644,19 +3644,19 @@ PrefabInstance:
       objectReference: {fileID: 1525450754}
     - target: {fileID: 825442718250811664, guid: e8441de41b7ec514980a4dbf0079a537, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SelectEnemy
+      value: SelectBoss
       objectReference: {fileID: 0}
     - target: {fileID: 825442718250811664, guid: e8441de41b7ec514980a4dbf0079a537, type: 3}
       propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SelectEnemy
+      value: SelectBoss
       objectReference: {fileID: 0}
     - target: {fileID: 825442718250811664, guid: e8441de41b7ec514980a4dbf0079a537, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: EnemySelectMenu, Assembly-CSharp
+      value: BossSelectMenu, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 825442718250811664, guid: e8441de41b7ec514980a4dbf0079a537, type: 3}
       propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: EnemySelectMenu, Assembly-CSharp
+      value: BossSelectMenu, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 825442718250811664, guid: e8441de41b7ec514980a4dbf0079a537, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
@@ -4067,7 +4067,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -13.505, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &879811452
@@ -4423,19 +4423,19 @@ PrefabInstance:
       objectReference: {fileID: 1525450754}
     - target: {fileID: 825442718250811664, guid: e8441de41b7ec514980a4dbf0079a537, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SelectEnemy
+      value: SelectBoss
       objectReference: {fileID: 0}
     - target: {fileID: 825442718250811664, guid: e8441de41b7ec514980a4dbf0079a537, type: 3}
       propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SelectEnemy
+      value: SelectBoss
       objectReference: {fileID: 0}
     - target: {fileID: 825442718250811664, guid: e8441de41b7ec514980a4dbf0079a537, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: EnemySelectMenu, Assembly-CSharp
+      value: BossSelectMenu, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 825442718250811664, guid: e8441de41b7ec514980a4dbf0079a537, type: 3}
       propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: EnemySelectMenu, Assembly-CSharp
+      value: BossSelectMenu, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 825442718250811664, guid: e8441de41b7ec514980a4dbf0079a537, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
@@ -4775,7 +4775,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -12.505, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1033473260
@@ -4982,19 +4982,19 @@ PrefabInstance:
       objectReference: {fileID: 1525450754}
     - target: {fileID: 825442718250811664, guid: e8441de41b7ec514980a4dbf0079a537, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SelectEnemy
+      value: SelectBoss
       objectReference: {fileID: 0}
     - target: {fileID: 825442718250811664, guid: e8441de41b7ec514980a4dbf0079a537, type: 3}
       propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SelectEnemy
+      value: SelectBoss
       objectReference: {fileID: 0}
     - target: {fileID: 825442718250811664, guid: e8441de41b7ec514980a4dbf0079a537, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: EnemySelectMenu, Assembly-CSharp
+      value: BossSelectMenu, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 825442718250811664, guid: e8441de41b7ec514980a4dbf0079a537, type: 3}
       propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: EnemySelectMenu, Assembly-CSharp
+      value: BossSelectMenu, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 825442718250811664, guid: e8441de41b7ec514980a4dbf0079a537, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
@@ -5230,19 +5230,19 @@ PrefabInstance:
       objectReference: {fileID: 1525450754}
     - target: {fileID: 825442718250811664, guid: e8441de41b7ec514980a4dbf0079a537, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SelectEnemy
+      value: SelectBoss
       objectReference: {fileID: 0}
     - target: {fileID: 825442718250811664, guid: e8441de41b7ec514980a4dbf0079a537, type: 3}
       propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SelectEnemy
+      value: SelectBoss
       objectReference: {fileID: 0}
     - target: {fileID: 825442718250811664, guid: e8441de41b7ec514980a4dbf0079a537, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: EnemySelectMenu, Assembly-CSharp
+      value: BossSelectMenu, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 825442718250811664, guid: e8441de41b7ec514980a4dbf0079a537, type: 3}
       propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: EnemySelectMenu, Assembly-CSharp
+      value: BossSelectMenu, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 825442718250811664, guid: e8441de41b7ec514980a4dbf0079a537, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
@@ -5462,7 +5462,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -27.005, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1166012901
@@ -6024,19 +6024,19 @@ PrefabInstance:
       objectReference: {fileID: 1525450754}
     - target: {fileID: 825442718250811664, guid: e8441de41b7ec514980a4dbf0079a537, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SelectEnemy
+      value: SelectBoss
       objectReference: {fileID: 0}
     - target: {fileID: 825442718250811664, guid: e8441de41b7ec514980a4dbf0079a537, type: 3}
       propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SelectEnemy
+      value: SelectBoss
       objectReference: {fileID: 0}
     - target: {fileID: 825442718250811664, guid: e8441de41b7ec514980a4dbf0079a537, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: EnemySelectMenu, Assembly-CSharp
+      value: BossSelectMenu, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 825442718250811664, guid: e8441de41b7ec514980a4dbf0079a537, type: 3}
       propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: EnemySelectMenu, Assembly-CSharp
+      value: BossSelectMenu, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 825442718250811664, guid: e8441de41b7ec514980a4dbf0079a537, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
@@ -6675,19 +6675,19 @@ PrefabInstance:
       objectReference: {fileID: 1525450754}
     - target: {fileID: 825442718250811664, guid: e8441de41b7ec514980a4dbf0079a537, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SelectEnemy
+      value: SelectBoss
       objectReference: {fileID: 0}
     - target: {fileID: 825442718250811664, guid: e8441de41b7ec514980a4dbf0079a537, type: 3}
       propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SelectEnemy
+      value: SelectBoss
       objectReference: {fileID: 0}
     - target: {fileID: 825442718250811664, guid: e8441de41b7ec514980a4dbf0079a537, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: EnemySelectMenu, Assembly-CSharp
+      value: BossSelectMenu, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 825442718250811664, guid: e8441de41b7ec514980a4dbf0079a537, type: 3}
       propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: EnemySelectMenu, Assembly-CSharp
+      value: BossSelectMenu, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 825442718250811664, guid: e8441de41b7ec514980a4dbf0079a537, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
@@ -7735,7 +7735,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -12.24, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1434083826
@@ -7941,7 +7941,7 @@ GameObject:
   - component: {fileID: 1525450755}
   - component: {fileID: 1525450754}
   m_Layer: 5
-  m_Name: Enemy select menu (Canvas)
+  m_Name: Boss select menu (Canvas)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7961,8 +7961,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   backButton: {fileID: 794794481}
   shipButtonParent: {fileID: 1706778268}
-  selectedEnemyIndex: {fileID: 11400000, guid: d5bd1f541c5da6647b0ec80fa55b12ce, type: 2}
-  enemyShipData:
+  selectedBossIndex: {fileID: 11400000, guid: d5bd1f541c5da6647b0ec80fa55b12ce, type: 2}
+  bossShipData:
   - {fileID: 11400000, guid: 08e0ea81ba5f3414eb9f185047afc36b, type: 2}
   - {fileID: 11400000, guid: c3f8016a8b24a984cb0d1bf54bf9c153, type: 2}
   - {fileID: 11400000, guid: c327f1531df3e204297f51a6d0a7af15, type: 2}
@@ -8097,7 +8097,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -33.835, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1526147151
@@ -8324,7 +8324,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9113669927874555428, guid: 43808b15fa4047946ae6ee640412c78f, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 121.515
       objectReference: {fileID: 0}
     - target: {fileID: 9113669927874555428, guid: 43808b15fa4047946ae6ee640412c78f, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -8928,7 +8928,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9113669927874555428, guid: 43808b15fa4047946ae6ee640412c78f, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 94.345
       objectReference: {fileID: 0}
     - target: {fileID: 9113669927874555428, guid: 43808b15fa4047946ae6ee640412c78f, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -8994,7 +8994,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -13.505, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1620021227
@@ -9121,7 +9121,7 @@ GameObject:
   - component: {fileID: 1694041163}
   - component: {fileID: 1694041165}
   m_Layer: 5
-  m_Name: Select enemy (TMP)
+  m_Name: Select boss (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9167,7 +9167,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Select Enemy
+  m_text: 'Select Boss
 
 
     <size=50%>(demo version only. this screen
@@ -9353,19 +9353,19 @@ PrefabInstance:
       objectReference: {fileID: 1525450754}
     - target: {fileID: 825442718250811664, guid: e8441de41b7ec514980a4dbf0079a537, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SelectEnemy
+      value: SelectBoss
       objectReference: {fileID: 0}
     - target: {fileID: 825442718250811664, guid: e8441de41b7ec514980a4dbf0079a537, type: 3}
       propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SelectEnemy
+      value: SelectBoss
       objectReference: {fileID: 0}
     - target: {fileID: 825442718250811664, guid: e8441de41b7ec514980a4dbf0079a537, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: EnemySelectMenu, Assembly-CSharp
+      value: BossSelectMenu, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 825442718250811664, guid: e8441de41b7ec514980a4dbf0079a537, type: 3}
       propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: EnemySelectMenu, Assembly-CSharp
+      value: BossSelectMenu, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 825442718250811664, guid: e8441de41b7ec514980a4dbf0079a537, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
@@ -10250,7 +10250,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9113669927874555428, guid: 43808b15fa4047946ae6ee640412c78f, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 157.8
       objectReference: {fileID: 0}
     - target: {fileID: 9113669927874555428, guid: 43808b15fa4047946ae6ee640412c78f, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -10423,7 +10423,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9113669927874555428, guid: 43808b15fa4047946ae6ee640412c78f, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 71.595
       objectReference: {fileID: 0}
     - target: {fileID: 9113669927874555428, guid: 43808b15fa4047946ae6ee640412c78f, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -11364,19 +11364,19 @@ PrefabInstance:
       objectReference: {fileID: 1525450754}
     - target: {fileID: 825442718250811664, guid: e8441de41b7ec514980a4dbf0079a537, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SelectEnemy
+      value: SelectBoss
       objectReference: {fileID: 0}
     - target: {fileID: 825442718250811664, guid: e8441de41b7ec514980a4dbf0079a537, type: 3}
       propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SelectEnemy
+      value: SelectBoss
       objectReference: {fileID: 0}
     - target: {fileID: 825442718250811664, guid: e8441de41b7ec514980a4dbf0079a537, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: EnemySelectMenu, Assembly-CSharp
+      value: BossSelectMenu, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 825442718250811664, guid: e8441de41b7ec514980a4dbf0079a537, type: 3}
       propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: EnemySelectMenu, Assembly-CSharp
+      value: BossSelectMenu, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 825442718250811664, guid: e8441de41b7ec514980a4dbf0079a537, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
@@ -12017,7 +12017,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9113669927874555428, guid: 43808b15fa4047946ae6ee640412c78f, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 117.31
       objectReference: {fileID: 0}
     - target: {fileID: 9113669927874555428, guid: 43808b15fa4047946ae6ee640412c78f, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -12674,7 +12674,7 @@ GameObject:
   - component: {fileID: 2086960131}
   - component: {fileID: 2086960130}
   m_Layer: 5
-  m_Name: Select enemy (Image)
+  m_Name: Select boss (Image)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13138,19 +13138,19 @@ PrefabInstance:
       objectReference: {fileID: 1525450754}
     - target: {fileID: 825442718250811664, guid: e8441de41b7ec514980a4dbf0079a537, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SelectEnemy
+      value: SelectBoss
       objectReference: {fileID: 0}
     - target: {fileID: 825442718250811664, guid: e8441de41b7ec514980a4dbf0079a537, type: 3}
       propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SelectEnemy
+      value: SelectBoss
       objectReference: {fileID: 0}
     - target: {fileID: 825442718250811664, guid: e8441de41b7ec514980a4dbf0079a537, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: EnemySelectMenu, Assembly-CSharp
+      value: BossSelectMenu, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 825442718250811664, guid: e8441de41b7ec514980a4dbf0079a537, type: 3}
       propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: EnemySelectMenu, Assembly-CSharp
+      value: BossSelectMenu, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 825442718250811664, guid: e8441de41b7ec514980a4dbf0079a537, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName

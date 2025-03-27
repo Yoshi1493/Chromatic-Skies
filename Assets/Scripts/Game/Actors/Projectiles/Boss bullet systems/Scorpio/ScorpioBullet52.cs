@@ -1,0 +1,10 @@
+using System.Collections;
+
+public class ScorpioBullet52 : BossBullet
+{
+    protected override IEnumerator Move()
+    {
+        SpriteRenderer.color = projectileData.gradient.colorKeys[^1].color;
+        yield return this.LerpSpeed(0f, 2f, 1f);
+    }
+}

@@ -25,14 +25,14 @@ public class ResultsScreen : Menu
 
     [SerializeField] GameObject confirmButton;
 
-    Enemy enemy;
+    Boss boss;
 
     protected override void Awake()
     {
         base.Awake();
 
         InitializeCanvasElements();
-        enemy = FindObjectOfType<Enemy>();
+        boss = FindObjectOfType<Boss>();
     }
 
     void InitializeCanvasElements()
@@ -52,21 +52,21 @@ public class ResultsScreen : Menu
 
     void Start()
     {
-        if (enemy != null)
+        if (boss != null)
         {
-            enemy.LoseLifeAction += OnEnemyLoseLife;
-            enemy.DeathAction += OnEnemyDie;
+            boss.LoseLifeAction += OnBossLoseLife;
+            boss.DeathAction += OnBossDie;
         }
 
         Close();
     }
 
-    void OnEnemyLoseLife()
+    void OnBossLoseLife()
     {
         totalTime += elapsedTime.value;
     }
 
-    void OnEnemyDie()
+    void OnBossDie()
     {
         Open(confirmButton);
         inputHandler.enabled = true;

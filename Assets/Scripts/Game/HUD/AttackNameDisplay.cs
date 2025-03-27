@@ -1,7 +1,7 @@
 using UnityEngine;
 using TMPro;
 
-public class AttackNameDisplay : ShipHUDComponent<Enemy>
+public class AttackNameDisplay : ShipHUDComponent<Boss>
 {
     Animator anim;
     TextMeshProUGUI nameText;
@@ -18,7 +18,7 @@ public class AttackNameDisplay : ShipHUDComponent<Enemy>
         if (ship != null)
         {
             ship.StartAttackAction += OnAttackStart;
-            ship.LoseLifeAction += OnEnemyLoseLife;
+            ship.LoseLifeAction += OnBossLoseLife;
         }
     }
 
@@ -31,7 +31,7 @@ public class AttackNameDisplay : ShipHUDComponent<Enemy>
         }
     }
 
-    void OnEnemyLoseLife()
+    void OnBossLoseLife()
     {
         anim.SetBool("show_name", false);
     }

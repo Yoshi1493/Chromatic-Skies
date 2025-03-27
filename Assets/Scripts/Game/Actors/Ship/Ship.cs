@@ -138,7 +138,7 @@ public abstract class Ship : Actor
         SpriteRenderer.enabled = false;
     }
 
-    //called when enemy transition to next attack pattern, and when player receives damage
+    //called when boss transition to next attack pattern, and when player receives damage
     public void SetInvincible(float duration)
     {
         if (invincibilityCoroutine != null)
