@@ -34,7 +34,7 @@ public class GlobalLightController : MonoBehaviour
 
     void OnEnemyDie()
     {
-        FadeIntensity(3f, LightIntensityAnimationDuration, lightIntensityInterpolation);
+        FadeIntensity(2f, LightIntensityAnimationDuration, lightIntensityInterpolation);
     }
 
     void ResetIntensity()
