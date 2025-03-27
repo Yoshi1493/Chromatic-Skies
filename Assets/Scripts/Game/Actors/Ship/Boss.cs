@@ -198,7 +198,7 @@ public class Boss : Ship
         return movementSystems[shipData.MaxLives.Value - currentLives];
     }
 
-    public override void DisplayInvincibleShield(Vector3 spawnPos)
+    public void DisplayInvincibleShield(Vector3 spawnPos)
     {
         var particleEffect = VFXObjectPool.Instance.Get((int)VFXType.InvincibleBossShield);
 

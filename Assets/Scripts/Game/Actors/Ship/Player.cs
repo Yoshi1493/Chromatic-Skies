@@ -56,13 +56,13 @@ public abstract class Player : Ship
 
         if (state)
         {
-            DisplayInvincibleShield(transform.position);
+            DisplayInvincibleShield();
         }
     }
 
     protected abstract void OnSpecialActivated();
 
-    public override void DisplayInvincibleShield(Vector3 _)
+    void DisplayInvincibleShield()
     {
         var particleEffect = VFXObjectPool.Instance.Get((int)VFXType.InvinciblePlayerShield);
 
