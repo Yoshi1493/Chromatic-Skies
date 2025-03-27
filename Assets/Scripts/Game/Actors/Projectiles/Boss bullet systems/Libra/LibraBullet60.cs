@@ -1,5 +1,4 @@
 using System.Collections;
-using UnityEngine;
 
 public class LibraBullet60 : BossBullet
 {

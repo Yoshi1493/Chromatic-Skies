@@ -1,7 +1,6 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
-using static CoroutineHelper;
 
 [RequireComponent(typeof(Image))]
 public class HealthBar<TShip> : ShipHUDComponent<TShip>

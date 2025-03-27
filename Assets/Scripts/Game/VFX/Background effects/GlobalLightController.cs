@@ -1,7 +1,6 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
-using static CoroutineHelper;
 
 [RequireComponent(typeof(Light2D))]
 public class GlobalLightController : MonoBehaviour

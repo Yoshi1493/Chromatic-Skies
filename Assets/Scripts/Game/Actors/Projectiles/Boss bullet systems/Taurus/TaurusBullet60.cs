@@ -1,6 +1,5 @@
 using System.Collections;
 using UnityEngine;
-using static CoroutineHelper;
 
 public class TaurusBullet60 : ScriptableBossBullet<TaurusBulletSystem61, Laser>
 {
