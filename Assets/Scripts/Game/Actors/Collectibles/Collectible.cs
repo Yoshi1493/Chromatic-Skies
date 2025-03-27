@@ -2,14 +2,12 @@ using UnityEngine;
 
 public abstract class Collectible : Actor
 {
-    int CollisionMask => 1 << LayerMask.NameToLayer("Player");
-    Collider2D[] collisionResults = new Collider2D[1];
-    float hitboxSize;
-
     const float BounceLerpDuration = 1.5f;
     float currentLifetime;
 
     Player player;
+    const float PlayerDetectionSqRadius = 1f;
+    const float PlayerCollisionSqRadius = 0.1f;
     bool foundPlayer;
 
     protected override void Awake()
@@ -26,11 +24,6 @@ public abstract class Collectible : Actor
         currentLifetime = 0f;
 
         foundPlayer = false;
-    }
-
-    void Start()
-    {
-        hitboxSize = Mathf.Min(SpriteRenderer.size.x, SpriteRenderer.size.y) / 2f;
     }
 
     void Update()
@@ -53,30 +46,19 @@ public abstract class Collectible : Actor
 
     void CheckCollisionWithPlayer()
     {
-        if (!foundPlayer)
-        {
-            var collisions = Physics2D.OverlapCircleNonAlloc(transform.position, hitboxSize, collisionResults, CollisionMask);
-
-            if (collisions > 0)
-            {
-                foundPlayer = true;
-            }
-        }
-        else
-        {
-            HomeInOnPlayer();
-        }
-    }
-
-    void HomeInOnPlayer()
-    {
         Vector3 diff = player.transform.position - transform.position;
-        moveDirection = diff;
-        MoveSpeed = 10f;
-
-        if (Vector3.SqrMagnitude(diff) <= 0.1f)
+        
+        if (Vector3.SqrMagnitude(diff) <= PlayerDetectionSqRadius)
         {
-            Destroy();
+            foundPlayer = true;
+
+            moveDirection = diff;
+            MoveSpeed = 15f;
+
+            if (Vector3.SqrMagnitude(diff) <= PlayerCollisionSqRadius)
+            {
+                Destroy();
+            }
         }
     }
 
@@ -85,12 +67,4 @@ public abstract class Collectible : Actor
         moveDirection = Vector3.zero;
         MoveSpeed = 0f;
     }
-
-#if UNITY_EDITOR
-    protected virtual void OnDrawGizmos()
-    {
-        if (UnityEditor.EditorApplication.isPlaying)
-            Gizmos.DrawSphere(transform.position, hitboxSize);
-    }
-#endif
 }
