@@ -4,6 +4,7 @@ public abstract class Collectible : Actor
 {
     const float BounceLerpDuration = 1.5f;
     float currentLifetime;
+    protected virtual float MaxLifetime => 10f;
 
     Player player;
     const float PlayerDetectionSqRadius = 1f;
@@ -28,10 +29,19 @@ public abstract class Collectible : Actor
 
     void Update()
     {
-        currentLifetime += Time.deltaTime;
-
+        IncrementLifetime();
         Move();
         CheckCollisionWithPlayer();
+    }
+
+    void IncrementLifetime()
+    {
+        currentLifetime += Time.deltaTime;
+
+        if (currentLifetime > MaxLifetime)
+        {
+            Destroy();
+        }
     }
 
     void Move()
