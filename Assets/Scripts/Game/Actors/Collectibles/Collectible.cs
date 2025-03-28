@@ -2,7 +2,7 @@ using UnityEngine;
 
 public abstract class Collectible : Actor
 {
-    const float BounceLerpDuration = 1.5f;
+    const float BounceDuration = 1.5f;
     float currentLifetime;
     protected virtual float MaxLifetime => 10f;
 
@@ -46,9 +46,9 @@ public abstract class Collectible : Actor
 
     void Move()
     {
-        if (currentLifetime < BounceLerpDuration && !foundPlayer)
+        if (currentLifetime < BounceDuration && !foundPlayer)
         {
-            moveDirection = Vector3.Lerp(Vector3.up, Vector3.down, currentLifetime / BounceLerpDuration);
+            moveDirection = Vector3.Lerp(Vector3.up, Vector3.down, currentLifetime / BounceDuration);
         }
 
         transform.Translate(Time.deltaTime * MoveSpeed * moveDirection, Space.World);
