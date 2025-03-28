@@ -31,6 +31,9 @@ public class Clock : MonoBehaviour
     void OnEnable()
     {
         clockText.enabled = true;
+
+        currentTime.value = 0f;
+        RestartClock(boss.RespawnTime + 2f);
     }
 
     void Start()
@@ -44,10 +47,6 @@ public class Clock : MonoBehaviour
         pauseHandler.GamePauseAction += SetPaused;
 
         enemySpawner.BossSpawnAction += () => enabled = true;
-
-        currentTime.value = 0f;
-        RestartClock(boss.RespawnTime + 2f);
-
         enabled = false;
     }
 
