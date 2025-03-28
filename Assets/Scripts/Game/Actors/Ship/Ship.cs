@@ -41,13 +41,22 @@ public abstract class Ship : Actor
 
     #endregion
 
+    #region Collision
+
     [SerializeField] new protected CircleCollider2D collider;
     protected virtual float OriginalColliderRadius => 0.5f;
     protected virtual float InvincibleColliderRadius => 1.5f;
 
+    #endregion
+
+    #region Coroutines
+
     IEnumerator loseLifeCoroutine;
+    IEnumerator refillHealthCoroutine;
     IEnumerator invincibilityCoroutine;
     IEnumerator deathCoroutine;
+
+    #endregion
 
     protected override void Awake()
     {
