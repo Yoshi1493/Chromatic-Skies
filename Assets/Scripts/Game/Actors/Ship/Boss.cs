@@ -28,11 +28,6 @@ public class Boss : Ship
         player = FindObjectOfType<Player>();
     }
 
-    void Start()
-    {
-        player.LoseLifeAction += OnPlayerLoseLife;
-    }
-
     void ValidateAttackSystems()
     {
         bulletSystems = new(shipData.MaxLives.Value);
@@ -66,6 +61,11 @@ public class Boss : Ship
 
         systemResetCoroutine = RefreshBossSystems(0, RespawnTime);
         StartCoroutine(systemResetCoroutine);
+    }
+
+    void Start()
+    {
+        player.LoseLifeAction += OnPlayerLoseLife;
     }
 
 #if UNITY_EDITOR
