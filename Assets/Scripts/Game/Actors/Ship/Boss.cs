@@ -125,33 +125,36 @@ public class Boss : Ship
         IBossAttack nextBulletSystem;
         BossMovement nextMovementSystem;
 
+        //if player died, keep same attack+movement system
         if (currentHealth > 0)
         {
             nextBulletSystem = currentBulletSystems[0];
             nextMovementSystem = currentMovementSystem;
         }
+        //otherwise, prepare next attack+movement system
         else
         {
             nextBulletSystem = bulletSystems[currentSystemIndex + 1];
             nextMovementSystem = movementSystems[currentSystemIndex + 1];
         }
 
+        //disable attack+movement systems
         foreach (var bulletSystem in currentBulletSystems)
         {
             bulletSystem.SetEnabled(false);
         }
-
         currentMovementSystem.StopAllCoroutines();
         currentMovementSystem.enabled = false;
 
-        nextMovementSystem.enabled = true;
         yield return null;
+
+        //enable next attack+movement systems
+        nextMovementSystem.enabled = true;
 
         StartAttackAction?.Invoke(currentSystemIndex);
         yield return WaitForSeconds(refreshTime);
 
         nextBulletSystem.SetEnabled(true);
-
     }
 
     public List<IBossAttack> GetCurrentBulletSystem()
@@ -179,6 +182,10 @@ public class Boss : Ship
 
                 break;
             }
+
+            //if no active bullet system found, add first by default
+            currentBulletSystems.Add(bulletSystems[0]);
+            break;
         }
 
         return currentBulletSystems;

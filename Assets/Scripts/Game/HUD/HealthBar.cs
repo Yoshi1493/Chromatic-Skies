@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class HealthBar<TShip> : ShipHUDComponent<TShip>
     where TShip : Ship
 {
-    Image healthBarImage;
+    protected Image healthBarImage;
     float HealthPercent => (float)ship.currentHealth / ship.shipData.MaxHealth.Value;
 
     IEnumerator fillCoroutine;
@@ -28,8 +28,10 @@ public class HealthBar<TShip> : ShipHUDComponent<TShip>
         }
     }
 
-    void Start()
+    void OnEnable()
     {
+        healthBarImage.enabled = true;
+
         fillCoroutine = Refill();
         StartCoroutine(fillCoroutine);
     }

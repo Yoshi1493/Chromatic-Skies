@@ -3,12 +3,16 @@ using UnityEngine;
 public class BossPositionDisplay : ShipHUDComponent<Boss>
 {
     new Transform transform;
+    SpriteRenderer spriteRenderer;
+
+    [SerializeField] EnemySpawner enemySpawner;
 
     protected override void Awake()
     {
         base.Awake();
 
         transform = GetComponent<Transform>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
 
         if (ship != null)
         {
@@ -21,6 +25,17 @@ public class BossPositionDisplay : ShipHUDComponent<Boss>
         }
     }
 
+    void OnEnable()
+    {
+        spriteRenderer.enabled = true;
+    }
+
+    void Start()
+    {
+        enemySpawner.BossSpawnAction += () => enabled = true;
+        enabled = false;
+    }
+
     void Update()
     {
         Vector3 pos = transform.position;
@@ -31,5 +46,10 @@ public class BossPositionDisplay : ShipHUDComponent<Boss>
     public void SetActive(bool state)
     {
         gameObject.SetActive(state);
+    }
+
+    void OnDisable()
+    {
+        spriteRenderer.enabled = false;
     }
 }

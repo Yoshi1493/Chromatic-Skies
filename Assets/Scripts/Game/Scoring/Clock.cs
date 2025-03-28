@@ -17,7 +17,8 @@ public class Clock : MonoBehaviour
 
     Player player;
     Boss boss;
-    PauseHandler pauseHandler;
+    [SerializeField] PauseHandler pauseHandler;
+    [SerializeField] EnemySpawner enemySpawner;
 
     void Awake()
     {
@@ -25,7 +26,11 @@ public class Clock : MonoBehaviour
 
         player = FindObjectOfType<Player>();
         boss = FindObjectOfType<Boss>();
-        pauseHandler = FindObjectOfType<PauseHandler>();
+    }
+
+    void OnEnable()
+    {
+        clockText.enabled = true;
     }
 
     void Start()
@@ -38,8 +43,12 @@ public class Clock : MonoBehaviour
 
         pauseHandler.GamePauseAction += SetPaused;
 
+        enemySpawner.BossSpawnAction += () => enabled = true;
+
         currentTime.value = 0f;
         RestartClock(boss.RespawnTime + 2f);
+
+        enabled = false;
     }
 
     void Update()
@@ -138,5 +147,10 @@ public class Clock : MonoBehaviour
         Color c = clockText.color;
         c.a = alpha;
         clockText.color = c;
+    }
+
+    void OnDisable()
+    {
+        clockText.enabled = false;
     }
 }

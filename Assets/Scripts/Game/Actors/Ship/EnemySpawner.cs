@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using static CoroutineHelper;
 
 public class EnemySpawner : MonoBehaviour
 {
@@ -16,7 +17,6 @@ public class EnemySpawner : MonoBehaviour
     void Awake()
     {
         //to-do: parse spawn file
-        //to-do: pre-spawn all enemies
 
         if (enemySpawnCoroutine != null)
         {
@@ -26,11 +26,16 @@ public class EnemySpawner : MonoBehaviour
         StartCoroutine(enemySpawnCoroutine);
     }
 
+    //to-do: pre-spawn all enemies
     IEnumerator SpawnEnemies()
     {
         var boss = Instantiate(bossPrefabs[selectedBossIndex.value], transform.position, transform.rotation);
         yield return null;
         boss.gameObject.SetActive(false);
+
+        yield return WaitForSeconds(2f);
+        boss.gameObject.SetActive(true);
+        BossSpawnAction?.Invoke();
 
         yield break;
     }

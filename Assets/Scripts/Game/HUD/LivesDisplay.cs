@@ -5,7 +5,7 @@ using static CoroutineHelper;
 public class LivesDisplay<TShip> : ShipHUDComponent<TShip>
     where TShip : Ship
 {
-    Image[] lifeIcons;
+    protected Image[] lifeIcons;
 
     protected override void Awake()
     {
@@ -19,10 +19,9 @@ public class LivesDisplay<TShip> : ShipHUDComponent<TShip>
         }
     }
 
-    protected virtual void Start()
+    protected virtual void OnEnable()
     {
         InitColour();
-        StartCoroutine(InitDisplay());
     }
 
     protected void InitColour()
@@ -33,10 +32,8 @@ public class LivesDisplay<TShip> : ShipHUDComponent<TShip>
         }
     }
 
-    IEnumerator InitDisplay()
+    protected IEnumerator InitDisplay()
     {
-        yield return WaitForSeconds(1f);
-
         int lifeCount = ship.shipData.MaxLives.Value;
 
         for (int i = 0; i < lifeCount; i++)

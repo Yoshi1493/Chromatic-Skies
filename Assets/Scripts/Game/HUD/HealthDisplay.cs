@@ -5,7 +5,7 @@ using TMPro;
 public class HealthDisplay<TShip> : ShipHUDComponent<TShip>
     where TShip : Ship
 {
-    TextMeshProUGUI healthText;
+    protected TextMeshProUGUI healthText;
     int maxHealth;
 
     protected override void Awake()
@@ -17,9 +17,11 @@ public class HealthDisplay<TShip> : ShipHUDComponent<TShip>
         ship.RespawnAction += OnShipRespawn;
     }
 
-    void Start()
+    void OnEnable()
     {
+        healthText.enabled = true;
         maxHealth = ship.shipData.MaxHealth.Value;
+
         UpdateDisplay();
     }
 

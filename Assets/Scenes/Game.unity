@@ -1861,7 +1861,7 @@ GameObject:
   - component: {fileID: 343551305}
   - component: {fileID: 343551307}
   m_Layer: 0
-  m_Name: Enemy position display (Sprite)
+  m_Name: Boss position display (Sprite)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1946,6 +1946,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 089e5bd2f7d3cbe45b7e03f40411a2ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemySpawner: {fileID: 18786235}
 --- !u!1 &380573528
 GameObject:
   m_ObjectHideFlags: 0
@@ -2051,6 +2052,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c03bff008f42e0f49814f8fb212bbe93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemySpawner: {fileID: 18786235}
 --- !u!1 &425157016
 GameObject:
   m_ObjectHideFlags: 0
@@ -2297,7 +2299,7 @@ GameObject:
   - component: {fileID: 478974358}
   - component: {fileID: 478974361}
   m_Layer: 5
-  m_Name: Enemy Health (TMP)
+  m_Name: Boss Health (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2446,6 +2448,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca64ace98e3084248832906e75a2d156, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemySpawner: {fileID: 18786235}
 --- !u!1 &501545821
 GameObject:
   m_ObjectHideFlags: 0
@@ -2594,7 +2597,7 @@ GameObject:
   - component: {fileID: 504620085}
   - component: {fileID: 504620084}
   m_Layer: 5
-  m_Name: Enemy HUD (Canvas)
+  m_Name: Boss HUD (Canvas)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4736,6 +4739,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  enemySpawner: {fileID: 18786235}
 --- !u!1 &1100869870
 GameObject:
   m_ObjectHideFlags: 0
@@ -7177,6 +7181,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentTime: {fileID: 11400000, guid: 7564dd3007503304aa59e09756250b88, type: 2}
+  pauseHandler: {fileID: 2117771226}
+  enemySpawner: {fileID: 18786235}
 --- !u!114 &1736981275
 MonoBehaviour:
   m_ObjectHideFlags: 0
