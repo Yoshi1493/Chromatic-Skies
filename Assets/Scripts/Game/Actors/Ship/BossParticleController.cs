@@ -9,8 +9,6 @@ public class BossParticleController : ShipParticleController<Boss>
     {
         base.Awake();
 
-        parentShip.StartAttackAction += OnAttackStart;
-
         for (int i = 0; i < parentShip.bulletSystems.Count; i++)
         {
             parentShip.bulletSystems[i].StartAttackLoopAction += OnAttackLoopStart;
@@ -22,7 +20,7 @@ public class BossParticleController : ShipParticleController<Boss>
         }
     }
 
-    void OnAttackStart(int _)
+    void OnEnable()
     {
         PlayVisualEffect(spawnVFX);
     }
