@@ -9,8 +9,8 @@ public abstract class Ship : Actor
 
     public ShipObject shipData;
 
-    [HideInInspector] public int currentLives;
-    [HideInInspector] public int currentHealth;
+    public IntObject currentLives;
+    public IntObject currentHealth;
 
     bool invincible;
     public bool Invincible
@@ -52,9 +52,10 @@ public abstract class Ship : Actor
     #region Coroutines
 
     IEnumerator loseLifeCoroutine;
-    IEnumerator refillHealthCoroutine;
     IEnumerator invincibilityCoroutine;
     IEnumerator deathCoroutine;
+    IEnumerator healthRefillCoroutine;
+    [SerializeField] AnimationCurve healthRefillInterpolation;
 
     #endregion
 
@@ -70,8 +71,8 @@ public abstract class Ship : Actor
         SpriteRenderer.sprite = shipData.Sprite;
 
         //stats
-        currentLives = shipData.MaxLives.Value;
-        currentHealth = shipData.MaxHealth.Value;
+        currentLives.value = shipData.MaxLives.Value;
+        currentHealth.value = 0;
 
         //collision
         collider.radius = OriginalColliderRadius;
@@ -80,10 +81,15 @@ public abstract class Ship : Actor
         name = shipData.ShipName.value;
     }
 
+    protected virtual void OnEnable()
+    {
+        RefillHealth();
+    }
+
     public void TakeDamage(int damage)
     {
-        currentHealth -= damage;
-        currentHealth = Mathf.Clamp(currentHealth, 0, shipData.MaxHealth.Value);
+        currentHealth.value -= damage;
+        currentHealth.value = Mathf.Clamp(currentHealth.value, 0, shipData.MaxHealth.Value);
         print($"{name} took {damage} damage.");
 
         TakeDamageAction?.Invoke(damage);
@@ -91,7 +97,7 @@ public abstract class Ship : Actor
         if (damage > 0)
         {
             //check if LoseLife methods should be called
-            if (currentHealth <= 0)
+            if (currentHealth.value <= 0)
             {
                 if (loseLifeCoroutine != null)
                 {
@@ -106,12 +112,12 @@ public abstract class Ship : Actor
 
     protected virtual IEnumerator LoseLife()
     {
-        currentLives--;
+        currentLives.value--;
         LoseLifeAction?.Invoke();
 
         collider.enabled = false;
 
-        if (currentLives <= 0)
+        if (currentLives.value <= 0)
         {
             if (deathCoroutine != null)
             {
@@ -135,7 +141,32 @@ public abstract class Ship : Actor
     protected void Respawn()
     {
         RespawnAction?.Invoke();
-        currentHealth = shipData.MaxHealth.Value;
+        RefillHealth();
+    }
+
+    void RefillHealth()
+    {
+        if (healthRefillCoroutine != null)
+        {
+            StopCoroutine(healthRefillCoroutine);
+        }
+
+        healthRefillCoroutine = _RefillHealth();
+        StartCoroutine(healthRefillCoroutine);
+    }
+
+    IEnumerator _RefillHealth()
+    {
+        float currentLerpTime = 0f;
+
+        while (currentHealth.value < shipData.MaxHealth.Value)
+        {
+            float t = currentLerpTime / RespawnTime;
+            currentHealth.value = (int)Mathf.Lerp(0, shipData.MaxHealth.Value, healthRefillInterpolation.Evaluate(t));
+
+            currentLerpTime += Time.deltaTime;
+            yield return null;
+        }
     }
 
     protected virtual IEnumerator Die()

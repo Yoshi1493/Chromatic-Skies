@@ -50,17 +50,12 @@ public class Boss : Ship
         }
     }
 
-    void OnEnable()
+    protected override void OnEnable()
     {
+        base.OnEnable();
+
         SetInvincible(4f);
-
-        if (systemResetCoroutine != null)
-        {
-            StopCoroutine(systemResetCoroutine);
-        }
-
-        systemResetCoroutine = RefreshBossSystems(0, RespawnTime);
-        StartCoroutine(systemResetCoroutine);
+        RefreshBossSystems(RespawnTime);
     }
 
     void Start()
@@ -72,53 +67,51 @@ public class Boss : Ship
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.K))
-            TakeDamage(currentHealth);
+            TakeDamage(currentHealth.value);
     }
 #endif
 
     //disable current systems, and enable next systems upon losing life
     protected override IEnumerator LoseLife()
     {
-        int currentSystemIndex = shipData.MaxLives.Value - currentLives;
-
         StartCoroutine(base.LoseLife());
 
         BossBulletPool.Instance.DrainPool();
         BossLaserPool.Instance.DrainPool();
 
-        if (currentLives > 0)
+        if (currentLives.value > 0)
         {
-            if (systemResetCoroutine != null)
-            {
-                StopCoroutine(systemResetCoroutine);
-            }
-
-            systemResetCoroutine = RefreshBossSystems(currentSystemIndex, RespawnTime);
-            yield return systemResetCoroutine;
+            RefreshBossSystems(RespawnTime);
         }
+
+        yield return null;
     }
 
     //disable and re-enable current systems upon player losing life
     void OnPlayerLoseLife()
     {
-        if (player.currentLives > 0)
+        if (player.currentLives.value > 0)
         {
-            int currentSystemIndex = shipData.MaxLives.Value - currentLives;
-
             SetInvincible(player.RespawnTime + 2f);
-
-            if (systemResetCoroutine != null)
-            {
-                StopCoroutine(systemResetCoroutine);
-            }
-
-            systemResetCoroutine = RefreshBossSystems(currentSystemIndex, player.RespawnTime);
-            StartCoroutine(systemResetCoroutine);
+            RefreshBossSystems(player.RespawnTime);
         }
     }
 
-    IEnumerator RefreshBossSystems(int currentSystemIndex, float refreshTime)
+    void RefreshBossSystems(float refreshTime)
     {
+        if (systemResetCoroutine != null)
+        {
+            StopCoroutine(systemResetCoroutine);
+        }
+
+        systemResetCoroutine = _RefreshBossSystems(refreshTime);
+        StartCoroutine(systemResetCoroutine);
+    }
+
+    IEnumerator _RefreshBossSystems(float refreshTime)
+    {
+        int currentSystemIndex = shipData.MaxLives.Value - currentLives.value;
+
         List<IBossAttack> currentBulletSystems = GetCurrentBulletSystem();
         BossMovement currentMovementSystem = GetCurrentMovementSystem();
 
@@ -126,7 +119,7 @@ public class Boss : Ship
         BossMovement nextMovementSystem;
 
         //if player died, keep same attack+movement system
-        if (currentHealth > 0)
+        if (currentHealth.value > 0)
         {
             nextBulletSystem = currentBulletSystems[0];
             nextMovementSystem = currentMovementSystem;
@@ -134,8 +127,8 @@ public class Boss : Ship
         //otherwise, prepare next attack+movement system
         else
         {
-            nextBulletSystem = bulletSystems[currentSystemIndex + 1];
-            nextMovementSystem = movementSystems[currentSystemIndex + 1];
+            nextBulletSystem = bulletSystems[currentSystemIndex];
+            nextMovementSystem = movementSystems[currentSystemIndex];
         }
 
         //disable attack+movement systems
@@ -182,10 +175,12 @@ public class Boss : Ship
 
                 break;
             }
+        }
 
-            //if no active bullet system found, add first by default
+        //if no active bullet system found, add first by default
+        if (currentBulletSystems.Count == 0)
+        {
             currentBulletSystems.Add(bulletSystems[0]);
-            break;
         }
 
         return currentBulletSystems;
@@ -201,8 +196,8 @@ public class Boss : Ship
             }
         }
 
-        //if no movement system is active (somehow)
-        return movementSystems[shipData.MaxLives.Value - currentLives];
+        //if no movement system found, return current by default
+        return movementSystems[shipData.MaxLives.Value - currentLives.value];
     }
 
     public void DisplayInvincibleShield(Vector3 spawnPos)

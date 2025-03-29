@@ -37,7 +37,7 @@ public abstract class Player : Ship
     {
 #if UNITY_EDITOR
         if (Input.GetKeyDown(KeyCode.L))
-            TakeDamage(currentHealth);
+            TakeDamage(currentHealth.value);
 #endif
     }
 

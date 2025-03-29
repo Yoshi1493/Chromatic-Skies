@@ -2216,6 +2216,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 034e16f36cd823b4bb93444f9b618ac3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentHealth: {fileID: 11400000, guid: b8f7cb9054d140d4e8fe82303a8deab4, type: 2}
 --- !u!1 &428313846
 GameObject:
   m_ObjectHideFlags: 0
@@ -2448,6 +2449,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca64ace98e3084248832906e75a2d156, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentHealth: {fileID: 11400000, guid: 88e6f6f6dd977d2428aa24080da7ebf8, type: 2}
   enemySpawner: {fileID: 18786235}
 --- !u!1 &501545821
 GameObject:
@@ -4452,30 +4454,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67b84b9fb2022b34ca73e9214b6b9e2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fillInterpolation:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 2
-      outSlope: 2
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
+  currentHealth: {fileID: 11400000, guid: b8f7cb9054d140d4e8fe82303a8deab4, type: 2}
 --- !u!114 &1010648630
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4715,30 +4694,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f69ae070a5202914eb06b3bc9c036f2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fillInterpolation:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 2
-      outSlope: 2
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
+  currentHealth: {fileID: 11400000, guid: 88e6f6f6dd977d2428aa24080da7ebf8, type: 2}
   enemySpawner: {fileID: 18786235}
 --- !u!1 &1100869870
 GameObject:

@@ -6,38 +6,24 @@ public class HealthDisplay<TShip> : ShipHUDComponent<TShip>
     where TShip : Ship
 {
     protected TextMeshProUGUI healthText;
+
+    [SerializeField] IntObject currentHealth;
     int maxHealth;
 
     protected override void Awake()
     {
         base.Awake();
-
         healthText = GetComponent<TextMeshProUGUI>();
-        ship.TakeDamageAction += OnTakeDamage;
-        ship.RespawnAction += OnShipRespawn;
     }
 
     void OnEnable()
     {
         healthText.enabled = true;
         maxHealth = ship.shipData.MaxHealth.Value;
-
-        UpdateDisplay();
     }
 
-    void OnTakeDamage(int _)
+    void Update()
     {
-        UpdateDisplay();
-    }
-
-    void UpdateDisplay()
-    {
-        int currentHealth = Mathf.Max(ship.currentHealth, 0);
-        healthText.text = $"hp: {currentHealth}/{maxHealth}";
-    }
-
-    void OnShipRespawn()
-    {
-        healthText.text = $"hp: {maxHealth}/{maxHealth}";
+        healthText.text = $"hp: {currentHealth.value}/{maxHealth}";
     }
 }
