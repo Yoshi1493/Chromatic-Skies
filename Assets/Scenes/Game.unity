@@ -380,7 +380,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f6da3186af45e34b930ecb36c016ab2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnFile: {fileID: 0}
+  spawnFile: {fileID: 4900000, guid: 13527a4f27815df4db4cda164f7fd8dc, type: 3}
   enemyPrefabs:
   - {fileID: 0}
   selectedBossIndex: {fileID: 11400000, guid: d5bd1f541c5da6647b0ec80fa55b12ce, type: 2}

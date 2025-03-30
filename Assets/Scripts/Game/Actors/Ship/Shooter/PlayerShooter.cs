@@ -21,7 +21,7 @@ public class PlayerShooter : Shooter<PlayerBullet>
     {
         base.Start();
 
-        ownerShip.RespawnAction += OnRespawn;
+        (ownerShip as CharacterShip).RespawnAction += OnRespawn;
         CanShoot = true;
 
         //manually enable to avoid script execution order conflicts

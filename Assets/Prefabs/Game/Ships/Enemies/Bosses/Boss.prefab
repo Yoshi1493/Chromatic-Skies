@@ -40,7 +40,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5311165021695970484}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Movement System 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -71,7 +71,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5372900977354538830}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Movement Systems
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -108,7 +108,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3188414608984534602}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Movement System 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -139,7 +139,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 374982196816959565}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Movement System 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -170,7 +170,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6972919755041683695}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Movement System 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -201,7 +201,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7429609208490620308}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Movement System 6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -342,7 +342,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4456778148377447871}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Movement System 5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -836,9 +836,15 @@ MonoBehaviour:
   transform: {fileID: 0}
   moveDirection: {x: 0, y: 0, z: 0}
   shipData: {fileID: 0}
-  currentLives: 0
-  currentHealth: 0
+  currentLives: {fileID: 0}
+  currentHealth: {fileID: 0}
   collider: {fileID: 4336286228127436161}
+  healthRefillInterpolation:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   bulletSystemContainer: {fileID: 0}
   movementSystemContainer: {fileID: 0}
 --- !u!114 &8286456681555174493

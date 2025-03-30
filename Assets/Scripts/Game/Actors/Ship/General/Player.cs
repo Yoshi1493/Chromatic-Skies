@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public abstract class Player : Ship
+public abstract class Player : CharacterShip
 {
     public override float RespawnTime => 3f;
 

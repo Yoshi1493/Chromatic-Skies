@@ -3,7 +3,7 @@ using UnityEngine.UI;
 using static CoroutineHelper;
 
 public class LivesDisplay<TShip> : ShipHUDComponent<TShip>
-    where TShip : Ship
+    where TShip : CharacterShip
 {
     protected Image[] lifeIcons;
 

@@ -48,7 +48,7 @@ public class TaurusLaser60 : Laser
             }
         }
 
-        if (coll.TryGetComponent(out Ship ship))
+        if (coll.TryGetComponent(out CharacterShip ship))
         {
             Vector3 shipPos = coll.ClosestPoint(transform.position);
             float shipDistance = (shipPos - transform.position).sqrMagnitude;

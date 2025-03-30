@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using static CoroutineHelper;
 
-public class Boss : Ship
+public class Boss : CharacterShip
 {
     [Space]
     [SerializeField] Transform bulletSystemContainer;

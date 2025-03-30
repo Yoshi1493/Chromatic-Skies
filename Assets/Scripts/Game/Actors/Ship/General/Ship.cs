@@ -5,12 +5,7 @@ using static CoroutineHelper;
 
 public abstract class Ship : Actor
 {
-    #region Scriptable Object properties
-
     public ShipObject shipData;
-
-    public IntObject currentLives;
-    public IntObject currentHealth;
 
     bool invincible;
     public bool Invincible
@@ -26,38 +21,16 @@ public abstract class Ship : Actor
         }
     }
 
-    public virtual float RespawnTime => 2f;
-
-    #endregion
-
-    #region Actions
+    [SerializeField] new protected CircleCollider2D collider;
 
     public event Action<int> TakeDamageAction;
     public event Action LoseLifeAction;
-    public event Action RespawnAction;
     public event Action DeathAction;
-
     public event Action<bool> InvincibleAction;
 
-    #endregion
-
-    #region Collision
-
-    [SerializeField] new protected CircleCollider2D collider;
-    protected virtual float OriginalColliderRadius => 0.5f;
-    protected virtual float InvincibleColliderRadius => 1.5f;
-
-    #endregion
-
-    #region Coroutines
-
-    IEnumerator loseLifeCoroutine;
-    IEnumerator invincibilityCoroutine;
-    IEnumerator deathCoroutine;
-    IEnumerator healthRefillCoroutine;
-    [SerializeField] AnimationCurve healthRefillInterpolation;
-
-    #endregion
+    protected IEnumerator loseLifeCoroutine;
+    protected IEnumerator invincibilityCoroutine;
+    protected IEnumerator deathCoroutine;
 
     protected override void Awake()
     {
@@ -65,108 +38,23 @@ public abstract class Ship : Actor
         InitShipData();
     }
 
-    void InitShipData()
+    protected virtual void InitShipData()
     {
-        //appearance
         SpriteRenderer.sprite = shipData.Sprite;
-
-        //stats
-        currentLives.value = shipData.MaxLives.Value;
-        currentHealth.value = 0;
-
-        //collision
-        collider.radius = OriginalColliderRadius;
 
         //debug
         name = shipData.ShipName.value;
     }
 
-    protected virtual void OnEnable()
+    public virtual void TakeDamage(int damage)
     {
-        RefillHealth();
-    }
-
-    public void TakeDamage(int damage)
-    {
-        currentHealth.value -= damage;
-        currentHealth.value = Mathf.Clamp(currentHealth.value, 0, shipData.MaxHealth.Value);
-        print($"{name} took {damage} damage.");
-
         TakeDamageAction?.Invoke(damage);
-
-        if (damage > 0)
-        {
-            //check if LoseLife methods should be called
-            if (currentHealth.value <= 0)
-            {
-                if (loseLifeCoroutine != null)
-                {
-                    StopCoroutine(loseLifeCoroutine);
-                }
-
-                loseLifeCoroutine = LoseLife();
-                StartCoroutine(loseLifeCoroutine);
-            }
-        }
     }
 
     protected virtual IEnumerator LoseLife()
     {
-        currentLives.value--;
         LoseLifeAction?.Invoke();
-
-        collider.enabled = false;
-
-        if (currentLives.value <= 0)
-        {
-            if (deathCoroutine != null)
-            {
-                StopCoroutine(deathCoroutine);
-            }
-
-            deathCoroutine = Die();
-            StartCoroutine(deathCoroutine);
-        }
-        //only perform if ship still has lives
-        else
-        {
-            SetInvincible(RespawnTime + 2f);
-            yield return WaitForSeconds(RespawnTime);
-
-            Respawn();
-            collider.enabled = true;
-        }
-    }
-
-    protected void Respawn()
-    {
-        RespawnAction?.Invoke();
-        RefillHealth();
-    }
-
-    void RefillHealth()
-    {
-        if (healthRefillCoroutine != null)
-        {
-            StopCoroutine(healthRefillCoroutine);
-        }
-
-        healthRefillCoroutine = _RefillHealth();
-        StartCoroutine(healthRefillCoroutine);
-    }
-
-    IEnumerator _RefillHealth()
-    {
-        float currentLerpTime = 0f;
-
-        while (currentHealth.value < shipData.MaxHealth.Value)
-        {
-            float t = currentLerpTime / RespawnTime;
-            currentHealth.value = (int)Mathf.Lerp(0, shipData.MaxHealth.Value, healthRefillInterpolation.Evaluate(t));
-
-            currentLerpTime += Time.deltaTime;
-            yield return null;
-        }
+        yield return null;
     }
 
     protected virtual IEnumerator Die()
@@ -176,31 +64,5 @@ public abstract class Ship : Actor
         yield return WaitForSeconds(1.5f);
 
         SpriteRenderer.enabled = false;
-    }
-
-    //called when boss transition to next attack pattern, and when player receives damage
-    public void SetInvincible(float duration)
-    {
-        if (invincibilityCoroutine != null)
-        {
-            StopCoroutine(invincibilityCoroutine);
-        }
-
-        invincibilityCoroutine = ToggleInvincibility(duration);
-        StartCoroutine(invincibilityCoroutine);
-    }
-
-    IEnumerator ToggleInvincibility(float duration)
-    {
-        Invincible = true;
-        yield return null;
-
-        collider.radius = InvincibleColliderRadius;
-        yield return WaitForSeconds(duration);
-
-        Invincible = false;
-        collider.radius = OriginalColliderRadius;
-
-        invincibilityCoroutine = null;
     }
 }

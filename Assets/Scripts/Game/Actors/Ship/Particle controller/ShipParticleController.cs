@@ -17,7 +17,6 @@ public abstract class ShipParticleController<TShip> : MonoBehaviour
         parentShip = GetComponentInParent<TShip>();
 
         parentShip.LoseLifeAction += OnShipLoseLife;
-        parentShip.RespawnAction += OnShipRespawn;
         parentShip.DeathAction += OnShipDeath;
         parentShip.InvincibleAction += OnShipInvincible;
 
@@ -45,11 +44,6 @@ public abstract class ShipParticleController<TShip> : MonoBehaviour
     void OnShipLoseLife()
     {
         PlayVisualEffect(loseLifeVFX);
-    }
-
-    void OnShipRespawn()
-    {
-        PlayVisualEffect(respawnVFX);
     }
 
     void OnShipDeath()
