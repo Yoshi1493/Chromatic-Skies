@@ -5,7 +5,7 @@ using static MathHelper;
 public class ScorpioBullet60 : BossBullet
 {
     protected override int MaxCollisions => 64;
-    protected override int CollisionMask => base.CollisionMask | 1 << LayerMask.NameToLayer("Boss bullet");
+    protected override int CollisionMask => base.CollisionMask | 1 << LayerMask.NameToLayer("Enemy bullet");
 
     protected override float MaxLifetime => Mathf.Infinity;
 

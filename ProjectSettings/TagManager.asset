@@ -12,9 +12,9 @@ TagManager:
   - Water
   - UI
   - Player
-  - Boss
+  - Enemy
   - Player bullet
-  - Boss bullet
+  - Enemy bullet
   - Player bounds
   - Boss bounds
   - Bullet bounds
