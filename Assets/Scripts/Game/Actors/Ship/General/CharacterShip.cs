@@ -17,7 +17,6 @@ public class CharacterShip : Ship
     IEnumerator healthRefillCoroutine;
     [SerializeField] AnimationCurve healthRefillInterpolation;
 
-
     protected virtual void OnEnable()
     {
         RefillHealth();
@@ -43,7 +42,6 @@ public class CharacterShip : Ship
 
         if (damage > 0)
         {
-            //check if LoseLife methods should be called
             if (currentHealth.value <= 0)
             {
                 if (loseLifeCoroutine != null)
@@ -114,6 +112,14 @@ public class CharacterShip : Ship
             currentLerpTime += Time.deltaTime;
             yield return null;
         }
+    }
+
+    protected override IEnumerator Die()
+    {
+        yield return base.Die();
+        yield return WaitForSeconds(1.5f);
+
+        SpriteRenderer.enabled = false;
     }
 
     //called when boss transition to next attack pattern, and when player receives damage

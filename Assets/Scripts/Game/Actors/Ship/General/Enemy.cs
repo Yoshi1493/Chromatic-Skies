@@ -3,5 +3,50 @@ using UnityEngine;
 
 public class Enemy : Ship
 {
+    int currentHealth;
 
+    protected override void InitShipData()
+    {
+        base.InitShipData();
+        currentHealth = shipData.MaxHealth.Value;
+    }
+
+    public override void TakeDamage(int damage)
+    {
+        base.TakeDamage(damage);
+
+        currentHealth -= damage;
+        currentHealth = Mathf.Clamp(currentHealth, 0, shipData.MaxHealth.Value);
+        print($"{name} took {damage} damage.");
+
+        if (damage > 0)
+        {
+            if (currentHealth <= 0)
+            {
+                if (loseLifeCoroutine != null)
+                {
+                    StopCoroutine(loseLifeCoroutine);
+                }
+
+                loseLifeCoroutine = LoseLife();
+                StartCoroutine(loseLifeCoroutine);
+            }
+        }
+    }
+
+    protected override IEnumerator LoseLife()
+    {
+        yield return base.LoseLife();
+
+        collider.enabled = false;
+
+        deathCoroutine = Die();
+        StartCoroutine(deathCoroutine);
+    }
+
+    protected override IEnumerator Die()
+    {
+        yield return base.Die();
+        SpriteRenderer.enabled = false;
+    }
 }

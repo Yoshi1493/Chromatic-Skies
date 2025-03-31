@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using UnityEngine;
-using static CoroutineHelper;
 
 public abstract class Ship : Actor
 {
@@ -60,9 +59,6 @@ public abstract class Ship : Actor
     protected virtual IEnumerator Die()
     {
         DeathAction?.Invoke();
-
-        yield return WaitForSeconds(1.5f);
-
-        SpriteRenderer.enabled = false;
+        yield return null;
     }
 }
