@@ -81,6 +81,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2ad3a7352f03714438318db50497c30d, type: 3}
+--- !u!58 &2407710777176494614 stripped
+CircleCollider2D:
+  m_CorrespondingSourceObject: {fileID: 6593195506016961497, guid: 2ad3a7352f03714438318db50497c30d, type: 3}
+  m_PrefabInstance: {fileID: 8797311627334242767}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2407710777176494618 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6593195506016961493, guid: 2ad3a7352f03714438318db50497c30d, type: 3}
@@ -100,3 +105,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   transform: {fileID: 0}
   moveDirection: {x: 0, y: 0, z: 0}
+  shipData: {fileID: 11400000, guid: 08e0ea81ba5f3414eb9f185047afc36b, type: 2}
+  collider: {fileID: 2407710777176494614}
