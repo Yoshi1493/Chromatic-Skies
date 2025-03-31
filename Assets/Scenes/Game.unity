@@ -2052,6 +2052,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c03bff008f42e0f49814f8fb212bbe93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentLives: {fileID: 11400000, guid: ce878259e9a1035469da76aa9e10b7f2, type: 2}
   enemySpawner: {fileID: 18786235}
 --- !u!1 &425157016
 GameObject:
@@ -4845,6 +4846,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9321da50a3ef6c4ab26d1b0dfb72473, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentLives: {fileID: 11400000, guid: e2702cea3fe25f846bba74335398e0fa, type: 2}
 --- !u!1 &1206621734
 GameObject:
   m_ObjectHideFlags: 0

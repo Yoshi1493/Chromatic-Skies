@@ -5,8 +5,8 @@ using static CoroutineHelper;
 
 public class CharacterShip : Ship
 {
-    public IntObject currentLives;
-    public IntObject currentHealth;
+    [SerializeField] protected IntObject currentLives;
+    [SerializeField] protected IntObject currentHealth;
     public virtual float RespawnTime => 2f;
 
     protected virtual float OriginalColliderRadius => 0.5f;

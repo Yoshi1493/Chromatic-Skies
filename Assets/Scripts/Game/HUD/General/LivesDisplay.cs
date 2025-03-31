@@ -1,4 +1,5 @@
 using System.Collections;
+using UnityEngine;
 using UnityEngine.UI;
 using static CoroutineHelper;
 
@@ -6,6 +7,7 @@ public class LivesDisplay<TShip> : ShipHUDComponent<TShip>
     where TShip : CharacterShip
 {
     protected Image[] lifeIcons;
+    [SerializeField] IntObject currentLives;
 
     protected override void Awake()
     {
@@ -47,7 +49,7 @@ public class LivesDisplay<TShip> : ShipHUDComponent<TShip>
     {
         for (int i = 0; i < lifeIcons.Length; i++)
         {
-            lifeIcons[i].enabled = i < ship.currentLives.value;
+            lifeIcons[i].enabled = i < currentLives.value;
         }
     }
 }

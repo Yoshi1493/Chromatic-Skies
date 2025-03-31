@@ -17,6 +17,7 @@ public class Boss : CharacterShip
     IEnumerator systemResetCoroutine;
 
     Player player;
+    [SerializeField] IntObject playerCurrentLives;
 
     protected override void Awake()
     {
@@ -90,7 +91,7 @@ public class Boss : CharacterShip
     //disable and re-enable current systems upon player losing life
     void OnPlayerLoseLife()
     {
-        if (player.currentLives.value > 0)
+        if (playerCurrentLives.value > 0)
         {
             SetInvincible(player.RespawnTime + 2f);
             RefreshBossSystems(player.RespawnTime);
