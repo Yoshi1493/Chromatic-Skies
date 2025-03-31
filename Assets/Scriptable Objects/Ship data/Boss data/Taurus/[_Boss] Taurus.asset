@@ -10,35 +10,35 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 23c7e0f14dcbcc4439ef4a6f2ce42e45, type: 3}
-  m_Name: '[_Ship] Leo'
+  m_Name: '[_Boss] Taurus'
   m_EditorClassIdentifier: 
   Sprite: {fileID: 21300000, guid: 1aa3e528edb03a147bde37cb52c198d6, type: 3}
-  UIColour: {fileID: 11400000, guid: 2f6a8e03f3c007a428f729f02572e3f1, type: 2}
+  UIColour: {fileID: 11400000, guid: 3db98140e03ca3043a57d281035e4043, type: 2}
   boundaryLayer:
     serializedVersion: 2
     m_Bits: 2048
-  ShipName: {fileID: 11400000, guid: cbe98b5f534e11c46a00d73c8921583b, type: 2}
+  ShipName: {fileID: 11400000, guid: 2f2c5bbd73bfbbd4d9b420101325f6eb, type: 2}
   MaxLives:
     useConstant: 1
-    ConstantValue: 6
+    ConstantValue: 5
     Variable: {fileID: 0}
   MaxHealth:
     useConstant: 1
-    ConstantValue: 160000
-    Variable: {fileID: 11400000, guid: 8d3229fed01268849a945e951253b9a7, type: 2}
+    ConstantValue: 150000
+    Variable: {fileID: 11400000, guid: 77809f0ba64f1354dba1eedf13252a22, type: 2}
   Power:
     useConstant: 0
     ConstantValue: 0
-    Variable: {fileID: 11400000, guid: 2f946bc0b32947f468ba6cc9ee2e3f3c, type: 2}
+    Variable: {fileID: 11400000, guid: dd06112ae33cd114f9bc53c0c6c70880, type: 2}
   Defense:
     useConstant: 0
     ConstantValue: 0
-    Variable: {fileID: 11400000, guid: 735e9f11efbc4834192fc37eab008f4e, type: 2}
+    Variable: {fileID: 11400000, guid: 26eb878d339332147a25f87bce8a4f1b, type: 2}
   MovementSpeed:
     useConstant: 0
     ConstantValue: 0
-    Variable: {fileID: 11400000, guid: a31515d98b5c2074091f0ac558a10642, type: 2}
+    Variable: {fileID: 11400000, guid: 7c21cdcc8c31a6341bbf2e802a7c74bd, type: 2}
   ShootingSpeed:
     useConstant: 0
     ConstantValue: 0
-    Variable: {fileID: 11400000, guid: 6476564ace4855247944bf0e7a523948, type: 2}
+    Variable: {fileID: 11400000, guid: 4d475dd8051b6a647b982ca98ced221b, type: 2}

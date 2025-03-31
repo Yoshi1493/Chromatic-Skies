@@ -10,35 +10,35 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 23c7e0f14dcbcc4439ef4a6f2ce42e45, type: 3}
-  m_Name: '[_Ship] Virgo'
+  m_Name: '[_Boss] Libra'
   m_EditorClassIdentifier: 
   Sprite: {fileID: 21300000, guid: 1aa3e528edb03a147bde37cb52c198d6, type: 3}
-  UIColour: {fileID: 11400000, guid: f328e92387526ae42a09b0eadc6fc2f2, type: 2}
+  UIColour: {fileID: 11400000, guid: 795463771c6b60d4d9e9e12f265616b7, type: 2}
   boundaryLayer:
     serializedVersion: 2
     m_Bits: 2048
-  ShipName: {fileID: 11400000, guid: 7e1080e308aadde44b76d2eaa9d0c9ee, type: 2}
+  ShipName: {fileID: 11400000, guid: 42233f2482a43194ebe110c72ec8d445, type: 2}
   MaxLives:
     useConstant: 1
-    ConstantValue: 5
+    ConstantValue: 6
     Variable: {fileID: 0}
   MaxHealth:
     useConstant: 1
-    ConstantValue: 140000
-    Variable: {fileID: 11400000, guid: d9d70d7029a2b594ab4015982f03497c, type: 2}
+    ConstantValue: 175000
+    Variable: {fileID: 11400000, guid: 5635bad4ef12fbc47a9f995097dae417, type: 2}
   Power:
     useConstant: 0
     ConstantValue: 0
-    Variable: {fileID: 11400000, guid: c9057bec88714fb4b9df3546afd3e41d, type: 2}
+    Variable: {fileID: 11400000, guid: 0c14504957821df41849a919e1aa2cdb, type: 2}
   Defense:
     useConstant: 0
     ConstantValue: 0
-    Variable: {fileID: 11400000, guid: 0e75bf4f2e4e9f643a8712c520694a37, type: 2}
+    Variable: {fileID: 11400000, guid: 5fd64d96ccc3c1248aff96d09afd23cd, type: 2}
   MovementSpeed:
     useConstant: 0
     ConstantValue: 0
-    Variable: {fileID: 11400000, guid: 25bbef15a55ebf840b87fa9e415ba8b3, type: 2}
+    Variable: {fileID: 11400000, guid: e390da96890df614894e7d57b8197062, type: 2}
   ShootingSpeed:
     useConstant: 0
     ConstantValue: 0
-    Variable: {fileID: 11400000, guid: e04dabb841369cb40a380b2ddc81b811, type: 2}
+    Variable: {fileID: 11400000, guid: f9b4b6a4546c7384e83247ae8d9945d8, type: 2}

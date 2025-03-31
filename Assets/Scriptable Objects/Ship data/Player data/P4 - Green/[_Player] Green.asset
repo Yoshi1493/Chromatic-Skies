@@ -10,30 +10,30 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 23c7e0f14dcbcc4439ef4a6f2ce42e45, type: 3}
-  m_Name: '[_Ship] Red'
+  m_Name: '[_Player] Green'
   m_EditorClassIdentifier: 
   Sprite: {fileID: 21300000, guid: 1aa3e528edb03a147bde37cb52c198d6, type: 3}
-  UIColour: {fileID: 11400000, guid: fa50113c5f9791a479066b8cb8150261, type: 2}
+  UIColour: {fileID: 11400000, guid: 6a2312bd1133a4a4c8ddf4a7248bcfa1, type: 2}
   boundaryLayer:
     serializedVersion: 2
     m_Bits: 1024
-  ShipName: {fileID: 11400000, guid: 11f933d0bc0be4e479e717a3ab9cd50f, type: 2}
+  ShipName: {fileID: 11400000, guid: 3794480b64b37f44bb1b6b61023175f7, type: 2}
   MaxLives:
     useConstant: 1
     ConstantValue: 3
     Variable: {fileID: 11400000, guid: 49e21d1148446a141ab344e253251c17, type: 2}
   MaxHealth:
     useConstant: 1
-    ConstantValue: 5860
+    ConstantValue: 5930
     Variable: {fileID: 0}
   Power:
     useConstant: 0
     ConstantValue: 0
-    Variable: {fileID: 11400000, guid: c7b35a64b6f09b34ea15c64dfe44c26f, type: 2}
+    Variable: {fileID: 11400000, guid: 4e48a385ca326ef4fb4351518e3fe31f, type: 2}
   Defense:
     useConstant: 0
     ConstantValue: 0
-    Variable: {fileID: 11400000, guid: ea97d752dbdc4cd49b1def74df92d9e1, type: 2}
+    Variable: {fileID: 11400000, guid: ff9e0a8b88565ad41ba72b5ecd361af2, type: 2}
   MovementSpeed:
     useConstant: 0
     ConstantValue: 0
@@ -41,14 +41,4 @@ MonoBehaviour:
   ShootingSpeed:
     useConstant: 0
     ConstantValue: 0
-    Variable: {fileID: 11400000, guid: 8d68258977ea0664bac5db3857bff021, type: 2}
-  CurrentLives:
-    useConstant: 0
-    ConstantValue: 0
-    Variable: {fileID: 11400000, guid: e2702cea3fe25f846bba74335398e0fa, type: 2}
-  CurrentHealth:
-    useConstant: 0
-    ConstantValue: 0
-    Variable: {fileID: 11400000, guid: 16fb8465b51cd12478ab0b4df9d6d52f, type: 2}
-  CurrentSpeed: 5
-  Invincible: 0
+    Variable: {fileID: 11400000, guid: b3f3eb2177105454f91d594030b80695, type: 2}

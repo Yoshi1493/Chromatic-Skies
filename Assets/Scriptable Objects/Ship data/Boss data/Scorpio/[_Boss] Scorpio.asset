@@ -10,35 +10,35 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 23c7e0f14dcbcc4439ef4a6f2ce42e45, type: 3}
-  m_Name: '[_Ship] Cancer'
+  m_Name: '[_Boss] Scorpio'
   m_EditorClassIdentifier: 
   Sprite: {fileID: 21300000, guid: 1aa3e528edb03a147bde37cb52c198d6, type: 3}
-  UIColour: {fileID: 11400000, guid: df2a161bc9a390549af9d14c3b8ee15b, type: 2}
+  UIColour: {fileID: 11400000, guid: 416c91e1c5b91f94493b3a4cb5c4b34c, type: 2}
   boundaryLayer:
     serializedVersion: 2
     m_Bits: 2048
-  ShipName: {fileID: 11400000, guid: 5852ac7f71c52374499bdc7ad73d967a, type: 2}
+  ShipName: {fileID: 11400000, guid: 6bdd47ae288b317498bab999f804e696, type: 2}
   MaxLives:
     useConstant: 1
-    ConstantValue: 5
+    ConstantValue: 6
     Variable: {fileID: 0}
   MaxHealth:
     useConstant: 1
-    ConstantValue: 145000
-    Variable: {fileID: 11400000, guid: f172bf20db6d547418c5b7e4769b385a, type: 2}
+    ConstantValue: 165000
+    Variable: {fileID: 11400000, guid: 0f4336b9377353c499ee6e6a36259832, type: 2}
   Power:
     useConstant: 0
     ConstantValue: 0
-    Variable: {fileID: 11400000, guid: 74afa8ba1024c0d42a3334efc360cdcf, type: 2}
+    Variable: {fileID: 11400000, guid: b28a3fb0ebc1b8448b015a5377419a04, type: 2}
   Defense:
     useConstant: 0
     ConstantValue: 0
-    Variable: {fileID: 11400000, guid: 19499dc1fad71a64fa265779da4c8bdc, type: 2}
+    Variable: {fileID: 11400000, guid: 05ac7740de7a2af46b1c8390e1d84ad9, type: 2}
   MovementSpeed:
     useConstant: 0
     ConstantValue: 0
-    Variable: {fileID: 11400000, guid: b9d6bdfbcf3316d4e9687d3ff9b7dd29, type: 2}
+    Variable: {fileID: 11400000, guid: a4cfd5b6e524dff448f6fdaa255a42cb, type: 2}
   ShootingSpeed:
     useConstant: 0
     ConstantValue: 0
-    Variable: {fileID: 11400000, guid: 6ad9ad63bdf9a1e4981ca99adbf01f22, type: 2}
+    Variable: {fileID: 11400000, guid: 676864c64b8e1c340bb5a8679b18bbc7, type: 2}
