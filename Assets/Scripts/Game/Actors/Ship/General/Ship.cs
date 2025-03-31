@@ -40,9 +40,6 @@ public abstract class Ship : Actor
     protected virtual void InitShipData()
     {
         SpriteRenderer.sprite = shipData.Sprite;
-
-        //debug
-        name = shipData.ShipName.value;
     }
 
     public virtual void TakeDamage(int damage)

@@ -30,6 +30,9 @@ public class CharacterShip : Ship
 
         currentLives.value = shipData.MaxLives.Value;
         currentHealth.value = 0;
+
+        //debug
+        name = shipData.ShipName.value;
     }
 
     public override void TakeDamage(int damage)
