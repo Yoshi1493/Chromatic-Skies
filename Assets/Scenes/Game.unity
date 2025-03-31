@@ -382,7 +382,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnFile: {fileID: 4900000, guid: 13527a4f27815df4db4cda164f7fd8dc, type: 3}
   enemyPrefabs:
-  - {fileID: 0}
+  - {fileID: 443384559322656082, guid: 56e94301062b2c846a866a9eafca4ea5, type: 3}
   selectedBossIndex: {fileID: 11400000, guid: d5bd1f541c5da6647b0ec80fa55b12ce, type: 2}
   bossPrefabs:
   - {fileID: 7755895804811722165, guid: ae32505ea7ca26345a41907e070cec19, type: 3}
