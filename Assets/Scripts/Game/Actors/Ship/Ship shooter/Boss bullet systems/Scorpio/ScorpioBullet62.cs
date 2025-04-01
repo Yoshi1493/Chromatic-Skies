@@ -10,7 +10,7 @@ public class ScorpioBullet62 : BossBullet
 
     protected override IEnumerator Move()
     {
-        yield return this.TransformRotateAround(EnemyMovementBehaviour.originalPosition, MaxLifetime, 6f);
+        yield return this.TransformRotateAround(EnemyMovementBehaviour.bossSpawnPosition, MaxLifetime, 6f);
     }
 
     protected override void OnEnable()
