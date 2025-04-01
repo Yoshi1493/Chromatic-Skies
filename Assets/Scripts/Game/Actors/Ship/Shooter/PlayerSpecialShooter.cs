@@ -31,8 +31,8 @@ public abstract class PlayerSpecialShooter : PlayerShooter
         boss.TakeDamageAction += OnBossTakeDamage;
         boss.DeathAction += OnBossDie;
 
-        ownerShip.TakeDamageAction += OnPlayerTakeDamage;
-        ownerShip.GetComponentInChildren<PlayerGraze>().GrazeAction += OnPlayerGraze;
+        parentShip.TakeDamageAction += OnPlayerTakeDamage;
+        parentShip.GetComponentInChildren<PlayerGraze>().GrazeAction += OnPlayerGraze;
 
         specialMeter.value = InitialSpecialMeter;
     }

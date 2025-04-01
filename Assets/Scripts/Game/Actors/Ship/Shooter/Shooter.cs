@@ -8,15 +8,15 @@ public abstract class Shooter<TProjectile> : MonoBehaviour
     [SerializeField] List<TProjectile> projectiles;
 
     new protected Transform transform;
-    protected Ship ownerShip;
+    protected Ship parentShip;
 
     protected IEnumerator shootCoroutine;
-    protected virtual float ShootingCooldown => 1 / ownerShip.shipData.ShootingSpeed.Value;
+    protected virtual float ShootingCooldown => 1 / parentShip.shipData.ShootingSpeed.Value;
 
     protected virtual void Awake()
     {
         transform = GetComponent<Transform>();
-        ownerShip = GetComponentInParent<Ship>();
+        parentShip = GetComponentInParent<Ship>();
     }
 
     protected virtual void OnEnable()
@@ -26,8 +26,8 @@ public abstract class Shooter<TProjectile> : MonoBehaviour
 
     protected virtual void Start()
     {
-        ownerShip.LoseLifeAction += OnLoseLife;
-        ownerShip.DeathAction += OnDie;
+        parentShip.LoseLifeAction += OnLoseLife;
+        parentShip.DeathAction += OnDie;
     }
 
     protected abstract IEnumerator Shoot();

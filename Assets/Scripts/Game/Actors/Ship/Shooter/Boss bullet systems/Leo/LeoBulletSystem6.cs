@@ -62,7 +62,7 @@ public class LeoBulletSystem6 : BossShooter<BossBullet>
                         for (int iii = 0; iii < BulletCount; iii++)
                         {
                             Vector3 pos = bullets[b].transform.position;
-                            float z = pos.GetRotationDifference(ownerShip.transform.position) + ((iii % 2 * 2 - 1) * BulletSpacing);
+                            float z = pos.GetRotationDifference(parentShip.transform.position) + ((iii % 2 * 2 - 1) * BulletSpacing);
                             
                             if (pos.z > 0f)
                             {

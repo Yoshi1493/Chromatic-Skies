@@ -5,8 +5,8 @@ using static CoroutineHelper;
 
 public class PlayerShooter : Shooter<PlayerBullet>
 {
-    ShipObject parentShip;
-    protected override float ShootingCooldown => 1 / parentShip.ShootingSpeed.Value;
+    ShipObject shipData;
+    protected override float ShootingCooldown => 1 / shipData.ShootingSpeed.Value;
 
     [SerializeField] List<Transform> bulletSpawnPositions = new();
     public bool CanShoot { get; protected set; }
@@ -14,14 +14,14 @@ public class PlayerShooter : Shooter<PlayerBullet>
     protected override void Awake()
     {
         base.Awake();
-        parentShip = GetComponentInParent<Player>().shipData;
+        shipData = GetComponentInParent<Player>().shipData;
     }
 
     protected override void Start()
     {
         base.Start();
 
-        (ownerShip as CharacterShip).RespawnAction += OnRespawn;
+        (parentShip as CharacterShip).RespawnAction += OnRespawn;
         CanShoot = true;
 
         //manually enable to avoid script execution order conflicts

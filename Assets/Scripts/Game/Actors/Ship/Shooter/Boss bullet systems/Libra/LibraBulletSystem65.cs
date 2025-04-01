@@ -33,7 +33,7 @@ public class LibraBulletSystem65 : BossShooter<BossBullet>
 
         for (int i = 0; i < ParentBulletCount; i++)
         {
-            Vector3 v1 = ownerShip.transform.position;
+            Vector3 v1 = parentShip.transform.position;
             float z = 0f;
             float r = (i % 2 * 2 - 1) * (ParentBulletRotationSpeed + (i * ParentBulletRotationSpeedModifier));
             float s = ParentBulletBaseSpeed + (i * ParentBulletSpeedModifier);

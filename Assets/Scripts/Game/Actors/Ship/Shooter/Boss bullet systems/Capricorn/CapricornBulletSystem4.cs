@@ -24,7 +24,7 @@ public class CapricornBulletSystem4 : BossShooter<BossBullet>
         while (enabled)
         {
             float t = 0f;
-            float x = screenHalfWidth * Random.Range(0.5f, 0.8f) * Mathf.Sign(ownerShip.transform.position.x);
+            float x = screenHalfWidth * Random.Range(0.5f, 0.8f) * Mathf.Sign(parentShip.transform.position.x);
 
             Vector3 v0 = new(x, screenHalfHeight);
 
