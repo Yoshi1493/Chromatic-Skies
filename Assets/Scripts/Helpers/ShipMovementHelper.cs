@@ -18,6 +18,7 @@ public static class EnemyMovementBehaviour
         where TShip : Ship
     {
         if (delay > 0) yield return WaitForSeconds(delay);
+        if (moveDuration <= 0f) ship.parentShip.transform.position = endPosition;
 
         Vector3 startPosition = ship.transform.position;
         ship.moveDirection = endPosition - startPosition;
