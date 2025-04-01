@@ -19,34 +19,24 @@ public class Enemy : Ship
         currentHealth = Mathf.Clamp(currentHealth, 0, shipData.MaxHealth.Value);
         print($"{name} took {damage} damage.");
 
-        if (damage > 0)
+        if (currentHealth <= 0)
         {
-            if (currentHealth <= 0)
+            if (deathCoroutine != null)
             {
-                if (loseLifeCoroutine != null)
-                {
-                    StopCoroutine(loseLifeCoroutine);
-                }
-
-                loseLifeCoroutine = LoseLife();
-                StartCoroutine(loseLifeCoroutine);
+                StopCoroutine(deathCoroutine);
             }
+
+            deathCoroutine = Die();
+            StartCoroutine(deathCoroutine);
         }
-    }
-
-    protected override IEnumerator LoseLife()
-    {
-        yield return base.LoseLife();
-
-        collider.enabled = false;
-
-        deathCoroutine = Die();
-        StartCoroutine(deathCoroutine);
     }
 
     protected override IEnumerator Die()
     {
         yield return base.Die();
+
+        collider.enabled = false;
         SpriteRenderer.enabled = false;
+        gameObject.SetActive(false);
     }
 }
