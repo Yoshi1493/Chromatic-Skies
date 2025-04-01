@@ -18,11 +18,22 @@ public static class BossMovementBehaviour
         if (delay > 0) yield return WaitForSeconds(delay);
 
         Vector3 startPosition = boss.transform.position;
-        float currentTime = 0f;
+        boss.moveDirection = endPosition - startPosition;
+        float maxSpeed = boss.moveDirection.magnitude;
 
-        while (currentTime < moveDuration)
+        float currentTime = 0f;
+        while (currentTime < moveDuration / 2f)
         {
-            boss.parentShip.transform.position = Vector3.Lerp(startPosition, endPosition, moveInterpolation.Evaluate(currentTime / moveDuration));
+            boss.currentSpeed = Mathf.Lerp(0f, maxSpeed, moveInterpolation.Evaluate(currentTime * 2f / moveDuration));
+
+            yield return null;
+            currentTime += Time.deltaTime;
+        }
+
+        currentTime = 0f;
+        while (currentTime < moveDuration / 2f)
+        {
+            boss.currentSpeed = Mathf.Lerp(maxSpeed, 0f, moveInterpolation.Evaluate(currentTime * 2f / moveDuration));
 
             yield return null;
             currentTime += Time.deltaTime;
