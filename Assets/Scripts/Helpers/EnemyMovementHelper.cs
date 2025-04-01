@@ -3,7 +3,7 @@ using UnityEngine;
 using static CoroutineHelper;
 
 //"helper" class to handle boss movement
-public static class BossMovementBehaviour
+public static class EnemyMovementBehaviour
 {
     #region Movement behaviour
 

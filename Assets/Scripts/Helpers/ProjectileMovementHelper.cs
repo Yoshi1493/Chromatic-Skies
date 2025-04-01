@@ -3,7 +3,7 @@ using UnityEngine;
 using static CoroutineHelper;
 using static MathHelper;
 
-public static class ProjectileBehaviour
+public static class ProjectileMovementHelper
 {
     static AnimationCurve EaseInOutCurve = AnimationCurve.EaseInOut(0f, 0f, 1f, 1f);
 
