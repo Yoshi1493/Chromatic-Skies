@@ -7,7 +7,6 @@ public abstract class EnemyMovement : ShipMovement<Enemy>
 
     void OnEnable()
     {
-        print(UnityEngine.Time.timeSinceLevelLoad);
         if (moveCoroutine != null)
         {
             StopCoroutine(moveCoroutine);
