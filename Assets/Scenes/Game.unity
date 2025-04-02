@@ -347,12 +347,12 @@ GameObject:
   - component: {fileID: 18786234}
   - component: {fileID: 18786235}
   m_Layer: 0
-  m_Name: Enemy spawner
+  m_Name: Enemy spawner (Aquarius)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &18786234
 Transform:
   m_ObjectHideFlags: 0
@@ -360,13 +360,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 18786233}
-  m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
-  m_LocalPosition: {x: 0, y: 2.5, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1215444090}
-  m_RootOrder: 1
+  m_Father: {fileID: 1174556886}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
 --- !u!114 &18786235
 MonoBehaviour:
@@ -383,20 +383,7 @@ MonoBehaviour:
   spawnFile: {fileID: 4900000, guid: 13527a4f27815df4db4cda164f7fd8dc, type: 3}
   enemyPrefabs:
   - {fileID: 443384559322656082, guid: 56e94301062b2c846a866a9eafca4ea5, type: 3}
-  selectedBossIndex: {fileID: 11400000, guid: d5bd1f541c5da6647b0ec80fa55b12ce, type: 2}
-  bossPrefabs:
-  - {fileID: 7755895804811722165, guid: ae32505ea7ca26345a41907e070cec19, type: 3}
-  - {fileID: 8970867438237885685, guid: 3859bf0d081290b469f5428fac6cdfc1, type: 3}
-  - {fileID: 7755895804811722165, guid: 586502ed9d9f6f042b7869dc1703a4f9, type: 3}
-  - {fileID: 7755895804811722165, guid: f1fbcc08789cdd84194fd55e553bf6b2, type: 3}
-  - {fileID: 7755895804811722165, guid: b15e8fd8b3e6ebc43841eb5ef4d7990d, type: 3}
-  - {fileID: 7755895804811722165, guid: 0ee5fe128f94e7f49be1785ebc88b6ce, type: 3}
-  - {fileID: 7755895804811722165, guid: 9fc2742efc08d024ba641b107c682dc9, type: 3}
-  - {fileID: 7755895804811722165, guid: c358821051e9d954d93c21cc5d7ddbba, type: 3}
-  - {fileID: 7755895804811722165, guid: 9a23cf4b718073c469f4fa669836a07a, type: 3}
-  - {fileID: 7755895804811722165, guid: fd256c5442364f84da6382825eead91d, type: 3}
-  - {fileID: 7755895804811722165, guid: f9a327e04b3363548aa61427eeb07012, type: 3}
-  - {fileID: 7755895804811722165, guid: 6a2597e7e220cae4fa394773dab9ec6b, type: 3}
+  bossPrefab: {fileID: 7755895804811722165, guid: ae32505ea7ca26345a41907e070cec19, type: 3}
 --- !u!1 &115172394
 GameObject:
   m_ObjectHideFlags: 0
@@ -1133,6 +1120,54 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 9113669927874555431, guid: 43808b15fa4047946ae6ee640412c78f, type: 3}
   m_PrefabInstance: {fileID: 211355629}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &237520066
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 237520067}
+  - component: {fileID: 237520068}
+  m_Layer: 0
+  m_Name: Enemy spawner (Leo)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &237520067
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 237520066}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1174556886}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
+--- !u!114 &237520068
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 237520066}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f6da3186af45e34b930ecb36c016ab2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnFile: {fileID: 4900000, guid: 13527a4f27815df4db4cda164f7fd8dc, type: 3}
+  enemyPrefabs:
+  - {fileID: 0}
+  bossPrefab: {fileID: 7755895804811722165, guid: 9a23cf4b718073c469f4fa669836a07a, type: 3}
 --- !u!1 &238148620
 GameObject:
   m_ObjectHideFlags: 0
@@ -1997,6 +2032,54 @@ MonoBehaviour:
   - {fileID: 6246849726923490308, guid: f4b77ff3cb9354646a38902fa9179c82, type: 3}
   - {fileID: 6246849726923490308, guid: 33bd6ed512fd7654fbad7af3917b8aab, type: 3}
   - {fileID: 6246849726923490308, guid: 694d7bce483a80248b16c360e33a5364, type: 3}
+--- !u!1 &395798863
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 395798864}
+  - component: {fileID: 395798865}
+  m_Layer: 0
+  m_Name: Enemy spawner (Scorpio)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &395798864
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 395798863}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1174556886}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
+--- !u!114 &395798865
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 395798863}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f6da3186af45e34b930ecb36c016ab2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnFile: {fileID: 4900000, guid: 13527a4f27815df4db4cda164f7fd8dc, type: 3}
+  enemyPrefabs:
+  - {fileID: 0}
+  bossPrefab: {fileID: 7755895804811722165, guid: fd256c5442364f84da6382825eead91d, type: 3}
 --- !u!1 &400887716
 GameObject:
   m_ObjectHideFlags: 0
@@ -2218,6 +2301,54 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentHealth: {fileID: 11400000, guid: b8f7cb9054d140d4e8fe82303a8deab4, type: 2}
+--- !u!1 &425665589
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 425665590}
+  - component: {fileID: 425665591}
+  m_Layer: 0
+  m_Name: Enemy spawner (Sagittarius)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &425665590
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 425665589}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1174556886}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
+--- !u!114 &425665591
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 425665589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f6da3186af45e34b930ecb36c016ab2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnFile: {fileID: 4900000, guid: 13527a4f27815df4db4cda164f7fd8dc, type: 3}
+  enemyPrefabs:
+  - {fileID: 0}
+  bossPrefab: {fileID: 7755895804811722165, guid: f9a327e04b3363548aa61427eeb07012, type: 3}
 --- !u!1 &428313846
 GameObject:
   m_ObjectHideFlags: 0
@@ -2452,6 +2583,54 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentHealth: {fileID: 11400000, guid: 88e6f6f6dd977d2428aa24080da7ebf8, type: 2}
   enemySpawner: {fileID: 18786235}
+--- !u!1 &491917190
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 491917191}
+  - component: {fileID: 491917192}
+  m_Layer: 0
+  m_Name: Enemy spawner (Aries)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &491917191
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 491917190}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1174556886}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
+--- !u!114 &491917192
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 491917190}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f6da3186af45e34b930ecb36c016ab2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnFile: {fileID: 4900000, guid: 13527a4f27815df4db4cda164f7fd8dc, type: 3}
+  enemyPrefabs:
+  - {fileID: 0}
+  bossPrefab: {fileID: 8970867438237885685, guid: 3859bf0d081290b469f5428fac6cdfc1, type: 3}
 --- !u!1 &501545821
 GameObject:
   m_ObjectHideFlags: 0
@@ -3104,6 +3283,54 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 573822236}
   m_CullTransparentMesh: 1
+--- !u!1 &576298199
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 576298200}
+  - component: {fileID: 576298201}
+  m_Layer: 0
+  m_Name: Enemy spawner (Libra)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &576298200
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 576298199}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1174556886}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
+--- !u!114 &576298201
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 576298199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f6da3186af45e34b930ecb36c016ab2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnFile: {fileID: 4900000, guid: 13527a4f27815df4db4cda164f7fd8dc, type: 3}
+  enemyPrefabs:
+  - {fileID: 0}
+  bossPrefab: {fileID: 7755895804811722165, guid: 6a2597e7e220cae4fa394773dab9ec6b, type: 3}
 --- !u!1 &582637703
 GameObject:
   m_ObjectHideFlags: 0
@@ -3352,6 +3579,54 @@ CanvasGroup:
   m_Interactable: 0
   m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
+--- !u!1 &618577694
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 618577695}
+  - component: {fileID: 618577696}
+  m_Layer: 0
+  m_Name: Enemy spawner (Pisces)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &618577695
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 618577694}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1174556886}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
+--- !u!114 &618577696
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 618577694}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f6da3186af45e34b930ecb36c016ab2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnFile: {fileID: 4900000, guid: 13527a4f27815df4db4cda164f7fd8dc, type: 3}
+  enemyPrefabs:
+  - {fileID: 0}
+  bossPrefab: {fileID: 7755895804811722165, guid: f1fbcc08789cdd84194fd55e553bf6b2, type: 3}
 --- !u!1 &663106032
 GameObject:
   m_ObjectHideFlags: 0
@@ -3986,6 +4261,54 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 837664567}
   m_CullTransparentMesh: 1
+--- !u!1 &842438372
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 842438373}
+  - component: {fileID: 842438374}
+  m_Layer: 0
+  m_Name: Enemy spawner (Taurus)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &842438373
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 842438372}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1174556886}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
+--- !u!114 &842438374
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 842438372}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f6da3186af45e34b930ecb36c016ab2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnFile: {fileID: 4900000, guid: 13527a4f27815df4db4cda164f7fd8dc, type: 3}
+  enemyPrefabs:
+  - {fileID: 0}
+  bossPrefab: {fileID: 7755895804811722165, guid: 9fc2742efc08d024ba641b107c682dc9, type: 3}
 --- !u!1 &848864869
 GameObject:
   m_ObjectHideFlags: 0
@@ -4697,6 +5020,54 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentHealth: {fileID: 11400000, guid: 88e6f6f6dd977d2428aa24080da7ebf8, type: 2}
   enemySpawner: {fileID: 18786235}
+--- !u!1 &1069663033
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1069663034}
+  - component: {fileID: 1069663035}
+  m_Layer: 0
+  m_Name: Enemy spawner (Capricorn)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1069663034
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1069663033}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1174556886}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
+--- !u!114 &1069663035
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1069663033}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f6da3186af45e34b930ecb36c016ab2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnFile: {fileID: 4900000, guid: 13527a4f27815df4db4cda164f7fd8dc, type: 3}
+  enemyPrefabs:
+  - {fileID: 0}
+  bossPrefab: {fileID: 7755895804811722165, guid: 586502ed9d9f6f042b7869dc1703a4f9, type: 3}
 --- !u!1 &1100869870
 GameObject:
   m_ObjectHideFlags: 0
@@ -4847,6 +5218,76 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentLives: {fileID: 11400000, guid: e2702cea3fe25f846bba74335398e0fa, type: 2}
+--- !u!1 &1174556885
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1174556886}
+  - component: {fileID: 1174556887}
+  m_Layer: 0
+  m_Name: Enemy spawner controller
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1174556886
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1174556885}
+  m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
+  m_LocalPosition: {x: 0, y: 2.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 18786234}
+  - {fileID: 491917191}
+  - {fileID: 1360023347}
+  - {fileID: 1069663034}
+  - {fileID: 1857468351}
+  - {fileID: 237520067}
+  - {fileID: 576298200}
+  - {fileID: 618577695}
+  - {fileID: 425665590}
+  - {fileID: 395798864}
+  - {fileID: 842438373}
+  - {fileID: 1897497765}
+  m_Father: {fileID: 1215444090}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
+--- !u!114 &1174556887
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1174556885}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38cbe8bb900c9c947ba19e9b15b86ef0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selectedBossIndex: {fileID: 11400000, guid: d5bd1f541c5da6647b0ec80fa55b12ce, type: 2}
+  enemySpawners:
+  - {fileID: 18786235}
+  - {fileID: 491917192}
+  - {fileID: 1360023348}
+  - {fileID: 1069663035}
+  - {fileID: 1857468352}
+  - {fileID: 237520068}
+  - {fileID: 576298201}
+  - {fileID: 618577696}
+  - {fileID: 425665591}
+  - {fileID: 395798865}
+  - {fileID: 842438374}
+  - {fileID: 1897497766}
 --- !u!1 &1206621734
 GameObject:
   m_ObjectHideFlags: 0
@@ -5026,7 +5467,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 380573529}
-  - {fileID: 18786234}
+  - {fileID: 1174556886}
   - {fileID: 1602633609}
   m_Father: {fileID: 0}
   m_RootOrder: 6
@@ -5319,6 +5760,54 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1279163093}
   m_CullTransparentMesh: 1
+--- !u!1 &1360023346
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1360023347}
+  - component: {fileID: 1360023348}
+  m_Layer: 0
+  m_Name: Enemy spawner (Cancer)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1360023347
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1360023346}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1174556886}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
+--- !u!114 &1360023348
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1360023346}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f6da3186af45e34b930ecb36c016ab2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnFile: {fileID: 4900000, guid: 13527a4f27815df4db4cda164f7fd8dc, type: 3}
+  enemyPrefabs:
+  - {fileID: 0}
+  bossPrefab: {fileID: 7755895804811722165, guid: 0ee5fe128f94e7f49be1785ebc88b6ce, type: 3}
 --- !u!1001 &1451902396
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7593,6 +8082,102 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1831145785}
   m_CullTransparentMesh: 1
+--- !u!1 &1857468350
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1857468351}
+  - component: {fileID: 1857468352}
+  m_Layer: 0
+  m_Name: Enemy spawner (Gemini)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1857468351
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1857468350}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1174556886}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
+--- !u!114 &1857468352
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1857468350}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f6da3186af45e34b930ecb36c016ab2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnFile: {fileID: 4900000, guid: 13527a4f27815df4db4cda164f7fd8dc, type: 3}
+  enemyPrefabs:
+  - {fileID: 0}
+  bossPrefab: {fileID: 7755895804811722165, guid: c358821051e9d954d93c21cc5d7ddbba, type: 3}
+--- !u!1 &1897497764
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1897497765}
+  - component: {fileID: 1897497766}
+  m_Layer: 0
+  m_Name: Enemy spawner (Virgo)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1897497765
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1897497764}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1174556886}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
+--- !u!114 &1897497766
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1897497764}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f6da3186af45e34b930ecb36c016ab2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnFile: {fileID: 4900000, guid: 13527a4f27815df4db4cda164f7fd8dc, type: 3}
+  enemyPrefabs:
+  - {fileID: 0}
+  bossPrefab: {fileID: 7755895804811722165, guid: b15e8fd8b3e6ebc43841eb5ef4d7990d, type: 3}
 --- !u!1001 &1922420792
 PrefabInstance:
   m_ObjectHideFlags: 0

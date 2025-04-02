@@ -11,9 +11,7 @@ public class EnemySpawner : MonoBehaviour
 
     [SerializeField] TextAsset spawnFile;
     [SerializeField] Enemy[] enemyPrefabs;
-
-    [SerializeField] IntObject selectedBossIndex;
-    [SerializeField] Boss[] bossPrefabs;
+    [SerializeField] Boss bossPrefab;
 
     IEnumerator enemySpawnCoroutine;
     public event Action BossSpawnAction;
@@ -69,7 +67,7 @@ public class EnemySpawner : MonoBehaviour
         }
 
         //pre-spawn boss
-        var boss = Instantiate(bossPrefabs[selectedBossIndex.value], transform.position, transform.rotation);
+        var boss = Instantiate(bossPrefab, transform.position, transform.rotation);
         yield return null;
         boss.gameObject.SetActive(false);
 
