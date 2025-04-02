@@ -22,7 +22,7 @@ public static class EnemyMovementBehaviour
 
         Vector3 startPosition = ship.transform.position;
         ship.moveDirection = endPosition - startPosition;
-        float maxSpeed = ship.moveDirection.magnitude;
+        float maxSpeed = ship.moveDirection.magnitude * (2f / moveDuration);
 
         float currentTime = 0f;
         while (currentTime < moveDuration / 2f)
@@ -33,10 +33,9 @@ public static class EnemyMovementBehaviour
             currentTime += Time.deltaTime;
         }
 
-        currentTime = 0f;
-        while (currentTime < moveDuration / 2f)
+        while (currentTime < moveDuration)
         {
-            ship.currentSpeed = Mathf.Lerp(maxSpeed, 0f, moveInterpolation.Evaluate(currentTime * 2f / moveDuration));
+            ship.currentSpeed = Mathf.Lerp(maxSpeed, 0f, moveInterpolation.Evaluate((currentTime * 2f - moveDuration) / moveDuration));
 
             yield return null;
             currentTime += Time.deltaTime;
