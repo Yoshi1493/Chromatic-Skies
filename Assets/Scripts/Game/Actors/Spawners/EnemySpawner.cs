@@ -33,7 +33,7 @@ public class EnemySpawner : MonoBehaviour
     {
         //parse spawn file
         var splitFile = spawnFile.text.Split('\n', StringSplitOptions.RemoveEmptyEntries);
-        splitFile = splitFile.Skip(0).ToArray();
+        splitFile = splitFile.Where(i => char.IsDigit(i[0])).ToArray();
 
         List<int> enemyIndexes = new();
         List<float> xPositions = new();
@@ -56,14 +56,18 @@ public class EnemySpawner : MonoBehaviour
         //pre-spawn all enemies
         for (int i = 0; i < enemyIndexes.Count; i++)
         {
-            var enemy = Instantiate(enemyPrefabs[enemyIndexes[i]], transform);
-            Vector2 pos = new(xPositions[i], yPositions[i]);
-            enemy.transform.SetPositionAndRotation(pos, transform.rotation);
+            //make sure enemy index is within spawn array
+            if (enemyIndexes[i] < enemyPrefabs.Length)
+            {
+                var enemy = Instantiate(enemyPrefabs[enemyIndexes[i]], transform);
+                Vector2 pos = new(xPositions[i], yPositions[i]);
+                enemy.transform.SetPositionAndRotation(pos, transform.rotation);
 
-            enemy.enabled = false;
-            enemy.gameObject.SetActive(false);
+                enemy.enabled = false;
+                enemy.gameObject.SetActive(false);
 
-            enemies.Add(enemy);
+                enemies.Add(enemy);
+            }
         }
 
         //pre-spawn boss
@@ -83,7 +87,10 @@ public class EnemySpawner : MonoBehaviour
             enemies[i].enabled = true;
         }
 
-        yield return WaitForSeconds(2f);
+        yield return WaitUntil(() => transform.childCount == 0);
+        yield return WaitForSeconds(3f);
+
+        //activate boss
         boss.gameObject.SetActive(true);
         BossSpawnAction?.Invoke();
 

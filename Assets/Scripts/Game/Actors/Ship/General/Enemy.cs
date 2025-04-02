@@ -34,9 +34,6 @@ public class Enemy : Ship
     protected override IEnumerator Die()
     {
         yield return base.Die();
-
-        collider.enabled = false;
-        SpriteRenderer.enabled = false;
-        gameObject.SetActive(false);
+        Destroy(gameObject);
     }
 }
