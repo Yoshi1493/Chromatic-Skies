@@ -73,27 +73,3 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 7bcf69fa22762864490663a808ff79db, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0ea569baafb91b94cbd6c069f48a94da, type: 3}
---- !u!1 &5224434185141182251 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2407710777176494618, guid: 0ea569baafb91b94cbd6c069f48a94da, type: 3}
-  m_PrefabInstance: {fileID: 7631634376295664945}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &3057596441898090321
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5224434185141182251}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bf6948d757d63d3469c123f8fcd2dcc7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shipData: {fileID: 11400000, guid: 7bcf69fa22762864490663a808ff79db, type: 2}
-  parentShip: {fileID: 0}
-  moveDirection: {x: 0, y: 0, z: 0}
-  currentSpeed: 0
-  delay: 1
-  moveDuration: 2
-  endPosition: {x: 4, y: 2.8}
