@@ -3,7 +3,7 @@ using UnityEngine;
 using static CoroutineHelper;
 
 //helper class to handle ship movement
-public static class EnemyMovementBehaviour
+public static class ShipMovementHelper
 {
     #region Movement behaviour
 
