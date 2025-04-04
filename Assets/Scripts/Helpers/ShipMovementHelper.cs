@@ -42,6 +42,7 @@ public static class ShipMovementHelper
         }
 
         ship.parentShip.transform.position = endPosition;
+        ship.moveDirection = Vector3.zero;
         ship.currentSpeed = 0f;
     }
 
@@ -71,6 +72,7 @@ public static class ShipMovementHelper
         yield return WaitForSeconds(moveDuration);
 
         ship.parentShip.transform.position = endPosition;
+        ship.moveDirection = Vector3.zero;
         ship.currentSpeed = 0f;
     }
 
@@ -88,24 +90,31 @@ public static class ShipMovementHelper
     }
 
     /// <summary>
-    /// translates <ship> clockwise around <point> by <degrees> degrees over <duration> seconds.
+    /// translates <ship> anticlockwise around <point> by <degrees> degrees over <moveDuration> seconds.
     /// </summary>
-    public static IEnumerator TranslateAround<TShip>(this ShipMovement<TShip> ship, Vector3 point, float degrees, float duration, float delay = 0f)
+    public static IEnumerator TranslateAround<TShip>(this ShipMovement<TShip> ship, Vector3 point, float degrees, float moveDuration, float delay = 0f)
         where TShip : Ship
     {
-        if (degrees == 0f || duration <= 0f) yield break;
+        if (degrees == 0f || moveDuration <= 0f) yield break;
         if (delay > 0) yield return WaitForSeconds(delay);
 
-        Vector3 diff = point - ship.transform.position;
-        ship.currentSpeed = diff.magnitude * degrees * Mathf.Deg2Rad / duration;
+        Vector3 startDirection = ship.transform.position - point;
+        Vector3 endPosition = startDirection.RotateVectorBy(degrees) + point;
 
         float currentTime = 0f;
-
-        while (currentTime < duration)
+        while (currentTime < moveDuration)
         {
-            currentTime += Time.deltaTime;
+            float r = Mathf.Lerp(0f, degrees, currentTime / moveDuration);
+            ship.moveDirection = startDirection.RotateVectorBy(90f).RotateVectorBy(r);
+            ship.currentSpeed = ship.moveDirection.magnitude * degrees * Mathf.Deg2Rad / moveDuration;
+
             yield return null;
+            currentTime += Time.deltaTime;
         }
+
+        ship.parentShip.transform.position = endPosition;
+        ship.moveDirection = Vector3.zero;
+        ship.currentSpeed = 0f;
     }
 
     /// <summary>

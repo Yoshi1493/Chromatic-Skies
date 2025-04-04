@@ -73,6 +73,7 @@ public class EnemySpawner : MonoBehaviour
         //pre-spawn boss
         var boss = Instantiate(bossPrefab, transform.position, transform.rotation);
         yield return null;
+
         boss.gameObject.SetActive(false);
 
         //activate enemies
