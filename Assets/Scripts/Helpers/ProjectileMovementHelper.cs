@@ -8,19 +8,19 @@ public static class ProjectileMovementHelper
     static AnimationCurve EaseInOutCurve = AnimationCurve.EaseInOut(0f, 0f, 1f, 1f);
 
     /// <summary>
-    /// lerps <p.MoveSpeed> from <startSpeed> to <endSpeed>, in <lerpTime> seconds.
+    /// lerps <p.MoveSpeed> from <startSpeed> to <endSpeed>, in <duration> seconds.
     /// </summary>
-    public static IEnumerator LerpSpeed(this Bullet p, float startSpeed, float endSpeed, float lerpTime, float delay = 0f)
+    public static IEnumerator LerpSpeed(this Bullet p, float startSpeed, float endSpeed, float duration, float delay = 0f)
     {
         if (delay > 0f) yield return WaitForSeconds(delay);
 
-        if (lerpTime > 0f)
+        if (duration > 0f)
         {
             float currentLerpTime = 0f;
 
-            while (currentLerpTime < lerpTime)
+            while (currentLerpTime < duration)
             {
-                p.MoveSpeed = Mathf.Lerp(startSpeed, endSpeed, currentLerpTime / lerpTime);
+                p.MoveSpeed = Mathf.Lerp(startSpeed, endSpeed, currentLerpTime / duration);
 
                 currentLerpTime += Time.deltaTime;
                 yield return null;
@@ -31,19 +31,19 @@ public static class ProjectileMovementHelper
     }
 
     /// <summary>
-    /// (unused) uses Vector3.SmoothDamp to lerp <p.moveDirection> from <p.moveDirection> to <endDirection>, in <lerpTime> seconds.
+    /// (unused) uses Vector3.SmoothDamp to lerp <p.moveDirection> from <p.moveDirection> to <endDirection>, in <duration> seconds.
     /// </summary>
-    public static IEnumerator LerpDirection(this Bullet p, Vector3 endDirection, float lerpTime, float delay = 0f)
+    public static IEnumerator LerpDirection(this Bullet p, Vector3 endDirection, float duration, float delay = 0f)
     {
         if (delay > 0f) yield return WaitForSeconds(delay);
 
-        if (lerpTime > 0f)
+        if (duration > 0f)
         {
             Vector3 vel = p.moveDirection;
 
             while (p.moveDirection != endDirection)
             {
-                p.moveDirection = Vector3.SmoothDamp(p.moveDirection, endDirection, ref vel, lerpTime);
+                p.moveDirection = Vector3.SmoothDamp(p.moveDirection, endDirection, ref vel, duration);
                 yield return null;
             }
         }
@@ -52,20 +52,20 @@ public static class ProjectileMovementHelper
     }
 
     /// <summary>
-    /// lerps <p.SpriteRenderer.size> from current size to <endSize>, in <lerpTime> seconds.
+    /// lerps <p.SpriteRenderer.size> from current size to <endSize>, in <duration> seconds.
     /// </summary>
-    public static IEnumerator LerpSize(this Projectile p, Vector2 endSize, float lerpTime, float delay = 0f)
+    public static IEnumerator LerpSize(this Projectile p, Vector2 endSize, float duration, float delay = 0f)
     {
         if (delay > 0f) yield return WaitForSeconds(delay);
 
-        if (lerpTime > 0f)
+        if (duration > 0f)
         {
             Vector2 startSize = p.SpriteRenderer.size;
             float currentLerpTime = 0f;
 
             while (p.SpriteRenderer.size != endSize)
             {
-                p.SpriteRenderer.size = Vector2.Lerp(startSize, endSize, currentLerpTime / lerpTime);
+                p.SpriteRenderer.size = Vector2.Lerp(startSize, endSize, currentLerpTime / duration);
 
                 currentLerpTime += Time.deltaTime;
                 yield return null;
