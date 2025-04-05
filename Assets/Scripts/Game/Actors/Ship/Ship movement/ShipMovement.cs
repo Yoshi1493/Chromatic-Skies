@@ -5,9 +5,6 @@ public abstract class ShipMovement<TShip> : MonoBehaviour
 {
     [HideInInspector] public TShip parentShip;
 
-    [HideInInspector] public Vector3 moveDirection;
-    [HideInInspector] public float currentSpeed;
-
     protected virtual void Awake()
     {
         parentShip = GetComponentInParent<TShip>();
@@ -21,7 +18,7 @@ public abstract class ShipMovement<TShip> : MonoBehaviour
 
     protected virtual void Update()
     {
-        if (moveDirection != Vector3.zero && currentSpeed != 0f)
+        if (parentShip.moveDirection != Vector3.zero && parentShip.MoveSpeed != 0f)
         {
             ApplyMovement();
         }
@@ -29,7 +26,7 @@ public abstract class ShipMovement<TShip> : MonoBehaviour
 
     protected void ApplyMovement()
     {
-        parentShip.transform.Translate(Time.deltaTime * currentSpeed * moveDirection.normalized, Space.World);
+        parentShip.transform.Translate(Time.deltaTime * parentShip.MoveSpeed * parentShip.moveDirection.normalized, Space.World);
     }
 
     protected abstract void OnLoseLife();

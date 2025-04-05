@@ -50,7 +50,7 @@ public abstract class BossMovement : ShipMovement<Boss>
     void OnPlayerDie()
     {
         StopAllCoroutines();
-        currentSpeed = 0f;
+        parentShip.MoveSpeed = 0f;
         enabled = false;
     }
 
