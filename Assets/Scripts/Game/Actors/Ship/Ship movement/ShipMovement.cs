@@ -18,8 +18,6 @@ public abstract class ShipMovement<TShip> : MonoBehaviour
     {
         parentShip.LoseLifeAction += OnLoseLife;
         parentShip.DeathAction += OnDie;
-
-        currentSpeed = shipData.MovementSpeed.Value;
     }
 
     protected virtual void Update()

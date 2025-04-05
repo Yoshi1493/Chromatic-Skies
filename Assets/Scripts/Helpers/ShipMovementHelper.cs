@@ -96,7 +96,7 @@ public static class ShipMovementHelper
     public static IEnumerator MoveRelative<TShip>(this ShipMovement<TShip> ship, Vector3 moveDirection, float moveSpeed, float moveDuration, float delay = 0f)
         where TShip : Ship
     {
-        if (moveSpeed == 0 || moveDuration <= 0f) yield break;
+        if (moveDirection == Vector3.zero || moveSpeed == 0 || moveDuration <= 0f) yield break;
         if (delay > 0) yield return WaitForSeconds(delay);
 
         Vector3 normalizedDirection = moveDirection.normalized;
@@ -162,12 +162,12 @@ public static class ShipMovementHelper
     public static IEnumerator ReturnToOriginalPosition<TShip>(this ShipMovement<TShip> ship, float moveDuration = 1f, float delay = 0f)
         where TShip : Ship
     {
-        if (ship is Boss)
+        if (ship.parentShip is Boss)
         {
             yield return ship.MoveTo(bossSpawnPosition, moveDuration, delay);
         }
 
-        if (ship is Player)
+        if (ship.parentShip is Player)
         {
             yield return ship.MoveTo(playerSpawnPosition, moveDuration, delay);
         }

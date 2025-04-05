@@ -22,6 +22,8 @@ public class PlayerMovement : ShipMovement<Player>
         parentShip.RespawnAction += OnRespawn;
         MovementSlowAction += SetSlowState;
         pauseHandler.GamePauseAction += OnGamePaused;
+
+        currentSpeed = shipData.MovementSpeed.Value;
     }
 
     protected override void Update()
