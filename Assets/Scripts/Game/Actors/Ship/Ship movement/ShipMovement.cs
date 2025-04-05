@@ -24,7 +24,10 @@ public abstract class ShipMovement<TShip> : MonoBehaviour
 
     protected virtual void Update()
     {
-        ApplyMovement();
+        if (moveDirection != Vector3.zero && currentSpeed != 0f)
+        {
+            ApplyMovement();
+        }
     }
 
     protected void ApplyMovement()
