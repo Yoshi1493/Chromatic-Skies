@@ -58,8 +58,7 @@ public static class ShipMovementHelper
     /// <summary>
     /// translates <ship> to <GetRandomPositionWithinBounds()> over <moveDuration> seconds.
     /// </summary>
-    public static IEnumerator MoveToRandomPosition<TShip>(this ShipMovement<TShip> ship, float moveDuration, float minDeltaMagnitude = 2f, float maxDeltaMagnitude = 4f, float delay = 0f)
-        where TShip : Ship
+    public static IEnumerator MoveToRandomPosition(this BossMovement ship, float moveDuration, float minDeltaMagnitude = 2f, float maxDeltaMagnitude = 4f, float delay = 0f)
     {
         if (minDeltaMagnitude > maxDeltaMagnitude) yield break;
         if (delay > 0) yield return WaitForSeconds(delay);
