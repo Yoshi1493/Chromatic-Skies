@@ -56,6 +56,19 @@ public static class ShipMovementHelper
     }
 
     /// <summary>
+    /// translates <ship> to <GetRandomPositionWithinBounds()> over <moveDuration> seconds.
+    /// </summary>
+    public static IEnumerator MoveToRandomPosition<TShip>(this ShipMovement<TShip> ship, float moveDuration, float minDeltaMagnitude = 2f, float maxDeltaMagnitude = 4f, float delay = 0f)
+        where TShip : Ship
+    {
+        if (minDeltaMagnitude > maxDeltaMagnitude) yield break;
+        if (delay > 0) yield return WaitForSeconds(delay);
+
+        Vector3 endPosition = ship.transform.position.GetRandomPositionWithinBounds(ship.shipData.boundaryLayer, minDeltaMagnitude, maxDeltaMagnitude);
+        yield return ship.MoveTo(endPosition, moveDuration);
+    }
+
+    /// <summary>
     /// linearly translates <ship> to <endPosition> over <moveDuration> seconds.
     /// </summary>
     public static IEnumerator MoveToLinear<TShip>(this ShipMovement<TShip> ship, Vector3 endPosition, float moveDuration, float delay = 0f)
@@ -77,16 +90,27 @@ public static class ShipMovementHelper
     }
 
     /// <summary>
-    /// translates <ship> to <GetRandomPositionWithinBounds()> over <moveDuration> seconds.
+    /// translates <ship> by setting ship's move direction and move speed, for <moveDuration> seconds.
+    /// moves relatively as opposed to setting a fixed end position.
     /// </summary>
-    public static IEnumerator MoveToRandomPosition<TShip>(this ShipMovement<TShip> ship, float moveDuration, float minDeltaMagnitude = 2f, float maxDeltaMagnitude = 4f, float delay = 0f)
+    public static IEnumerator MoveRelative<TShip>(this ShipMovement<TShip> ship, Vector3 moveDirection, float moveSpeed, float moveDuration, float delay = 0f)
         where TShip : Ship
     {
-        if (minDeltaMagnitude > maxDeltaMagnitude) yield break;
+        if (moveSpeed == 0 || moveDuration <= 0f) yield break;
         if (delay > 0) yield return WaitForSeconds(delay);
 
-        Vector3 endPosition = ship.transform.position.GetRandomPositionWithinBounds(ship.shipData.boundaryLayer, minDeltaMagnitude, maxDeltaMagnitude);
-        yield return ship.MoveTo(endPosition, moveDuration);
+        Vector3 normalizedDirection = moveDirection.normalized;
+        Vector3 startPosition = ship.parentShip.transform.position;
+        Vector3 endPosition = (moveSpeed * moveDuration * normalizedDirection) + startPosition;
+
+        ship.moveDirection = normalizedDirection;
+        ship.currentSpeed = moveSpeed;
+
+        yield return WaitForSeconds(moveDuration);
+
+        ship.parentShip.transform.position = endPosition;
+        ship.moveDirection = Vector3.zero;
+        ship.currentSpeed = 0f;
     }
 
     /// <summary>
