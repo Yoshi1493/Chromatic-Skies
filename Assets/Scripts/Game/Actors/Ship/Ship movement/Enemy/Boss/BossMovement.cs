@@ -3,6 +3,8 @@ using UnityEngine;
 
 public abstract class BossMovement : ShipMovement<Boss>
 {
+    public ShipObject shipData;
+
     protected IEnumerator moveCoroutine;
     protected abstract IEnumerator Move();
 

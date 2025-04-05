@@ -3,7 +3,6 @@ using UnityEngine;
 public abstract class ShipMovement<TShip> : MonoBehaviour
     where TShip : Ship
 {
-    public ShipObject shipData;
     [HideInInspector] public TShip parentShip;
 
     [HideInInspector] public Vector3 moveDirection;

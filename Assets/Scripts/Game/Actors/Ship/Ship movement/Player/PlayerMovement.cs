@@ -3,9 +3,10 @@ using UnityEngine;
 
 public class PlayerMovement : ShipMovement<Player>
 {
-    [SerializeField] FloatObject slowMovementSpeed;
+    [SerializeField] ShipObject shipData;
 
     public event Action<bool> MovementSlowAction;
+    [SerializeField] FloatObject slowMovementSpeed;
 
     PauseHandler pauseHandler;
 
@@ -45,10 +46,14 @@ public class PlayerMovement : ShipMovement<Player>
 
         //if movement is restricted on one axis, still allow movement on the other axis
         if (rayH.collider != null)
+        {
             moveDirection.x = 0;
+        }
 
         if (rayV.collider != null)
+        {
             moveDirection.y = 0;
+        }
     }
 
     void GetSlowInput()
