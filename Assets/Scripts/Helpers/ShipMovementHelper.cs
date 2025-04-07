@@ -11,14 +11,34 @@ public static class ShipMovementHelper
     public static readonly Vector3 bossSpawnPosition = new(0f, 2.5f, 0f);
     public static readonly Vector3 playerSpawnPosition = new(0f, -2f, 0f);
 
+    public static IEnumerator LerpSpeed<TShip>(this ShipMovement<TShip> ship, float endSpeed, float duration, float delay = 0f)
+        where TShip : Ship
+    {
+        if (duration <= 0f) yield break;
+        if (delay > 0) yield return WaitForSeconds(delay);
+
+        float startSpeed = ship.currentSpeed;
+
+        float currentTime = 0f;
+        while (currentTime < duration)
+        {
+            ship.currentSpeed = Mathf.Lerp(startSpeed, endSpeed, currentTime / duration);
+
+            yield return null;
+            currentTime += Time.deltaTime;
+        }
+
+        ship.currentSpeed = endSpeed;
+    }
+
     /// <summary>
-    /// translates <ship> to <endPosition> over <moveDuration> seconds, along a sigmoid (smoothstep) curve.
+    /// translates <ship> to <endPosition>, over <moveDuration> seconds, along a sigmoid (smoothstep) curve.
     /// </summary>
     public static IEnumerator MoveTo<TShip>(this ShipMovement<TShip> ship, Vector3 endPosition, float moveDuration, float delay = 0f)
         where TShip : Ship
     {
+        if (moveDuration <= 0f) yield break;
         if (delay > 0) yield return WaitForSeconds(delay);
-        if (moveDuration <= 0f) ship.parentShip.transform.position = endPosition;
 
         Vector3 startPosition = ship.transform.position;
         ship.moveDirection = endPosition - startPosition;
@@ -46,6 +66,9 @@ public static class ShipMovementHelper
         ship.currentSpeed = 0f;
     }
 
+    /// <summary>
+    /// teleports <ship> to <startPosition> first, then translates from <startPosition> to <endPosition>, over <moveDuration> seconds.
+    /// </summary>
     public static IEnumerator MoveFromTo<TShip>(this ShipMovement<TShip> ship, Vector3 startPosition, Vector3 endPosition, float moveDuration, float delay = 0f)
         where TShip : Ship
     {
@@ -56,7 +79,7 @@ public static class ShipMovementHelper
     }
 
     /// <summary>
-    /// translates <ship> to <GetRandomPositionWithinBounds()> over <moveDuration> seconds.
+    /// translates <ship> to <GetRandomPositionWithinBounds()>, over <moveDuration> seconds.
     /// </summary>
     public static IEnumerator MoveToRandomPosition(this BossMovement ship, float moveDuration, float minDeltaMagnitude = 2f, float maxDeltaMagnitude = 4f, float delay = 0f)
     {
@@ -68,11 +91,12 @@ public static class ShipMovementHelper
     }
 
     /// <summary>
-    /// linearly translates <ship> to <endPosition> over <moveDuration> seconds.
+    /// linearly translates <ship> to <endPosition>, over <moveDuration> seconds.
     /// </summary>
     public static IEnumerator MoveToLinear<TShip>(this ShipMovement<TShip> ship, Vector3 endPosition, float moveDuration, float delay = 0f)
         where TShip : Ship
     {
+        if (moveDuration <= 0f) yield break;
         if (delay > 0) yield return WaitForSeconds(delay);
 
         Vector3 newMoveDirection = endPosition - ship.transform.position;
