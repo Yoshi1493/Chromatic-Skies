@@ -78,7 +78,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2407710777176494618, guid: 0ea569baafb91b94cbd6c069f48a94da, type: 3}
   m_PrefabInstance: {fileID: 7631634376295664945}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &-6358748009829213367
+--- !u!114 &-8651690598639932817
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -90,11 +90,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66a2ae0e9678d8c45b6c9550d17c1660, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shipData: {fileID: 11400000, guid: 7bcf69fa22762864490663a808ff79db, type: 2}
   parentShip: {fileID: 0}
   moveDirection: {x: 0, y: 0, z: 0}
   currentSpeed: 0
   delay: 0
   moveDuration: 5
-  moveSpeed: 3
-  normalizedDirection: {x: 1, y: -5}
+  moveSpeed: 2.5
+  normalizedDirection: {x: 0, y: -1}
