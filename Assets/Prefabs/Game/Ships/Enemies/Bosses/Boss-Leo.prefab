@@ -460,6 +460,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 88e6f6f6dd977d2428aa24080da7ebf8, type: 2}
     - target: {fileID: 3922465162775491505, guid: d93cb44e21569f545b76560b29579f98, type: 3}
+      propertyPath: playerCurrentLives
+      value: 
+      objectReference: {fileID: 11400000, guid: e2702cea3fe25f846bba74335398e0fa, type: 2}
+    - target: {fileID: 3922465162775491505, guid: d93cb44e21569f545b76560b29579f98, type: 3}
       propertyPath: bulletSystemContainer
       value: 
       objectReference: {fileID: 392403506839100695}
@@ -671,10 +675,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4d25a597b8efda459e7ccdcebd2ab77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shipData: {fileID: 11400000, guid: a6711232c2a731c4c98597ae8d65ff0e, type: 2}
   parentShip: {fileID: 0}
   moveDirection: {x: 0, y: 0, z: 0}
   currentSpeed: 0
+  shipData: {fileID: 11400000, guid: a6711232c2a731c4c98597ae8d65ff0e, type: 2}
 --- !u!1 &6867336800114154692 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 180338613893518016, guid: d93cb44e21569f545b76560b29579f98, type: 3}
@@ -714,10 +718,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da030abfc1c636f4595b3cc5de710920, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shipData: {fileID: 11400000, guid: a6711232c2a731c4c98597ae8d65ff0e, type: 2}
   parentShip: {fileID: 0}
   moveDirection: {x: 0, y: 0, z: 0}
   currentSpeed: 0
+  shipData: {fileID: 11400000, guid: a6711232c2a731c4c98597ae8d65ff0e, type: 2}
 --- !u!1 &7540179381485964155 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3848614359502636415, guid: d93cb44e21569f545b76560b29579f98, type: 3}
@@ -735,10 +739,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed82893c526faae48a89734cd2db2679, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shipData: {fileID: 11400000, guid: a6711232c2a731c4c98597ae8d65ff0e, type: 2}
   parentShip: {fileID: 0}
   moveDirection: {x: 0, y: 0, z: 0}
   currentSpeed: 0
+  shipData: {fileID: 11400000, guid: a6711232c2a731c4c98597ae8d65ff0e, type: 2}
 --- !u!1 &7913653206763732874 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3467752768501264782, guid: d93cb44e21569f545b76560b29579f98, type: 3}
@@ -756,10 +760,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a447050636287a44bba54c29c1ef00bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shipData: {fileID: 11400000, guid: a6711232c2a731c4c98597ae8d65ff0e, type: 2}
   parentShip: {fileID: 0}
   moveDirection: {x: 0, y: 0, z: 0}
   currentSpeed: 0
+  shipData: {fileID: 11400000, guid: a6711232c2a731c4c98597ae8d65ff0e, type: 2}
 --- !u!1 &9083349842419879498 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2577068212091142222, guid: d93cb44e21569f545b76560b29579f98, type: 3}
@@ -777,10 +781,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40d431b5ef99be2449e59c2b711666b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shipData: {fileID: 11400000, guid: a6711232c2a731c4c98597ae8d65ff0e, type: 2}
   parentShip: {fileID: 0}
   moveDirection: {x: 0, y: 0, z: 0}
   currentSpeed: 0
+  shipData: {fileID: 11400000, guid: a6711232c2a731c4c98597ae8d65ff0e, type: 2}
 --- !u!1 &9208180497907977624 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2451954965750563740, guid: d93cb44e21569f545b76560b29579f98, type: 3}
@@ -798,7 +802,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fed34b5898233441a91c46cb8488f50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shipData: {fileID: 11400000, guid: a6711232c2a731c4c98597ae8d65ff0e, type: 2}
   parentShip: {fileID: 0}
   moveDirection: {x: 0, y: 0, z: 0}
   currentSpeed: 0
+  shipData: {fileID: 11400000, guid: a6711232c2a731c4c98597ae8d65ff0e, type: 2}
