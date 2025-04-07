@@ -20,14 +20,14 @@ public static class ShipMovementHelper
         if (delay > 0) yield return WaitForSeconds(delay);
         if (moveDuration <= 0f) ship.parentShip.transform.position = endPosition;
 
-        Vector3 startPosition = ship.parentShip.transform.position;
-        ship.parentShip.moveDirection = endPosition - startPosition;
-        float maxSpeed = ship.parentShip.moveDirection.magnitude * (2f / moveDuration);
+        Vector3 startPosition = ship.transform.position;
+        ship.moveDirection = endPosition - startPosition;
+        float maxSpeed = ship.moveDirection.magnitude * (2f / moveDuration);
 
         float currentTime = 0f;
         while (currentTime < moveDuration / 2f)
         {
-            ship.parentShip.MoveSpeed = Mathf.Lerp(0f, maxSpeed, moveInterpolation.Evaluate(currentTime * 2f / moveDuration));
+            ship.currentSpeed = Mathf.Lerp(0f, maxSpeed, moveInterpolation.Evaluate(currentTime * 2f / moveDuration));
 
             yield return null;
             currentTime += Time.deltaTime;
@@ -35,15 +35,15 @@ public static class ShipMovementHelper
 
         while (currentTime < moveDuration)
         {
-            ship.parentShip.MoveSpeed = Mathf.Lerp(maxSpeed, 0f, moveInterpolation.Evaluate((currentTime * 2f - moveDuration) / moveDuration));
+            ship.currentSpeed = Mathf.Lerp(maxSpeed, 0f, moveInterpolation.Evaluate((currentTime * 2f - moveDuration) / moveDuration));
 
             yield return null;
             currentTime += Time.deltaTime;
         }
 
         ship.parentShip.transform.position = endPosition;
-        ship.parentShip.moveDirection = Vector3.zero;
-        ship.parentShip.MoveSpeed = 0f;
+        ship.moveDirection = Vector3.zero;
+        ship.currentSpeed = 0f;
     }
 
     public static IEnumerator MoveFromTo<TShip>(this ShipMovement<TShip> ship, Vector3 startPosition, Vector3 endPosition, float moveDuration, float delay = 0f)
@@ -60,10 +60,10 @@ public static class ShipMovementHelper
     /// </summary>
     public static IEnumerator MoveToRandomPosition(this BossMovement ship, float moveDuration, float minDeltaMagnitude = 2f, float maxDeltaMagnitude = 4f, float delay = 0f)
     {
-        if (minDeltaMagnitude > maxDeltaMagnitude) yield break;
+        if (moveDuration <= 0f || minDeltaMagnitude > maxDeltaMagnitude) yield break;
         if (delay > 0) yield return WaitForSeconds(delay);
 
-        Vector3 endPosition = ship.parentShip.transform.position.GetRandomPositionWithinBounds(ship.parentShip.shipData.boundaryLayer, minDeltaMagnitude, maxDeltaMagnitude);
+        Vector3 endPosition = ship.transform.position.GetRandomPositionWithinBounds(ship.shipData.boundaryLayer, minDeltaMagnitude, maxDeltaMagnitude);
         yield return ship.MoveTo(endPosition, moveDuration);
     }
 
@@ -75,17 +75,17 @@ public static class ShipMovementHelper
     {
         if (delay > 0) yield return WaitForSeconds(delay);
 
-        Vector3 newMoveDirection = endPosition - ship.parentShip.transform.position;
+        Vector3 newMoveDirection = endPosition - ship.transform.position;
         float newMoveSpeed = newMoveDirection.magnitude / moveDuration;
 
-        ship.parentShip.moveDirection = newMoveDirection;
-        ship.parentShip.MoveSpeed = newMoveSpeed;
+        ship.moveDirection = newMoveDirection;
+        ship.currentSpeed = newMoveSpeed;
 
         yield return WaitForSeconds(moveDuration);
 
         ship.parentShip.transform.position = endPosition;
-        ship.parentShip.moveDirection = Vector3.zero;
-        ship.parentShip.MoveSpeed = 0f;
+        ship.moveDirection = Vector3.zero;
+        ship.currentSpeed = 0f;
     }
 
     /// <summary>
@@ -102,14 +102,14 @@ public static class ShipMovementHelper
         Vector3 startPosition = ship.parentShip.transform.position;
         Vector3 endPosition = (moveSpeed * moveDuration * normalizedDirection) + startPosition;
 
-        ship.parentShip.moveDirection = normalizedDirection;
-        ship.parentShip.MoveSpeed = moveSpeed;
+        ship.moveDirection = normalizedDirection;
+        ship.currentSpeed = moveSpeed;
 
         yield return WaitForSeconds(moveDuration);
 
         ship.parentShip.transform.position = endPosition;
-        ship.parentShip.moveDirection = Vector3.zero;
-        ship.parentShip.MoveSpeed = 0f;
+        ship.moveDirection = Vector3.zero;
+        ship.currentSpeed = 0f;
     }
 
     /// <summary>
@@ -121,23 +121,23 @@ public static class ShipMovementHelper
         if (degrees == 0f || moveDuration <= 0f) yield break;
         if (delay > 0) yield return WaitForSeconds(delay);
 
-        Vector3 startDirection = ship.parentShip.transform.position - point;
+        Vector3 startDirection = ship.transform.position - point;
         Vector3 endPosition = startDirection.RotateVectorBy(degrees) + point;
 
         float currentTime = 0f;
         while (currentTime < moveDuration)
         {
             float r = Mathf.Lerp(0f, degrees, currentTime / moveDuration);
-            ship.parentShip.moveDirection = startDirection.RotateVectorBy(90f).RotateVectorBy(r);
-            ship.parentShip.MoveSpeed = ship.parentShip.moveDirection.magnitude * degrees * Mathf.Deg2Rad / moveDuration;
+            ship.moveDirection = startDirection.RotateVectorBy(90f).RotateVectorBy(r);
+            ship.currentSpeed = ship.moveDirection.magnitude * degrees * Mathf.Deg2Rad / moveDuration;
 
             yield return null;
             currentTime += Time.deltaTime;
         }
 
         ship.parentShip.transform.position = endPosition;
-        ship.parentShip.moveDirection = Vector3.zero;
-        ship.parentShip.MoveSpeed = 0f;
+        ship.moveDirection = Vector3.zero;
+        ship.currentSpeed = 0f;
     }
 
     /// <summary>

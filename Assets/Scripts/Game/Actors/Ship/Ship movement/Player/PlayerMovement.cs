@@ -24,7 +24,7 @@ public class PlayerMovement : ShipMovement<Player>
         MovementSlowAction += SetSlowState;
         pauseHandler.GamePauseAction += OnGamePaused;
 
-        parentShip.MoveSpeed = shipData.MovementSpeed.Value;
+        currentSpeed = shipData.MovementSpeed.Value;
     }
 
     protected override void Update()
@@ -37,22 +37,22 @@ public class PlayerMovement : ShipMovement<Player>
 
     void GetMovementInput()
     {
-        parentShip.moveDirection.x = Input.GetAxisRaw("Horizontal");
-        parentShip.moveDirection.y = Input.GetAxisRaw("Vertical");
+        moveDirection.x = Input.GetAxisRaw("Horizontal");
+        moveDirection.y = Input.GetAxisRaw("Vertical");
 
         //check for collision on world boundaries along x and y axes independently
-        RaycastHit2D rayH = Physics2D.Raycast(transform.position, Vector3.right, 0.1f * parentShip.moveDirection.x, shipData.boundaryLayer);
-        RaycastHit2D rayV = Physics2D.Raycast(transform.position, Vector3.up, 0.1f * parentShip.moveDirection.y, shipData.boundaryLayer);
+        RaycastHit2D rayH = Physics2D.Raycast(transform.position, Vector3.right, 0.1f * moveDirection.x, shipData.boundaryLayer);
+        RaycastHit2D rayV = Physics2D.Raycast(transform.position, Vector3.up, 0.1f * moveDirection.y, shipData.boundaryLayer);
 
         //if movement is restricted on one axis, still allow movement on the other axis
         if (rayH.collider != null)
         {
-            parentShip.moveDirection.x = 0;
+            moveDirection.x = 0;
         }
 
         if (rayV.collider != null)
         {
-            parentShip.moveDirection.y = 0;
+            moveDirection.y = 0;
         }
     }
 
@@ -71,7 +71,7 @@ public class PlayerMovement : ShipMovement<Player>
 
     void SetSlowState(bool state)
     {
-        parentShip.MoveSpeed = state ? slowMovementSpeed.value : parentShip.shipData.MovementSpeed.Value;
+        currentSpeed = state ? slowMovementSpeed.value : parentShip.shipData.MovementSpeed.Value;
     }
 
     protected override void OnLoseLife()
