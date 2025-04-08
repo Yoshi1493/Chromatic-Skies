@@ -94,6 +94,25 @@ MonoBehaviour:
   moveDirection: {x: 0, y: 0, z: 0}
   currentSpeed: 0
   delay: 0
-  moveDuration: 5
-  moveSpeed: 2.5
+  moveDuration: 3
+  moveSpeed: 1
   normalizedDirection: {x: 0, y: -1}
+--- !u!114 &8981939127377714795
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5224434185141182251}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7068368252a8e7244aec6db632ae6bf3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parentShip: {fileID: 0}
+  moveDirection: {x: 0, y: 0, z: 0}
+  currentSpeed: 0
+  delay: 5
+  moveDuration: 3
+  moveSpeed: 4
+  normalizedDirection: {x: 2, y: 1}
