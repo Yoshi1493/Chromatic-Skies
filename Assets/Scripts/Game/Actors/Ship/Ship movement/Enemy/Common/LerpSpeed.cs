@@ -3,9 +3,7 @@ using UnityEngine;
 
 public class LerpSpeed : EnemyMovement
 {
-    [SerializeField] float delay;
     [SerializeField] float endSpeed;
-    [SerializeField] float duration;
 
     protected override IEnumerator Move()
     {

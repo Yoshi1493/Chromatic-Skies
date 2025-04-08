@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class MoveRelative : EnemyMovement
 {
-    [SerializeField] float delay;
     [SerializeField] float moveDuration;
     [SerializeField] float moveSpeed;
     [SerializeField] Vector2 normalizedDirection;
