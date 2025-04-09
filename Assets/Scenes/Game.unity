@@ -5280,16 +5280,16 @@ MonoBehaviour:
   enemySpawners:
   - {fileID: 18786235}
   - {fileID: 491917192}
-  - {fileID: 1360023348}
   - {fileID: 1069663035}
+  - {fileID: 618577696}
+  - {fileID: 1897497766}
+  - {fileID: 1360023348}
+  - {fileID: 842438374}
   - {fileID: 1857468352}
   - {fileID: 237520068}
-  - {fileID: 576298201}
-  - {fileID: 618577696}
-  - {fileID: 425665591}
   - {fileID: 395798865}
-  - {fileID: 842438374}
-  - {fileID: 1897497766}
+  - {fileID: 425665591}
+  - {fileID: 576298201}
 --- !u!1 &1206621734
 GameObject:
   m_ObjectHideFlags: 0
