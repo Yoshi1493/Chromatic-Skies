@@ -35,10 +35,10 @@ public class EnemySpawner : MonoBehaviour
         var splitFile = spawnFile.text.Split('\n', StringSplitOptions.RemoveEmptyEntries);
         splitFile = splitFile.Where(i => char.IsDigit(i[0])).ToArray();
 
+        List<float> spawnTimes = new();
         List<int> enemyIndexes = new();
         List<float> xPositions = new();
         List<float> yPositions = new();
-        List<float> spawnDelays = new();
 
         foreach (var line in splitFile)
         {
@@ -46,27 +46,30 @@ public class EnemySpawner : MonoBehaviour
             {
                 var splitLine = line.Split(", ", StringSplitOptions.RemoveEmptyEntries);
 
-                enemyIndexes.Add(int.Parse(splitLine[0]));
-                xPositions.Add(float.Parse(splitLine[1]));
-                yPositions.Add(float.Parse(splitLine[2]));
-                spawnDelays.Add(float.Parse(splitLine[3]));
+                spawnTimes.Add(float.Parse(splitLine[0]));
+                enemyIndexes.Add(int.Parse(splitLine[1]));
+                xPositions.Add(float.Parse(splitLine[2]));
+                yPositions.Add(float.Parse(splitLine[3]));
             }
         }
 
-        //pre-spawn all enemies
-        for (int i = 0; i < enemyIndexes.Count; i++)
+        if (enemyIndexes.Count > 0)
         {
-            //make sure enemy index is within spawn array
-            if (enemyIndexes[i] < enemyPrefabs.Length)
+            //pre-spawn all enemies
+            for (int i = 0; i < enemyIndexes.Count; i++)
             {
-                var enemy = Instantiate(enemyPrefabs[enemyIndexes[i]], transform);
-                Vector2 pos = new(xPositions[i], yPositions[i]);
-                enemy.transform.SetPositionAndRotation(pos, transform.rotation);
+                //make sure enemy index is within spawn array
+                if (enemyIndexes[i] < enemyPrefabs.Length)
+                {
+                    var enemy = Instantiate(enemyPrefabs[enemyIndexes[i]], transform);
+                    Vector2 pos = new(xPositions[i], yPositions[i]);
+                    enemy.transform.SetPositionAndRotation(pos, transform.rotation);
 
-                enemy.enabled = false;
-                enemy.gameObject.SetActive(false);
+                    enemy.enabled = false;
+                    enemy.gameObject.SetActive(false);
 
-                enemies.Add(enemy);
+                    enemies.Add(enemy);
+                }
             }
         }
 
@@ -76,12 +79,19 @@ public class EnemySpawner : MonoBehaviour
 
         boss.gameObject.SetActive(false);
 
-        //activate enemies
+        float delay = 0f;
+
+        //activate all enemies based on listed spawn time
         for (int i = 0; i < enemies.Count; i++)
         {
-            if (spawnDelays[i] > 0f)
+            if (i > 0)
             {
-                yield return WaitForSeconds(spawnDelays[i]);
+                delay = spawnTimes[i] - spawnTimes[i - 1];
+
+                if (delay > 0f)
+                {
+                    yield return WaitForSeconds(delay);
+                }
             }
 
             enemies[i].gameObject.SetActive(true);

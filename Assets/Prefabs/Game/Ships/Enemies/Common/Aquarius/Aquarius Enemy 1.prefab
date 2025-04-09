@@ -94,6 +94,7 @@ MonoBehaviour:
   moveDirection: {x: 0, y: 0, z: 0}
   currentSpeed: 0
   delay: 0
+  duration: 0
   moveDuration: 3
   moveSpeed: 1
   normalizedDirection: {x: 0, y: -1}
@@ -113,6 +114,6 @@ MonoBehaviour:
   moveDirection: {x: 0, y: 0, z: 0}
   currentSpeed: 0
   delay: 5
-  moveDuration: 3
+  duration: 3
   moveSpeed: 4
-  normalizedDirection: {x: 2, y: 1}
+  normalizedDirection: {x: 1, y: 1.5}
