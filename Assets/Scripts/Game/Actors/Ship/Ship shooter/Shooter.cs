@@ -46,15 +46,10 @@ public abstract class Shooter<TProjectile> : MonoBehaviour
         return newProjectile;
     }
 
-    protected virtual void OnLoseLife()
-    {
-        DestroyAllProjectiles();
-    }
+    protected abstract void OnLoseLife();
 
     protected virtual void OnDie()
     {
         enabled = false;
     }
-
-    protected abstract void DestroyAllProjectiles();
 }

@@ -63,7 +63,7 @@ public class PlayerShooter : Shooter<PlayerBullet>
 
     protected override void OnLoseLife()
     {
-        base.OnLoseLife();
+        DestroyAllProjectiles();
         enabled = false;
     }
 
@@ -72,7 +72,7 @@ public class PlayerShooter : Shooter<PlayerBullet>
         enabled = true;
     }
 
-    protected override void DestroyAllProjectiles()
+    void DestroyAllProjectiles()
     {
         foreach (var bullet in PlayerBulletPool.Instance.GetAllActiveObjects())
         {

@@ -42,6 +42,5 @@ public abstract class EnemyShooter<TProjectile> : Shooter<TProjectile>
     protected override void OnLoseLife()
     {
         StopAllCoroutines();
-        base.OnLoseLife();
     }
 }

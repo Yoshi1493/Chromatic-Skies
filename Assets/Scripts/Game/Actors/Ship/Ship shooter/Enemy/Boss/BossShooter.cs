@@ -54,13 +54,18 @@ public abstract class BossShooter<TProjectile> : EnemyShooter<TProjectile>, IBos
         }
     }
 
+    protected override void OnLoseLife()
+    {
+        DestroyAllProjectiles();
+    }
+
     void OnPlayerLoseLife()
     {
         StopAllCoroutines();
         DestroyAllProjectiles();
     }
 
-    protected override void DestroyAllProjectiles()
+    void DestroyAllProjectiles()
     {
         foreach (var bullet in BossBulletPool.Instance.GetAllActiveObjects())
         {
