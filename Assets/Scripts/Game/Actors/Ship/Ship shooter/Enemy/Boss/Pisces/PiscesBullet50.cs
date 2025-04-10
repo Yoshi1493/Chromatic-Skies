@@ -18,7 +18,7 @@ public class PiscesBullet50 : ScriptableBossBullet<PiscesBulletSystem51, BossBul
 
     public override void Destroy()
     {
-        float t = transform.eulerAngles.z + ownerShip.transform.eulerAngles.z;
+        float t = transform.eulerAngles.z + parentShip.transform.eulerAngles.z;
 
         for (int i = 0; i < BulletCount; i++)
         {

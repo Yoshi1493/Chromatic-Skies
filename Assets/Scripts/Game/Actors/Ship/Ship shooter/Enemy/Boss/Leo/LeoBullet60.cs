@@ -16,6 +16,6 @@ public class LeoBullet60 : BossBullet
         base.Update();
 
         SpriteRenderer.color = projectileData.gradient.Evaluate(currentLifetime / MaxLifetime);
-        transform.RotateAround(ownerShip.transform.position, rotationAxis, RotationSpeed * Time.deltaTime);
+        transform.RotateAround(parentShip.transform.position, rotationAxis, RotationSpeed * Time.deltaTime);
     }
 }

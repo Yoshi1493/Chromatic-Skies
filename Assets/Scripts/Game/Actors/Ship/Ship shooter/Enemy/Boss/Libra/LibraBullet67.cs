@@ -8,7 +8,7 @@ public class LibraBullet67 : BossBullet
 
     protected override IEnumerator Move()
     {
-        Vector3 originalPosition = ownerShip.transform.position;
+        Vector3 originalPosition = parentShip.transform.position;
 
         StartCoroutine(this.LerpSpeed(4f, 0f, 1f));
         yield return WaitForSeconds(1f);

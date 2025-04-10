@@ -22,8 +22,8 @@ public class LibraBullet10 : ScriptableBossBullet<LibraBulletSystem1, BossBullet
 
         StartCoroutine(Shoot());
 
-        transform.parent = ownerShip.transform;
-        StartCoroutine(this.RotateAround(ownerShip, MaxLifetime, 90f));
+        transform.parent = parentShip.transform;
+        StartCoroutine(this.RotateAround(parentShip, MaxLifetime, 90f));
     }
 
     IEnumerator Shoot()

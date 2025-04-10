@@ -13,7 +13,7 @@ public class LeoBullet62 : BossBullet
     {
         MoveSpeed = 2f;
 
-        yield return WaitUntil(() => (ownerShip.transform.position - transform.position).magnitude <= 2f);
+        yield return WaitUntil(() => (parentShip.transform.position - transform.position).magnitude <= 2f);
         yield return this.LerpSpeed(2f, 0f, 2f);
     }
 

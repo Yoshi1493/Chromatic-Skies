@@ -17,7 +17,7 @@ public class CancerBullet40 : BossBullet
         yield return WaitForSeconds(FireDelay);
 
         StartCoroutine(this.LerpSpeed(endSpeed, 4f, 2f));
-        this.LookAt(ownerShip);
+        this.LookAt(parentShip);
     }
 
     protected override void OnEnable()
@@ -32,7 +32,7 @@ public class CancerBullet40 : BossBullet
 
         if (currentLifetime < FireDelay)
         {
-            transform.RotateAround(ownerShip.transform.position, rotationAxis, RotationSpeed * Time.deltaTime);
+            transform.RotateAround(parentShip.transform.position, rotationAxis, RotationSpeed * Time.deltaTime);
         }
     }
 }

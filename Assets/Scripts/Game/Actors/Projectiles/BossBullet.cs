@@ -1,11 +1,11 @@
 public abstract class BossBullet : EnemyBullet
 {
-    protected Boss ownerShip;
+    protected Boss parentShip;
 
     protected override void Awake()
     {
         base.Awake();
-        ownerShip = FindObjectOfType<Boss>();
+        parentShip = FindObjectOfType<Boss>();
     }
 
     public override void Destroy()

@@ -60,7 +60,7 @@ public class GeminiBullet50 : ScriptableBossBullet<GeminiBulletSystem5, BossBull
 
     void UpdatePosition()
     {
-        Vector3 pos = ownerShip.transform.position;
+        Vector3 pos = parentShip.transform.position;
         pos.x *= -1;
         transform.position = pos;
     }

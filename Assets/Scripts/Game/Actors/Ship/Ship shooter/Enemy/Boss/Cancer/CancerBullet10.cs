@@ -19,7 +19,7 @@ public class CancerBullet10 : ScriptableBossBullet<CancerBulletSystem1, BossBull
 
     public override void Destroy()
     {
-        float r = ownerShip.transform.position.GetRotationDifference(transform.position);
+        float r = parentShip.transform.position.GetRotationDifference(transform.position);
 
         for (int i = 0; i < WaveCount; i++)
         {
