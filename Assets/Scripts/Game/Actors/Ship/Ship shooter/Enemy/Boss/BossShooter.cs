@@ -56,6 +56,7 @@ public abstract class BossShooter<TProjectile> : EnemyShooter<TProjectile>, IBos
 
     protected override void OnLoseLife()
     {
+        StopAllCoroutines();
         DestroyAllProjectiles();
     }
 
