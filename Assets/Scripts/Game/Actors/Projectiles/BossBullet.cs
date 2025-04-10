@@ -1,58 +1,11 @@
-using UnityEngine;
-
-public abstract class BossBullet : Bullet
+public abstract class BossBullet : EnemyBullet
 {
     protected Boss ownerShip;
-
-    protected override int CollisionMask => 1 << LayerMask.NameToLayer("Player") | 1 << LayerMask.NameToLayer("Special bullet");
 
     protected override void Awake()
     {
         base.Awake();
         ownerShip = FindObjectOfType<Boss>();
-    }
-
-    protected override void Update()
-    {
-        base.Update();
-
-        CheckCollisionWith<Player>();
-        CheckCollisionWith<PlayerGraze>();
-        CheckCollisionWith<SpecialBullet>();
-    }
-
-    protected override void HandleCollision(Collider2D coll)
-    {
-        base.HandleCollision(coll);
-
-        Vector3 pos = coll.ClosestPoint(transform.position);
-        float rot = coll.transform.position.GetRotationDifference(transform.position);
-
-        if (coll.TryGetComponent(out PlayerGraze playerGraze))
-        {
-            if (!hasGrazed)
-            {
-                playerGraze.GrazePlayer();
-                SpawnGrazeParticles(pos, rot);
-
-                hasGrazed = true;
-            }
-        }
-        if (coll.TryGetComponent(out SpecialBullet specialBullet))
-        {
-            if (specialBullet is SpecialBlue1 blue)
-            {
-                int healAmount = DamageCalculator.CalculateHealing(playerShip.shipData.MaxHealth.Value, blue.HitCount);
-                playerShip.TakeDamage(healAmount);
-
-                blue.RegisterHit();
-            }
-
-            if (projectileData.destructible)
-            {
-                Destroy();
-            }
-        }
     }
 
     public override void Destroy()
@@ -62,7 +15,7 @@ public abstract class BossBullet : Bullet
             StopCoroutine(movementBehaviour);
         }
 
-        base.Destroy();
+        MoveSpeed = 0f;
         BossBulletPool.Instance.ReturnToPool(this);
     }
 }
