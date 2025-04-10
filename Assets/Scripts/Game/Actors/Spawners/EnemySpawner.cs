@@ -53,7 +53,7 @@ public class EnemySpawner : MonoBehaviour
             }
         }
 
-        if (enemyIndexes.Count > 0)
+        if (enemyPrefabs.Length > 0)
         {
             //pre-spawn all enemies
             for (int i = 0; i < enemyIndexes.Count; i++)
@@ -79,19 +79,14 @@ public class EnemySpawner : MonoBehaviour
 
         boss.gameObject.SetActive(false);
 
-        float delay = 0f;
-
         //activate all enemies based on listed spawn time
         for (int i = 0; i < enemies.Count; i++)
         {
-            if (i > 0)
-            {
-                delay = spawnTimes[i] - spawnTimes[i - 1];
+            float delay = i > 0 ? spawnTimes[i] - spawnTimes[i - 1] : spawnTimes[0];
 
-                if (delay > 0f)
-                {
-                    yield return WaitForSeconds(delay);
-                }
+            if (delay > 0f)
+            {
+                yield return WaitForSeconds(delay);
             }
 
             enemies[i].gameObject.SetActive(true);
@@ -104,7 +99,5 @@ public class EnemySpawner : MonoBehaviour
         //activate boss
         boss.gameObject.SetActive(true);
         BossSpawnAction?.Invoke();
-
-        yield break;
     }
 }
