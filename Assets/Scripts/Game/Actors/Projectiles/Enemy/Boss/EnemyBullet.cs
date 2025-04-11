@@ -55,6 +55,6 @@ public abstract class EnemyBullet : Bullet
         }
 
         base.Destroy();
-
+        EnemyBulletPool.Instance.ReturnToPool(this);
     }
 }
