@@ -98,6 +98,21 @@ MonoBehaviour:
   moveDuration: 3
   moveSpeed: 1
   normalizedDirection: {x: 0, y: -1}
+--- !u!114 &2075653712317228251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5224434185141182251}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4142ca38f5656be4c8b753ca29ac0acc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectiles:
+  - {fileID: -6013795384315009736, guid: 6655630e333d1864dbcb2ba70e049606, type: 3}
+  bulletData: {fileID: 11400000, guid: b7cc13e258fbdfa4bbdf377aa9a00e70, type: 2}
 --- !u!114 &8981939127377714795
 MonoBehaviour:
   m_ObjectHideFlags: 0
