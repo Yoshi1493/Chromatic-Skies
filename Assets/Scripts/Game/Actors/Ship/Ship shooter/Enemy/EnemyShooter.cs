@@ -9,8 +9,9 @@ public abstract class EnemyShooter<TProjectile> : Shooter<TProjectile>
     protected float screenHalfHeight;
     protected float screenHalfWidth;
 
-    [Space]
+    protected override float ShootingCooldown => 0.1f;
 
+    [Space]
     [SerializeField] protected ProjectileObject bulletData;
 
     protected override void Awake()
