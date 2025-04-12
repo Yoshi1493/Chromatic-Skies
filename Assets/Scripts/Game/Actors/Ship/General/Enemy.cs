@@ -34,6 +34,16 @@ public class Enemy : Ship
     protected override IEnumerator Die()
     {
         yield return base.Die();
+
+        if (currentHealth <= 0)
+        {
+            var collectible = CollectibleObjectPool.Instance.Get((int)CollectibleType.Score);
+
+            collectible.transform.position = transform.position;
+            collectible.gameObject.SetActive(true);
+            collectible.enabled = true;
+        }
+
         Destroy(gameObject);
     }
 }
