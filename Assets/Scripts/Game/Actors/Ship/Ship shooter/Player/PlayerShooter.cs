@@ -63,23 +63,11 @@ public class PlayerShooter : Shooter<PlayerBullet>
 
     protected override void OnLoseLife()
     {
-        DestroyAllProjectiles();
         enabled = false;
     }
 
     void OnRespawn()
     {
         enabled = true;
-    }
-
-    void DestroyAllProjectiles()
-    {
-        foreach (var bullet in PlayerBulletPool.Instance.GetAllActiveObjects())
-        {
-            Vector3 pos = bullet.transform.position;
-
-            bullet.Destroy();
-            bullet.SpawnDestructionParticles(pos);
-        }
     }
 }

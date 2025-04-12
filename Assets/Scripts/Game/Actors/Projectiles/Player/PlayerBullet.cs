@@ -8,7 +8,9 @@ public class PlayerBullet : Bullet
     protected override void Awake()
     {
         base.Awake();
+
         MoveSpeed = projectileData.Speed.Value;
+        playerShip.LoseLifeAction += OnPlayerLoseLife;
     }
 
     protected override void OnEnable()
@@ -23,6 +25,11 @@ public class PlayerBullet : Bullet
 
         CheckCollisionWith<Enemy>();
         CheckCollisionWith<Boss>();
+    }
+
+    void OnPlayerLoseLife()
+    {
+        Destroy();
     }
 
     public override void Destroy()

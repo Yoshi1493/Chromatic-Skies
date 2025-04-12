@@ -7,7 +7,6 @@ public class ProjectileObjectPool<TProjectile> : MonoBehaviour where TProjectile
     [HideInInspector] public new Transform transform;
 
     protected readonly List<(TProjectile projectile, Queue<TProjectile> queue)> objectPool = new();
-    List<TProjectile> activeObjects = new();
 
     void Awake()
     {
@@ -60,20 +59,5 @@ public class ProjectileObjectPool<TProjectile> : MonoBehaviour where TProjectile
         }
 
         objectPool.Clear();
-    }
-
-    public List<TProjectile> GetAllActiveObjects()
-    {
-        activeObjects.Clear();
-
-        foreach (Transform child in transform)
-        {
-            if (child.gameObject.activeSelf)
-            {
-                activeObjects.Add(child.GetComponent<TProjectile>());
-            }
-        }
-
-        return activeObjects;
     }
 }

@@ -5,9 +5,24 @@ public abstract class BossBullet : EnemyBullet
     protected override void Awake()
     {
         base.Awake();
+
         parentShip = FindObjectOfType<Boss>();
+        parentShip.LoseLifeAction += OnBossLoseLife;
     }
 
+    //spawn score collectible
+    void OnBossLoseLife()
+    {
+        var collectible = CollectibleObjectPool.Instance.Get((int)CollectibleType.Score);
+
+        collectible.transform.position = transform.position;
+        collectible.gameObject.SetActive(true);
+        collectible.enabled = true;
+    }
+
+    //returns to object pool queue as disabled object
+    //only called when gameobject reaches max lifetime
+    //gameobject is completely destroyed (i.e. removed from scene) upon Boss losing life
     public override void Destroy()
     {
         if (movementBehaviour != null)
