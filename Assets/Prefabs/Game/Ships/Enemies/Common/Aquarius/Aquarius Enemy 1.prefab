@@ -130,5 +130,5 @@ MonoBehaviour:
   currentSpeed: 0
   delay: 5
   duration: 3
-  moveSpeed: 4
+  moveSpeed: 3
   normalizedDirection: {x: 1, y: 1.5}
