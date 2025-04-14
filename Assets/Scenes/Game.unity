@@ -380,7 +380,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f6da3186af45e34b930ecb36c016ab2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnFile: {fileID: 4900000, guid: 13527a4f27815df4db4cda164f7fd8dc, type: 3}
+  spawnTextFile: {fileID: 4900000, guid: 13527a4f27815df4db4cda164f7fd8dc, type: 3}
   enemyPrefabs:
   - {fileID: 443384559322656082, guid: 56e94301062b2c846a866a9eafca4ea5, type: 3}
   - {fileID: 443384559322656082, guid: 096e181744d0efe4d9066671c999ba99, type: 3}
@@ -1166,7 +1166,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f6da3186af45e34b930ecb36c016ab2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnFile: {fileID: 4900000, guid: 13527a4f27815df4db4cda164f7fd8dc, type: 3}
+  spawnTextFile: {fileID: 0}
   enemyPrefabs: []
   bossPrefab: {fileID: 7755895804811722165, guid: 9a23cf4b718073c469f4fa669836a07a, type: 3}
 --- !u!1 &238148620
@@ -2077,7 +2077,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f6da3186af45e34b930ecb36c016ab2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnFile: {fileID: 4900000, guid: 13527a4f27815df4db4cda164f7fd8dc, type: 3}
+  spawnTextFile: {fileID: 0}
   enemyPrefabs: []
   bossPrefab: {fileID: 7755895804811722165, guid: fd256c5442364f84da6382825eead91d, type: 3}
 --- !u!1 &400887716
@@ -2345,7 +2345,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f6da3186af45e34b930ecb36c016ab2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnFile: {fileID: 4900000, guid: 13527a4f27815df4db4cda164f7fd8dc, type: 3}
+  spawnTextFile: {fileID: 0}
   enemyPrefabs: []
   bossPrefab: {fileID: 7755895804811722165, guid: f9a327e04b3363548aa61427eeb07012, type: 3}
 --- !u!1 &428313846
@@ -2626,7 +2626,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f6da3186af45e34b930ecb36c016ab2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnFile: {fileID: 4900000, guid: 13527a4f27815df4db4cda164f7fd8dc, type: 3}
+  spawnTextFile: {fileID: 0}
   enemyPrefabs: []
   bossPrefab: {fileID: 8970867438237885685, guid: 3859bf0d081290b469f5428fac6cdfc1, type: 3}
 --- !u!1 &501545821
@@ -3325,7 +3325,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f6da3186af45e34b930ecb36c016ab2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnFile: {fileID: 4900000, guid: 13527a4f27815df4db4cda164f7fd8dc, type: 3}
+  spawnTextFile: {fileID: 0}
   enemyPrefabs: []
   bossPrefab: {fileID: 7755895804811722165, guid: 6a2597e7e220cae4fa394773dab9ec6b, type: 3}
 --- !u!1 &582637703
@@ -3620,7 +3620,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f6da3186af45e34b930ecb36c016ab2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnFile: {fileID: 4900000, guid: 13527a4f27815df4db4cda164f7fd8dc, type: 3}
+  spawnTextFile: {fileID: 0}
   enemyPrefabs: []
   bossPrefab: {fileID: 7755895804811722165, guid: f1fbcc08789cdd84194fd55e553bf6b2, type: 3}
 --- !u!1 &663106032
@@ -4301,7 +4301,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f6da3186af45e34b930ecb36c016ab2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnFile: {fileID: 4900000, guid: 13527a4f27815df4db4cda164f7fd8dc, type: 3}
+  spawnTextFile: {fileID: 0}
   enemyPrefabs: []
   bossPrefab: {fileID: 7755895804811722165, guid: 9fc2742efc08d024ba641b107c682dc9, type: 3}
 --- !u!1 &848864869
@@ -5060,7 +5060,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f6da3186af45e34b930ecb36c016ab2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnFile: {fileID: 4900000, guid: 13527a4f27815df4db4cda164f7fd8dc, type: 3}
+  spawnTextFile: {fileID: 0}
   enemyPrefabs: []
   bossPrefab: {fileID: 7755895804811722165, guid: 586502ed9d9f6f042b7869dc1703a4f9, type: 3}
 --- !u!1 &1088806826
@@ -5585,6 +5585,7 @@ Transform:
   - {fileID: 1573817148}
   - {fileID: 1502471460}
   - {fileID: 115172395}
+  - {fileID: 1346852303}
   m_Father: {fileID: 519420032}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5799,6 +5800,63 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1279163093}
   m_CullTransparentMesh: 1
+--- !u!1 &1346852302
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1346852303}
+  - component: {fileID: 1346852304}
+  m_Layer: 10
+  m_Name: Collectible boundaries
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1346852303
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1346852302}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1258049461}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!68 &1346852304
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1346852302}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: -10, y: 5.625}
+  - {x: 10, y: 5.625}
+  - {x: 10, y: -5.625}
+  - {x: -10, y: -5.625}
+  - {x: -10, y: 5.625}
+  m_AdjacentStartPoint: {x: 0, y: 0}
+  m_AdjacentEndPoint: {x: 0, y: 0}
+  m_UseAdjacentStartPoint: 0
+  m_UseAdjacentEndPoint: 0
 --- !u!1 &1360023346
 GameObject:
   m_ObjectHideFlags: 0
@@ -5843,7 +5901,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f6da3186af45e34b930ecb36c016ab2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnFile: {fileID: 4900000, guid: 13527a4f27815df4db4cda164f7fd8dc, type: 3}
+  spawnTextFile: {fileID: 0}
   enemyPrefabs: []
   bossPrefab: {fileID: 7755895804811722165, guid: 0ee5fe128f94e7f49be1785ebc88b6ce, type: 3}
 --- !u!1001 &1451902396
@@ -8120,7 +8178,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f6da3186af45e34b930ecb36c016ab2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnFile: {fileID: 4900000, guid: 13527a4f27815df4db4cda164f7fd8dc, type: 3}
+  spawnTextFile: {fileID: 0}
   enemyPrefabs: []
   bossPrefab: {fileID: 7755895804811722165, guid: c358821051e9d954d93c21cc5d7ddbba, type: 3}
 --- !u!1 &1897497764
@@ -8167,7 +8225,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f6da3186af45e34b930ecb36c016ab2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnFile: {fileID: 4900000, guid: 13527a4f27815df4db4cda164f7fd8dc, type: 3}
+  spawnTextFile: {fileID: 0}
   enemyPrefabs: []
   bossPrefab: {fileID: 7755895804811722165, guid: b15e8fd8b3e6ebc43841eb5ef4d7990d, type: 3}
 --- !u!1001 &1922420792
