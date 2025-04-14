@@ -27,8 +27,10 @@ public abstract class EnemyShooter<TProjectile> : Shooter<TProjectile>
         screenHalfWidth = screenHalfHeight * mainCam.aspect;
     }
 
-    void OnEnable()
+    protected override void OnEnable()
     {
+        base.OnEnable();
+
         if (shootCoroutine != null)
         {
             StopCoroutine(shootCoroutine);

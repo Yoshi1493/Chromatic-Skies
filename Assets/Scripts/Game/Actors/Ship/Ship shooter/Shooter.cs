@@ -19,10 +19,13 @@ public abstract class Shooter<TProjectile> : MonoBehaviour
         parentShip = GetComponentInParent<Ship>();
     }
 
+    protected virtual void OnEnable()
+    { 
+        ProjectileObjectPool<TProjectile>.Instance.UpdatePoolableObjects(projectiles);
+    }
+
     protected virtual void Start()
     {
-        ProjectileObjectPool<TProjectile>.Instance.UpdatePoolableObjects(projectiles);
-
         parentShip.LoseLifeAction += OnLoseLife;
         parentShip.DeathAction += OnDie;
     }
