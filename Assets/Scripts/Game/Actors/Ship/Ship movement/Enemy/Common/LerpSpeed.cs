@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class LerpSpeed : EnemyMovement
+public class LerpSpeed : CommonEnemyMovement
 {
     [SerializeField] float startSpeed;
     [SerializeField] float endSpeed;

@@ -65,7 +65,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2407710777176494618, guid: 0ea569baafb91b94cbd6c069f48a94da, type: 3}
       propertyPath: m_Name
-      value: Aquarius Enemy 2
+      value: Aquarius Enemy 1
       objectReference: {fileID: 0}
     - target: {fileID: 8056434987258519651, guid: 0ea569baafb91b94cbd6c069f48a94da, type: 3}
       propertyPath: shipData
@@ -90,10 +90,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e4d799031c2b2c4aa6e2fbd658bbe44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shipData: {fileID: 11400000, guid: 7bcf69fa22762864490663a808ff79db, type: 2}
   parentShip: {fileID: 0}
   moveDirection: {x: 0, y: 0, z: 0}
   currentSpeed: 0
   delay: 1
-  moveDuration: 2.5
+  duration: 0
   endPosition: {x: 4, y: -2}
+--- !u!114 &-9041166745443610317
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5224434185141182251}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6893e1b07c46750478f4e4cde8469380, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parentShip: {fileID: 0}
+  moveDirection: {x: 0, y: 0, z: 0}
+  currentSpeed: 0
+  delay: 0
+  duration: 0
+  endSpeed: 0

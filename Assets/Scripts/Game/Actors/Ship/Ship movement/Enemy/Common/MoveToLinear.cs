@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class MoveToLinear : EnemyMovement
+public class MoveToLinear : CommonEnemyMovement
 {
     [SerializeField] Vector2 endPosition;
 

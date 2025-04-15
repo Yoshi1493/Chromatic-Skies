@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class MoveRelativeLinear : EnemyMovement
+public class MoveRelativeLinear : CommonEnemyMovement
 {
     [SerializeField] float moveSpeed;
     [SerializeField] Vector2 normalizedDirection;

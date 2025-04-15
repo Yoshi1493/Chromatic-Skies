@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class TranslateAround : EnemyMovement
+public class TranslateAround : CommonEnemyMovement
 {
     [SerializeField] float rotationAmount;
     [SerializeField] Vector2 rotationPoint;

@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public abstract class EnemyMovement : ShipMovement<Enemy>
+public abstract class CommonEnemyMovement : ShipMovement<Enemy>
 {
     [SerializeField] protected float delay;
     [SerializeField] protected float duration;

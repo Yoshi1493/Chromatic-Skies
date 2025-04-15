@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class MoveRelative : EnemyMovement
+public class MoveRelative : CommonEnemyMovement
 {
     [SerializeField] float moveDuration;
     [SerializeField] float moveSpeed;
