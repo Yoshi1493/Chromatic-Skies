@@ -11,13 +11,13 @@ public static class ShipMovementHelper
     public static readonly Vector3 bossSpawnPosition = new(0f, 2.5f, 0f);
     public static readonly Vector3 playerSpawnPosition = new(0f, -2f, 0f);
 
-    public static IEnumerator LerpSpeed<TShip>(this ShipMovement<TShip> ship, float endSpeed, float duration, float delay = 0f)
+    public static IEnumerator LerpSpeed<TShip>(this ShipMovement<TShip> ship, float startSpeed, float endSpeed, float duration, float delay = 0f)
         where TShip : Ship
     {
         if (duration <= 0f) yield break;
         if (delay > 0) yield return WaitForSeconds(delay);
 
-        float startSpeed = ship.currentSpeed;
+        ship.currentSpeed = startSpeed;
 
         float currentTime = 0f;
         while (currentTime < duration)
