@@ -65,7 +65,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2407710777176494618, guid: 0ea569baafb91b94cbd6c069f48a94da, type: 3}
       propertyPath: m_Name
-      value: Aquarius Enemy 1
+      value: Aquarius Enemy 0
       objectReference: {fileID: 0}
     - target: {fileID: 8056434987258519651, guid: 0ea569baafb91b94cbd6c069f48a94da, type: 3}
       propertyPath: shipData
@@ -94,9 +94,8 @@ MonoBehaviour:
   moveDirection: {x: 0, y: 0, z: 0}
   currentSpeed: 0
   delay: 0
-  duration: 0
-  moveDuration: 3
-  moveSpeed: 1
+  duration: 3
+  moveSpeed: 1.5
   normalizedDirection: {x: 0, y: -1}
 --- !u!114 &2075653712317228251
 MonoBehaviour:
