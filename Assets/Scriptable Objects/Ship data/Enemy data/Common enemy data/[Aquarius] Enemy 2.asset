@@ -19,7 +19,7 @@ MonoBehaviour:
     m_Bits: 0
   ShipName: {fileID: 0}
   MaxLives:
-    useConstant: 0
+    useConstant: 1
     ConstantValue: 1
     Variable: {fileID: 0}
   MaxHealth:
@@ -36,9 +36,9 @@ MonoBehaviour:
     Variable: {fileID: 0}
   MovementSpeed:
     useConstant: 1
-    ConstantValue: 0
+    ConstantValue: 2
     Variable: {fileID: 0}
   ShootingSpeed:
     useConstant: 1
-    ConstantValue: 0
+    ConstantValue: 10
     Variable: {fileID: 0}
