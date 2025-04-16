@@ -8,7 +8,7 @@ public class VirgoMovementSystem4 : BossMovement
         for (int i = 0; i < 5; i++)
         {
             yield return WaitForSeconds(2f);
-            yield return this.MoveToRandomPosition(2f);
+            yield return parentShip.MoveToRandomPosition(2f);
         }
     }
 }

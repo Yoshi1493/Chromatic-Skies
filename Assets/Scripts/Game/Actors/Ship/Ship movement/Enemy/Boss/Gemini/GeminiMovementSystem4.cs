@@ -8,7 +8,7 @@ public class GeminiMovementSystem4 : BossMovement
         while (enabled)
         {
             yield return WaitForSeconds(2f);
-            yield return this.MoveToRandomPosition(2f);
+            yield return parentShip.MoveToRandomPosition(2f);
         }
     }
 }

@@ -10,7 +10,7 @@ public class TaurusMovementSystem4 : BossMovement
         while (enabled)
         {
             yield return WaitForSeconds(2f);
-            yield return this.MoveToRandomPosition(1f, 1f, 4f);
+            yield return parentShip.MoveToRandomPosition(1f, 1f, 4f);
         }
     }
 }

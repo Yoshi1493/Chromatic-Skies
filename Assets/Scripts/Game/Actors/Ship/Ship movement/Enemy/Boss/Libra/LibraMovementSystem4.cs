@@ -20,11 +20,11 @@ public class LibraMovementSystem4 : BossMovement
 
         float s2 = (p0 - p2).magnitude / shipData.MovementSpeed.Value;
 
-        yield return this.MoveTo(p1, s1);
-        yield return this.MoveFromTo(p2, p0, s2);
+        yield return parentShip.MoveTo(p1, s1);
+        yield return parentShip.MoveFromTo(p2, p0, s2);
 
         yield return WaitForSeconds(3f);
 
-        yield return this.MoveToRandomPosition(2f, 2f, 5f);
+        yield return parentShip.MoveToRandomPosition(2f, 2f, 5f);
     }
 }

@@ -8,7 +8,7 @@ public class ScorpioMovementSystem3 : BossMovement
         while (enabled)
         {
             yield return WaitForSeconds(2.5f);
-            yield return this.MoveToRandomPosition(1.5f);
+            yield return parentShip.MoveToRandomPosition(1.5f);
         }
     }
 }

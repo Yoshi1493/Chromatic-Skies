@@ -19,7 +19,7 @@ public class LeoMovementSystem4 : BossMovement
         yield return WaitForSeconds(0.5f);
 
         Vector3 p1 = 1.2f * new Vector3(-screenHalfWidth, screenHalfHeight);
-        yield return this.MoveTo(p1, 1f);
+        yield return parentShip.MoveTo(p1, 1f);
         parentShip.Invincible = true;
 
         yield return WaitForSeconds(1f);
@@ -32,16 +32,16 @@ public class LeoMovementSystem4 : BossMovement
 
         for (int i = 0; i < clonePositions.Count; i++)
         {
-            yield return this.MoveTo(clonePositions[i], 1f);
+            yield return parentShip.MoveTo(clonePositions[i], 1f);
         }
 
         Vector3 p3 = new(1.1f * screenHalfWidth, clonePositions[^1].y + Random.Range(-0.5f, 0.5f));
 
-        yield return this.MoveTo(p3, 0.5f);
+        yield return parentShip.MoveTo(p3, 0.5f);
 
         Vector3 p5 = clonePositions[Random.Range(0, clonePositions.Count)];
         Vector3 p4 = new(p5.x, 1.1f * screenHalfHeight);
 
-        yield return this.MoveFromTo(p4, p5, 1f);
+        yield return parentShip.MoveFromTo(p4, p5, 1f);
     }
 }

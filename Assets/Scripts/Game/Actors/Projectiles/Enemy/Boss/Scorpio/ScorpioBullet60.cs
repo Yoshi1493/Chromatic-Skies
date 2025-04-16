@@ -12,7 +12,7 @@ public class ScorpioBullet60 : BossBullet
     protected override IEnumerator Move()
     {
         Vector3 v = transform.position - (3f * transform.up.RotateVectorBy(PositiveOrNegativeOne * Random.Range(60f, 80f)));
-        yield return this.MoveTo(v, 1f);
+        yield return parentShip.MoveTo(v, 1f);
     }
 
     protected override void Update()

@@ -8,7 +8,7 @@ public class SagittariusMovementSystem2 : BossMovement
         while (enabled)
         {
             yield return WaitForSeconds(3f);
-            yield return this.MoveToRandomPosition(2f, 3f, 4f);
+            yield return parentShip.MoveToRandomPosition(2f, 3f, 4f);
         }
     }
 }

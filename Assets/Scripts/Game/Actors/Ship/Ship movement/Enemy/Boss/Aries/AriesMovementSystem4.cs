@@ -8,7 +8,7 @@ public class AriesMovementSystem4 : BossMovement
         while (enabled)
         {
             yield return WaitForSeconds(3f);
-            yield return this.MoveToRandomPosition(1f, 2f, 2f);
+            yield return parentShip.MoveToRandomPosition(1f, 2f, 2f);
         }
     }
 }

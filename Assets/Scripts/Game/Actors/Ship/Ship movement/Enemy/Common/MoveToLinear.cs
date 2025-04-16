@@ -7,6 +7,6 @@ public class MoveToLinear : CommonEnemyMovement
 
     protected override IEnumerator Move()
     {
-        yield return this.MoveToLinear(endPosition, duration, delay);
+        yield return parentShip.MoveToLinear(endPosition, duration, delay);
     }
 }

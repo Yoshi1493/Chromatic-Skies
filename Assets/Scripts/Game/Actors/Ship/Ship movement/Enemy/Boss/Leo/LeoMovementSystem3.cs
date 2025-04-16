@@ -10,7 +10,7 @@ public class LeoMovementSystem3 : BossMovement
         while (enabled)
         {
             yield return WaitForSeconds(5f);
-            yield return this.MoveToRandomPosition(1f, 2f, 3f);
+            yield return parentShip.MoveToRandomPosition(1f, 2f, 3f);
         }
     }
 }

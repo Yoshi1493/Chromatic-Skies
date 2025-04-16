@@ -62,7 +62,7 @@ public class TaurusBulletSystem5 : BossShooter<BossBullet>
                 {
                     int b = (i * BranchCount * BulletCount) + (ii * BulletCount) + iii;                 
 
-                    bullets[b].StartCoroutine(bullets[b].TransformRotateAround(ShipMovementHelper.bossSpawnPosition, Mathf.Infinity, r * BulletRotationSpeed));
+                    bullets[b].StartCoroutine(bullets[b].TransformRotateAround(ActorMovementHelper.bossSpawnPosition, Mathf.Infinity, r * BulletRotationSpeed));
                 }
             }
         }

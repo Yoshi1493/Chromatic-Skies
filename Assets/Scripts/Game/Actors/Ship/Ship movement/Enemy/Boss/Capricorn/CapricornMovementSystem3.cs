@@ -11,7 +11,7 @@ public class CapricornMovementSystem3 : BossMovement
     {
         for (int i = 0; i < 3; i++)
         {
-            yield return this.MoveToRandomPosition(1f, 1.5f, 3f);
+            yield return parentShip.MoveToRandomPosition(1f, 1.5f, 3f);
         }
 
         yield return WaitForSeconds(1f);

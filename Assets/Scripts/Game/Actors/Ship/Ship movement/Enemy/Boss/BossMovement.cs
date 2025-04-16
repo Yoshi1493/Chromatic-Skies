@@ -39,7 +39,7 @@ public abstract class BossMovement : ShipMovement<Boss>
 
     protected virtual void OnEnable()
     {
-        StartCoroutine(this.ReturnToOriginalPosition());
+        StartCoroutine(parentShip.ReturnToOriginalPosition());
     }
 
     protected override void OnLoseLife()
@@ -50,7 +50,7 @@ public abstract class BossMovement : ShipMovement<Boss>
     void OnPlayerDie()
     {
         StopAllCoroutines();
-        currentSpeed = 0f;
+        parentShip.MoveSpeed = 0f;
         enabled = false;
     }
 

@@ -9,7 +9,7 @@ public class VirgoMovementSystem3 : BossMovement
 
         for (int i = 0; i < 2; i++)
         {
-            yield return this.MoveToRandomPosition(1.5f, 1.5f, 3f);
+            yield return parentShip.MoveToRandomPosition(1.5f, 1.5f, 3f);
         }
     }
 }

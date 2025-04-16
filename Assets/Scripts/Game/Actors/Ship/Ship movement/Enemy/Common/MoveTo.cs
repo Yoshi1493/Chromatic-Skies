@@ -7,6 +7,6 @@ public class MoveTo : CommonEnemyMovement
 
     protected override IEnumerator Move()
     {
-        yield return this.MoveTo(endPosition, duration, delay);
+        yield return parentShip.MoveTo(endPosition, duration, delay);
     }
 }

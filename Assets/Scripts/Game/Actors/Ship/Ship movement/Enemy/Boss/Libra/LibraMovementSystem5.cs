@@ -6,7 +6,7 @@ public class LibraMovementSystem5 : BossMovement
     {
         for (int i = 0; i < 5; i++)
         {
-            yield return this.MoveToRandomPosition(1f);
+            yield return parentShip.MoveToRandomPosition(1f);
         }
     }
 }

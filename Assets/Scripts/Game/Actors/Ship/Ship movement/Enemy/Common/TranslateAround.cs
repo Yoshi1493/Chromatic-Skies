@@ -8,6 +8,6 @@ public class TranslateAround : CommonEnemyMovement
 
     protected override IEnumerator Move()
     {
-        yield return this.TranslateAround(rotationPoint, rotationAmount, duration, delay);
+        yield return parentShip.TranslateAround(rotationPoint, rotationAmount, duration, delay);
     }
 }

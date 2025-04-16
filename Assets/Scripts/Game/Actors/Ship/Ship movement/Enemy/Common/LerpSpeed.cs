@@ -8,6 +8,6 @@ public class LerpSpeed : CommonEnemyMovement
 
     protected override IEnumerator Move()
     {
-        yield return this.LerpSpeed(startSpeed, endSpeed, duration, delay);
+        yield return parentShip.LerpSpeed(startSpeed, endSpeed, duration, delay);
     }
 }

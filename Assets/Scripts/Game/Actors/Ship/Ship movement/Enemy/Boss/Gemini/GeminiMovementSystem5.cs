@@ -21,14 +21,14 @@ public class GeminiMovementSystem5 : BossMovement
     {
         twin = FindObjectOfType<GeminiBullet50>();
 
-        yield return this.MoveToRandomPosition(2f, 3f, 4f);
+        yield return parentShip.MoveToRandomPosition(2f, 3f, 4f);
         yield return WaitForSeconds(2f);
 
         while (enabled)
         {
             yield return WaitForSeconds(1f);
 
-            yield return this.MoveToRandomPosition(1f, 1f, 2f);
+            yield return parentShip.MoveToRandomPosition(1f, 1f, 2f);
             movesBeforeTeleport--;
 
             yield return WaitForSeconds(1f);

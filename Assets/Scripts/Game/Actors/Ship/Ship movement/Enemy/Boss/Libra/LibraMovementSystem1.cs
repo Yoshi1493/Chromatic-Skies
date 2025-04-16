@@ -8,7 +8,7 @@ public class LibraMovementSystem1 : BossMovement
         while (enabled)
         {
             yield return WaitForSeconds(5f);
-            yield return this.MoveToRandomPosition(2f);
+            yield return parentShip.MoveToRandomPosition(2f);
         }
     }
 }

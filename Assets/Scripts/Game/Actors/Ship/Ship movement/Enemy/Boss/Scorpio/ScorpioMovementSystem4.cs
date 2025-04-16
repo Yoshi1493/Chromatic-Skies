@@ -7,7 +7,7 @@ public class ScorpioMovementSystem4 : BossMovement
         for (int i = 0; i < 4; i++)
         {
             float d = i + 1;
-            yield return this.MoveToRandomPosition(0.8f, d, d);
+            yield return parentShip.MoveToRandomPosition(0.8f, d, d);
         }
     }
 }

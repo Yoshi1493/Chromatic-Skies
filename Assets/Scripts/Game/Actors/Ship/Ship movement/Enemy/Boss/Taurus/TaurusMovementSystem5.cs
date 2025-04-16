@@ -14,7 +14,7 @@ public class TaurusMovementSystem5 : BossMovement
 
             for (int i = 0; i < r; i++)
             {
-                yield return this.MoveToRandomPosition(1f, 0.5f, 1f);
+                yield return parentShip.MoveToRandomPosition(1f, 0.5f, 1f);
             }
 
             yield return WaitForSeconds(1f);

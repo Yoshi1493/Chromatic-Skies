@@ -10,7 +10,7 @@ public class VirgoMovementSystem1 : BossMovement
         while (enabled)
         {
             yield return WaitForSeconds(2f);
-            yield return this.MoveToRandomPosition(1f, 1f, 2f);
+            yield return parentShip.MoveToRandomPosition(1f, 1f, 2f);
         }
     }
 }

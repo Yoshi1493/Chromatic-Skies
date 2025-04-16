@@ -8,7 +8,7 @@ public class AquariusMovementSystem4 : BossMovement
         while (enabled)
         {
             yield return WaitForSeconds(4f);
-            yield return this.MoveToRandomPosition(1f);
+            yield return parentShip.MoveToRandomPosition(1f);
         }
     }
 }

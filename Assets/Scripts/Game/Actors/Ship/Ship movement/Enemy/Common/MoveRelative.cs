@@ -8,6 +8,6 @@ public class MoveRelative : CommonEnemyMovement
 
     protected override IEnumerator Move()
     {
-        yield return this.MoveRelative(normalizedDirection, moveSpeed, duration, delay);
+        yield return parentShip.MoveRelative(normalizedDirection, moveSpeed, duration, delay);
     }
 }
