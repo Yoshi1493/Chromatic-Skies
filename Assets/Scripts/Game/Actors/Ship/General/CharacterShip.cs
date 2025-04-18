@@ -7,12 +7,12 @@ public class CharacterShip : Ship
 {
     [SerializeField] protected IntObject currentLives;
     [SerializeField] protected IntObject currentHealth;
-    public virtual float RespawnTime => 2f;
 
     protected virtual float OriginalColliderRadius => 0.5f;
     protected virtual float InvincibleColliderRadius => 1.5f;
 
     public event Action RespawnAction;
+    public virtual float RespawnTime => 2f;
 
     IEnumerator healthRefillCoroutine;
     [SerializeField] AnimationCurve healthRefillInterpolation;
