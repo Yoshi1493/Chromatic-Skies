@@ -75,7 +75,7 @@ public class Boss : CharacterShip
     //disable current systems, and enable next systems upon losing life
     protected override IEnumerator LoseLife()
     {
-        StartCoroutine(base.LoseLife());
+        yield return base.LoseLife();
 
         BossBulletPool.Instance.DrainPool();
         BossLaserPool.Instance.DrainPool();
@@ -149,6 +149,8 @@ public class Boss : CharacterShip
         yield return WaitForSeconds(refreshTime);
 
         nextBulletSystem.SetEnabled(true);
+
+        systemResetCoroutine = null;
     }
 
     public List<IBossAttack> GetCurrentBulletSystem()

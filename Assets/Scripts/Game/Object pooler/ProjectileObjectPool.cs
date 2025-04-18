@@ -7,6 +7,7 @@ public class ProjectileObjectPool<TProjectile> : MonoBehaviour where TProjectile
     [HideInInspector] public new Transform transform;
 
     protected readonly List<(TProjectile projectile, Queue<TProjectile> queue)> objectPool = new();
+    public void DrainPool() => objectPool.Clear();
 
     void Awake()
     {
@@ -49,15 +50,5 @@ public class ProjectileObjectPool<TProjectile> : MonoBehaviour where TProjectile
         returningObject.enabled = false;
 
         objectPool[returningObject.ProjectileID].queue.Enqueue(returningObject);
-    }
-
-    public void DrainPool()
-    {
-        foreach (Transform child in transform)
-        {
-            Destroy(child.gameObject);
-        }
-
-        objectPool.Clear();
     }
 }

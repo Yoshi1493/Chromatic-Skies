@@ -18,6 +18,8 @@ public abstract class BossBullet : EnemyBullet
         collectible.transform.position = transform.position;
         collectible.gameObject.SetActive(true);
         collectible.enabled = true;
+
+        Destroy(gameObject);
     }
 
     //returns to object pool queue as disabled object
@@ -32,5 +34,10 @@ public abstract class BossBullet : EnemyBullet
 
         MoveSpeed = 0f;
         BossBulletPool.Instance.ReturnToPool(this);
+    }
+
+    void OnDestroy()
+    {
+        parentShip.LoseLifeAction -= OnBossLoseLife;
     }
 }
