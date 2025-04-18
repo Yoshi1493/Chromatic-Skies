@@ -5,6 +5,7 @@ using static CoroutineHelper;
 
 public interface IBossAttack
 {
+    string Name { get; }
     bool Enabled { get; }
     void SetEnabled(bool state);
 
@@ -17,6 +18,7 @@ public abstract class BossShooter<TProjectile> : EnemyShooter<TProjectile>, IBos
 {
     #region Interface impl.
 
+    string IBossAttack.Name => name;
     bool IBossAttack.Enabled => enabled;
     void IBossAttack.SetEnabled(bool state) { enabled = state; }
 
