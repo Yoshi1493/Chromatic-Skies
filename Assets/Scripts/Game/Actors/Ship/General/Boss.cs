@@ -112,7 +112,6 @@ public class Boss : CharacterShip
     IEnumerator _RefreshBossSystems(float refreshTime)
     {
         int currentSystemIndex = shipData.MaxLives.Value - currentLives.value;
-        print(Time.timeSinceLevelLoad);
         List<IBossAttack> currentBulletSystems = GetCurrentBulletSystem();
         BossMovement currentMovementSystem = GetCurrentMovementSystem();
 
@@ -144,11 +143,9 @@ public class Boss : CharacterShip
 
         //enable next attack+movement systems
         nextMovementSystem.enabled = true;
-        print(Time.timeSinceLevelLoad);
 
         StartAttackAction?.Invoke(currentSystemIndex);
         yield return WaitForSeconds(refreshTime);
-        print(Time.timeSinceLevelLoad);
 
         nextBulletSystem.SetEnabled(true);
 
