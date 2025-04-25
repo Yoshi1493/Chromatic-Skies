@@ -18,6 +18,7 @@ public abstract class BossBullet : EnemyBullet
         collectible.transform.position = transform.position;
         collectible.gameObject.SetActive(true);
         collectible.enabled = true;
+        collectible.foundPlayer = true;
 
         Destroy(gameObject);
     }

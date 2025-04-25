@@ -9,7 +9,8 @@ public abstract class Collectible : Actor
     Player player;
     const float PlayerDetectionSqRadius = 1f;
     const float PlayerCollisionSqRadius = 0.1f;
-    bool foundPlayer;
+
+    [HideInInspector] public bool foundPlayer;
 
     protected override void Awake()
     {
@@ -46,9 +47,17 @@ public abstract class Collectible : Actor
 
     void Move()
     {
-        if (currentLifetime < BounceDuration && !foundPlayer)
+        if (!foundPlayer)
         {
-            moveDirection = Vector3.Lerp(Vector3.up, Vector3.down, currentLifetime / BounceDuration);
+            if (currentLifetime < BounceDuration)
+            {
+                moveDirection = Vector3.Lerp(Vector3.up, Vector3.down, currentLifetime / BounceDuration);
+            }
+        }
+        else
+        {
+            moveDirection = (player.transform.position - transform.position).normalized;
+            MoveSpeed = 12f;
         }
 
         transform.Translate(Time.deltaTime * MoveSpeed * moveDirection, Space.World);
@@ -60,10 +69,7 @@ public abstract class Collectible : Actor
         
         if (Vector3.SqrMagnitude(diff) <= PlayerDetectionSqRadius)
         {
-            foundPlayer = true;
-
-            moveDirection = diff;
-            MoveSpeed = 15f;
+            foundPlayer = true;            
 
             if (Vector3.SqrMagnitude(diff) <= PlayerCollisionSqRadius)
             {
