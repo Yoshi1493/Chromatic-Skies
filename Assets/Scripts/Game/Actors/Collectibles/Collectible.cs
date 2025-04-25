@@ -32,7 +32,7 @@ public abstract class Collectible : Actor
     {
         IncrementLifetime();
         Move();
-        CheckCollisionWithPlayer();
+        CheckPlayerPosition();
     }
 
     void IncrementLifetime()
@@ -57,24 +57,34 @@ public abstract class Collectible : Actor
         else
         {
             moveDirection = (player.transform.position - transform.position).normalized;
-            MoveSpeed = 12f;
+            MoveSpeed = 15f;
         }
 
         transform.Translate(Time.deltaTime * MoveSpeed * moveDirection, Space.World);
     }
 
-    void CheckCollisionWithPlayer()
+    void CheckPlayerPosition()
     {
         Vector3 diff = player.transform.position - transform.position;
-        
-        if (Vector3.SqrMagnitude(diff) <= PlayerDetectionSqRadius)
-        {
-            foundPlayer = true;            
 
-            if (Vector3.SqrMagnitude(diff) <= PlayerCollisionSqRadius)
+        if (!foundPlayer)
+        {
+            if (player.transform.position.y >= 2.5f)
             {
-                Destroy();
+                foundPlayer = true;
             }
+            else
+            {
+                if (Vector3.SqrMagnitude(diff) <= PlayerDetectionSqRadius)
+                {
+                    foundPlayer = true;
+                }
+            }
+        }
+
+        if (Vector3.SqrMagnitude(diff) <= PlayerCollisionSqRadius)
+        {
+            Destroy();
         }
     }
 
