@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using static CoroutineHelper;
+using static CameraBoundaries;
 
 public class AriesBulletSystem32 : BossShooter<Laser>
 {
@@ -12,7 +13,7 @@ public class AriesBulletSystem32 : BossShooter<Laser>
 
     protected override IEnumerator Shoot()
     {
-        Vector3 pos = screenHalfHeight * 1.2f * Vector3.up;
+        Vector3 pos = ScreenHalfHeight * 1.2f * Vector3.up;
 
         for (int i = 0; i < WaveCount; i++)
         {

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using static CoroutineHelper;
 using static MathHelper;
+using static CameraBoundaries;
 
 public class ScorpioBulletSystem2 : BossShooter<BossBullet>
 {
@@ -63,7 +64,7 @@ public class ScorpioBulletSystem2 : BossShooter<BossBullet>
             {
                 if (bullets[i].isActiveAndEnabled)
                 {
-                    if (bullets[i].transform.position.y > -screenHalfHeight)
+                    if (bullets[i].transform.position.y > -ScreenHalfHeight)
                     {
                         bullets[i].GetComponent<ITimestoppable>().Resume();
                     }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using static CoroutineHelper;
 using static MathHelper;
+using static CameraBoundaries;
 
 public class TaurusBulletSystem21 : BossShooter<Laser>
 {
@@ -17,8 +18,8 @@ public class TaurusBulletSystem21 : BossShooter<Laser>
             laserSpawnPositions.Clear();
             yield return WaitForSeconds(2f);
 
-            laserSpawnPositions.AddRange(GetRandomPointsAlongBounds(new(-screenHalfWidth, screenHalfHeight), new(screenHalfWidth, screenHalfHeight), 2f, 3f));
-            laserSpawnPositions.AddRange(GetRandomPointsAlongBounds(new(screenHalfWidth, -screenHalfHeight), new(screenHalfWidth, screenHalfHeight), 1f, 2f));
+            laserSpawnPositions.AddRange(GetRandomPointsAlongBounds(new(-ScreenHalfWidth, ScreenHalfHeight), new(ScreenHalfWidth, ScreenHalfHeight), 2f, 3f));
+            laserSpawnPositions.AddRange(GetRandomPointsAlongBounds(new(ScreenHalfWidth, -ScreenHalfHeight), new(ScreenHalfWidth, ScreenHalfHeight), 1f, 2f));
             laserSpawnPositions.Randomize();
 
             float r = Random.Range(-45f, 45f);
@@ -29,11 +30,11 @@ public class TaurusBulletSystem21 : BossShooter<Laser>
 
                 float z = r;
 
-                if (Mathf.Abs(pos.x) == screenHalfWidth)
+                if (Mathf.Abs(pos.x) == ScreenHalfWidth)
                 {
                     z += 90f * Mathf.Sign(pos.x);
                 }
-                else if (pos.y == screenHalfHeight)
+                else if (pos.y == ScreenHalfHeight)
                 {
                     z += 180f;
                 }

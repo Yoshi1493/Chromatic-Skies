@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using static CoroutineHelper;
+using static CameraBoundaries;
 
 public class TaurusBulletSystem31 : BossShooter<BossBullet>
 {
@@ -27,7 +28,7 @@ public class TaurusBulletSystem31 : BossShooter<BossBullet>
             int gridLength = Random.Range(MinGridLength, MaxGridLength);
 
             float z = Vector3.zero.GetRotationDifference(bulletSpawnDirections[i]);
-            Vector3 v1 = new(bulletSpawnDirections[i].x * (screenHalfWidth + (gridLength / 2f)), bulletSpawnDirections[i].y * (screenHalfHeight + (gridLength / 2f)));
+            Vector3 v1 = new(bulletSpawnDirections[i].x * (ScreenHalfWidth + (gridLength / 2f)), bulletSpawnDirections[i].y * (ScreenHalfHeight + (gridLength / 2f)));
             Vector3 v2 = Random.Range(-MaxRandomSpawnOffset, MaxRandomSpawnOffset + 1) * new Vector3(bulletSpawnDirections[i].y, bulletSpawnDirections[i].x);
 
             for (int ii = 0; ii < gridLength; ii++)

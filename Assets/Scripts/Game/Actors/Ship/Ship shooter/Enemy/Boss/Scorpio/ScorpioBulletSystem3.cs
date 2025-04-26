@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using static CoroutineHelper;
+using static CameraBoundaries;
 
 public class ScorpioBulletSystem3 : BossShooter<BossBullet>
 {
@@ -24,8 +25,8 @@ public class ScorpioBulletSystem3 : BossShooter<BossBullet>
             {
                 for (int ii = 0; ii < BranchCount; ii++)
                 {
-                    float x = (ii % 2 * 2 - 1) * (1.1f * screenHalfWidth);
-                    float y = (0.9f * screenHalfHeight) - ((i + (ii * 0.5f)) * WaveSpacing);
+                    float x = (ii % 2 * 2 - 1) * (1.1f * ScreenHalfWidth);
+                    float y = (0.9f * ScreenHalfHeight) - ((i + (ii * 0.5f)) * WaveSpacing);
                     Vector3 pos = new(x, y);
 
                     float z = -90f * Mathf.Sign(pos.x);

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using static CoroutineHelper;
+using static CameraBoundaries;
 
 public class ScorpioBulletSystem6 : BossShooter<BossBullet>
 {
@@ -84,8 +85,8 @@ public class ScorpioBulletSystem6 : BossShooter<BossBullet>
 
         do
         {
-            x = 0.6f * Random.Range(-screenHalfWidth, screenHalfWidth);
-            y = 0.6f * Random.Range(0f, screenHalfHeight);
+            x = 0.6f * Random.Range(-ScreenHalfWidth, ScreenHalfWidth);
+            y = 0.6f * Random.Range(0f, ScreenHalfHeight);
         }
         while (Mathf.Abs(specialBullet.transform.position.x - x) > 1f && Mathf.Abs(specialBullet.transform.position.y - y) > 1);
 

@@ -4,6 +4,7 @@ using System.Linq;
 using UnityEngine;
 using static CoroutineHelper;
 using static MathHelper;
+using static CameraBoundaries;
 
 public class TaurusBulletSystem11 : BossShooter<BossBullet>
 {
@@ -19,7 +20,7 @@ public class TaurusBulletSystem11 : BossShooter<BossBullet>
     {
         while (enabled)
         {
-            bulletSpawnPositions = GetRandomPointsWithinBounds(new(-screenHalfWidth, -screenHalfHeight), new(screenHalfWidth, screenHalfHeight), BulletCount);
+            bulletSpawnPositions = GetRandomPointsWithinBounds(new(-ScreenHalfWidth, -ScreenHalfHeight), new(ScreenHalfWidth, ScreenHalfHeight), BulletCount);
 
             for (int i = 0; i < bulletSpawnPositions.Count; i++)
             {

@@ -8,9 +8,6 @@ public abstract class BossMovement : ShipMovement<Boss>
     protected IEnumerator moveCoroutine;
     protected abstract IEnumerator Move();
 
-    protected float screenHalfHeight;
-    protected float screenHalfWidth;
-
     protected Player playerShip;
     protected Vector3 PlayerPosition => playerShip.transform.position;
 
@@ -24,11 +21,6 @@ public abstract class BossMovement : ShipMovement<Boss>
 
         //find player
         playerShip = FindObjectOfType<Player>();
-
-        //set screen dimensions
-        Camera mainCam = Camera.main;
-        screenHalfHeight = mainCam.orthographicSize;
-        screenHalfWidth = screenHalfHeight * mainCam.aspect;
     }
 
     protected override void Start()

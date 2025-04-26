@@ -4,6 +4,7 @@ using UnityEngine;
 using static CoroutineHelper;
 using static MathHelper;
 using static BezierHelper;
+using static CameraBoundaries;
 
 public class CapricornBulletSystem4 : BossShooter<BossBullet>
 {
@@ -24,9 +25,9 @@ public class CapricornBulletSystem4 : BossShooter<BossBullet>
         while (enabled)
         {
             float t = 0f;
-            float x = screenHalfWidth * Random.Range(0.5f, 0.8f) * Mathf.Sign(parentShip.transform.position.x);
+            float x = ScreenHalfWidth * Random.Range(0.5f, 0.8f) * Mathf.Sign(parentShip.transform.position.x);
 
-            Vector3 v0 = new(x, screenHalfHeight);
+            Vector3 v0 = new(x, ScreenHalfHeight);
 
             while (t < TotalFollowTime)
             {

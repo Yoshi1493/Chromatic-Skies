@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using static CoroutineHelper;
+using static CameraBoundaries;
 
 public class AriesBulletSystem41 : BossShooter<BossBullet>
 {
@@ -10,11 +11,11 @@ public class AriesBulletSystem41 : BossShooter<BossBullet>
     {
         yield return WaitForSeconds(2f);
 
-        float y = screenHalfHeight + 1f;
+        float y = ScreenHalfHeight + 1f;
 
         for (int i = Random.value > 0.5f ? 0 : AngleLimit; enabled; i++)
         {
-            float x = Random.Range(-screenHalfWidth, screenHalfWidth);
+            float x = Random.Range(-ScreenHalfWidth, ScreenHalfWidth);
             float z = Mathf.PingPong(i, AngleLimit) - (AngleLimit * 0.5f);
             Vector3 pos = new(x, y);
 

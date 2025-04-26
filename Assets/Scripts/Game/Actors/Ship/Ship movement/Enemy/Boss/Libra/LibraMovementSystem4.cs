@@ -1,14 +1,15 @@
 using System.Collections;
 using UnityEngine;
 using static CoroutineHelper;
+using static CameraBoundaries;
 
 public class LibraMovementSystem4 : BossMovement
 {
     protected override IEnumerator Move()
     {
-        float w = screenHalfWidth * 2 * 1.2f;
+        float w = ScreenHalfWidth * 2 * 1.2f;
         Vector3 p0 = parentShip.transform.position;
-        Vector3 p1 = new(w * 0.5f * Mathf.Sign(p0.x), Random.Range(1f, screenHalfHeight - 1f));
+        Vector3 p1 = new(w * 0.5f * Mathf.Sign(p0.x), Random.Range(1f, ScreenHalfHeight - 1f));
         float s1 = (p1 - p0).magnitude / shipData.MovementSpeed.Value;
 
         Vector3 p2 = new(-p1.x, p1.y);

@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using static CoroutineHelper;
+using static CameraBoundaries;
 
 public class TaurusBulletSystem62 : BossShooter<BossBullet>
 {
@@ -19,7 +20,7 @@ public class TaurusBulletSystem62 : BossShooter<BossBullet>
                 for (int ii = 0; ii < BranchCount; ii++)
                 {
                     float x = 4f;
-                    float y = screenHalfHeight * 1.1f;
+                    float y = ScreenHalfHeight * 1.1f;
                     float z = ii * BranchSpacing;
                     Vector3 pos = new Vector3(x, y).RotateVectorBy(z);
 

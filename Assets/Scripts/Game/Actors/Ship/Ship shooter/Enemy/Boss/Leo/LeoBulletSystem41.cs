@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using static CoroutineHelper;
+using static CameraBoundaries;
 
 public class LeoBulletSystem41 : BossShooter<Laser>
 {
@@ -34,7 +35,7 @@ public class LeoBulletSystem41 : BossShooter<Laser>
                 for (int iii = 0; iii < BranchCount; iii++)
                 {
                     float x = clonePositions[i].x + ((iii % 2 * 2 - 1) * ii  * LaserSpacing);
-                    float y = screenHalfHeight * 1.1f;
+                    float y = ScreenHalfHeight * 1.1f;
                     float z = 180f;
                     Vector3 pos = new(x, y);
 

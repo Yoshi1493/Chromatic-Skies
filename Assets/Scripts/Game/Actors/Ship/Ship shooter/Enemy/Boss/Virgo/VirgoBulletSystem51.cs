@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using static CoroutineHelper;
+using static CameraBoundaries;
 
 public class VirgoBulletSystem51 : BossShooter<BossBullet>
 {
@@ -13,7 +14,7 @@ public class VirgoBulletSystem51 : BossShooter<BossBullet>
         while (enabled)
         {
             float x = PlayerPosition.x;
-            float y = screenHalfHeight + 1f;
+            float y = ScreenHalfHeight + 1f;
             float z = 0f;
             Vector3 pos = new(x, y);
 

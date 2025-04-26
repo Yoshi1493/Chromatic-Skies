@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using static CoroutineHelper;
+using static CameraBoundaries;
 
 public class AquariusBulletSystem41 : BossShooter<BossBullet>
 {
@@ -11,7 +12,7 @@ public class AquariusBulletSystem41 : BossShooter<BossBullet>
 
     protected override IEnumerator Shoot()
     {
-        float y = screenHalfHeight * 1.1f;
+        float y = ScreenHalfHeight * 1.1f;
 
         for (float i = 0f; enabled; i += 0.2f)
         {
@@ -19,7 +20,7 @@ public class AquariusBulletSystem41 : BossShooter<BossBullet>
 
             for (int ii = 0; ii < BulletCount; ii++)
             {
-                float x = 1.5f * Random.Range(-screenHalfWidth, screenHalfWidth);
+                float x = 1.5f * Random.Range(-ScreenHalfWidth, ScreenHalfWidth);
                 float s = Random.Range(BulletMinSpeed, BulletMaxSpeed);
                 Vector3 pos = new(x, y);
 

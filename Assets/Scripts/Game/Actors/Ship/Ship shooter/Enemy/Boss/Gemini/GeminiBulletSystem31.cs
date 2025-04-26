@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using static CoroutineHelper;
+using static CameraBoundaries;
 
 public class GeminiBulletSystem31 : BossShooter<BossBullet>
 {
@@ -17,8 +18,8 @@ public class GeminiBulletSystem31 : BossShooter<BossBullet>
         {
             for (int i = 0; enabled; i++)
             {
-                float x = screenHalfWidth * (0.6f + Mathf.PingPong(i * WaveSpacing, 0.15f));
-                float y = screenHalfHeight;
+                float x = ScreenHalfWidth * (0.6f + Mathf.PingPong(i * WaveSpacing, 0.15f));
+                float y = ScreenHalfHeight;
 
                 for (int ii = 0; ii < BranchCount; ii++)
                 {

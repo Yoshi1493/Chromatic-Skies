@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using static CoroutineHelper;
+using static CameraBoundaries;
 
 public class SagittariusBulletSystem5 : BossShooter<BossBullet>
 {
@@ -21,7 +22,7 @@ public class SagittariusBulletSystem5 : BossShooter<BossBullet>
             {
                 float z = 0f;
                 float x = transform.position.x + Random.Range(-3f, 3f);
-                float y = screenHalfHeight * 1.1f;
+                float y = ScreenHalfHeight * 1.1f;
                 Vector3 pos = new(x, y);
 
                 SpawnProjectile(0, z, pos, false).Fire();

@@ -69,7 +69,7 @@ public abstract class Collectible : Actor
 
         if (!foundPlayer)
         {
-            if (player.transform.position.y >= 2.5f)
+            if (player.transform.position.y >= CameraBoundaries.ScreenHalfHeight * 0.5f)
             {
                 foundPlayer = true;
             }

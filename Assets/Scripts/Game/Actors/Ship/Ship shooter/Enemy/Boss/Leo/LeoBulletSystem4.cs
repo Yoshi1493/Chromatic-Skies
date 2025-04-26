@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using static CoroutineHelper;
+using static CameraBoundaries;
 
 public class LeoBulletSystem4 : BossShooter<BossBullet>
 {
@@ -24,8 +25,8 @@ public class LeoBulletSystem4 : BossShooter<BossBullet>
 
             for (int i = 0; i < BulletCount; i++)
             {
-                float x = Mathf.Lerp(-screenHalfWidth, screenHalfWidth, i / (BulletCount - 1f)) + Random.Range(-1f, 1f);
-                float y = Random.Range(1f, screenHalfHeight);
+                float x = Mathf.Lerp(-ScreenHalfWidth, ScreenHalfWidth, i / (BulletCount - 1f)) + Random.Range(-1f, 1f);
+                float y = Random.Range(1f, ScreenHalfHeight);
 
                 Vector3 v = 0.75f * new Vector3(x, y);
                 bulletSpawnPositions.Add(v);
