@@ -150,7 +150,7 @@ public static class ActorMovementHelper
         Vector3 endPosition = (moveSpeed * duration * normalizedDirection) + actor.transform.position;
 
         actor.moveDirection = normalizedDirection;
-        float maxSpeed = moveSpeed * (2f / (duration / moveSpeed));
+        float maxSpeed = moveSpeed * 2f;
         float currentTime = 0f;
 
         while (currentTime < duration / 2f)
