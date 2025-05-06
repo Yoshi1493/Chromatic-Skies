@@ -13,7 +13,7 @@ public class LibraBullet65 : BossBullet
         yield return this.LerpSpeed(2f, 0f, 1f);
         yield return WaitForSeconds(5f);
 
-        yield return this.TransformRotateAround(originalPosition, 1f, 180f + (LibraBulletSystem63.ParentBulletSpacing / 2f));
+        yield return this.TransformRotateAround(originalPosition, 1f, 180f + (LibraBossShooter63.ParentBulletSpacing / 2f));
         MoveSpeed = 0f;
     }
 }

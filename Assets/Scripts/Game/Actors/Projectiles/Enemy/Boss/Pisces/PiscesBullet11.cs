@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using static CoroutineHelper;
 
-public class PiscesBullet11 : ScriptableBossBullet<PiscesBulletSystem11, BossBullet>
+public class PiscesBullet11 : ScriptableBossBullet<PiscesBossShooter11, BossBullet>
 {
     [Space]
     [SerializeField] ProjectileObject bulletData;

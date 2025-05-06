@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using static CoroutineHelper;
 
-public class LibraBullet10 : ScriptableBossBullet<LibraBulletSystem1, BossBullet>
+public class LibraBullet10 : ScriptableBossBullet<LibraBossShooter1, BossBullet>
 {
     [SerializeField] int bulletID;
 

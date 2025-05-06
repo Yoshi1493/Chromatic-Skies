@@ -3,7 +3,7 @@ using UnityEngine;
 using static CoroutineHelper;
 using static MathHelper;
 
-public class LibraBullet41 : ScriptableBossBullet<LibraBulletSystem4, BossBullet>
+public class LibraBullet41 : ScriptableBossBullet<LibraBossShooter4, BossBullet>
 {
     const int WaveCount = 30;
     const float WaveSpacing = 0.4f;

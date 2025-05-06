@@ -2,16 +2,16 @@ using System.Collections;
 using UnityEngine;
 using static CoroutineHelper;
 
-public class ScorpioBullet10 : ScriptableBossBullet<ScorpioBulletSystem1, BossBullet>
+public class ScorpioBullet10 : ScriptableBossBullet<ScorpioBossShooter1, BossBullet>
 {
     [SerializeField] ProjectileObject bulletData;
 
     const int WaveCount = 10;
     const int BulletCount = 4;
     const float BulletSpacing = 360f / BulletCount;
-    const float ShootingCooldown = ScorpioBulletSystem1.BulletRotationDuration / WaveCount;
+    const float ShootingCooldown = ScorpioBossShooter1.BulletRotationDuration / WaveCount;
 
-    protected override float MaxLifetime => ScorpioBulletSystem1.BulletRotationDuration + 0.5f;
+    protected override float MaxLifetime => ScorpioBossShooter1.BulletRotationDuration + 0.5f;
 
     protected override IEnumerator Move()
     {

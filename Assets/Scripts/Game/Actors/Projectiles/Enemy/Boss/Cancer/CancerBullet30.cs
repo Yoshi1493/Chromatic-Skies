@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using static CoroutineHelper;
 
-public class CancerBullet30 : ScriptableBossBullet<CancerBulletSystem3, BossBullet>
+public class CancerBullet30 : ScriptableBossBullet<CancerBossShooter3, BossBullet>
 {
     const int WaveCount = 18;
     const float ShootingCooldown = 0.2f;

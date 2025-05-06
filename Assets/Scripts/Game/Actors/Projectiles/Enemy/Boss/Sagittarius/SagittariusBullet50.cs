@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class SagittariusBullet50 : ScriptableBossBullet<SagittariusBulletSystem5, BossBullet>
+public class SagittariusBullet50 : ScriptableBossBullet<SagittariusBossShooter5, BossBullet>
 {
     [SerializeField] ProjectileObject bulletData;
 

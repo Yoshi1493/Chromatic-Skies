@@ -6,13 +6,13 @@ using static CameraBoundaries;
 
 public class LeoMovementSystem4 : BossMovement
 {
-    LeoBulletSystem4 bulletSystem;
+    LeoBossShooter4 bulletSystem;
     List<Vector3> clonePositions;
 
     protected override void Awake()
     {
         base.Awake();
-        bulletSystem = parentShip.GetComponentInChildren<LeoBulletSystem4>();
+        bulletSystem = parentShip.GetComponentInChildren<LeoBossShooter4>();
     }
 
     protected override IEnumerator Move()

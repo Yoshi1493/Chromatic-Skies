@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using static CoroutineHelper;
 
-public class LeoBullet40 : ScriptableBossBullet<LeoBulletSystem4, BossBullet>
+public class LeoBullet40 : ScriptableBossBullet<LeoBossShooter4, BossBullet>
 {
-    LeoBulletSystem4 bulletSystem;
+    LeoBossShooter4 bulletSystem;
     [SerializeField] ProjectileObject bulletData;
 
     const int RingCount = 5;

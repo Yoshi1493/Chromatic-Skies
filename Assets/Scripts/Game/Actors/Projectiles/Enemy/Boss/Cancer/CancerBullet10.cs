@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class CancerBullet10 : ScriptableBossBullet<CancerBulletSystem1, BossBullet>
+public class CancerBullet10 : ScriptableBossBullet<CancerBossShooter1, BossBullet>
 {
     const int WaveCount = 3;
     const int BulletCount = 3;

@@ -1,6 +1,6 @@
 using System.Collections;
 
-public class LibraBullet611 : ScriptableBossBullet<LibraBulletSystem66, BossBullet>
+public class LibraBullet611 : ScriptableBossBullet<LibraBossShooter66, BossBullet>
 {
     protected override float MaxLifetime => 6f;
 

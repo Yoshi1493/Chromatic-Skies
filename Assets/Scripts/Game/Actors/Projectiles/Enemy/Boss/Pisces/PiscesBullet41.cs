@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using static CoroutineHelper;
 
-public class PiscesBullet41 : ScriptableBossBullet<PiscesBulletSystem41, Laser>
+public class PiscesBullet41 : ScriptableBossBullet<PiscesBossShooter41, Laser>
 {
     const int LaserCount = 6;
     const float LaserSpacing = 360f / LaserCount;

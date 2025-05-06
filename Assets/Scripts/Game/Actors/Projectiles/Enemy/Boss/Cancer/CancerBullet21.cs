@@ -3,7 +3,7 @@ using UnityEngine;
 using static CoroutineHelper;
 using static MathHelper;
 
-public class CancerBullet21 : ScriptableBossBullet<CancerBulletSystem21, BossBullet>
+public class CancerBullet21 : ScriptableBossBullet<CancerBossShooter21, BossBullet>
 {
     const int BulletCount = 6;
     const float BulletSpacing = 360f / BulletCount;

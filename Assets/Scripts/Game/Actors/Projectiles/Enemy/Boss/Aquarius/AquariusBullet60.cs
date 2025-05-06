@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using static CoroutineHelper;
 
-public class AquariusBullet60 : ScriptableBossBullet<AquariusBulletSystem6, BossBullet>
+public class AquariusBullet60 : ScriptableBossBullet<AquariusBossShooter6, BossBullet>
 {
     [SerializeField] ProjectileObject bulletData;
 

@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using static MathHelper;
 
-public class LeoBullet50 : ScriptableBossBullet<LeoBulletSystem5, BossBullet>
+public class LeoBullet50 : ScriptableBossBullet<LeoBossShooter5, BossBullet>
 {
     [SerializeField] ProjectileObject bulletData;
 

@@ -1,7 +1,7 @@
 using System.Collections;
 using static MathHelper;
 
-public class LeoBullet20 : ScriptableBossBullet<LeoBulletSystem2, BossBullet>
+public class LeoBullet20 : ScriptableBossBullet<LeoBossShooter2, BossBullet>
 {
     const int BulletCount = 5;
     const float BulletSpacing = 360f / BulletCount;

@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using static CoroutineHelper;
 
-public class LibraBullet40 : ScriptableBossBullet<LibraBulletSystem41, Laser>
+public class LibraBullet40 : ScriptableBossBullet<LibraBossShooter41, Laser>
 {
     protected override float MaxLifetime => 5f;
 

@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class PiscesBullet50 : ScriptableBossBullet<PiscesBulletSystem51, BossBullet>
+public class PiscesBullet50 : ScriptableBossBullet<PiscesBossShooter51, BossBullet>
 {
     [Space]
     [SerializeField] ProjectileObject bulletData;

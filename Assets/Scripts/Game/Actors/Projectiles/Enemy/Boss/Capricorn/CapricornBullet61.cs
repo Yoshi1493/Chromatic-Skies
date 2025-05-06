@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using static CoroutineHelper;
 
-public class CapricornBullet61 : ScriptableBossBullet<CapricornBulletSystem6, BossBullet>
+public class CapricornBullet61 : ScriptableBossBullet<CapricornBossShooter6, BossBullet>
 {
     const int WaveCount = 40;
     const float WaveSpacing = 360f / BranchCount / WaveCount;

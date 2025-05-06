@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class CancerBullet31 : ScriptableBossBullet<CancerBulletSystem3, BossBullet>
+public class CancerBullet31 : ScriptableBossBullet<CancerBossShooter3, BossBullet>
 {
     const int BulletCount = 3;
     const float BulletSpacing = 360f / BulletCount;

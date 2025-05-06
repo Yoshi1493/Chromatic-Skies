@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class LeoBullet22 : ScriptableBossBullet<LeoBulletSystem21, BossBullet>
+public class LeoBullet22 : ScriptableBossBullet<LeoBossShooter21, BossBullet>
 {
     [SerializeField] ProjectileObject bulletData;
     

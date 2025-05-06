@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class SagittariusBullet41 : ScriptableBossBullet<SagittariusBulletSystem41, BossBullet>
+public class SagittariusBullet41 : ScriptableBossBullet<SagittariusBossShooter41, BossBullet>
 {
     protected override IEnumerator Move()
     {
@@ -11,7 +11,7 @@ public class SagittariusBullet41 : ScriptableBossBullet<SagittariusBulletSystem4
         yield return this.LerpSpeed(0f, endSpeed, 1f);
 
         float currentLerpTime = 0f;
-        float totalLerpTime = ((SagittariusBulletSystem41.BulletSpawnRadius - (endSpeed / 2f)) / endSpeed) - delay;
+        float totalLerpTime = ((SagittariusBossShooter41.BulletSpawnRadius - (endSpeed / 2f)) / endSpeed) - delay;
 
         while (currentLerpTime < totalLerpTime)
         {

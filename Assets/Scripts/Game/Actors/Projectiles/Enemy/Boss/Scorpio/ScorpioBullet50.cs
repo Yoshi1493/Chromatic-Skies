@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using static CoroutineHelper;
 
-public class ScorpioBullet50 : ScriptableBossBullet<ScorpioBulletSystem5, BossBullet>
+public class ScorpioBullet50 : ScriptableBossBullet<ScorpioBossShooter5, BossBullet>
 {
     [SerializeField] ProjectileObject bulletData;
 

@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using static CoroutineHelper;
 
-public class GeminiBullet50 : ScriptableBossBullet<GeminiBulletSystem5, BossBullet>
+public class GeminiBullet50 : ScriptableBossBullet<GeminiBossShooter5, BossBullet>
 {
     [Space]
     [SerializeField] ProjectileObject bulletData;
