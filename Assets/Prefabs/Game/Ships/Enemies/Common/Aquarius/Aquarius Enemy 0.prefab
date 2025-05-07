@@ -78,23 +78,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2407710777176494618, guid: 0ea569baafb91b94cbd6c069f48a94da, type: 3}
   m_PrefabInstance: {fileID: 7631634376295664945}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &-8651690598639932817
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5224434185141182251}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 66a2ae0e9678d8c45b6c9550d17c1660, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentShip: {fileID: 0}
-  delay: 0
-  duration: 3
-  moveSpeed: 1.5
-  normalizedDirection: {x: 0, y: -1}
 --- !u!114 &2075653712317228251
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -110,20 +93,18 @@ MonoBehaviour:
   projectiles:
   - {fileID: -7952192781978718152, guid: 6655630e333d1864dbcb2ba70e049606, type: 3}
   bulletData: {fileID: 11400000, guid: b7cc13e258fbdfa4bbdf377aa9a00e70, type: 2}
---- !u!114 &8981939127377714795
+--- !u!114 &3051835646913756342
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5224434185141182251}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7068368252a8e7244aec6db632ae6bf3, type: 3}
+  m_Script: {fileID: 11500000, guid: a61d34c175f5f0a4989ed7ecb6af44ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   parentShip: {fileID: 0}
-  delay: 5
-  duration: 3
-  moveSpeed: 3
-  normalizedDirection: {x: 1, y: 1.5}
+  delay: 0
+  duration: 0
