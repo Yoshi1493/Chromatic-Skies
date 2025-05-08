@@ -1,4 +1,5 @@
 using UnityEngine;
+using static CameraBoundaries;
 
 public abstract class Collectible : Actor
 {
@@ -32,6 +33,7 @@ public abstract class Collectible : Actor
     {
         IncrementLifetime();
         Move();
+        CheckPosition();
         CheckPlayerPosition();
     }
 
@@ -47,6 +49,7 @@ public abstract class Collectible : Actor
 
     void Move()
     {
+        //set speed and direction based on whether or not Player is detected
         if (!foundPlayer)
         {
             if (currentLifetime < BounceDuration)
@@ -60,16 +63,29 @@ public abstract class Collectible : Actor
             MoveSpeed = 15f;
         }
 
+        //apply movement
         transform.Translate(Time.deltaTime * MoveSpeed * moveDirection, Space.World);
+    }
+
+    //destroy if outside camera left/right/bottom bounds
+    void CheckPosition()
+    {
+        if ( transform.position.y < -ScreenHalfHeight ||
+             transform.position.x < -ScreenHalfWidth ||
+             transform.position.x > ScreenHalfWidth)
+        {
+            Destroy();
+        }
     }
 
     void CheckPlayerPosition()
     {
         Vector3 diff = player.transform.position - transform.position;
 
+        //check if gameobject is near Player
         if (!foundPlayer)
         {
-            if (player.transform.position.y >= CameraBoundaries.ScreenHalfHeight * 0.5f)
+            if (player.transform.position.y >= ScreenHalfHeight * 0.5f)
             {
                 foundPlayer = true;
             }
@@ -82,6 +98,7 @@ public abstract class Collectible : Actor
             }
         }
 
+        //destroy if touching Player
         if (Vector3.SqrMagnitude(diff) <= PlayerCollisionSqRadius)
         {
             Destroy();
