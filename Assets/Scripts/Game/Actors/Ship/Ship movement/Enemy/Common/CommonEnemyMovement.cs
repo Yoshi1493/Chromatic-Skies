@@ -1,12 +1,10 @@
 using System.Collections;
 using UnityEngine;
+using static CameraBoundaries;
 
 [RequireComponent(typeof(Enemy))]
 public abstract class CommonEnemyMovement : ShipMovement<Enemy>
 {
-    [SerializeField] protected float delay;
-    [SerializeField] protected float duration;
-
     protected IEnumerator moveCoroutine;
     protected abstract IEnumerator Move();
 
@@ -24,5 +22,13 @@ public abstract class CommonEnemyMovement : ShipMovement<Enemy>
     protected override void OnLoseLife()
     {
         StopAllCoroutines();
+    }
+
+    protected IEnumerator LeaveScene()
+    {
+        Vector3 endPos = new(parentShip.transform.position.x, ScreenHalfHeight + 1f);
+        float duration = (endPos - parentShip.transform.position).magnitude;
+
+        yield return parentShip.MoveTo(endPos, duration);
     }
 }
