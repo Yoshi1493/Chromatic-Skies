@@ -78,23 +78,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2407710777176494618, guid: 0ea569baafb91b94cbd6c069f48a94da, type: 3}
   m_PrefabInstance: {fileID: 7631634376295664945}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &-8853126702644715290
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5224434185141182251}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e211556b0fb0aaf4582b10afa67e64b0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentShip: {fileID: 0}
-  delay: 0
-  duration: 4
-  rotationAmount: 120
-  rotationPoint: {x: 2, y: 5}
 --- !u!114 &-47961817908438947
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -108,7 +91,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parentShip: {fileID: 0}
-  delay: 0
-  duration: 0
   rotationPoint: {x: 2, y: 5}
   rotationAmount: 120
