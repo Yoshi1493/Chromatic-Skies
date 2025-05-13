@@ -21,13 +21,7 @@ public class Enemy : Ship
 
         if (currentHealth <= 0)
         {
-            if (deathCoroutine != null)
-            {
-                StopCoroutine(deathCoroutine);
-            }
-
-            deathCoroutine = Die();
-            StartCoroutine(deathCoroutine);
+            LeaveScene();
         }
     }
 
@@ -45,5 +39,17 @@ public class Enemy : Ship
         }
 
         Destroy(gameObject);
+    }
+
+    //called by CommonEnemyMovement if finished leaving the scene, or when health reaches 0
+    public void LeaveScene()
+    {
+        if (deathCoroutine != null)
+        {
+            StopCoroutine(deathCoroutine);
+        }
+
+        deathCoroutine = Die();
+        StartCoroutine(deathCoroutine);
     }
 }

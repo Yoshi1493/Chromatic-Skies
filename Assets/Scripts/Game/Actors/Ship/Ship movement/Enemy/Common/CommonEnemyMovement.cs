@@ -30,5 +30,6 @@ public abstract class CommonEnemyMovement : ShipMovement<Enemy>
         float duration = (endPos - parentShip.transform.position).magnitude;
 
         yield return parentShip.MoveTo(endPos, duration);
+        parentShip.LeaveScene();
     }
 }
