@@ -2,8 +2,8 @@ using System.Collections;
 using UnityEngine;
 using static CameraBoundaries;
 
-[RequireComponent(typeof(Enemy))]
-public abstract class CommonEnemyMovement : ShipMovement<Enemy>
+[RequireComponent(typeof(CommonEnemy))]
+public abstract class CommonEnemyMovement : ShipMovement<CommonEnemy>
 {
     protected IEnumerator moveCoroutine;
     protected abstract IEnumerator Move();

@@ -23,7 +23,7 @@ public class PlayerBullet : Bullet
     {
         base.Update();
 
-        CheckCollisionWith<Enemy>();
+        CheckCollisionWith<CommonEnemy>();
         CheckCollisionWith<Boss>();
     }
 

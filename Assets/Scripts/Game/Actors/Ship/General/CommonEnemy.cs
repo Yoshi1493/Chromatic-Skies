@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class Enemy : Ship
+public class CommonEnemy : Ship
 {
     int currentHealth;
 

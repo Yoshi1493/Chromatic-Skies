@@ -10,12 +10,12 @@ public class EnemySpawner : MonoBehaviour
     new Transform transform;
 
     [SerializeField] TextAsset spawnTextFile;
-    [SerializeField] Enemy[] enemyPrefabs;
+    [SerializeField] CommonEnemy[] enemyPrefabs;
     [SerializeField] Boss bossPrefab;
 
     IEnumerator enemySpawnCoroutine;
     public event Action BossSpawnAction;
-    List<Enemy> enemies = new();
+    List<CommonEnemy> enemies = new();
 
     void Awake()
     {
