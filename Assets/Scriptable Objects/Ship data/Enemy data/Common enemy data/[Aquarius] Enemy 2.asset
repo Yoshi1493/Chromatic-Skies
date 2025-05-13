@@ -24,19 +24,19 @@ MonoBehaviour:
     Variable: {fileID: 0}
   MaxHealth:
     useConstant: 1
-    ConstantValue: 1000
+    ConstantValue: 3000
     Variable: {fileID: 0}
   Power:
     useConstant: 1
-    ConstantValue: 100
+    ConstantValue: 500
     Variable: {fileID: 0}
   Defense:
     useConstant: 1
-    ConstantValue: 0
+    ConstantValue: 500
     Variable: {fileID: 0}
   MovementSpeed:
     useConstant: 1
-    ConstantValue: 2
+    ConstantValue: 0
     Variable: {fileID: 0}
   ShootingSpeed:
     useConstant: 1
