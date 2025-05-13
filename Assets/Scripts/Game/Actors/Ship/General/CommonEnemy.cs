@@ -21,7 +21,7 @@ public class CommonEnemy : Ship
 
         if (currentHealth <= 0)
         {
-            LeaveScene();
+            Destroy();
         }
     }
 
@@ -42,7 +42,7 @@ public class CommonEnemy : Ship
     }
 
     //called by CommonEnemyMovement if finished leaving the scene, or when health reaches 0
-    public void LeaveScene()
+    public void Destroy()
     {
         if (deathCoroutine != null)
         {
