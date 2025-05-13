@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -47961817908438947, guid: c631feba30fe310458dcab301c0cc17a, type: 3}
       propertyPath: rotationAmount
-      value: -120
+      value: -180
       objectReference: {fileID: 0}
     - target: {fileID: -47961817908438947, guid: c631feba30fe310458dcab301c0cc17a, type: 3}
       propertyPath: rotationPoint.x

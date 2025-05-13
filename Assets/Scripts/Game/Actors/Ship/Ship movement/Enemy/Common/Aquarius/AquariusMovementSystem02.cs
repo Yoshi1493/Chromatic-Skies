@@ -10,6 +10,7 @@ public class AquariusMovementSystem02 : CommonEnemyMovement
     protected override IEnumerator Move()
     {
         yield return parentShip.MoveRelative(Vector3.down, moveSpeed, moveDuration);
+
         yield return WaitForSeconds(2f);
         yield return LeaveScene();
     }
