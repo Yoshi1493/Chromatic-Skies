@@ -9,9 +9,9 @@ public class AquariusMovementSystem03 : CommonEnemyMovement
 
     protected override IEnumerator Move()
     {
-        yield return parentShip.TranslateAround(rotationPoint, rotationAmount, 5f);
+        yield return parentShip.TranslateAround(rotationPoint, rotationAmount, 4f);
 
-        yield return WaitForSeconds(2f);
+        yield return WaitForSeconds(1f);
         yield return LeaveScene();
     }
 }

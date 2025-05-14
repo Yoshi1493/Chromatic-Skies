@@ -91,5 +91,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parentShip: {fileID: 0}
-  rotationPoint: {x: 2, y: 5}
-  rotationAmount: 210
+  rotationPoint: {x: 3, y: 6}
+  rotationAmount: 180
