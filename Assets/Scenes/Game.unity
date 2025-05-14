@@ -384,8 +384,6 @@ MonoBehaviour:
   enemyPrefabs:
   - {fileID: 443384559322656082, guid: 56e94301062b2c846a866a9eafca4ea5, type: 3}
   - {fileID: 443384559322656082, guid: 096e181744d0efe4d9066671c999ba99, type: 3}
-  - {fileID: 8166988624713535672, guid: 71356ff175c581c478e7b880fc73ebcd, type: 3}
-  - {fileID: 8166988624713535672, guid: 002e1a2add61c8f429aca09801cf0a51, type: 3}
   - {fileID: 443384559322656082, guid: c631feba30fe310458dcab301c0cc17a, type: 3}
   - {fileID: 2922919654144845339, guid: aa660681f5bde5e4f938a27544250646, type: 3}
   - {fileID: 443384559322656082, guid: 1fed3b015f6830f40bcbe3e4c87284e5, type: 3}
