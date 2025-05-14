@@ -26,10 +26,17 @@ public abstract class CommonEnemyMovement : ShipMovement<CommonEnemy>
 
     protected IEnumerator LeaveScene()
     {
-        Vector3 endPos = new(parentShip.transform.position.x, ScreenHalfHeight + 1f);
-        float duration = (endPos - parentShip.transform.position).magnitude;
+        if (transform.position.y < -ScreenHalfHeight ||
+             transform.position.y > ScreenHalfHeight ||
+             transform.position.x < -ScreenHalfWidth ||
+             transform.position.x > ScreenHalfWidth)
+        {
+            Vector3 endPos = new(parentShip.transform.position.x, ScreenHalfHeight + 1f);
+            float duration = (endPos - parentShip.transform.position).magnitude;
 
-        yield return parentShip.MoveTo(endPos, duration);
+            yield return parentShip.MoveTo(endPos, duration);
+        }
+
         parentShip.Destroy();
     }
 }
