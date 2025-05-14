@@ -11,6 +11,10 @@ PrefabInstance:
       propertyPath: rotationAmount
       value: -180
       objectReference: {fileID: 0}
+    - target: {fileID: -2533872347219786783, guid: c631feba30fe310458dcab301c0cc17a, type: 3}
+      propertyPath: rotationPoint.x
+      value: -3
+      objectReference: {fileID: 0}
     - target: {fileID: -47961817908438947, guid: c631feba30fe310458dcab301c0cc17a, type: 3}
       propertyPath: rotationAmount
       value: -180
