@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 23c7e0f14dcbcc4439ef4a6f2ce42e45, type: 3}
-  m_Name: '[Aquarius] Enemy 4'
+  m_Name: '[Aquarius] Enemy 0'
   m_EditorClassIdentifier: 
   Sprite: {fileID: 21300000, guid: 1aa3e528edb03a147bde37cb52c198d6, type: 3}
   UIColour: {fileID: 0}
@@ -24,7 +24,7 @@ MonoBehaviour:
     Variable: {fileID: 0}
   MaxHealth:
     useConstant: 1
-    ConstantValue: 1500
+    ConstantValue: 1000
     Variable: {fileID: 0}
   Power:
     useConstant: 1

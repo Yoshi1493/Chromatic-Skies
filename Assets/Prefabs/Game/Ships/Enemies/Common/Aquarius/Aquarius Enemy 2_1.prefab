@@ -7,6 +7,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -2533872347219786783, guid: c631feba30fe310458dcab301c0cc17a, type: 3}
+      propertyPath: rotationAmount
+      value: -180
+      objectReference: {fileID: 0}
     - target: {fileID: -47961817908438947, guid: c631feba30fe310458dcab301c0cc17a, type: 3}
       propertyPath: rotationAmount
       value: -180
@@ -61,7 +65,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5224434185141182251, guid: c631feba30fe310458dcab301c0cc17a, type: 3}
       propertyPath: m_Name
-      value: Aquarius Enemy 3_1
+      value: Aquarius Enemy 2_1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c631feba30fe310458dcab301c0cc17a, type: 3}
