@@ -396,31 +396,6 @@ public static class ActorMovementHelper
     }
 
     /// <summary>
-    /// translates <actor> such that it looks like it is orbiting <target.transform.position>, at <rotateSpeed> degrees per second, for <duration> seconds.
-    /// </summary>
-    public static IEnumerator TranslateAround(this Actor actor, Actor target, float duration, float degreesPerSecond, bool followTarget = false, float delay = 0f)
-    {
-        if (target == null || duration <= 0f) yield break;
-        if (delay > 0f) yield return WaitForSeconds(delay);
-
-        Vector3 targetPos = target.transform.position;
-        float currentTime = 0f;
-
-        while (currentTime < duration)
-        {
-            if (followTarget) targetPos = target.transform.position;
-
-            Vector3 distance = actor.transform.position - targetPos;
-            Vector3 difference = distance.RotateVectorBy(degreesPerSecond * Time.deltaTime);
-
-            actor.transform.position = targetPos + difference;
-
-            yield return null;
-            currentTime += Time.deltaTime;
-        }
-    }
-
-    /// <summary>
     /// sets <actor.moveDirection> to face towards <target.transform.position>
     /// i.e. sets <actor.moveDirection> such that if <target.transform.position> doesn't change, <actor> will eventually collide with <target>.
     /// </summary>
