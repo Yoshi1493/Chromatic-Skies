@@ -70,7 +70,7 @@ PrefabInstance:
     - target: {fileID: 8056434987258519651, guid: 0ea569baafb91b94cbd6c069f48a94da, type: 3}
       propertyPath: shipData
       value: 
-      objectReference: {fileID: 11400000, guid: 7bcf69fa22762864490663a808ff79db, type: 2}
+      objectReference: {fileID: 11400000, guid: 395156fd4f96bbb40a6e0253a7528697, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0ea569baafb91b94cbd6c069f48a94da, type: 3}
 --- !u!1 &5224434185141182251 stripped
@@ -97,4 +97,3 @@ MonoBehaviour:
   - {x: 0, y: 2}
   - {x: 4, y: 4}
   - {x: 8, y: 2}
-  rotationMultiplier: 1
