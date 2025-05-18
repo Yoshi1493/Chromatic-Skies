@@ -81,6 +81,20 @@ public class EnemySpawner : MonoBehaviour
                 }
             }
 
+            #region DEBUG
+
+            if (spawnTimes[0] > 3.0f)
+            {
+                float t = spawnTimes[0];
+
+                for (int i = 0; i < spawnTimes.Count; i++)
+                {
+                    spawnTimes[i] = spawnTimes[i] - t + 3.0f;
+                }
+            }
+
+            #endregion
+
             //activate all enemies based on listed spawn time
             for (int i = 0; i < enemies.Count; i++)
             {
