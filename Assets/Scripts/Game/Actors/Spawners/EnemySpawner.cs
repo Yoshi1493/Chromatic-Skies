@@ -15,7 +15,9 @@ public class EnemySpawner : MonoBehaviour
 
     IEnumerator enemySpawnCoroutine;
     public event Action BossSpawnAction;
+
     List<CommonEnemy> enemies = new();
+    [SerializeField] int minibossIndex;
 
     void Awake()
     {
@@ -107,6 +109,12 @@ public class EnemySpawner : MonoBehaviour
 
                 enemies[i].gameObject.SetActive(true);
                 enemies[i].enabled = true;
+
+                //wait until miniboss is defeated
+                if (enemyIndexes[i] == minibossIndex)
+                {
+                    yield return WaitUntil(() => !transform.GetChild(0).gameObject.activeSelf);
+                }
             }
 
             yield return WaitUntil(() => transform.childCount == 0);
@@ -118,4 +126,5 @@ public class EnemySpawner : MonoBehaviour
         boss.gameObject.SetActive(true);
         BossSpawnAction?.Invoke();
     }
+
 }
