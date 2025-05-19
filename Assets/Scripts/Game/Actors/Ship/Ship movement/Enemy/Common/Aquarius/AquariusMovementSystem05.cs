@@ -6,7 +6,7 @@ public class AquariusMovementSystem05 : CommonEnemyMovement
 {
     protected override IEnumerator Move()
     {
-        yield return parentShip.MoveTo(ActorMovementHelper.bossSpawnPosition, 1f);
+        yield return parentShip.MoveTo(ActorMovementHelper.bossSpawnPosition, 2f);
 
         while (enabled)
         {
