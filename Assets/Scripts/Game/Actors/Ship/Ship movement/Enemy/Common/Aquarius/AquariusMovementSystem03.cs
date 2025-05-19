@@ -1,6 +1,5 @@
 using System.Collections;
 using UnityEngine;
-using static CoroutineHelper;
 
 public class AquariusMovementSystem03 : CommonEnemyMovement
 {
@@ -16,7 +15,6 @@ public class AquariusMovementSystem03 : CommonEnemyMovement
             yield return parentShip.TranslateAround(rotationPoints[i], (i % 2 * 2 - 1) * theta, 1.5f);
         }
 
-        yield return WaitForSeconds(1f);
         yield return LeaveScene();
     }
 }

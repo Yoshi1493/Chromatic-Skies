@@ -10,7 +10,6 @@ public class AquariusMovementSystem04 : CommonEnemyMovement
         yield return WaitForSeconds(1f);
         yield return parentShip.MoveRelative(Vector3.down, 3f, 3f);
 
-        yield return WaitForSeconds(1f);
         yield return LeaveScene();
     }
 }
