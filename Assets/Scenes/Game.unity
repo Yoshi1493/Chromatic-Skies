@@ -2645,9 +2645,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnTextFile: {fileID: 0}
-  enemyPrefabs: []
+  enemyPrefabs:
+  - {fileID: 443384559322656082, guid: 07369a41479859146a6693157ed1bdad, type: 3}
+  - {fileID: 443384559322656082, guid: 0c529b2706e6e624894e8c300a1516de, type: 3}
+  - {fileID: 443384559322656082, guid: 8dab87b990559c34fbcd6d23e9e50b76, type: 3}
+  - {fileID: 443384559322656082, guid: 4efde7494c06e6b4b94477eac7f2d255, type: 3}
+  - {fileID: 443384559322656082, guid: 6c3408f91c2c5bd47a0fbb346aa0ca70, type: 3}
+  - {fileID: 443384559322656082, guid: 096f86b757bda8b4eb1d71dcb6489a69, type: 3}
+  - {fileID: 443384559322656082, guid: 2e6ac7fb926e9d34c989222386ae7765, type: 3}
+  - {fileID: 443384559322656082, guid: b08222cc1140ae142b9a981f5d5ebab3, type: 3}
+  - {fileID: 443384559322656082, guid: 46d3207414cf9f34cb37a50c50c7068c, type: 3}
   bossPrefab: {fileID: 8970867438237885685, guid: 3859bf0d081290b469f5428fac6cdfc1, type: 3}
-  minibossIndex: 0
+  minibossIndex: 5
 --- !u!1 &501545821
 GameObject:
   m_ObjectHideFlags: 0
