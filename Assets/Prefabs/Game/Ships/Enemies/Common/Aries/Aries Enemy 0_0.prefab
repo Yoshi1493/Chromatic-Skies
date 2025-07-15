@@ -53,15 +53,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2407710777176494617, guid: 0ea569baafb91b94cbd6c069f48a94da, type: 3}
       propertyPath: m_Color.b
-      value: 1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 2407710777176494617, guid: 0ea569baafb91b94cbd6c069f48a94da, type: 3}
       propertyPath: m_Color.g
-      value: 0.75
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 2407710777176494617, guid: 0ea569baafb91b94cbd6c069f48a94da, type: 3}
       propertyPath: m_Color.r
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2407710777176494618, guid: 0ea569baafb91b94cbd6c069f48a94da, type: 3}
       propertyPath: m_Name
@@ -70,7 +70,7 @@ PrefabInstance:
     - target: {fileID: 8056434987258519651, guid: 0ea569baafb91b94cbd6c069f48a94da, type: 3}
       propertyPath: shipData
       value: 
-      objectReference: {fileID: 11400000, guid: 7bcf69fa22762864490663a808ff79db, type: 2}
+      objectReference: {fileID: 11400000, guid: e55f578a7f15f144681256657af10d29, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0ea569baafb91b94cbd6c069f48a94da, type: 3}
 --- !u!1 &5224434185141182251 stripped
