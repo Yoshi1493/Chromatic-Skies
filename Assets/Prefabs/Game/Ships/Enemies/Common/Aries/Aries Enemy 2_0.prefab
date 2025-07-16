@@ -65,12 +65,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2407710777176494618, guid: 0ea569baafb91b94cbd6c069f48a94da, type: 3}
       propertyPath: m_Name
-      value: Aries Enemy 0_2
+      value: Aries Enemy 2_0
       objectReference: {fileID: 0}
     - target: {fileID: 8056434987258519651, guid: 0ea569baafb91b94cbd6c069f48a94da, type: 3}
       propertyPath: shipData
       value: 
-      objectReference: {fileID: 11400000, guid: e55f578a7f15f144681256657af10d29, type: 2}
+      objectReference: {fileID: 11400000, guid: e0ae2d8bf64195f449c0233f40c7ebed, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0ea569baafb91b94cbd6c069f48a94da, type: 3}
 --- !u!1 &5224434185141182251 stripped

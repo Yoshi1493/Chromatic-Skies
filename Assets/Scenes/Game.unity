@@ -2689,7 +2689,7 @@ MonoBehaviour:
   - {fileID: 443384559322656082, guid: b08222cc1140ae142b9a981f5d5ebab3, type: 3}
   - {fileID: 443384559322656082, guid: 46d3207414cf9f34cb37a50c50c7068c, type: 3}
   bossPrefab: {fileID: 8970867438237885685, guid: 3859bf0d081290b469f5428fac6cdfc1, type: 3}
-  minibossIndex: 5
+  minibossIndex: 4
 --- !u!1 &501545821
 GameObject:
   m_ObjectHideFlags: 0
