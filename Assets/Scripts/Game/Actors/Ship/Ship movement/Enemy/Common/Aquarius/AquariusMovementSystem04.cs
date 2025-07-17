@@ -1,14 +1,19 @@
 using System.Collections;
 using UnityEngine;
-using static CoroutineHelper;
 
 public class AquariusMovementSystem04 : CommonEnemyMovement
 {
+    [SerializeField] Vector2[] rotationPoints;
+
     protected override IEnumerator Move()
     {
-        yield return parentShip.MoveRelative(Vector3.down, 2f, Random.Range(1.5f, 2f));
-        yield return WaitForSeconds(1f);
-        yield return parentShip.MoveRelative(Vector3.down, 3f, 3f);
+        float dist = Vector2.Distance(transform.position, rotationPoints[0]);
+        float theta = Mathf.Asin(2f / dist) * Mathf.Rad2Deg * 2;
+
+        for (int i = 0; i < rotationPoints.Length; i++)
+        {
+            yield return parentShip.TranslateAround(rotationPoints[i], (i % 2 * 2 - 1) * theta, 1.5f);
+        }
 
         yield return LeaveScene();
     }

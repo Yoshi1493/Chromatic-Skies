@@ -70,7 +70,7 @@ PrefabInstance:
     - target: {fileID: 8056434987258519651, guid: 0ea569baafb91b94cbd6c069f48a94da, type: 3}
       propertyPath: shipData
       value: 
-      objectReference: {fileID: 11400000, guid: 218a46070fd9d2244afa216062ac70a5, type: 2}
+      objectReference: {fileID: 11400000, guid: dfd9bd7d23a2d3f42876405aae803e09, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0ea569baafb91b94cbd6c069f48a94da, type: 3}
 --- !u!1 &5224434185141182251 stripped
@@ -78,7 +78,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2407710777176494618, guid: 0ea569baafb91b94cbd6c069f48a94da, type: 3}
   m_PrefabInstance: {fileID: 7631634376295664945}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &-2533872347219786783
+--- !u!114 &569297913962866401
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -91,5 +91,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parentShip: {fileID: 0}
-  rotationPoint: {x: 3, y: 6}
-  rotationAmount: 180
+  rotationPoint: {x: 0, y: 0}
+  rotationAmount: 0
