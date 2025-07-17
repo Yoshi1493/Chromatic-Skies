@@ -6,6 +6,6 @@ public class #SCRIPTNAME# : CommonEnemyMovement
 {
     protected override IEnumerator Move()
     {
-        yield return null;
+        yield return LeaveScene();
     }
 }
