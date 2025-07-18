@@ -189,6 +189,52 @@ MonoBehaviour:
   projectiles:
   - {fileID: 4346678782719519837, guid: f76f01f9bd337f34c8972f2d8ed4f9bf, type: 3}
   bulletData: {fileID: 11400000, guid: a2471f0616849ab49a6aa9b9272c988d, type: 2}
+--- !u!1 &7268335915915982275
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6891186454580976404}
+  - component: {fileID: 4966154142567919516}
+  m_Layer: 0
+  m_Name: Movement System 6
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6891186454580976404
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7268335915915982275}
+  m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1683642109594022218}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
+--- !u!114 &4966154142567919516
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7268335915915982275}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e92ee9306a008a4a95efe3ce1f1f57d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parentShip: {fileID: 0}
+  shipData: {fileID: 11400000, guid: bc5e9736ee3e5e24d818f453d4c648b4, type: 2}
 --- !u!1 &8452187861056088111
 GameObject:
   m_ObjectHideFlags: 0
@@ -236,6 +282,52 @@ MonoBehaviour:
   projectiles:
   - {fileID: -6373702014971394567, guid: 4d551e85dce7e5c4c8f5d24723fc5284, type: 3}
   bulletData: {fileID: 11400000, guid: ef8c8d549ac5ad646abc41b8b40b68b4, type: 2}
+--- !u!1 &8625852503547199096
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5810254830682997647}
+  - component: {fileID: 8679894367869501458}
+  m_Layer: 0
+  m_Name: Movement System 5
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5810254830682997647
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8625852503547199096}
+  m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1683642109594022218}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
+--- !u!114 &8679894367869501458
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8625852503547199096}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae0bc3c95cc70af45af944f4afd1d617, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parentShip: {fileID: 0}
+  shipData: {fileID: 11400000, guid: bc5e9736ee3e5e24d818f453d4c648b4, type: 2}
 --- !u!1001 &6759093168088370692
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -484,8 +576,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parentShip: {fileID: 0}
-  moveDirection: {x: 0, y: 0, z: 0}
-  currentSpeed: 0
   shipData: {fileID: 11400000, guid: bc5e9736ee3e5e24d818f453d4c648b4, type: 2}
 --- !u!1 &6867336800114154692 stripped
 GameObject:
@@ -508,48 +598,6 @@ MonoBehaviour:
   - {fileID: -1039545952092051762, guid: 0b0446290c9c30d449679f3ae8b9d482, type: 3}
   - {fileID: 703856062453991383, guid: 1485e7d97ce92c849b8c2e4351cd6ad4, type: 3}
   bulletData: {fileID: 11400000, guid: e45ae2f991331a5449d0215f20f5ef26, type: 2}
---- !u!1 &7008567321455470459 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4363550108427413887, guid: d93cb44e21569f545b76560b29579f98, type: 3}
-  m_PrefabInstance: {fileID: 6759093168088370692}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1842287844743685892
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7008567321455470459}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae0bc3c95cc70af45af944f4afd1d617, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentShip: {fileID: 0}
-  moveDirection: {x: 0, y: 0, z: 0}
-  currentSpeed: 0
-  shipData: {fileID: 11400000, guid: bc5e9736ee3e5e24d818f453d4c648b4, type: 2}
---- !u!1 &7540179381485964155 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3848614359502636415, guid: d93cb44e21569f545b76560b29579f98, type: 3}
-  m_PrefabInstance: {fileID: 6759093168088370692}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &7100255876151343012
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7540179381485964155}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e92ee9306a008a4a95efe3ce1f1f57d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentShip: {fileID: 0}
-  moveDirection: {x: 0, y: 0, z: 0}
-  currentSpeed: 0
-  shipData: {fileID: 11400000, guid: bc5e9736ee3e5e24d818f453d4c648b4, type: 2}
 --- !u!1 &7913653206763732874 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3467752768501264782, guid: d93cb44e21569f545b76560b29579f98, type: 3}
@@ -568,8 +616,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parentShip: {fileID: 0}
-  moveDirection: {x: 0, y: 0, z: 0}
-  currentSpeed: 0
   shipData: {fileID: 11400000, guid: bc5e9736ee3e5e24d818f453d4c648b4, type: 2}
 --- !u!1 &9083349842419879498 stripped
 GameObject:
@@ -589,8 +635,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parentShip: {fileID: 0}
-  moveDirection: {x: 0, y: 0, z: 0}
-  currentSpeed: 0
   shipData: {fileID: 11400000, guid: bc5e9736ee3e5e24d818f453d4c648b4, type: 2}
 --- !u!1 &9208180497907977624 stripped
 GameObject:
@@ -610,6 +654,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parentShip: {fileID: 0}
-  moveDirection: {x: 0, y: 0, z: 0}
-  currentSpeed: 0
   shipData: {fileID: 11400000, guid: bc5e9736ee3e5e24d818f453d4c648b4, type: 2}
