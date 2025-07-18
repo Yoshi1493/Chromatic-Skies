@@ -97,7 +97,7 @@ public class EnemySpawner : MonoBehaviour
 
             #endregion
 
-            //activate all enemies based on listed spawn time
+            //activate all enemies based on spawn time *relative to previous enemy's spawn time*
             for (int i = 0; i < enemies.Count; i++)
             {
                 float delay = i > 0 ? spawnTimes[i] - spawnTimes[i - 1] : spawnTimes[0];
@@ -107,13 +107,20 @@ public class EnemySpawner : MonoBehaviour
                     yield return WaitForSeconds(delay);
                 }
 
+                //wait until any enemies leave scene before spawning miniboss, plus 1 sec.
+                if (enemyIndexes[i] == minibossIndex)
+                {
+                    yield return WaitUntil(() => !IsSceneEmpty());
+                    yield return WaitForSeconds(1f);
+                }
+
                 enemies[i].gameObject.SetActive(true);
                 enemies[i].enabled = true;
 
                 //wait until miniboss is defeated
                 if (enemyIndexes[i] == minibossIndex)
                 {
-                    yield return WaitUntil(() => !transform.GetChild(0).gameObject.activeSelf);
+                    yield return WaitUntil(() => !IsSceneEmpty());
                 }
             }
 
@@ -127,4 +134,5 @@ public class EnemySpawner : MonoBehaviour
         BossSpawnAction?.Invoke();
     }
 
+    bool IsSceneEmpty() => transform.GetChild(0).gameObject.activeSelf;
 }
