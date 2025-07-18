@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class AquariusMovementSystem03 : CommonEnemyMovement
+public class AquariusCommonMovement03 : CommonEnemyMovement
 {
     [SerializeField] Vector2 rotationPoint;
     [SerializeField] float rotationAmount;

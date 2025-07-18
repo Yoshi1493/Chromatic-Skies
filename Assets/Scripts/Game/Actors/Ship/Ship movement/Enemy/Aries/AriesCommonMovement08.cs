@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class AriesMovementSystem05 : MonoBehaviour
+public class AriesCommonMovement08 : MonoBehaviour
 {
     void Awake()
     {

@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class AquariusMovementSystem01 : CommonEnemyMovement
+public class AquariusCommonMovement01 : CommonEnemyMovement
 {
     protected override IEnumerator Move()
     {

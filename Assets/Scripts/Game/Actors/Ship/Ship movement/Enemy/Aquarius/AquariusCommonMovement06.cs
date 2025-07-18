@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using static CoroutineHelper;
 
-public class AquariusMovementSystem06 : CommonEnemyMovement
+public class AquariusCommonMovement06 : CommonEnemyMovement
 {
     [SerializeField] float moveSpeed;
 

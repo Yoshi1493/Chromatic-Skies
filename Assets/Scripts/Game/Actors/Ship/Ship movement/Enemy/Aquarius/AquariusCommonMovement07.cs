@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using static CoroutineHelper;
 
-public class AquariusMovementSystem07 : CommonEnemyMovement
+public class AquariusCommonMovement07 : CommonEnemyMovement
 {
     [SerializeField] int rotationDirection;
 

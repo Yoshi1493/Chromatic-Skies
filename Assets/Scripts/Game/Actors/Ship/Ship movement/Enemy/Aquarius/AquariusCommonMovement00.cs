@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using static CoroutineHelper;
 
-public class AquariusMovementSystem00 : CommonEnemyMovement
+public class AquariusCommonMovement00 : CommonEnemyMovement
 {
     protected override IEnumerator Move()
     {
