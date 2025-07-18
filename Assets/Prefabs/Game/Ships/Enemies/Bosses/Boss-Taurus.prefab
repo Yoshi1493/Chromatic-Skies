@@ -103,7 +103,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6319231777513611492}
-  - component: {fileID: 7146430083805540}
+  - component: {fileID: 9177835955373299932}
   m_Layer: 0
   m_Name: Movement System 5
   m_TagString: Untagged
@@ -126,7 +126,7 @@ Transform:
   m_Father: {fileID: 1683642109594022218}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
---- !u!114 &7146430083805540
+--- !u!114 &9177835955373299932
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -135,7 +135,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 930303817520964720}
   m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 038d328f887244141934bb64b78022c5, type: 3}
+  m_Script: {fileID: 11500000, guid: b5dd1b7df5c852c47bd0e7c5721c2970, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   parentShip: {fileID: 0}
@@ -752,26 +752,6 @@ PrefabInstance:
       propertyPath: movementSystemContainer
       value: 
       objectReference: {fileID: 1683642109594022218}
-    - target: {fileID: 3922465162775491505, guid: d93cb44e21569f545b76560b29579f98, type: 3}
-      propertyPath: healthRefillInterpolation.m_Curve.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3922465162775491505, guid: d93cb44e21569f545b76560b29579f98, type: 3}
-      propertyPath: healthRefillInterpolation.m_Curve.Array.data[1].time
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3922465162775491505, guid: d93cb44e21569f545b76560b29579f98, type: 3}
-      propertyPath: healthRefillInterpolation.m_Curve.Array.data[1].value
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3922465162775491505, guid: d93cb44e21569f545b76560b29579f98, type: 3}
-      propertyPath: healthRefillInterpolation.m_Curve.Array.data[0].inSlope
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3922465162775491505, guid: d93cb44e21569f545b76560b29579f98, type: 3}
-      propertyPath: healthRefillInterpolation.m_Curve.Array.data[0].outSlope
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 4336286228127436173, guid: d93cb44e21569f545b76560b29579f98, type: 3}
       propertyPath: m_Name
       value: Boss-Taurus
@@ -938,7 +918,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 366639083037538117, guid: d93cb44e21569f545b76560b29579f98, type: 3}
   m_PrefabInstance: {fileID: 6759093168088370692}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &386945813351643824
+--- !u!114 &455552080802174357
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -947,7 +927,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6402868668855187777}
   m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6034c5a9a9be35349a6c35d7e8e9f865, type: 3}
+  m_Script: {fileID: 11500000, guid: 522a1f7b6b95d6940a2786fd86389061, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   parentShip: {fileID: 0}
@@ -977,7 +957,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3467752768501264782, guid: d93cb44e21569f545b76560b29579f98, type: 3}
   m_PrefabInstance: {fileID: 6759093168088370692}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &6177894251623736131
+--- !u!114 &5896290228435739847
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -986,7 +966,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7913653206763732874}
   m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57cf9162cfff81b48b4202ca3ad87a4a, type: 3}
+  m_Script: {fileID: 11500000, guid: b1f225b06460a604f9918555691bb748, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   parentShip: {fileID: 0}
@@ -996,7 +976,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2577068212091142222, guid: d93cb44e21569f545b76560b29579f98, type: 3}
   m_PrefabInstance: {fileID: 6759093168088370692}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2955867264798156221
+--- !u!114 &2053259618277884534
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1005,7 +985,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 9083349842419879498}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a27aef4fceacf114b818e98e0ff7f588, type: 3}
+  m_Script: {fileID: 11500000, guid: e513492dbbab623418fc0b8250bcfcc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   parentShip: {fileID: 0}
@@ -1015,7 +995,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2451954965750563740, guid: d93cb44e21569f545b76560b29579f98, type: 3}
   m_PrefabInstance: {fileID: 6759093168088370692}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &8749501711933868892
+--- !u!114 &329213481169570911
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1024,7 +1004,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 9208180497907977624}
   m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f01ab42e834810945bc5426d3f8a0b3b, type: 3}
+  m_Script: {fileID: 11500000, guid: 25b334fb9ff5811439f32c46cbd7e147, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   parentShip: {fileID: 0}

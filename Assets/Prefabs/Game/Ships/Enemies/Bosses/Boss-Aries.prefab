@@ -275,26 +275,6 @@ PrefabInstance:
       propertyPath: enemyBullets.Array.data[7]
       value: 
       objectReference: {fileID: 0}
-    - target: {fileID: 3922465162775491505, guid: d93cb44e21569f545b76560b29579f98, type: 3}
-      propertyPath: healthRefillInterpolation.m_Curve.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3922465162775491505, guid: d93cb44e21569f545b76560b29579f98, type: 3}
-      propertyPath: healthRefillInterpolation.m_Curve.Array.data[1].time
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3922465162775491505, guid: d93cb44e21569f545b76560b29579f98, type: 3}
-      propertyPath: healthRefillInterpolation.m_Curve.Array.data[1].value
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3922465162775491505, guid: d93cb44e21569f545b76560b29579f98, type: 3}
-      propertyPath: healthRefillInterpolation.m_Curve.Array.data[0].inSlope
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3922465162775491505, guid: d93cb44e21569f545b76560b29579f98, type: 3}
-      propertyPath: healthRefillInterpolation.m_Curve.Array.data[0].outSlope
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 4336286228127436173, guid: d93cb44e21569f545b76560b29579f98, type: 3}
       propertyPath: m_Name
       value: Boss-Aries
@@ -474,7 +454,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 366639083037538117, guid: d93cb44e21569f545b76560b29579f98, type: 3}
   m_PrefabInstance: {fileID: 5337197869581096772}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2405065938852704896
+--- !u!114 &3918723547340938984
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -483,7 +463,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5694548166714613761}
   m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 94c854e697f0a294e88b5ae35a6404e5, type: 3}
+  m_Script: {fileID: 11500000, guid: 6ce21b1e20d665c42a5de63cb8abab6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   parentShip: {fileID: 0}
@@ -498,7 +478,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2451954965750563740, guid: d93cb44e21569f545b76560b29579f98, type: 3}
   m_PrefabInstance: {fileID: 5337197869581096772}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &7609946168089859915
+--- !u!114 &2560764258411169100
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -507,7 +487,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7500341811803264216}
   m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0253ef448129cc74999e7d4b0e8477b1, type: 3}
+  m_Script: {fileID: 11500000, guid: 9182e9297ed02c84ca49abe21ec7b463, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   parentShip: {fileID: 0}
@@ -517,7 +497,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2577068212091142222, guid: d93cb44e21569f545b76560b29579f98, type: 3}
   m_PrefabInstance: {fileID: 5337197869581096772}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &3498700784719792407
+--- !u!114 &3578577677507170935
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -526,7 +506,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7625188789240895242}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6717b9ded85b0e42a15dc5b046edb81, type: 3}
+  m_Script: {fileID: 11500000, guid: 754055522fb28864b8b779d40df67255, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   parentShip: {fileID: 0}
@@ -536,7 +516,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3467752768501264782, guid: d93cb44e21569f545b76560b29579f98, type: 3}
   m_PrefabInstance: {fileID: 5337197869581096772}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &3105396388007333617
+--- !u!114 &8359700253804944715
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -545,7 +525,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8795081378484938442}
   m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f5c783202545184b842d11006d7fd4c, type: 3}
+  m_Script: {fileID: 11500000, guid: c08522d7dd78738449169bea8d0386ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   parentShip: {fileID: 0}

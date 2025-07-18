@@ -377,26 +377,6 @@ PrefabInstance:
       propertyPath: movementSystemContainer
       value: 
       objectReference: {fileID: 1683642109594022218}
-    - target: {fileID: 3922465162775491505, guid: d93cb44e21569f545b76560b29579f98, type: 3}
-      propertyPath: healthRefillInterpolation.m_Curve.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3922465162775491505, guid: d93cb44e21569f545b76560b29579f98, type: 3}
-      propertyPath: healthRefillInterpolation.m_Curve.Array.data[1].time
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3922465162775491505, guid: d93cb44e21569f545b76560b29579f98, type: 3}
-      propertyPath: healthRefillInterpolation.m_Curve.Array.data[1].value
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3922465162775491505, guid: d93cb44e21569f545b76560b29579f98, type: 3}
-      propertyPath: healthRefillInterpolation.m_Curve.Array.data[0].inSlope
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3922465162775491505, guid: d93cb44e21569f545b76560b29579f98, type: 3}
-      propertyPath: healthRefillInterpolation.m_Curve.Array.data[0].outSlope
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 4336286228127436173, guid: d93cb44e21569f545b76560b29579f98, type: 3}
       propertyPath: m_Name
       value: Boss-Capricorn
@@ -573,7 +553,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 366639083037538117, guid: d93cb44e21569f545b76560b29579f98, type: 3}
   m_PrefabInstance: {fileID: 6759093168088370692}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &7737424487231295302
+--- !u!114 &1588451736804363369
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -582,7 +562,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6402868668855187777}
   m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a8f76938762a48418fb393aeaf7ba8e, type: 3}
+  m_Script: {fileID: 11500000, guid: 41bfa06dce923d14eb6f760578058287, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   parentShip: {fileID: 0}
@@ -612,7 +592,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3467752768501264782, guid: d93cb44e21569f545b76560b29579f98, type: 3}
   m_PrefabInstance: {fileID: 6759093168088370692}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &8634554326807969392
+--- !u!114 &2650417501824404447
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -621,7 +601,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7913653206763732874}
   m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b137cdd14efbeee4f93b716e2802140c, type: 3}
+  m_Script: {fileID: 11500000, guid: 300ca341053fae44f8aebbde7dd5df8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   parentShip: {fileID: 0}
@@ -655,7 +635,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2577068212091142222, guid: d93cb44e21569f545b76560b29579f98, type: 3}
   m_PrefabInstance: {fileID: 6759093168088370692}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &5346839350437266427
+--- !u!114 &8042656998383917355
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -664,7 +644,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 9083349842419879498}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ec49c00069d5924d916dbe91791daf9, type: 3}
+  m_Script: {fileID: 11500000, guid: 357728bb017f2124087350dafeb89464, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   parentShip: {fileID: 0}
@@ -674,7 +654,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2451954965750563740, guid: d93cb44e21569f545b76560b29579f98, type: 3}
   m_PrefabInstance: {fileID: 6759093168088370692}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &8262695721838311747
+--- !u!114 &4712494452669645635
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -683,7 +663,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 9208180497907977624}
   m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fce37657db681c84ca8fc8da661acc3e, type: 3}
+  m_Script: {fileID: 11500000, guid: 89d4ceeab3cc36a46bc8d2aed609aa74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   parentShip: {fileID: 0}

@@ -16,7 +16,7 @@ public class GeminiBossShooter5 : BossShooter<BossBullet>
     protected override IEnumerator Shoot()
     {
         yield return base.Shoot();
-        GeminiMovementSystem5 movementSystem = (parentShip as Boss).GetCurrentMovementSystem() as GeminiMovementSystem5;            //no
+        GeminiBossMovement5 movementSystem = (parentShip as Boss).GetCurrentMovementSystem() as GeminiBossMovement5;            //no
 
         SpawnProjectile(0, 0f, Vector3.zero).Fire();
 

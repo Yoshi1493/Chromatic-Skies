@@ -1,0 +1,15 @@
+using System.Collections;
+using static CoroutineHelper;
+
+public class VirgoBossMovement3 : BossMovement
+{
+    protected override IEnumerator Move()
+    {
+        yield return WaitForSeconds(1.5f);
+
+        for (int i = 0; i < 2; i++)
+        {
+            yield return parentShip.MoveToRandomPosition(1.5f, 1.5f, 3f);
+        }
+    }
+}
