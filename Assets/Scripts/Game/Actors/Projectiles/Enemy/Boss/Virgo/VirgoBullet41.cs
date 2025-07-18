@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class VirgoBullet41 : ScriptableBossBullet<VirgoBulletSystem41, BossBullet>
+public class VirgoBullet41 : ScriptableBossBullet<VirgoBossShooter41, BossBullet>
 {
     [SerializeField] ProjectileObject bulletData;
 

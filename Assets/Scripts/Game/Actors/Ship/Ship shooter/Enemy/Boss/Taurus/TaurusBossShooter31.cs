@@ -3,7 +3,7 @@ using UnityEngine;
 using static CoroutineHelper;
 using static CameraBoundaries;
 
-public class TaurusBulletSystem31 : BossShooter<BossBullet>
+public class TaurusBossShooter31 : BossShooter<BossBullet>
 {
     const int MinGridLength = 3;
     const int MaxGridLength = 5;

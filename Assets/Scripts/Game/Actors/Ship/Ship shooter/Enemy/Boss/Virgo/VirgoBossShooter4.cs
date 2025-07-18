@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using static CoroutineHelper;
 
-public class VirgoBulletSystem4 : BossShooter<BossBullet>
+public class VirgoBossShooter4 : BossShooter<BossBullet>
 {
     const int WaveCount = 200;
     const int BranchCount = 5;

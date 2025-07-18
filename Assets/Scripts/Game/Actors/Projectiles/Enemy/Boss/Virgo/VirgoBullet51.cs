@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class VirgoBullet51 : ScriptableBossBullet<VirgoBulletSystem51, BossBullet>
+public class VirgoBullet51 : ScriptableBossBullet<VirgoBossShooter51, BossBullet>
 {
     const int BulletCount = 5;
     const float BulletSpacing = 360f / BulletCount;

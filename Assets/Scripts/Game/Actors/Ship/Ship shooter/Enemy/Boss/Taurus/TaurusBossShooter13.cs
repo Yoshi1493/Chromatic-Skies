@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using static CoroutineHelper;
 
-public class TaurusBulletSystem13 : BossShooter<BossBullet>
+public class TaurusBossShooter13 : BossShooter<BossBullet>
 {
     const int BulletRowCount = 5;
     const int BulletColCount = 5;

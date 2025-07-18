@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine;
 using static CoroutineHelper;
 
-public class TaurusBullet11 : ScriptableBossBullet<TaurusBulletSystem12, Laser>
+public class TaurusBullet11 : ScriptableBossBullet<TaurusBossShooter12, Laser>
 {
     [SerializeField] LayerMask bossBulletLayer;
     protected override float MaxLifetime => 9f;
@@ -19,7 +19,7 @@ public class TaurusBullet11 : ScriptableBossBullet<TaurusBulletSystem12, Laser>
     void SpawnLasers()
     {
         Vector3 rayOrigin = transform.position;
-        float rayDistance = TaurusBulletSystem11.BulletDensity;
+        float rayDistance = TaurusBossShooter11.BulletDensity;
         int layerMask = bossBulletLayer.value;
 
         var hits = Array.FindAll(Physics2D.OverlapCircleAll(rayOrigin, rayDistance, layerMask), i => (

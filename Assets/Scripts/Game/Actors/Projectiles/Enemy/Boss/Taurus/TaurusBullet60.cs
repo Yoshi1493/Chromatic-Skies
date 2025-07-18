@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class TaurusBullet60 : ScriptableBossBullet<TaurusBulletSystem61, Laser>
+public class TaurusBullet60 : ScriptableBossBullet<TaurusBossShooter61, Laser>
 {
     protected override float MaxLifetime => 12f;
 

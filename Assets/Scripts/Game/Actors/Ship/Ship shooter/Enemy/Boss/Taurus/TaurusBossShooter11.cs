@@ -6,7 +6,7 @@ using static CoroutineHelper;
 using static MathHelper;
 using static CameraBoundaries;
 
-public class TaurusBulletSystem11 : BossShooter<BossBullet>
+public class TaurusBossShooter11 : BossShooter<BossBullet>
 {
     const int BulletCount = 120;
     public const float BulletDensity = 0.64f;

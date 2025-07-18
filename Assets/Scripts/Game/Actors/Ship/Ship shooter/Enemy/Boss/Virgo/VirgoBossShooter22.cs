@@ -3,7 +3,7 @@ using UnityEngine;
 using static CoroutineHelper;
 using static MathHelper;
 
-public class VirgoBulletSystem22 : BossShooter<BossBullet>
+public class VirgoBossShooter22 : BossShooter<BossBullet>
 {
     const int WaveCount = 50;
     readonly float WaveSpacing = (1f + Mathf.Sqrt(5f)) * 180f;

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using static CoroutineHelper;
 
-public class TaurusBulletSystem5 : BossShooter<BossBullet>
+public class TaurusBossShooter5 : BossShooter<BossBullet>
 {
     const int WaveCount = 12;
     const int BranchCount = 5;

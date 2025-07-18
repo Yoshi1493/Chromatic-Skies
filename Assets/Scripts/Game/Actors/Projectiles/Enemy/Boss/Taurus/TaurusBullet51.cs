@@ -2,13 +2,13 @@ using System.Collections;
 using UnityEngine;
 using static CoroutineHelper;
 
-public class TaurusBullet51 : ScriptableBossBullet<TaurusBulletSystem53, Laser>
+public class TaurusBullet51 : ScriptableBossBullet<TaurusBossShooter53, Laser>
 {
     protected override float MaxLifetime => 15f;
 
     protected override IEnumerator Move()
     {
-        yield return this.LerpSpeed((TaurusBulletSystem51.BulletSpawnRadius - 2f) * -2f, 0f, 1f);
+        yield return this.LerpSpeed((TaurusBossShooter51.BulletSpawnRadius - 2f) * -2f, 0f, 1f);
         yield return WaitForSeconds(0.1f);
 
         SpawnSmallLasers();
@@ -24,7 +24,7 @@ public class TaurusBullet51 : ScriptableBossBullet<TaurusBulletSystem53, Laser>
     {
         for (int i = 0; i < 2; i++)
         {
-            float z = transform.eulerAngles.z + 180f + ((i % 2 * 2 - 1) * (180f * (TaurusBulletSystem51.BulletCount - 2) / TaurusBulletSystem51.BulletCount / 2f));
+            float z = transform.eulerAngles.z + 180f + ((i % 2 * 2 - 1) * (180f * (TaurusBossShooter51.BulletCount - 2) / TaurusBossShooter51.BulletCount / 2f));
             Vector3 pos = transform.position;
 
             SpawnBullet(0, z, pos, false).Fire(0f);

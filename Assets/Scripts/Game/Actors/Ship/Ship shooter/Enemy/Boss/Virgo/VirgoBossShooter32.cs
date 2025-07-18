@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using static CoroutineHelper;
 
-public class VirgoBulletSystem32 : BossShooter<BossBullet>
+public class VirgoBossShooter32 : BossShooter<BossBullet>
 {
     const int BulletCount = 72;
     readonly float BulletSpacing = (1f + Mathf.Sqrt(5f)) * 180f;

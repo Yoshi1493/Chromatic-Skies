@@ -3,7 +3,7 @@ using UnityEngine;
 using static CoroutineHelper;
 using static CameraBoundaries;
 
-public class TaurusBulletSystem6 : BossShooter<BossBullet>
+public class TaurusBossShooter6 : BossShooter<BossBullet>
 {
     const int BranchCount = 2;
     const float BranchSpacing = 360f / BranchCount;

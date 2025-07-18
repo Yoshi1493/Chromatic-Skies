@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using static CoroutineHelper;
 
-public class VirgoBulletSystem3 : BossShooter<BossBullet>
+public class VirgoBossShooter3 : BossShooter<BossBullet>
 {
     const int WaveCount = 100;
     const float AngularFrequency = 2f / 7f;

@@ -1,7 +1,7 @@
 using System.Collections;
 using static CoroutineHelper;
 
-public class TaurusBulletSystem3 : BossShooter<BossBullet>
+public class TaurusBossShooter3 : BossShooter<BossBullet>
 {
     protected override float ShootingCooldown => 4f;
 

@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using static CoroutineHelper;
 
-public class VirgoBulletSystem5 : BossShooter<BossBullet>
+public class VirgoBossShooter5 : BossShooter<BossBullet>
 {
     const int BranchCount = 2;
     const float BranchSpacing = 360f / BranchCount;

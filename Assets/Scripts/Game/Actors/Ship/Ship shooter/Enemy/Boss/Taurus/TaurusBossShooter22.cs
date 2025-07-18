@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using static CoroutineHelper;
 
-public class TaurusBulletSystem22 : BossShooter<BossBullet>
+public class TaurusBossShooter22 : BossShooter<BossBullet>
 {
     const int RepeatCount = 4;
     const float RepeatSpacing = 75f;

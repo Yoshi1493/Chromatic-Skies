@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using static CoroutineHelper;
 
-public class VirgoBulletSystem1 : BossShooter<BossBullet>
+public class VirgoBossShooter1 : BossShooter<BossBullet>
 {
     readonly float BulletSpacing = (1f + Mathf.Sqrt(5f)) * 180f;
     const float BulletSpawnRadius = 0.5f;

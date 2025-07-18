@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using static CoroutineHelper;
 
-public class TaurusBulletSystem1 : BossShooter<BossBullet>
+public class TaurusBossShooter1 : BossShooter<BossBullet>
 {
     const int WaveCount = 3;
     const float WaveSpacing = BranchSpacing / 2f;

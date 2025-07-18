@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using static CoroutineHelper;
 
-public class VirgoBullet61 : ScriptableBossBullet<VirgoBulletSystem61, BossBullet>
+public class VirgoBullet61 : ScriptableBossBullet<VirgoBossShooter61, BossBullet>
 {
     [SerializeField] ProjectileObject bulletData;
 

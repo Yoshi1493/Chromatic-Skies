@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using static CoroutineHelper;
 
-public class TaurusBulletSystem51 : BossShooter<BossBullet>
+public class TaurusBossShooter51 : BossShooter<BossBullet>
 {
     public const int BulletCount = 10;
     const float BulletSpacing = 360f / BulletCount;

@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using static CoroutineHelper;
 
-public class VirgoBulletSystem11 : BossShooter<BossBullet>
+public class VirgoBossShooter11 : BossShooter<BossBullet>
 {
     const float WaveSpacing = 15f;
     const int BranchCount = 5;

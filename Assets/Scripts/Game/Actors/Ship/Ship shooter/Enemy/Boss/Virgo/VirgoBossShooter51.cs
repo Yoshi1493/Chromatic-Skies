@@ -3,7 +3,7 @@ using UnityEngine;
 using static CoroutineHelper;
 using static CameraBoundaries;
 
-public class VirgoBulletSystem51 : BossShooter<BossBullet>
+public class VirgoBossShooter51 : BossShooter<BossBullet>
 {
     protected override float ShootingCooldown => 2f;
 

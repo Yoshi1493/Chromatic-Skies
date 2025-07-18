@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using static CoroutineHelper;
 
-public class VirgoBulletSystem31 : BossShooter<BossBullet>
+public class VirgoBossShooter31 : BossShooter<BossBullet>
 {
     const int RepeatCount = 6;
     const int WaveCount = 12;

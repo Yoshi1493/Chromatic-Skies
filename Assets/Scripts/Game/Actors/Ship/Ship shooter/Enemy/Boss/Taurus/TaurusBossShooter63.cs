@@ -3,7 +3,7 @@ using UnityEngine;
 using static CoroutineHelper;
 using static CameraBoundaries;
 
-public class TaurusBulletSystem63 : BossShooter<BossBullet>
+public class TaurusBossShooter63 : BossShooter<BossBullet>
 {
     const int WaveCount = 3;
     const int BranchCount = 2;

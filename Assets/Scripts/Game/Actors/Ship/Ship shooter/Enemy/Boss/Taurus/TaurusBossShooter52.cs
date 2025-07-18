@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using static CoroutineHelper;
 
-public class TaurusBulletSystem52 : BossShooter<BossBullet>
+public class TaurusBossShooter52 : BossShooter<BossBullet>
 {
     const int BranchCount = 4;
     const float BranchSpacing = 180f * (BranchCount - 2) / BranchCount;
