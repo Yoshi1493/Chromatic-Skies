@@ -10,6 +10,6 @@ public class AquariusBullet30 : BossBullet
         MoveSpeed = 0f;
 
         yield return WaitForSeconds(1f);
-        yield return StartCoroutine(this.LerpSpeed(0f, -2f, 3f));
+        yield return this.LerpSpeed(0f, -2f, 3f);
     }
 }
