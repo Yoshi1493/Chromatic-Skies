@@ -53,7 +53,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3140064405051798717, guid: 4e06125b108514547b6fc9b6887da3eb, type: 3}
       propertyPath: m_Name
-      value: Aquarius common bullet 1
+      value: Aquarius bullet 0_1
       objectReference: {fileID: 0}
     - target: {fileID: 7943771795135557499, guid: 4e06125b108514547b6fc9b6887da3eb, type: 3}
       propertyPath: power
@@ -79,7 +79,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3140064405051798717, guid: 4e06125b108514547b6fc9b6887da3eb, type: 3}
   m_PrefabInstance: {fileID: 4489721518377228893}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &-7952192781978718152
+--- !u!114 &6432701281086397350
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -88,20 +88,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1575430968703495904}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0ab9f8a15c17334693346c9571ec41a, type: 3}
+  m_Script: {fileID: 11500000, guid: 9fb56f81ac00e6645898f2def303767e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   transform: {fileID: 0}
   moveDirection: {x: 0, y: 0, z: 0}
   projectileData: {fileID: 11400000, guid: ae4c31b7de0784647a110946559303b5, type: 2}
-  moveSpeeds:
-  - 2
-  - 4
-  moveDurations:
-  - 1
-  moveDelays:
-  - 0
-  delay: 0
-  startSpeed: 2
-  endSpeed: 4
-  duration: 1
