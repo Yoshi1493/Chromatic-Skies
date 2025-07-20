@@ -5,8 +5,8 @@ using static CoroutineHelper;
 public class AquariusShooter02 : EnemyShooter<EnemyBullet>
 {
     const int RepeatCount = 2;
-    const int WaveCount = 8;
-    const float WaveSpacing = 2f;
+    const int WaveCount = 3;
+    const float WaveSpacing = 8f;
     const int BranchCount = 15;
     const float BranchSpacing = 360f / BranchCount;
 
@@ -38,7 +38,7 @@ public class AquariusShooter02 : EnemyShooter<EnemyBullet>
                 yield return WaitForSeconds(1f);
             }
 
-            yield return WaitForSeconds(2f);
+            yield return WaitForSeconds(3f);
         }
     }
 }

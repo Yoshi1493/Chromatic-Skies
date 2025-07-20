@@ -17,8 +17,8 @@ MonoBehaviour:
   colour: {r: 0.19999999, g: 0.6, b: 1, a: 1}
   gradient:
     serializedVersion: 2
-    key0: {r: 1, g: 1, b: 1, a: 0}
-    key1: {r: 1, g: 1, b: 1, a: 0}
+    key0: {r: 1, g: 1, b: 1, a: 1}
+    key1: {r: 1, g: 1, b: 1, a: 1}
     key2: {r: 0.55, g: 0.9255906, b: 1, a: 0}
     key3: {r: 0.75, g: 1, b: 1, a: 0}
     key4: {r: 0.8, g: 1, b: 1, a: 0}
