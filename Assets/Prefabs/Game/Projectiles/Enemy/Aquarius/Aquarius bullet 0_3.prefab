@@ -53,7 +53,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3140064405051798717, guid: 4e06125b108514547b6fc9b6887da3eb, type: 3}
       propertyPath: m_Name
-      value: Aquarius common bullet 1
+      value: Aquarius common bullet 3
       objectReference: {fileID: 0}
     - target: {fileID: 7943771795135557499, guid: 4e06125b108514547b6fc9b6887da3eb, type: 3}
       propertyPath: power
@@ -93,8 +93,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   transform: {fileID: 0}
   moveDirection: {x: 0, y: 0, z: 0}
-  projectileData: {fileID: 11400000, guid: ae4c31b7de0784647a110946559303b5, type: 2}
+  projectileData: {fileID: 11400000, guid: 220edc447c38aa94e8e1cdf6d47842fb, type: 2}
+  moveSpeeds:
+  - 4
+  - 2
+  moveDurations:
+  - 1
+  moveDelays:
+  - 0
   delay: 0
-  startSpeed: 2
-  endSpeed: 4
+  startSpeed: 3
+  endSpeed: 2
   duration: 1
