@@ -1,12 +1,12 @@
 using System.Collections;
-using UnityEngine;
 using static CoroutineHelper;
 
 public class AquariusCommonMovement05 : CommonEnemyMovement
 {
     protected override IEnumerator Move()
     {
-        yield return parentShip.MoveTo(ActorMovementHelper.bossSpawnPosition, 2f);
+        yield return parentShip.MoveTo(ActorMovementHelper.bossSpawnPosition, 1.5f);
+        yield return WaitForSeconds(0.5f);
 
         while (enabled)
         {
