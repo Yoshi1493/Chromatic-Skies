@@ -111,7 +111,6 @@ MonoBehaviour:
   projectiles:
   - {fileID: -5357594391736024396, guid: 91b931417b1c0ae49a2fe9852b5f3a7e, type: 3}
   - {fileID: 1494254598885239335, guid: 8a422051ebf547b40a25411c30a563ae, type: 3}
-  - {fileID: -3047867707141635994, guid: 7a0c4b1b67bb77b4fa3f78ec13ff8d2d, type: 3}
   bulletData: {fileID: 11400000, guid: 1464c46bcd9b22647abae4fd92e47573, type: 2}
   largeBulletData: {fileID: 11400000, guid: e38b713de2a24c442b167175afa79c0d, type: 2}
 --- !u!114 &7988260134413610699

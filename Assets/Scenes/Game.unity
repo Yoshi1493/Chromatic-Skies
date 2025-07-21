@@ -395,8 +395,6 @@ MonoBehaviour:
   - {fileID: 3363123336279588375, guid: 8f54302015f132b468a6d2c61f8e0841, type: 3}
   - {fileID: 3363123336279588375, guid: 08cd735703d123740ba15784ab311802, type: 3}
   - {fileID: 3363123336279588375, guid: c48d2cef33cc69b4cadb86a500ee1ab8, type: 3}
-  - {fileID: 443384559322656082, guid: 438791dbba1ff074dba093bcff394a7a, type: 3}
-  - {fileID: 2765527255875661790, guid: 7befce0f33ce3ae4889412c92bba294a, type: 3}
   bossPrefab: {fileID: 7755895804811722165, guid: ae32505ea7ca26345a41907e070cec19, type: 3}
   minibossIndex: 7
 --- !u!1 &115172394
