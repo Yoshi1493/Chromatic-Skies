@@ -67,17 +67,35 @@ PrefabInstance:
       propertyPath: m_Name
       value: Aquarius Enemy 5_0 (Miniboss)
       objectReference: {fileID: 0}
-    - target: {fileID: 8056434987258519651, guid: 0ea569baafb91b94cbd6c069f48a94da, type: 3}
-      propertyPath: shipData
-      value: 
-      objectReference: {fileID: 11400000, guid: 485ce21677dd01b4783615e364304ebf, type: 2}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8056434987258519651, guid: 0ea569baafb91b94cbd6c069f48a94da, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 0ea569baafb91b94cbd6c069f48a94da, type: 3}
+--- !u!58 &5224434185141182247 stripped
+CircleCollider2D:
+  m_CorrespondingSourceObject: {fileID: 2407710777176494614, guid: 0ea569baafb91b94cbd6c069f48a94da, type: 3}
+  m_PrefabInstance: {fileID: 7631634376295664945}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &5224434185141182251 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2407710777176494618, guid: 0ea569baafb91b94cbd6c069f48a94da, type: 3}
   m_PrefabInstance: {fileID: 7631634376295664945}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6925266035577050541
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5224434185141182251}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8af3d26737a15bf4a96fb0bb18e961fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  transform: {fileID: 0}
+  moveDirection: {x: 0, y: 0, z: 0}
+  shipData: {fileID: 11400000, guid: 485ce21677dd01b4783615e364304ebf, type: 2}
+  collider: {fileID: 5224434185141182247}
 --- !u!114 &2690628369460380277
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -91,8 +109,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectiles:
-  - {fileID: -7952192781978718152, guid: 6655630e333d1864dbcb2ba70e049606, type: 3}
-  bulletData: {fileID: 11400000, guid: 420d8466421a4ad408e6f7c6ae198014, type: 2}
+  - {fileID: -5357594391736024396, guid: 91b931417b1c0ae49a2fe9852b5f3a7e, type: 3}
+  - {fileID: 1494254598885239335, guid: 8a422051ebf547b40a25411c30a563ae, type: 3}
+  - {fileID: -3047867707141635994, guid: 7a0c4b1b67bb77b4fa3f78ec13ff8d2d, type: 3}
+  bulletData: {fileID: 11400000, guid: 1464c46bcd9b22647abae4fd92e47573, type: 2}
+  largeBulletData: {fileID: 11400000, guid: e38b713de2a24c442b167175afa79c0d, type: 2}
 --- !u!114 &7988260134413610699
 MonoBehaviour:
   m_ObjectHideFlags: 0
