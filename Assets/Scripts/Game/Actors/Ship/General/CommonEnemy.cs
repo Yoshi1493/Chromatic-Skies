@@ -41,7 +41,7 @@ public class CommonEnemy : Ship
         Destroy(gameObject);
     }
 
-    //called by CommonEnemyMovement if finished leaving the scene, or when health reaches 0
+    //called when health reaches 0, *or* by CommonEnemyMovement if finished leaving the scene
     public void Destroy()
     {
         if (deathCoroutine != null)
