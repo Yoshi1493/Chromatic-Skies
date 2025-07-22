@@ -5,10 +5,10 @@ using static CoroutineHelper;
 public class AquariusShooter01 : EnemyShooter<EnemyBullet>
 {
     const int WaveCount = 2;
-    const int BulletCount = 5;
-    const float BulletSpacing = 5f;
+    const int BulletCount = 3;
+    const float BulletSpacing = 3f;
 
-    protected override float ShootingCooldown => 2f;
+    protected override float ShootingCooldown => 1.5f;
 
     protected override IEnumerator Shoot()
     {
