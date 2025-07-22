@@ -129,7 +129,7 @@ public class EnemySpawner : MonoBehaviour
             yield return WaitUntil(() => transform.childCount == 0);
         }
 
-        yield return WaitForSeconds(3f);
+        yield return WaitForSeconds(5f);
 
         EnemyBulletPool.Instance.DestroyAllProjectilesInPool();
 
