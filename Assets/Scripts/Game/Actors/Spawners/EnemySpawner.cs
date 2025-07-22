@@ -112,6 +112,8 @@ public class EnemySpawner : MonoBehaviour
                 {
                     yield return WaitUntil(() => !IsSceneEmpty());
                     yield return WaitForSeconds(1f);
+
+                    EnemyBulletPool.Instance.DestroyAllProjectilesInPool();
                 }
 
                 enemies[i].gameObject.SetActive(true);
@@ -128,6 +130,8 @@ public class EnemySpawner : MonoBehaviour
         }
 
         yield return WaitForSeconds(3f);
+
+        EnemyBulletPool.Instance.DestroyAllProjectilesInPool();
 
         //activate boss
         boss.gameObject.SetActive(true);
