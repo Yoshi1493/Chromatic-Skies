@@ -51,4 +51,12 @@ public class ProjectileObjectPool<TProjectile> : MonoBehaviour where TProjectile
 
         objectPool[returningObject.ProjectileID].queue.Enqueue(returningObject);
     }
+
+    public void DestroyAllProjectilesInPool()
+    {
+        foreach (TProjectile p in transform.GetComponentsInChildren<TProjectile>())
+        {
+            p.Destroy();
+        }
+    }
 }
