@@ -4,7 +4,8 @@ public class AquariusBullet04 : EnemyBullet
 {
     protected override IEnumerator Move()
     {
-        yield return this.LerpSpeed(4f, 0f, 0.5f);
-        yield return this.LerpSpeed(0f, 2.5f, 1f);
+        float startSpeed = MoveSpeed;
+        yield return this.LerpSpeed(startSpeed, 0f, 0.5f);
+        yield return this.LerpSpeed(0f, startSpeed, 1f);
     }
 }
