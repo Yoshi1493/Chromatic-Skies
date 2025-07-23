@@ -6,7 +6,7 @@ public class AquariusShooter04 : EnemyShooter<EnemyBullet>
 {
     const int WaveCount = 3;
     const int BulletCount = 3;
-    const float BulletSpacing = 15f;
+    const float BulletSpacing = 8f;
     const float BulletBaseSpeed = 2f;
     const float BulletSpeedModifier = 0.6f;
 
