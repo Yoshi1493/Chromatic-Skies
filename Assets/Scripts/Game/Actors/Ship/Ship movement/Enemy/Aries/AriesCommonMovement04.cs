@@ -1,10 +1,11 @@
 using System.Collections;
 using UnityEngine;
+using static CoroutineHelper;
 
-public class AriesCommonMovement04 : MonoBehaviour
+public class AriesCommonMovement04 : CommonEnemyMovement
 {
-    void Awake()
+    protected override IEnumerator Move()
     {
-        
+        yield return null;
     }
 }
