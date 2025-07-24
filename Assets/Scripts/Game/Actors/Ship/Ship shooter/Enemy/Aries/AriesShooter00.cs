@@ -1,12 +1,13 @@
 using System.Collections;
 using UnityEngine;
 using static CoroutineHelper;
+using static MathHelper;
 
 public class AriesShooter00 : EnemyShooter<EnemyBullet>
 {
-    const int RepeatCount = 3;
+    const int RepeatCount = 4;
     const int WaveCount = 3;
-    const int BranchCount = 3;
+    const int BranchCount = 5;
     const float BranchSpacing = 360f / BranchCount;
     const float BulletBaseSpeed = 2.5f;
     const float BulletSpeedModifier = 0.6f;
@@ -19,17 +20,18 @@ public class AriesShooter00 : EnemyShooter<EnemyBullet>
         {
             for (int ii = 0; ii < WaveCount; ii++)
             {
+                float r = RandomAngleDeg;
+
                 for (int iii = 0; iii < BranchCount; iii++)
                 {
-                    float z = BranchSpacing;
+                    float z = (iii * BranchSpacing) + r;
                     float s = BulletBaseSpeed + (ii * BulletSpeedModifier);
                     Vector3 pos = Vector3.zero;
 
-                    bulletData.colour = bulletData.gradient.Evaluate(iii / (BranchCount - 1f));
+                    bulletData.colour = bulletData.gradient.Evaluate(ii / (WaveCount - 1f));
 
                     var bullet = SpawnProjectile(0, z, pos);
                     bullet.MoveSpeed = s;
-                    bullet.Fire();
                 }
 
                 yield return WaitForSeconds(ShootingCooldown);
