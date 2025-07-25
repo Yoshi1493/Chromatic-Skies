@@ -6,6 +6,9 @@ public class AriesCommonMovement01 : CommonEnemyMovement
 {
     protected override IEnumerator Move()
     {
-        yield return null;
+        yield return parentShip.MoveRelative(Vector3.down, 4f, 1f);
+
+        yield return WaitForSeconds(3f);
+        yield return LeaveScene();
     }
 }
