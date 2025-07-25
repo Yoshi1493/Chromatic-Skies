@@ -15,4 +15,24 @@ public static class BezierHelper
         Vector2 p1 = EvaluateQuadratic(v2, v3, v4, t);
         return Vector2.Lerp(p0, p1, t);
     }
+
+    public static Vector2 EvaluateCubicSpline(Vector2[] points, float t)
+    {
+        if ((points.Length - 1) % 3 != 0 || t < 0 || t > (points.Length * 3) + 1)
+        {
+            return Vector2.zero;
+        }
+
+        float f = t % 1;
+        int i = Mathf.FloorToInt(t);
+
+        if (f == 0f)
+        {
+            return points[i * 3];
+        }
+        else
+        {
+            return EvaluateCubic(points[i * 3], points[(i * 3) + 1], points[(i * 3) + 2], points[(i + 1) * 3], f);
+        }
+    }
 }
