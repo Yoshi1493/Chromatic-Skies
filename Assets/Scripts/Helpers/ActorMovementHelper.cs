@@ -281,7 +281,7 @@ public static class ActorMovementHelper
 
     #endregion
 
-    #region Projectile movement methods
+    #region Projectile rotation methods
 
     /// <summary>
     /// rotates <actor.moveDirection> upon the x-y plane by <degrees> degrees, over <duration> seconds.
@@ -395,9 +395,13 @@ public static class ActorMovementHelper
         actor.transform.position = direction.RotateVectorBy(degreesPerSecond * duration * rotationDirection) + targetPosition;
     }
 
+    #endregion
+
+    #region Projectile homing methods
+
     /// <summary>
     /// sets <actor.moveDirection> to face towards <target.transform.position>
-    /// i.e. sets <actor.moveDirection> such that if <target.transform.position> doesn't change, <actor> will eventually collide with <target>.
+    /// i.e. sets <actor.moveDirection> such that if <target.transform.position> doesn't change and <actor.MoveSpeed> is positive, <actor> will eventually collide with <target>.
     /// </summary>
     public static Vector3 LookAt(this Actor actor, Actor target)
     {
@@ -418,7 +422,7 @@ public static class ActorMovementHelper
     }
 
     /// <summary>
-    /// overload of LookAt() that makes <actor> face towards a given Vector3, instead of an Actor.
+    /// overload of LookAt() that makes <actor> face towards a given Vector3 in world space, instead of an Actor.
     /// </summary>
     public static Vector3 LookAt(this Actor actor, Vector3 targetPos)
     {
@@ -439,7 +443,7 @@ public static class ActorMovementHelper
     }
 
     /// <summary>
-    /// sets <actor.moveDirection> to continuously face towards <target.transform.position>, for <duration> seconds.
+    /// sets <actor.moveDirection> to gradually rotate towards <target.transform.position>, over <duration> seconds.
     /// </summary>
     public static IEnumerator HomeInOn(this Actor actor, Actor target, float duration, float smoothTime = 0.5f, float delay = 0f)
     {
@@ -460,7 +464,7 @@ public static class ActorMovementHelper
     }
 
     /// <summary>
-    /// modified version of LookAt() that gradually rotates <actor> over <duration> seconds
+    /// modified version of LookAt() that gradually rotates <actor> over <duration> seconds.
     /// </summary>
     public static IEnumerator GraduallyLookAt(this Actor actor, Vector3 target, float duration, float delay = 0f)
     {
