@@ -78,6 +78,21 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2407710777176494618, guid: 0ea569baafb91b94cbd6c069f48a94da, type: 3}
   m_PrefabInstance: {fileID: 7631634376295664945}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &-8168886575177351549
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5224434185141182251}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44bf1c6a105d39745be41a7e52c7c957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectiles:
+  - {fileID: -2412470641784049796, guid: 73e7327bc99c865448c9d83d7c531b51, type: 3}
+  bulletData: {fileID: 11400000, guid: cbb163db0a27a8f4e997790c110c2d29, type: 2}
 --- !u!114 &8136108586605221001
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -90,3 +105,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27f1de99e6f3cd340ae77c2662c8c84f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  parentShip: {fileID: 0}
