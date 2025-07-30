@@ -26,7 +26,7 @@ public class AriesShooter02 : EnemyShooter<EnemyBullet>
 
                 bulletData.colour = bulletData.gradient.Evaluate(ii / (BulletCount - 1f));
 
-                var bullet = SpawnProjectile(0, z, pos);
+                var bullet = SpawnProjectile(2, z, pos);
                 bullet.StartCoroutine(bullet.LerpSpeed(0f, s, 1f, delay: 0.5f));
                 bullet.Fire();
 
