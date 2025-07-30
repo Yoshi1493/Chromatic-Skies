@@ -5,7 +5,8 @@ public class BossPositionDisplay : ShipHUDComponent<Boss>
     new Transform transform;
     SpriteRenderer spriteRenderer;
 
-    [SerializeField] EnemySpawner enemySpawner;
+    [SerializeField] IntObject selectedBossIndex;
+    EnemySpawner enemySpawner;
 
     protected override void Awake()
     {
@@ -14,15 +15,7 @@ public class BossPositionDisplay : ShipHUDComponent<Boss>
         transform = GetComponent<Transform>();
         spriteRenderer = GetComponent<SpriteRenderer>();
 
-        if (ship != null)
-        {
-            ship.DeathAction += () => SetActive(false);
-        }
-        else
-        {
-            enabled = false;
-            SetActive(false);
-        }
+        enemySpawner = FindObjectOfType<EnemySpawnerController>().GetComponentsInChildren<EnemySpawner>(true)[selectedBossIndex.value];
     }
 
     void OnEnable()
@@ -32,8 +25,20 @@ public class BossPositionDisplay : ShipHUDComponent<Boss>
 
     void Start()
     {
-        enemySpawner.BossSpawnAction += () => enabled = true;
-        enabled = false;
+        enemySpawner.BossSpawnAction += OnBossSpawn;
+
+        ship.DeathAction += OnBossDespawn;
+        OnBossDespawn();
+    }
+
+    void OnBossSpawn()
+    {
+        SetActive(true);
+    }
+
+    void OnBossDespawn()
+    {
+        SetActive(false);
     }
 
     void Update()
@@ -51,5 +56,10 @@ public class BossPositionDisplay : ShipHUDComponent<Boss>
     void OnDisable()
     {
         spriteRenderer.enabled = false;
+    }
+
+    void OnDestroy()
+    {
+        enemySpawner.BossSpawnAction -= OnBossSpawn;
     }
 }

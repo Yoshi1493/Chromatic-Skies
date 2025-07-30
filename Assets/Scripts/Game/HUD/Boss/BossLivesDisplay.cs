@@ -2,7 +2,14 @@ using UnityEngine;
 
 public class BossLivesDisplay : LivesDisplay<Boss>
 {
-    [SerializeField] EnemySpawner enemySpawner;
+    [SerializeField] IntObject selectedBossIndex;
+    EnemySpawner enemySpawner;
+
+    protected override void Awake()
+    {
+        base.Awake();
+        enemySpawner = FindObjectOfType<EnemySpawnerController>().GetComponentsInChildren<EnemySpawner>(true)[selectedBossIndex.value];
+    }
 
     protected override void OnEnable()
     {
@@ -12,10 +19,14 @@ public class BossLivesDisplay : LivesDisplay<Boss>
 
     void Start()
     {
-        enemySpawner.BossSpawnAction += () => enabled = true;
+        enemySpawner.BossSpawnAction += OnBossSpawn;
 
         StopAllCoroutines();
         enabled = false;
+    }
+    void OnBossSpawn()
+    {
+        enabled = true;
     }
 
     void OnDisable()
@@ -24,5 +35,10 @@ public class BossLivesDisplay : LivesDisplay<Boss>
         {
             lifeIcons[i].enabled = false;
         }
+    }
+
+    void OnDestroy()
+    {
+        enemySpawner.BossSpawnAction -= OnBossSpawn;
     }
 }

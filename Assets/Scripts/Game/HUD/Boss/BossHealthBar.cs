@@ -2,16 +2,32 @@ using UnityEngine;
 
 public class BossHealthBar : HealthBar<Boss>
 {
-    [SerializeField] EnemySpawner enemySpawner;
+    [SerializeField] IntObject selectedBossIndex;
+    EnemySpawner enemySpawner;
+
+    protected override void Awake()
+    {
+        base.Awake();
+        enemySpawner = FindObjectOfType<EnemySpawnerController>().GetComponentsInChildren<EnemySpawner>(true)[selectedBossIndex.value];
+    }
 
     void Start()
     {
-        enemySpawner.BossSpawnAction += () => enabled = true;
+        enemySpawner.BossSpawnAction += OnBossSpawn;
         enabled = false;
+    }
+    void OnBossSpawn()
+    {
+        enabled = true;
     }
 
     void OnDisable()
     {
         healthBarImage.enabled = false;
+    }
+
+    void OnDestroy()
+    {
+        enemySpawner.BossSpawnAction -= OnBossSpawn;
     }
 }
