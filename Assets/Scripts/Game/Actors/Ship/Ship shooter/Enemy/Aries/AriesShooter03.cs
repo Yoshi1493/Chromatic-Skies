@@ -7,7 +7,7 @@ public class AriesShooter03 : EnemyShooter<EnemyBullet>
     const int WaveCount = 66;
     const int BulletCount = 6;
     const float ArcHalfWidth = 90f;
-    const float SpawnRadiusModifier = 0.04f;
+    const float SpawnRadiusModifier = 0.02f;
 
     protected override float ShootingCooldown => 0.05f;
 
