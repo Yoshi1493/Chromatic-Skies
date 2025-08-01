@@ -78,7 +78,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2407710777176494618, guid: 0ea569baafb91b94cbd6c069f48a94da, type: 3}
   m_PrefabInstance: {fileID: 7631634376295664945}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &6974862302847850501
+--- !u!114 &-9056996195469918323
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -91,9 +91,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectiles:
-  - {fileID: 527787814754481221, guid: a1fce5539f5b8504db23ff89d8a91c59, type: 3}
-  bulletData: {fileID: 11400000, guid: bd6040e3c3daccf46848d38e5c3557d5, type: 2}
---- !u!114 &6057111600448750061
+  - {fileID: -2481839284165691935, guid: 44dd560c49340754fbaba81438559fc6, type: 3}
+  bulletData: {fileID: 11400000, guid: 0a70a6ec8bb2014488d89616f710d4df, type: 2}
+--- !u!114 &-8119371595298261903
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
