@@ -1,6 +1,6 @@
 using System.Collections;
 
-public class AriesBullet05 : EnemyBullet
+public class AriesBullet05 : MinibossBullet
 {
     protected override float MaxLifetime => 8f;
 

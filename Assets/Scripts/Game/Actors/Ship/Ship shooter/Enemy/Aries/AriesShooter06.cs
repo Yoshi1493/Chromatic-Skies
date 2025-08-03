@@ -4,21 +4,30 @@ using static CoroutineHelper;
 
 public class AriesShooter06 : CommonEnemyShooter<EnemyBullet>
 {
-    const int BulletCount = 0;
+    const int BulletCount = 45;
+    const float BulletSpacing = 360f / BulletCount;
+    protected override float ShootingCooldown => 1f;
 
     protected override IEnumerator Shoot()
     {
-        while (enabled)
+        yield return WaitUntil(() => parentShip.HealthPercent < 0.5f);
+
+        for (int i = 0; enabled; i++)
         {
-            for (int i = 0; i < BulletCount; i++)
+            yield return WaitForSeconds(ShootingCooldown);
+            int d = i % 2;
+
+            for (int ii = 0; ii < BulletCount; ii++)
             {
-                float z = 0;
+                float z = ii * BulletSpacing;
                 Vector3 pos = Vector3.zero;
 
-                SpawnProjectile(0, z, pos).Fire();
-            }
+                bulletData.colour = bulletData.gradient.Evaluate(d);
 
-            yield return WaitForSeconds(ShootingCooldown);
+                var bullet = SpawnProjectile(6, z, pos) as AriesBullet06;
+                bullet.rotatesClockwise = d == 0;
+                bullet.Fire();
+            }
         }
     }
 }

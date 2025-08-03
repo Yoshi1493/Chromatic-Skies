@@ -15,7 +15,7 @@ public class AriesShooter05 : CommonEnemyShooter<EnemyBullet>
     {
         yield return WaitForSeconds(1.5f);
 
-        while (enabled)
+        while (enabled && parentShip.HealthPercent > 0.5f)
         {
             for (int i = 0; i < WaveCount; i++)
             {
@@ -30,7 +30,7 @@ public class AriesShooter05 : CommonEnemyShooter<EnemyBullet>
 
                         bulletData.colour = bulletData.gradient.Evaluate(iii);
 
-                        var bullet = SpawnProjectile(0, z, pos);
+                        var bullet = SpawnProjectile(5, z, pos);
                         bullet.StartCoroutine(bullet.RotateBy((iii % 2 * 2 - 1) * BulletRotationSpeed, BulletRotationDuration));
                         bullet.StartCoroutine(bullet.RotateBy(r, 1f, delay: 3f));
                         bullet.Fire();
@@ -40,8 +40,7 @@ public class AriesShooter05 : CommonEnemyShooter<EnemyBullet>
                 yield return WaitForSeconds(ShootingCooldown);
             }
 
-
-            yield return WaitForSeconds(10f);
+            yield return WaitForSeconds(8f);
         }
     }
 }
