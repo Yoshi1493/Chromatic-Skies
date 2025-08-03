@@ -8,10 +8,11 @@ public class AriesCommonMovement05 : CommonEnemyMovement
     {
         yield return parentShip.MoveTo(ActorMovementHelper.bossSpawnPosition, 1.5f);
 
-        while (enabled)
+        while (enabled && parentShip.HealthPercent < 0.5f)
         {
-            yield return WaitForSeconds(8f);
+            yield return WaitForSeconds(1f);
             yield return parentShip.TranslateAround(parentShip.transform.position + Vector3.down, 360f, 1.5f);
+            yield return WaitForSeconds(3.5f);
         }
     }
 }
