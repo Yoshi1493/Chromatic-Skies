@@ -4,6 +4,7 @@ using UnityEngine;
 public class CommonEnemy : Ship
 {
     int currentHealth;
+    public float HealthPercent => (float)currentHealth / shipData.MaxHealth.Value;
 
     protected override void InitShipData()
     {
