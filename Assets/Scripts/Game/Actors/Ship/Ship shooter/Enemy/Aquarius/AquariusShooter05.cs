@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using static CoroutineHelper;
 
-public class AquariusShooter05 : EnemyShooter<EnemyBullet>
+public class AquariusShooter05 : CommonEnemyShooter<EnemyBullet>
 {
     const int SmallWaveCount = 5;
     const float SmallWaveSpacing = 6f;

@@ -2,13 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Shooter<TProjectile> : MonoBehaviour
+public abstract class Shooter<TShip, TProjectile> : MonoBehaviour
+    where TShip : Ship
     where TProjectile : Projectile
 {
     [SerializeField] List<TProjectile> projectiles;
 
     new protected Transform transform;
-    protected Ship parentShip;
+    protected TShip parentShip;
 
     protected IEnumerator shootCoroutine;
     protected virtual float ShootingCooldown => 1 / parentShip.shipData.ShootingSpeed.Value;
@@ -16,7 +17,7 @@ public abstract class Shooter<TProjectile> : MonoBehaviour
     protected virtual void Awake()
     {
         transform = GetComponent<Transform>();
-        parentShip = GetComponentInParent<Ship>();
+        parentShip = GetComponentInParent<TShip>();
     }
 
     protected virtual void OnEnable()

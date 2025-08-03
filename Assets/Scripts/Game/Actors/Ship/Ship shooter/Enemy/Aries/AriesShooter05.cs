@@ -2,13 +2,13 @@ using System.Collections;
 using UnityEngine;
 using static CoroutineHelper;
 
-public class AriesShooter05 : EnemyShooter<EnemyBullet>
+public class AriesShooter05 : CommonEnemyShooter<EnemyBullet>
 {
     const int WaveCount = 33;
     const int BranchCount = 12;
     const float BranchSpacing = 360f / BranchCount;
     const int BulletCount = 2;
-    const float BulletRotationSpeed = 345f;
+    const float BulletRotationSpeed = 350f;
     const float BulletRotationDuration = 3f;
 
     protected override IEnumerator Shoot()
@@ -30,7 +30,7 @@ public class AriesShooter05 : EnemyShooter<EnemyBullet>
 
                         bulletData.colour = bulletData.gradient.Evaluate(iii);
 
-                        var bullet = SpawnProjectile(5, z, pos);
+                        var bullet = SpawnProjectile(0, z, pos);
                         bullet.StartCoroutine(bullet.RotateBy((iii % 2 * 2 - 1) * BulletRotationSpeed, BulletRotationDuration));
                         bullet.StartCoroutine(bullet.RotateBy(r, 1f, delay: 3f));
                         bullet.Fire();
@@ -39,6 +39,7 @@ public class AriesShooter05 : EnemyShooter<EnemyBullet>
 
                 yield return WaitForSeconds(ShootingCooldown);
             }
+
 
             yield return WaitForSeconds(10f);
         }

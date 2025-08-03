@@ -1,6 +1,7 @@
 using UnityEngine;
 
-public abstract class EnemyShooter<TProjectile> : Shooter<TProjectile>
+public abstract class EnemyShooter<TShip, TProjectile> : Shooter<TShip, TProjectile>
+    where TShip : Ship
     where TProjectile : Projectile
 {
     protected Player playerShip;
@@ -32,4 +33,10 @@ public abstract class EnemyShooter<TProjectile> : Shooter<TProjectile>
     {
         StopAllCoroutines();
     }
+}
+
+public abstract class CommonEnemyShooter<TProjectile> : EnemyShooter<CommonEnemy, TProjectile>
+    where TProjectile : Projectile
+{
+
 }

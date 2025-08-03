@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using static CoroutineHelper;
 
-public class PlayerShooter : Shooter<PlayerBullet>
+public class PlayerShooter : Shooter<Player, PlayerBullet>
 {
     ShipObject shipData;
     protected override float ShootingCooldown => 1 / shipData.ShootingSpeed.Value;

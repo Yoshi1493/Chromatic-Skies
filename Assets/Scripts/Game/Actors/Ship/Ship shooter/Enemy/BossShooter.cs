@@ -13,7 +13,7 @@ public interface IBossAttack
     Action StartMoveAction { get; set; }
 }
 
-public abstract class BossShooter<TProjectile> : EnemyShooter<TProjectile>, IBossAttack
+public abstract class BossShooter<TProjectile> : EnemyShooter<Boss, TProjectile>, IBossAttack
     where TProjectile : Projectile
 {
     #region Interface impl.

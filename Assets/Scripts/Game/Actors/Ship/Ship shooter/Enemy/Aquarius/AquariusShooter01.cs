@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using static CoroutineHelper;
 
-public class AquariusShooter01 : EnemyShooter<EnemyBullet>
+public class AquariusShooter01 : CommonEnemyShooter<EnemyBullet>
 {
     const int WaveCount = 3;
     const int BranchCount = 4;

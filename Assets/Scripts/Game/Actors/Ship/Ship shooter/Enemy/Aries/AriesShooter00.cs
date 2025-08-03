@@ -3,7 +3,7 @@ using UnityEngine;
 using static CoroutineHelper;
 using static MathHelper;
 
-public class AriesShooter00 : EnemyShooter<EnemyBullet>
+public class AriesShooter00 : CommonEnemyShooter<EnemyBullet>
 {
     const int RepeatCount = 4;
     const int WaveCount = 3;

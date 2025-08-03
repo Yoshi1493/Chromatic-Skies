@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using static CoroutineHelper;
 
-public class AquariusShooter06 : EnemyShooter<EnemyBullet>
+public class AquariusShooter06 : CommonEnemyShooter<EnemyBullet>
 {
     const int WaveCount = 8;
     const float WaveSpacing = 360f / WaveCount;

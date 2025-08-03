@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using static CoroutineHelper;
 
-public class AriesShooter06 : EnemyShooter<EnemyBullet>
+public class AriesShooter06 : CommonEnemyShooter<EnemyBullet>
 {
     const int BulletCount = 0;
 

@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using static CoroutineHelper;
 
-public class AquariusShooter02 : EnemyShooter<EnemyBullet>
+public class AquariusShooter02 : CommonEnemyShooter<EnemyBullet>
 {
     const int RepeatCount = 2;
     const float RepeatSpacing = BranchSpacing / 2f;
