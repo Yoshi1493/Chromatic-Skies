@@ -5,7 +5,7 @@ using static CoroutineHelper;
 public class AriesShooter08 : CommonEnemyShooter<EnemyBullet>
 {
     const int WaveCount = 3;
-    const int BranchCount = 24;
+    const int BranchCount = 20;
     const float BranchSpacing = 360f / BranchCount;
     const float BulletRotationSpeed = 30f;
     const float BulletRotationDuration = 2f;

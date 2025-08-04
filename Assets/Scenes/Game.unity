@@ -2681,6 +2681,7 @@ MonoBehaviour:
   - {fileID: 6518398675922875271, guid: d166ef4309d2f5149ba0f8a58f9e86cd, type: 3}
   - {fileID: 443384559322656082, guid: 4efde7494c06e6b4b94477eac7f2d255, type: 3}
   - {fileID: 443384559322656082, guid: 6c3408f91c2c5bd47a0fbb346aa0ca70, type: 3}
+  - {fileID: 1096002273590578440, guid: 210ec9aefa5d03f42a70045594fe53e5, type: 3}
   - {fileID: -1406885398585806071, guid: 096f86b757bda8b4eb1d71dcb6489a69, type: 3}
   - {fileID: 443384559322656082, guid: 2e6ac7fb926e9d34c989222386ae7765, type: 3}
   - {fileID: 1018320958770683853, guid: 3255391d93af3d445984a5a301ec0f46, type: 3}
@@ -2688,7 +2689,7 @@ MonoBehaviour:
   - {fileID: 3930944636926357658, guid: d223b817e5231bd4883b111a52719e97, type: 3}
   - {fileID: 3930944636926357658, guid: 306fd6ff39f25d8448a97ae0d4ba1b12, type: 3}
   bossPrefab: {fileID: 8970867438237885685, guid: 3859bf0d081290b469f5428fac6cdfc1, type: 3}
-  minibossIndex: 6
+  minibossIndex: 7
 --- !u!1 &501545821
 GameObject:
   m_ObjectHideFlags: 0
