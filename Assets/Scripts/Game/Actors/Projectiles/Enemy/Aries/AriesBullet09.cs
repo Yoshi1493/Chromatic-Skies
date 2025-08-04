@@ -1,8 +1,6 @@
 using System.Collections;
-using UnityEngine;
-using static CoroutineHelper;
 
-public class AriesCommonMovement08 : CommonEnemyMovement
+public class AriesBullet09 : EnemyBullet
 {
     protected override IEnumerator Move()
     {
