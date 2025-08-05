@@ -65,12 +65,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2407710777176494618, guid: 0ea569baafb91b94cbd6c069f48a94da, type: 3}
       propertyPath: m_Name
-      value: Aries Enemy 7_0
+      value: Aries Enemy 8_0
       objectReference: {fileID: 0}
     - target: {fileID: 8056434987258519651, guid: 0ea569baafb91b94cbd6c069f48a94da, type: 3}
       propertyPath: shipData
       value: 
-      objectReference: {fileID: 11400000, guid: c87c1854c226b1f409e52c55eaa80294, type: 2}
+      objectReference: {fileID: 11400000, guid: 8ae33ec8ac689674fa80f6da5dd7c3b8, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0ea569baafb91b94cbd6c069f48a94da, type: 3}
 --- !u!1 &5224434185141182251 stripped
@@ -78,7 +78,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2407710777176494618, guid: 0ea569baafb91b94cbd6c069f48a94da, type: 3}
   m_PrefabInstance: {fileID: 7631634376295664945}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &3252011639537678143
+--- !u!114 &-6088728215517786389
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -87,13 +87,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 5224434185141182251}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e15126432d80cfe429ce492764957564, type: 3}
+  m_Script: {fileID: 11500000, guid: 4acbc279e69ef4d4eb78edbbcafd7112, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   projectiles:
-  - {fileID: -492025750509946698, guid: a6277176b20ae984b9556ff037bffb98, type: 3}
-  bulletData: {fileID: 11400000, guid: 1ca613ef6c42d304b831a476b9666c81, type: 2}
---- !u!114 &7032200614695165616
+  - {fileID: -4457594540004269823, guid: 52381e527220c7c4a8c875c97153df96, type: 3}
+  bulletData: {fileID: 11400000, guid: 429a84753b39ec94b9d9e049c4b296f0, type: 2}
+--- !u!114 &326114667776687920
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -102,15 +102,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 5224434185141182251}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c5fad035ea4b58f44b5fed518f143205, type: 3}
+  m_Script: {fileID: 11500000, guid: 1e6329fe86503ce438e98be878c90135, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   parentShip: {fileID: 0}
-  movementPoints:
-  - {x: 0, y: 6}
-  - {x: 0, y: 5}
-  - {x: 0, y: 1}
-  - {x: 2.5, y: 1}
-  - {x: 5, y: 1}
-  - {x: 5, y: -5}
-  - {x: 5, y: -6}
+  rotationPoint: {x: 2, y: 0}

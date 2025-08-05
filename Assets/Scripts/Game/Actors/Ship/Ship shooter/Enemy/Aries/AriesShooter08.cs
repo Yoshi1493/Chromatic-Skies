@@ -4,33 +4,26 @@ using static CoroutineHelper;
 
 public class AriesShooter08 : CommonEnemyShooter<EnemyBullet>
 {
-    const int WaveCount = 3;
-    const int BranchCount = 20;
-    const float BranchSpacing = 360f / BranchCount;
-    const float BulletRotationSpeed = 30f;
-    const float BulletRotationDuration = 2f;
+    const int BulletCount = 3;
+    const float BulletSpacing = 15f;
 
     protected override float ShootingCooldown => 1f;
 
     protected override IEnumerator Shoot()
     {
-        for (int i = 0; i < WaveCount; i++)
+        yield return WaitForSeconds(ShootingCooldown);
+
+        float r = PlayerPosition.GetRotationDifference(transform.position);
+
+        for (int i = 0; i < BulletCount; i++)
         {
-            yield return WaitForSeconds(ShootingCooldown);
+            float z = ((i - ((BulletCount - 1) / 2f)) * BulletSpacing) + r;
+            Vector3 pos = Vector3.zero;
 
-            float r = PlayerPosition.GetRotationDifference(transform.position);
+            bulletData.colour = bulletData.gradient.Evaluate(i % 2);
 
-            for (int ii = 0; ii < BranchCount; ii++)
-            {
-                float z = (ii * BranchSpacing) + r;
-                Vector3 pos = Vector3.zero;
-
-                bulletData.colour = bulletData.gradient.Evaluate(ii / (BranchCount - 1f));
-
-                var bullet = SpawnProjectile(8, z, pos);
-                bullet.StartCoroutine(bullet.RotateBy((i % 2 * 2 - 1) * BulletRotationSpeed, BulletRotationDuration));
-                bullet.Fire();
-            }
+            SpawnProjectile(8, z, pos).Fire();
         }
     }
+
 }
