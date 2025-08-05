@@ -27,7 +27,7 @@ public class AriesShooter09 : CommonEnemyShooter<EnemyBullet>
 
                 bulletData.colour = bulletData.gradient.Evaluate(ii / (BranchCount - 1f));
 
-                var bullet = SpawnProjectile(0, z, pos);
+                var bullet = SpawnProjectile(9, z, pos);
                 bullet.StartCoroutine(bullet.RotateBy((i % 2 * 2 - 1) * BulletRotationSpeed, BulletRotationDuration));
                 bullet.Fire();
             }
