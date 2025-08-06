@@ -6,6 +6,6 @@ public class AriesBullet11 : BossBullet
 
     protected override IEnumerator Move()
     {
-        yield return this.LerpSpeed(4f, 1.5f, 1f);
+        yield return this.LerpSpeed(5f, 0f, 0.5f);
     }
 }

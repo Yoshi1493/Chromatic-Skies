@@ -4,29 +4,31 @@ using static CoroutineHelper;
 
 public class AriesBossShooter11 : BossShooter<BossBullet>
 {
-    const int BulletCount = 12;
+    const int BulletCount = 24;
     const float BulletSpacing = 360f / BulletCount;
-    const float BulletRotationSpeed = 60f;
+    const float BulletBaseSpeed = 3.5f;
+    const float BulletSpeedModifier = -0.5f;
 
-    protected override float ShootingCooldown => 2.0f;
+    protected override float ShootingCooldown => 1.0f;
 
     protected override IEnumerator Shoot()
     {
         yield return WaitForSeconds(3f);
 
-        for (int i = 1; enabled; i *= -1)
+        while (enabled)
         {
             float r = PlayerPosition.GetRotationDifference(transform.position);
 
-            for (int ii = 0; ii < BulletCount; ii++)
+            for (int i = 0; i < BulletCount; i++)
             {
-                float z = (ii * BulletSpacing) + r;
+                float z = (i * BulletSpacing) + r;
+                float s = BulletBaseSpeed + ((i % 2 * 2 - 1) * BulletSpeedModifier);
                 Vector3 pos = Vector3.zero;
 
                 bulletData.colour = bulletData.gradient.Evaluate(i % 2);
 
                 var bullet = SpawnProjectile(1, z, pos);
-                bullet.StartCoroutine(bullet.RotateBy(i * BulletRotationSpeed, 5f));
+                bullet.StartCoroutine(bullet.LerpSpeed(0f, s, 1f, delay: 0.5f));
                 bullet.Fire();
             }
 
