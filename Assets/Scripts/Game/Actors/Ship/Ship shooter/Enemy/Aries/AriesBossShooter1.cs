@@ -7,12 +7,12 @@ public class AriesBossShooter1 : BossShooter<BossBullet>
     const int WaveCount = 6;
     const float WaveSpacing = 15f;
     const int BranchCount = 6;
-    const float BranchSpacing = 6f;
+    const float BranchSpacing = 4f;
     const int BulletCount = 6;
     const float BulletSpacing = 360f / BulletCount;
     const float BulletBaseSpeed = 4.8f;
     const float BulletSpeedModifier = -0.2f;
-    const float BulletRotationSpeed = 60f;
+    const float BulletRotationSpeed = 48;
     const float BulletRotationDuration = 4f;
 
     protected override IEnumerator Shoot()
