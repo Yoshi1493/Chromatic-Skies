@@ -7,6 +7,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -3940118367663235819, guid: 06516bbfb1bd821428b6b6d83d416e75, type: 3}
+      propertyPath: projectiles.Array.data[0]
+      value: 
+      objectReference: {fileID: -3047867707141635994, guid: 7a0c4b1b67bb77b4fa3f78ec13ff8d2d, type: 3}
+    - target: {fileID: -3545260342670872121, guid: 06516bbfb1bd821428b6b6d83d416e75, type: 3}
+      propertyPath: moveSpeed
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 777207712078302467, guid: 06516bbfb1bd821428b6b6d83d416e75, type: 3}
       propertyPath: moveSpeed
       value: 1.5

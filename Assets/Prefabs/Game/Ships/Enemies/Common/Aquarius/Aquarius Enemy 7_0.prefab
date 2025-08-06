@@ -57,11 +57,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2407710777176494617, guid: 0ea569baafb91b94cbd6c069f48a94da, type: 3}
       propertyPath: m_Color.g
-      value: 0.75
+      value: 0.4375
       objectReference: {fileID: 0}
     - target: {fileID: 2407710777176494617, guid: 0ea569baafb91b94cbd6c069f48a94da, type: 3}
       propertyPath: m_Color.r
-      value: 0.5
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 2407710777176494618, guid: 0ea569baafb91b94cbd6c069f48a94da, type: 3}
       propertyPath: m_Name
@@ -78,7 +78,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2407710777176494618, guid: 0ea569baafb91b94cbd6c069f48a94da, type: 3}
   m_PrefabInstance: {fileID: 7631634376295664945}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &-3549818587003462753
+--- !u!114 &-114743196329478643
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -87,7 +87,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5224434185141182251}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ad69e1372ac43d42b1547bd4da12e08, type: 3}
+  m_Script: {fileID: 11500000, guid: 4688f2d25b9a7cc4aaba0d95930ad19b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   projectiles:
@@ -106,4 +106,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parentShip: {fileID: 0}
-  rotationDirection: -1

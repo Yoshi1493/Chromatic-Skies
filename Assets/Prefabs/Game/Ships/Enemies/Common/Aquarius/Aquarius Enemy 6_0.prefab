@@ -57,11 +57,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2407710777176494617, guid: 0ea569baafb91b94cbd6c069f48a94da, type: 3}
       propertyPath: m_Color.g
-      value: 0.39999998
+      value: 0.4375
       objectReference: {fileID: 0}
     - target: {fileID: 2407710777176494617, guid: 0ea569baafb91b94cbd6c069f48a94da, type: 3}
       propertyPath: m_Color.r
-      value: 0.19999999
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 2407710777176494618, guid: 0ea569baafb91b94cbd6c069f48a94da, type: 3}
       propertyPath: m_Name
@@ -78,7 +78,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2407710777176494618, guid: 0ea569baafb91b94cbd6c069f48a94da, type: 3}
   m_PrefabInstance: {fileID: 7631634376295664945}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &-1338677755266881563
+--- !u!114 &-3940118367663235819
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -87,13 +87,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 5224434185141182251}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 66e1dc1e8437f1f4d89ff8f675f878a4, type: 3}
+  m_Script: {fileID: 11500000, guid: 1ad69e1372ac43d42b1547bd4da12e08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   projectiles:
   - {fileID: -3047867707141635994, guid: 7a0c4b1b67bb77b4fa3f78ec13ff8d2d, type: 3}
   bulletData: {fileID: 11400000, guid: 9508037fd43d3cb4f8711e9c5d1b9a1c, type: 2}
---- !u!114 &777207712078302467
+--- !u!114 &-3545260342670872121
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

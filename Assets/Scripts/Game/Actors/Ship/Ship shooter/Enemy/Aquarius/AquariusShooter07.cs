@@ -4,22 +4,33 @@ using static CoroutineHelper;
 
 public class AquariusShooter07 : CommonEnemyShooter<EnemyBullet>
 {
+    const int WaveCount = 8;
+    const float WaveSpacing = 360f / WaveCount;
     const int BulletCount = 3;
+    const float BulletBaseSpeed = 2.5f;
+    const float BulletSpeedModifier = 0.5f;
 
-    protected override float ShootingCooldown => 0.2f;
     protected override IEnumerator Shoot()
     {
-        yield return WaitForSeconds(1.5f);
+        yield return WaitForSeconds(2f);
 
-        for (int i = 0; i < BulletCount; i++)
+        float r = PlayerPosition.GetRotationDifference(transform.position);
+
+        for (int i = 0; i < WaveCount; i++)
         {
-            float z = 0;
-            Vector3 pos = Vector3.zero;
+            for (int ii = 0; ii < BulletCount; ii++)
+            {
+                float z = (i * WaveSpacing) + r;
+                float s = BulletBaseSpeed + (ii * BulletSpeedModifier);
 
-            SpawnProjectile(8, z, pos).Fire();
+                Vector3 pos = Vector3.zero;
+
+                var bullet = SpawnProjectile(7, z, pos);
+                bullet.MoveSpeed = s;
+                bullet.Fire();
+            }
 
             yield return WaitForSeconds(ShootingCooldown);
         }
-
     }
 }

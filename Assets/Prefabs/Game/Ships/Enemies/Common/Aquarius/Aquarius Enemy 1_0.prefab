@@ -57,11 +57,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2407710777176494617, guid: 0ea569baafb91b94cbd6c069f48a94da, type: 3}
       propertyPath: m_Color.g
-      value: 0.75
+      value: 0.4375
       objectReference: {fileID: 0}
     - target: {fileID: 2407710777176494617, guid: 0ea569baafb91b94cbd6c069f48a94da, type: 3}
       propertyPath: m_Color.r
-      value: 0.5
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 2407710777176494618, guid: 0ea569baafb91b94cbd6c069f48a94da, type: 3}
       propertyPath: m_Name
@@ -78,6 +78,19 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2407710777176494618, guid: 0ea569baafb91b94cbd6c069f48a94da, type: 3}
   m_PrefabInstance: {fileID: 7631634376295664945}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6492321520241584503
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5224434185141182251}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddd9fdd4ca2875246838c5130167831d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parentShip: {fileID: 0}
 --- !u!114 &9013391123723676713
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -93,16 +106,3 @@ MonoBehaviour:
   projectiles:
   - {fileID: 6432701281086397350, guid: cdd40e26613ea4a4c992c5a30e94c1cd, type: 3}
   bulletData: {fileID: 11400000, guid: ae4c31b7de0784647a110946559303b5, type: 2}
---- !u!114 &6492321520241584503
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5224434185141182251}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ddd9fdd4ca2875246838c5130167831d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentShip: {fileID: 0}

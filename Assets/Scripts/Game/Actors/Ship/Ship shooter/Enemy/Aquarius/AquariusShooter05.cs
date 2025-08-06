@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using static CoroutineHelper;
 
@@ -11,15 +10,6 @@ public class AquariusShooter05 : CommonEnemyShooter<EnemyBullet>
     const float SmallBranchSpacing = 360f / SmallBranchCount;
     const float SmallBulletBaseSpeed = 0.5f;
     const float SmallBulletSpeedModifier = 2f;
-
-    const int LargeWaveCount = 3;
-    const int LargeBranchCount = 20;
-    const float LargeBranchSpacing = 360f / LargeBranchCount;
-    const int LargeBulletCount = 2;
-    const float LargeBulletRotationSpeed = 90f;
-    const float LargeBulletRotationDuration = 9f;
-
-    [SerializeField] ProjectileObject largeBulletData;
 
     protected override IEnumerator Shoot()
     {
@@ -47,26 +37,6 @@ public class AquariusShooter05 : CommonEnemyShooter<EnemyBullet>
             }
 
             yield return WaitForSeconds(3.5f);
-
-            for (int ii = 0; ii < LargeWaveCount; ii++)
-            {
-                for (int iii = 0; iii < LargeBranchCount; iii++)
-                {
-                    for (int iv = 0; iv < LargeBulletCount; iv++)
-                    {
-                        float z = iii * LargeBranchSpacing;
-
-                        largeBulletData.colour = largeBulletData.gradient.Evaluate(iv);
-
-                        var bullet = SpawnProjectile(6, z, pos);
-                        bullet.StartCoroutine(bullet.RotateBy((iv % 2 * 2 - 1) * LargeBulletRotationSpeed, LargeBulletRotationDuration));
-                        bullet.MoveSpeed = 2f;
-                    }
-                }
-
-                yield return WaitForSeconds(1f);
-            }
-
         }
     }
 }

@@ -1,5 +1,132 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2464672884739801501
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8535931892498217409}
+  m_Layer: 0
+  m_Name: Bullet Systems
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8535931892498217409
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2464672884739801501}
+  m_LocalRotation: {x: -0, y: -0, z: -1, w: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 7582688133612329298}
+  - {fileID: 3980779106833243182}
+  m_Father: {fileID: 5224434185141182249}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &3114509768223927743
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3980779106833243182}
+  - component: {fileID: 4181879636975029299}
+  m_Layer: 0
+  m_Name: Bullet System 2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3980779106833243182
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3114509768223927743}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8535931892498217409}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4181879636975029299
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3114509768223927743}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66e1dc1e8437f1f4d89ff8f675f878a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectiles:
+  - {fileID: 1494254598885239335, guid: 8a422051ebf547b40a25411c30a563ae, type: 3}
+  bulletData: {fileID: 11400000, guid: e38b713de2a24c442b167175afa79c0d, type: 2}
+--- !u!1 &3621426969134721258
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7582688133612329298}
+  - component: {fileID: 3149665931777043955}
+  m_Layer: 0
+  m_Name: Bullet System 1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7582688133612329298
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3621426969134721258}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8535931892498217409}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3149665931777043955
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3621426969134721258}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 221788c13e0d6ff46bfebbd8c98da726, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectiles:
+  - {fileID: -5357594391736024396, guid: 91b931417b1c0ae49a2fe9852b5f3a7e, type: 3}
+  bulletData: {fileID: 11400000, guid: 1464c46bcd9b22647abae4fd92e47573, type: 2}
 --- !u!1001 &7631634376295664945
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -57,11 +184,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2407710777176494617, guid: 0ea569baafb91b94cbd6c069f48a94da, type: 3}
       propertyPath: m_Color.g
-      value: 0.75
+      value: 0.4375
       objectReference: {fileID: 0}
     - target: {fileID: 2407710777176494617, guid: 0ea569baafb91b94cbd6c069f48a94da, type: 3}
       propertyPath: m_Color.r
-      value: 0.5
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 2407710777176494618, guid: 0ea569baafb91b94cbd6c069f48a94da, type: 3}
       propertyPath: m_Name
@@ -73,6 +200,11 @@ PrefabInstance:
 --- !u!58 &5224434185141182247 stripped
 CircleCollider2D:
   m_CorrespondingSourceObject: {fileID: 2407710777176494614, guid: 0ea569baafb91b94cbd6c069f48a94da, type: 3}
+  m_PrefabInstance: {fileID: 7631634376295664945}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &5224434185141182249 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2407710777176494616, guid: 0ea569baafb91b94cbd6c069f48a94da, type: 3}
   m_PrefabInstance: {fileID: 7631634376295664945}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &5224434185141182251 stripped
@@ -96,23 +228,6 @@ MonoBehaviour:
   moveDirection: {x: 0, y: 0, z: 0}
   shipData: {fileID: 11400000, guid: 485ce21677dd01b4783615e364304ebf, type: 2}
   collider: {fileID: 5224434185141182247}
---- !u!114 &2690628369460380277
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5224434185141182251}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 221788c13e0d6ff46bfebbd8c98da726, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  projectiles:
-  - {fileID: -5357594391736024396, guid: 91b931417b1c0ae49a2fe9852b5f3a7e, type: 3}
-  - {fileID: 1494254598885239335, guid: 8a422051ebf547b40a25411c30a563ae, type: 3}
-  bulletData: {fileID: 11400000, guid: 1464c46bcd9b22647abae4fd92e47573, type: 2}
-  largeBulletData: {fileID: 11400000, guid: e38b713de2a24c442b167175afa79c0d, type: 2}
 --- !u!114 &7988260134413610699
 MonoBehaviour:
   m_ObjectHideFlags: 0
