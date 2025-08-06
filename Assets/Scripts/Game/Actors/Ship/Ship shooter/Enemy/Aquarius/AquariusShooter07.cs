@@ -16,7 +16,7 @@ public class AquariusShooter07 : CommonEnemyShooter<EnemyBullet>
             float z = 0;
             Vector3 pos = Vector3.zero;
 
-            SpawnProjectile(0, z, pos).Fire();
+            SpawnProjectile(8, z, pos).Fire();
 
             yield return WaitForSeconds(ShootingCooldown);
         }
