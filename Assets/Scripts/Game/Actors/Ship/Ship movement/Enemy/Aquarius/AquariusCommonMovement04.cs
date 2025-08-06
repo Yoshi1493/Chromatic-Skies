@@ -1,18 +1,21 @@
 using System.Collections;
 using UnityEngine;
+using static BezierHelper;
 
 public class AquariusCommonMovement04 : CommonEnemyMovement
 {
-    [SerializeField] Vector2[] rotationPoints;
+    [SerializeField] Vector2[] movementPoints;
 
     protected override IEnumerator Move()
     {
-        float dist = Vector2.Distance(transform.position, rotationPoints[0]);
-        float theta = Mathf.Asin(2f / dist) * Mathf.Rad2Deg * 2;
+        float t = 0f;
 
-        for (int i = 0; i < rotationPoints.Length; i++)
+        while (t < (movementPoints.Length - 1) / 3)
         {
-            yield return parentShip.TranslateAround(rotationPoints[i], (i % 2 * 2 - 1) * theta, 1.5f);
+            parentShip.transform.position = EvaluateCubicSpline(movementPoints, t);
+
+            yield return null;
+            t += Time.deltaTime / 3f;
         }
 
         yield return LeaveScene();

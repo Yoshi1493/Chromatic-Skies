@@ -106,9 +106,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parentShip: {fileID: 0}
-  rotationPoints:
-  - {x: -8, y: 2}
+  movementPoints:
+  - {x: 10, y: 4}
+  - {x: 8, y: 4}
+  - {x: 5, y: 2}
+  - {x: 3, y: 2}
+  - {x: 1, y: 2}
+  - {x: -2, y: 4}
   - {x: -4, y: 4}
-  - {x: 0, y: 2}
-  - {x: 4, y: 4}
-  - {x: 8, y: 2}
+  - {x: -6, y: 4}
+  - {x: -9, y: 2}
+  - {x: -11, y: 2}
