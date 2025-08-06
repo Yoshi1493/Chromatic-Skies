@@ -4,21 +4,22 @@ using static CoroutineHelper;
 
 public class AquariusShooter07 : CommonEnemyShooter<EnemyBullet>
 {
-    const int BulletCount = 0;
+    const int BulletCount = 3;
 
+    protected override float ShootingCooldown => 0.2f;
     protected override IEnumerator Shoot()
     {
-        while (enabled)
-        {
-            for (int i = 0; i < BulletCount; i++)
-            {
-                float z = 0;
-                Vector3 pos = Vector3.zero;
+        yield return WaitForSeconds(1.5f);
 
-                SpawnProjectile(0, z, pos).Fire();
-            }
+        for (int i = 0; i < BulletCount; i++)
+        {
+            float z = 0;
+            Vector3 pos = Vector3.zero;
+
+            SpawnProjectile(0, z, pos).Fire();
 
             yield return WaitForSeconds(ShootingCooldown);
         }
+
     }
 }
