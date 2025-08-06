@@ -16,10 +16,10 @@ public class AquariusBossShooter21 : BossShooter<BossBullet>
         {
             yield return WaitForSeconds(1f);
 
+            float r = PlayerPosition.GetRotationDifference(transform.position);
+
             for (int i = 0; i < WaveCount; i++)
             {
-                float r = PlayerPosition.GetRotationDifference(transform.position);
-
                 for (int ii = 0; ii < BranchCount; ii++)
                 {
                     float z = ((ii - ((BranchCount - 1) / 2f)) * BranchSpacing) + r;

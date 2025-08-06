@@ -27,6 +27,8 @@ public class AquariusShooter01 : CommonEnemyShooter<EnemyBullet>
                     float z = ((iii - (BulletCount - 1) / 2) * BulletSpacing) + (ii * BranchSpacing) + r;
                     Vector3 pos = Vector3.zero;
 
+                    bulletData.colour = bulletData.gradient.Evaluate(iii / (BulletCount / 1f));
+
                     SpawnProjectile(1, z, pos).Fire();
                 }
             }
