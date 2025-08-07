@@ -5161,17 +5161,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnTextFile: {fileID: 4900000, guid: 77be02d5b48e7cd40aeb0ea046120c95, type: 3}
   enemyPrefabs:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 443384559322656082, guid: 26c69098988730246b7aea4301dd487b, type: 3}
+  - {fileID: 443384559322656082, guid: 9fb98323f97ab284ca490d0a85ab2a91, type: 3}
+  - {fileID: 443384559322656082, guid: 30b61cb0ad49dfa438e70218056a10d9, type: 3}
+  - {fileID: 443384559322656082, guid: e005967ee480f524ea31c0a8de6c3cc3, type: 3}
+  - {fileID: 443384559322656082, guid: 7b344256de95fb047ad2e4fe17fba935, type: 3}
+  - {fileID: 443384559322656082, guid: eb9e05adc2331b547be2c7703064f9cf, type: 3}
+  - {fileID: 443384559322656082, guid: 4da9d3b32f20bfe439165689c8d3f474, type: 3}
+  - {fileID: 443384559322656082, guid: b7f07ddf2fa89a84694357e4e31629d3, type: 3}
   bossPrefab: {fileID: 7755895804811722165, guid: 586502ed9d9f6f042b7869dc1703a4f9, type: 3}
   minibossIndex: 5
 --- !u!1 &1088806826
