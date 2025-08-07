@@ -9,12 +9,11 @@ public class CapricornShooter00 : CommonEnemyShooter<EnemyBullet>
 
     protected override IEnumerator Shoot()
     {
-        yield return WaitForSeconds(1f);
-
-        float r = PlayerPosition.GetRotationDifference(transform.position);
+        yield return WaitForSeconds(1.0f);
 
         for (int i = 0; i < BulletCount; i++)
         {
+            float r = PlayerPosition.GetRotationDifference(transform.position);
             float z = ((i - ((BulletCount - 1) / 2f)) * BulletSpacing) + r;
             Vector3 pos = Vector3.zero;
 
