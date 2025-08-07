@@ -7,7 +7,7 @@ public class CapricornCommonMovement0 : CommonEnemyMovement
     {
         Vector3 pos = parentShip.transform.position;
         float d = -Mathf.Sign(pos.x);
-        yield return parentShip.TranslateAround(pos + (d * 6f * Vector3.right), d * 180f, Random.Range(4f, 5f));
+        yield return parentShip.TranslateAround(pos + (d * 6f * Vector3.right), d * 180f, Random.Range(3f, 4f));
 
         yield return LeaveScene();
     }
