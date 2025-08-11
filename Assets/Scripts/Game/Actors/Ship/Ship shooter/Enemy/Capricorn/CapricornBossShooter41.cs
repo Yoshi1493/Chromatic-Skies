@@ -5,8 +5,7 @@ using static MathHelper;
 
 public class CapricornBossShooter41 : BossShooter<BossBullet>
 {
-    const int BranchCount = 24;
-    const float BranchSpacing = 20f;
+    const int WaveCount = 24;
     const int BulletCount = 12;
     const float BulletSpacing = 2f;
     const float BulletBaseSpeed = 3f;
@@ -14,7 +13,7 @@ public class CapricornBossShooter41 : BossShooter<BossBullet>
 
     protected override IEnumerator Shoot()
     {
-        for (int i = 0; i < BranchCount; i++)
+        for (int i = 0; i < WaveCount; i++)
         {
             float z = RandomAngleDeg;
 
