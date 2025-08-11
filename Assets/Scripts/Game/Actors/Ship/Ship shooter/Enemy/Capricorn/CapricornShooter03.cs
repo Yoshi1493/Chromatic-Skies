@@ -4,18 +4,29 @@ using static CoroutineHelper;
 
 public class CapricornShooter03 : CommonEnemyShooter<EnemyBullet>
 {
-    const int BulletCount = 0;
+    const int BulletCount = 6;
+    const float BulletSpacing = 360f / BulletCount;
+    const float BulletSpawnRadius = 0.5f;
+    const float BulletBaseSpeed = 2f;
+    const float BulletSpeedModifier = 0.2f;
 
     protected override IEnumerator Shoot()
     {
-        yield return WaitForSeconds(1f);
+        yield return WaitForSeconds(2f);
+
+        float z = PlayerPosition.GetRotationDifference(transform.position);
 
         for (int i = 0; i < BulletCount; i++)
         {
-            float z = 0f;
-            Vector3 pos = Vector3.zero;
+            float r = ((i + 0.5f) * BulletSpacing) + z;
+            float s = BulletBaseSpeed + (i * BulletSpeedModifier);
+            Vector3 pos = BulletSpawnRadius * transform.up.RotateVectorBy(r);
 
-            SpawnProjectile(0, z, pos).Fire();
+            bulletData.colour = bulletData.gradient.Evaluate(i / (BulletCount - 1f));
+
+            var bullet = SpawnProjectile(0, z, pos);
+            bullet.MoveSpeed = s;
+            bullet.Fire();
 
             yield return WaitForSeconds(ShootingCooldown);
         }
