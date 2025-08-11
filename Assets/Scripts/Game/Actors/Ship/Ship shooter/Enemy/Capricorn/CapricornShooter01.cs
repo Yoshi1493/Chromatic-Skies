@@ -12,8 +12,8 @@ public class CapricornShooter01 : CommonEnemyShooter<EnemyBullet>
     const float BulletCount = 2;
     const float BulletSpacing = 3f;
     const float BulletRotationSpeed = 90f;
-    const float BulletBaseSpeed = 2.5f;
-    const float BulletSpeedModifier = 1f;
+    const float BulletBaseSpeed = 2.0f;
+    const float BulletSpeedModifier = 0.5f;
 
     protected override float ShootingCooldown => 0.05f;
 
