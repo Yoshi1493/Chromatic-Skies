@@ -24,7 +24,7 @@ public class CapricornShooter03 : CommonEnemyShooter<EnemyBullet>
 
             bulletData.colour = bulletData.gradient.Evaluate(i / (BulletCount - 1f));
 
-            var bullet = SpawnProjectile(0, z, pos);
+            var bullet = SpawnProjectile(3, z, pos);
             bullet.MoveSpeed = s;
             bullet.Fire();
 

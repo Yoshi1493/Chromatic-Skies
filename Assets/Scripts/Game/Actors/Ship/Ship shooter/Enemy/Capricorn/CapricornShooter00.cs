@@ -17,6 +17,8 @@ public class CapricornShooter00 : CommonEnemyShooter<EnemyBullet>
             float z = ((i - ((BulletCount - 1) / 2f)) * BulletSpacing) + r;
             Vector3 pos = Vector3.zero;
 
+            bulletData.colour = bulletData.gradient.Evaluate(i / (BulletCount - 1f));
+
             SpawnProjectile(0, z, pos).Fire();
 
             yield return WaitForSeconds(ShootingCooldown);
