@@ -8,6 +8,8 @@ public abstract class CommonEnemyMovement : ShipMovement<CommonEnemy>
     protected IEnumerator moveCoroutine;
     protected abstract IEnumerator Move();
 
+    protected float SignX => Mathf.Sign(parentShip.transform.position.x);
+
     void OnEnable()
     {
         if (moveCoroutine != null)
