@@ -5,6 +5,7 @@ using static MathHelper;
 
 public class CapricornShooter04 : CommonEnemyShooter<EnemyBullet>
 {
+    const int RepeatCount = 2;
     const int WaveCount = 100;
     const float WaveSpacing = 9f;
     const int BranchCount = 2;
@@ -21,23 +22,28 @@ public class CapricornShooter04 : CommonEnemyShooter<EnemyBullet>
 
         float r = PlayerPosition.GetRotationDifference(transform.position);
 
-        for (int i = 0; i < WaveCount; i++)
+        for (int i = 0; i < RepeatCount; i++)
         {
-            for (int ii = 0; ii < BranchCount; ii++)
+            for (int ii = 0; ii < WaveCount; ii++)
             {
-                float z = RandomAngleDeg;
-                float s = BulletBaseSpeed + (i * BulletSpeedModifier);
-                float t = (ii % 2 * 2 - 1) * (i * WaveSpacing + r);
-                Vector3 pos = (BulletSpawnRadius + (i * BulletSpawnRadiusModifier)) * transform.up.RotateVectorBy(t);
+                for (int iii = 0; iii < BranchCount; iii++)
+                {
+                    float z = RandomAngleDeg;
+                    float s = BulletBaseSpeed + (ii * BulletSpeedModifier);
+                    float t = (iii % 2 * 2 - 1) * (ii * WaveSpacing + r);
+                    Vector3 pos = (BulletSpawnRadius + (ii * BulletSpawnRadiusModifier)) * transform.up.RotateVectorBy(t);
 
-                bulletData.colour = bulletData.gradient.Evaluate(i / (WaveCount - 1f));
+                    bulletData.colour = bulletData.gradient.Evaluate(ii / (WaveCount - 1f));
 
-                var bullet = SpawnProjectile(4, z, pos);
-                bullet.MoveSpeed = s;
-                bullet.Fire();
+                    var bullet = SpawnProjectile(4, z, pos);
+                    bullet.MoveSpeed = s;
+                    bullet.Fire();
+                }
+
+                yield return WaitForSeconds(ShootingCooldown);
             }
 
-            yield return WaitForSeconds(ShootingCooldown);
+            yield return WaitForSeconds(3f);
         }
     }
 }
