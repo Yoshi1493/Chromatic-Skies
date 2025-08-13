@@ -10,7 +10,7 @@ public class CapricornShooter07 : CommonEnemyShooter<EnemyBullet>
 
     protected override IEnumerator Shoot()
     {
-        yield return WaitForSeconds(6.5f);
+        yield return WaitForSeconds(4.5f);
 
         while (enabled)
         {
