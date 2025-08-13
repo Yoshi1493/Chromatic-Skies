@@ -1,23 +1,31 @@
 using System.Collections;
 using UnityEngine;
 using static CoroutineHelper;
+using static MathHelper;
 
 public class CapricornShooter07 : CommonEnemyShooter<EnemyBullet>
 {
-    const int BulletCount = 0;
+    const int BulletMinCount = 3;
+    const int BulletMaxCount = 6;
 
     protected override IEnumerator Shoot()
     {
-        yield return WaitForSeconds(1f);
+        yield return WaitForSeconds(6.5f);
 
-        for (int i = 0; i < BulletCount; i++)
+        while (enabled)
         {
-            float z = 0f;
-            Vector3 pos = Vector3.zero;
+            int bulletCount = Random.Range(BulletMinCount, BulletMaxCount);
 
-            SpawnProjectile(0, z, pos).Fire();
+            for (int ii = 0; ii < bulletCount; ii++)
+            {
+                float z = RandomAngleDeg;
+                Vector3 pos = Random.insideUnitCircle;
+
+                SpawnProjectile(1, z, pos).Fire();
+            }
 
             yield return WaitForSeconds(ShootingCooldown);
         }
+
     }
 }

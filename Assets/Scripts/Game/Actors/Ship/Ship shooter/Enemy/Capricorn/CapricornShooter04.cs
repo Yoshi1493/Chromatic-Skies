@@ -37,7 +37,6 @@ public class CapricornShooter04 : CommonEnemyShooter<EnemyBullet>
 
                     var bullet = SpawnProjectile(4, z, pos);
                     bullet.MoveSpeed = s;
-                    bullet.Fire();
                 }
 
                 yield return WaitForSeconds(ShootingCooldown);
