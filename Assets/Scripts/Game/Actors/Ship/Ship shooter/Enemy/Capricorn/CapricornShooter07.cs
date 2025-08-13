@@ -21,7 +21,7 @@ public class CapricornShooter07 : CommonEnemyShooter<EnemyBullet>
                 float z = RandomAngleDeg;
                 Vector3 pos = Random.insideUnitCircle;
 
-                SpawnProjectile(1, z, pos).Fire();
+                SpawnProjectile(7, z, pos).Fire();
             }
 
             yield return WaitForSeconds(ShootingCooldown);

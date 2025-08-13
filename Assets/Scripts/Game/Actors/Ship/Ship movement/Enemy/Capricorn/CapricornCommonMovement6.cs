@@ -10,7 +10,7 @@ public class CapricornCommonMovement6 : CommonEnemyMovement
 
         while (enabled)
         {
-            yield return WaitForSeconds(5f);
+            yield return WaitForSeconds(3f);
             yield return parentShip.MoveToRandomPosition(2f, 3f, 4f);
         }
     }
