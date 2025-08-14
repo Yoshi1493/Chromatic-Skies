@@ -17,7 +17,7 @@ public class CapricornShooter08 : CommonEnemyShooter<EnemyBullet>
             float z = PlayerPosition.GetRotationDifference(transform.position);
             Vector3 pos = Vector3.zero;
 
-            SpawnProjectile(0, z, pos).Fire();
+            SpawnProjectile(8, z, pos).Fire();
         }
     }
 }

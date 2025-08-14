@@ -8,6 +8,11 @@ public class CapricornCommonMovement5 : CommonEnemyMovement
 
     protected override IEnumerator Move()
     {
+        for (int i = 0; i < movementPoints.Length; i++)
+        {
+            movementPoints[i].x *= SignX;
+        }
+
         float t = 0f;
 
         while (t < (movementPoints.Length - 1) / 3)

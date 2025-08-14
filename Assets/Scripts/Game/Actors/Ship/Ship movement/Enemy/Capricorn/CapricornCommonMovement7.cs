@@ -9,7 +9,7 @@ public class CapricornCommonMovement7 : CommonEnemyMovement
 
     protected override IEnumerator Move()
     {
-        Vector2 originalPosition = parentShip.transform.position;
+        Vector2 originalPosition = (Vector2)parentShip.transform.position + Random.insideUnitCircle;
 
         float t = 0f;
 
