@@ -6,7 +6,7 @@ public class CapricornShooter08 : CommonEnemyShooter<EnemyBullet>
 {
     const int BulletCount = 3;
 
-    protected override float ShootingCooldown => 0.8f;
+    protected override float ShootingCooldown => 0.6f;
 
     protected override IEnumerator Shoot()
     {

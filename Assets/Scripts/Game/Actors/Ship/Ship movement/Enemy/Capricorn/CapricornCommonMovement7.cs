@@ -1,6 +1,5 @@
 using System.Collections;
 using UnityEngine;
-using PathCreation;
 using static CoroutineHelper;
 using static BezierHelper;
 
@@ -19,7 +18,7 @@ public class CapricornCommonMovement7 : CommonEnemyMovement
             parentShip.transform.position = originalPosition + EvaluateCubicSpline(movementPoints, t);
 
             yield return null;
-            t += Time.deltaTime / 1f;
+            t += Time.deltaTime;
         }
 
         yield return WaitForSeconds(3f);
