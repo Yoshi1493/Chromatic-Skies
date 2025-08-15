@@ -5,12 +5,6 @@ public class ControlsRemapScreen : Menu
     protected override void Awake()
     {
         base.Awake();
-
         controlsMenu = GetComponent<ControlsMenu>();
-    }
-
-    void Update()
-    {
-        
     }
 }
