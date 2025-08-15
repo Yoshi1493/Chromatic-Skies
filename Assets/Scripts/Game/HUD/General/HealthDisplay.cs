@@ -3,7 +3,7 @@ using TMPro;
 
 [RequireComponent(typeof(TextMeshProUGUI))]
 public class HealthDisplay<TShip> : ShipHUDComponent<TShip>
-    where TShip : Ship
+    where TShip : CharacterShip
 {
     protected TextMeshProUGUI healthText;
 

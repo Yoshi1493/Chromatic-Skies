@@ -1,7 +1,7 @@
 using UnityEngine;
 
 public abstract class ShipHUDComponent<TShip> : MonoBehaviour
-    where TShip : Ship
+    where TShip : CharacterShip
 {
     protected TShip ship;
 

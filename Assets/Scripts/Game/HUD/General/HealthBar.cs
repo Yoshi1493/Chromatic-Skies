@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 [RequireComponent(typeof(Image))]
 public class HealthBar<TShip> : ShipHUDComponent<TShip>
-    where TShip : Ship
+    where TShip : CharacterShip
 {
     protected Image healthBarImage;
 
