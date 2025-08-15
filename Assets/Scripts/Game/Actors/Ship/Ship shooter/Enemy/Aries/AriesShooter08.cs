@@ -21,7 +21,7 @@ public class AriesShooter08 : CommonEnemyShooter<EnemyBullet>
 
             for (int ii = 0; ii < BulletCount; ii++)
             {
-                float r = (ii - ((BulletCount - 1) / 2f)) * BulletSpacing + z;
+                float r = ((ii - ((BulletCount - 1) / 2f)) * BulletSpacing) + z;
                 Vector3 pos = BulletSpawnOffset * transform.up.RotateVectorBy(r);
 
                 bulletData.colour = bulletData.gradient.Evaluate(ii % 2);
