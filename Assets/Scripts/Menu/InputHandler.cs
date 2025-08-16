@@ -21,7 +21,11 @@ public class InputHandler : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
+    }
 
+    [RuntimeInitializeOnLoadMethod]
+    static void OnSceneLoad()
+    {
         lastSelectedGameObject = EventSystem.current.firstSelectedGameObject;
     }
 
