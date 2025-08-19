@@ -6,8 +6,7 @@ public class CameraBoundaries : MonoBehaviour
     public static float ScreenHalfHeight;
 
     //set screen dimensions - derived from camera's orthographic size and aspect ratio
-    [RuntimeInitializeOnLoadMethod]
-    static void OnSceneLoad()
+    void Awake()
     {
         Camera mainCam = Camera.main;
         ScreenHalfHeight = mainCam.orthographicSize;
