@@ -7802,7 +7802,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentTime: {fileID: 11400000, guid: 7564dd3007503304aa59e09756250b88, type: 2}
   pauseHandler: {fileID: 2117771226}
-  enemySpawner: {fileID: 18786235}
+  selectedBossIndex: {fileID: 11400000, guid: d5bd1f541c5da6647b0ec80fa55b12ce, type: 2}
 --- !u!114 &1736981275
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -17,8 +17,11 @@ public class Clock : MonoBehaviour
 
     Player player;
     Boss boss;
+
     [SerializeField] PauseHandler pauseHandler;
-    [SerializeField] EnemySpawner enemySpawner;
+
+    [SerializeField] IntObject selectedBossIndex;
+    EnemySpawner enemySpawner;
 
     void Awake()
     {
@@ -26,6 +29,8 @@ public class Clock : MonoBehaviour
 
         player = FindObjectOfType<Player>();
         boss = FindObjectOfType<Boss>();
+
+        enemySpawner = FindObjectOfType<EnemySpawnerController>().GetComponentsInChildren<EnemySpawner>(true)[selectedBossIndex.value];
     }
 
     void OnEnable()
@@ -36,17 +41,24 @@ public class Clock : MonoBehaviour
         RestartClock(boss.RespawnTime + 2f);
     }
 
+    void OnDisable()
+    {
+        clockText.enabled = false;
+    }
+
     void Start()
     {
-        player.LoseLifeAction += () => PauseClock(false, player.RespawnTime + 2f);
+        player.LoseLifeAction += OnPlayerLoseLife;
         player.DeathAction += StopClock;
 
-        boss.LoseLifeAction += () => RestartClock(boss.RespawnTime + 2f);
+        boss.LoseLifeAction += OnBossLoseLife;
         boss.DeathAction += StopClock;
 
         pauseHandler.GamePauseAction += SetPaused;
 
-        enemySpawner.BossSpawnAction += () => enabled = true;
+        enemySpawner.BossSpawnAction += OnBossSpawn;
+
+        StopAllCoroutines();
         enabled = false;
     }
 
@@ -148,8 +160,36 @@ public class Clock : MonoBehaviour
         clockText.color = c;
     }
 
-    void OnDisable()
+    void OnPlayerLoseLife()
     {
-        clockText.enabled = false;
+        PauseClock(false, player.RespawnTime + 2f);
+    }
+
+    void OnBossLoseLife()
+    {
+        RestartClock(boss.RespawnTime + 2f);
+    }
+
+    void OnCharacterShipDie()
+    {
+        StopClock();
+    }
+
+    void OnBossSpawn()
+    {
+        enabled = true;
+    }
+
+    void OnDestroy()
+    {
+        player.LoseLifeAction -= OnPlayerLoseLife;
+        player.DeathAction -= OnCharacterShipDie;
+
+        boss.LoseLifeAction -= OnBossLoseLife;
+        boss.DeathAction -= OnCharacterShipDie;
+
+        pauseHandler.GamePauseAction -= SetPaused;
+
+        enemySpawner.BossSpawnAction -= OnBossSpawn;
     }
 }
