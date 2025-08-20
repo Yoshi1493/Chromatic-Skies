@@ -50,83 +50,88 @@ public class EnemySpawner : MonoBehaviour
             List<float> xPositions = new();
             List<float> yPositions = new();
 
-            foreach (var line in splitFile)
+            #region DEBUG
+            if (splitFile.Length <= 0)
+            #endregion
             {
-                if (char.IsDigit(line[0]))
+                foreach (var line in splitFile)
                 {
-                    var splitLine = line.Split(", ", StringSplitOptions.RemoveEmptyEntries);
-
-                    spawnTimes.Add(float.Parse(splitLine[0]));
-                    enemyIndexes.Add(int.Parse(splitLine[1]));
-                    xPositions.Add(float.Parse(splitLine[2]));
-                    yPositions.Add(float.Parse(splitLine[3]));
-                }
-            }
-
-            if (enemyPrefabs.Length > 0)
-            {
-                //pre-spawn all enemies
-                for (int i = 0; i < enemyIndexes.Count; i++)
-                {
-                    //make sure enemy index is within spawn array
-                    if (enemyIndexes[i] < enemyPrefabs.Length)
+                    if (char.IsDigit(line[0]))
                     {
-                        var enemy = Instantiate(enemyPrefabs[enemyIndexes[i]], transform);
-                        Vector2 pos = new(xPositions[i], yPositions[i]);
-                        enemy.transform.SetPositionAndRotation(pos, transform.rotation);
+                        var splitLine = line.Split(", ", StringSplitOptions.RemoveEmptyEntries);
 
-                        enemy.enabled = false;
-                        enemy.gameObject.SetActive(false);
-
-                        enemies.Add(enemy);
+                        spawnTimes.Add(float.Parse(splitLine[0]));
+                        enemyIndexes.Add(int.Parse(splitLine[1]));
+                        xPositions.Add(float.Parse(splitLine[2]));
+                        yPositions.Add(float.Parse(splitLine[3]));
                     }
                 }
+
+                if (enemyPrefabs.Length > 0)
+                {
+                    //pre-spawn all enemies
+                    for (int i = 0; i < enemyIndexes.Count; i++)
+                    {
+                        //make sure enemy index is within spawn array
+                        if (enemyIndexes[i] < enemyPrefabs.Length)
+                        {
+                            var enemy = Instantiate(enemyPrefabs[enemyIndexes[i]], transform);
+                            Vector2 pos = new(xPositions[i], yPositions[i]);
+                            enemy.transform.SetPositionAndRotation(pos, transform.rotation);
+
+                            enemy.enabled = false;
+                            enemy.gameObject.SetActive(false);
+
+                            enemies.Add(enemy);
+                        }
+                    }
+                }
+
+                #region DEBUG
+
+                if (spawnTimes[0] > 3.0f)
+                {
+                    float t = spawnTimes[0];
+
+                    for (int i = 0; i < spawnTimes.Count; i++)
+                    {
+                        spawnTimes[i] = spawnTimes[i] - t + 3.0f;
+                    }
+                }
+
+                #endregion
+
+                //activate all enemies based on spawn time *relative to previous enemy's spawn time*
+                for (int i = 0; i < enemies.Count; i++)
+                {
+                    float delay = i > 0 ? spawnTimes[i] - spawnTimes[i - 1] : spawnTimes[0];
+
+                    if (delay > 0f)
+                    {
+                        yield return WaitForSeconds(delay);
+                    }
+
+                    //wait until any enemies leave scene before spawning miniboss, plus 1 sec.
+                    if (enemyIndexes[i] == minibossIndex)
+                    {
+                        yield return WaitUntil(() => IsSceneEmpty());
+                        yield return WaitForSeconds(1f);
+
+                        EnemyBulletPool.Instance.DestroyAllProjectilesInPool();
+                    }
+
+                    enemies[i].gameObject.SetActive(true);
+                    enemies[i].enabled = true;
+
+                    //wait until miniboss is defeated
+                    if (enemyIndexes[i] == minibossIndex)
+                    {
+                        yield return WaitUntil(() => IsSceneEmpty());
+                    }
+                }
+
+                yield return WaitUntil(() => transform.childCount == 0);
             }
-
-            #region DEBUG
-
-            if (spawnTimes[0] > 3.0f)
-            {
-                float t = spawnTimes[0];
-
-                for (int i = 0; i < spawnTimes.Count; i++)
-                {
-                    spawnTimes[i] = spawnTimes[i] - t + 3.0f;
-                }
-            }
-
-            #endregion
-
-            //activate all enemies based on spawn time *relative to previous enemy's spawn time*
-            for (int i = 0; i < enemies.Count; i++)
-            {
-                float delay = i > 0 ? spawnTimes[i] - spawnTimes[i - 1] : spawnTimes[0];
-
-                if (delay > 0f)
-                {
-                    yield return WaitForSeconds(delay);
-                }
-
-                //wait until any enemies leave scene before spawning miniboss, plus 1 sec.
-                if (enemyIndexes[i] == minibossIndex)
-                {
-                    yield return WaitUntil(() => IsSceneEmpty());
-                    yield return WaitForSeconds(1f);
-
-                    EnemyBulletPool.Instance.DestroyAllProjectilesInPool();
-                }
-
-                enemies[i].gameObject.SetActive(true);
-                enemies[i].enabled = true;
-
-                //wait until miniboss is defeated
-                if (enemyIndexes[i] == minibossIndex)
-                {
-                    yield return WaitUntil(() => IsSceneEmpty());
-                }
-            }
-
-            yield return WaitUntil(() => transform.childCount == 0);
         }
 
         yield return WaitForSeconds(5f);
