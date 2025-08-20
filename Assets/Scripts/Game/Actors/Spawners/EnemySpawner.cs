@@ -51,7 +51,7 @@ public class EnemySpawner : MonoBehaviour
             List<float> yPositions = new();
 
             #region DEBUG
-            if (splitFile.Length <= 0)
+            if (splitFile.Length > 0)
             #endregion
             {
                 foreach (var line in splitFile)
