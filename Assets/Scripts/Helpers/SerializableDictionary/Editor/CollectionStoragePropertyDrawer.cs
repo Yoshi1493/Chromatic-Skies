@@ -7,3 +7,6 @@ public class CollectionStoragePropertyDrawer : SerializableDictionaryStorageProp
 [CustomPropertyDrawer(typeof(AudioDictionary))]
 public class AudioDictionaryPropertyDrawer : SerializableDictionaryPropertyDrawer
 { }
+
+[CustomPropertyDrawer(typeof(CollectibleIntDictionary))]
+public class CollectibleIntDictionaryPropertyDrawer : SerializableDictionaryPropertyDrawer { }

@@ -10,24 +10,32 @@ public enum CollectibleType
     Power = 2,
 }
 
+[Serializable]
+public class CollectibleIntDictionary : SerializableDictionary<CollectibleType, int> { }
+
 public class CollectibleObjectPool : GenericObjectPool<Collectible>
 {
     readonly Dictionary<CollectibleType, Queue<Collectible>> collectiblesPool = new();
 
-    [SerializeField] int prewarmCount;
+    [SerializeField] CollectibleIntDictionary prewarmDictionary;
     [SerializeField] List<Collectible> collectibles;
 
     void Start()
     {
-        Queue<Collectible> tmp = new(prewarmCount);
+        foreach (var item in prewarmDictionary.Keys)
+        {
+            int prewarmCount = prewarmDictionary[item];
 
-        for (int i = 0; i < prewarmCount; i++)
-        {
-            tmp.Enqueue(Get((int)CollectibleType.Score));
-        }
-        for (int i = 0; i < prewarmCount; i++)
-        {
-            ReturnToPool(tmp.Dequeue(), (int)CollectibleType.Score);
+            Queue<Collectible> tmp = new(prewarmCount);
+
+            for (int ii = 0; ii < prewarmCount; ii++)
+            {
+                tmp.Enqueue(Get((int)item));
+            }
+            for (int ii = 0; ii < prewarmCount; ii++)
+            {
+                ReturnToPool(tmp.Dequeue(), (int)item);
+            }
         }
     }
 
