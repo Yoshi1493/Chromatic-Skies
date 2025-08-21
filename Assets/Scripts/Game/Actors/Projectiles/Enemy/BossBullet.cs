@@ -20,9 +20,11 @@ public abstract class BossBullet : EnemyBullet
             && transform.position.y > -ScreenHalfHeight
             && transform.position.y < ScreenHalfHeight)
         {
-            var collectible = SpawnCollectible();
+            var collectible = SpawnScoreCollectible();
             collectible.foundPlayer = true;
         }
+
+        Destroy(gameObject);
     }
 
     //returns to object pool queue as disabled object

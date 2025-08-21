@@ -20,8 +20,10 @@ public abstract class MinibossBullet : EnemyBullet
             && transform.position.y > -ScreenHalfHeight
             && transform.position.y < ScreenHalfHeight)
         {
-            SpawnCollectible();
+            SpawnScoreCollectible();
         }
+
+        Destroy(gameObject);
     }
 
     void OnDestroy()
