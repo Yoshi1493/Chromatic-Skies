@@ -1,4 +1,4 @@
-public class ScoreObject : Collectible
+public class ScoreCollectible : Collectible
 {
     public override void Destroy()
     {

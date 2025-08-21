@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8114346908854110127}
   - component: {fileID: 8114346908854110120}
+  - component: {fileID: 4403650357740464008}
   m_Layer: 14
   m_Name: Collectible-power
   m_TagString: Untagged
@@ -84,3 +85,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &4403650357740464008
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8114346908854110121}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a356ade2dcd8e3f4f80440787b549fe3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  transform: {fileID: 0}
+  moveDirection: {x: 0, y: 0, z: 0}
+  foundPlayer: 0

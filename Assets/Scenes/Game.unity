@@ -4500,6 +4500,8 @@ MonoBehaviour:
   prewarmCount: 500
   collectibles:
   - {fileID: 1921282877794899759, guid: 9c990ba014009334688301f217830346, type: 3}
+  - {fileID: 4403650357740464008, guid: 67bd7970d5f10f846acb76a2b9f6dc8c, type: 3}
+  - {fileID: -6051217148753051030, guid: 4b2d4e69e6e800b4a8507e4b5ad5327b, type: 3}
 --- !u!1 &952196236
 GameObject:
   m_ObjectHideFlags: 0
