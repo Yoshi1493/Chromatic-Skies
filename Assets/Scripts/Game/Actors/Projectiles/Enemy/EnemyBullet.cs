@@ -47,6 +47,19 @@ public abstract class EnemyBullet : Bullet
         }
     }
 
+    protected virtual Collectible SpawnCollectible()
+    {
+        var collectible = CollectibleObjectPool.Instance.Get((int)CollectibleType.Score);
+
+        collectible.transform.position = transform.position;
+        collectible.gameObject.SetActive(true);
+        collectible.enabled = true;
+
+        Destroy(gameObject);
+
+        return collectible;
+    }
+
     public override void Destroy()
     {
         if (movementBehaviour != null)
