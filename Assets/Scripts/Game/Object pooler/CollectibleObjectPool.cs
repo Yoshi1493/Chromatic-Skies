@@ -7,6 +7,7 @@ public enum CollectibleType
 {
     Score = 0,
     Health = 1,
+    Power = 2,
 }
 
 public class CollectibleObjectPool : GenericObjectPool<Collectible>
