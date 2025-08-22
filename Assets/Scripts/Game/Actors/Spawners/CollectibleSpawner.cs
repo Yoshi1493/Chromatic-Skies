@@ -1,0 +1,41 @@
+using UnityEngine;
+using static CameraBoundaries;
+
+public class CollectibleSpawner : MonoBehaviour
+{
+    Ship parentShip;
+
+    [SerializeField] ShipObject[] playerData;
+    [SerializeField] IntObject selectedPlayerIndex;
+    [SerializeField] IntObject playerCurrentHealth;
+
+    void Awake()
+    {
+        parentShip = GetComponentInParent<Ship>();
+    }
+
+    void Start()
+    {
+        parentShip.DeathAction += OnEnemyDie;
+    }
+
+    void OnEnemyDie()
+    {
+        if (transform.position.x > -ScreenHalfWidth
+            && transform.position.x < ScreenHalfWidth
+            && transform.position.y > -ScreenHalfHeight
+            && transform.position.y < ScreenHalfHeight)
+        {
+            var collectible = CollectibleObjectPool.Instance.Get((int)CollectibleType.Score);
+
+            collectible.transform.position = transform.position;
+            collectible.gameObject.SetActive(true);
+            collectible.enabled = true;
+        }
+    }
+
+    void OnDestroy()
+    {
+        parentShip.DeathAction -= OnEnemyDie;
+    }
+}
