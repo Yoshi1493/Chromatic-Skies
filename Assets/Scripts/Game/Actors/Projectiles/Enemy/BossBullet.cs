@@ -1,5 +1,3 @@
-using static CameraBoundaries;
-
 public abstract class BossBullet : EnemyBullet
 {
     protected Boss parentShip;
@@ -15,10 +13,7 @@ public abstract class BossBullet : EnemyBullet
 
     void OnBossLoseLife()
     {
-        if (transform.position.x > -ScreenHalfWidth
-            && transform.position.x < ScreenHalfWidth
-            && transform.position.y > -ScreenHalfHeight
-            && transform.position.y < ScreenHalfHeight)
+        if (this.IsWithinCameraBounds())
         {
             var collectible = SpawnScoreCollectible();
             collectible.foundPlayer = true;

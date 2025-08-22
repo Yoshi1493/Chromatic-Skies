@@ -1,5 +1,3 @@
-using static CameraBoundaries;
-
 public abstract class MinibossBullet : EnemyBullet
 {
     Miniboss parentShip;
@@ -15,10 +13,7 @@ public abstract class MinibossBullet : EnemyBullet
 
     void OnMinibossDie()
     {
-        if (transform.position.x > -ScreenHalfWidth
-            && transform.position.x < ScreenHalfWidth
-            && transform.position.y > -ScreenHalfHeight
-            && transform.position.y < ScreenHalfHeight)
+        if (this.IsWithinCameraBounds())
         {
             SpawnScoreCollectible();
         }

@@ -1,5 +1,4 @@
 using UnityEngine;
-using static CameraBoundaries;
 
 public abstract class Collectible : Actor
 {
@@ -31,9 +30,9 @@ public abstract class Collectible : Actor
 
     void Update()
     {
+        CheckPosition();
         IncrementLifetime();
         Move();
-        CheckPosition();
         CheckPlayerPosition();
     }
 
@@ -70,9 +69,7 @@ public abstract class Collectible : Actor
     //destroy if outside camera left/right/bottom bounds
     void CheckPosition()
     {
-        if ( transform.position.y < -ScreenHalfHeight ||
-             transform.position.x < -ScreenHalfWidth ||
-             transform.position.x > ScreenHalfWidth)
+        if (!this.IsWithinCameraBounds() && transform.position.y < CameraBoundaries.ScreenHalfHeight)
         {
             Destroy();
         }
@@ -85,7 +82,7 @@ public abstract class Collectible : Actor
         //check if gameobject is near Player
         if (!foundPlayer)
         {
-            if (player.transform.position.y >= ScreenHalfHeight * 0.5f)
+            if (player.transform.position.y >= CameraBoundaries.ScreenHalfHeight * 0.5f)
             {
                 foundPlayer = true;
             }

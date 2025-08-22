@@ -1,5 +1,4 @@
 using UnityEngine;
-using static CameraBoundaries;
 
 public class CollectibleSpawner : MonoBehaviour
 {
@@ -21,10 +20,7 @@ public class CollectibleSpawner : MonoBehaviour
 
     void OnEnemyDie()
     {
-        if (transform.position.x > -ScreenHalfWidth
-            && transform.position.x < ScreenHalfWidth
-            && transform.position.y > -ScreenHalfHeight
-            && transform.position.y < ScreenHalfHeight)
+        if (parentShip.IsWithinCameraBounds())
         {
             var collectible = CollectibleObjectPool.Instance.Get((int)CollectibleType.Score);
 

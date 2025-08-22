@@ -2,6 +2,7 @@ using System.Collections;
 using UnityEngine;
 using static CoroutineHelper;
 using static MathHelper;
+using static CameraBoundaries;
 
 //helper class to handle Actor movement
 public static class ActorMovementHelper
@@ -11,6 +12,18 @@ public static class ActorMovementHelper
     static readonly AnimationCurve moveInterpolation = AnimationCurve.EaseInOut(0f, 0f, 1f, 1f);
     public static readonly Vector3 bossSpawnPosition = new(0f, 2.5f, 0f);
     public static readonly Vector3 playerSpawnPosition = new(0f, -2f, 0f);
+
+    #endregion
+
+    #region Position checks
+
+    public static bool IsWithinCameraBounds(this Actor actor)
+    {
+        return actor.transform.position.x > -ScreenHalfWidth
+            && actor.transform.position.x < ScreenHalfWidth
+            && actor.transform.position.y > -ScreenHalfHeight
+            && actor.transform.position.y < ScreenHalfHeight;
+    }
 
     #endregion
 
