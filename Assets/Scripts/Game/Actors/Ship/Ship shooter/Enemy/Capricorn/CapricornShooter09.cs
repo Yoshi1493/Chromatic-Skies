@@ -14,7 +14,7 @@ public class CapricornShooter09 : CommonEnemyShooter<EnemyBullet>
 
     protected override IEnumerator Shoot()
     {
-        yield return WaitForSeconds(2f);
+        yield return WaitForSeconds(1.5f);
 
         float r = PlayerPosition.GetRotationDifference(transform.position);
 
