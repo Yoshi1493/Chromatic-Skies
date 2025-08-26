@@ -6,7 +6,7 @@ public abstract class Collectible : Actor
     float currentLifetime;
     protected virtual float MaxLifetime => 10f;
 
-    Player player;
+    protected Player player;
     const float PlayerDetectionSqRadius = 1f;
     const float PlayerCollisionSqRadius = 0.1f;
 
@@ -82,6 +82,7 @@ public abstract class Collectible : Actor
         //check if gameobject is near Player
         if (!foundPlayer)
         {
+            //check if Player is in PoC range
             if (player.transform.position.y >= CameraBoundaries.ScreenHalfHeight * 0.5f)
             {
                 foundPlayer = true;
@@ -95,14 +96,17 @@ public abstract class Collectible : Actor
             }
         }
 
-        //destroy if touching Player
+        //apply collectible effect + destroy if touching Player
         if (Vector3.SqrMagnitude(diff) <= PlayerCollisionSqRadius)
         {
+            Collect();
             Destroy();
         }
     }
 
-    public virtual void Destroy()
+    protected abstract void Collect();
+
+    protected virtual void Destroy()
     {
         moveDirection = Vector3.zero;
         MoveSpeed = 0f;
