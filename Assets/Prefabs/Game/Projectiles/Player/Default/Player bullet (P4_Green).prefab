@@ -54,22 +54,26 @@ PrefabInstance:
     - target: {fileID: 3896970343590141465, guid: 06a49f4bf0c75b745956e119689efc37, type: 3}
       propertyPath: power
       value: 
-      objectReference: {fileID: 11400000, guid: 5067c38418cc48a48916bb09ed78fd6a, type: 2}
+      objectReference: {fileID: 11400000, guid: 4e48a385ca326ef4fb4351518e3fe31f, type: 2}
     - target: {fileID: 3896970343590141465, guid: 06a49f4bf0c75b745956e119689efc37, type: 3}
       propertyPath: ownerShip
       value: 
-      objectReference: {fileID: 11400000, guid: f38ea00f8dc589b4d92154f38d3b8138, type: 2}
+      objectReference: {fileID: 11400000, guid: db3323bf61bf7c048965801703f5126b, type: 2}
     - target: {fileID: 3896970343590141465, guid: 06a49f4bf0c75b745956e119689efc37, type: 3}
       propertyPath: bulletPower
       value: 
-      objectReference: {fileID: 11400000, guid: 5067c38418cc48a48916bb09ed78fd6a, type: 2}
+      objectReference: {fileID: 11400000, guid: 4e48a385ca326ef4fb4351518e3fe31f, type: 2}
+    - target: {fileID: 3896970343590141465, guid: 06a49f4bf0c75b745956e119689efc37, type: 3}
+      propertyPath: bulletSpeed
+      value: 
+      objectReference: {fileID: 11400000, guid: 68fdde6a70384b445adb15cc2a41f469, type: 2}
     - target: {fileID: 3896970343590141465, guid: 06a49f4bf0c75b745956e119689efc37, type: 3}
       propertyPath: projectileData
       value: 
-      objectReference: {fileID: 11400000, guid: bf2147c786e2800428a726da6405dac9, type: 2}
+      objectReference: {fileID: 11400000, guid: 6e6b59bd1de445a4c928797d0d7c618c, type: 2}
     - target: {fileID: 4295436845269932089, guid: 06a49f4bf0c75b745956e119689efc37, type: 3}
       propertyPath: m_Name
-      value: Player bullet (Yellow)
+      value: Player bullet (Green)
       objectReference: {fileID: 0}
     - target: {fileID: 8059288589417988345, guid: 06a49f4bf0c75b745956e119689efc37, type: 3}
       propertyPath: m_Sprite
@@ -81,11 +85,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8059288589417988345, guid: 06a49f4bf0c75b745956e119689efc37, type: 3}
       propertyPath: m_Color.g
-      value: 0.8333334
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8059288589417988345, guid: 06a49f4bf0c75b745956e119689efc37, type: 3}
       propertyPath: m_Color.r
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8059288589417988345, guid: 06a49f4bf0c75b745956e119689efc37, type: 3}
       propertyPath: m_WasSpriteAssigned
