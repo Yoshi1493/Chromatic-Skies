@@ -30,19 +30,16 @@ public abstract class Collectible : Actor
 
     void Update()
     {
-        CheckPosition();
-        IncrementLifetime();
-        Move();
-        CheckPlayerPosition();
-    }
-
-    void IncrementLifetime()
-    {
-        currentLifetime += Time.deltaTime;
-
-        if (currentLifetime > MaxLifetime)
+        //destroy if outside camera left/right/bottom bounds
+        if (!this.IsWithinCameraBounds() && transform.position.y < CameraBoundaries.ScreenHalfHeight)
         {
             Destroy();
+        }
+        else
+        {
+            Move();
+            CheckPlayerPosition();
+            IncrementLifetime();
         }
     }
 
@@ -64,15 +61,6 @@ public abstract class Collectible : Actor
 
         //apply movement
         transform.Translate(Time.deltaTime * MoveSpeed * moveDirection, Space.World);
-    }
-
-    //destroy if outside camera left/right/bottom bounds
-    void CheckPosition()
-    {
-        if (!this.IsWithinCameraBounds() && transform.position.y < CameraBoundaries.ScreenHalfHeight)
-        {
-            Destroy();
-        }
     }
 
     void CheckPlayerPosition()
@@ -104,8 +92,19 @@ public abstract class Collectible : Actor
         }
     }
 
+    void IncrementLifetime()
+    {
+        currentLifetime += Time.deltaTime;
+
+        if (currentLifetime > MaxLifetime)
+        {
+            Destroy();
+        }
+    }
+
     protected abstract void Collect();
 
+    //return object to respective pool (called in child classes)
     protected virtual void Destroy()
     {
         moveDirection = Vector3.zero;
