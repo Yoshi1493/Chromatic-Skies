@@ -5,11 +5,13 @@ public class PlayerBullet : Bullet
 {
     protected override int CollisionMask => 1 << LayerMask.NameToLayer("Enemy");
 
+    [SerializeField] FloatObject bulletSpeed;
+
     protected override void Awake()
     {
         base.Awake();
 
-        MoveSpeed = projectileData.Speed.Value;
+        MoveSpeed = bulletSpeed.value;
         playerShip.LoseLifeAction += OnPlayerLoseLife;
     }
 

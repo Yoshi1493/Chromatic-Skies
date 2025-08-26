@@ -14,7 +14,6 @@ public class ProjectileObject : ScriptableObject
     [Header("Stats")]
     public int ID;
     public IntObject Power;
-    public FloatReference Speed;
 
     [Header("Properties")]
     public bool destructible = true;

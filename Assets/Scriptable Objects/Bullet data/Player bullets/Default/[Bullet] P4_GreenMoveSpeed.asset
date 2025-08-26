@@ -10,6 +10,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5a7c3f1896c9b0a4c966cfa6d513243c, type: 3}
-  m_Name: '[Bullet] _Movement speed'
+  m_Name: '[Bullet] P4_GreenMoveSpeed'
   m_EditorClassIdentifier: 
-  value: 20
+  value: 25
