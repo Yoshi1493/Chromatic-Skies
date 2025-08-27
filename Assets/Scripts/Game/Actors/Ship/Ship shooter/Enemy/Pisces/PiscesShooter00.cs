@@ -4,12 +4,12 @@ using static CoroutineHelper;
 
 public class PiscesShooter00 : CommonEnemyShooter<EnemyBullet>
 {
-    const int RepeatCount = 4;
-    const int WaveCount = 18;
+    const int RepeatCount = 2;
+    const int WaveCount = 36;
     const int BranchCount = 6;
     const float BranchSpacing = 360f / BranchCount;
 
-    protected override float ShootingCooldown => 0.05f;
+    protected override float ShootingCooldown => 1f;
 
     protected override IEnumerator Shoot()
     {
@@ -22,13 +22,18 @@ public class PiscesShooter00 : CommonEnemyShooter<EnemyBullet>
                 for (int iii = 0; iii < BranchCount; iii++)
                 {
                     float z = (i * 0.5f * BranchSpacing) + (iii * BranchSpacing);
+                    float s = Random.Range(1f, 2f);
                     Vector3 pos = Vector3.zero;
 
-                    SpawnProjectile(0, z, pos).Fire();
-                }
+                    bulletData.colour = bulletData.gradient.Evaluate(Mathf.InverseLerp(1f, 2f, s));
 
-                yield return WaitForSeconds(ShootingCooldown);
+                    var bullet = SpawnProjectile(0, z, pos);
+                    bullet.StartCoroutine(bullet.LerpSpeed(0.5f, s, s, delay: 1f));
+                    bullet.Fire();
+                }
             }
+
+            yield return WaitForSeconds(ShootingCooldown);
         }
     }
 }

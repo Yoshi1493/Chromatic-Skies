@@ -9,6 +9,6 @@ public class PiscesBullet00 : EnemyBullet
     {
         yield return this.LerpSpeed(5f, 0.5f, 1f);
         StartCoroutine(this.RotateBy(Random.Range(-90f, 90f), 1f));
-        StartCoroutine(this.LerpSpeed(0.5f, 1f, 2f));
+        //StartCoroutine(this.LerpSpeed(0.5f, 1f, 2f));
     }
 }
