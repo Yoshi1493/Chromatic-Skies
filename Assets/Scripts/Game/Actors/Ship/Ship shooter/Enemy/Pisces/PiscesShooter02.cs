@@ -4,21 +4,35 @@ using static CoroutineHelper;
 
 public class PiscesShooter02 : CommonEnemyShooter<EnemyBullet>
 {
-    const int BulletCount = 0;
+    const int RepeatCount = 3;
+    const int WaveCount = 3;
+    const int BranchCount = 3;
+    const float BranchSpacing = 15f;
+
+    protected override float ShootingCooldown => 0.15f;
 
     protected override IEnumerator Shoot()
     {
-        while (enabled)
+        for (int i = 0; i < RepeatCount; i++)
         {
-            for (int i = 0; i < BulletCount; i++)
+            yield return WaitForSeconds(0.4f);
+
+            float r = PlayerPosition.GetRotationDifference(transform.position);
+
+            for (int ii = 0; ii < WaveCount; ii++)
             {
-                float z = 0;
-                Vector3 pos = Vector3.zero;
+                for (int iii = 0; iii < BranchCount; iii++)
+                {
+                    float z = ((iii - ((BranchCount - 1) / 2f)) * BranchSpacing) + r;
+                    Vector3 pos = Vector3.zero;
 
-                SpawnProjectile(0, z, pos).Fire();
+                    bulletData.colour = bulletData.gradient.Evaluate(ii / (WaveCount - 1f));
+
+                    SpawnProjectile(0, z, pos).Fire();
+                }
+
+                yield return WaitForSeconds(ShootingCooldown);
             }
-
-            yield return WaitForSeconds(ShootingCooldown);
         }
     }
 }
