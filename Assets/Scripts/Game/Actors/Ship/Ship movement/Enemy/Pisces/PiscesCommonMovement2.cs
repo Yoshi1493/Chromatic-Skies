@@ -8,6 +8,12 @@ public class PiscesCommonMovement2 : CommonEnemyMovement
 
     protected override IEnumerator Move()
     {
+        for (int i = 0; i < movementPoints.Length; i++)
+        {
+            movementPoints[i].x *= SignX;
+            movementPoints[i].x += transform.position.x;
+        }
+
         float t = 0f;
 
         while (t < (movementPoints.Length - 1) / 3)
