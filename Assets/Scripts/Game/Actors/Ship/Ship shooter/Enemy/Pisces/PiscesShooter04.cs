@@ -23,7 +23,7 @@ public class PiscesShooter04 : CommonEnemyShooter<EnemyBullet>
 
                 bulletData.colour = bulletData.gradient.Evaluate(ii);
 
-                var bullet = SpawnProjectile(0, z, pos);
+                var bullet = SpawnProjectile(4, z, pos);
                 bullet.StartCoroutine(bullet.RotateBy((ii % 2 * 2 - 1) * BulletRotationSpeed, BulletRotationDuration, delay: 0.5f));
                 bullet.Fire();
             }

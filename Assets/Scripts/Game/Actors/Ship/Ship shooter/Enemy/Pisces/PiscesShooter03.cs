@@ -28,7 +28,7 @@ public class PiscesShooter03 : CommonEnemyShooter<EnemyBullet>
 
                 bulletData.colour = bulletData.gradient.Evaluate(i / (WaveCount - 1f));
 
-                var bullet = SpawnProjectile(0, z, pos);
+                var bullet = SpawnProjectile(3, z, pos);
                 bullet.StartCoroutine(bullet.LerpSpeed(0f, s, 1f, delay: 0.5f));
                 bullet.Fire();
             }
