@@ -1,6 +1,5 @@
 using System.Collections;
 using UnityEngine;
-using static CoroutineHelper;
 using static CameraBoundaries;
 
 public class PiscesCommonMovement5 : CommonEnemyMovement
@@ -12,10 +11,7 @@ public class PiscesCommonMovement5 : CommonEnemyMovement
         while (transform.position.y > -ScreenHalfHeight * 1.1f)
         {
             yield return parentShip.TranslateAround(3f * Vector3.right + transform.position, t, 0.8f);
-            yield return WaitForSeconds(0.2f);
-
             yield return parentShip.TranslateAround(3f * Vector3.left + transform.position, -t, 0.8f);
-            yield return WaitForSeconds(0.2f);
         }
 
         yield return LeaveScene();
