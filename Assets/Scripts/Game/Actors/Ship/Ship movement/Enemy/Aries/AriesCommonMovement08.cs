@@ -7,7 +7,7 @@ public class AriesCommonMovement08 : CommonEnemyMovement
 
     protected override IEnumerator Move()
     {
-        yield return parentShip.TranslateAround(rotationPoint, 180f, Random.Range(3f, 4f));
+        yield return parentShip.TranslateAroundLinear(rotationPoint, 180f, Random.Range(3f, 4f));
 
         yield return LeaveScene();
     }

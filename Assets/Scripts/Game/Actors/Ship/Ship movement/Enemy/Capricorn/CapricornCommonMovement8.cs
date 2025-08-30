@@ -8,10 +8,10 @@ public class CapricornCommonMovement8 : CommonEnemyMovement
     {
         float d = SignX;
 
-        yield return parentShip.TranslateAround(parentShip.transform.position + (3f * Vector3.down), d * 90f, 1f);
+        yield return parentShip.TranslateAroundLinear(parentShip.transform.position + (3f * Vector3.down), d * 90f, 1f);
         yield return WaitForSeconds(1.5f);
 
-        yield return parentShip.TranslateAround(parentShip.transform.position + (d * 3f * Vector3.left), d * 90f, 1f);
+        yield return parentShip.TranslateAroundLinear(parentShip.transform.position + (d * 3f * Vector3.left), d * 90f, 1f);
         yield return LeaveScene();
     }
 }

@@ -130,7 +130,7 @@ public static class ActorMovementHelper
     }
 
     /// <summary>
-    /// same as MoveTo, but position is translated linearly
+    /// same as MoveTo, but position is translated linearly.
     /// </summary>
     public static IEnumerator MoveToLinear(this Actor actor, Vector3 endPosition, float duration, float delay = 0f)
     {
@@ -187,7 +187,7 @@ public static class ActorMovementHelper
     }
 
     /// <summary>
-    /// same as MoveRelative, but position is translated linearly
+    /// same as MoveRelative, but position is translated linearly.
     /// </summary>
     public static IEnumerator MoveRelativeLinear(this Actor actor, Vector3 moveDirection, float moveSpeed, float duration, float delay = 0f)
     {
@@ -223,6 +223,43 @@ public static class ActorMovementHelper
     /// translates <actor> anticlockwise around <point> by <degrees> degrees over <duration> seconds.
     /// </summary>
     public static IEnumerator TranslateAround(this Actor actor, Vector3 point, float degrees, float duration, float delay = 0f)
+    {
+        if (degrees == 0f || duration <= 0f) yield break;
+        if (delay > 0f) yield return WaitForSeconds(delay);
+
+        Vector3 startDirection = actor.transform.position - point;
+        Vector3 endPosition = startDirection.RotateVectorBy(degrees) + point;
+        float currentTime = 0f;
+
+        while (currentTime < duration / 2f)
+        {
+            float r = Mathf.Lerp(0f, degrees, moveInterpolation.Evaluate(currentTime / duration));
+            actor.moveDirection = startDirection.RotateVectorBy(90f).RotateVectorBy(r);
+            actor.MoveSpeed = Mathf.Lerp(0f, 2f * (actor.moveDirection.magnitude * degrees * Mathf.Deg2Rad / duration), moveInterpolation.Evaluate(currentTime * 2f / duration));
+
+            yield return null;
+            currentTime += Time.deltaTime;
+        }
+
+        while (currentTime < duration)
+        {
+            float r = Mathf.Lerp(0f, degrees, moveInterpolation.Evaluate(currentTime / duration));
+            actor.moveDirection = startDirection.RotateVectorBy(90f).RotateVectorBy(r);
+            actor.MoveSpeed = Mathf.Lerp(2f * (actor.moveDirection.magnitude * degrees * Mathf.Deg2Rad / duration), 0f, moveInterpolation.Evaluate((currentTime * 2f - duration) / duration));
+
+            yield return null;
+            currentTime += Time.deltaTime;
+        }
+
+        actor.transform.position = endPosition;
+        actor.moveDirection = Vector3.zero;
+        actor.MoveSpeed = 0f;
+    }
+
+    /// <summary>
+    /// same as TranslateAround, but position is translated linearly. 
+    /// </summary>
+    public static IEnumerator TranslateAroundLinear(this Actor actor, Vector3 point, float degrees, float duration, float delay = 0f)
     {
         if (degrees == 0f || duration <= 0f) yield break;
         if (delay > 0f) yield return WaitForSeconds(delay);
