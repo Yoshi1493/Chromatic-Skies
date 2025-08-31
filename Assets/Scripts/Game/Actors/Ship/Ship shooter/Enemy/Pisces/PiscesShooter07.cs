@@ -29,7 +29,7 @@ public class PiscesShooter07 : CommonEnemyShooter<EnemyBullet>
 
                     bulletData.colour = bulletData.gradient.Evaluate(t);
 
-                    SpawnProjectile(1, z, pos).Fire();
+                    SpawnProjectile(7, z, pos).Fire();
                 }
 
                 yield return WaitForSeconds(ShootingCooldown);
