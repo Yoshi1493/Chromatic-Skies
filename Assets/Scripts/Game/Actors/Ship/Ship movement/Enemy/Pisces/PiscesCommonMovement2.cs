@@ -21,7 +21,7 @@ public class PiscesCommonMovement2 : CommonEnemyMovement
             parentShip.transform.position = EvaluateCubicSpline(movementPoints, t);
 
             yield return null;
-            t += Time.deltaTime;
+            t += Time.deltaTime / 2f;
         }
 
         yield return LeaveScene();

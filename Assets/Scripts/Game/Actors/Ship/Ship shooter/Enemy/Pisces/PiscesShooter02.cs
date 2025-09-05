@@ -15,7 +15,7 @@ public class PiscesShooter02 : CommonEnemyShooter<EnemyBullet>
     {
         for (int i = 0; i < RepeatCount; i++)
         {
-            yield return WaitForSeconds(0.4f);
+            yield return WaitForSeconds(0.6f);
 
             float r = PlayerPosition.GetRotationDifference(transform.position);
 
