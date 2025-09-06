@@ -78,7 +78,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2407710777176494618, guid: 0ea569baafb91b94cbd6c069f48a94da, type: 3}
   m_PrefabInstance: {fileID: 7631634376295664945}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &-855943749675746474
+--- !u!114 &-6887863765531398134
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -87,12 +87,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 5224434185141182251}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 53afef8e696a72542bc818cda1fa4c9e, type: 3}
+  m_Script: {fileID: 11500000, guid: 2f30c033b7953ca4abc9f93269286950, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   projectiles:
-  - {fileID: -5181711618143475925, guid: c198eabc5ea2a974f96fd15d5e0e7759, type: 3}
-  bulletData: {fileID: 11400000, guid: 8f98156379a52e94bbd58c9cca2de0d1, type: 2}
+  - {fileID: -2157011020810667638, guid: 5294ce8e2e86c424590416a4aa2f7706, type: 3}
+  bulletData: {fileID: 11400000, guid: 107e3f5798090e54a826474464f10048, type: 2}
 --- !u!114 &2095830377770659744
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -106,3 +106,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parentShip: {fileID: 0}
+  movementPoints:
+  - {x: 6, y: 6}
+  - {x: 6, y: 4.5}
+  - {x: 3.5, y: 1}
+  - {x: 2, y: 1}
+  - {x: 0.5, y: 1}
+  - {x: -2.5, y: 4}
+  - {x: -4, y: 4}
+  - {x: -5.5, y: 4}
+  - {x: -9.5, y: 1.5}
+  - {x: -11, y: 1.5}

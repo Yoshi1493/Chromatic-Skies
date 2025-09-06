@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using static CoroutineHelper;
 
-public class PiscesShooter02 : CommonEnemyShooter<EnemyBullet>
+public class PiscesShooter010 : CommonEnemyShooter<EnemyBullet>
 {
     const int BulletCount = 0;
 
@@ -15,7 +15,7 @@ public class PiscesShooter02 : CommonEnemyShooter<EnemyBullet>
                 float z = 0;
                 Vector3 pos = Vector3.zero;
 
-                SpawnProjectile(2, z, pos).Fire();
+                SpawnProjectile(0, z, pos).Fire();
             }
 
             yield return WaitForSeconds(ShootingCooldown);
