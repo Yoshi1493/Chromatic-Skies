@@ -21,7 +21,7 @@ public class PiscesShooter02 : CommonEnemyShooter<EnemyBullet>
 
             for (int ii = 0; ii < BulletCount; ii++)
             {
-                var bullet = SpawnProjectile(0, z, pos);
+                var bullet = SpawnProjectile(2, z, pos);
                 bullet.StartCoroutine(bullet.RotateBy(Random.Range(-BulletRotationSpeed, BulletRotationSpeed), BulletRotationDuration, delay: 1f));
                 bullet.Fire();
             }

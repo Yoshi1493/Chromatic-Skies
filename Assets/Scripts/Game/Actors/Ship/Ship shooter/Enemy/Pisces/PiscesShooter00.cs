@@ -4,8 +4,8 @@ using static CoroutineHelper;
 
 public class PiscesShooter00 : CommonEnemyShooter<EnemyBullet>
 {
-    const int RepeatCount = 3;
-    const int WaveCount = 24;
+    const int WaveCount = 3;
+    const int BulletCount = 24;
     const int BranchCount = 6;
     const float BranchSpacing = 360f / BranchCount;
 
@@ -15,14 +15,15 @@ public class PiscesShooter00 : CommonEnemyShooter<EnemyBullet>
     {
         yield return WaitForSeconds(1.5f);
 
-        float r = PlayerPosition.GetRotationDifference(transform.position);
-        for (int i = 0; i < RepeatCount; i++)
+        for (int i = 0; i < WaveCount; i++)
         {
-            for (int ii = 0; ii < WaveCount; ii++)
+            float r = PlayerPosition.GetRotationDifference(transform.position);
+
+            for (int ii = 0; ii < BranchCount; ii++)
             {
-                for (int iii = 0; iii < BranchCount; iii++)
+                for (int iii = 0; iii < BulletCount; iii++)
                 {
-                    float z = (i * 0.5f * BranchSpacing) + (iii * BranchSpacing) + r;
+                    float z = (ii * BranchSpacing) + r;
                     float s = Random.Range(1f, 2f);
                     Vector3 pos = Vector3.zero;
 
