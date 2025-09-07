@@ -4,7 +4,7 @@ using static CoroutineHelper;
 
 public class PiscesShooter02 : CommonEnemyShooter<EnemyBullet>
 {
-    const int WaveCount = 8;
+    const int WaveCount = 16;
     const int BulletCount = 3;
     const float BulletSpawnRadius = 0.5f;
     const float BulletRotationSpeed = 5f;
@@ -12,7 +12,7 @@ public class PiscesShooter02 : CommonEnemyShooter<EnemyBullet>
 
     protected override IEnumerator Shoot()
     {
-        yield return WaitForSeconds(1.2f);
+        yield return WaitForSeconds(1.5f);
 
         for (int i = 0; i < WaveCount; i++)
         {
@@ -21,8 +21,8 @@ public class PiscesShooter02 : CommonEnemyShooter<EnemyBullet>
 
             for (int ii = 0; ii < BulletCount; ii++)
             {
-                var bullet = SpawnProjectile(2, z, pos);
-                bullet.StartCoroutine(bullet.RotateBy(Random.Range(-BulletRotationSpeed, BulletRotationSpeed), BulletRotationDuration));
+                var bullet = SpawnProjectile(0, z, pos);
+                bullet.StartCoroutine(bullet.RotateBy(Random.Range(-BulletRotationSpeed, BulletRotationSpeed), BulletRotationDuration, delay: 1f));
                 bullet.Fire();
             }
 
