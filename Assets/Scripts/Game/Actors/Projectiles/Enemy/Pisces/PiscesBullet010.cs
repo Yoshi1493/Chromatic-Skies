@@ -9,4 +9,3 @@ public class PiscesBullet010 : EnemyBullet
         yield return this.LerpSpeed(5f, 0f, 0.5f);
     }
 }
-}
