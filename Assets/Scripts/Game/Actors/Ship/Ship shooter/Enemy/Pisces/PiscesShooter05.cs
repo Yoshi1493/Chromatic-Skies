@@ -22,7 +22,7 @@ public class PiscesShooter05 : CommonEnemyShooter<EnemyBullet>
                 Vector3 pos = BulletSpawnRadius * transform.up.RotateVectorBy(RandomAngleDeg);
                 float z = PlayerPosition.GetRotationDifference(transform.position + pos);
 
-                SpawnProjectile(0, z, pos).Fire();
+                SpawnProjectile(5, z, pos).Fire();
 
                 yield return WaitForSeconds(ShootingCooldown);
             }
