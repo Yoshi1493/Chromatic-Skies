@@ -1,18 +1,29 @@
 using System.Collections;
 using UnityEngine;
-using static CoroutineHelper;
-using static MathHelper;
+using static BezierHelper;
 
 public class PiscesCommonMovement1 : CommonEnemyMovement
 {
+    [SerializeField] Vector2[] movementPoints;
+
     protected override IEnumerator Move()
     {
-        float r = Random.Range(1f, 1.5f);
-        float d = PositiveOrNegativeOne;
+        for (int i = 0; i < movementPoints.Length; i++)
+        {
+            movementPoints[i].x *= SignX;
+            movementPoints[i].x += transform.position.x;
+        }
 
-        yield return parentShip.MoveRelative(Vector3.down.RotateVectorBy(30f * d), 3f, r);
-        yield return WaitForSeconds(2f);
-        yield return parentShip.MoveRelative(Vector3.up.RotateVectorBy(30f * -d), 2f, r * 1.5f);
+        AnimationCurve movementInterpolation = AnimationCurve.EaseInOut(0f, 0f, 1f, 1f);
+        float t = 0;
+
+        while (t < (movementPoints.Length - 1) / 3)
+        {
+            parentShip.transform.position = EvaluateCubicSpline(movementPoints, t);
+
+            yield return null;
+            t += Time.deltaTime / 2f;
+        }
 
         yield return LeaveScene();
     }
