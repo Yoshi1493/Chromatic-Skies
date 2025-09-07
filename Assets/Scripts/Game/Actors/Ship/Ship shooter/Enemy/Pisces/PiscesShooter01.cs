@@ -4,9 +4,9 @@ using static CoroutineHelper;
 
 public class PiscesShooter01 : CommonEnemyShooter<EnemyBullet>
 {
-    const int WaveCount = 12;
     const int BranchCount = 6;
     const float BranchSpacing = 360f / BranchCount;
+    const int BulletCount = 12;
     const float BulletBaseSpeed = 2f;
     const float BulletSpeedModifier = 0.6f;
     const float BulletRotationSpeed = 30f;
@@ -17,19 +17,19 @@ public class PiscesShooter01 : CommonEnemyShooter<EnemyBullet>
 
         float r = PlayerPosition.GetRotationDifference(transform.position);
 
-        for (int i = 0; i < WaveCount; i++)
+        for (int i = 0; i < BranchCount; i++)
         {
-            for (int ii = 0; ii < BranchCount; ii++)
+            for (int ii = 0; ii < BulletCount; ii++)
             {
-                float z = (ii * BranchSpacing) + r;
-                float s = BulletBaseSpeed + (i * BulletSpeedModifier);
+                float z = ((i + 0.5f) * BranchSpacing) + r;
+                float s = BulletBaseSpeed + (ii * BulletSpeedModifier);
                 Vector3 pos = Vector3.zero;
 
-                bulletData.colour = bulletData.gradient.Evaluate(i / (WaveCount - 1f));
+                bulletData.colour = bulletData.gradient.Evaluate(ii / (BulletCount - 1f));
 
                 var bullet = SpawnProjectile(1, z, pos);
                 bullet.StartCoroutine(bullet.LerpSpeed(s, 0f, 1f));
-                bullet.StartCoroutine(bullet.RotateBy((i % 2 * 2 - 1) * BulletRotationSpeed, 0f, delay: 1f));
+                bullet.StartCoroutine(bullet.RotateBy((ii % 2 * 2 - 1) * BulletRotationSpeed, 0f, delay: 1f));
                 bullet.Fire();
             }
         }

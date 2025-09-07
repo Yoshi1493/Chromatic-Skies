@@ -4,36 +4,42 @@ using static CoroutineHelper;
 
 public class PiscesShooter03 : CommonEnemyShooter<EnemyBullet>
 {
-    const int WaveCount = 21;
-    const float WaveSpacing = 8f;
-    const int BulletCount = 2;
+    const int RepeatCount = 2;
+    const int WaveCount = 24;
+    const float WaveSpacing = 2f;
+    const int BranchCount = 12;
+    const float BranchSpacing = 360f / BranchCount;
     const float BulletBaseSpeed = 2f;
     const float BulletSpeedModifier = 0.1f;
-
-    protected override float ShootingCooldown => 0.05f;
+    const float BulletRotationSpeed = 10f;
+    const float BulletRotationDuration = 1f;
 
     protected override IEnumerator Shoot()
     {
-        yield return WaitForSeconds(1.5f);
+        yield return WaitForSeconds(2f);
 
-        float r = PlayerPosition.GetRotationDifference(transform.position);
-
-        for (int i = 0; i < WaveCount; i++)
+        for (int i = 0; i < RepeatCount; i++)
         {
-            for (int ii = 0; ii < BulletCount; ii++)
+            for (int ii = 0; ii < WaveCount; ii++)
             {
-                float z = ((i - ((WaveCount - 1) / 2f)) * WaveSpacing) + r;
-                float s = (ii % 2 * WaveCount * BulletSpeedModifier) + BulletBaseSpeed + (-(ii % 2 * 2 - 1) * (i * BulletSpeedModifier));
-                Vector3 pos = Vector3.zero;
+                for (int iii = 0; iii < BranchCount; iii++)
+                {
+                    float z = (i % 2 * 2 - 1) * ((ii * WaveSpacing) + (iii * BranchSpacing));
+                    float s = BulletBaseSpeed + (ii * BulletSpeedModifier);
+                    Vector3 pos = Vector3.zero;
 
-                bulletData.colour = bulletData.gradient.Evaluate(i / (WaveCount - 1f));
+                    bulletData.colour = bulletData.gradient.Evaluate(ii / (WaveCount - 1f));
 
-                var bullet = SpawnProjectile(3, z, pos);
-                bullet.StartCoroutine(bullet.LerpSpeed(0f, s, 1f, delay: 0.5f));
-                bullet.Fire();
+                    var bullet = SpawnProjectile(0, z, pos);
+                    bullet.StartCoroutine(bullet.LerpSpeed(BulletBaseSpeed, s, 1f, delay: 1f));
+                    bullet.StartCoroutine(bullet.RotateBy(Random.Range(-BulletRotationSpeed, BulletRotationSpeed), BulletRotationDuration, delay: 1.2f));
+                    bullet.Fire();
+                }
+
+                yield return WaitForSeconds(ShootingCooldown);
             }
 
-            yield return WaitForSeconds(ShootingCooldown);
+            yield return WaitForSeconds(2f);
         }
     }
 }
