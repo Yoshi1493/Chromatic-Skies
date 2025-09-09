@@ -5,9 +5,11 @@ using static CameraBoundaries;
 
 public class PiscesShooter07 : CommonEnemyShooter<EnemyBullet>
 {
-    const int WaveCount = 36;
+    const int WaveCount = 20;
     const int BulletMinCount = 2;
     const int BulletMaxCount = 6;
+
+    protected override float ShootingCooldown => 0.2f;
 
     protected override IEnumerator Shoot()
     {
@@ -24,12 +26,12 @@ public class PiscesShooter07 : CommonEnemyShooter<EnemyBullet>
                 {
                     float z = 0f;
                     float x = i * Mathf.Lerp(-ScreenHalfWidth, ScreenHalfWidth, t) + Random.Range(-1f, 1f);
-                    float y = ScreenHalfHeight;
+                    float y = ScreenHalfHeight * 1.1f;
                     Vector3 pos = new(x, y);
 
                     bulletData.colour = bulletData.gradient.Evaluate(t);
 
-                    SpawnProjectile(7, z, pos).Fire();
+                    SpawnProjectile(7, z, pos, false).Fire();
                 }
 
                 yield return WaitForSeconds(ShootingCooldown);
