@@ -5,8 +5,8 @@ using static CoroutineHelper;
 public class PiscesShooter00 : CommonEnemyShooter<EnemyBullet>
 {
     const int WaveCount = 3;
-    const int BulletCount = 24;
     const int BranchCount = 6;
+    const int BulletCount = 16;
     const float BranchSpacing = 360f / BranchCount;
 
     protected override float ShootingCooldown => 1f;
