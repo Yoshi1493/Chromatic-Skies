@@ -44,7 +44,7 @@ public class PiscesShooter09 : CommonEnemyShooter<EnemyBullet>
                 yield return WaitForSeconds(ShootingCooldown);
             }
 
-            yield return WaitForSeconds(3f);
+            yield return WaitForSeconds(2f);
             d *= -1;
         }
     }
