@@ -13,10 +13,10 @@ public class PiscesShooter07 : CommonEnemyShooter<EnemyBullet>
 
     protected override IEnumerator Shoot()
     {
+        yield return WaitForSeconds(3f);
+
         for (int i = 1; enabled; i *= -1)
         {
-            yield return WaitForSeconds(1f);
-
             for (int ii = 0; ii < WaveCount; ii++)
             {
                 int bulletCount = Random.Range(BulletMinCount, BulletMaxCount);

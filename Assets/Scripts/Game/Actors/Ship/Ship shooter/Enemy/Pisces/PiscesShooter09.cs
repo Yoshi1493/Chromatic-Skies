@@ -36,7 +36,7 @@ public class PiscesShooter09 : CommonEnemyShooter<EnemyBullet>
 
                     bulletData.colour = bulletData.gradient.Evaluate(ii / (WaveCount - 1f));
 
-                    var bullet = SpawnProjectile(9, z, pos);
+                    var bullet = SpawnProjectile(8, z, pos);
                     bullet.StartCoroutine(bullet.RotateBy(r, BulletRotationDuration, delay: 1f));
                     bullet.Fire();
                 }

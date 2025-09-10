@@ -10,8 +10,8 @@ public class PiscesCommonMovement5 : CommonEnemyMovement
 
         while (transform.position.y > -ScreenHalfHeight * 1.1f)
         {
-            yield return parentShip.TranslateAround(3f * Vector3.right + transform.position, t, 0.8f);
-            yield return parentShip.TranslateAround(3f * Vector3.left + transform.position, -t, 0.8f);
+            yield return parentShip.TranslateAround(3f * Vector3.right + transform.position, t, 1.2f);
+            yield return parentShip.TranslateAround(3f * Vector3.left + transform.position, -t, 1.2f);
         }
 
         yield return LeaveScene();

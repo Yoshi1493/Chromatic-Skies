@@ -10,7 +10,7 @@ public class PiscesShooter02 : CommonEnemyShooter<EnemyBullet>
     const int BranchCount = 12;
     const float BranchSpacing = 360f / BranchCount;
     const float BulletBaseSpeed = 2f;
-    const float BulletSpeedModifier = 0.1f;
+    const float BulletSpeedModifier = 0.08f;
     const float BulletRotationSpeed = 10f;
     const float BulletRotationDuration = 1f;
 
