@@ -4,7 +4,7 @@ using static CoroutineHelper;
 
 public class PiscesShooter03 : CommonEnemyShooter<EnemyBullet>
 {
-    const int WaveCount = 16;
+    const int WaveCount = 12;
     const int BulletCount = 3;
     const float BulletSpawnRadius = 0.5f;
     const float BulletRotationSpeed = 5f;
@@ -12,7 +12,7 @@ public class PiscesShooter03 : CommonEnemyShooter<EnemyBullet>
 
     protected override IEnumerator Shoot()
     {
-        yield return WaitForSeconds(1.5f);
+        yield return WaitForSeconds(2f);
 
         for (int i = 0; i < WaveCount; i++)
         {
