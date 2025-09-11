@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class SpecialRed1 : SpecialBullet
+public class SpecialRed0 : SpecialBullet
 {
     Vector2 maxSize = 5f * Vector2.one;
 

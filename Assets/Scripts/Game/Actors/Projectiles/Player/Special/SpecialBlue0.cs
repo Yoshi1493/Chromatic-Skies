@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using static CoroutineHelper;
 
-public class SpecialBlue1 : SpecialBullet
+public class SpecialBlue0 : SpecialBullet
 {
     Vector2 maxSize = 2.56f * Vector2.one;
     Vector2 minSize = 0.32f * Vector2.one;

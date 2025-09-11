@@ -32,7 +32,7 @@ public abstract class EnemyBullet : Bullet
         }
         if (coll.TryGetComponent(out SpecialBullet specialBullet))
         {
-            if (specialBullet is SpecialBlue1 blue)
+            if (specialBullet is SpecialBlue0 blue)
             {
                 int healAmount = DamageCalculator.CalculateHealing(playerShip.shipData.MaxHealth.Value, blue.HitCount);
                 playerShip.TakeDamage(healAmount);

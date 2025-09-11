@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using static CoroutineHelper;
 
-public class SpecialGreen1 : SpecialBullet
+public class SpecialGreen0 : SpecialBullet
 {
     [Space]
 
