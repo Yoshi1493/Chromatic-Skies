@@ -13,7 +13,7 @@ public class SpecialShooterBlue : PlayerSpecialShooter
         float z = 0f;
         Vector3 pos = Vector3.zero;
 
-        SpawnProjectile(1, z, pos).Fire();
+        SpawnProjectile(0, z, pos).Fire();
 
         yield return WaitForSeconds(SpecialCooldown);
         CanShoot = true;

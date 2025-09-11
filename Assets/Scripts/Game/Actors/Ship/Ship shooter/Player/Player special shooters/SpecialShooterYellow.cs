@@ -30,7 +30,7 @@ public class SpecialShooterYellow : PlayerSpecialShooter
                 float z = (i * WaveSpacing) + (ii * BulletSpacing);
                 float s = Random.Range(0.2f, 1f) * BulletBaseSpeed;
 
-                var bullet = SpawnProjectile(1, z, pos, false) as SpecialBullet;
+                var bullet = SpawnProjectile(0, z, pos, false);
                 bullet.StartCoroutine(bullet.LerpSpeed(s, 0.1f, 1f));
                 bullets.Add(bullet);
             }
@@ -61,7 +61,7 @@ public class SpecialShooterYellow : PlayerSpecialShooter
             float z = i * LaserSpacing - 90f;
             pos = transform.up.RotateVectorBy(z);
 
-            SpawnProjectile(2, z, pos).Fire();
+            SpawnProjectile(1, z, pos).Fire();
         }
 
         yield return WaitForSeconds(SpecialCooldown);

@@ -44,10 +44,6 @@ MonoBehaviour:
     m_Mode: 0
     m_NumColorKeys: 2
     m_NumAlphaKeys: 2
-  ID: 1
+  ID: 0
   Power: {fileID: 11400000, guid: 5067c38418cc48a48916bb09ed78fd6a, type: 2}
-  Speed:
-    useConstant: 1
-    ConstantValue: 23
-    Variable: {fileID: 0}
   destructible: 0

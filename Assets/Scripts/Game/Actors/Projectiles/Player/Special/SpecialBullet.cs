@@ -19,7 +19,7 @@ public abstract class SpecialBullet : PlayerBullet
 
     public override void Destroy()
     {
-        base.Destroy();
+        PlayerSpecialBulletPool.Instance.ReturnToPool(this);
         collider.enabled = false;
     }
 }

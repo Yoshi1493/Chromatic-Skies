@@ -83,9 +83,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   transform: {fileID: 0}
-  projectileData: {fileID: 11400000, guid: bead93cdd742e8d40be958d6ded138be, type: 2}
   moveDirection: {x: 0, y: 0, z: 0}
-  currentSpeed: 0
+  projectileData: {fileID: 11400000, guid: bead93cdd742e8d40be958d6ded138be, type: 2}
+  bulletSpeed: {fileID: 11400000, guid: a6f0364606a273b4aa3730968cee7de2, type: 2}
   homingInterpolation:
     serializedVersion: 2
     m_Curve:

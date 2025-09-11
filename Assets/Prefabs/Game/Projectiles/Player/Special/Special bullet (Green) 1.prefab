@@ -223,9 +223,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   transform: {fileID: 0}
-  projectileData: {fileID: 11400000, guid: 5343d217c409b2043a406ceb086cd284, type: 2}
   moveDirection: {x: 0, y: 0, z: 0}
-  currentSpeed: 0
+  projectileData: {fileID: 11400000, guid: 5343d217c409b2043a406ceb086cd284, type: 2}
+  bulletSpeed: {fileID: 11400000, guid: 68fdde6a70384b445adb15cc2a41f469, type: 2}
   trail: {fileID: 8680128169222717698}
 --- !u!4 &2307221150149244269 stripped
 Transform:
