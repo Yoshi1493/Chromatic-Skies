@@ -228,32 +228,15 @@ public static class ActorMovementHelper
         if (delay > 0f) yield return WaitForSeconds(delay);
 
         Vector3 startDirection = actor.transform.position - point;
-        Vector3 endPosition = startDirection.RotateVectorBy(degrees) + point;
         float currentTime = 0f;
-
-        while (currentTime < duration / 2f)
-        {
-            float r = Mathf.Lerp(0f, degrees, moveInterpolation.Evaluate(currentTime / duration));
-            actor.moveDirection = startDirection.RotateVectorBy(90f).RotateVectorBy(r);
-            actor.MoveSpeed = Mathf.Lerp(0f, 2f * (actor.moveDirection.magnitude * degrees * Mathf.Deg2Rad / duration), moveInterpolation.Evaluate(currentTime * 2f / duration));
-
-            yield return null;
-            currentTime += Time.deltaTime;
-        }
 
         while (currentTime < duration)
         {
-            float r = Mathf.Lerp(0f, degrees, moveInterpolation.Evaluate(currentTime / duration));
-            actor.moveDirection = startDirection.RotateVectorBy(90f).RotateVectorBy(r);
-            actor.MoveSpeed = Mathf.Lerp(2f * (actor.moveDirection.magnitude * degrees * Mathf.Deg2Rad / duration), 0f, moveInterpolation.Evaluate((currentTime * 2f - duration) / duration));
+            actor.transform.position = startDirection.RotateVectorBy(degrees * moveInterpolation.Evaluate(currentTime / duration)) + point;
 
             yield return null;
             currentTime += Time.deltaTime;
         }
-
-        actor.transform.position = endPosition;
-        actor.moveDirection = Vector3.zero;
-        actor.MoveSpeed = 0f;
     }
 
     /// <summary>
@@ -265,22 +248,15 @@ public static class ActorMovementHelper
         if (delay > 0f) yield return WaitForSeconds(delay);
 
         Vector3 startDirection = actor.transform.position - point;
-        Vector3 endPosition = startDirection.RotateVectorBy(degrees) + point;
         float currentTime = 0f;
 
         while (currentTime < duration)
         {
-            float r = Mathf.Lerp(0f, degrees, currentTime / duration);
-            actor.moveDirection = startDirection.RotateVectorBy(90f).RotateVectorBy(r);
-            actor.MoveSpeed = actor.moveDirection.magnitude * degrees * Mathf.Deg2Rad / duration;
+            actor.transform.position = startDirection.RotateVectorBy(degrees * (currentTime / duration)) + point;
 
             yield return null;
             currentTime += Time.deltaTime;
         }
-
-        actor.transform.position = endPosition;
-        actor.moveDirection = Vector3.zero;
-        actor.MoveSpeed = 0f;
     }
 
     /// <summary>
