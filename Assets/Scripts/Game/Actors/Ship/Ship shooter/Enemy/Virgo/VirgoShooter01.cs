@@ -4,21 +4,39 @@ using static CoroutineHelper;
 
 public class VirgoShooter01 : CommonEnemyShooter<EnemyBullet>
 {
-    const int BulletCount = 0;
+    const float RepeatCount = 2;
+    const int WaveCount = 17;
+    const int BranchCount = 3;
+    const float BranchSpacing = 360f / BranchCount;
+    const float BulletSpacing = 12f;
 
     protected override IEnumerator Shoot()
     {
-        while (enabled)
-        {
-            for (int i = 0; i < BulletCount; i++)
-            {
-                float z = 0;
-                Vector3 pos = Vector3.zero;
+        yield return WaitForSeconds(2f);
 
-                SpawnProjectile(0, z, pos).Fire();
+        for (int i = 0; i < RepeatCount; i++)
+        {
+            for (int ii = 0; ii < WaveCount; ii++)
+            {
+                for (int iii = 0; iii < BranchCount; iii++)
+                {
+                    int bulletCount = (int)Mathf.PingPong(ii, WaveCount / 2) + 1;
+
+                    for (int iv = 0; iv < bulletCount; iv++)
+                    {
+                        float z = ((iv - (bulletCount - 1) / 2f) * BulletSpacing) + (iii * BranchSpacing);
+                        Vector3 pos = Vector3.zero;
+
+                        bulletData.colour = bulletData.gradient.Evaluate(ii / (WaveCount - 1f));
+
+                        SpawnProjectile(1, z, pos).Fire();
+                    }
+                }
+
+                yield return WaitForSeconds(ShootingCooldown);
             }
 
-            yield return WaitForSeconds(ShootingCooldown);
+            yield return WaitForSeconds(3f);
         }
     }
 }
