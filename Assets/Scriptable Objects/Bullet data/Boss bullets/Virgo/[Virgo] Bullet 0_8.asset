@@ -45,5 +45,5 @@ MonoBehaviour:
     m_NumColorKeys: 2
     m_NumAlphaKeys: 2
   ID: 8
-  Power: {fileID: 11400000, guid: ed6f69e4d80fba448b94d7e69a4baebc, type: 2}
+  Power: {fileID: 11400000, guid: c9057bec88714fb4b9df3546afd3e41d, type: 2}
   destructible: 1
