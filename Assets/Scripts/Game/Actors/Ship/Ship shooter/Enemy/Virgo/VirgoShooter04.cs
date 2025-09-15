@@ -4,7 +4,6 @@ using static CoroutineHelper;
 
 public class VirgoShooter04 : CommonEnemyShooter<EnemyBullet>
 {
-    const float RepeatCount = 2;
     const int WaveCount = 9;
     const float BulletSpacing = 12f;
 
@@ -12,28 +11,23 @@ public class VirgoShooter04 : CommonEnemyShooter<EnemyBullet>
     {
         yield return WaitForSeconds(2f);
 
-        for (int i = 0; i < RepeatCount; i++)
+        float r = PlayerPosition.GetRotationDifference(transform.position);
+
+        for (int i = 0; i < WaveCount; i++)
         {
-            float r = PlayerPosition.GetRotationDifference(transform.position);
+            int bulletCount = (int)Mathf.PingPong(i, WaveCount / 2) + 1;
 
-            for (int ii = 0; ii < WaveCount; ii++)
+            for (int ii = 0; ii < bulletCount; ii++)
             {
-                int bulletCount = (int)Mathf.PingPong(ii, WaveCount / 2) + 1;
+                float z = ((ii - (bulletCount - 1) / 2f) * BulletSpacing) + r;
+                Vector3 pos = Vector3.zero;
 
-                for (int iii = 0; iii < bulletCount; iii++)
-                {
-                    float z = ((iii - (bulletCount - 1) / 2f) * BulletSpacing) + r;
-                    Vector3 pos = Vector3.zero;
+                bulletData.colour = bulletData.gradient.Evaluate(i / (WaveCount - 1f));
 
-                    bulletData.colour = bulletData.gradient.Evaluate(ii / (WaveCount - 1f));
-
-                    SpawnProjectile(4, z, pos).Fire();
-                }
-
-                yield return WaitForSeconds(ShootingCooldown);
+                SpawnProjectile(4, z, pos).Fire();
             }
 
-            yield return WaitForSeconds(3f);
+            yield return WaitForSeconds(ShootingCooldown);
         }
     }
 }

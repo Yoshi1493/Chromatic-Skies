@@ -8,6 +8,7 @@ public class VirgoCommonMovement4 : CommonEnemyMovement
     {
         yield return parentShip.MoveRelative(Vector3.down, 3f, 2f);
         yield return WaitForSeconds(3f);
+        yield return parentShip.MoveRelative(Vector3.down, 2.5f, 5f);
 
         yield return LeaveScene();
     }
