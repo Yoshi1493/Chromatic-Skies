@@ -78,7 +78,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2407710777176494618, guid: 0ea569baafb91b94cbd6c069f48a94da, type: 3}
   m_PrefabInstance: {fileID: 7631634376295664945}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &-394298525910778181
+--- !u!114 &-1038315620214522807
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -87,13 +87,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 5224434185141182251}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a94f7c723081e0c4bafe337a72d790ae, type: 3}
+  m_Script: {fileID: 11500000, guid: d1636346e1f4a3e42924fe8c7ade5299, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   projectiles:
-  - {fileID: 6681873892949175427, guid: 9a787f03b0b688e42aa0b7ce3d45861f, type: 3}
-  bulletData: {fileID: 11400000, guid: 292f63b45301ab641a89c1aa00398db1, type: 2}
---- !u!114 &2262410466280072068
+  - {fileID: 8533699060673957172, guid: 0570d842712b7984ba258c1dcd6de237, type: 3}
+  bulletData: {fileID: 11400000, guid: 349a5671f86aef34ca379af1138e89fe, type: 2}
+--- !u!114 &6549732048174607849
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
