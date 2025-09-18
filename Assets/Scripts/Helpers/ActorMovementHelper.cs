@@ -260,6 +260,51 @@ public static class ActorMovementHelper
     }
 
     /// <summary>
+    /// translates <actor> anticlockwise around <point> by <degrees> degrees over <duration> seconds,
+    /// while also translating it increasingly towards <point>, over <duration> seconds.
+    /// </summary>
+    public static IEnumerator SpiralIntoPoint(this Actor actor, Vector3 point, float degrees, float duration, float delay = 0f)
+    {
+        if (degrees == 0f || duration <= 0f) yield break;
+        if (delay > 0f) yield return WaitForSeconds(delay);
+
+        Vector3 startDirection = actor.transform.position - point;
+        float currentTime = 0f;
+
+        while (currentTime < duration)
+        {
+            float t = moveInterpolation.Evaluate(currentTime / duration);
+            Vector3 v = startDirection.RotateVectorBy(degrees * t) + point;
+            actor.transform.position = Vector3.Lerp(v, point, t);
+
+            yield return null;
+            currentTime += Time.deltaTime;
+        }
+    }
+
+    /// <summary>
+    /// same as SpiralIntoPoint, but position is translated linearly. 
+    /// </summary>
+    public static IEnumerator SpiralIntoPointLinear(this Actor actor, Vector3 point, float degrees, float duration, float delay = 0f)
+    {
+        if (degrees == 0f || duration <= 0f) yield break;
+        if (delay > 0f) yield return WaitForSeconds(delay);
+
+        Vector3 startDirection = actor.transform.position - point;
+        float currentTime = 0f;
+
+        while (currentTime < duration)
+        {
+            float t = currentTime / duration;
+            Vector3 v = startDirection.RotateVectorBy(degrees * t) + point;
+            actor.transform.position = Vector3.Lerp(v, point, t);
+
+            yield return null;
+            currentTime += Time.deltaTime;
+        }
+    }
+
+    /// <summary>
     /// translates <ship> to <GetRandomPositionWithinBounds()>, over <duration> seconds.
     /// </summary>
     public static IEnumerator MoveToRandomPosition(this Ship ship, float duration, float minDeltaMagnitude = 2f, float maxDeltaMagnitude = 4f, float delay = 0f)
