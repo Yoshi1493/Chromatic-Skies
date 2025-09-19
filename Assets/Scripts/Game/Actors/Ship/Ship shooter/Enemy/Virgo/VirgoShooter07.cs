@@ -26,7 +26,7 @@ public class VirgoShooter07 : CommonEnemyShooter<EnemyBullet>
                 float z = RandomAngleDeg;
                 Vector3 pos = (BulletSpawnRadius + (ii * SpawnRadiusModifier)) * transform.up.RotateVectorBy(z);
 
-                SpawnProjectile(0, z, pos).Fire();
+                SpawnProjectile(7, z, pos).Fire();
             }
 
             yield return WaitForSeconds(ShootingCooldown);
