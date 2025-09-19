@@ -27,7 +27,7 @@ public class VirgoShooter05 : CommonEnemyShooter<EnemyBullet>
             {
                 for (int iii = 0; iii < BranchCount; iii++)
                 {
-                    float t = ii * WaveSpacing;
+                    float t = i * ii * WaveSpacing;
 
                     for (int iv = 0; iv < BulletCount; iv++)
                     {
