@@ -5,7 +5,8 @@ public class VirgoCommonMovement5 : CommonEnemyMovement
 {
     protected override IEnumerator Move()
     {
-        yield return parentShip.MoveTo(ActorMovementHelper.bossSpawnPosition, 1.5f);
+        yield return parentShip.SpiralIntoPoint(ActorMovementHelper.bossSpawnPosition, 120f, 1.5f);
+
         yield return WaitForSeconds(2f);
 
         while (enabled)
