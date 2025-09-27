@@ -31,6 +31,5 @@ public class VirgoShooter07 : CommonEnemyShooter<EnemyBullet>
 
             yield return WaitForSeconds(ShootingCooldown);
         }
-
     }
 }
