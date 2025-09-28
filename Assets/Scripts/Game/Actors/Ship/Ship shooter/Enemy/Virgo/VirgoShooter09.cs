@@ -6,9 +6,8 @@ public class VirgoShooter09 : CommonEnemyShooter<EnemyBullet>
 {
     const int BranchCount = 5;
     const float BranchSpacing = 360f / BranchCount;
-    const float BulletCount = 5;
-    const float BulletSpacing = 360f / BulletCount;
-    const float BulletSpawnRadius = 0.4f;
+    const int BulletCount = 16;
+    const float BulletSpacing = 360f / BranchCount / BulletCount;
 
     protected override IEnumerator Shoot()
     {
@@ -18,14 +17,15 @@ public class VirgoShooter09 : CommonEnemyShooter<EnemyBullet>
         {
             for (int ii = 0; ii < BulletCount; ii++)
             {
-                float z = PlayerPosition.GetRotationDifference(transform.position);
-                float t = ((i - ((BranchCount - 1) / 2f)) * BranchSpacing) + z;
-                Vector3 pos = BulletSpawnRadius * transform.up.RotateVectorBy(t);
+                float z = (i * BranchSpacing) + (ii * BulletSpacing);
+                float t = ii / (BulletCount - 1f);
+                float r = Mathf.Lerp(-1f, 1f, t) * BranchSpacing * 2f;
+                Vector3 pos = Vector3.zero;
 
-                bulletData.colour = bulletData.gradient.Evaluate(i / (BranchCount - 1f));
+                bulletData.colour = bulletData.gradient.Evaluate(t);
 
-                var bullet = SpawnProjectile(9, z, pos);
-                bullet.StartCoroutine(bullet.RotateBy((z - t) + (ii * BulletSpacing), 0f, delay: 1f));
+                var bullet = SpawnProjectile(0, z, pos);
+                bullet.StartCoroutine(bullet.RotateBy(r, 1f, delay: 1f));
                 bullet.Fire();
             }
         }

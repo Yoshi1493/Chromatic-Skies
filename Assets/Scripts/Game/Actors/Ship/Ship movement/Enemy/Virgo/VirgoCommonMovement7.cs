@@ -1,14 +1,17 @@
 using System.Collections;
 using UnityEngine;
 using static CoroutineHelper;
+using static MathHelper;
 
 public class VirgoCommonMovement7 : CommonEnemyMovement
-{
-    protected override IEnumerator Move()
+{    protected override IEnumerator Move()
     {
-        yield return parentShip.MoveRelative(Vector3.down, 1.5f, 2f);
-        yield return WaitForSeconds(3f);
-        yield return parentShip.MoveRelative(Vector3.down.RotateVectorBy(Random.Range(-5f, 5f)), 3f, 3f);
+        Vector3 originalPosition = parentShip.transform.position;
+        float r = 180f * PositiveOrNegativeOne;
+
+        yield return parentShip.SpiralIntoPoint(originalPosition + (4f * Vector3.down), r, 2f);
+        yield return WaitForSeconds(4f);
+        yield return parentShip.SpiralIntoPoint(originalPosition, -r, 2f);
 
         yield return LeaveScene();
     }

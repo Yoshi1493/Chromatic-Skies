@@ -1,33 +1,29 @@
 using System.Collections;
 using UnityEngine;
 using static CoroutineHelper;
+using static MathHelper;
 
 public class VirgoShooter08 : CommonEnemyShooter<EnemyBullet>
 {
-    const int BranchCount = 5;
-    const float BranchSpacing = 360f / BranchCount;
-    const int BulletCount = 16;
-    const float BulletSpacing = 360f / BranchCount / BulletCount;
+    const int WaveCount = 55;
+    readonly float WaveSpacing = (1f + Mathf.Sqrt(5f)) * 180f;
+
+    protected override float ShootingCooldown => 0.05f;
 
     protected override IEnumerator Shoot()
     {
         yield return WaitForSeconds(2f);
 
-        for (int i = 0; i < BranchCount; i++)
+        float r = RandomAngleDeg;
+        bulletData.colour = bulletData.gradient.Evaluate(Random.value);
+
+        for (int i = 0; i < WaveCount; i++)
         {
-            for (int ii = 0; ii < BulletCount; ii++)
-            {
-                float z = (i * BranchSpacing) + (ii * BulletSpacing);
-                float t = ii / (BulletCount - 1f);
-                float r = Mathf.Lerp(-1f, 1f, t) * BranchSpacing * 2f;
-                Vector3 pos = Vector3.zero;
+            float z = (i * WaveSpacing) + r;
+            Vector3 pos = Vector3.zero;
+            SpawnProjectile(8, z, pos).Fire();
 
-                bulletData.colour = bulletData.gradient.Evaluate(t);
-
-                var bullet = SpawnProjectile(8, z, pos);
-                bullet.StartCoroutine(bullet.RotateBy(r, 1f, delay: 1f));
-                bullet.Fire();
-            }
+            yield return WaitForSeconds(ShootingCooldown);
         }
     }
 }
