@@ -7,10 +7,8 @@ public class VirgoShooter02 : CommonEnemyShooter<EnemyBullet>
     const int WaveCount = 9;
     const float WaveSpacing = 8f;
     const int BulletCount = 2;
-    const float BulletBaseSpeed = 2f;
+    const float BulletBaseSpeed = 2.5f;
     const float BulletSpeedModifier = 0.1f;
-
-    protected override float ShootingCooldown => 0.05f;
 
     protected override IEnumerator Shoot()
     {
@@ -29,7 +27,7 @@ public class VirgoShooter02 : CommonEnemyShooter<EnemyBullet>
                 bulletData.colour = bulletData.gradient.Evaluate(i / (WaveCount - 1f));
 
                 var bullet = SpawnProjectile(2, z, pos);
-                bullet.StartCoroutine(bullet.LerpSpeed(0f, s, 1f, delay: 0.5f));
+                bullet.StartCoroutine(bullet.LerpSpeed(0f, s, 1f, delay: 1f));
                 bullet.Fire();
             }
         }
