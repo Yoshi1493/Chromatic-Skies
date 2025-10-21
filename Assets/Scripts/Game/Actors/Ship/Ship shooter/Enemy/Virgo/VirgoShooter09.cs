@@ -24,7 +24,7 @@ public class VirgoShooter09 : CommonEnemyShooter<EnemyBullet>
 
                 bulletData.colour = bulletData.gradient.Evaluate(t);
 
-                var bullet = SpawnProjectile(0, z, pos);
+                var bullet = SpawnProjectile(9, z, pos);
                 bullet.StartCoroutine(bullet.RotateBy(r, 1f, delay: 1f));
                 bullet.Fire();
             }
