@@ -4,36 +4,27 @@ using static CoroutineHelper;
 
 public class CancerShooter01 : CommonEnemyShooter<EnemyBullet>
 {
-    const int WaveCount = 8;
-    const int BranchCount = 5;
-    const float BranchSpacing = 15f;
-    const float BulletBaseSpeed = 9f;
-    const float BulletSpeedModifier = -0.9f;
-    const float BulletRotationSpeed = 30f;
-    const float BulletRotationSpeedModifier = 10f;
-    const float BulletRotationDuration = 3f;
+    const int WaveCount = 66;
+    const int BulletMinCount = 3;
+    const int BulletMaxCount = 6;
+    const float BulletSpawnRadius = 0.5f;
+
+    protected override float ShootingCooldown => 1f / 30;
 
     protected override IEnumerator Shoot()
     {
         yield return WaitForSeconds(1.5f);
 
-        float t = PlayerPosition.GetRotationDifference(transform.position);
-
         for (int i = 0; i < WaveCount; i++)
         {
-            for (int ii = 0; ii < BranchCount; ii++)
+            int bulletCount = Random.Range(BulletMinCount, BulletMaxCount);
+
+            for (int ii = 0; ii < bulletCount; ii++)
             {
-                float z = ((ii - ((BranchCount - 1) / 2f)) * BranchSpacing) + t;
-                float r = (ii - ((BranchCount - 1) / 2f)) * (BulletRotationSpeed + (i * BulletRotationSpeedModifier));
-                float s = BulletBaseSpeed + (i * BulletSpeedModifier);
-                Vector3 pos = Vector3.zero;
+                float z = PlayerPosition.GetRotationDifference(transform.position) + Random.Range(-60f, 60f);
+                Vector3 pos = BulletSpawnRadius * transform.up.RotateVectorBy(z);
 
-                bulletData.colour = bulletData.gradient.Evaluate(i / (WaveCount - 1f));
-
-                var bullet = SpawnProjectile(1, z, pos);
-                bullet.MoveSpeed = s;
-                bullet.StartCoroutine(bullet.RotateBy(r, BulletRotationDuration, delay: 1.5f));
-                bullet.Fire();
+                SpawnProjectile(1, z, pos).Fire();
             }
 
             yield return WaitForSeconds(ShootingCooldown);
