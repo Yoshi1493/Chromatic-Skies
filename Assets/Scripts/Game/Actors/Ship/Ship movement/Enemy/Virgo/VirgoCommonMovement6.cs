@@ -8,7 +8,7 @@ public class VirgoCommonMovement6 : CommonEnemyMovement
     {
         Vector3 endPosition = transform.position + new Vector3(-2f, -4f);
 
-        yield return parentShip.SpiralIntoPoint(endPosition, 180f * SignX, 1.5f);
+        yield return parentShip.SpiralIntoPoint(endPosition, SignX * 180f, 1.5f);
         yield return WaitForSeconds(6f);
 
         yield return LeaveScene();
