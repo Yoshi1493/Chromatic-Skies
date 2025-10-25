@@ -4,6 +4,6 @@ public class CancerBullet03 : EnemyBullet
 {
     protected override IEnumerator Move()
     {
-        yield return null;
+        yield return this.LerpSpeed(2f, 0f, 0.5f);
     }
 }
