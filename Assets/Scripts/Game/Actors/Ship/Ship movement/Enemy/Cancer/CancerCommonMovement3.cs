@@ -1,17 +1,17 @@
 using System.Collections;
 using UnityEngine;
+using static CoroutineHelper;
 
 public class CancerCommonMovement3 : CommonEnemyMovement
 {
     protected override IEnumerator Move()
     {
-        float r = Random.Range(-5f, 5f);
-        float moveSpeed = 6f;
-        float rotationAmount = 1.5f * Mathf.PI;
+        Vector3 r = Vector3.down.RotateVectorBy(Random.Range(-30f, 30f));
 
-        yield return parentShip.MoveRelativeLinear((SignX * Vector3.left).RotateVectorBy(r), moveSpeed, 1.5f);
-        yield return parentShip.TranslateAroundLinear(transform.position + Vector3.down.RotateVectorBy(r), SignX * rotationAmount * Mathf.Rad2Deg, rotationAmount / moveSpeed);
-        yield return parentShip.MoveRelativeLinear(Vector3.up.RotateVectorBy(r), moveSpeed, 1f);
+        parentShip.transform.position += Random.Range(-1f, 1f) * Vector3.up;
+        yield return parentShip.MoveRelative(r, 2f, 2f);
+        yield return WaitForSeconds(2f);
+        yield return parentShip.MoveRelative(r, 2f, 5f);
 
         yield return LeaveScene();
     }

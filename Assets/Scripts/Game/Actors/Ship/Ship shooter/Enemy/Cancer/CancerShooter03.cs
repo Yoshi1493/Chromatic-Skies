@@ -4,33 +4,40 @@ using static CoroutineHelper;
 
 public class CancerShooter03 : CommonEnemyShooter<EnemyBullet>
 {
-    const int BulletCount = 7;
-    const float BulletSpacing = 15f;
-    const float BulletSpawnRadius = 0.8f;
+    const int RepeatCount = 3;
+    const int WaveCount = 3;
+    const float WaveSpacing = 5f;
+    const int BranchCount = 8;
+    const float BranchSpacing = 360f / BranchCount;
+    const float BulletBaseSpeed = 2f;
+    const float BulletSpeedModifier = 1f;
+
+    protected override float ShootingCooldown => 1.0f;
 
     protected override IEnumerator Shoot()
     {
-        yield return WaitForSeconds(1.8f);
-
-        float r = PlayerPosition.GetRotationDifference(transform.position);
-
-        for (int i = 0; i < BulletCount; i++)
+        for (int i = 0; i < RepeatCount; i++)
         {
-            int d = i % 2;
-            float z = ((i - ((BulletCount - 1) / 2f)) * BulletSpacing) + r;
-            Vector3 pos = BulletSpawnRadius * transform.up.RotateVectorBy(z);
+            yield return WaitForSeconds(ShootingCooldown);
 
-            bulletData.colour = bulletData.gradient.Evaluate(d);
+            float r = Random.Range(0f, BranchSpacing);
 
-            var bullet = SpawnProjectile(3, z, pos);
-            bullet.StartCoroutine(bullet.LerpSpeed(4f, 3f, 0.5f, delay: 0.5f + (i * ShootingCooldown)));
-
-            if (d == 1)
+            for (int ii = 0; ii < WaveCount; ii++)
             {
-                bullet.StartCoroutine(bullet.HomeInOn(playerShip, 1.2f));
-            }
+                for (int iii = 0; iii < BranchCount; iii++)
+                {
+                    float z = (ii * WaveSpacing) + (iii * BranchSpacing) + r;
+                    float s = BulletBaseSpeed + (ii * BulletSpeedModifier);
+                    Vector3 pos = Vector3.zero;
 
-            bullet.Fire();
+                    bulletData.colour = bulletData.gradient.Evaluate(ii / (WaveCount - 1f));
+
+                    var bullet = SpawnProjectile(3, z, pos);
+                    bullet.StartCoroutine(bullet.LerpSpeed(3f, s, 1f));
+                }
+
+                yield return WaitForSeconds(0.1f);
+            }
         }
     }
 }
