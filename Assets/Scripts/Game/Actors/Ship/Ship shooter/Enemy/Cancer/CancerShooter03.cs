@@ -9,8 +9,8 @@ public class CancerShooter03 : CommonEnemyShooter<EnemyBullet>
     const float WaveSpacing = 5f;
     const int BranchCount = 8;
     const float BranchSpacing = 360f / BranchCount;
-    const float BulletBaseSpeed = 2f;
-    const float BulletSpeedModifier = 1f;
+    const float BulletBaseSpeed = 2.8f;
+    const float BulletSpeedModifier = 0.6f;
 
     protected override float ShootingCooldown => 1.0f;
 
