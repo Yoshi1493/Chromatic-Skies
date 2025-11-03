@@ -1,24 +1,33 @@
 using System.Collections;
 using UnityEngine;
 using static CoroutineHelper;
+using static MathHelper;
 
 public class CancerShooter06 : CommonEnemyShooter<EnemyBullet>
 {
-    const int BulletCount = 0;
+    const int WaveCount = 14;
+    const int BulletCount = 13;
 
     protected override IEnumerator Shoot()
     {
+        yield return WaitForSeconds(1.5f);
+
         while (enabled)
         {
-            for (int i = 0; i < BulletCount; i++)
+            yield return WaitForSeconds(6f);
+
+            for (int i = 0; i < WaveCount; i++)
             {
-                float z = 0;
-                Vector3 pos = Vector3.zero;
+                for (int ii = 0; ii < BulletCount; ii++)
+                {
+                    float z = RandomAngleDeg;
+                    Vector3 pos = Vector3.zero;
 
-                SpawnProjectile(0, z, pos).Fire();
+                    SpawnProjectile(6, z, pos).Fire();
+                }
+
+                yield return WaitForSeconds(ShootingCooldown);
             }
-
-            yield return WaitForSeconds(ShootingCooldown);
         }
     }
 }
