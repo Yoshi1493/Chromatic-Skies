@@ -115,9 +115,9 @@ public class EnemySpawner : MonoBehaviour
                     if (enemyIndexes[i] == minibossIndex)
                     {
                         yield return WaitUntil(() => IsSceneEmpty());
-                        yield return WaitForSeconds(1f);
-
                         EnemyBulletPool.Instance.DestroyAllProjectilesInPool();
+
+                        yield return WaitForSeconds(1f);
                     }
 
                     enemies[i].gameObject.SetActive(true);
