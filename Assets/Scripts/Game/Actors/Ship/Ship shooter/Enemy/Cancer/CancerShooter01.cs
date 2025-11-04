@@ -9,8 +9,6 @@ public class CancerShooter01 : CommonEnemyShooter<EnemyBullet>
     const int BulletMaxCount = 6;
     const float BulletSpawnRadius = 0.5f;
 
-    protected override float ShootingCooldown => 1f / 30;
-
     protected override IEnumerator Shoot()
     {
         yield return WaitForSeconds(1.5f);

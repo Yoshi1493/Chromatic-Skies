@@ -7,6 +7,7 @@ public class CancerCommonMovement5 : CommonEnemyMovement
     protected override IEnumerator Move()
     {
         yield return parentShip.SpiralIntoPoint(ActorMovementHelper.bossSpawnPosition, 60f, 1.5f);
+        yield return WaitForSeconds(0.5f);
 
         while (enabled)
         {

@@ -14,7 +14,7 @@ public class CancerShooter05 : CommonEnemyShooter<EnemyBullet>
 
     protected override IEnumerator Shoot()
     {
-        yield return WaitForSeconds(1.5f);
+        yield return WaitForSeconds(2f);
 
         while (enabled)
         {
