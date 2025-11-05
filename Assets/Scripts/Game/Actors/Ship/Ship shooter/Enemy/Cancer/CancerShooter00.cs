@@ -5,7 +5,8 @@ using static MathHelper;
 
 public class CancerShooter00 : CommonEnemyShooter<EnemyBullet>
 {
-    const int BulletCount = 60;
+    const int RepeatCount = 5;
+    const int BulletCount = 12;
 
     protected override float ShootingCooldown => 0.05f;
 
@@ -13,14 +14,19 @@ public class CancerShooter00 : CommonEnemyShooter<EnemyBullet>
     {
         yield return WaitForSeconds(1.2f);
 
-        for (int i = 0; i < BulletCount; i++)
+        for (int i = 0; i < RepeatCount; i++)
         {
-            float z = RandomAngleDeg;
-            Vector3 pos = Vector3.zero;
+            for (int ii = 0; ii < BulletCount; ii++)
+            {
+                float z = RandomAngleDeg;
+                Vector3 pos = Vector3.zero;
 
-            SpawnProjectile(0, z, pos).Fire();
+                SpawnProjectile(0, z, pos).Fire();
 
-            yield return WaitForSeconds(ShootingCooldown);
+                yield return WaitForSeconds(ShootingCooldown);
+            }
+
+            yield return WaitForSeconds(0.5f);
         }
     }
 }
