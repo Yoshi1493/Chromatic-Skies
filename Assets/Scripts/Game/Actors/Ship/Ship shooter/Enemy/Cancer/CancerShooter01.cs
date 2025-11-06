@@ -7,7 +7,7 @@ public class CancerShooter01 : CommonEnemyShooter<EnemyBullet>
     const int RepeatCount = 6;
     const int WaveCount = 11;
     const int BulletCount = 3;
-    const float BulletBaseSpeed = 3f;
+    const float BulletBaseSpeed = 2f;
 
     protected override IEnumerator Shoot()
     {
