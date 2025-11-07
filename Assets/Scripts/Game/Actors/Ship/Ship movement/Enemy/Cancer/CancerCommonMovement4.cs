@@ -1,6 +1,5 @@
 using System.Collections;
 using UnityEngine;
-using static CoroutineHelper;
 
 public class CancerCommonMovement4 : CommonEnemyMovement
 {
@@ -10,7 +9,7 @@ public class CancerCommonMovement4 : CommonEnemyMovement
         float moveSpeed = 5f;
         float rotationAmount = 1.5f * Mathf.PI;
 
-        yield return parentShip.MoveRelativeLinear((SignX * Vector3.left).RotateVectorBy(r), moveSpeed, 1.5f);
+        yield return parentShip.MoveRelativeLinear((SignX * Vector3.left).RotateVectorBy(r), moveSpeed, 2f);
         yield return parentShip.TranslateAroundLinear(transform.position + Vector3.down.RotateVectorBy(r), SignX * rotationAmount * Mathf.Rad2Deg, rotationAmount / moveSpeed);
         yield return parentShip.MoveRelativeLinear(Vector3.up.RotateVectorBy(r), moveSpeed, 1f);
 
