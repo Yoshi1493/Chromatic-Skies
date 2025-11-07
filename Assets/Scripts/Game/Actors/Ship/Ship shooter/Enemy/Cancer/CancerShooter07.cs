@@ -4,21 +4,31 @@ using static CoroutineHelper;
 
 public class CancerShooter07 : CommonEnemyShooter<EnemyBullet>
 {
-    const int BulletCount = 0;
+    const int WaveCount = 360;
+    const int BulletCount = 6;
+    readonly float BulletSpacing = (1f + Mathf.Sqrt(5f)) * 180f;
+
+    protected override float ShootingCooldown => 1f / 30;
 
     protected override IEnumerator Shoot()
     {
-        while (enabled)
+        for (int i = 1; enabled; i *= -1)
         {
-            for (int i = 0; i < BulletCount; i++)
+            yield return WaitForSeconds(2f);
+
+            for (int ii = 0; ii < WaveCount; ii++)
             {
-                float z = 0;
-                Vector3 pos = Vector3.zero;
+                for (int iii = 0; iii < BulletCount; iii++)
+                {
+                    float z = i * ii * BulletSpacing;
+                    Vector3 pos = Vector3.zero;
 
-                SpawnProjectile(0, z, pos).Fire();
+                    SpawnProjectile(7, z, pos).Fire();
+                    ii++;
+                }
+
+                yield return WaitForSeconds(ShootingCooldown);
             }
-
-            yield return WaitForSeconds(ShootingCooldown);
         }
     }
 }
