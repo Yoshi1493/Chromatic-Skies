@@ -12,6 +12,8 @@ public class CancerShooter08 : CommonEnemyShooter<EnemyBullet>
     {
         yield return WaitForSeconds(1f);
 
+        bulletData.colour = bulletData.gradient.Evaluate(Random.value);
+
         for (int i = 0; i < WaveCount; i++)
         {
             for (int ii = 0; ii < BulletCount; ii++)
@@ -19,7 +21,7 @@ public class CancerShooter08 : CommonEnemyShooter<EnemyBullet>
                 float z = ((ii % 2 * 2 - 1) * i * WaveSpacing) + 180f;
                 Vector3 pos = Vector3.zero;
 
-                SpawnProjectile(0, z, pos).Fire();
+                SpawnProjectile(8, z, pos).Fire();
             }
 
             yield return WaitForSeconds(ShootingCooldown);
