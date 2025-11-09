@@ -9,6 +9,8 @@ public abstract class Laser : Projectile
     protected override int NumCollisions => Physics2D.OverlapBoxNonAlloc(transform.position + HitboxOffset, activeSize, transform.eulerAngles.z, collisionResults, CollisionMask);
     protected bool IsColliding => NumCollisions > 0;
 
+    protected Boss parentShip;
+
     protected bool active;
     protected Vector2 originalSize;
     protected Vector2 activeSize;
@@ -17,6 +19,7 @@ public abstract class Laser : Projectile
     IEnumerator growAnimation;
     IEnumerator shrinkAnimation;
 
+    [SerializeField] IntObject bossCurrentHealth;
     [SerializeField] AnimationCurve widthInterpolation;
     [SerializeField] AnimationCurve heightInterpolation;
 
@@ -26,6 +29,9 @@ public abstract class Laser : Projectile
 
         originalSize = SpriteRenderer.size;
         activeSize = originalSize;
+
+        parentShip = FindObjectOfType<Boss>();
+        parentShip.LoseLifeAction += OnBossLoseLife;
     }
 
     protected override void OnEnable()
@@ -150,6 +156,11 @@ public abstract class Laser : Projectile
         shrinkAnimation = null;
     }
 
+    void OnBossLoseLife()
+    {
+        Destroy(gameObject);
+    }
+
     public override void Destroy()
     {
         if (growAnimation != null)
@@ -167,6 +178,11 @@ public abstract class Laser : Projectile
     void OnDisable()
     {
         active = false;
+    }
+
+    void OnDestroy()
+    {
+        parentShip.LoseLifeAction -= OnBossLoseLife;
     }
 
 #if UNITY_EDITOR
