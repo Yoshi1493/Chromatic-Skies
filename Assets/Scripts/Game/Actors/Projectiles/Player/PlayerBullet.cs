@@ -10,14 +10,14 @@ public class PlayerBullet : Bullet
     protected override void Awake()
     {
         base.Awake();
-
-        MoveSpeed = bulletSpeed.value;
         playerShip.LoseLifeAction += OnPlayerLoseLife;
     }
 
     protected override void OnEnable()
     {
         base.OnEnable();
+
+        MoveSpeed = bulletSpeed.value;
         moveDirection = transform.up;
     }
 
@@ -28,19 +28,24 @@ public class PlayerBullet : Bullet
         CheckCollisionWith<CommonEnemy>();
         CheckCollisionWith<Boss>();
     }
+    protected override IEnumerator Move()
+    {
+        yield break;
+    }
 
     void OnPlayerLoseLife()
     {
-        Destroy();
+        ReturnToObjectPool();
     }
 
     public override void Destroy()
     {
-        PlayerBulletPool.Instance.ReturnToPool(this);
+        base.Destroy();
+        ReturnToObjectPool();
     }
 
-    protected override IEnumerator Move()
+    public override void ReturnToObjectPool()
     {
-        yield break;
+        PlayerBulletPool.Instance.ReturnToPool(this);
     }
 }

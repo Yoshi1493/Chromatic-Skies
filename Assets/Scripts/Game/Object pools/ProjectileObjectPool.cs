@@ -60,3 +60,8 @@ public class ProjectileObjectPool<TProjectile> : MonoBehaviour where TProjectile
         }
     }
 }
+
+public interface IPoolableObject
+{
+    void ReturnToObjectPool();
+}

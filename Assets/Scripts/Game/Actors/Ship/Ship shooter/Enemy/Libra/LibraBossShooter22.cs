@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using static CoroutineHelper;
 
-public class LibraBossShooter22 : BossShooter<Laser>
+public class LibraBossShooter22 : BossShooter<BossLaser>
 {
     const int LaserCount = 7;
     protected override float ShootingCooldown => 1.2f;

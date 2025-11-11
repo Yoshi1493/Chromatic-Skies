@@ -1,4 +1,4 @@
-public class LibraLaser61 : Laser
+public class LibraLaser61 : BossLaser
 {
     protected override float MaxLifetime => 3f;
 }

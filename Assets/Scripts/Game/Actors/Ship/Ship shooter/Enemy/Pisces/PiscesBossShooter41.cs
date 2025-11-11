@@ -1,6 +1,6 @@
 using System.Collections;
 
-public class PiscesBossShooter41 : BossShooter<Laser>
+public class PiscesBossShooter41 : BossShooter<BossLaser>
 {
     protected override IEnumerator Shoot()
     {

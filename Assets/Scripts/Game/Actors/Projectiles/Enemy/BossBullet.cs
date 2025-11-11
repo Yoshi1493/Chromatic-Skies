@@ -33,11 +33,16 @@ public abstract class BossBullet : EnemyBullet
         }
 
         MoveSpeed = 0f;
-        BossBulletPool.Instance.ReturnToPool(this);
+        ReturnToObjectPool();
     }
 
     void OnDestroy()
     {
         parentShip.LoseLifeAction -= OnBossLoseLife;
+    }
+
+    public override void ReturnToObjectPool()
+    {
+        BossBulletPool.Instance.ReturnToPool(this);
     }
 }

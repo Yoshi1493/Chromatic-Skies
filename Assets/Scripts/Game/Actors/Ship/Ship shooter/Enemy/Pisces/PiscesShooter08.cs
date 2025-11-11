@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using static CoroutineHelper;
 
-public class PiscesShooter08 : CommonEnemyShooter<Laser>
+public class PiscesShooter08 : CommonEnemyShooter<BossLaser>
 {
     const int LaserCount = 6;
     const float LaserSpacing = 360f / LaserCount;

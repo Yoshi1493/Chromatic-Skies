@@ -66,6 +66,11 @@ public abstract class EnemyBullet : Bullet
         }
 
         base.Destroy();
+        ReturnToObjectPool();
+    }
+
+    public override void ReturnToObjectPool()
+    {
         EnemyBulletPool.Instance.ReturnToPool(this);
     }
 }

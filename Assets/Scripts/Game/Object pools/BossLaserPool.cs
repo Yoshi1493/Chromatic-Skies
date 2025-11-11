@@ -1,4 +1,4 @@
-public class BossLaserPool : ProjectileObjectPool<Laser>
+public class BossLaserPool : ProjectileObjectPool<BossLaser>
 {
 
 }

@@ -3,7 +3,7 @@ using UnityEngine;
 using static CoroutineHelper;
 using static CameraBoundaries;
 
-public class AriesBossShooter32 : BossShooter<Laser>
+public class AriesBossShooter32 : BossShooter<BossLaser>
 {
     const int WaveCount = 35;
     const float WaveSpacing = 2.5f;
