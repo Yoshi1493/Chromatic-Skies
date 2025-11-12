@@ -2,23 +2,15 @@ using System.Collections;
 using UnityEngine;
 using static CoroutineHelper;
 
-public class TaurusShooter02 : CommonEnemyShooter<EnemyBullet>
+public class TaurusShooter02 : CommonEnemyShooter<Laser>
 {
-    const int BulletCount = 0;
-
     protected override IEnumerator Shoot()
     {
-        while (enabled)
-        {
-            for (int i = 0; i < BulletCount; i++)
-            {
-                float z = 0;
-                Vector3 pos = Vector3.zero;
+        yield return WaitForSeconds(1.5f);
 
-                SpawnProjectile(0, z, pos).Fire();
-            }
+        float z = transform.position.GetRotationDifference(PlayerPosition);
+        Vector3 pos = Vector3.zero;
 
-            yield return WaitForSeconds(ShootingCooldown);
-        }
+        SpawnProjectile(0, z, pos).Fire(1f);
     }
 }
