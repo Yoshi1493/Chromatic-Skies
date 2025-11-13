@@ -27,7 +27,7 @@ public class TaurusShooter03 : CommonEnemyShooter<EnemyBullet>
                     float z = (ii * WaveSpacing) + (iii * BranchSpacing) + r;
                     Vector3 pos = Vector3.zero;
 
-                    SpawnProjectile(0, z, pos).Fire();
+                    SpawnProjectile(3, z, pos).Fire();
                 }
 
                 yield return WaitForSeconds(ShootingCooldown);
