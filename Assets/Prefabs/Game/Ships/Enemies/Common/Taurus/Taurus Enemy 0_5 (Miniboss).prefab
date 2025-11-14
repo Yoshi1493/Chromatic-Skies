@@ -179,6 +179,10 @@ PrefabInstance:
       value: 180
       objectReference: {fileID: 0}
     - target: {fileID: 2407710777176494617, guid: 0ea569baafb91b94cbd6c069f48a94da, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: edc7cac9f8933b347a7d3d1c3a38e370, type: 3}
+    - target: {fileID: 2407710777176494617, guid: 0ea569baafb91b94cbd6c069f48a94da, type: 3}
       propertyPath: m_Color.b
       value: 0.5019608
       objectReference: {fileID: 0}
@@ -212,20 +216,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2407710777176494618, guid: 0ea569baafb91b94cbd6c069f48a94da, type: 3}
   m_PrefabInstance: {fileID: 7631634376295664945}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &7083111605303366673
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5224434185141182251}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 09a9ba57f104d5549ba9caeea1443962, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentShip: {fileID: 0}
---- !u!114 &9092139651043466853
+--- !u!114 &-6746164497139726991
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -241,3 +232,16 @@ MonoBehaviour:
   moveDirection: {x: 0, y: 0, z: 0}
   shipData: {fileID: 11400000, guid: cded6fdb5e7cc7b418289fbed60c8f11, type: 2}
   collider: {fileID: 5224434185141182247}
+--- !u!114 &692582098574560002
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5224434185141182251}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09a9ba57f104d5549ba9caeea1443962, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parentShip: {fileID: 0}
