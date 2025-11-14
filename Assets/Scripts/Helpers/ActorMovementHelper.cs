@@ -17,12 +17,12 @@ public static class ActorMovementHelper
 
     #region Position checks
 
-    public static bool IsWithinCameraBounds(this Actor actor)
+    public static bool IsWithinCameraBounds(this Vector3 v)
     {
-        return actor.transform.position.x > -ScreenHalfWidth
-            && actor.transform.position.x < ScreenHalfWidth
-            && actor.transform.position.y > -ScreenHalfHeight
-            && actor.transform.position.y < ScreenHalfHeight;
+        return v.x > -ScreenHalfWidth
+            && v.x < ScreenHalfWidth
+            && v.y > -ScreenHalfHeight
+            && v.y < ScreenHalfHeight;
     }
 
     #endregion

@@ -13,7 +13,7 @@ public abstract class BossBullet : EnemyBullet
 
     void OnBossLoseLife()
     {
-        if (this.IsWithinCameraBounds())
+        if (transform.position.IsWithinCameraBounds())
         {
             var collectible = SpawnScoreCollectible();
             collectible.foundPlayer = true;

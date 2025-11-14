@@ -31,7 +31,7 @@ public abstract class Collectible : Actor
     void Update()
     {
         //destroy if outside camera left/right/bottom bounds
-        if (!this.IsWithinCameraBounds() && transform.position.y < CameraBoundaries.ScreenHalfHeight)
+        if (!transform.position.IsWithinCameraBounds() && transform.position.y < CameraBoundaries.ScreenHalfHeight)
         {
             Destroy();
         }

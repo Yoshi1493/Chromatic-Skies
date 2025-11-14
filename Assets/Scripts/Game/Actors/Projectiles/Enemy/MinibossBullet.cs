@@ -13,7 +13,7 @@ public abstract class MinibossBullet : EnemyBullet
 
     void OnMinibossDie()
     {
-        if (this.IsWithinCameraBounds())
+        if (transform.position.IsWithinCameraBounds())
         {
             SpawnScoreCollectible();
         }

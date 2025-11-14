@@ -20,7 +20,7 @@ public class CollectibleSpawner : MonoBehaviour
 
     void OnEnemyDie()
     {
-        if (parentShip.IsWithinCameraBounds())
+        if (parentShip.transform.position.IsWithinCameraBounds())
         {
             var collectible = CollectibleObjectPool.Instance.Get((int)CollectibleType.Score);
 

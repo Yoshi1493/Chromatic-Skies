@@ -28,7 +28,7 @@ public abstract class CommonEnemyMovement : ShipMovement<CommonEnemy>
 
     protected IEnumerator LeaveScene()
     {
-        if (parentShip.IsWithinCameraBounds())
+        if (parentShip.transform.position.IsWithinCameraBounds())
         {
             Vector3 endPos = new(parentShip.transform.position.x, ScreenHalfHeight + 1f);
             float duration = (endPos - parentShip.transform.position).magnitude;
