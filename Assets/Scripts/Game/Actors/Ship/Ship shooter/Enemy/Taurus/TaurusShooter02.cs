@@ -18,7 +18,7 @@ public class TaurusShooter02 : CommonEnemyShooter<Laser>
             float z = (i * LaserSpacing) + r;
             Vector3 pos = Vector3.zero;
 
-            SpawnProjectile(0, z, pos).Fire(1f);
+            SpawnProjectile(2, z, pos).Fire(1f);
         }
     }
 }
