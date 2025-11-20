@@ -29,7 +29,6 @@ public class TaurusShooter05 : CommonEnemyShooter<Laser>
                 for (int ii = 0; ii < BranchCount; ii++)
                 {
                     float z = (ii * BranchSpacing) + r;
-                    print(z);
                     float t = z + LaserSpawnOffset;
                     Vector3 pos = LaserSpawnRadius * transform.up.RotateVectorBy(t);
 
