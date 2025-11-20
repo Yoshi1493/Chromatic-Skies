@@ -2,8 +2,10 @@ using System.Collections;
 
 public class TaurusBullet04 : EnemyBullet
 {
+    protected override float MaxLifetime => 15f;
+
     protected override IEnumerator Move()
     {
-        yield return null;
+        yield return this.LerpSpeed(4f, 1f, 0.5f);
     }
 }

@@ -8,9 +8,12 @@ public class TaurusShooter05 : CommonEnemyShooter<Laser>
     const float WaveSpacing = BranchSpacing / WaveCount;
     const int BranchCount = 8;
     const float BranchSpacing = 360f / BranchCount;
-    const float LaserSpawnRadius = 0.5f;
+    public const float LaserSpawnOffset = 90f;
+    public const float LaserSpawnRadius = 0.5f;
 
     protected override float ShootingCooldown => 1.2f;
+
+    public event System.Action<float> ShootAction;
 
     protected override IEnumerator Shoot()
     {
@@ -20,19 +23,23 @@ public class TaurusShooter05 : CommonEnemyShooter<Laser>
         {
             for (int i = 0; i < WaveCount; i++)
             {
+                float r = Random.Range(0f, BranchSpacing);
+                ShootAction?.Invoke(r);
+
                 for (int ii = 0; ii < BranchCount; ii++)
                 {
-                    float z = (i * WaveSpacing) + (ii * BranchSpacing);
-                    float t = z + 90f;
+                    float z = (ii * BranchSpacing) + r;
+                    print(z);
+                    float t = z + LaserSpawnOffset;
                     Vector3 pos = LaserSpawnRadius * transform.up.RotateVectorBy(t);
 
-                    SpawnProjectile(1, z, pos).Fire();
+                    SpawnProjectile(0, z, pos).Fire();
                 }
 
                 yield return WaitForSeconds(ShootingCooldown);
             }
 
-            yield return WaitForSeconds(10f);
+            yield return WaitForSeconds(8f);
         }
     }
 }

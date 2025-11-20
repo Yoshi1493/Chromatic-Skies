@@ -14,7 +14,7 @@ public class TaurusCommonMovement5 : CommonEnemyMovement
 
         while (enabled)
         {
-            yield return WaitForSeconds(10f);
+            yield return WaitForSeconds(8f);
         }
     }
 }
