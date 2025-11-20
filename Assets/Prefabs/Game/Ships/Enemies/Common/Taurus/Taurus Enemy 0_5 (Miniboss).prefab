@@ -45,8 +45,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectiles:
-  - {fileID: 2957548329168129339, guid: ca94c0c497b471e4e870f538412fac88, type: 3}
-  bulletData: {fileID: 11400000, guid: a0652c7c899f0af4fb2ef5c2dfd2aed3, type: 2}
+  - {fileID: -2858242080629983511, guid: fcfa8c58da896e94cb0a9d8b3eeaabf3, type: 3}
+  bulletData: {fileID: 11400000, guid: 4b6a48cd78e4a1844a644917710b3a96, type: 2}
+  bulletBoundaryLayer:
+    serializedVersion: 2
+    m_Bits: 1024
 --- !u!1 &5550137742414319924
 GameObject:
   m_ObjectHideFlags: 0
@@ -178,10 +181,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 180
       objectReference: {fileID: 0}
-    - target: {fileID: 2407710777176494617, guid: 0ea569baafb91b94cbd6c069f48a94da, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: edc7cac9f8933b347a7d3d1c3a38e370, type: 3}
     - target: {fileID: 2407710777176494617, guid: 0ea569baafb91b94cbd6c069f48a94da, type: 3}
       propertyPath: m_Color.b
       value: 0.5019608
