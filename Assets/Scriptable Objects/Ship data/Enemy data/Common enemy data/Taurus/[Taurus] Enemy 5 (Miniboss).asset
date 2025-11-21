@@ -16,7 +16,7 @@ MonoBehaviour:
   UIColour: {fileID: 0}
   boundaryLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 2048
   ShipName: {fileID: 0}
   MaxLives:
     useConstant: 1
