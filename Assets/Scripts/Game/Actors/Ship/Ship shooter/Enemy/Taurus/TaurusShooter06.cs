@@ -6,12 +6,11 @@ using static CameraBoundaries;
 
 public class TaurusShooter06 : CommonEnemyShooter<EnemyBullet>
 {
-    const int WaveCount = 10;
-    const int BranchCount = 8;
+    const int WaveCount = 8;
+    const int BranchCount = TaurusShooter05.BranchCount;
     const float BranchSpacing = 360f / BranchCount;
     const float ArcHalfWidth = 60f;
     const int BulletCount = 2;
-    const float BulletSpacing = 180f / BulletCount;
     const float BulletSpawnOffset = -TaurusShooter05.LaserSpawnOffset;
     const float BulletSpawnRadius = TaurusShooter05.LaserSpawnRadius;
 
@@ -82,7 +81,7 @@ public class TaurusShooter06 : CommonEnemyShooter<EnemyBullet>
                     float z = currentBulletSpawnData[ii].z + Random.Range(-ArcHalfWidth, ArcHalfWidth);
                     Vector3 pos = currentBulletSpawnData[ii].pos;
 
-                    SpawnProjectile(0, z, pos, false).Fire();
+                    SpawnProjectile(4, z, pos, false).Fire();
                 }
             }
 

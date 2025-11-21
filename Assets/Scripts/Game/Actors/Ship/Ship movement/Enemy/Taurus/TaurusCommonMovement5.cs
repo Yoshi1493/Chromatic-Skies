@@ -14,7 +14,14 @@ public class TaurusCommonMovement5 : CommonEnemyMovement
 
         while (enabled)
         {
-            yield return WaitForSeconds(8f);
+            yield return WaitForSeconds(6.6f);
+
+            for (int i = 0; i < 3; i++)
+            {
+                yield return parentShip.MoveToRandomPosition(1f);
+            }
+
+            yield return WaitForSeconds(2f);
         }
     }
 }

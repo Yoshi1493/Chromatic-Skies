@@ -6,7 +6,7 @@ public class TaurusShooter05 : CommonEnemyShooter<Laser>
 {
     const int WaveCount = 3;
     const float WaveSpacing = BranchSpacing / WaveCount;
-    const int BranchCount = 8;
+    public const int BranchCount = 8;
     const float BranchSpacing = 360f / BranchCount;
     public const float LaserSpawnOffset = 90f;
     public const float LaserSpawnRadius = 0.5f;
@@ -17,7 +17,7 @@ public class TaurusShooter05 : CommonEnemyShooter<Laser>
 
     protected override IEnumerator Shoot()
     {
-        yield return WaitForSeconds(2f);
+        yield return WaitForSeconds(1.7f);
 
         while (enabled)
         {
@@ -32,7 +32,7 @@ public class TaurusShooter05 : CommonEnemyShooter<Laser>
                     float t = z + LaserSpawnOffset;
                     Vector3 pos = LaserSpawnRadius * transform.up.RotateVectorBy(t);
 
-                    SpawnProjectile(0, z, pos).Fire();
+                    SpawnProjectile(1, z, pos).Fire();
                 }
 
                 yield return WaitForSeconds(ShootingCooldown);
