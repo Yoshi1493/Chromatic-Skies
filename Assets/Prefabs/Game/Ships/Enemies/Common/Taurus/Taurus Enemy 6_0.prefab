@@ -65,7 +65,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2407710777176494618, guid: 0ea569baafb91b94cbd6c069f48a94da, type: 3}
       propertyPath: m_Name
-      value: Taurus Enemy 0_6
+      value: Taurus Enemy 6_0
       objectReference: {fileID: 0}
     - target: {fileID: 8056434987258519651, guid: 0ea569baafb91b94cbd6c069f48a94da, type: 3}
       propertyPath: shipData
@@ -78,7 +78,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2407710777176494618, guid: 0ea569baafb91b94cbd6c069f48a94da, type: 3}
   m_PrefabInstance: {fileID: 7631634376295664945}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &-4239913291025703377
+--- !u!114 &5511063729638200223
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -87,13 +87,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 5224434185141182251}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db79b0e9baa8ac140a6440e99298f0c6, type: 3}
+  m_Script: {fileID: 11500000, guid: 399f78647655c174aa6617dd7c5984be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   projectiles:
-  - {fileID: -5166943524958749333, guid: 45ce2bcf7c8d36849a8f480716b9a850, type: 3}
-  bulletData: {fileID: 11400000, guid: bc67c76de63fec5478e6bb89eaff7697, type: 2}
---- !u!114 &-3458782786773163542
+  - {fileID: 887979500549649191, guid: 90d43f51e95320f48bc82c6d04ad2c1e, type: 3}
+  bulletData: {fileID: 11400000, guid: 2b8e802e3e15303408299ef38becb805, type: 2}
+--- !u!114 &7887511191557747228
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

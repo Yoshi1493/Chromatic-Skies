@@ -97,6 +97,53 @@ MonoBehaviour:
   projectiles:
   - {fileID: -3387678579170222134, guid: 170b1f64cc3abc4458d53e6042c76ba9, type: 3}
   bulletData: {fileID: 11400000, guid: 2867a426f95211645aeaa6ec6339b31b, type: 2}
+--- !u!1 &6156684377678350193
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9207958111131150536}
+  - component: {fileID: 3992228226452500010}
+  m_Layer: 7
+  m_Name: Bullet System 3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9207958111131150536
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6156684377678350193}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7688051112488215468}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3992228226452500010
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6156684377678350193}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db79b0e9baa8ac140a6440e99298f0c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectiles:
+  - {fileID: 3660539506219664514, guid: 3872718add82c3c45985018cb329aef9, type: 3}
+  bulletData: {fileID: 11400000, guid: c061960207dbe2048880a9d39b386175, type: 2}
 --- !u!1 &8692056533829656541
 GameObject:
   m_ObjectHideFlags: 0
@@ -127,6 +174,7 @@ Transform:
   m_Children:
   - {fileID: 6718725791332389417}
   - {fileID: 76398187815793250}
+  - {fileID: 9207958111131150536}
   m_Father: {fileID: 5224434185141182249}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -195,7 +243,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2407710777176494618, guid: 0ea569baafb91b94cbd6c069f48a94da, type: 3}
       propertyPath: m_Name
-      value: Taurus Enemy 0_5 (Miniboss)
+      value: Taurus Enemy 5_0 (Miniboss)
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8056434987258519651, guid: 0ea569baafb91b94cbd6c069f48a94da, type: 3}
