@@ -50,8 +50,9 @@ public class TaurusBossShooter21 : BossShooter<BossLaser>
         }
     }
 
-    void OnDisable()
+    protected override void OnDisable()
     {
+        base.OnDisable();
         laserSpawnPositions.Clear();
     }
 }

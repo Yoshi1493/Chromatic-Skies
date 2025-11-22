@@ -81,8 +81,9 @@ public class SagittariusBossShooter6 : BossShooter<BossBullet>
         }
     }
 
-    void OnDisable()
+    protected override void OnDisable()
     {
+        base.OnDisable();
         bossPositionDisplay.SetActive(true);
     }
 }
