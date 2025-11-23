@@ -11,30 +11,37 @@ public class TaurusShooter07 : CommonEnemyShooter<EnemyBullet>
     const float BulletRotationSpeed = 90f;
     const float BulletRotationDuration = 6f;
 
-    TaurusShooter05 parentShooter;
-
     protected override float ShootingCooldown => 1.0f;
-
-    protected override void Awake()
-    {
-        base.Awake();
-
-        parentShooter = transform.parent.GetComponentInChildren<TaurusShooter05>();
-        parentShooter.ShootAction += OnParentShooterShoot;
-    }
-
-    void OnParentShooterShoot(float angle)
-    {
-        print("shoot called.");
-    }
 
     protected override IEnumerator Shoot()
     {
-        yield return null;
-    }
+        yield return WaitForSeconds(1.7f);
 
-    void OnDestroy()
-    {
-        parentShooter.ShootAction -= OnParentShooterShoot;
+        while (enabled)
+        {
+            yield return WaitForSeconds(6.6f);
+
+            for (int i = 0; i < WaveCount; i++)
+            {
+                for (int ii = 0; ii < BranchCount; ii++)
+                {
+                    for (int iii = 0; iii < BulletCount; iii++)
+                    {
+                        float z = (iii % 2 * 2 - 1) * (ii * BranchSpacing);
+                        Vector3 pos = Vector3.zero;
+
+                        bulletData.colour = bulletData.gradient.Evaluate(iii);
+
+                        var bullet = SpawnProjectile(5, z, pos);
+                        bullet.StartCoroutine(bullet.RotateBy((iii % 2 * 2 - 1) * BulletRotationSpeed, BulletRotationDuration));
+                        bullet.Fire();
+                    }
+                }
+
+                yield return WaitForSeconds(ShootingCooldown);
+            }
+
+            yield return WaitForSeconds(2f);
+        }
     }
 }

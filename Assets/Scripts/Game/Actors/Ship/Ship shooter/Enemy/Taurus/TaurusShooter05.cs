@@ -21,9 +21,11 @@ public class TaurusShooter05 : CommonEnemyShooter<Laser>
 
         while (enabled)
         {
+            float d = Random.Range(0f, BranchSpacing);
+
             for (int i = 0; i < WaveCount; i++)
             {
-                float r = Random.Range(0f, BranchSpacing);
+                float r = (i * WaveSpacing) + d;
                 ShootAction?.Invoke(r);
 
                 for (int ii = 0; ii < BranchCount; ii++)
