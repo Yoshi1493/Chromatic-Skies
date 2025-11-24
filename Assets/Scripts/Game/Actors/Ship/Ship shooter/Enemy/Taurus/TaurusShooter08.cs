@@ -4,18 +4,25 @@ using static CoroutineHelper;
 
 public class TaurusShooter08 : CommonEnemyShooter<EnemyBullet>
 {
-    const int BulletCount = 0;
+    const int WaveCount = 10;
+    const float WaveSpacing = 360f / BranchCount / WaveCount;
+    const int BranchCount = 3;
+    const float BranchSpacing = 360f / BranchCount;
 
     protected override IEnumerator Shoot()
     {
-        while (enabled)
+        yield return WaitForSeconds(1f);
+
+        float r = PlayerPosition.GetRotationDifference(transform.position);
+
+        for (int i = 0; i < WaveCount; i++)
         {
-            for (int i = 0; i < BulletCount; i++)
+            for (int ii = 0; ii < BranchCount; ii++)
             {
-                float z = 0;
+                float z = (i * WaveSpacing) + (ii * BranchSpacing) + r;
                 Vector3 pos = Vector3.zero;
 
-                SpawnProjectile(0, z, pos).Fire();
+                SpawnProjectile(6, z, pos).Fire();
             }
 
             yield return WaitForSeconds(ShootingCooldown);
