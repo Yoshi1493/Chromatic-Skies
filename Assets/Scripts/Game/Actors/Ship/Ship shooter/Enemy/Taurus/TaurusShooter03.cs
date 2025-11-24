@@ -27,6 +27,8 @@ public class TaurusShooter03 : CommonEnemyShooter<EnemyBullet>
                     float z = (ii * WaveSpacing) + (iii * BranchSpacing) + r;
                     Vector3 pos = Vector3.zero;
 
+                    bulletData.colour = bulletData.gradient.Evaluate(ii / (WaveCount - 1f));
+
                     SpawnProjectile(2, z, pos).Fire();
                 }
 
