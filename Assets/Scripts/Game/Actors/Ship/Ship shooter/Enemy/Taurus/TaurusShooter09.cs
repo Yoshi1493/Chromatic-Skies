@@ -32,7 +32,7 @@ public class TaurusShooter09 : CommonEnemyShooter<Laser>
 
                 bulletData.colour = bulletData.gradient.Evaluate(i / (WaveCount - 1f));
 
-                SpawnProjectile(0, z, pos, false).Fire();
+                SpawnProjectile(2, z, pos, false).Fire();
             }
 
             yield return WaitForSeconds(ShootingCooldown);
