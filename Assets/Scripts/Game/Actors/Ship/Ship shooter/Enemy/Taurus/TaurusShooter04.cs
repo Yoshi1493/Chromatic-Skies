@@ -17,7 +17,7 @@ public class TaurusShooter04 : CommonEnemyShooter<EnemyBullet>
             float z = PlayerPosition.GetRotationDifference(transform.position);
             Vector3 pos = Vector3.zero;
 
-            SpawnProjectile(0, z, pos).Fire();
+            SpawnProjectile(3, z, pos).Fire();
         }
     }
 }
