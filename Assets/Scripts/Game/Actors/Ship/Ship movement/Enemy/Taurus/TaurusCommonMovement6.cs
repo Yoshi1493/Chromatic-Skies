@@ -8,7 +8,7 @@ public class TaurusCommonMovement6 : CommonEnemyMovement
     {
         float d = SignX;
         Vector3 p0 = parentShip.transform.position;
-        Vector3 p1 = new Vector2(p0.x + (-d * 6f), 2f) + (0.5f * Random.insideUnitCircle);
+        Vector3 p1 = new Vector2(p0.x + (-d * 6f), 2f) + Random.insideUnitCircle;
         Vector3 p2 = new Vector2(p1.x + Random.Range(-3f, 3f), -6f);
 
         yield return parentShip.SpiralIntoPoint(p1, -d * 30f, 1f);
