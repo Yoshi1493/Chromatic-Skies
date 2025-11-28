@@ -6,7 +6,7 @@ using static CameraBoundaries;
 
 public class TaurusShooter06 : CommonEnemyShooter<EnemyBullet>
 {
-    const int WaveCount = 8;
+    const int WaveCount = 6;
     const int BranchCount = TaurusShooter05.BranchCount;
     const float BranchSpacing = 360f / BranchCount;
     const float ArcHalfWidth = 60f;
