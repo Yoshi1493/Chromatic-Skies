@@ -13,7 +13,7 @@ public class TaurusCommonMovement6 : CommonEnemyMovement
 
         yield return parentShip.SpiralIntoPoint(p1, -d * 30f, 1f);
         yield return WaitForSeconds(2f);
-        yield return parentShip.SpiralIntoPoint(p2, -d * 30f, 2f);
+        yield return parentShip.SpiralIntoPoint(p2, -d * 30f, 3f);
 
         yield return LeaveScene();
     }
