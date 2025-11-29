@@ -34,8 +34,6 @@ public class TaurusShooter09 : CommonEnemyShooter<Laser>
                     float z = t + pos.GetRotationDifference(v1);
                     pos = (pos - v0).RotateVectorBy(t) + v0;
 
-                    bulletData.colour = bulletData.gradient.Evaluate(ii / (BranchCount - 1f));
-
                     SpawnProjectile(2, z, pos, false).Fire();
                 }
 
