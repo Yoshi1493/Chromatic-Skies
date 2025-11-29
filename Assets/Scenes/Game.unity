@@ -8407,7 +8407,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   bossPrefab: {fileID: 7755895804811722165, guid: c358821051e9d954d93c21cc5d7ddbba, type: 3}
-  minibossIndex: 5
+  minibossIndex: 6
 --- !u!1 &1897497764
 GameObject:
   m_ObjectHideFlags: 0
