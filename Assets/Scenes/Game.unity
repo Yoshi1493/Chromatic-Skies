@@ -8395,17 +8395,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnTextFile: {fileID: 4900000, guid: 21aa7dabbd9f75241809cdf9dc33fe07, type: 3}
   enemyPrefabs:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 443384559322656082, guid: c0f240ec546691340a1e3fe3fb48c96f, type: 3}
+  - {fileID: 443384559322656082, guid: f8ae1218171d16a40b5dd8139db9d08c, type: 3}
+  - {fileID: 443384559322656082, guid: 580a4388a633add47aec3e3972f568d9, type: 3}
+  - {fileID: 443384559322656082, guid: d527770e89cbc094ab8a82af29ac7f27, type: 3}
+  - {fileID: 443384559322656082, guid: e13fd54f54349c0428257e8516ee8321, type: 3}
+  - {fileID: 443384559322656082, guid: 8381423414b94a54da83cb61bad08832, type: 3}
+  - {fileID: 3983104074902649768, guid: fbf64d6216dcb4a4fbb13e5de60537e2, type: 3}
+  - {fileID: 443384559322656082, guid: 4b0b1ad65c5b3944492a8496d0ceee3c, type: 3}
+  - {fileID: 443384559322656082, guid: 07a454e234fe2f74aada83247852df79, type: 3}
   bossPrefab: {fileID: 7755895804811722165, guid: c358821051e9d954d93c21cc5d7ddbba, type: 3}
   minibossIndex: 6
 --- !u!1 &1897497764
@@ -9770,9 +9768,9 @@ MonoBehaviour:
     m_NumAlphaKeys: 2
   - serializedVersion: 2
     key0: {r: 0.2, g: 1, b: 0.6, a: 1}
-    key1: {r: 1, g: 0.3, b: 0.65, a: 1}
+    key1: {r: 1, g: 0.9, b: 0.95, a: 1}
     key2: {r: 0.2, g: 1, b: 0.6, a: 0}
-    key3: {r: 1, g: 0.3, b: 0.65, a: 0}
+    key3: {r: 1, g: 0.9, b: 0.95, a: 0}
     key4: {r: 0.6, g: 0.39999998, b: 1, a: 0}
     key5: {r: 0.7509804, g: 0.5019608, b: 1, a: 0}
     key6: {r: 1, g: 0.6, b: 1, a: 0}
