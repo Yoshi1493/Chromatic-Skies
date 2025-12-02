@@ -20,6 +20,7 @@ public class GeminiBullet52 : BossBullet
         MoveSpeed = 3f;
         yield return null;
     }
+
     protected override void Update()
     {
         base.Update();
