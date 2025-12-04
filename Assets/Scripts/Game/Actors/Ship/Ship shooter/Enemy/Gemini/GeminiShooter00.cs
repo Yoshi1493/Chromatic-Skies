@@ -5,9 +5,11 @@ using static CoroutineHelper;
 public class GeminiShooter00 : CommonEnemyShooter<EnemyBullet>
 {
     const int RepeatCount = 3;
-    const int WaveCount = 8;
+    const int WaveCount = 6;
     const int BranchCount = 5;
     const float BranchSpacing = 15f;
+
+    protected override float ShootingCooldown => 0.2f;
 
     protected override IEnumerator Shoot()
     {
