@@ -13,7 +13,7 @@ public class GeminiShooter00 : CommonEnemyShooter<EnemyBullet>
 
     protected override IEnumerator Shoot()
     {
-        yield return WaitForSeconds(1.5f);
+        yield return WaitForSeconds(1f);
 
         for (int i = 0; i < RepeatCount; i++)
         {
