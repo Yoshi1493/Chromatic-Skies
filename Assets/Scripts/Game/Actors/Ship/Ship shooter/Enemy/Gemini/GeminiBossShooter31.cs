@@ -14,38 +14,35 @@ public class GeminiBossShooter31 : BossShooter<BossBullet>
 
     protected override IEnumerator Shoot()
     {
-        while (enabled)
+        for (int i = 0; enabled; i++)
         {
-            for (int i = 0; enabled; i++)
+            float x = ScreenHalfWidth * (0.6f + Mathf.PingPong(i * WaveSpacing, 0.15f));
+            float y = ScreenHalfHeight;
+
+            for (int ii = 0; ii < BranchCount; ii++)
             {
-                float x = ScreenHalfWidth * (0.6f + Mathf.PingPong(i * WaveSpacing, 0.15f));
-                float y = ScreenHalfHeight;
+                float r = ii * BranchSpacing;
+                Vector3 v1 = new Vector3(x, y, 0f).RotateVectorBy(r);
+                Vector3 v2 = new Vector3(x, -y, 0f).RotateVectorBy(r);
 
-                for (int ii = 0; ii < BranchCount; ii++)
+                float z = v2.GetRotationDifference(v1);
+
+                for (int iii = 0; iii < BulletCount; iii++)
                 {
-                    float r = ii * BranchSpacing;
-                    Vector3 v1 = new Vector3(x, y, 0f).RotateVectorBy(r);
-                    Vector3 v2 = new Vector3(x, -y, 0f).RotateVectorBy(r);
+                    float vx = SpinRadius * Mathf.Sin((i + (iii * BulletSpacing)) * Mathf.Deg2Rad);
+                    float vz = SpinRadius * Mathf.Cos((i + (iii * BulletSpacing)) * Mathf.Deg2Rad);
+                    Vector3 pos = v1 + new Vector3(vx, 0f, vz);
 
-                    float z = v2.GetRotationDifference(v1);
+                    bulletData.colour = bulletData.gradient.Evaluate((i + iii) % BulletCount);
 
-                    for (int iii = 0; iii < BulletCount; iii++)
-                    {
-                        float vx = SpinRadius * Mathf.Sin((i + (iii * BulletSpacing)) * Mathf.Deg2Rad);
-                        float vz = SpinRadius * Mathf.Cos((i + (iii * BulletSpacing)) * Mathf.Deg2Rad);
-                        Vector3 pos = v1 + new Vector3(vx, 0f, vz);
-
-                        bulletData.colour = bulletData.gradient.Evaluate((i + iii) % BulletCount);
-
-                        var bullet = SpawnProjectile(1, z, pos, false) as GeminiBullet31;
-                        bullet.rotationAxis = v2 - v1;
-                        bullet.rotationPoint = v1;
-                        bullet.Fire();
-                    }
+                    var bullet = SpawnProjectile(1, z, pos, false) as GeminiBullet31;
+                    bullet.rotationAxis = v2 - v1;
+                    bullet.rotationPoint = v1;
+                    bullet.Fire();
                 }
-
-                yield return WaitForSeconds(ShootingCooldown);
             }
+
+            yield return WaitForSeconds(ShootingCooldown);
         }
     }
 }
