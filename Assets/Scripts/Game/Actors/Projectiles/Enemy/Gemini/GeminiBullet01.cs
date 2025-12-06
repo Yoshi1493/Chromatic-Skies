@@ -4,6 +4,6 @@ public class GeminiBullet01 : EnemyBullet
 {
     protected override IEnumerator Move()
     {
-        yield return null;
+        yield return this.LerpSpeed(5f, 4f, 1f);
     }
 }
