@@ -261,7 +261,7 @@ public static class ActorMovementHelper
 
     /// <summary>
     /// translates <actor> anticlockwise around <point> by <degrees> degrees over <duration> seconds,
-    /// while also translating it increasingly towards <point>, over <duration> seconds.
+    /// while also lerping its position towards <point>, over <duration> seconds.
     /// </summary>
     public static IEnumerator SpiralIntoPoint(this Actor actor, Vector3 point, float degrees, float duration, float delay = 0f)
     {
