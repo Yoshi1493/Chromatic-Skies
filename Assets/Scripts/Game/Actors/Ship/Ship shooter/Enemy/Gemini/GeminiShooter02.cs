@@ -35,7 +35,7 @@ public class GeminiShooter02 : CommonEnemyShooter<EnemyBullet>
 
                     bulletData.colour = bulletData.gradient.Evaluate(ii % 2);
 
-                    var bullet = SpawnProjectile(0, z, pos);
+                    var bullet = SpawnProjectile(2, z, pos);
                     bullet.StartCoroutine(bullet.RotateBy(Mathf.PingPong(ii * BulletRotationSpeedModifier, BulletRotationSpeed), BulletRotationDuration, delay: 1.5f));
                     bullet.Fire();
                 }
@@ -43,7 +43,7 @@ public class GeminiShooter02 : CommonEnemyShooter<EnemyBullet>
                 yield return WaitForSeconds(ShootingCooldown);
             }
 
-            yield return WaitForSeconds(1f);
+            yield return WaitForSeconds(2f);
         }
     }
 }

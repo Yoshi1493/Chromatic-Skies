@@ -4,7 +4,7 @@ using static CoroutineHelper;
 
 public class GeminiShooter01 : CommonEnemyShooter<EnemyBullet>
 {
-    const int WaveCount = 4;
+    const int WaveCount = 2;
     const int BulletCount = 10;
     const float BulletSpacing = 360f / BulletCount;
     const float BulletSpawnRadius = 0.5f;
@@ -13,10 +13,10 @@ public class GeminiShooter01 : CommonEnemyShooter<EnemyBullet>
 
     protected override IEnumerator Shoot()
     {
+        yield return WaitForSeconds(1f);
+
         for (int i = 0; i < WaveCount; i++)
         {
-            yield return WaitForSeconds(ShootingCooldown);
-
             for (int ii = 0; ii < BulletCount; ii++)
             {
                 float z = PlayerPosition.GetRotationDifference(transform.position);
@@ -27,6 +27,8 @@ public class GeminiShooter01 : CommonEnemyShooter<EnemyBullet>
 
                 SpawnProjectile(1, z, pos).Fire();
             }
+
+            yield return WaitForSeconds(ShootingCooldown);
         }
     }
 }
