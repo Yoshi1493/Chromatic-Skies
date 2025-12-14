@@ -1,13 +1,12 @@
 using System.Collections;
 using UnityEngine;
-using static CoroutineHelper;
 
 public class GeminiCommonMovement4 : CommonEnemyMovement
 {
     protected override IEnumerator Move()
     {
-        yield return parentShip.MoveRelative(Vector3.down, 3f, 1.5f);
-        yield return WaitForSeconds(3f);
+        float d = SignX;
+        yield return parentShip.MoveRelative(d * Vector3.left.RotateVectorBy(Random.Range(-10f, 10f)), 3f, 7f);
 
         yield return LeaveScene();
     }
