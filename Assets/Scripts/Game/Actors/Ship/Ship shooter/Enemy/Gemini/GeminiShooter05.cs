@@ -4,21 +4,27 @@ using static CoroutineHelper;
 
 public class GeminiShooter05 : CommonEnemyShooter<EnemyBullet>
 {
-    const int BulletCount = 0;
+    const int WaveCount = 4;
+    const int BulletCount = 16;
+    const float BulletSpacing = 360f / BulletCount;
+
+    protected override float ShootingCooldown => 1.2f;
 
     protected override IEnumerator Shoot()
     {
-        while (enabled)
+        for (int i = 0; i < WaveCount; i++)
         {
-            for (int i = 0; i < BulletCount; i++)
+            yield return WaitForSeconds(ShootingCooldown);
+
+            for (int ii = 0; ii < BulletCount; ii++)
             {
-                float z = 0f;
+                float z = ii * BulletSpacing;
                 Vector3 pos = Vector3.zero;
 
-                SpawnProjectile(0, z, pos).Fire();
+                var bullet = SpawnProjectile(5, z, pos);
+                bullet.StartCoroutine(bullet.LerpSpeed(2f, 0f, 1f));
+                bullet.Fire();
             }
-
-            yield return WaitForSeconds(ShootingCooldown);
         }
     }
 }
