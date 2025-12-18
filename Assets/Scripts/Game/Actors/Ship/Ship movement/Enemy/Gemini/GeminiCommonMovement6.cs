@@ -6,9 +6,17 @@ public class GeminiCommonMovement6 : CommonEnemyMovement
 {
     protected override IEnumerator Move()
     {
-        yield return parentShip.MoveRelative(Vector3.down, 3f, 1.5f);
-        yield return WaitForSeconds(3f);
+        parentShip.transform.position += Random.Range(-5f, 5f) * Vector3.right;
+        yield return parentShip.MoveTo(ActorMovementHelper.bossSpawnPosition, 1.5f);
 
-        yield return LeaveScene();
+        while (enabled)
+        {
+            for (int i = 0; i < 16; i++)
+            {
+                yield return WaitForSeconds(0.1f);
+            }
+
+            yield return WaitForSeconds(3f);
+        }
     }
 }

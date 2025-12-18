@@ -21,7 +21,7 @@ public class GeminiShooter05 : CommonEnemyShooter<EnemyBullet>
                 float z = ii * BulletSpacing;
                 Vector3 pos = Vector3.zero;
 
-                var bullet = SpawnProjectile(5, z, pos);
+                var bullet = SpawnProjectile(5, z, pos); 
                 bullet.StartCoroutine(bullet.LerpSpeed(2f, 0f, 1f));
                 bullet.Fire();
             }

@@ -232,3 +232,16 @@ MonoBehaviour:
   moveDirection: {x: 0, y: 0, z: 0}
   shipData: {fileID: 11400000, guid: a1b35499c5134934db235acb57c9b22c, type: 2}
   collider: {fileID: 5224434185141182247}
+--- !u!114 &8026162723840962881
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5224434185141182251}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40a836ca087d0cb4f9e1c99982ef4bc9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parentShip: {fileID: 0}
