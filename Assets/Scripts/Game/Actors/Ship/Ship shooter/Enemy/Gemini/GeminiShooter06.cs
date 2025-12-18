@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using static CoroutineHelper;
@@ -25,13 +26,13 @@ public class GeminiShooter06 : CommonEnemyShooter<EnemyBullet>
                     float z = (i * WaveSpacing) + (ii * BranchSpacing) + r;
                     Vector3 pos = i * SpawnRadiusModifier * transform.up.RotateVectorBy(z);
 
-                    SpawnProjectile(0, z, pos).Fire();
+                    SpawnProjectile(6, z, pos).Fire();
                 }
 
                 yield return WaitForSeconds(ShootingCooldown);
             }
 
-            yield return WaitForSeconds(3f);
+            yield return WaitForSeconds(6f);
         }
     }
 }

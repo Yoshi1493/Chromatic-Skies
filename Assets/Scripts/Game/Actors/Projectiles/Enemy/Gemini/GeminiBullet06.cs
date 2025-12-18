@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class GeminiBullet06 : EnemyBullet
+public class GeminiBullet06 : MinibossBullet
 {
     [SerializeField] ReflectiveBullet reflectComponent;
 
