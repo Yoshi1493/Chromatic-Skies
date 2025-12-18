@@ -47,6 +47,7 @@ MonoBehaviour:
   projectiles:
   - {fileID: -2858242080629983511, guid: fcfa8c58da896e94cb0a9d8b3eeaabf3, type: 3}
   bulletData: {fileID: 11400000, guid: 4b6a48cd78e4a1844a644917710b3a96, type: 2}
+  parentShooter: {fileID: 6060832603603728197}
   bulletBoundaryLayer:
     serializedVersion: 2
     m_Bits: 1024

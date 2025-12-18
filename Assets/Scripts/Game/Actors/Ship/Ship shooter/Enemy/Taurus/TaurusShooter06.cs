@@ -14,7 +14,7 @@ public class TaurusShooter06 : CommonEnemyShooter<EnemyBullet>
     const float BulletSpawnOffset = -TaurusShooter05.LaserSpawnOffset;
     const float BulletSpawnRadius = TaurusShooter05.LaserSpawnRadius;
 
-    TaurusShooter05 parentShooter;
+    [SerializeField] TaurusShooter05 parentShooter;
     [SerializeField] LayerMask bulletBoundaryLayer;
 
     List<(Vector3 pos, float z)> bulletSpawnData = new(BranchCount);
@@ -22,8 +22,6 @@ public class TaurusShooter06 : CommonEnemyShooter<EnemyBullet>
     protected override void Awake()
     {
         base.Awake();
-
-        parentShooter = transform.parent.GetComponentInChildren<TaurusShooter05>();
         parentShooter.ShootAction += OnParentShooterShoot;
     }
 
@@ -31,11 +29,6 @@ public class TaurusShooter06 : CommonEnemyShooter<EnemyBullet>
     {
         base.OnEnable();
         StopCoroutine(shootCoroutine);
-    }
-
-    protected override void Start()
-    {
-        base.Start();
     }
 
     void OnParentShooterShoot(float angle)
