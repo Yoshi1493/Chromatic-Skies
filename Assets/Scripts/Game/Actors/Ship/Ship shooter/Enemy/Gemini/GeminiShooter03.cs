@@ -7,7 +7,7 @@ public class GeminiShooter03 : CommonEnemyShooter<EnemyBullet>
     const int WaveCount = 32;
     const float ArcHalfWidth = 90f;
     const int BulletCount = 2;
-    const float BulletSpacing = 0.32f;
+    const float BulletSpacing = 0.16f;
     const float BulletSpawnRadius = 2f;
 
     protected override float ShootingCooldown => 0.05f;

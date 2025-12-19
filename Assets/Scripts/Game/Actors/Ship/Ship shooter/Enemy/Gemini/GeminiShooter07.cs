@@ -22,9 +22,9 @@ public class GeminiShooter07 : CommonEnemyShooter<EnemyBullet>
         while (enabled)
         {
             bullets.Clear();
-            yield return WaitForSeconds(4f);
+            yield return WaitForSeconds(2f);
 
-            float z = 0f;
+            float z = PlayerPosition.GetRotationDifference(transform.position);
             Vector3 pos = transform.position;
 
             var bullet = SpawnProjectile(7, z, pos, false);
