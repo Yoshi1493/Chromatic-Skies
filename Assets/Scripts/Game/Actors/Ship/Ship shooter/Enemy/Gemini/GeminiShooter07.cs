@@ -21,7 +21,7 @@ public class GeminiShooter07 : CommonEnemyShooter<EnemyBullet>
         while (enabled)
         {
             bullets.Clear();
-            yield return WaitForSeconds(2f);
+            yield return WaitForSeconds(1f);
 
             float z = PlayerPosition.GetRotationDifference(transform.position);
             Vector3 pos = transform.position;

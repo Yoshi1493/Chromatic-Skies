@@ -17,7 +17,7 @@ public class GeminiBullet06 : MinibossBullet
 
     protected override IEnumerator Move()
     {
-        MoveSpeed = 4;
+        MoveSpeed = 3f;
         yield return null;
     }
 

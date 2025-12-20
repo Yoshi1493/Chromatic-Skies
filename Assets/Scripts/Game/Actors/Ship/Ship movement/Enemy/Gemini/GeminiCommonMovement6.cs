@@ -11,12 +11,9 @@ public class GeminiCommonMovement6 : CommonEnemyMovement
 
         while (enabled)
         {
-            for (int i = 0; i < 16; i++)
-            {
-                yield return WaitForSeconds(0.1f);
-            }
-
-            yield return WaitForSeconds(3f);
+            yield return WaitForSeconds(8f);
+            yield return parentShip.MoveToRandomPosition(1f, 2f, 3f);
+            yield return parentShip.MoveToRandomPosition(1f, 2f, 3f);
         }
     }
 }
