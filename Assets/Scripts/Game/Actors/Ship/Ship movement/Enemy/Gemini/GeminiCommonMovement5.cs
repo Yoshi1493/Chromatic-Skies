@@ -9,7 +9,7 @@ public class GeminiCommonMovement5 : CommonEnemyMovement
     {
         float d = SignX;
         Vector3 p0 = parentShip.transform.position;
-        Vector3 p1 = p0 + new Vector3(-d * 3f, 8f) + (Vector3)Random.insideUnitCircle;
+        Vector3 p1 = p0 + new Vector3(-d * 3f, 8f) + 0.5f * (Vector3)Random.insideUnitCircle;
 
         float r = Random.Range(-1f, 1f);
         Vector3 p2 = new(-d * ScreenHalfWidth * 1.1f, p1.y + r);
