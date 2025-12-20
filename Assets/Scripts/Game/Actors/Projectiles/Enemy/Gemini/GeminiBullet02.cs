@@ -1,12 +1,19 @@
 using System.Collections;
-using static CoroutineHelper;
+using UnityEngine;
 
 public class GeminiBullet02 : EnemyBullet
 {
     protected override IEnumerator Move()
     {
-        yield return this.LerpSpeed(-0.1f, 0f, 0.5f);
-        yield return WaitForSeconds(1f);
-        yield return this.LerpSpeed(0f, 2.5f, 1f);
+        float d = Mathf.Sign(MoveSpeed);
+        MoveSpeed = Mathf.PI;
+        float r = GeminiShooter02.BranchSpacing * 2f;
+        float s = MoveSpeed / 4f;
+
+        while (enabled)
+        {
+            yield return this.RotateBy(d * r, s);
+            yield return this.RotateBy(d * -r, s);
+        }
     }
 }
