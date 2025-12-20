@@ -14,7 +14,7 @@ public class GeminiCommonMovement5 : CommonEnemyMovement
         float r = Random.Range(-1f, 1f);
         Vector3 p2 = new(-d * ScreenHalfWidth * 1.1f, p1.y + r);
 
-        yield return parentShip.SpiralIntoPoint(p1, d * 30f, 1f);
+        yield return parentShip.SpiralIntoPoint(p1, d * 30f, 1.2f);
         yield return WaitForSeconds(5f);
         yield return parentShip.SpiralIntoPoint(p2, d * r * 20f, 1.5f);
 
