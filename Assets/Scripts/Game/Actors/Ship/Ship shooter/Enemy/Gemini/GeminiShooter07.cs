@@ -8,10 +8,9 @@ public class GeminiShooter07 : CommonEnemyShooter<EnemyBullet>
     const int WaveCount = 7;
     const int BranchCount = 2;
     const float BranchSpacing = 120f;
+    const float BulletBaseSpeed = 4f;
 
     List<EnemyBullet> bullets = new((int)Mathf.Pow(BranchCount, WaveCount - 1));
-
-    [SerializeField] GeminiShooter06 parentShooter;
 
     protected override float ShootingCooldown => 0.5f;
 
@@ -28,7 +27,7 @@ public class GeminiShooter07 : CommonEnemyShooter<EnemyBullet>
             Vector3 pos = transform.position;
 
             var bullet = SpawnProjectile(7, z, pos, false);
-            bullet.StartCoroutine(bullet.LerpSpeed(5f, 0f, 0.5f));
+            bullet.StartCoroutine(bullet.LerpSpeed(BulletBaseSpeed, 0f, 0.5f));
             bullets.Add(bullet);
 
             for (int i = 0; i < WaveCount; i++)
@@ -41,7 +40,7 @@ public class GeminiShooter07 : CommonEnemyShooter<EnemyBullet>
                 {
                     pos = bullets[ii].transform.position;
                     bullets[ii].StartCoroutine(bullets[ii].RotateBy(-0.5f * BranchSpacing, 0f));
-                    bullets[ii].StartCoroutine(bullets[ii].LerpSpeed(5f, 0f, ShootingCooldown));
+                    bullets[ii].StartCoroutine(bullets[ii].LerpSpeed(BulletBaseSpeed, 0f, ShootingCooldown));
 
                     for (int iii = 0; iii < BranchCount - 1; iii++)
                     {
@@ -50,7 +49,7 @@ public class GeminiShooter07 : CommonEnemyShooter<EnemyBullet>
                         bullet = SpawnProjectile(7, z, pos, false);
                         if (i < WaveCount - 1)
                         {
-                            bullet.StartCoroutine(bullet.LerpSpeed(5f, 0f, ShootingCooldown));
+                            bullet.StartCoroutine(bullet.LerpSpeed(BulletBaseSpeed, 0f, ShootingCooldown));
                         }
                         bullets.Add(bullet);
                     }

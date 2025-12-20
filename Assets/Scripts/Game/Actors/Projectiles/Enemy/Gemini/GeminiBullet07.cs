@@ -7,7 +7,7 @@ public class GeminiBullet07 : MinibossBullet
 
     protected override IEnumerator Move()
     {
-        yield return this.LerpSpeed(5f, 2.5f, 0.5f);
+        yield return this.LerpSpeed(4f, 2.5f, 0.5f);
     }
 
     //don't return to object pool; handled by Shooter
