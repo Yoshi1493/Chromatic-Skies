@@ -9,7 +9,7 @@ public class GeminiShooter08 : CommonEnemyShooter<EnemyBullet>
     const int BulletCount = 3;
     const float BulletSpacing = 3f;
     const float BulletBaseSpeed = 3.2f;
-    const float BulletSpeedModifier = 0.8f;
+    const float BulletSpeedModifier = 0.4f;
 
     protected override float ShootingCooldown => 2.5f;
 
