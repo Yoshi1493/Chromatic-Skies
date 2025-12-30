@@ -27,7 +27,7 @@ public class GeminiShooter08 : CommonEnemyShooter<EnemyBullet>
                 float s = BulletBaseSpeed + (ii % 2 * BulletSpeedModifier);
                 Vector3 pos = Vector3.zero;
 
-                var bullet = SpawnProjectile(0, z, pos);
+                var bullet = SpawnProjectile(8, z, pos);
                 bullet.MoveSpeed = s;
             }
         }
