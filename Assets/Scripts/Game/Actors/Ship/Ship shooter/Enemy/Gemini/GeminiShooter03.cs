@@ -22,7 +22,7 @@ public class GeminiShooter03 : CommonEnemyShooter<EnemyBullet>
             for (int ii = 0; ii < BulletCount; ii++)
             {
                 int d = ii % 2 * 2 - 1;
-                Vector3 pos = ((r * transform.up) + (d * BulletSpacing * transform.right)).RotateVectorBy(z);
+                Vector3 pos = ((r * transform.up) + (d * BulletSpacing * transform.up)).RotateVectorBy(z);
                 bulletData.colour = bulletData.gradient.Evaluate(ii);
 
                 SpawnProjectile(3, z, pos).Fire();
