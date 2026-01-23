@@ -73,5 +73,7 @@ public class LeoBullet40 : ScriptableBossBullet<LeoBossShooter4, BossBullet>
 
         float t = currentLifetime / MaxLifetime;
         SpriteRenderer.color = projectileData.gradient.Evaluate(t);
+
+        transform.eulerAngles = 180f * Vector3.forward;
     }
 }
