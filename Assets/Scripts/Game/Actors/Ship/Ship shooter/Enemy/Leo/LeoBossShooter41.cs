@@ -24,9 +24,7 @@ public class LeoBossShooter41 : BossShooter<BossLaser>
 
     protected override IEnumerator Shoot()
     {
-        //yield return WaitForSeconds(2f);
-
-        clonePositions = GetComponentInParent<LeoBossShooter4>().bulletSpawnPositions;
+        clonePositions = bulletSystem.bulletSpawnPositions;
 
         for (int i = 0; i < clonePositions.Count; i++)
         {
