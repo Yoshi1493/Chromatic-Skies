@@ -4,19 +4,20 @@ using static CoroutineHelper;
 
 public class LeoShooter00 : CommonEnemyShooter<EnemyBullet>
 {
-    const int BulletCount = 0;
+    const int BulletCount = 2;
+
+    protected override float ShootingCooldown => 3f;
 
     protected override IEnumerator Shoot()
     {
-        while (enabled)
-        {
-            for (int i = 0; i < BulletCount; i++)
-            {
-                float z = 0f;
-                Vector3 pos = Vector3.zero;
+        yield return WaitForSeconds(1f);
 
-                SpawnProjectile(0, z, pos).Fire();
-            }
+        for (int i = 0; i < BulletCount; i++)
+        {
+            float z = PlayerPosition.GetRotationDifference(transform.position);
+            Vector3 pos = Vector3.zero;
+
+            SpawnProjectile(0, z, pos).Fire();
 
             yield return WaitForSeconds(ShootingCooldown);
         }
