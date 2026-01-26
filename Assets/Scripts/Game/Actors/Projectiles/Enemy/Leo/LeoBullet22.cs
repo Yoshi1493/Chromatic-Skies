@@ -5,8 +5,8 @@ public class LeoBullet22 : ScriptableBossBullet<LeoBossShooter21, BossBullet>
 {
     [SerializeField] ProjectileObject bulletData;
     
-    const int BulletCount = 8;
-    const float BulletSpacing = 12f;
+    const int BulletCount = 6;
+    const float BulletSpacing = 20f;
     const float BulletBaseSpeed = 1.5f;
     const float BulletSpeedModifier = 0.15f;
 
