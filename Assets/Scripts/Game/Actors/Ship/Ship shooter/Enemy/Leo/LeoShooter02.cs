@@ -4,21 +4,36 @@ using static CoroutineHelper;
 
 public class LeoShooter02 : CommonEnemyShooter<EnemyBullet>
 {
-    const int BulletCount = 0;
+    const int WaveCount = 18;
+    const float BranchCount = 2;
+    const float BranchSpacing = 360f / BranchCount;
+    const float BulletSpawnRadius = 0.5f;
+    const float BulletBaseSpeed = 3f;
+    const float BulletRotationSpeed = 10f;
+    const float BulletSpeedDelay = 0.5f;
+    const float BulletSpeedDelayModifier = 0.1f;
 
     protected override IEnumerator Shoot()
     {
-        while (enabled)
+        yield return WaitForSeconds(1.2f);
+
+        float r = (BranchSpacing / 2f) + (BranchSpacing / 4f * Random.Range(-1f, 1f));
+
+        for (int i = 0; i < WaveCount; i++)
         {
-            for (int i = 0; i < BulletCount; i++)
+            for (int ii = 0; ii < BranchCount; ii++)
             {
-                float z = 0f;
-                Vector3 pos = Vector3.zero;
+                float z = i * BulletRotationSpeed;
+                float d = BulletSpeedDelay + (i * BulletSpeedDelayModifier);
+                Vector3 pos = BulletSpawnRadius * transform.up.RotateVectorBy((ii * BranchSpacing) + r);
 
-                SpawnProjectile(0, z, pos).Fire();
+                bulletData.colour = bulletData.gradient.Evaluate(ii);
+
+                var bullet = SpawnProjectile(0, z, pos);
+                bullet.MoveSpeed = 0f;
+                bullet.StartCoroutine(bullet.LerpSpeed(0f, BulletBaseSpeed, 1f, delay: d));
+                bullet.StartCoroutine(bullet.RotateBy(-z, d));
             }
-
-            yield return WaitForSeconds(ShootingCooldown);
         }
     }
 }
