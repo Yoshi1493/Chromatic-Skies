@@ -29,7 +29,7 @@ public class LeoShooter02 : CommonEnemyShooter<EnemyBullet>
 
                 bulletData.colour = bulletData.gradient.Evaluate(ii);
 
-                var bullet = SpawnProjectile(0, z, pos);
+                var bullet = SpawnProjectile(2, z, pos);
                 bullet.MoveSpeed = 0f;
                 bullet.StartCoroutine(bullet.LerpSpeed(0f, BulletBaseSpeed, 1f, delay: d));
                 bullet.StartCoroutine(bullet.RotateBy(-z, d));
