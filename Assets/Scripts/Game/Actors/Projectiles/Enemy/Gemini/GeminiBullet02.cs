@@ -13,7 +13,7 @@ public class GeminiBullet02 : EnemyBullet
         while (enabled)
         {
             yield return this.RotateBy(d * r, s);
-            yield return this.RotateBy(d * -r, s);
+            yield return this.RotateBy(-d * r, s);
         }
     }
 }
