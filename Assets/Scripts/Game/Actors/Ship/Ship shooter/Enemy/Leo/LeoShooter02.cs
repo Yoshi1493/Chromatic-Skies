@@ -15,7 +15,7 @@ public class LeoShooter02 : CommonEnemyShooter<EnemyBullet>
 
     protected override IEnumerator Shoot()
     {
-        yield return WaitForSeconds(1.2f);
+        yield return WaitForSeconds(Random.Range(1f, 2f));
 
         float r = (BranchSpacing / 2f) + (BranchSpacing / 4f * Random.Range(-1f, 1f));
 
