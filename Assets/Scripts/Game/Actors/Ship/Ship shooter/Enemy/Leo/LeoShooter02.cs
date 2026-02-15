@@ -11,7 +11,6 @@ public class LeoShooter02 : CommonEnemyShooter<EnemyBullet>
     const float BulletBaseSpeed = 3f;
     const float BulletRotationSpeed = 10f;
     const float BulletSpeedDelay = 0.5f;
-    const float BulletSpeedDelayModifier = 0.1f;
 
     protected override IEnumerator Shoot()
     {
@@ -24,7 +23,7 @@ public class LeoShooter02 : CommonEnemyShooter<EnemyBullet>
             for (int ii = 0; ii < BranchCount; ii++)
             {
                 float z = i * BulletRotationSpeed;
-                float d = BulletSpeedDelay + (i * BulletSpeedDelayModifier);
+                float d = BulletSpeedDelay + (i * ShootingCooldown);
                 Vector3 pos = BulletSpawnRadius * transform.up.RotateVectorBy((ii * BranchSpacing) + r);
 
                 bulletData.colour = bulletData.gradient.Evaluate(ii);

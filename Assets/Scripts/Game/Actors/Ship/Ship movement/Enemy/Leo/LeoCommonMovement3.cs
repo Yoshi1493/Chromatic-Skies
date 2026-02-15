@@ -1,13 +1,18 @@
 using System.Collections;
 using UnityEngine;
-using static CoroutineHelper;
 
 public class LeoCommonMovement3 : CommonEnemyMovement
 {
     protected override IEnumerator Move()
     {
-        yield return parentShip.MoveRelative(Vector3.down, 3f, 1.5f);
-        yield return WaitForSeconds(3f);
+        Vector3 p0 = parentShip.transform.position;
+        Vector3 p1 = new(0f, p0.y - 1.5f);
+        Vector3 p2 = new(-p0.x, p0.y - 3f);
+
+        float d = SignX;
+
+        yield return parentShip.SpiralIntoPointLinear(p1, d * 15f, 2f);
+        yield return parentShip.SpiralIntoPointLinear(p2, -d * 15f, 2f);
 
         yield return LeaveScene();
     }
