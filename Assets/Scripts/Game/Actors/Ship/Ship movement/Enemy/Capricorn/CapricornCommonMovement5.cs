@@ -11,7 +11,7 @@ public class CapricornCommonMovement5 : CommonEnemyMovement
         for (int i = 0; i < movementPoints.Length; i++)
         {
             movementPoints[i].x *= SignX;
-            movementPoints[i].x += transform.position.x;
+            movementPoints[i].x += parentShip.transform.position.x;
         }
 
         float t = 0f;
