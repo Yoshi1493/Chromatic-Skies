@@ -15,7 +15,7 @@ public class LeoShooter04 : CommonEnemyShooter<EnemyBullet>
 
     protected override IEnumerator Shoot()
     {
-        yield return WaitForSeconds(1.2f);
+        yield return WaitForSeconds(2.2f);
 
         for (int i = 0; i < WaveCount; i++)
         {
@@ -30,7 +30,7 @@ public class LeoShooter04 : CommonEnemyShooter<EnemyBullet>
                     float t = (iii * BulletSpacing) + z;
                     Vector3 pos = BulletSpawnRadius * transform.up.RotateVectorBy(t);
 
-                    var bullet = SpawnProjectile(4, z, pos);
+                    var bullet = SpawnProjectile(0, z, pos);
                     bullet.StartCoroutine(bullet.LerpSpeed(0f, BulletBaseSpeed, 2f));
                     bullet.StartCoroutine(bullet.RotateBy(-iii * BulletSpacing, 0f, delay: 0.5f));
                     bullet.Fire();
