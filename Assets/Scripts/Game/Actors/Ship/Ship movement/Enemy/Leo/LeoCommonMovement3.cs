@@ -11,8 +11,8 @@ public class LeoCommonMovement3 : CommonEnemyMovement
 
         float d = SignX;
 
-        yield return parentShip.SpiralIntoPointLinear(p1, d * 15f, 2f);
-        yield return parentShip.SpiralIntoPointLinear(p2, -d * 15f, 2f);
+        yield return parentShip.SpiralIntoPointLinear(p1, d * 15f, 2.5f);
+        yield return parentShip.SpiralIntoPointLinear(p2, -d * 15f, 2.5f);
 
         yield return LeaveScene();
     }
