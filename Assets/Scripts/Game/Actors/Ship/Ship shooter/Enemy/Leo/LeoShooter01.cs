@@ -4,6 +4,7 @@ using static CoroutineHelper;
 
 public class LeoShooter01 : CommonEnemyShooter<EnemyBullet>
 {
+    const int RepeatCount = 2;
     const int WaveCount = 20;
     const float BulletSpawnRadius = 2f;
     const float BulletBaseSpeed = 4f;
@@ -14,18 +15,23 @@ public class LeoShooter01 : CommonEnemyShooter<EnemyBullet>
 
         float z = PlayerPosition.GetRotationDifference(transform.position);
 
-        for (int i = 0; i < WaveCount; i++)
+        for (int i = 0; i < RepeatCount; i++)
         {
-            Vector3 pos = BulletSpawnRadius * Vector3.forward;
+            for (int ii = 0; ii < WaveCount; ii++)
+            {
+                Vector3 pos = BulletSpawnRadius * Vector3.forward;
 
-            bulletData.colour = bulletData.gradient.Evaluate(i / (WaveCount - 1f));
+                bulletData.colour = bulletData.gradient.Evaluate(ii / (WaveCount - 1f));
 
-            var bullet = SpawnProjectile(1, z, pos) as LeoBullet01;
-            bullet.rotationPoint = parentShip.transform.position;
-            bullet.MoveSpeed = BulletBaseSpeed;
-            bullet.Fire();
+                var bullet = SpawnProjectile(1, z, pos) as LeoBullet01;
+                bullet.rotationPoint = parentShip.transform.position;
+                bullet.MoveSpeed = BulletBaseSpeed;
+                bullet.Fire();
 
-            yield return WaitForSeconds(ShootingCooldown);
+                yield return WaitForSeconds(ShootingCooldown);
+            }
+
+            yield return WaitForSeconds(3f);
         }
     }
 }
