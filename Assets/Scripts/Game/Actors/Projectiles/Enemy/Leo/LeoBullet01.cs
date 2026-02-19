@@ -19,7 +19,6 @@ public class LeoBullet01 : EnemyBullet
 
         this.LookAt(rotationPoint);
         StartCoroutine(this.LerpSpeed(4f, 2f, 2f));
-        StartCoroutine(this.RotateBy(Random.Range(-10f, 10f), 2f, delay: 0.5f));
     }
 
     protected override void OnEnable()
