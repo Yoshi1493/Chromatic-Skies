@@ -10,16 +10,18 @@ public class LeoShooter05 : CommonEnemyShooter<EnemyBullet>
     const float BulletRotationSpeed = 60f;
     const float BulletRotationDuration = 3f;
 
-    protected override float ShootingCooldown => 0.8f;
+    protected override float ShootingCooldown => 1f;
 
     protected override IEnumerator Shoot()
     {
-        yield return WaitForSeconds(2f);
+        yield return WaitForSeconds(1f);
 
         int i = 1;
 
         while (enabled)
         {
+            yield return WaitForSeconds(11f - (WaveCount * ShootingCooldown));
+
             for (int ii = 0; ii < WaveCount; ii++)
             {
                 for (int iii = 0; iii < BranchCount; iii++)
@@ -36,9 +38,7 @@ public class LeoShooter05 : CommonEnemyShooter<EnemyBullet>
 
                 yield return WaitForSeconds(ShootingCooldown);
                 i *= -1;
-            }
-
-            yield return WaitForSeconds(3f);
+            }            
         }
     }
 }
