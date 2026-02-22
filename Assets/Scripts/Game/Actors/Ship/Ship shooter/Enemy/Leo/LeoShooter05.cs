@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using static CoroutineHelper;
@@ -12,7 +13,7 @@ public class LeoShooter05 : CommonEnemyShooter<EnemyBullet>
 
     protected override float ShootingCooldown => 1f;
 
-    public event System.Func<IEnumerator> ShootFunc;
+    public event Action ShootAction;
 
     protected override IEnumerator Shoot()
     {
@@ -22,7 +23,7 @@ public class LeoShooter05 : CommonEnemyShooter<EnemyBullet>
 
         while (enabled)
         {
-            ShootFunc?.Invoke();
+            ShootAction?.Invoke();
 
             yield return WaitForSeconds(13f - (WaveCount * ShootingCooldown));
 

@@ -17,7 +17,18 @@ public class LeoShooter06 : CommonEnemyShooter<EnemyBullet>
     protected override void Awake()
     {
         base.Awake();
-        parentShooter.ShootFunc += Shoot;
+        parentShooter.ShootAction += OnParentShooterStart;
+    }
+
+    void OnParentShooterStart()
+    {
+        if (shootCoroutine != null)
+        {
+            StopCoroutine(shootCoroutine);
+        }
+
+        shootCoroutine = Shoot();
+        StartCoroutine(shootCoroutine);
     }
 
     protected override IEnumerator Shoot()
@@ -47,6 +58,6 @@ public class LeoShooter06 : CommonEnemyShooter<EnemyBullet>
 
     void OnDestroy()
     {
-        parentShooter.ShootFunc -= Shoot;
+        parentShooter.ShootAction -= OnParentShooterStart;
     }
 }
