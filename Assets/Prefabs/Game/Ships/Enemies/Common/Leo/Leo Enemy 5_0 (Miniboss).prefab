@@ -94,6 +94,7 @@ MonoBehaviour:
   projectiles:
   - {fileID: 5632112972087339739, guid: c75f02b8cd9ecfe4f870f606ef017861, type: 3}
   bulletData: {fileID: 11400000, guid: 20abf0991c6e2a743854f6ffa61252b3, type: 2}
+  parentShooter: {fileID: 6116939009046323936}
 --- !u!1 &5901446237920716027
 GameObject:
   m_ObjectHideFlags: 0
@@ -173,8 +174,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectiles:
-  - {fileID: -6695439080755530954, guid: 445ad5263714cc148b752dbbd50d6ca3, type: 3}
-  bulletData: {fileID: 11400000, guid: 9f31bb7932231bd4eb093cc0d4c4ff2b, type: 2}
+  - {fileID: 3663193793638755376, guid: 024f08d59266a1a47b30738020b386ad, type: 3}
+  - {fileID: 4051368845909510067, guid: 79cc896c390035c4da4f42ef6f785f0e, type: 3}
+  bulletData: {fileID: 11400000, guid: 910a30eee3ca7214cb004194ad1081d5, type: 2}
+  parentShooter: {fileID: 6116939009046323936}
 --- !u!1001 &7631634376295664945
 PrefabInstance:
   m_ObjectHideFlags: 0

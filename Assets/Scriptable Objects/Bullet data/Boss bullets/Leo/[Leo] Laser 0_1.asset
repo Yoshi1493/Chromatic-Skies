@@ -10,24 +10,24 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6b79cd0b20b26ac4090b241d65679e69, type: 3}
-  m_Name: '[Leo] Bullet 0_5'
+  m_Name: '[Leo] Laser 0_1'
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: 482f8cd2dab4e344188cfdb7f25dace9, type: 3}
+  sprite: {fileID: 21300000, guid: 7f7bb1b6e8cdb55478119a55c426fb79, type: 3}
   useSolidColour: 1
-  colour: {r: 0.2, g: 0, b: 1, a: 1}
+  colour: {r: 1, g: 0.75, b: 0, a: 1}
   gradient:
     serializedVersion: 2
-    key0: {r: 1, g: 0.2, b: 0, a: 1}
-    key1: {r: 0.2, g: 0, b: 1, a: 1}
-    key2: {r: 0.6, g: 0.39999998, b: 1, a: 0}
+    key0: {r: 1, g: 1, b: 1, a: 1}
+    key1: {r: 1, g: 1, b: 1, a: 1}
+    key2: {r: 0.25, g: 0.5, b: 1, a: 0}
     key3: {r: 1, g: 0.5, b: 0.9, a: 0}
     key4: {r: 0, g: 0, b: 0, a: 0}
     key5: {r: 0, g: 0, b: 0, a: 0}
     key6: {r: 0, g: 0, b: 0, a: 0}
     key7: {r: 0, g: 0, b: 0, a: 0}
-    ctime0: 32768
+    ctime0: 0
     ctime1: 65535
-    ctime2: 49151
+    ctime2: 65535
     ctime3: 65535
     ctime4: 0
     ctime5: 0
@@ -35,15 +35,15 @@ MonoBehaviour:
     ctime7: 0
     atime0: 0
     atime1: 65535
-    atime2: 0
+    atime2: 65535
     atime3: 0
     atime4: 0
     atime5: 0
     atime6: 0
     atime7: 0
-    m_Mode: 1
+    m_Mode: 0
     m_NumColorKeys: 2
     m_NumAlphaKeys: 2
-  ID: 5
+  ID: 1
   Power: {fileID: 11400000, guid: 2f946bc0b32947f468ba6cc9ee2e3f3c, type: 2}
   destructible: 1

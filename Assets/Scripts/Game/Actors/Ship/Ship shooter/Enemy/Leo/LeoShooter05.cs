@@ -12,6 +12,8 @@ public class LeoShooter05 : CommonEnemyShooter<EnemyBullet>
 
     protected override float ShootingCooldown => 1f;
 
+    public event System.Func<IEnumerator> ShootFunc;
+
     protected override IEnumerator Shoot()
     {
         yield return WaitForSeconds(1f);
@@ -20,7 +22,9 @@ public class LeoShooter05 : CommonEnemyShooter<EnemyBullet>
 
         while (enabled)
         {
-            yield return WaitForSeconds(11f - (WaveCount * ShootingCooldown));
+            ShootFunc?.Invoke();
+
+            yield return WaitForSeconds(13f - (WaveCount * ShootingCooldown));
 
             for (int ii = 0; ii < WaveCount; ii++)
             {
@@ -31,7 +35,7 @@ public class LeoShooter05 : CommonEnemyShooter<EnemyBullet>
 
                     bulletData.colour = bulletData.gradient.Evaluate(i / 2f + 0.5f);
 
-                    var bullet = SpawnProjectile(0, z, pos);
+                    var bullet = SpawnProjectile(5, z, pos);
                     bullet.StartCoroutine(bullet.RotateBy(i * BulletRotationSpeed, BulletRotationDuration));
                     bullet.Fire();
                 }
