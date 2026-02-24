@@ -7,6 +7,21 @@ public class ProjectileObjectPool<TProjectile> : MonoBehaviour where TProjectile
     [HideInInspector] public new Transform transform;
 
     protected readonly List<(TProjectile projectile, Queue<TProjectile> queue)> objectPool = new();
+    public int PoolCount
+    {
+        get
+        {
+            int count = 0;
+
+            for (int i = 0; i < objectPool.Count; i++)
+            {
+                count += objectPool[i].queue.Count;
+            }
+
+            return count;
+        }
+    }
+
     public void DrainPool() => objectPool.Clear();
 
     void Awake()

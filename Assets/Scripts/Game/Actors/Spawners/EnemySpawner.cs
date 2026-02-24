@@ -115,7 +115,6 @@ public class EnemySpawner : MonoBehaviour
                     if (enemyIndexes[i] == minibossIndex)
                     {
                         yield return WaitUntil(IsSceneEmpty);
-                        EnemyBulletPool.Instance.DestroyAllProjectilesInPool();
 
                         yield return WaitForSeconds(1f);
                     }
@@ -126,7 +125,7 @@ public class EnemySpawner : MonoBehaviour
                     //wait until miniboss is defeated
                     if (enemyIndexes[i] == minibossIndex)
                     {
-                        yield return WaitUntil(IsSceneEmpty);
+                        yield return WaitUntil(() => enemies[i].GetComponent<Miniboss>().HealthPercent <= 0f);
                     }
                 }
 
@@ -143,17 +142,29 @@ public class EnemySpawner : MonoBehaviour
         BossSpawnAction?.Invoke();
     }
 
-    bool IsEnemyContainerEmpty() => transform.childCount == 0;
-
     bool IsSceneEmpty()
     {
-        if (IsEnemyContainerEmpty())
+        bool noEnemies;
+        bool noBullets;
+
+        if (transform.childCount == 0)
         {
-            return true;
+            noEnemies = true;
         }
         else
         {
-            return !transform.GetChild(0).gameObject.activeSelf;
+            noEnemies = !transform.GetChild(0).gameObject.activeSelf;
         }
+
+        if (EnemyBulletPool.Instance.transform.childCount == 0)
+        {
+            noBullets = true;
+        }
+        else
+        {
+            noBullets = EnemyBulletPool.Instance.PoolCount == EnemyBulletPool.Instance.transform.childCount;
+        }
+
+        return noEnemies && noBullets;
     }
 }
