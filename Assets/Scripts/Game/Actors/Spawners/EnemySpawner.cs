@@ -114,7 +114,7 @@ public class EnemySpawner : MonoBehaviour
                     //wait until any enemies leave scene before spawning miniboss, plus 1 sec.
                     if (enemyIndexes[i] == minibossIndex)
                     {
-                        yield return WaitUntil(() => IsSceneEmpty());
+                        yield return WaitUntil(IsSceneEmpty);
                         EnemyBulletPool.Instance.DestroyAllProjectilesInPool();
 
                         yield return WaitForSeconds(1f);
@@ -126,11 +126,11 @@ public class EnemySpawner : MonoBehaviour
                     //wait until miniboss is defeated
                     if (enemyIndexes[i] == minibossIndex)
                     {
-                        yield return WaitUntil(() => IsSceneEmpty());
+                        yield return WaitUntil(IsSceneEmpty);
                     }
                 }
 
-                yield return WaitUntil(() => transform.childCount == 0);
+                yield return WaitUntil(IsSceneEmpty);
             }
         }
 
