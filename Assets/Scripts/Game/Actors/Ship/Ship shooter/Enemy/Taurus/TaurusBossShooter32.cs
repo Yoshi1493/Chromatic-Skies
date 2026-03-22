@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using static CoroutineHelper;
 
-public class TaurusBossShooter32 : BossShooter<Laser>
+public class TaurusBossShooter32 : BossShooter<BossLaser>
 {
     const int WaveCount = 3;
     const float WaveSpacing = LaserSpacing / WaveCount;

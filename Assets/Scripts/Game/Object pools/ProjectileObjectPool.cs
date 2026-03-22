@@ -1,0 +1,77 @@
+using System.Collections.Generic;
+using UnityEngine;
+
+public class ProjectileObjectPool<TProjectile> : MonoBehaviour where TProjectile : Projectile
+{
+    public static ProjectileObjectPool<TProjectile> Instance { get; private set; }
+    [HideInInspector] public new Transform transform;
+
+    protected readonly List<(TProjectile projectile, Queue<TProjectile> queue)> objectPool = new();
+    public int PoolCount
+    {
+        get
+        {
+            int count = 0;
+
+            for (int i = 0; i < objectPool.Count; i++)
+            {
+                count += objectPool[i].queue.Count;
+            }
+
+            return count;
+        }
+    }
+
+    public void DrainPool() => objectPool.Clear();
+
+    void Awake()
+    {
+        Instance = this;
+        transform = GetComponent<Transform>();
+    }
+
+    public void UpdatePoolableObjects(List<TProjectile> projectiles)
+    {
+        for (int i = 0; i < projectiles.Count; i++)
+        {
+            // check if projectile type already exists in object pool
+            // this happens if the players loses a life when not all of the projectiles are pooled at the beginning of an attack pattern
+            if (!objectPool.Exists(p => p.projectile.ProjectileID == projectiles[i].ProjectileID))
+            {
+                objectPool.Add((projectiles[i], new Queue<TProjectile>()));
+            }
+        }
+    }
+
+    public TProjectile Get(int ID)
+    {
+        if (objectPool[ID].queue.Count > 0)
+        {
+            return objectPool[ID].queue.Dequeue();
+        }
+        else
+        {
+            TProjectile newProjectile = Instantiate(objectPool[ID].projectile, transform);
+            newProjectile.enabled = false;
+
+            return newProjectile;
+        }
+    }
+
+    public void ReturnToPool(TProjectile returningObject)
+    {
+        returningObject.transform.parent = transform;
+        returningObject.gameObject.SetActive(false);
+        returningObject.enabled = false;
+
+        objectPool[returningObject.ProjectileID].queue.Enqueue(returningObject);
+    }
+
+    public void DestroyAllProjectilesInPool()
+    {
+        foreach (TProjectile p in transform.GetComponentsInChildren<TProjectile>())
+        {
+            p.Destroy();
+        }
+    }
+}

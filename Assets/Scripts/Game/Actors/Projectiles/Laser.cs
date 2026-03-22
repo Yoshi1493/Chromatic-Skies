@@ -9,6 +9,7 @@ public abstract class Laser : Projectile
     protected override int NumCollisions => Physics2D.OverlapBoxNonAlloc(transform.position + HitboxOffset, activeSize, transform.eulerAngles.z, collisionResults, CollisionMask);
     protected bool IsColliding => NumCollisions > 0;
 
+
     protected bool active;
     protected Vector2 originalSize;
     protected Vector2 activeSize;
@@ -146,7 +147,7 @@ public abstract class Laser : Projectile
         }
 
         active = false;
-        BossLaserPool.Instance.ReturnToPool(this);
+        ReturnToObjectPool();
         shrinkAnimation = null;
     }
 
@@ -162,6 +163,11 @@ public abstract class Laser : Projectile
             shrinkAnimation = ShrinkAndDestroy();
             StartCoroutine(shrinkAnimation);
         }
+    }
+
+    public override void ReturnToObjectPool()
+    {
+        EnemyLaserPool.Instance.ReturnToPool(this);
     }
 
     void OnDisable()

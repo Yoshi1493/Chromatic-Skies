@@ -5,7 +5,7 @@ using static CoroutineHelper;
 using static MathHelper;
 using static CameraBoundaries;
 
-public class TaurusBossShooter21 : BossShooter<Laser>
+public class TaurusBossShooter21 : BossShooter<BossLaser>
 {
     List<Vector3> laserSpawnPositions = new();
 
@@ -50,8 +50,9 @@ public class TaurusBossShooter21 : BossShooter<Laser>
         }
     }
 
-    void OnDisable()
+    protected override void OnDisable()
     {
+        base.OnDisable();
         laserSpawnPositions.Clear();
     }
 }

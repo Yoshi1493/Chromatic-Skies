@@ -11,6 +11,7 @@ public class CapricornCommonMovement5 : CommonEnemyMovement
         for (int i = 0; i < movementPoints.Length; i++)
         {
             movementPoints[i].x *= SignX;
+            movementPoints[i].x += parentShip.transform.position.x;
         }
 
         float t = 0f;
@@ -20,7 +21,7 @@ public class CapricornCommonMovement5 : CommonEnemyMovement
             parentShip.transform.position = EvaluateCubicSpline(movementPoints, t);
 
             yield return null;
-            t += Time.deltaTime / 2f;
+            t += Time.deltaTime;
         }
 
         yield return LeaveScene();

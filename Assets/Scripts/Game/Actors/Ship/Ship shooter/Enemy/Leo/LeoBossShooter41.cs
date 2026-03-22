@@ -4,7 +4,7 @@ using UnityEngine;
 using static CoroutineHelper;
 using static CameraBoundaries;
 
-public class LeoBossShooter41 : BossShooter<Laser>
+public class LeoBossShooter41 : BossShooter<BossLaser>
 {
     LeoBossShooter4 bulletSystem;
 
@@ -24,9 +24,7 @@ public class LeoBossShooter41 : BossShooter<Laser>
 
     protected override IEnumerator Shoot()
     {
-        //yield return WaitForSeconds(2f);
-
-        clonePositions = GetComponentInParent<LeoBossShooter4>().bulletSpawnPositions;
+        clonePositions = bulletSystem.bulletSpawnPositions;
 
         for (int i = 0; i < clonePositions.Count; i++)
         {

@@ -5,17 +5,19 @@ public class PlayerBullet : Bullet
 {
     protected override int CollisionMask => 1 << LayerMask.NameToLayer("Enemy");
 
+    [SerializeField] FloatObject bulletSpeed;
+
     protected override void Awake()
     {
         base.Awake();
-
-        MoveSpeed = projectileData.Speed.Value;
         playerShip.LoseLifeAction += OnPlayerLoseLife;
     }
 
     protected override void OnEnable()
     {
         base.OnEnable();
+
+        MoveSpeed = bulletSpeed.value;
         moveDirection = transform.up;
     }
 
@@ -26,19 +28,24 @@ public class PlayerBullet : Bullet
         CheckCollisionWith<CommonEnemy>();
         CheckCollisionWith<Boss>();
     }
+    protected override IEnumerator Move()
+    {
+        yield break;
+    }
 
     void OnPlayerLoseLife()
     {
-        Destroy();
+        ReturnToObjectPool();
     }
 
     public override void Destroy()
     {
-        PlayerBulletPool.Instance.ReturnToPool(this);
+        base.Destroy();
+        ReturnToObjectPool();
     }
 
-    protected override IEnumerator Move()
+    public override void ReturnToObjectPool()
     {
-        yield break;
+        PlayerBulletPool.Instance.ReturnToPool(this);
     }
 }

@@ -398,6 +398,51 @@ MonoBehaviour:
   - {fileID: 443384559322656082, guid: 438791dbba1ff074dba093bcff394a7a, type: 3}
   bossPrefab: {fileID: 7755895804811722165, guid: ae32505ea7ca26345a41907e070cec19, type: 3}
   minibossIndex: 7
+--- !u!1 &92208830
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 92208831}
+  - component: {fileID: 92208832}
+  m_Layer: 0
+  m_Name: Player Special Bullet Pool
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &92208831
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 92208830}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1018650123}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &92208832
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 92208830}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 758288ad14aa4d540babb786c9e6df46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  transform: {fileID: 0}
 --- !u!1 &115172394
 GameObject:
   m_ObjectHideFlags: 0
@@ -612,7 +657,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1551216913506170305, guid: 34395c8b735b6074aa16b730b885c19f, type: 3}
       propertyPath: audioDictionary.m_values.Array.data[1].data.Array.size
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1551216913506170305, guid: 34395c8b735b6074aa16b730b885c19f, type: 3}
       propertyPath: audioDictionary.m_values.Array.data[0].data.Array.data[0].clip
@@ -628,6 +673,10 @@ PrefabInstance:
       objectReference: {fileID: 8300000, guid: 46ccdf09d1eda1a41b2934873519cc0b, type: 3}
     - target: {fileID: 1551216913506170305, guid: 34395c8b735b6074aa16b730b885c19f, type: 3}
       propertyPath: audioDictionary.m_values.Array.data[1].data.Array.data[5].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 122d8d6dd56d56a449277b0be54e15f3, type: 3}
+    - target: {fileID: 1551216913506170305, guid: 34395c8b735b6074aa16b730b885c19f, type: 3}
+      propertyPath: audioDictionary.m_values.Array.data[1].data.Array.data[6].clip
       value: 
       objectReference: {fileID: 8300000, guid: 2cf27d6c9f7fe764c99d956b56684174, type: 3}
     - target: {fileID: 1551216913506170306, guid: 34395c8b735b6074aa16b730b885c19f, type: 3}
@@ -1180,19 +1229,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnTextFile: {fileID: 4900000, guid: f8f2e3c738b63414090d005a0c9056b4, type: 3}
   enemyPrefabs:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 443384559322656082, guid: 03be2882701cde7428d0e2322833db5c, type: 3}
+  - {fileID: 443384559322656082, guid: 3f8d9acdc3a9319499c8bbe01fe28647, type: 3}
+  - {fileID: 443384559322656082, guid: 562e9b7cfdc8bd64d93f70c874853bbe, type: 3}
+  - {fileID: 411254346254320860, guid: 13f2e845bd8055e4ea7b0694db3a8452, type: 3}
+  - {fileID: 443384559322656082, guid: 34a04849d2187e84d8527aca8dbcc669, type: 3}
+  - {fileID: 443384559322656082, guid: def0bffeec08a1c48b7d91dd65149f59, type: 3}
+  - {fileID: -7201920768208218402, guid: 969ead0e8a4f6d24a99e25c3132d9e95, type: 3}
+  - {fileID: 443384559322656082, guid: ad16927e3a6a64641848c5633821bb32, type: 3}
+  - {fileID: 1373472538925968443, guid: 5983b3f51dce77d4c94ec3f75cf50c29, type: 3}
+  - {fileID: 1373472538925968443, guid: 6357bd1e4727c954585c7a5f8908fb29, type: 3}
+  - {fileID: 1373472538925968443, guid: 24c830ad209940343a521499b1dd3f81, type: 3}
+  - {fileID: 1373472538925968443, guid: 1b6a998b6e6d01b4c8345ca6f8d24eef, type: 3}
+  - {fileID: 443384559322656082, guid: f28e9a28fac2ed64580afd376c72717c, type: 3}
+  - {fileID: 443384559322656082, guid: 91da431bcb3495f4bb98cdf691575a40, type: 3}
+  - {fileID: 443384559322656082, guid: 4cf6e7598dbacbe45825392d688ea7da, type: 3}
   bossPrefab: {fileID: 7755895804811722165, guid: 9a23cf4b718073c469f4fa669836a07a, type: 3}
-  minibossIndex: 5
+  minibossIndex: 6
 --- !u!1 &238148620
 GameObject:
   m_ObjectHideFlags: 0
@@ -1223,7 +1276,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1018650123}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &238148622
 MonoBehaviour:
@@ -3697,19 +3750,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnTextFile: {fileID: 4900000, guid: dba88047221387a4a9697661ff0ce816, type: 3}
   enemyPrefabs:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 443384559322656082, guid: 32bf72667f27b7949a80f80ba546aadd, type: 3}
+  - {fileID: 443384559322656082, guid: 01fb18d739b674f48a521d9f17c3c2d4, type: 3}
+  - {fileID: 443384559322656082, guid: 25fa0c58b8195344d98997e389fd6a1e, type: 3}
+  - {fileID: 443384559322656082, guid: af4df6961cd84f346b97ec481f59ad5e, type: 3}
+  - {fileID: 443384559322656082, guid: b6869d39d268578449d32939f8df4679, type: 3}
+  - {fileID: 443384559322656082, guid: 988532f235acc824ba523f04826591f9, type: 3}
+  - {fileID: 4821810884776227180, guid: 628193a1466aa394ca9b9b161d4820d6, type: 3}
+  - {fileID: 443384559322656082, guid: d569d7a7ebd3f1044ba897f0973a3ac0, type: 3}
+  - {fileID: 443384559322656082, guid: 61ec243bbd8a9a947a6848dbfb863413, type: 3}
   bossPrefab: {fileID: 7755895804811722165, guid: f1fbcc08789cdd84194fd55e553bf6b2, type: 3}
-  minibossIndex: 5
+  minibossIndex: 6
 --- !u!1 &663106032
 GameObject:
   m_ObjectHideFlags: 0
@@ -4390,17 +4441,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnTextFile: {fileID: 4900000, guid: c800288d7e86381449df46ee200e1bba, type: 3}
   enemyPrefabs:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 443384559322656082, guid: dabeb5440cff11f468e4916ca9a9fd29, type: 3}
+  - {fileID: 443384559322656082, guid: 82c055dd9b9cc8b48ac9037e898e87c3, type: 3}
+  - {fileID: 443384559322656082, guid: 73f3b18bce1e11c468d8532a912d5320, type: 3}
+  - {fileID: 443384559322656082, guid: cc8bde6f263e5ed49aca5c8281e886c0, type: 3}
+  - {fileID: 443384559322656082, guid: da83e9e67a17f274391325dac24cdc0e, type: 3}
+  - {fileID: -6746164497139726991, guid: b2b5fa5b083367e40857db71dd37fac7, type: 3}
+  - {fileID: 443384559322656082, guid: 60fc2dc2c77bb234984985836d91a6e6, type: 3}
+  - {fileID: 443384559322656082, guid: 197b3f959db23f44f921ee69de8d9c5f, type: 3}
+  - {fileID: 443384559322656082, guid: 6c899bae537e0c74c81b77759954f131, type: 3}
   bossPrefab: {fileID: 7755895804811722165, guid: 9fc2742efc08d024ba641b107c682dc9, type: 3}
   minibossIndex: 5
 --- !u!1 &848864869
@@ -4433,7 +4482,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1018650123}
-  m_RootOrder: 3
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &848864871
 MonoBehaviour:
@@ -4478,7 +4527,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1018650123}
-  m_RootOrder: 4
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &943514804
 MonoBehaviour:
@@ -4493,9 +4542,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   transform: {fileID: 0}
-  prewarmCount: 500
+  prewarmDictionary:
+    m_keys: 000000000200000001000000
+    m_values: 000200000800000008000000
   collectibles:
   - {fileID: 1921282877794899759, guid: 9c990ba014009334688301f217830346, type: 3}
+  - {fileID: 4403650357740464008, guid: 67bd7970d5f10f846acb76a2b9f6dc8c, type: 3}
+  - {fileID: -6051217148753051030, guid: 4b2d4e69e6e800b4a8507e4b5ad5327b, type: 3}
 --- !u!1 &952196236
 GameObject:
   m_ObjectHideFlags: 0
@@ -4819,7 +4872,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1018650123}
-  m_RootOrder: 5
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1010648627
 GameObject:
@@ -4940,8 +4993,10 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1572440325}
+  - {fileID: 92208831}
   - {fileID: 1088806827}
   - {fileID: 238148621}
+  - {fileID: 1626265485}
   - {fileID: 848864870}
   - {fileID: 943514803}
   - {fileID: 998017424}
@@ -5167,7 +5222,7 @@ MonoBehaviour:
   - {fileID: 443384559322656082, guid: e005967ee480f524ea31c0a8de6c3cc3, type: 3}
   - {fileID: 443384559322656082, guid: 7b344256de95fb047ad2e4fe17fba935, type: 3}
   - {fileID: 443384559322656082, guid: eb9e05adc2331b547be2c7703064f9cf, type: 3}
-  - {fileID: 443384559322656082, guid: 4da9d3b32f20bfe439165689c8d3f474, type: 3}
+  - {fileID: 535445884543848148, guid: 4da9d3b32f20bfe439165689c8d3f474, type: 3}
   - {fileID: 443384559322656082, guid: b7f07ddf2fa89a84694357e4e31629d3, type: 3}
   - {fileID: 443384559322656082, guid: ca1123a901e3659488e22b4453064340, type: 3}
   bossPrefab: {fileID: 7755895804811722165, guid: 586502ed9d9f6f042b7869dc1703a4f9, type: 3}
@@ -5202,7 +5257,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1018650123}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1088806828
 MonoBehaviour:
@@ -6012,17 +6067,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnTextFile: {fileID: 4900000, guid: c2dd3bde8aa53b449b3680f8556f1992, type: 3}
   enemyPrefabs:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 443384559322656082, guid: 41286448ae77696449b2bc68ed92175b, type: 3}
+  - {fileID: 443384559322656082, guid: e7db14a67839beb4e8871cafe6d0fb06, type: 3}
+  - {fileID: 443384559322656082, guid: e139ea3020084574197137f2f1dfa15b, type: 3}
+  - {fileID: 443384559322656082, guid: 9d2f4eefa0da8164cb0494b40c3f9e65, type: 3}
+  - {fileID: 443384559322656082, guid: cf1890b5cbe840248850f177380085bb, type: 3}
+  - {fileID: 1123470013954895770, guid: fc3682cb63c4d5b4bbd3ea255e9b311c, type: 3}
+  - {fileID: 443384559322656082, guid: 3b739cdbf68950d49acdbf13b6e2ceb2, type: 3}
+  - {fileID: 443384559322656082, guid: f3b392bc671ca034792663b8e9ce4350, type: 3}
+  - {fileID: 443384559322656082, guid: 679f5211b6510fb4c9d4d413f310f84a, type: 3}
   bossPrefab: {fileID: 7755895804811722165, guid: 0ee5fe128f94e7f49be1785ebc88b6ce, type: 3}
   minibossIndex: 5
 --- !u!1001 &1451902396
@@ -6749,6 +6802,51 @@ EdgeCollider2D:
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
   m_UseAdjacentEndPoint: 0
+--- !u!1 &1626265484
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1626265485}
+  - component: {fileID: 1626265486}
+  m_Layer: 0
+  m_Name: Enemy Laser Pool
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1626265485
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1626265484}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1018650123}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1626265486
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1626265484}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81acb9d13fa757c41b62dba1c95477ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  transform: {fileID: 0}
 --- !u!1 &1634773882
 GameObject:
   m_ObjectHideFlags: 0
@@ -7802,7 +7900,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentTime: {fileID: 11400000, guid: 7564dd3007503304aa59e09756250b88, type: 2}
   pauseHandler: {fileID: 2117771226}
-  enemySpawner: {fileID: 18786235}
+  selectedBossIndex: {fileID: 11400000, guid: d5bd1f541c5da6647b0ec80fa55b12ce, type: 2}
 --- !u!114 &1736981275
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8301,19 +8399,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnTextFile: {fileID: 4900000, guid: 21aa7dabbd9f75241809cdf9dc33fe07, type: 3}
   enemyPrefabs:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 443384559322656082, guid: c0f240ec546691340a1e3fe3fb48c96f, type: 3}
+  - {fileID: 443384559322656082, guid: f8ae1218171d16a40b5dd8139db9d08c, type: 3}
+  - {fileID: 443384559322656082, guid: 580a4388a633add47aec3e3972f568d9, type: 3}
+  - {fileID: 443384559322656082, guid: d527770e89cbc094ab8a82af29ac7f27, type: 3}
+  - {fileID: 443384559322656082, guid: e13fd54f54349c0428257e8516ee8321, type: 3}
+  - {fileID: 443384559322656082, guid: 8381423414b94a54da83cb61bad08832, type: 3}
+  - {fileID: 3983104074902649768, guid: fbf64d6216dcb4a4fbb13e5de60537e2, type: 3}
+  - {fileID: 443384559322656082, guid: 4b0b1ad65c5b3944492a8496d0ceee3c, type: 3}
+  - {fileID: 443384559322656082, guid: 07a454e234fe2f74aada83247852df79, type: 3}
   bossPrefab: {fileID: 7755895804811722165, guid: c358821051e9d954d93c21cc5d7ddbba, type: 3}
-  minibossIndex: 5
+  minibossIndex: 6
 --- !u!1 &1897497764
 GameObject:
   m_ObjectHideFlags: 0
@@ -8360,17 +8456,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnTextFile: {fileID: 4900000, guid: a1cc38c5776adf44bbde020f261ba85e, type: 3}
   enemyPrefabs:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 443384559322656082, guid: afc012fa2ce66654e8b54b4cfd6ba3aa, type: 3}
+  - {fileID: 443384559322656082, guid: f3f123126db946e45a4892ce205c40f7, type: 3}
+  - {fileID: 443384559322656082, guid: 4e202f827d143fb4b883e20103ae8b75, type: 3}
+  - {fileID: 443384559322656082, guid: f44e0ecfe2fa12948aba7f88f2b2fae1, type: 3}
+  - {fileID: 443384559322656082, guid: 2e64bdb07105365459d9a6444ee28a64, type: 3}
+  - {fileID: 4891277047476082130, guid: 7d5a83347f3f05f498d530d286c2fa25, type: 3}
+  - {fileID: 443384559322656082, guid: 77a107af4f9684f40883c579d9c7eac9, type: 3}
+  - {fileID: 443384559322656082, guid: 5767bb22a6623ff40851521c76f92a7f, type: 3}
+  - {fileID: 443384559322656082, guid: 958c9ca381141bc4db52ade94209199a, type: 3}
   bossPrefab: {fileID: 7755895804811722165, guid: b15e8fd8b3e6ebc43841eb5ef4d7990d, type: 3}
   minibossIndex: 5
 --- !u!1001 &1922420792
@@ -9678,9 +9772,9 @@ MonoBehaviour:
     m_NumAlphaKeys: 2
   - serializedVersion: 2
     key0: {r: 0.2, g: 1, b: 0.6, a: 1}
-    key1: {r: 1, g: 0.3, b: 0.65, a: 1}
+    key1: {r: 1, g: 0.39999998, b: 0.7, a: 1}
     key2: {r: 0.2, g: 1, b: 0.6, a: 0}
-    key3: {r: 1, g: 0.3, b: 0.65, a: 0}
+    key3: {r: 1, g: 0.4, b: 0.7, a: 0}
     key4: {r: 0.6, g: 0.39999998, b: 1, a: 0}
     key5: {r: 0.7509804, g: 0.5019608, b: 1, a: 0}
     key6: {r: 1, g: 0.6, b: 1, a: 0}

@@ -5,65 +5,38 @@ using static CoroutineHelper;
 
 public class LeoBullet40 : ScriptableBossBullet<LeoBossShooter4, BossBullet>
 {
-    LeoBossShooter4 bulletSystem;
     [SerializeField] ProjectileObject bulletData;
 
-    const int RingCount = 5;
-    const float RingSpacing = 10f;
-    const int BulletCount = 16;
-    const float BulletSpacing = 360f / BulletCount;
-    const float BulletBaseSpeed = 1.5f;
-    const float BulletSpeedModifier = 0.1f;
-    const float BulletRotationSpeed = 120f;
-    const float BulletRotationDuration = 1f;
-    const float ShootingCooldown = 0.1f;
-
-    List<BossBullet> bullets = new(RingCount * BulletCount);
+    const int WaveCount = 2;
+    const int BranchCount = 6;
+    const float BranchSpacing = 360f / BranchCount;
+    const float BulletRotationSpeed = 90;
+    const float BulletRotationDuration = 9f;
+    const float ShootingCooldown = 3f;
 
     protected override IEnumerator Move()
     {
-        bullets.Clear();
-
         yield return WaitForSeconds(1.5f);
+        StartCoroutine(FireBullets());
+    }
 
-        for (int i = 0; i < RingCount; i++)
+    IEnumerator FireBullets()
+    {
+        for (int i = 0; i < WaveCount; i++)
         {
-            for (int ii = 0; ii < BulletCount; ii++)
+            for (int ii = 0; ii < BranchCount; ii++)
             {
-                float z = (i * RingSpacing) + (ii * BulletSpacing);
-                float s = BulletBaseSpeed + (i * BulletSpeedModifier);
+                float z = ii * BranchSpacing;
                 Vector3 pos = transform.position;
 
-                bulletData.colour = bulletData.gradient.Evaluate(i / (RingCount - 1f));
+                bulletData.colour = bulletData.gradient.Evaluate(i);
 
                 var bullet = SpawnBullet(1, z, pos, false);
-                bullet.StartCoroutine(bullet.LerpSpeed(0f, s, 1f));
-                bullet.StartCoroutine(bullet.RotateBy(BulletRotationSpeed, 1f));
-                bullet.StartCoroutine(bullet.RotateAround(transform.position, BulletRotationDuration, BulletRotationSpeed, delay: 1f));
-
-                bullets.Add(bullet);
+                bullet.StartCoroutine(bullet.RotateBy((i % 2 * 2 - 1) * BulletRotationSpeed, BulletRotationDuration));
+                bullet.Fire();
             }
 
             yield return WaitForSeconds(ShootingCooldown);
-        }
-
-        yield return WaitForSeconds(1f);
-
-        FireBullets();
-    }
-
-    void FireBullets()
-    {
-        for (int i = 0; i < RingCount; i++)
-        {
-            for (int ii = 0; ii < BulletCount; ii++)
-            {
-                int b = (i * BulletCount) + ii;
-                var bullet = bullets[b];
-                float s = BulletBaseSpeed + (i * BulletSpeedModifier);
-
-                bullet.StartCoroutine(bullet.LerpSpeed(bullet.MoveSpeed, s, 1.5f));
-            }
         }
     }
 
@@ -73,5 +46,7 @@ public class LeoBullet40 : ScriptableBossBullet<LeoBossShooter4, BossBullet>
 
         float t = currentLifetime / MaxLifetime;
         SpriteRenderer.color = projectileData.gradient.Evaluate(t);
+
+        transform.eulerAngles = 180f * Vector3.forward;
     }
 }

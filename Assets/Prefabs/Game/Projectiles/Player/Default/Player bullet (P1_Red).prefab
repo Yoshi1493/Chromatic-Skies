@@ -1,0 +1,99 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &5094401303460245493
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1397835349538604030, guid: 06a49f4bf0c75b745956e119689efc37, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1397835349538604030, guid: 06a49f4bf0c75b745956e119689efc37, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1397835349538604030, guid: 06a49f4bf0c75b745956e119689efc37, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1397835349538604030, guid: 06a49f4bf0c75b745956e119689efc37, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1397835349538604030, guid: 06a49f4bf0c75b745956e119689efc37, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1397835349538604030, guid: 06a49f4bf0c75b745956e119689efc37, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1397835349538604030, guid: 06a49f4bf0c75b745956e119689efc37, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1397835349538604030, guid: 06a49f4bf0c75b745956e119689efc37, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1397835349538604030, guid: 06a49f4bf0c75b745956e119689efc37, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1397835349538604030, guid: 06a49f4bf0c75b745956e119689efc37, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1397835349538604030, guid: 06a49f4bf0c75b745956e119689efc37, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3896970343590141465, guid: 06a49f4bf0c75b745956e119689efc37, type: 3}
+      propertyPath: power
+      value: 
+      objectReference: {fileID: 11400000, guid: c7b35a64b6f09b34ea15c64dfe44c26f, type: 2}
+    - target: {fileID: 3896970343590141465, guid: 06a49f4bf0c75b745956e119689efc37, type: 3}
+      propertyPath: ownerShip
+      value: 
+      objectReference: {fileID: 11400000, guid: be28aa19c3c1bfc448da34d6633d1d7b, type: 2}
+    - target: {fileID: 3896970343590141465, guid: 06a49f4bf0c75b745956e119689efc37, type: 3}
+      propertyPath: bulletPower
+      value: 
+      objectReference: {fileID: 11400000, guid: c7b35a64b6f09b34ea15c64dfe44c26f, type: 2}
+    - target: {fileID: 3896970343590141465, guid: 06a49f4bf0c75b745956e119689efc37, type: 3}
+      propertyPath: bulletSpeed
+      value: 
+      objectReference: {fileID: 11400000, guid: 757db7ed4849e284da0b6f3b4a764d40, type: 2}
+    - target: {fileID: 3896970343590141465, guid: 06a49f4bf0c75b745956e119689efc37, type: 3}
+      propertyPath: projectileData
+      value: 
+      objectReference: {fileID: 11400000, guid: 3f2a3bf78de945a4281cf4e69eec465c, type: 2}
+    - target: {fileID: 4295436845269932089, guid: 06a49f4bf0c75b745956e119689efc37, type: 3}
+      propertyPath: m_Name
+      value: Player bullet (Red)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8059288589417988345, guid: 06a49f4bf0c75b745956e119689efc37, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8059288589417988345, guid: 06a49f4bf0c75b745956e119689efc37, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8059288589417988345, guid: 06a49f4bf0c75b745956e119689efc37, type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8059288589417988345, guid: 06a49f4bf0c75b745956e119689efc37, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8059288589417988345, guid: 06a49f4bf0c75b745956e119689efc37, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 06a49f4bf0c75b745956e119689efc37, type: 3}

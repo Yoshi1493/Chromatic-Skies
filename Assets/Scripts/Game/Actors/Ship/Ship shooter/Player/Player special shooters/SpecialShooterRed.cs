@@ -24,7 +24,7 @@ public class SpecialShooterRed : PlayerSpecialShooter
                 float z = ii * BulletSpacing;
                 Vector3 pos = Vector3.zero;
 
-                var bullet = SpawnProjectile(1, z, pos);
+                var bullet = SpawnProjectile(0, z, pos);
                 bullet.StartCoroutine(bullet.RotateBy((i % 2 * 2 - 1) * BulletRotationSpeed, BulletRotationDuration));
                 bullet.Fire();
             }

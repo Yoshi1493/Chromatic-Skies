@@ -172,7 +172,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectiles:
   - {fileID: 1479085872879964356, guid: a0c79cc02cbb13f4e910ed309dfdfbfd, type: 3}
-  bulletSpawnPositions: []
   specialMeter: {fileID: 11400000, guid: eb81c5868f0d20b48b29013b6aef286c, type: 2}
 --- !u!1 &6160247425745410587 stripped
 GameObject:
@@ -217,9 +216,9 @@ MonoBehaviour:
   transform: {fileID: 0}
   moveDirection: {x: 0, y: 0, z: 0}
   shipData: {fileID: 11400000, guid: b6ba5f2391bc609498ffb4b311043f19, type: 2}
+  collider: {fileID: 6246849726923490312}
   currentLives: {fileID: 11400000, guid: e2702cea3fe25f846bba74335398e0fa, type: 2}
   currentHealth: {fileID: 11400000, guid: b8f7cb9054d140d4e8fe82303a8deab4, type: 2}
-  collider: {fileID: 6246849726923490312}
   healthRefillInterpolation:
     serializedVersion: 2
     m_Curve:

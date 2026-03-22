@@ -1,5 +1,3 @@
-using static CameraBoundaries;
-
 public abstract class MinibossBullet : EnemyBullet
 {
     Miniboss parentShip;
@@ -15,17 +13,9 @@ public abstract class MinibossBullet : EnemyBullet
 
     void OnMinibossDie()
     {
-        //spawn score collectible if within camera bounds
-        if (transform.position.x > -ScreenHalfWidth
-            && transform.position.x < ScreenHalfWidth
-            && transform.position.y > -ScreenHalfHeight
-            && transform.position.y < ScreenHalfHeight)
+        if (transform.position.IsWithinCameraBounds())
         {
-            var collectible = CollectibleObjectPool.Instance.Get((int)CollectibleType.Score);
-
-            collectible.transform.position = transform.position;
-            collectible.gameObject.SetActive(true);
-            collectible.enabled = true;
+            SpawnScoreCollectible();
         }
 
         Destroy(gameObject);

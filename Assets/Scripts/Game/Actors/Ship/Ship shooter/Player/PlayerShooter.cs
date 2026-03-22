@@ -5,24 +5,13 @@ using static CoroutineHelper;
 
 public class PlayerShooter : Shooter<Player, PlayerBullet>
 {
-    ShipObject shipData;
-    protected override float ShootingCooldown => 1 / shipData.ShootingSpeed.Value;
-
     [SerializeField] List<Transform> bulletSpawnPositions = new();
-    public bool CanShoot { get; protected set; }
-
-    protected override void Awake()
-    {
-        base.Awake();
-        shipData = GetComponentInParent<Player>().shipData;
-    }
 
     protected override void Start()
     {
         base.Start();
 
-        (parentShip as CharacterShip).RespawnAction += OnRespawn;
-        CanShoot = true;
+        parentShip.RespawnAction += OnRespawn;
 
         //manually enable to avoid script execution order conflicts
         GetComponent<PlayerSpecialShooter>().enabled = true;
@@ -63,6 +52,7 @@ public class PlayerShooter : Shooter<Player, PlayerBullet>
 
     protected override void OnLoseLife()
     {
+        StopAllCoroutines();
         enabled = false;
     }
 

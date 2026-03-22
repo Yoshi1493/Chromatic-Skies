@@ -32,7 +32,7 @@ public abstract class EnemyBullet : Bullet
         }
         if (coll.TryGetComponent(out SpecialBullet specialBullet))
         {
-            if (specialBullet is SpecialBlue1 blue)
+            if (specialBullet is SpecialBlue0 blue)
             {
                 int healAmount = DamageCalculator.CalculateHealing(playerShip.shipData.MaxHealth.Value, blue.HitCount);
                 playerShip.TakeDamage(healAmount);
@@ -47,6 +47,17 @@ public abstract class EnemyBullet : Bullet
         }
     }
 
+    protected virtual Collectible SpawnScoreCollectible()
+    {
+        var collectible = CollectibleObjectPool.Instance.Get((int)CollectibleType.Score);
+
+        collectible.transform.position = transform.position;
+        collectible.gameObject.SetActive(true);
+        collectible.enabled = true;
+
+        return collectible;
+    }
+
     public override void Destroy()
     {
         if (movementBehaviour != null)
@@ -55,6 +66,11 @@ public abstract class EnemyBullet : Bullet
         }
 
         base.Destroy();
+        ReturnToObjectPool();
+    }
+
+    public override void ReturnToObjectPool()
+    {
         EnemyBulletPool.Instance.ReturnToPool(this);
     }
 }

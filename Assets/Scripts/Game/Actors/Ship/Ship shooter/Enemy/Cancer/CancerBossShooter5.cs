@@ -26,7 +26,6 @@ public class CancerBossShooter5 : BossShooter<BossBullet>
                 float z = i * BulletSpacing;
                 Vector3 pos = Mathf.PingPong(i * SpawnRadiusModifier, BulletSpawnRadius) * transform.up.RotateVectorBy(z);
 
-
                 SpawnProjectile(b, z, pos).Fire();
                 i++;
             }

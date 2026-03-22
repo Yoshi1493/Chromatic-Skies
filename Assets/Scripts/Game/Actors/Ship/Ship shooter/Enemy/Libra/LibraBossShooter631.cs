@@ -4,7 +4,7 @@ using UnityEngine;
 using static CoroutineHelper;
 using static MathHelper;
 
-public class LibraBossShooter631 : BossShooter<Laser>
+public class LibraBossShooter631 : BossShooter<BossLaser>
 {
     const int ParentBulletCount = LibraBossShooter63.ParentBulletCount;
     const int LaserCount = 15;
@@ -13,8 +13,8 @@ public class LibraBossShooter631 : BossShooter<Laser>
     const float FireDelay = 1f;
     const int ChildLaserCount = 2;
 
-    List<Laser> lasers = new(ParentBulletCount);
-    List<Laser> childLasers = new(ParentBulletCount * LaserCount);
+    List<BossLaser> lasers = new(ParentBulletCount);
+    List<BossLaser> childLasers = new(ParentBulletCount * LaserCount);
 
     protected override IEnumerator Shoot()
     {

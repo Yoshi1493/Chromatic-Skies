@@ -1,5 +1,4 @@
 using UnityEngine;
-using static CameraBoundaries;
 
 public abstract class Collectible : Actor
 {
@@ -7,7 +6,7 @@ public abstract class Collectible : Actor
     float currentLifetime;
     protected virtual float MaxLifetime => 10f;
 
-    Player player;
+    protected Player player;
     const float PlayerDetectionSqRadius = 1f;
     const float PlayerCollisionSqRadius = 0.1f;
 
@@ -31,19 +30,16 @@ public abstract class Collectible : Actor
 
     void Update()
     {
-        IncrementLifetime();
-        Move();
-        CheckPosition();
-        CheckPlayerPosition();
-    }
-
-    void IncrementLifetime()
-    {
-        currentLifetime += Time.deltaTime;
-
-        if (currentLifetime > MaxLifetime)
+        //destroy if outside camera left/right/bottom bounds
+        if (!transform.position.IsWithinCameraBounds() && transform.position.y < CameraBoundaries.ScreenHalfHeight)
         {
             Destroy();
+        }
+        else
+        {
+            Move();
+            CheckPlayerPosition();
+            IncrementLifetime();
         }
     }
 
@@ -67,17 +63,6 @@ public abstract class Collectible : Actor
         transform.Translate(Time.deltaTime * MoveSpeed * moveDirection, Space.World);
     }
 
-    //destroy if outside camera left/right/bottom bounds
-    void CheckPosition()
-    {
-        if ( transform.position.y < -ScreenHalfHeight ||
-             transform.position.x < -ScreenHalfWidth ||
-             transform.position.x > ScreenHalfWidth)
-        {
-            Destroy();
-        }
-    }
-
     void CheckPlayerPosition()
     {
         Vector3 diff = player.transform.position - transform.position;
@@ -85,7 +70,8 @@ public abstract class Collectible : Actor
         //check if gameobject is near Player
         if (!foundPlayer)
         {
-            if (player.transform.position.y >= ScreenHalfHeight * 0.5f)
+            //check if Player is in PoC range
+            if (player.transform.position.y >= CameraBoundaries.ScreenHalfHeight * 0.5f)
             {
                 foundPlayer = true;
             }
@@ -98,14 +84,28 @@ public abstract class Collectible : Actor
             }
         }
 
-        //destroy if touching Player
+        //apply collectible effect + destroy if touching Player
         if (Vector3.SqrMagnitude(diff) <= PlayerCollisionSqRadius)
+        {
+            Collect();
+            Destroy();
+        }
+    }
+
+    void IncrementLifetime()
+    {
+        currentLifetime += Time.deltaTime;
+
+        if (currentLifetime > MaxLifetime)
         {
             Destroy();
         }
     }
 
-    public virtual void Destroy()
+    protected abstract void Collect();
+
+    //return object to respective pool (called in child classes)
+    protected virtual void Destroy()
     {
         moveDirection = Vector3.zero;
         MoveSpeed = 0f;

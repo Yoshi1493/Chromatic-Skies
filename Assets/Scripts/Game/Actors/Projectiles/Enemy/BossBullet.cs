@@ -1,5 +1,3 @@
-using static CameraBoundaries;
-
 public abstract class BossBullet : EnemyBullet
 {
     protected Boss parentShip;
@@ -15,17 +13,9 @@ public abstract class BossBullet : EnemyBullet
 
     void OnBossLoseLife()
     {
-        //spawn score collectible if within camera bounds
-        if (transform.position.x > -ScreenHalfWidth
-            && transform.position.x < ScreenHalfWidth
-            && transform.position.y > -ScreenHalfHeight
-            && transform.position.y < ScreenHalfHeight)
+        if (transform.position.IsWithinCameraBounds())
         {
-            var collectible = CollectibleObjectPool.Instance.Get((int)CollectibleType.Score);
-
-            collectible.transform.position = transform.position;
-            collectible.gameObject.SetActive(true);
-            collectible.enabled = true;
+            var collectible = SpawnScoreCollectible();
             collectible.foundPlayer = true;
         }
 
@@ -43,11 +33,16 @@ public abstract class BossBullet : EnemyBullet
         }
 
         MoveSpeed = 0f;
-        BossBulletPool.Instance.ReturnToPool(this);
+        ReturnToObjectPool();
     }
 
     void OnDestroy()
     {
         parentShip.LoseLifeAction -= OnBossLoseLife;
+    }
+
+    public override void ReturnToObjectPool()
+    {
+        BossBulletPool.Instance.ReturnToPool(this);
     }
 }

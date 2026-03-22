@@ -36,10 +36,10 @@ public class LeoBossShooter4 : BossShooter<BossBullet>
 
             for (int i = 0; i < BulletCount; i++)
             {
-                float z = 0f;
+                float z = 180f;
                 Vector3 pos = Vector3.zero;
 
-                var bullet = SpawnProjectile(0, z, pos) as LeoBullet40;
+                var bullet = SpawnProjectile(0, z, pos);
                 bullet.StartCoroutine(bullet.MoveTo(bulletSpawnPositions[i], 1f));
                 bullet.Fire();
 

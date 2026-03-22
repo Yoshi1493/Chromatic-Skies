@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class CapricornBullet07 : EnemyBullet
+public class CapricornBullet07 : MinibossBullet
 {
     protected override float MaxLifetime => 6f;
 

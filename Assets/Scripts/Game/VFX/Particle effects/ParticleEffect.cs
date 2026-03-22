@@ -14,7 +14,7 @@ public abstract class ParticleEffect : MonoBehaviour
         ParticleSystem = GetComponent<VisualEffect>();
     }
 
-    void OnEnable()
+    protected virtual void OnEnable()
     {
         ParticleSystem.Play();
     }

@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using static CoroutineHelper;
 
-public class TaurusBossShooter41 : BossShooter<Laser>
+public class TaurusBossShooter41 : BossShooter<BossLaser>
 {
     //protected override float ShootingCooldown => 0.05f;
 

@@ -1,8 +1,9 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using static CoroutineHelper;
 
-public abstract class PlayerSpecialShooter : PlayerShooter
+public abstract class PlayerSpecialShooter : Shooter<Player, SpecialBullet>
 {
     [Space]
 
@@ -62,10 +63,10 @@ public abstract class PlayerSpecialShooter : PlayerShooter
         }
     }
 
+    //proper shooting functionality handled in child classes
     protected override IEnumerator Shoot()
     {
         SpecialAction?.Invoke();
-        //yield return WaitForSeconds(1f);
 
         GainSpecialMeter(-SpecialCost);
 
@@ -85,6 +86,16 @@ public abstract class PlayerSpecialShooter : PlayerShooter
         {
             GainSpecialMeter(MeterGainPerHit);
         }
+    }
+    protected override void OnLoseLife()
+    {
+        StopAllCoroutines();
+        enabled = false;
+    }
+
+    void OnRespawn()
+    {
+        enabled = true;
     }
 
     void OnBossTakeDamage(int _)

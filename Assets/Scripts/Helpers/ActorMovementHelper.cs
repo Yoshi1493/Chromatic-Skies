@@ -2,6 +2,7 @@ using System.Collections;
 using UnityEngine;
 using static CoroutineHelper;
 using static MathHelper;
+using static CameraBoundaries;
 
 //helper class to handle Actor movement
 public static class ActorMovementHelper
@@ -11,6 +12,18 @@ public static class ActorMovementHelper
     static readonly AnimationCurve moveInterpolation = AnimationCurve.EaseInOut(0f, 0f, 1f, 1f);
     public static readonly Vector3 bossSpawnPosition = new(0f, 2.5f, 0f);
     public static readonly Vector3 playerSpawnPosition = new(0f, -2f, 0f);
+
+    #endregion
+
+    #region Position checks
+
+    public static bool IsWithinCameraBounds(this Vector3 v)
+    {
+        return v.x > -ScreenHalfWidth
+            && v.x < ScreenHalfWidth
+            && v.y > -ScreenHalfHeight
+            && v.y < ScreenHalfHeight;
+    }
 
     #endregion
 
@@ -117,7 +130,7 @@ public static class ActorMovementHelper
     }
 
     /// <summary>
-    /// same as MoveTo, but position is translated linearly
+    /// same as MoveTo, but position is translated linearly.
     /// </summary>
     public static IEnumerator MoveToLinear(this Actor actor, Vector3 endPosition, float duration, float delay = 0f)
     {
@@ -174,7 +187,7 @@ public static class ActorMovementHelper
     }
 
     /// <summary>
-    /// same as MoveRelative, but position is translated linearly
+    /// same as MoveRelative, but position is translated linearly.
     /// </summary>
     public static IEnumerator MoveRelativeLinear(this Actor actor, Vector3 moveDirection, float moveSpeed, float duration, float delay = 0f)
     {
@@ -215,22 +228,80 @@ public static class ActorMovementHelper
         if (delay > 0f) yield return WaitForSeconds(delay);
 
         Vector3 startDirection = actor.transform.position - point;
-        Vector3 endPosition = startDirection.RotateVectorBy(degrees) + point;
         float currentTime = 0f;
 
         while (currentTime < duration)
         {
-            float r = Mathf.Lerp(0f, degrees, currentTime / duration);
-            actor.moveDirection = startDirection.RotateVectorBy(90f).RotateVectorBy(r);
-            actor.MoveSpeed = actor.moveDirection.magnitude * degrees * Mathf.Deg2Rad / duration;
+            actor.transform.position = startDirection.RotateVectorBy(degrees * moveInterpolation.Evaluate(currentTime / duration)) + point;
 
             yield return null;
             currentTime += Time.deltaTime;
         }
+    }
 
-        actor.transform.position = endPosition;
-        actor.moveDirection = Vector3.zero;
-        actor.MoveSpeed = 0f;
+    /// <summary>
+    /// same as TranslateAround, but position is translated linearly. 
+    /// </summary>
+    public static IEnumerator TranslateAroundLinear(this Actor actor, Vector3 point, float degrees, float duration, float delay = 0f)
+    {
+        if (degrees == 0f || duration <= 0f) yield break;
+        if (delay > 0f) yield return WaitForSeconds(delay);
+
+        Vector3 startDirection = actor.transform.position - point;
+        float currentTime = 0f;
+
+        while (currentTime < duration)
+        {
+            actor.transform.position = startDirection.RotateVectorBy(degrees * (currentTime / duration)) + point;
+
+            yield return null;
+            currentTime += Time.deltaTime;
+        }
+    }
+
+    /// <summary>
+    /// translates <actor> anticlockwise around <point> by <degrees> degrees over <duration> seconds,
+    /// while also lerping its position towards <point>, over <duration> seconds.
+    /// </summary>
+    public static IEnumerator SpiralIntoPoint(this Actor actor, Vector3 point, float degrees, float duration, float delay = 0f)
+    {
+        if (degrees == 0f || duration <= 0f) yield break;
+        if (delay > 0f) yield return WaitForSeconds(delay);
+
+        Vector3 startDirection = actor.transform.position - point;
+        float currentTime = 0f;
+
+        while (currentTime < duration)
+        {
+            float t = moveInterpolation.Evaluate(currentTime / duration);
+            Vector3 v = startDirection.RotateVectorBy(degrees * t) + point;
+            actor.transform.position = Vector3.Lerp(v, point, t);
+
+            yield return null;
+            currentTime += Time.deltaTime;
+        }
+    }
+
+    /// <summary>
+    /// same as SpiralIntoPoint, but position is translated linearly. 
+    /// </summary>
+    public static IEnumerator SpiralIntoPointLinear(this Actor actor, Vector3 point, float degrees, float duration, float delay = 0f)
+    {
+        if (degrees == 0f || duration <= 0f) yield break;
+        if (delay > 0f) yield return WaitForSeconds(delay);
+
+        Vector3 startDirection = actor.transform.position - point;
+        float currentTime = 0f;
+
+        while (currentTime < duration)
+        {
+            float t = currentTime / duration;
+            Vector3 v = startDirection.RotateVectorBy(degrees * t) + point;
+            actor.transform.position = Vector3.Lerp(v, point, t);
+
+            yield return null;
+            currentTime += Time.deltaTime;
+        }
     }
 
     /// <summary>

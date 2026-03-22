@@ -656,10 +656,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f0a88e58f5eb15428d0964494a8534e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shipData: {fileID: 0}
   parentShip: {fileID: 0}
-  moveDirection: {x: 0, y: 0, z: 0}
-  currentSpeed: 0
+  shipData: {fileID: 0}
   slowMovementSpeed: {fileID: 11400000, guid: 595a3d5f4903f4c4a9143602008fd746, type: 2}
 --- !u!114 &4347026370913049934
 MonoBehaviour:

@@ -13,6 +13,7 @@ public abstract class Shooter<TShip, TProjectile> : MonoBehaviour
 
     protected IEnumerator shootCoroutine;
     protected virtual float ShootingCooldown => 1 / parentShip.shipData.ShootingSpeed.Value;
+    public bool CanShoot { get; protected set; }
 
     protected virtual void Awake()
     {
@@ -23,6 +24,7 @@ public abstract class Shooter<TShip, TProjectile> : MonoBehaviour
     protected virtual void OnEnable()
     { 
         ProjectileObjectPool<TProjectile>.Instance.UpdatePoolableObjects(projectiles);
+        CanShoot = true;
     }
 
     protected virtual void Start()
@@ -52,5 +54,10 @@ public abstract class Shooter<TShip, TProjectile> : MonoBehaviour
     protected virtual void OnDie()
     {
         enabled = false;
+    }
+
+    protected virtual void OnDisable()
+    {
+        CanShoot = false;
     }
 }

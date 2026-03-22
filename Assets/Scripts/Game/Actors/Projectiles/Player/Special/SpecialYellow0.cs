@@ -1,0 +1,51 @@
+using System.Collections;
+using UnityEngine;
+
+public class SpecialYellow0 : SpecialBullet
+{
+    protected override int MaxCollisions => 8;
+    protected override float HitboxSize => 0.5f * Mathf.Min(SpriteRenderer.size.x, SpriteRenderer.size.y) / 2f;
+
+    [SerializeField] AnimationCurve homingInterpolation;
+
+    Vector2 originalSize;
+
+    protected override void Awake()
+    {
+        base.Awake();
+        originalSize = SpriteRenderer.size;
+    }
+
+    protected override void OnEnable()
+    {
+        base.OnEnable();
+        SpriteRenderer.size = originalSize;
+    }
+
+    protected override IEnumerator Move()
+    {
+        collider.enabled = false;
+
+        float currentLerpTime = 0f;
+        float totalLerpTime = Random.Range(0.8f, 1.2f);
+
+        StartCoroutine(this.LerpSize(Vector2.zero, totalLerpTime * 0.8f, delay: totalLerpTime * 0.2f));
+
+        while (currentLerpTime < totalLerpTime)
+        {
+            float t = homingInterpolation.Evaluate(currentLerpTime / totalLerpTime);
+            transform.position = Vector2.Lerp(transform.position, playerShip.transform.position, t * t);
+
+            yield return null;
+            currentLerpTime += Time.deltaTime;
+        }
+
+        Destroy();
+    }
+
+    protected override void Update()
+    {
+        base.Update();
+        ((CircleCollider2D)collider).radius = HitboxSize;
+    }
+}

@@ -1,6 +1,6 @@
 using System.Collections;
 
-public class CapricornBullet06 : EnemyBullet
+public class CapricornBullet06 : MinibossBullet
 {
     protected override float MaxLifetime => 8f;
     protected override IEnumerator Move()

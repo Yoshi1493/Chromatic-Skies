@@ -1,44 +1,29 @@
 using System.Collections;
 using UnityEngine;
+using static CoroutineHelper;
 
 public class SpecialYellow1 : SpecialBullet
 {
-    protected override int MaxCollisions => 8;
-    protected override float HitboxSize => 0.5f * Mathf.Min(SpriteRenderer.size.x, SpriteRenderer.size.y) / 2f;
+    protected override int MaxCollisions => 32;
+    protected override int NumCollisions => Physics2D.OverlapBoxNonAlloc(transform.position, SpriteRenderer.size, transform.eulerAngles.z, collisionResults, CollisionMask);
 
-    [SerializeField] AnimationCurve homingInterpolation;
-
-    Vector2 originalSize;
-
-    protected override void Awake()
-    {
-        base.Awake();
-        originalSize = SpriteRenderer.size;
-    }
+    Vector2 maxSize = new(0.32f, 20.48f);
+    Vector2 minSize = new(0f, 20.48f);
 
     protected override void OnEnable()
     {
         base.OnEnable();
-        SpriteRenderer.size = originalSize;
+        SpriteRenderer.size = Vector2.zero;
     }
 
     protected override IEnumerator Move()
     {
-        collider.enabled = false;
+        MoveSpeed = 0f;
 
-        float currentLerpTime = 0f;
-        float totalLerpTime = Random.Range(0.8f, 1.2f);
+        yield return this.LerpSize(maxSize, 0.2f);
+        yield return WaitForSeconds(1f);
 
-        StartCoroutine(this.LerpSize(Vector2.zero, totalLerpTime * 0.8f, delay: totalLerpTime * 0.2f));
-
-        while (currentLerpTime < totalLerpTime)
-        {
-            float t = homingInterpolation.Evaluate(currentLerpTime / totalLerpTime);
-            transform.position = Vector2.Lerp(transform.position, playerShip.transform.position, t * t);
-
-            yield return null;
-            currentLerpTime += Time.deltaTime;
-        }
+        yield return this.LerpSize(minSize, 0.5f);
 
         Destroy();
     }
@@ -46,6 +31,6 @@ public class SpecialYellow1 : SpecialBullet
     protected override void Update()
     {
         base.Update();
-        ((CircleCollider2D)collider).radius = HitboxSize;
+        ((BoxCollider2D)collider).size = SpriteRenderer.size;
     }
 }

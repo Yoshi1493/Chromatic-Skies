@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public abstract class Projectile : Actor
+public abstract class Projectile : Actor, IPoolableObject
 {
     [SerializeField] protected ProjectileObject projectileData;
     public int ProjectileID => projectileData.ID;
@@ -95,4 +95,5 @@ public abstract class Projectile : Actor
     }
 
     public abstract void Destroy();
+    public abstract void ReturnToObjectPool();
 }
