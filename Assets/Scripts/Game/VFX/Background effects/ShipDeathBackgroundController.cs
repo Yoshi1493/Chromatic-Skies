@@ -16,7 +16,7 @@ public class ShipDeathBackgroundController : MonoBehaviour
     {
         backgroundImage = GetComponent<SpriteRenderer>();
 
-        player = FindObjectOfType<Player>();
+        player = FindAnyObjectByType<Player>();
     }
 
     void Start()

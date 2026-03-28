@@ -6,7 +6,7 @@ public abstract class BossBullet : EnemyBullet
     {
         base.Awake();
 
-        parentShip = FindObjectOfType<Boss>();
+        parentShip = FindAnyObjectByType<Boss>();
         parentShip.LoseLifeAction += OnBossLoseLife;
         playerShip.LoseLifeAction += Destroy;
     }

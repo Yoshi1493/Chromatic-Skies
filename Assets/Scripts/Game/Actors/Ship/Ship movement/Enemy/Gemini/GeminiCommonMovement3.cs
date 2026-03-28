@@ -9,7 +9,7 @@ public class GeminiCommonMovement3 : CommonEnemyMovement
     protected override void Awake()
     {
         base.Awake();
-        player = FindObjectOfType<Player>();
+        player = FindAnyObjectByType<Player>();
     }
 
     protected override IEnumerator Move()

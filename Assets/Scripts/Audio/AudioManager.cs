@@ -44,7 +44,7 @@ public class AudioManager : MonoBehaviour
         if (Instance == null) Instance = this;
         InitAudio();
 
-        pauseHandler = FindObjectOfType<PauseHandler>();
+        pauseHandler = FindAnyObjectByType<PauseHandler>();
         if (pauseHandler != null)
         {
             pauseHandler.GamePauseAction += OnGamePaused;

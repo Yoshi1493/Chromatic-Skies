@@ -32,7 +32,7 @@ public class ResultsScreen : Menu
         base.Awake();
 
         InitializeCanvasElements();
-        boss = FindObjectOfType<Boss>();
+        boss = FindAnyObjectByType<Boss>();
     }
 
     void InitializeCanvasElements()

@@ -20,7 +20,7 @@ public abstract class Player : CharacterShip
         base.Awake();
 
         specialShooter = GetComponentInChildren<PlayerSpecialShooter>();
-        pauseHandler = FindObjectOfType<PauseHandler>();
+        pauseHandler = FindAnyObjectByType<PauseHandler>();
     }
 
     void Start()

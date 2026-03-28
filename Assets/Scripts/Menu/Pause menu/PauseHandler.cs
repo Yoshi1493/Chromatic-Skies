@@ -12,7 +12,7 @@ public class PauseHandler : MonoBehaviour
     {
         GamePauseAction += OnGamePaused;
 
-        ships = FindObjectsOfType<Ship>();
+        ships = FindObjectsByType<Ship>(FindObjectsSortMode.None);
         foreach (var ship in ships)
         {
             ship.DeathAction += OnShipDie;

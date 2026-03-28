@@ -5,7 +5,7 @@ using static CoroutineHelper;
 public class SpecialYellow1 : SpecialBullet
 {
     protected override int MaxCollisions => 32;
-    protected override int NumCollisions => Physics2D.OverlapBoxNonAlloc(transform.position, SpriteRenderer.size, transform.eulerAngles.z, collisionResults, CollisionMask);
+    protected override int NumCollisions => Physics2D.OverlapBox(transform.position, SpriteRenderer.size, transform.eulerAngles.z, contactFilter, collisionResults);
 
     Vector2 maxSize = new(0.32f, 20.48f);
     Vector2 minSize = new(0f, 20.48f);

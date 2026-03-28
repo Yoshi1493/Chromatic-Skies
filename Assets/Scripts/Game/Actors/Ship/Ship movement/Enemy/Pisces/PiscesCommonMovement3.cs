@@ -7,7 +7,7 @@ public class PiscesCommonMovement3 : CommonEnemyMovement
 {
     protected override IEnumerator Move()
     {
-        Player player = FindObjectOfType<Player>();
+        Player player = FindAnyObjectByType<Player>();
         float d = Mathf.Sign(player.transform.position.x - transform.position.x);
 
         AnimationCurve movementInterpolation = AnimationCurve.EaseInOut(0f, 0f, 1f, 1f);

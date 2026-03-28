@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Scriptable Objects/Bullet data/Boss bullets/Cancer/[Cancer] Bullet 0_1.asset.meta
 guid: a850fbed3c2148d4caeb1387adcd6925
+========
+guid: 3ed294e89a614384fbea77a9d0fdc198
+>>>>>>>> refactor:Assets/Scriptable Objects/Bullet data/Boss bullets/Cancer/[Cancer] Bullet 0_0.asset.meta
 NativeFormatImporter:
   externalObjects: {}
   mainObjectFileID: 11400000

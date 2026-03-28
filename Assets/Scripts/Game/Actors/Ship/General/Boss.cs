@@ -26,7 +26,7 @@ public class Boss : CharacterShip
 
         ValidateAttackSystems();
 
-        player = FindObjectOfType<Player>();
+        player = FindAnyObjectByType<Player>();
     }
 
     void ValidateAttackSystems()

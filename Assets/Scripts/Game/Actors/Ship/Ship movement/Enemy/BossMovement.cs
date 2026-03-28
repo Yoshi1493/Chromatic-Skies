@@ -20,7 +20,7 @@ public abstract class BossMovement : ShipMovement<Boss>
         parentShip.bulletSystems[siblingIndex].StartMoveAction += StartMove;
 
         //find player
-        playerShip = FindObjectOfType<Player>();
+        playerShip = FindAnyObjectByType<Player>();
     }
 
     protected override void Start()

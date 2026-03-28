@@ -22,7 +22,7 @@ public class SettingsMenu : Menu, ISavable
 
         if (SceneManager.GetActiveScene().buildIndex == (int)SceneIndexes.Game)
         {
-            pauseHandler = FindObjectOfType<PauseHandler>();
+            pauseHandler = FindAnyObjectByType<PauseHandler>();
         }
     }
 

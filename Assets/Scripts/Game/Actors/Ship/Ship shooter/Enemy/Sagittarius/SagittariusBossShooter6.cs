@@ -27,8 +27,8 @@ public class SagittariusBossShooter6 : BossShooter<BossBullet>
     {
         base.Awake();
 
-        globalLight = FindObjectOfType<GlobalLightController>();
-        bossPositionDisplay = FindObjectOfType<BossPositionDisplay>();
+        globalLight = FindAnyObjectByType<GlobalLightController>();
+        bossPositionDisplay = FindAnyObjectByType<BossPositionDisplay>();
     }
 
     protected override IEnumerator Shoot()

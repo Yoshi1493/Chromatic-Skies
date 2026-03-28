@@ -13,7 +13,7 @@ public abstract class EnemyShooter<TShip, TProjectile> : Shooter<TShip, TProject
     protected override void Awake()
     {
         base.Awake();
-        playerShip = FindObjectOfType<Player>();
+        playerShip = FindAnyObjectByType<Player>();
     }
 
     protected override void OnEnable()

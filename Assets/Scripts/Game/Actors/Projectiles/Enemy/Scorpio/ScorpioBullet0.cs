@@ -12,7 +12,7 @@ public class ScorpioBullet0 : BossBullet
 
     protected override int MaxCollisions => 256;
     protected override int CollisionMask => 1 << LayerMask.NameToLayer("Enemy bullet");
-    protected override int NumCollisions => Physics2D.OverlapCircleNonAlloc(transform.position, HitboxSize, collisionResults, CollisionMask);
+    protected override int NumCollisions => Physics2D.OverlapCircle(transform.position, HitboxSize, contactFilter, collisionResults);
 
     protected override float MaxLifetime => GrowDuration;
 

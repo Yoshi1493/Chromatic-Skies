@@ -21,7 +21,7 @@ public class GameOverMenu : Menu
 
         canvasGroup = GetComponent<CanvasGroup>();
 
-        player = FindObjectOfType<Player>();
+        player = FindAnyObjectByType<Player>();
         InitializeCanvasElements();
     }
 

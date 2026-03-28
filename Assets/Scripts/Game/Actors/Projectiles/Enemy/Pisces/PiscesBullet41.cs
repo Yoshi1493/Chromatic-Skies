@@ -11,7 +11,7 @@ public class PiscesBullet41 : ScriptableBossBullet<PiscesBossShooter41, BossLase
     {
         yield return this.LerpSpeed(2.8f, 0f, 1f);
 
-        var siblingBullets = FindObjectsOfType<PiscesBullet41>();
+        var siblingBullets = FindObjectsByType<PiscesBullet41>(FindObjectsSortMode.None);
         var homingDuration = 2f + (System.Array.IndexOf(siblingBullets, this) * 0.5f);
 
         yield return this.HomeInOn(playerShip, homingDuration);

@@ -28,7 +28,7 @@ public abstract class PlayerSpecialShooter : Shooter<Player, SpecialBullet>
         base.Start();
 
         //put in Start instead of Awake due to script execution order conditions
-        boss = FindObjectOfType<Boss>();
+        boss = FindAnyObjectByType<Boss>();
         boss.TakeDamageAction += OnBossTakeDamage;
         boss.DeathAction += OnBossDie;
 

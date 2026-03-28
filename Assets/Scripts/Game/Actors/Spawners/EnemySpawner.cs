@@ -134,9 +134,8 @@ public class EnemySpawner : MonoBehaviour
         }
 
         yield return WaitForSeconds(5f);
-
         EnemyBulletPool.Instance.DestroyAllProjectilesInPool();
-
+        
         //activate boss
         boss.gameObject.SetActive(true);
         BossSpawnAction?.Invoke();

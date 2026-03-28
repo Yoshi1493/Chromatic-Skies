@@ -7,6 +7,6 @@ public abstract class ShipHUDComponent<TShip> : MonoBehaviour
 
     protected virtual void Awake()
     {
-        ship = FindObjectOfType<TShip>();
+        ship = FindAnyObjectByType<TShip>();
     }
 }

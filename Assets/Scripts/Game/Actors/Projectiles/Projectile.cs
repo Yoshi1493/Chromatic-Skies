@@ -11,6 +11,7 @@ public abstract class Projectile : Actor, IPoolableObject
     protected virtual int MaxCollisions => 4;
     protected Collider2D[] collisionResults;
 
+    protected ContactFilter2D contactFilter = new();
     protected abstract int CollisionMask { get; }
     protected abstract int NumCollisions { get; }
 
@@ -22,6 +23,7 @@ public abstract class Projectile : Actor, IPoolableObject
 
         collisionResults = new Collider2D[MaxCollisions];
         SpriteRenderer.sprite = projectileData.sprite;
+        contactFilter.SetLayerMask(CollisionMask);
     }
 
     protected virtual void OnEnable()
