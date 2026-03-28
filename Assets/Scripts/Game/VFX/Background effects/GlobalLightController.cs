@@ -19,8 +19,8 @@ public class GlobalLightController : MonoBehaviour
     {
         globalLight = GetComponent<Light2D>();
 
-        player = FindObjectOfType<Player>();
-        boss = FindObjectOfType<Boss>();
+        player = FindAnyObjectByType<Player>();
+        boss = FindAnyObjectByType<Boss>();
     }
 
     void Start()

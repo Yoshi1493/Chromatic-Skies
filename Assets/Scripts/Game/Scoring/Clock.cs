@@ -27,10 +27,10 @@ public class Clock : MonoBehaviour
     {
         clockText = GetComponent<TextMeshProUGUI>();
 
-        player = FindObjectOfType<Player>();
-        boss = FindObjectOfType<Boss>();
+        player = FindAnyObjectByType<Player>();
+        boss = FindAnyObjectByType<Boss>();
 
-        enemySpawner = FindObjectOfType<EnemySpawnerController>().GetComponentsInChildren<EnemySpawner>(true)[selectedBossIndex.value];
+        enemySpawner = FindAnyObjectByType<EnemySpawnerController>().GetComponentsInChildren<EnemySpawner>(true)[selectedBossIndex.value];
     }
 
     void OnEnable()

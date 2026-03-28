@@ -20,7 +20,7 @@ public class FlashlightEffect : MonoBehaviour
         mainCam = Camera.main;
         flashlightMat = GetComponent<SpriteRenderer>().material;
 
-        playerShip = FindObjectOfType<Player>();
+        playerShip = FindAnyObjectByType<Player>();
         ResetProperties();
     }
 

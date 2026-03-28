@@ -24,7 +24,7 @@ public class DataManager : MonoBehaviour
 
     void Start()
     {
-        savableObjects = new List<ISavable>(FindObjectsOfType<MonoBehaviour>().OfType<ISavable>());
+        savableObjects = new List<ISavable>(FindObjectsByType<MonoBehaviour>(FindObjectsSortMode.None).OfType<ISavable>());
         LoadData();
 
         //debug; remove later

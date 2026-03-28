@@ -11,7 +11,7 @@ public abstract class ScriptableBossBullet<TShooter, TProjectile> : BossBullet
     protected override void Awake()
     {
         base.Awake();
-        bossShooter = FindObjectOfType<TShooter>();
+        bossShooter = FindAnyObjectByType<TShooter>();
     }
 
     protected TProjectile SpawnBullet(int projectileID, float spawnRotZ, Vector3 spawnPos, bool asLocalPosition = true)

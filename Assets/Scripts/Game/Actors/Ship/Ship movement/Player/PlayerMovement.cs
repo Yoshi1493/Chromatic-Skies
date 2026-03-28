@@ -13,7 +13,7 @@ public class PlayerMovement : ShipMovement<Player>
     protected override void Awake()
     {
         base.Awake();
-        pauseHandler = FindObjectOfType<PauseHandler>();
+        pauseHandler = FindAnyObjectByType<PauseHandler>();
     }
 
     protected override void Start()

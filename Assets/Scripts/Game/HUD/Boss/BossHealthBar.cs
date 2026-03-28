@@ -8,7 +8,7 @@ public class BossHealthBar : HealthBar<Boss>
     protected override void Awake()
     {
         base.Awake();
-        enemySpawner = FindObjectOfType<EnemySpawnerController>().GetComponentsInChildren<EnemySpawner>(true)[selectedBossIndex.value];
+        enemySpawner = FindAnyObjectByType<EnemySpawnerController>().GetComponentsInChildren<EnemySpawner>(true)[selectedBossIndex.value];
     }
 
     void Start()

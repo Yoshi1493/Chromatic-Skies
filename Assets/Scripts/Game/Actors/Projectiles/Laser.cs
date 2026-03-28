@@ -6,7 +6,7 @@ public abstract class Laser : Projectile
     Vector3 HitboxOffset => originalSize.y * 0.5f * transform.up;
 
     protected override int CollisionMask => 1 << LayerMask.NameToLayer("Player");
-    protected override int NumCollisions => Physics2D.OverlapBoxNonAlloc(transform.position + HitboxOffset, activeSize, transform.eulerAngles.z, collisionResults, CollisionMask);
+    protected override int NumCollisions => Physics2D.OverlapBox(transform.position + HitboxOffset, activeSize, transform.eulerAngles.z, contactFilter, collisionResults);
     protected bool IsColliding => NumCollisions > 0;
 
 

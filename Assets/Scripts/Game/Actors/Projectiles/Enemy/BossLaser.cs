@@ -6,7 +6,7 @@ public abstract class BossLaser : Laser
     {
         base.Awake();
 
-        parentShip = FindObjectOfType<Boss>();
+        parentShip = FindAnyObjectByType<Boss>();
         parentShip.LoseLifeAction += OnBossLoseLife;
     }
     void OnBossLoseLife()

@@ -10,7 +10,7 @@ public class MainMenuConfirm : Menu
     protected override void Awake()
     {
         base.Awake();
-        pauseHandler = FindObjectOfType<PauseHandler>();
+        pauseHandler = FindAnyObjectByType<PauseHandler>();
     }
 
     void Start()

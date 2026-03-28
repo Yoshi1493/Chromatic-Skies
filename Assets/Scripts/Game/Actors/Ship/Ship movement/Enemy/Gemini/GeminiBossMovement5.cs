@@ -19,7 +19,7 @@ public class GeminiBossMovement5 : BossMovement
 
     protected override IEnumerator Move()
     {
-        twin = FindObjectOfType<GeminiBullet50>();
+        twin = FindAnyObjectByType<GeminiBullet50>();
 
         yield return parentShip.MoveToRandomPosition(2f, 3f, 4f);
         yield return WaitForSeconds(2f);

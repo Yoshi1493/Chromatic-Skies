@@ -1,0 +1,6 @@
+﻿<Solution>
+  <Project Path="Assembly-CSharp.csproj" />
+  <Project Path="PathCreator.csproj" />
+  <Project Path="PathCreatorEditor.csproj" />
+  <Project Path="Assembly-CSharp-Editor.csproj" />
+</Solution>

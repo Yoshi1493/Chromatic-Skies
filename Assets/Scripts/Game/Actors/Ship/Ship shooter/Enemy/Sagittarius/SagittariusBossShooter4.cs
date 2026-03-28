@@ -16,7 +16,7 @@ public class SagittariusBossShooter4 : BossShooter<BossBullet>
     protected override void Awake()
     {
         base.Awake();
-        flashlightEffect = FindObjectOfType<FlashlightEffect>();
+        flashlightEffect = FindAnyObjectByType<FlashlightEffect>();
     }
 
     protected override IEnumerator Shoot()

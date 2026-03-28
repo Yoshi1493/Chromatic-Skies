@@ -6,7 +6,7 @@ public abstract class MinibossBullet : EnemyBullet
     {
         base.Awake();
 
-        parentShip = FindObjectOfType<Miniboss>();
+        parentShip = FindAnyObjectByType<Miniboss>();
         parentShip.DeathAction += OnMinibossDie;
         playerShip.LoseLifeAction += Destroy;
     }

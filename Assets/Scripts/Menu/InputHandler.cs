@@ -12,7 +12,7 @@ public class InputHandler : MonoBehaviour
     {
         if (SceneManager.GetActiveScene().buildIndex == (int)SceneIndexes.Game)
         {
-            pauseHandler = FindObjectOfType<PauseHandler>();
+            pauseHandler = FindAnyObjectByType<PauseHandler>();
             pauseHandler.GamePauseAction += OnGamePaused;
         }
     }

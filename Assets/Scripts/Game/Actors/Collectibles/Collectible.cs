@@ -15,7 +15,7 @@ public abstract class Collectible : Actor
     protected override void Awake()
     {
         base.Awake();
-        player = FindObjectOfType<Player>();
+        player = FindAnyObjectByType<Player>();
     }
 
     protected virtual void OnEnable()

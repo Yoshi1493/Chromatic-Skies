@@ -4,7 +4,7 @@ using UnityEngine;
 public abstract class Bullet : Projectile
 {
     protected virtual float HitboxSize => 0.8f * Mathf.Min(SpriteRenderer.size.x, SpriteRenderer.size.y) / 2f;
-    protected override int NumCollisions => Physics2D.OverlapCircleNonAlloc(transform.position, HitboxSize, collisionResults, CollisionMask);
+    protected override int NumCollisions => Physics2D.OverlapCircle(transform.position, HitboxSize, contactFilter, collisionResults);
 
     protected IEnumerator movementBehaviour;
     protected abstract IEnumerator Move();
@@ -14,7 +14,7 @@ public abstract class Bullet : Projectile
     protected override void Awake()
     {
         base.Awake();
-        playerShip = FindObjectOfType<Player>();
+        playerShip = FindAnyObjectByType<Player>();
     }
 
     public void Fire()
