@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using static CameraBoundaries;
 
 public class PlayerMovement : ShipMovement<Player>
 {
@@ -40,20 +41,21 @@ public class PlayerMovement : ShipMovement<Player>
         parentShip.moveDirection.x = Input.GetAxisRaw("Horizontal");
         parentShip.moveDirection.y = Input.GetAxisRaw("Vertical");
 
-        //check for collision on world boundaries along x and y axes independently
-        RaycastHit2D rayH = Physics2D.Raycast(transform.position, Vector3.right, 0.1f * parentShip.moveDirection.x, shipData.boundaryLayer);
-        RaycastHit2D rayV = Physics2D.Raycast(transform.position, Vector3.up, 0.1f * parentShip.moveDirection.y, shipData.boundaryLayer);
 
-        //if movement is restricted on one axis, still allow movement on the other axis
-        if (rayH.collider != null)
-        {
-            parentShip.moveDirection.x = 0;
-        }
+        // //check for collision on world boundaries along x and y axes independently
+        // RaycastHit2D rayH = Physics2D.Raycast(transform.position, Vector3.right, 0.1f * parentShip.moveDirection.x, shipData.boundaryLayer);
+        // RaycastHit2D rayV = Physics2D.Raycast(transform.position, Vector3.up, 0.1f * parentShip.moveDirection.y, shipData.boundaryLayer);
 
-        if (rayV.collider != null)
-        {
-            parentShip.moveDirection.y = 0;
-        }
+        // //if movement is restricted on one axis, still allow movement on the other axis
+        // if (rayH.collider != null)
+        // {
+        //     parentShip.moveDirection.x = 0;
+        // }
+
+        // if (rayV.collider != null)
+        // {
+        //     parentShip.moveDirection.y = 0;
+        // }
     }
 
     void GetSlowInput()
