@@ -5,7 +5,7 @@ using static CoroutineHelper;
 using static MathHelper;
 using static CameraBoundaries;
 
-public class TaurusBossShooter21 : BossShooter<BossLaser>
+public class TaurusBossShooter21 : BossShooter<Laser>
 {
     List<Vector3> laserSpawnPositions = new();
 

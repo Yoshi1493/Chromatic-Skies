@@ -4,7 +4,7 @@ using UnityEngine;
 using static CoroutineHelper;
 using static CameraBoundaries;
 
-public class LeoBossShooter41 : BossShooter<BossLaser>
+public class LeoBossShooter41 : BossShooter<Laser>
 {
     LeoBossShooter4 bulletSystem;
 

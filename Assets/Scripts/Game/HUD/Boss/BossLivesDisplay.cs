@@ -8,7 +8,7 @@ public class BossLivesDisplay : LivesDisplay<Boss>
     protected override void Awake()
     {
         base.Awake();
-        enemySpawner = FindAnyObjectByType<EnemySpawnerController>().GetComponentsInChildren<EnemySpawner>(true)[selectedBossIndex.value];
+        enemySpawner = FindAnyObjectByType<EnemySpawner>();
     }
 
     protected override void OnEnable()

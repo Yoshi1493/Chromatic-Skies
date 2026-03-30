@@ -3,13 +3,11 @@ using UnityEngine;
 public class EnemySpawnerController : MonoBehaviour
 {
     [SerializeField] IntObject selectedBossIndex;
-    [SerializeField] EnemySpawner[] enemySpawners;
+    [SerializeField] GameObject[] bossPrefabs;
 
     void Awake()
     {
-        for (int i = 0; i < enemySpawners.Length; i++)
-        {
-            enemySpawners[i].gameObject.SetActive(i == selectedBossIndex.value);
-        }
+        Transform transform = GetComponent<Transform>();
+        Instantiate(bossPrefabs[selectedBossIndex.value], transform.position, transform.rotation);
     }
 }

@@ -30,7 +30,7 @@ public class Clock : MonoBehaviour
         player = FindAnyObjectByType<Player>();
         boss = FindAnyObjectByType<Boss>();
 
-        enemySpawner = FindAnyObjectByType<EnemySpawnerController>().GetComponentsInChildren<EnemySpawner>(true)[selectedBossIndex.value];
+        enemySpawner = FindAnyObjectByType<EnemySpawner>();
     }
 
     void OnEnable()

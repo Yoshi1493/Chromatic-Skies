@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine;
 using static CoroutineHelper;
 
-public class TaurusBullet11 : ScriptableBossBullet<TaurusBossShooter12, BossLaser>
+public class TaurusBullet11 : ScriptableBossBullet<TaurusBossShooter12, Laser>
 {
     [SerializeField] LayerMask bossBulletLayer;
     protected override float MaxLifetime => 9f;

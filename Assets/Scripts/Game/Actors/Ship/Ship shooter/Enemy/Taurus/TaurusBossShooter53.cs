@@ -1,3 +1,3 @@
-public class TaurusBossShooter53 : BossShooter<BossLaser>
+public class TaurusBossShooter53 : BossShooter<Laser>
 {
 }

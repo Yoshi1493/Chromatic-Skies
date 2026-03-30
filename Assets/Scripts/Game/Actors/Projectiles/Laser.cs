@@ -167,7 +167,7 @@ public abstract class Laser : Projectile
 
     public override void ReturnToObjectPool()
     {
-        EnemyLaserPool.Instance.ReturnToPool(this);
+        BossLaserPool.Instance.ReturnToPool(this);
     }
 
     void OnDisable()

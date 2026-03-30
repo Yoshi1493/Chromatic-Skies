@@ -15,7 +15,7 @@ public class BossPositionDisplay : ShipHUDComponent<Boss>
         transform = GetComponent<Transform>();
         spriteRenderer = GetComponent<SpriteRenderer>();
 
-        enemySpawner = FindAnyObjectByType<EnemySpawnerController>().GetComponentsInChildren<EnemySpawner>(true)[selectedBossIndex.value];
+        enemySpawner = FindAnyObjectByType<EnemySpawner>();
     }
 
     void OnEnable()
