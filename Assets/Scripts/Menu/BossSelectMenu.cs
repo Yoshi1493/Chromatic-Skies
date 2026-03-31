@@ -28,7 +28,7 @@ public class BossSelectMenu : Menu
 
     void Update()
     {
-        if (Input.GetButtonDown("Cancel"))
+        if (backInput.WasPressedThisFrame())
         {
             backButton.OnPointerClick(eventData);
         }
