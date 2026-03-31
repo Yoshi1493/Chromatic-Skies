@@ -9,11 +9,13 @@ public abstract class Menu : MonoBehaviour
     protected PointerEventData eventData = new(EventSystem.current);
 
     [SerializeField] InputActionAsset inputActions;
+    protected InputAction submitInput;
     protected InputAction backInput;
 
     protected virtual void Awake()
     {
         thisMenu = GetComponent<Canvas>();
+        submitInput = inputActions.FindActionMap("UI").FindAction("Submit");
         backInput = inputActions.FindActionMap("UI").FindAction("Cancel");
     }
 
