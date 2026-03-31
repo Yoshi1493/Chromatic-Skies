@@ -1,11 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using static CoroutineHelper;
 
 public class PlayerShooter : Shooter<Player, PlayerBullet>
 {
     [SerializeField] List<Transform> bulletSpawnPositions = new();
+
+    [SerializeField] InputActionAsset inputActions;
+    InputAction fireInput;
 
     protected override void Start()
     {
@@ -27,7 +31,7 @@ public class PlayerShooter : Shooter<Player, PlayerBullet>
 
     void GetShootingInput()
     {
-        if (Input.GetButton("Shoot") && CanShoot)
+        if (fireInput.WasPressedThisFrame() && CanShoot)
         {
             if (shootCoroutine != null)
             {

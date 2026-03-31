@@ -128,7 +128,7 @@ public class ResultsScreen : Menu
 
     void Update()
     {
-        if (Input.GetButtonDown("Shoot"))
+        if (submitInput.WasPressedThisFrame())
         {
             //if results are in the process of being displayed, immediately display all results
             if (resultsValues[0].enabled && !resultsValues[^1].enabled)
