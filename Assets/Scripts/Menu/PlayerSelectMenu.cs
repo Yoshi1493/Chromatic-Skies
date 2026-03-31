@@ -41,7 +41,7 @@ public class PlayerSelectMenu : Menu
 
     void Update()
     {
-        if (Input.GetButtonDown("Cancel"))
+        if (backInput.WasPressedThisFrame())
         {
             backButton.OnPointerClick(eventData);
         }

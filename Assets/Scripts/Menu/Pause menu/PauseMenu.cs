@@ -30,7 +30,7 @@ public class PauseMenu : Menu
 
     void Update()
     {
-        if (Input.GetButtonDown("Cancel"))
+        if (backInput.WasPressedThisFrame())
         {
             pauseHandler.SetGamePaused(false);
             Close();

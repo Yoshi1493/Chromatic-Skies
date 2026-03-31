@@ -64,14 +64,6 @@ public class Boss : CharacterShip
         player.LoseLifeAction += OnPlayerLoseLife;
     }
 
-#if UNITY_EDITOR
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.K))
-            TakeDamage(currentHealth.value);
-    }
-#endif
-
     //disable current systems, and enable next systems upon losing life
     protected override IEnumerator LoseLife()
     {

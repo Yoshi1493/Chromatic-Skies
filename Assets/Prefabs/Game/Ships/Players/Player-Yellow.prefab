@@ -5,6 +5,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2642116491854811024, guid: c97d5c4695dca31449990c95a6810900, type: 3}
@@ -28,11 +29,11 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4768422070276441097, guid: c97d5c4695dca31449990c95a6810900, type: 3}
-      propertyPath: projectiles.Array.data[0]
+      propertyPath: 'projectiles.Array.data[0]'
       value: 
       objectReference: {fileID: 8117213998222733804, guid: a90397e781a882e4da0558156a40dc77, type: 3}
     - target: {fileID: 4768422070276441097, guid: c97d5c4695dca31449990c95a6810900, type: 3}
-      propertyPath: playerBullets.Array.data[0]
+      propertyPath: 'playerBullets.Array.data[0]'
       value: 
       objectReference: {fileID: 8117213998222733804, guid: a90397e781a882e4da0558156a40dc77, type: 3}
     - target: {fileID: 5651153232659691468, guid: c97d5c4695dca31449990c95a6810900, type: 3}
@@ -104,7 +105,7 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6144929791114761972, guid: c97d5c4695dca31449990c95a6810900, type: 3}
-      propertyPath: projectiles.Array.data[0]
+      propertyPath: 'projectiles.Array.data[0]'
       value: 
       objectReference: {fileID: 2811906577215254381, guid: 6c07471f6985b0e46855850adc5e69e3, type: 3}
     - target: {fileID: 7467897710815529108, guid: c97d5c4695dca31449990c95a6810900, type: 3}
@@ -116,7 +117,7 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7542983421616173970, guid: c97d5c4695dca31449990c95a6810900, type: 3}
-      propertyPath: bullets.Array.data[0]
+      propertyPath: 'bullets.Array.data[0]'
       value: 
       objectReference: {fileID: 8117213998222733804, guid: a90397e781a882e4da0558156a40dc77, type: 3}
     - target: {fileID: 7542983421616173970, guid: c97d5c4695dca31449990c95a6810900, type: 3}
@@ -128,7 +129,7 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 689716c0b1df46f42896f1fc25b462bd, type: 2}
     - target: {fileID: 7542983421616173970, guid: c97d5c4695dca31449990c95a6810900, type: 3}
-      propertyPath: playerBullets.Array.data[0]
+      propertyPath: 'playerBullets.Array.data[0]'
       value: 
       objectReference: {fileID: 8117213998222733804, guid: a90397e781a882e4da0558156a40dc77, type: 3}
     - target: {fileID: 7542983421616173970, guid: c97d5c4695dca31449990c95a6810900, type: 3}
@@ -150,6 +151,18 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 6144929791114761972, guid: c97d5c4695dca31449990c95a6810900, type: 3}
     - {fileID: 7467897710815529108, guid: c97d5c4695dca31449990c95a6810900, type: 3}
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5651153232659691471, guid: c97d5c4695dca31449990c95a6810900, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8427381692004939548}
+    - targetCorrespondingSourceObject: {fileID: 5593524832398453200, guid: c97d5c4695dca31449990c95a6810900, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6830124883496210939}
+    - targetCorrespondingSourceObject: {fileID: 2347510902937991941, guid: c97d5c4695dca31449990c95a6810900, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 728608070607096635}
   m_SourcePrefab: {fileID: 100100000, guid: c97d5c4695dca31449990c95a6810900, type: 3}
 --- !u!2083052967 &495582409412869140 stripped
 VisualEffect:
@@ -182,6 +195,7 @@ MonoBehaviour:
   - {fileID: 2811906577215254381, guid: 6c07471f6985b0e46855850adc5e69e3, type: 3}
   - {fileID: -8173979873442653261, guid: 3d655be0b1ac4cb42b25d2406e252fb2, type: 3}
   specialMeter: {fileID: 11400000, guid: eb81c5868f0d20b48b29013b6aef286c, type: 2}
+  inputActions: {fileID: -944628639613478452, guid: a84712791e4b21044b0a6a7567cd2ef5, type: 3}
 --- !u!1 &6160247425745410587 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5593524832398453200, guid: c97d5c4695dca31449990c95a6810900, type: 3}

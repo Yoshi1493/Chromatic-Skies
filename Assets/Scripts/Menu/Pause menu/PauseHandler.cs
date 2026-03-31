@@ -1,11 +1,15 @@
 using System;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PauseHandler : MonoBehaviour
 {
     public static bool IsPaused { get; private set; }
     public event Action<bool> GamePauseAction;
 
+    [SerializeField] InputActionAsset inputActions;
+    InputAction pauseAction;
+    
     Ship[] ships;
 
     void Awake()
@@ -19,11 +23,13 @@ public class PauseHandler : MonoBehaviour
         }
 
         IsPaused = false;
+
+        pauseAction = inputActions.FindActionMap("Pause").FindAction("Pause");
     }
 
     void Update()
     {
-        if (Input.GetButtonDown("Pause"))
+        if (pauseAction.WasPressedThisFrame())
         {
             SetGamePaused(!IsPaused);
         }

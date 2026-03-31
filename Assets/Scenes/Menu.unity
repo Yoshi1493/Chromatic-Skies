@@ -2906,6 +2906,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13fdd0e0aa1c96c4d9e4f66b3e17a2f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inputActions: {fileID: -944628639613478452, guid: a84712791e4b21044b0a6a7567cd2ef5, type: 3}
   blackHoleEffect: {fileID: 319720855}
 --- !u!1 &764875730
 GameObject:
@@ -4859,6 +4860,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8b08ab57c94b734881f5c8b4f16cb48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inputActions: {fileID: -944628639613478452, guid: a84712791e4b21044b0a6a7567cd2ef5, type: 3}
   backButton: {fileID: 2028792007}
   playerButtons:
   - {fileID: 2041070262}
@@ -6792,6 +6794,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: febdb0fa5206a124292b3842ef550062, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inputActions: {fileID: -944628639613478452, guid: a84712791e4b21044b0a6a7567cd2ef5, type: 3}
 --- !u!114 &1197022308
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7312,6 +7315,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05a4cdd01b1e462468e7db60cddc6361, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inputActions: {fileID: -944628639613478452, guid: a84712791e4b21044b0a6a7567cd2ef5, type: 3}
   menuContentL: {fileID: 1777383732}
   menuContentR: {fileID: 468921254}
   backButton: {fileID: 1925515716}
@@ -7412,6 +7416,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d65f6b6e252e6254db2de326cb68b80f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inputActions: {fileID: -944628639613478452, guid: a84712791e4b21044b0a6a7567cd2ef5, type: 3}
 --- !u!1 &1378753255
 GameObject:
   m_ObjectHideFlags: 0
@@ -7444,6 +7449,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4f5022113b263340bb5c23eab362bdb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inputActions: {fileID: -944628639613478452, guid: a84712791e4b21044b0a6a7567cd2ef5, type: 3}
   backButton: {fileID: 2140478988}
 --- !u!114 &1378753257
 MonoBehaviour:
@@ -8148,6 +8154,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 895bff3bd25bbff4f954743630819224, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inputActions: {fileID: -944628639613478452, guid: a84712791e4b21044b0a6a7567cd2ef5, type: 3}
   backButton: {fileID: 794794481}
   shipButtonParent: {fileID: 1706778268}
   selectedBossIndex: {fileID: 11400000, guid: d5bd1f541c5da6647b0ec80fa55b12ce, type: 2}

@@ -7,7 +7,7 @@ public class AchievementsMenu : Menu
 
     void Update()
     {
-        if (Input.GetButtonDown("Cancel"))
+        if (backInput.WasPressedThisFrame())
         {
             backButton.OnPointerClick(eventData);
         }

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using static CoroutineHelper;
 
 public abstract class PlayerSpecialShooter : Shooter<Player, SpecialBullet>
@@ -21,7 +22,16 @@ public abstract class PlayerSpecialShooter : Shooter<Player, SpecialBullet>
 
     Boss boss;
 
+    [SerializeField] InputActionAsset inputActions;
+    InputAction specialInput;
+
     protected virtual float SpecialCooldown => 5f;
+
+    protected override void Awake()
+    {
+        base.Awake();
+        specialInput = inputActions.FindAction("Special");
+    }
 
     protected override void Start()
     {
@@ -48,7 +58,7 @@ public abstract class PlayerSpecialShooter : Shooter<Player, SpecialBullet>
 
     void GetShootingInput()
     {
-        if (Input.GetButtonDown("Special"))
+        if (specialInput.WasPressedThisFrame())
         {
             if (CanShoot && specialMeter.value >= SpecialCost)
             {

@@ -3381,6 +3381,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f26660ac4a09df418d62a3716a92ffc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inputActions: {fileID: -944628639613478452, guid: a84712791e4b21044b0a6a7567cd2ef5, type: 3}
   canvasGroup: {fileID: 611930381}
   inputHandler: {fileID: 1742447180}
   elapsedTime: {fileID: 11400000, guid: 7564dd3007503304aa59e09756250b88, type: 2}
@@ -6065,6 +6066,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ba37cb56e705f74698679623087acc7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inputActions: {fileID: -944628639613478452, guid: a84712791e4b21044b0a6a7567cd2ef5, type: 3}
   continueButtons:
   - {fileID: 546826537}
   - {fileID: 1992894575}
@@ -7580,6 +7582,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: febdb0fa5206a124292b3842ef550062, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inputActions: {fileID: -944628639613478452, guid: a84712791e4b21044b0a6a7567cd2ef5, type: 3}
 --- !u!114 &1742447181
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8853,6 +8856,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c04bff11345b74f4898d5ffb73bc209e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inputActions: {fileID: -944628639613478452, guid: a84712791e4b21044b0a6a7567cd2ef5, type: 3}
 --- !u!114 &2117771227
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8865,6 +8869,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: faad50d0f49aa0447ad2f483edb0190e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inputActions: {fileID: -944628639613478452, guid: a84712791e4b21044b0a6a7567cd2ef5, type: 3}
   resumeButton: {fileID: 1222481972}
 --- !u!1 &2141172667
 GameObject:
@@ -8898,6 +8903,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35c2ad43c1923584eb9059e8c23fc1dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inputActions: {fileID: -944628639613478452, guid: a84712791e4b21044b0a6a7567cd2ef5, type: 3}
   backButton: {fileID: 968328156}
 --- !u!114 &2141172670
 MonoBehaviour:

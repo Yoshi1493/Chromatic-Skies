@@ -25,7 +25,7 @@ public class ControlsMenu : Menu
 
     void Update()
     {
-        if (Input.GetButtonDown("Cancel"))
+        if (backInput.WasPressedThisFrame())
         {
             backButton.OnPointerClick(eventData);
         }
@@ -39,8 +39,10 @@ public class ControlsMenu : Menu
         {
             if (!updatedBackButtonNavigation)
             {
-                Navigation nav = new();
-                nav.mode = Navigation.Mode.Explicit;
+                Navigation nav = new()
+                {
+                    mode = Navigation.Mode.Explicit
+                };
 
                 if (Array.Exists(menuButtonsL, b => b == lastSelectedNonBackButton.GetComponent<Button>()))
                 {

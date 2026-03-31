@@ -37,11 +37,5 @@ public class FPSDisplay : MonoBehaviour
         {
             fpsText.text = $"{currentAvg:F1} fps";
         }
-
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            showFps = !showFps;
-            canvasGroup.alpha = showFps ? 1 : 0;
-        }
     }
 }

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
 
@@ -8,13 +9,33 @@ public class InputHandler : MonoBehaviour
 
     PauseHandler pauseHandler;
 
+    [SerializeField] InputActionAsset inputActions;
+    InputActionMap playerMap;
+    InputActionMap pauseMap;
+    InputActionMap uiMap;
+    
+
     void Awake()
     {
-        if (SceneManager.GetActiveScene().buildIndex == (int)SceneIndexes.Game)
+        playerMap = inputActions.FindActionMap("Player");
+        pauseMap = inputActions.FindActionMap("Pause");
+        uiMap = inputActions.FindActionMap("UI");
+
+        if (SceneManager.GetActiveScene().buildIndex == (int)SceneIndexes.Menu)
         {
+            uiMap.Enable();
+            playerMap.Disable();
+            pauseMap.Disable();
+        }
+        else
+        {
+            playerMap.Enable();
+            pauseMap.Enable();
+            uiMap.Disable();
+            
             pauseHandler = FindAnyObjectByType<PauseHandler>();
             pauseHandler.GamePauseAction += OnGamePaused;
-        }
+        }        
     }
 
     void Start()
@@ -47,8 +68,8 @@ public class InputHandler : MonoBehaviour
 
 #if UNITY_EDITOR || UNITY_STANDALONE
 
-        DetectKeyInput();
-        DetectCursorMovement();
+        // DetectKeyInput();
+        // DetectCursorMovement();
 
 #endif
     }

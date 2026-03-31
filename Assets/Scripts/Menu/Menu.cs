@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(Canvas))]
 public abstract class Menu : MonoBehaviour
@@ -7,9 +8,13 @@ public abstract class Menu : MonoBehaviour
     protected Canvas thisMenu;
     protected PointerEventData eventData = new(EventSystem.current);
 
+    [SerializeField] InputActionAsset inputActions;
+    protected InputAction backInput;
+
     protected virtual void Awake()
     {
         thisMenu = GetComponent<Canvas>();
+        backInput = inputActions.FindActionMap("UI").FindAction("Cancel");
     }
 
     public void Open(GameObject newSelectedGameObject)

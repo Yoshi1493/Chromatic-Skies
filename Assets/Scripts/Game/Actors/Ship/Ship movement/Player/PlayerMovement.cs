@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using static CameraBoundaries;
 
 public class PlayerMovement : ShipMovement<Player>
@@ -11,10 +12,18 @@ public class PlayerMovement : ShipMovement<Player>
 
     PauseHandler pauseHandler;
 
+    [SerializeField] InputActionAsset inputActions;
+    InputAction moveInput;
+    InputAction slowInput;
+
     protected override void Awake()
     {
         base.Awake();
         pauseHandler = FindAnyObjectByType<PauseHandler>();
+        
+        // get references to Input System's actions
+        moveInput = inputActions.FindActionMap("Player").FindAction("Move");
+        slowInput = inputActions.FindActionMap("Player").FindAction("Slow");
     }
 
     protected override void Start()
@@ -38,8 +47,10 @@ public class PlayerMovement : ShipMovement<Player>
 
     void GetMovementInput()
     {
-        parentShip.moveDirection.x = Input.GetAxisRaw("Horizontal");
-        parentShip.moveDirection.y = Input.GetAxisRaw("Vertical");
+        Vector2 moveInputValue = moveInput.ReadValue<Vector2>();
+
+        parentShip.moveDirection.x = moveInputValue.x;
+        parentShip.moveDirection.y = moveInputValue.y;
 
 
         // //check for collision on world boundaries along x and y axes independently
@@ -60,12 +71,12 @@ public class PlayerMovement : ShipMovement<Player>
 
     void GetSlowInput()
     {
-        if (Input.GetButtonDown("Slow"))
+        if (slowInput.WasPressedThisFrame())
         {
             MovementSlowAction?.Invoke(true);
         }
 
-        if (Input.GetButtonUp("Slow"))
+        if (slowInput.WasReleasedThisFrame())
         {
             MovementSlowAction?.Invoke(false);
         }

@@ -46,7 +46,7 @@ public class SettingsMenu : Menu, ISavable
 
     void Update()
     {
-        if (Input.GetButtonDown("Cancel"))
+        if (backInput.WasPressedThisFrame())
         {
             backButton.OnPointerClick(eventData);
         }
