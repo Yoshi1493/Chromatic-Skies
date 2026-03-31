@@ -144,6 +144,7 @@ MonoBehaviour:
   - {fileID: 7154113708728588945}
   - {fileID: 5585003488721888684}
   - {fileID: 5439702352310573363}
+  inputActions: {fileID: -944628639613478452, guid: a84712791e4b21044b0a6a7567cd2ef5, type: 3}
 --- !u!114 &2730886809458261436
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -158,6 +159,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   shooter: {fileID: 4768422070276441097}
+  inputActions: {fileID: -944628639613478452, guid: a84712791e4b21044b0a6a7567cd2ef5, type: 3}
 --- !u!1 &2606016538419240603
 GameObject:
   m_ObjectHideFlags: 0

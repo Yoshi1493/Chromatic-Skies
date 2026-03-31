@@ -11,6 +11,12 @@ public class PlayerShooter : Shooter<Player, PlayerBullet>
     [SerializeField] InputActionAsset inputActions;
     InputAction fireInput;
 
+    protected override void Awake()
+    {
+        base.Awake();
+        fireInput = inputActions.FindActionMap("Player").FindAction("Fire");
+    }
+
     protected override void Start()
     {
         base.Start();
@@ -31,7 +37,7 @@ public class PlayerShooter : Shooter<Player, PlayerBullet>
 
     void GetShootingInput()
     {
-        if (fireInput.WasPressedThisFrame() && CanShoot)
+        if (fireInput.IsPressed() && CanShoot)
         {
             if (shootCoroutine != null)
             {

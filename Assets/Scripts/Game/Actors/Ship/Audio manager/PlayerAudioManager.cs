@@ -1,9 +1,13 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerAudioManager : MonoBehaviour
 {
     [SerializeField] Player player;
     [SerializeField] PlayerShooter shooter;
+
+    [SerializeField] InputActionAsset inputActions;
+    InputAction fireAction;
 
     void Awake()
     {
@@ -11,6 +15,8 @@ public class PlayerAudioManager : MonoBehaviour
         player.LoseLifeAction += OnLoseLife;
         player.RespawnAction += OnRespawn;
         player.DeathAction += OnDie;
+
+        fireAction = inputActions.FindActionMap("Player").FindAction("Fire");
     }
 
     void Update()
@@ -23,7 +29,7 @@ public class PlayerAudioManager : MonoBehaviour
 
     void GetShootingInput()
     {
-        if (Input.GetButton("Shoot") && shooter.CanShoot)
+        if (fireAction.IsPressed() && shooter.CanShoot)
         {
             AudioManager.Instance.PlaySound("player_shoot-default", true, 3);
         }

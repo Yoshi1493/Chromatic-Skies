@@ -638,17 +638,6 @@
                 },
                 {
                     "name": "",
-                    "id": "5394670f-6c4e-48a7-ae7e-c11d02df865b",
-                    "path": "*/{Submit}",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard&Mouse;Gamepad;Touch;Joystick;XR",
-                    "action": "Submit",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "9775583c-8e42-49da-9445-887133f23c7b",
                     "path": "<Keyboard>/x",
                     "interactions": "",
@@ -660,12 +649,12 @@
                 },
                 {
                     "name": "",
-                    "id": "e4123ab3-c63f-40ba-be1a-78f82a490c9d",
-                    "path": "*/{Cancel}",
+                    "id": "5394670f-6c4e-48a7-ae7e-c11d02df865b",
+                    "path": "*/{Submit}",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse;Gamepad;Touch;Joystick;XR",
-                    "action": "Cancel",
+                    "action": "Submit",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -676,6 +665,17 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
+                    "action": "Cancel",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e4123ab3-c63f-40ba-be1a-78f82a490c9d",
+                    "path": "*/{Cancel}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse;Gamepad;Touch;Joystick;XR",
                     "action": "Cancel",
                     "isComposite": false,
                     "isPartOfComposite": false
