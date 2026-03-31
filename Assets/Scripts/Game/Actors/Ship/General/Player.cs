@@ -33,14 +33,6 @@ public abstract class Player : CharacterShip
         hitsTaken.value = 0;
     }
 
-#if UNITY_EDITOR
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.L))
-            TakeDamage(currentHealth.value);
-    }
-#endif
-
     void OnTakeDamage(int damage)
     {
         if (damage > 0)
