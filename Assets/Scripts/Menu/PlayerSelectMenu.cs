@@ -39,6 +39,11 @@ public class PlayerSelectMenu : Menu
         SelectPlayer((int)Mathf.Repeat(selectedPlayerIndex.value - 1, playerButtons.Length));
     }
 
+    public void OnSelectPlayer(IntObject selectedBossIndex)
+    {
+        selectedBossIndex.value = 0;
+    }
+
     void Update()
     {
         if (backInput.WasPressedThisFrame())
