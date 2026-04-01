@@ -23,7 +23,14 @@ public class ResultsScreen : Menu
     [SerializeField] TextMeshProUGUI[] resultsTexts;
     [SerializeField] TextMeshProUGUI[] resultsValues;
 
-    [SerializeField] GameObject confirmButton;
+    [Space]
+
+    [SerializeField] GameObject nextStageButton;
+    [SerializeField] GameObject mainMenuButton;
+
+    [Space]
+    
+    [SerializeField] IntObject selectedBossIndex;
 
     Boss boss;
 
@@ -68,7 +75,7 @@ public class ResultsScreen : Menu
 
     void OnBossDie()
     {
-        Open(confirmButton);
+        Open(nextStageButton);
         inputHandler.enabled = true;
 
         canvasGroup.alpha = 0f;
@@ -116,12 +123,17 @@ public class ResultsScreen : Menu
 
         yield return WaitForSeconds(1f);
 
-        confirmButton.SetActive(true);
+        if (selectedBossIndex.value < 11)
+        {
+            nextStageButton.SetActive(true);
+        }
+        mainMenuButton.SetActive(true);
     }
 
     void InitializeResults()
     {
         resultsValues[0].text = TimeSpan.FromSeconds(totalTime).ToString(Clock.StringFormat);
+        //to-do: display score
         resultsValues[2].text = playerGraze.value.ToString();
         resultsValues[3].text = hitsTaken.value.ToString();
     }
@@ -145,9 +157,17 @@ public class ResultsScreen : Menu
                     item.enabled = true;
                 }
 
-                confirmButton.SetActive(true);
+                if (selectedBossIndex.value < 11)
+                {
+                    nextStageButton.SetActive(true);
+                }
+                mainMenuButton.SetActive(true);
             }
         }
     }
 
+    public void OnNextStage()
+    {
+        selectedBossIndex.value++;
+    }
 }
