@@ -12,18 +12,15 @@ public class InputHandler : MonoBehaviour
     [SerializeField] InputActionAsset inputActions;
     InputActionMap playerMap;
     InputActionMap pauseMap;
-    InputActionMap uiMap;
     
 
     void Awake()
     {
         playerMap = inputActions.FindActionMap("Player");
         pauseMap = inputActions.FindActionMap("Pause");
-        uiMap = inputActions.FindActionMap("UI");
 
         if (SceneManager.GetActiveScene().buildIndex == (int)SceneIndexes.Menu)
         {
-            uiMap.Enable();
             playerMap.Disable();
             pauseMap.Disable();
         }
@@ -31,7 +28,6 @@ public class InputHandler : MonoBehaviour
         {
             playerMap.Enable();
             pauseMap.Enable();
-            uiMap.Disable();
             
             pauseHandler = FindAnyObjectByType<PauseHandler>();
             pauseHandler.GamePauseAction += OnGamePaused;

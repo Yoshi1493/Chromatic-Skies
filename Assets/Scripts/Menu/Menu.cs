@@ -9,14 +9,16 @@ public abstract class Menu : MonoBehaviour
     protected PointerEventData eventData = new(EventSystem.current);
 
     [SerializeField] InputActionAsset inputActions;
+    protected InputActionMap uiMap;
     protected InputAction submitInput;
     protected InputAction backInput;
 
     protected virtual void Awake()
     {
         thisMenu = GetComponent<Canvas>();
-        submitInput = inputActions.FindActionMap("UI").FindAction("Submit");
-        backInput = inputActions.FindActionMap("UI").FindAction("Cancel");
+        uiMap = inputActions.FindActionMap("UI");
+        submitInput = uiMap.FindAction("Submit");
+        backInput = uiMap.FindAction("Cancel");
     }
 
     public void Open(GameObject newSelectedGameObject)
@@ -24,13 +26,19 @@ public abstract class Menu : MonoBehaviour
         thisMenu.enabled = true;
 
         if (thisMenu.TryGetComponent(out Menu m))
+        {
             m.Enable(newSelectedGameObject);
+        }
+
+        uiMap.Enable();
     }
 
     public void Close()
     {
         thisMenu.enabled = false;
         Disable();
+
+        uiMap.Disable();
     }
 
     public virtual void Enable(GameObject newSelectedGameObject)
