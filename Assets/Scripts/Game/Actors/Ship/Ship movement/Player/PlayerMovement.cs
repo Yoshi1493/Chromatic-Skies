@@ -52,21 +52,23 @@ public class PlayerMovement : ShipMovement<Player>
         parentShip.moveDirection.x = moveInputValue.x;
         parentShip.moveDirection.y = moveInputValue.y;
 
-
-        // //check for collision on world boundaries along x and y axes independently
-        // RaycastHit2D rayH = Physics2D.Raycast(transform.position, Vector3.right, 0.1f * parentShip.moveDirection.x, shipData.boundaryLayer);
-        // RaycastHit2D rayV = Physics2D.Raycast(transform.position, Vector3.up, 0.1f * parentShip.moveDirection.y, shipData.boundaryLayer);
-
-        // //if movement is restricted on one axis, still allow movement on the other axis
-        // if (rayH.collider != null)
-        // {
-        //     parentShip.moveDirection.x = 0;
-        // }
-
-        // if (rayV.collider != null)
-        // {
-        //     parentShip.moveDirection.y = 0;
-        // }
+        //clamp player position to camera boundaries
+        if (parentShip.transform.position.x < -ScreenHalfWidth)
+        {
+            parentShip.moveDirection.x = Mathf.Max(0, parentShip.moveDirection.x);
+        }
+        if (parentShip.transform.position.x > ScreenHalfWidth)
+        {
+            parentShip.moveDirection.x = Mathf.Min(parentShip.moveDirection.x, 0);
+        }
+        if (parentShip.transform.position.y < -ScreenHalfHeight)
+        {
+            parentShip.moveDirection.y = Mathf.Max(0, parentShip.moveDirection.y);
+        }
+        if (parentShip.transform.position.y > ScreenHalfHeight)
+        {
+            parentShip.moveDirection.y = Mathf.Min(parentShip.moveDirection.y, 0);
+        }
     }
 
     void GetSlowInput()
