@@ -10,6 +10,7 @@ public class PlayerSelectMenu : Menu
 
     [SerializeField] Button[] playerButtons;
     [SerializeField] IntObject selectedPlayerIndex;
+    [SerializeField] IntObject selectedBossIndex;
     [SerializeField] StatBarController statBarController;
 
     public override void Enable(GameObject newSelectedGameObject)
@@ -39,7 +40,7 @@ public class PlayerSelectMenu : Menu
         SelectPlayer((int)Mathf.Repeat(selectedPlayerIndex.value - 1, playerButtons.Length));
     }
 
-    public void OnSelectPlayer(IntObject selectedBossIndex)
+    public void OnSelectPlayer()
     {
         selectedBossIndex.value = 0;
     }
